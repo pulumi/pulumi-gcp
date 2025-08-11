@@ -11,28 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows creation and management of a Google Cloud Platform project.
-//
-// Projects created with this resource must be associated with an Organization.
-// See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-//
-// The user or service account that is running this provider when creating a `organizations.Project`
-// resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-// doc for more information.
-//
-// > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
-//
-// > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `autoCreateNetwork` to false, when possible.
-//
-// > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
-//
-// To get more information about projects, see:
-//
-// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-// * How-to Guides
-//   - [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
-//
 // ## Example Usage
 //
 // ```go
@@ -144,14 +122,9 @@ type Project struct {
 	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set autoCreateNetwork to false, since the network will exist momentarily.
-	AutoCreateNetwork pulumi.BoolPtrOutput `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
-	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	AutoCreateNetwork pulumi.BoolPtrOutput   `pulumi:"autoCreateNetwork"`
+	BillingAccount    pulumi.StringPtrOutput `pulumi:"billingAccount"`
+	DeletionPolicy    pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The numeric ID of the folder this project should be
@@ -221,14 +194,9 @@ type projectState struct {
 	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set autoCreateNetwork to false, since the network will exist momentarily.
-	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
-	BillingAccount *string `pulumi:"billingAccount"`
-	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	AutoCreateNetwork *bool   `pulumi:"autoCreateNetwork"`
+	BillingAccount    *string `pulumi:"billingAccount"`
+	DeletionPolicy    *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The numeric ID of the folder this project should be
@@ -265,13 +233,8 @@ type ProjectState struct {
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set autoCreateNetwork to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrInput
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
-	BillingAccount pulumi.StringPtrInput
-	DeletionPolicy pulumi.StringPtrInput
+	BillingAccount    pulumi.StringPtrInput
+	DeletionPolicy    pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The numeric ID of the folder this project should be
@@ -311,14 +274,9 @@ type projectArgs struct {
 	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set autoCreateNetwork to false, since the network will exist momentarily.
-	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
-	BillingAccount *string `pulumi:"billingAccount"`
-	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	AutoCreateNetwork *bool   `pulumi:"autoCreateNetwork"`
+	BillingAccount    *string `pulumi:"billingAccount"`
+	DeletionPolicy    *string `pulumi:"deletionPolicy"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
 	// specified. If the `folderId` is specified, then the project is
@@ -350,13 +308,8 @@ type ProjectArgs struct {
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set autoCreateNetwork to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrInput
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
-	BillingAccount pulumi.StringPtrInput
-	DeletionPolicy pulumi.StringPtrInput
+	BillingAccount    pulumi.StringPtrInput
+	DeletionPolicy    pulumi.StringPtrInput
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
 	// specified. If the `folderId` is specified, then the project is
@@ -476,11 +429,6 @@ func (o ProjectOutput) AutoCreateNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AutoCreateNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// The alphanumeric ID of the billing account this project
-// belongs to. The user or service account performing this operation with the provider
-// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-// for more details.
 func (o ProjectOutput) BillingAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BillingAccount }).(pulumi.StringPtrOutput)
 }

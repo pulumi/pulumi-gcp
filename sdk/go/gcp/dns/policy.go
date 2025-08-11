@@ -115,8 +115,7 @@ type Policy struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrOutput `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description                 pulumi.StringPtrOutput                     `pulumi:"description"`
 	// Configurations related to DNS64 for this Policy.
 	// Structure is documented below.
 	Dns64Config PolicyDns64ConfigOutput `pulumi:"dns64Config"`
@@ -173,8 +172,7 @@ type policyState struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description *string `pulumi:"description"`
+	Description                 *string                            `pulumi:"description"`
 	// Configurations related to DNS64 for this Policy.
 	// Structure is documented below.
 	Dns64Config *PolicyDns64Config `pulumi:"dns64Config"`
@@ -202,8 +200,7 @@ type PolicyState struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description pulumi.StringPtrInput
+	Description                 pulumi.StringPtrInput
 	// Configurations related to DNS64 for this Policy.
 	// Structure is documented below.
 	Dns64Config PolicyDns64ConfigPtrInput
@@ -235,8 +232,7 @@ type policyArgs struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description *string `pulumi:"description"`
+	Description                 *string                            `pulumi:"description"`
 	// Configurations related to DNS64 for this Policy.
 	// Structure is documented below.
 	Dns64Config *PolicyDns64Config `pulumi:"dns64Config"`
@@ -265,8 +261,7 @@ type PolicyArgs struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Pulumi'.
-	Description pulumi.StringPtrInput
+	Description                 pulumi.StringPtrInput
 	// Configurations related to DNS64 for this Policy.
 	// Structure is documented below.
 	Dns64Config PolicyDns64ConfigPtrInput
@@ -383,7 +378,6 @@ func (o PolicyOutput) AlternativeNameServerConfig() PolicyAlternativeNameServerC
 	return o.ApplyT(func(v *Policy) PolicyAlternativeNameServerConfigPtrOutput { return v.AlternativeNameServerConfig }).(PolicyAlternativeNameServerConfigPtrOutput)
 }
 
-// A textual description field. Defaults to 'Managed by Pulumi'.
 func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

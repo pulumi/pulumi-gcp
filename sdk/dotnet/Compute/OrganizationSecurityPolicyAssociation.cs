@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// An association for the OrganizationSecurityPolicy.
-    /// 
-    /// To get more information about OrganizationSecurityPolicyAssociation, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
-    /// * How-to Guides
-    ///     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Organization Security Policy Association Basic
@@ -32,14 +24,14 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var securityPolicyTarget = new Gcp.Organizations.Folder("security_policy_target", new()
     ///     {
-    ///         DisplayName = "tf-test-secpol",
+    ///         DisplayName = "tf-test-secpol-_52865",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         DisplayName = "tf-test",
+    ///         DisplayName = "tf-test_85840",
     ///         Parent = securityPolicyTarget.Name,
     ///     });
     /// 
@@ -80,7 +72,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policy", new()
     ///     {
-    ///         Name = "tf-test",
+    ///         Name = "tf-test_60302",
     ///         AttachmentId = policy.Parent,
     ///         PolicyId = policy.Id,
     ///     });

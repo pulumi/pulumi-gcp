@@ -734,6 +734,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/apiProduct",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/apiProduct:ApiProduct": "ApiProduct"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/appGroup",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -922,6 +930,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/securityAction",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/securityAction:SecurityAction": "SecurityAction"
   }
  },
  {
@@ -1714,6 +1730,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.bigtable",
   "classes": {
    "gcp:bigtable/materializedView:MaterializedView": "MaterializedView"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigtable/schemaBundle",
+  "fqn": "pulumi_gcp.bigtable",
+  "classes": {
+   "gcp:bigtable/schemaBundle:SchemaBundle": "SchemaBundle"
   }
  },
  {
@@ -3314,6 +3338,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/perInstanceConfig:PerInstanceConfig": "PerInstanceConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/previewFeature",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/previewFeature:PreviewFeature": "PreviewFeature"
   }
  },
  {
@@ -4990,6 +5022,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "developerconnect/insightsConfig",
+  "fqn": "pulumi_gcp.developerconnect",
+  "classes": {
+   "gcp:developerconnect/insightsConfig:InsightsConfig": "InsightsConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/agent",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -5034,6 +5074,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
    "gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings": "CxGenerativeSettings"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "diagflow/cxGenerator",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxGenerator:CxGenerator": "CxGenerator"
   }
  },
  {
@@ -5134,10 +5182,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/cmekConfig",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/cmekConfig:CmekConfig": "CmekConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "discoveryengine/dataStore",
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/dataStore:DataStore": "DataStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/recommendationEngine",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/recommendationEngine:RecommendationEngine": "RecommendationEngine"
   }
  },
  {
@@ -6414,6 +6478,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/workforcePoolIamBinding",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePoolIamBinding:WorkforcePoolIamBinding": "WorkforcePoolIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workforcePoolIamMember",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember": "WorkforcePoolIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workforcePoolIamPolicy",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePoolIamPolicy:WorkforcePoolIamPolicy": "WorkforcePoolIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/workforcePoolProvider",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -7278,6 +7366,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "modelarmor/floorsetting",
+  "fqn": "pulumi_gcp.modelarmor",
+  "classes": {
+   "gcp:modelarmor/floorsetting:Floorsetting": "Floorsetting"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "modelarmor/template",
   "fqn": "pulumi_gcp.modelarmor",
   "classes": {
@@ -7938,6 +8034,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.oracledatabase",
   "classes": {
    "gcp:oracledatabase/cloudVmCluster:CloudVmCluster": "CloudVmCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/odbNetwork",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/odbNetwork:OdbNetwork": "OdbNetwork"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/odbSubnet",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/odbSubnet:OdbSubnet": "OdbSubnet"
   }
  },
  {
@@ -9350,6 +9462,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "storage/insightsDatasetConfig",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/insightsDatasetConfig:InsightsDatasetConfig": "InsightsDatasetConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "storage/insightsReportConfig",
   "fqn": "pulumi_gcp.storage",
   "classes": {
@@ -9594,6 +9714,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": "AiEndpointIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiEndpointWithModelGardenDeployment",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment": "AiEndpointWithModelGardenDeployment"
   }
  },
  {

@@ -179,10 +179,6 @@ export class TableIamPolicy extends pulumi.CustomResource {
      * - - -
      */
     public readonly policyData!: pulumi.Output<string>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The name or relative resource id of the table to manage IAM policies for.
@@ -249,10 +245,6 @@ export interface TableIamPolicyState {
      * - - -
      */
     policyData?: pulumi.Input<string>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     project?: pulumi.Input<string>;
     /**
      * The name or relative resource id of the table to manage IAM policies for.
@@ -276,10 +268,6 @@ export interface TableIamPolicyArgs {
      * - - -
      */
     policyData: pulumi.Input<string>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     project?: pulumi.Input<string>;
     /**
      * The name or relative resource id of the table to manage IAM policies for.

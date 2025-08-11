@@ -31,16 +31,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
-        /// The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
-        /// 
-        /// &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-        /// 
-        /// !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-        /// 
-        /// !&gt; **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-        /// `cluster_id`) will cause the provider to delete/recreate the entire
-        /// `gcp.bigtable.Instance` resource. If these values are changing, use a new
-        /// `cluster_id`.
+        /// The node scaling factor of this cluster. One of "NodeScalingFactor1X" or "NodeScalingFactor2X". Defaults to "NodeScalingFactor1X".
         /// </summary>
         [Input("nodeScalingFactor")]
         public Input<string>? NodeScalingFactor { get; set; }

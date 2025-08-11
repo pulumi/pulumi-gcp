@@ -24,6 +24,7 @@ class InternalRangeArgs:
                  network: pulumi.Input[_builtins.str],
                  peering: pulumi.Input[_builtins.str],
                  usage: pulumi.Input[_builtins.str],
+                 allocation_options: Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  immutable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -42,6 +43,8 @@ class InternalRangeArgs:
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
         :param pulumi.Input[_builtins.str] usage: The type of usage set for this InternalRange.
                Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
+        :param pulumi.Input['InternalRangeAllocationOptionsArgs'] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
                Only IPv4 CIDR ranges are supported.
@@ -70,6 +73,8 @@ class InternalRangeArgs:
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "peering", peering)
         pulumi.set(__self__, "usage", usage)
+        if allocation_options is not None:
+            pulumi.set(__self__, "allocation_options", allocation_options)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if exclude_cidr_ranges is not None:
@@ -130,6 +135,19 @@ class InternalRangeArgs:
     @usage.setter
     def usage(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "usage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationOptions")
+    def allocation_options(self) -> Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']]:
+        """
+        Options for automatically allocating a free range with a size given by prefixLength.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allocation_options")
+
+    @allocation_options.setter
+    def allocation_options(self, value: Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']]):
+        pulumi.set(self, "allocation_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -280,6 +298,7 @@ class InternalRangeArgs:
 @pulumi.input_type
 class _InternalRangeState:
     def __init__(__self__, *,
+                 allocation_options: Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -299,6 +318,8 @@ class _InternalRangeState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering InternalRange resources.
+        :param pulumi.Input['InternalRangeAllocationOptionsArgs'] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -335,6 +356,8 @@ class _InternalRangeState:
                Resources that use the internal range for their range allocation are referred to as users of the range.
                Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
         """
+        if allocation_options is not None:
+            pulumi.set(__self__, "allocation_options", allocation_options)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -369,6 +392,19 @@ class _InternalRangeState:
             pulumi.set(__self__, "usage", usage)
         if users is not None:
             pulumi.set(__self__, "users", users)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationOptions")
+    def allocation_options(self) -> Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']]:
+        """
+        Options for automatically allocating a free range with a size given by prefixLength.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allocation_options")
+
+    @allocation_options.setter
+    def allocation_options(self, value: Optional[pulumi.Input['InternalRangeAllocationOptionsArgs']]):
+        pulumi.set(self, "allocation_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -599,6 +635,7 @@ class InternalRange(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocation_options: Optional[pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  immutable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -732,6 +769,47 @@ class InternalRange(pulumi.CustomResource):
                 "target": f"projects/{target_project.project_id}/regions/us-central1/subnetworks/target-subnet",
             })
         ```
+        ### Network Connectivity Internal Ranges Allocation Algoritms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="internal-ranges",
+            auto_create_subnetworks=False)
+        default = gcp.networkconnectivity.InternalRange("default",
+            name="allocation-algorithms",
+            network=default_network.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=24,
+            target_cidr_ranges=["192.16.0.0/16"],
+            allocation_options={
+                "allocation_strategy": "FIRST_SMALLEST_FITTING",
+            })
+        ```
+        ### Network Connectivity Internal Ranges Allocation Algoritms Random First N
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="internal-ranges",
+            auto_create_subnetworks=False)
+        default = gcp.networkconnectivity.InternalRange("default",
+            name="allocation-algorithms-random-first-n",
+            network=default_network.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=24,
+            target_cidr_ranges=["192.16.0.0/16"],
+            allocation_options={
+                "allocation_strategy": "RANDOM_FIRST_N_AVAILABLE",
+                "first_available_ranges_lookup_size": 20,
+            })
+        ```
 
         ## Import
 
@@ -759,6 +837,8 @@ class InternalRange(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
                Only IPv4 CIDR ranges are supported.
@@ -913,6 +993,47 @@ class InternalRange(pulumi.CustomResource):
                 "target": f"projects/{target_project.project_id}/regions/us-central1/subnetworks/target-subnet",
             })
         ```
+        ### Network Connectivity Internal Ranges Allocation Algoritms
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="internal-ranges",
+            auto_create_subnetworks=False)
+        default = gcp.networkconnectivity.InternalRange("default",
+            name="allocation-algorithms",
+            network=default_network.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=24,
+            target_cidr_ranges=["192.16.0.0/16"],
+            allocation_options={
+                "allocation_strategy": "FIRST_SMALLEST_FITTING",
+            })
+        ```
+        ### Network Connectivity Internal Ranges Allocation Algoritms Random First N
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="internal-ranges",
+            auto_create_subnetworks=False)
+        default = gcp.networkconnectivity.InternalRange("default",
+            name="allocation-algorithms-random-first-n",
+            network=default_network.id,
+            usage="FOR_VPC",
+            peering="FOR_SELF",
+            prefix_length=24,
+            target_cidr_ranges=["192.16.0.0/16"],
+            allocation_options={
+                "allocation_strategy": "RANDOM_FIRST_N_AVAILABLE",
+                "first_available_ranges_lookup_size": 20,
+            })
+        ```
 
         ## Import
 
@@ -953,6 +1074,7 @@ class InternalRange(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocation_options: Optional[pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  immutable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -976,6 +1098,7 @@ class InternalRange(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InternalRangeArgs.__new__(InternalRangeArgs)
 
+            __props__.__dict__["allocation_options"] = allocation_options
             __props__.__dict__["description"] = description
             __props__.__dict__["exclude_cidr_ranges"] = exclude_cidr_ranges
             __props__.__dict__["immutable"] = immutable
@@ -1011,6 +1134,7 @@ class InternalRange(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_options: Optional[pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1035,6 +1159,8 @@ class InternalRange(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InternalRangeAllocationOptionsArgs', 'InternalRangeAllocationOptionsArgsDict']] allocation_options: Options for automatically allocating a free range with a size given by prefixLength.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -1075,6 +1201,7 @@ class InternalRange(pulumi.CustomResource):
 
         __props__ = _InternalRangeState.__new__(_InternalRangeState)
 
+        __props__.__dict__["allocation_options"] = allocation_options
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["exclude_cidr_ranges"] = exclude_cidr_ranges
@@ -1093,6 +1220,15 @@ class InternalRange(pulumi.CustomResource):
         __props__.__dict__["usage"] = usage
         __props__.__dict__["users"] = users
         return InternalRange(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationOptions")
+    def allocation_options(self) -> pulumi.Output[Optional['outputs.InternalRangeAllocationOptions']]:
+        """
+        Options for automatically allocating a free range with a size given by prefixLength.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allocation_options")
 
     @_builtins.property
     @pulumi.getter

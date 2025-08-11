@@ -52,10 +52,14 @@ namespace Pulumi.Gcp.Dataproc
     ///             ExecutionConfig = new Gcp.Dataproc.Inputs.SessionTemplateEnvironmentConfigExecutionConfigArgs
     ///             {
     ///                 SubnetworkUri = "default",
-    ///                 Ttl = "3600s",
+    ///                 IdleTtl = "3600s",
     ///                 NetworkTags = new[]
     ///                 {
     ///                     "tag1",
+    ///                 },
+    ///                 AuthenticationConfig = new Gcp.Dataproc.Inputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs
+    ///                 {
+    ///                     UserWorkloadAuthenticationType = "END_USER_CREDENTIALS",
     ///                 },
     ///             },
     ///         },
@@ -193,6 +197,10 @@ namespace Pulumi.Gcp.Dataproc
     ///                 SubnetworkUri = "default",
     ///                 ServiceAccount = $"{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
     ///                 StagingBucket = bucket.Name,
+    ///                 AuthenticationConfig = new Gcp.Dataproc.Inputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs
+    ///                 {
+    ///                     UserWorkloadAuthenticationType = "SERVICE_ACCOUNT",
+    ///                 },
     ///             },
     ///             PeripheralsConfig = new Gcp.Dataproc.Inputs.SessionTemplateEnvironmentConfigPeripheralsConfigArgs
     ///             {

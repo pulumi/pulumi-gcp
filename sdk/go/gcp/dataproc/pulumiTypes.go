@@ -1415,6 +1415,9 @@ func (o BatchEnvironmentConfigPtrOutput) PeripheralsConfig() BatchEnvironmentCon
 }
 
 type BatchEnvironmentConfigExecutionConfig struct {
+	// Authentication configuration for a workload is used to set the default identity for the workload execution.
+	// Structure is documented below.
+	AuthenticationConfig *BatchEnvironmentConfigExecutionConfigAuthenticationConfig `pulumi:"authenticationConfig"`
 	// The Cloud KMS key to use for encryption.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Tags used for network traffic control.
@@ -1454,6 +1457,9 @@ type BatchEnvironmentConfigExecutionConfigInput interface {
 }
 
 type BatchEnvironmentConfigExecutionConfigArgs struct {
+	// Authentication configuration for a workload is used to set the default identity for the workload execution.
+	// Structure is documented below.
+	AuthenticationConfig BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput `pulumi:"authenticationConfig"`
 	// The Cloud KMS key to use for encryption.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// Tags used for network traffic control.
@@ -1558,6 +1564,14 @@ func (o BatchEnvironmentConfigExecutionConfigOutput) ToBatchEnvironmentConfigExe
 	}).(BatchEnvironmentConfigExecutionConfigPtrOutput)
 }
 
+// Authentication configuration for a workload is used to set the default identity for the workload execution.
+// Structure is documented below.
+func (o BatchEnvironmentConfigExecutionConfigOutput) AuthenticationConfig() BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v BatchEnvironmentConfigExecutionConfig) *BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
+		return v.AuthenticationConfig
+	}).(BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput)
+}
+
 // The Cloud KMS key to use for encryption.
 func (o BatchEnvironmentConfigExecutionConfigOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BatchEnvironmentConfigExecutionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
@@ -1626,6 +1640,17 @@ func (o BatchEnvironmentConfigExecutionConfigPtrOutput) Elem() BatchEnvironmentC
 		var ret BatchEnvironmentConfigExecutionConfig
 		return ret
 	}).(BatchEnvironmentConfigExecutionConfigOutput)
+}
+
+// Authentication configuration for a workload is used to set the default identity for the workload execution.
+// Structure is documented below.
+func (o BatchEnvironmentConfigExecutionConfigPtrOutput) AuthenticationConfig() BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v *BatchEnvironmentConfigExecutionConfig) *BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationConfig
+	}).(BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput)
 }
 
 // The Cloud KMS key to use for encryption.
@@ -1706,6 +1731,149 @@ func (o BatchEnvironmentConfigExecutionConfigPtrOutput) Ttl() pulumi.StringPtrOu
 			return nil
 		}
 		return v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+type BatchEnvironmentConfigExecutionConfigAuthenticationConfig struct {
+	// Authentication type for the user workload running in containers.
+	// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+	UserWorkloadAuthenticationType *string `pulumi:"userWorkloadAuthenticationType"`
+}
+
+// BatchEnvironmentConfigExecutionConfigAuthenticationConfigInput is an input type that accepts BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs and BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput values.
+// You can construct a concrete instance of `BatchEnvironmentConfigExecutionConfigAuthenticationConfigInput` via:
+//
+//	BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs{...}
+type BatchEnvironmentConfigExecutionConfigAuthenticationConfigInput interface {
+	pulumi.Input
+
+	ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput() BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput
+	ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigOutputWithContext(context.Context) BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput
+}
+
+type BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs struct {
+	// Authentication type for the user workload running in containers.
+	// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+	UserWorkloadAuthenticationType pulumi.StringPtrInput `pulumi:"userWorkloadAuthenticationType"`
+}
+
+func (BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchEnvironmentConfigExecutionConfigAuthenticationConfig)(nil)).Elem()
+}
+
+func (i BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput() BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return i.ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigOutputWithContext(context.Background())
+}
+
+func (i BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigOutputWithContext(ctx context.Context) BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput)
+}
+
+func (i BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return i.ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx context.Context) BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput).ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx)
+}
+
+// BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput is an input type that accepts BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs, BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtr and BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput values.
+// You can construct a concrete instance of `BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput` via:
+//
+//	        BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput interface {
+	pulumi.Input
+
+	ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput
+	ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(context.Context) BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput
+}
+
+type batchEnvironmentConfigExecutionConfigAuthenticationConfigPtrType BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs
+
+func BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtr(v *BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs) BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput {
+	return (*batchEnvironmentConfigExecutionConfigAuthenticationConfigPtrType)(v)
+}
+
+func (*batchEnvironmentConfigExecutionConfigAuthenticationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchEnvironmentConfigExecutionConfigAuthenticationConfig)(nil)).Elem()
+}
+
+func (i *batchEnvironmentConfigExecutionConfigAuthenticationConfigPtrType) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return i.ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *batchEnvironmentConfigExecutionConfigAuthenticationConfigPtrType) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx context.Context) BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput)
+}
+
+type BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput struct{ *pulumi.OutputState }
+
+func (BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchEnvironmentConfigExecutionConfigAuthenticationConfig)(nil)).Elem()
+}
+
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput() BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return o
+}
+
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigOutputWithContext(ctx context.Context) BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return o
+}
+
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o.ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx context.Context) BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchEnvironmentConfigExecutionConfigAuthenticationConfig) *BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
+		return &v
+	}).(BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput)
+}
+
+// Authentication type for the user workload running in containers.
+// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput) UserWorkloadAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchEnvironmentConfigExecutionConfigAuthenticationConfig) *string {
+		return v.UserWorkloadAuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+type BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchEnvironmentConfigExecutionConfigAuthenticationConfig)(nil)).Elem()
+}
+
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) ToBatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx context.Context) BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) Elem() BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return o.ApplyT(func(v *BatchEnvironmentConfigExecutionConfigAuthenticationConfig) BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BatchEnvironmentConfigExecutionConfigAuthenticationConfig
+		return ret
+	}).(BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput)
+}
+
+// Authentication type for the user workload running in containers.
+// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+func (o BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) UserWorkloadAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchEnvironmentConfigExecutionConfigAuthenticationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserWorkloadAuthenticationType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3855,6 +4023,8 @@ type ClusterClusterConfig struct {
 	// for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
 	// it will be the auto generated name.
 	Bucket *string `pulumi:"bucket"`
+	// The tier of the cluster.
+	ClusterTier *string `pulumi:"clusterTier"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
 	DataprocMetricConfig *ClusterClusterConfigDataprocMetricConfig `pulumi:"dataprocMetricConfig"`
@@ -3932,6 +4102,8 @@ type ClusterClusterConfigArgs struct {
 	// for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
 	// it will be the auto generated name.
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// The tier of the cluster.
+	ClusterTier pulumi.StringPtrInput `pulumi:"clusterTier"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
 	DataprocMetricConfig ClusterClusterConfigDataprocMetricConfigPtrInput `pulumi:"dataprocMetricConfig"`
@@ -4081,6 +4253,11 @@ func (o ClusterClusterConfigOutput) AuxiliaryNodeGroups() ClusterClusterConfigAu
 // it will be the auto generated name.
 func (o ClusterClusterConfigOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// The tier of the cluster.
+func (o ClusterClusterConfigOutput) ClusterTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.ClusterTier }).(pulumi.StringPtrOutput)
 }
 
 // The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -4237,6 +4414,16 @@ func (o ClusterClusterConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tier of the cluster.
+func (o ClusterClusterConfigPtrOutput) ClusterTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterTier
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8184,6 +8371,7 @@ type ClusterClusterConfigPreemptibleWorkerConfig struct {
 	// * PREEMPTIBILITY_UNSPECIFIED
 	// * NON_PREEMPTIBLE
 	// * PREEMPTIBLE
+	// * SPOT
 	Preemptibility *string `pulumi:"preemptibility"`
 }
 
@@ -8214,6 +8402,7 @@ type ClusterClusterConfigPreemptibleWorkerConfigArgs struct {
 	// * PREEMPTIBILITY_UNSPECIFIED
 	// * NON_PREEMPTIBLE
 	// * PREEMPTIBLE
+	// * SPOT
 	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
 }
 
@@ -8325,6 +8514,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) NumInstances() pulumi
 // * PREEMPTIBILITY_UNSPECIFIED
 // * NON_PREEMPTIBLE
 // * PREEMPTIBLE
+// * SPOT
 func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) Preemptibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfig) *string { return v.Preemptibility }).(pulumi.StringPtrOutput)
 }
@@ -8400,6 +8590,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) NumInstances() pul
 // * PREEMPTIBILITY_UNSPECIFIED
 // * NON_PREEMPTIBLE
 // * PREEMPTIBLE
+// * SPOT
 func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfig) *string {
 		if v == nil {
@@ -9189,8 +9380,12 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProv
 }
 
 type ClusterClusterConfigSecurityConfig struct {
-	// Kerberos Configuration
-	KerberosConfig ClusterClusterConfigSecurityConfigKerberosConfig `pulumi:"kerberosConfig"`
+	// Identity Configuration. At least one of `identityConfig`
+	// or `kerberosConfig` is required.
+	IdentityConfig *ClusterClusterConfigSecurityConfigIdentityConfig `pulumi:"identityConfig"`
+	// Kerberos Configuration. At least one of `identityConfig`
+	// or `kerberosConfig` is required.
+	KerberosConfig *ClusterClusterConfigSecurityConfigKerberosConfig `pulumi:"kerberosConfig"`
 }
 
 // ClusterClusterConfigSecurityConfigInput is an input type that accepts ClusterClusterConfigSecurityConfigArgs and ClusterClusterConfigSecurityConfigOutput values.
@@ -9205,8 +9400,12 @@ type ClusterClusterConfigSecurityConfigInput interface {
 }
 
 type ClusterClusterConfigSecurityConfigArgs struct {
-	// Kerberos Configuration
-	KerberosConfig ClusterClusterConfigSecurityConfigKerberosConfigInput `pulumi:"kerberosConfig"`
+	// Identity Configuration. At least one of `identityConfig`
+	// or `kerberosConfig` is required.
+	IdentityConfig ClusterClusterConfigSecurityConfigIdentityConfigPtrInput `pulumi:"identityConfig"`
+	// Kerberos Configuration. At least one of `identityConfig`
+	// or `kerberosConfig` is required.
+	KerberosConfig ClusterClusterConfigSecurityConfigKerberosConfigPtrInput `pulumi:"kerberosConfig"`
 }
 
 func (ClusterClusterConfigSecurityConfigArgs) ElementType() reflect.Type {
@@ -9286,11 +9485,20 @@ func (o ClusterClusterConfigSecurityConfigOutput) ToClusterClusterConfigSecurity
 	}).(ClusterClusterConfigSecurityConfigPtrOutput)
 }
 
-// Kerberos Configuration
-func (o ClusterClusterConfigSecurityConfigOutput) KerberosConfig() ClusterClusterConfigSecurityConfigKerberosConfigOutput {
-	return o.ApplyT(func(v ClusterClusterConfigSecurityConfig) ClusterClusterConfigSecurityConfigKerberosConfig {
+// Identity Configuration. At least one of `identityConfig`
+// or `kerberosConfig` is required.
+func (o ClusterClusterConfigSecurityConfigOutput) IdentityConfig() ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigSecurityConfig) *ClusterClusterConfigSecurityConfigIdentityConfig {
+		return v.IdentityConfig
+	}).(ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput)
+}
+
+// Kerberos Configuration. At least one of `identityConfig`
+// or `kerberosConfig` is required.
+func (o ClusterClusterConfigSecurityConfigOutput) KerberosConfig() ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigSecurityConfig) *ClusterClusterConfigSecurityConfigKerberosConfig {
 		return v.KerberosConfig
-	}).(ClusterClusterConfigSecurityConfigKerberosConfigOutput)
+	}).(ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput)
 }
 
 type ClusterClusterConfigSecurityConfigPtrOutput struct{ *pulumi.OutputState }
@@ -9317,14 +9525,177 @@ func (o ClusterClusterConfigSecurityConfigPtrOutput) Elem() ClusterClusterConfig
 	}).(ClusterClusterConfigSecurityConfigOutput)
 }
 
-// Kerberos Configuration
+// Identity Configuration. At least one of `identityConfig`
+// or `kerberosConfig` is required.
+func (o ClusterClusterConfigSecurityConfigPtrOutput) IdentityConfig() ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSecurityConfig) *ClusterClusterConfigSecurityConfigIdentityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityConfig
+	}).(ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput)
+}
+
+// Kerberos Configuration. At least one of `identityConfig`
+// or `kerberosConfig` is required.
 func (o ClusterClusterConfigSecurityConfigPtrOutput) KerberosConfig() ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigSecurityConfig) *ClusterClusterConfigSecurityConfigKerberosConfig {
 		if v == nil {
 			return nil
 		}
-		return &v.KerberosConfig
+		return v.KerberosConfig
 	}).(ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput)
+}
+
+type ClusterClusterConfigSecurityConfigIdentityConfig struct {
+	// The end user to service account mappings
+	// in a service account based multi-tenant cluster
+	//
+	// ***
+	UserServiceAccountMapping map[string]string `pulumi:"userServiceAccountMapping"`
+}
+
+// ClusterClusterConfigSecurityConfigIdentityConfigInput is an input type that accepts ClusterClusterConfigSecurityConfigIdentityConfigArgs and ClusterClusterConfigSecurityConfigIdentityConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigSecurityConfigIdentityConfigInput` via:
+//
+//	ClusterClusterConfigSecurityConfigIdentityConfigArgs{...}
+type ClusterClusterConfigSecurityConfigIdentityConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigSecurityConfigIdentityConfigOutput() ClusterClusterConfigSecurityConfigIdentityConfigOutput
+	ToClusterClusterConfigSecurityConfigIdentityConfigOutputWithContext(context.Context) ClusterClusterConfigSecurityConfigIdentityConfigOutput
+}
+
+type ClusterClusterConfigSecurityConfigIdentityConfigArgs struct {
+	// The end user to service account mappings
+	// in a service account based multi-tenant cluster
+	//
+	// ***
+	UserServiceAccountMapping pulumi.StringMapInput `pulumi:"userServiceAccountMapping"`
+}
+
+func (ClusterClusterConfigSecurityConfigIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigSecurityConfigIdentityConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigSecurityConfigIdentityConfigArgs) ToClusterClusterConfigSecurityConfigIdentityConfigOutput() ClusterClusterConfigSecurityConfigIdentityConfigOutput {
+	return i.ToClusterClusterConfigSecurityConfigIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigSecurityConfigIdentityConfigArgs) ToClusterClusterConfigSecurityConfigIdentityConfigOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecurityConfigIdentityConfigOutput)
+}
+
+func (i ClusterClusterConfigSecurityConfigIdentityConfigArgs) ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutput() ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return i.ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigSecurityConfigIdentityConfigArgs) ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecurityConfigIdentityConfigOutput).ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigSecurityConfigIdentityConfigPtrInput is an input type that accepts ClusterClusterConfigSecurityConfigIdentityConfigArgs, ClusterClusterConfigSecurityConfigIdentityConfigPtr and ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigSecurityConfigIdentityConfigPtrInput` via:
+//
+//	        ClusterClusterConfigSecurityConfigIdentityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigSecurityConfigIdentityConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutput() ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput
+	ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(context.Context) ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput
+}
+
+type clusterClusterConfigSecurityConfigIdentityConfigPtrType ClusterClusterConfigSecurityConfigIdentityConfigArgs
+
+func ClusterClusterConfigSecurityConfigIdentityConfigPtr(v *ClusterClusterConfigSecurityConfigIdentityConfigArgs) ClusterClusterConfigSecurityConfigIdentityConfigPtrInput {
+	return (*clusterClusterConfigSecurityConfigIdentityConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigSecurityConfigIdentityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigSecurityConfigIdentityConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigSecurityConfigIdentityConfigPtrType) ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutput() ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return i.ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigSecurityConfigIdentityConfigPtrType) ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput)
+}
+
+type ClusterClusterConfigSecurityConfigIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigSecurityConfigIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigSecurityConfigIdentityConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigSecurityConfigIdentityConfigOutput) ToClusterClusterConfigSecurityConfigIdentityConfigOutput() ClusterClusterConfigSecurityConfigIdentityConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigSecurityConfigIdentityConfigOutput) ToClusterClusterConfigSecurityConfigIdentityConfigOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigIdentityConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigSecurityConfigIdentityConfigOutput) ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutput() ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return o.ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigSecurityConfigIdentityConfigOutput) ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigSecurityConfigIdentityConfig) *ClusterClusterConfigSecurityConfigIdentityConfig {
+		return &v
+	}).(ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput)
+}
+
+// The end user to service account mappings
+// in a service account based multi-tenant cluster
+//
+// ***
+func (o ClusterClusterConfigSecurityConfigIdentityConfigOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterClusterConfigSecurityConfigIdentityConfig) map[string]string {
+		return v.UserServiceAccountMapping
+	}).(pulumi.StringMapOutput)
+}
+
+type ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigSecurityConfigIdentityConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput) ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutput() ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput) ToClusterClusterConfigSecurityConfigIdentityConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput) Elem() ClusterClusterConfigSecurityConfigIdentityConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSecurityConfigIdentityConfig) ClusterClusterConfigSecurityConfigIdentityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigSecurityConfigIdentityConfig
+		return ret
+	}).(ClusterClusterConfigSecurityConfigIdentityConfigOutput)
+}
+
+// The end user to service account mappings
+// in a service account based multi-tenant cluster
+//
+// ***
+func (o ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigSecurityConfigIdentityConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UserServiceAccountMapping
+	}).(pulumi.StringMapOutput)
 }
 
 type ClusterClusterConfigSecurityConfigKerberosConfig struct {
@@ -9373,8 +9744,6 @@ type ClusterClusterConfigSecurityConfigKerberosConfig struct {
 	TruststorePasswordUri *string `pulumi:"truststorePasswordUri"`
 	// The Cloud Storage URI of the truststore file used for
 	// SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-	//
-	// ***
 	TruststoreUri *string `pulumi:"truststoreUri"`
 }
 
@@ -9435,8 +9804,6 @@ type ClusterClusterConfigSecurityConfigKerberosConfigArgs struct {
 	TruststorePasswordUri pulumi.StringPtrInput `pulumi:"truststorePasswordUri"`
 	// The Cloud Storage URI of the truststore file used for
 	// SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-	//
-	// ***
 	TruststoreUri pulumi.StringPtrInput `pulumi:"truststoreUri"`
 }
 
@@ -9606,8 +9973,6 @@ func (o ClusterClusterConfigSecurityConfigKerberosConfigOutput) TruststorePasswo
 
 // The Cloud Storage URI of the truststore file used for
 // SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-//
-// ***
 func (o ClusterClusterConfigSecurityConfigKerberosConfigOutput) TruststoreUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSecurityConfigKerberosConfig) *string { return v.TruststoreUri }).(pulumi.StringPtrOutput)
 }
@@ -9793,8 +10158,6 @@ func (o ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput) TruststorePas
 
 // The Cloud Storage URI of the truststore file used for
 // SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-//
-// ***
 func (o ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput) TruststoreUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigSecurityConfigKerberosConfig) *string {
 		if v == nil {
@@ -21952,6 +22315,15 @@ func (o SessionTemplateEnvironmentConfigPtrOutput) PeripheralsConfig() SessionTe
 }
 
 type SessionTemplateEnvironmentConfigExecutionConfig struct {
+	// Authentication configuration for a workload is used to set the default identity for the workload execution.
+	// Structure is documented below.
+	AuthenticationConfig *SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig `pulumi:"authenticationConfig"`
+	// The duration to keep the session alive while it's idling.
+	// Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+	// Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+	// are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+	// been exceeded, whichever occurs first.
+	IdleTtl *string `pulumi:"idleTtl"`
 	// The Cloud KMS key to use for encryption.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Tags used for network traffic control.
@@ -21989,6 +22361,15 @@ type SessionTemplateEnvironmentConfigExecutionConfigInput interface {
 }
 
 type SessionTemplateEnvironmentConfigExecutionConfigArgs struct {
+	// Authentication configuration for a workload is used to set the default identity for the workload execution.
+	// Structure is documented below.
+	AuthenticationConfig SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput `pulumi:"authenticationConfig"`
+	// The duration to keep the session alive while it's idling.
+	// Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+	// Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+	// are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+	// been exceeded, whichever occurs first.
+	IdleTtl pulumi.StringPtrInput `pulumi:"idleTtl"`
 	// The Cloud KMS key to use for encryption.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// Tags used for network traffic control.
@@ -22091,6 +22472,23 @@ func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) ToSessionTemplate
 	}).(SessionTemplateEnvironmentConfigExecutionConfigPtrOutput)
 }
 
+// Authentication configuration for a workload is used to set the default identity for the workload execution.
+// Structure is documented below.
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) AuthenticationConfig() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) *SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig {
+		return v.AuthenticationConfig
+	}).(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput)
+}
+
+// The duration to keep the session alive while it's idling.
+// Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+// Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+// are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+// been exceeded, whichever occurs first.
+func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) IdleTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) *string { return v.IdleTtl }).(pulumi.StringPtrOutput)
+}
+
 // The Cloud KMS key to use for encryption.
 func (o SessionTemplateEnvironmentConfigExecutionConfigOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
@@ -22154,6 +22552,31 @@ func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) Elem() Session
 		var ret SessionTemplateEnvironmentConfigExecutionConfig
 		return ret
 	}).(SessionTemplateEnvironmentConfigExecutionConfigOutput)
+}
+
+// Authentication configuration for a workload is used to set the default identity for the workload execution.
+// Structure is documented below.
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) AuthenticationConfig() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) *SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationConfig
+	}).(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput)
+}
+
+// The duration to keep the session alive while it's idling.
+// Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+// Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+// are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+// been exceeded, whichever occurs first.
+func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) IdleTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTtl
+	}).(pulumi.StringPtrOutput)
 }
 
 // The Cloud KMS key to use for encryption.
@@ -22224,6 +22647,149 @@ func (o SessionTemplateEnvironmentConfigExecutionConfigPtrOutput) Ttl() pulumi.S
 			return nil
 		}
 		return v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig struct {
+	// Authentication type for the user workload running in containers.
+	// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+	UserWorkloadAuthenticationType *string `pulumi:"userWorkloadAuthenticationType"`
+}
+
+// SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigInput is an input type that accepts SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs and SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigInput` via:
+//
+//	SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs{...}
+type SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput
+	ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutputWithContext(context.Context) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput
+}
+
+type SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs struct {
+	// Authentication type for the user workload running in containers.
+	// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+	UserWorkloadAuthenticationType pulumi.StringPtrInput `pulumi:"userWorkloadAuthenticationType"`
+}
+
+func (SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig)(nil)).Elem()
+}
+
+func (i SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return i.ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput)
+}
+
+func (i SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput).ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx)
+}
+
+// SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput is an input type that accepts SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs, SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtr and SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput values.
+// You can construct a concrete instance of `SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput` via:
+//
+//	        SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput interface {
+	pulumi.Input
+
+	ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput
+	ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(context.Context) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput
+}
+
+type sessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrType SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs
+
+func SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtr(v *SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput {
+	return (*sessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrType)(v)
+}
+
+func (*sessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig)(nil)).Elem()
+}
+
+func (i *sessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrType) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return i.ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrType) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o.ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig) *SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig {
+		return &v
+	}).(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput)
+}
+
+// Authentication type for the user workload running in containers.
+// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput) UserWorkloadAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig) *string {
+		return v.UserWorkloadAuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig)(nil)).Elem()
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) ToSessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutputWithContext(ctx context.Context) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) Elem() SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig) SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig
+		return ret
+	}).(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput)
+}
+
+// Authentication type for the user workload running in containers.
+// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+func (o SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput) UserWorkloadAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserWorkloadAuthenticationType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -35195,6 +35761,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchEnvironmentConfigPtrInput)(nil)).Elem(), BatchEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchEnvironmentConfigExecutionConfigInput)(nil)).Elem(), BatchEnvironmentConfigExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchEnvironmentConfigExecutionConfigPtrInput)(nil)).Elem(), BatchEnvironmentConfigExecutionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchEnvironmentConfigExecutionConfigAuthenticationConfigInput)(nil)).Elem(), BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput)(nil)).Elem(), BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchEnvironmentConfigPeripheralsConfigInput)(nil)).Elem(), BatchEnvironmentConfigPeripheralsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchEnvironmentConfigPeripheralsConfigPtrInput)(nil)).Elem(), BatchEnvironmentConfigPeripheralsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigInput)(nil)).Elem(), BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{})
@@ -35277,6 +35845,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigPtrInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigIdentityConfigInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigIdentityConfigPtrInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigKerberosConfigInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigKerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigKerberosConfigPtrInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigKerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSoftwareConfigInput)(nil)).Elem(), ClusterClusterConfigSoftwareConfigArgs{})
@@ -35419,6 +35989,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPtrInput)(nil)).Elem(), SessionTemplateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfigInput)(nil)).Elem(), SessionTemplateEnvironmentConfigExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfigPtrInput)(nil)).Elem(), SessionTemplateEnvironmentConfigExecutionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigInput)(nil)).Elem(), SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrInput)(nil)).Elem(), SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigInput)(nil)).Elem(), SessionTemplateEnvironmentConfigPeripheralsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigPtrInput)(nil)).Elem(), SessionTemplateEnvironmentConfigPeripheralsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigInput)(nil)).Elem(), SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{})
@@ -35589,6 +36161,8 @@ func init() {
 	pulumi.RegisterOutputType(BatchEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(BatchEnvironmentConfigExecutionConfigOutput{})
 	pulumi.RegisterOutputType(BatchEnvironmentConfigExecutionConfigPtrOutput{})
+	pulumi.RegisterOutputType(BatchEnvironmentConfigExecutionConfigAuthenticationConfigOutput{})
+	pulumi.RegisterOutputType(BatchEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput{})
 	pulumi.RegisterOutputType(BatchEnvironmentConfigPeripheralsConfigOutput{})
 	pulumi.RegisterOutputType(BatchEnvironmentConfigPeripheralsConfigPtrOutput{})
 	pulumi.RegisterOutputType(BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput{})
@@ -35671,6 +36245,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigIdentityConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigIdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigKerberosConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigKerberosConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSoftwareConfigOutput{})
@@ -35813,6 +36389,8 @@ func init() {
 	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigExecutionConfigOutput{})
 	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigExecutionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigOutput{})
+	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigPtrOutput{})
 	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPeripheralsConfigOutput{})
 	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPeripheralsConfigPtrOutput{})
 	pulumi.RegisterOutputType(SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigOutput{})

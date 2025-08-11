@@ -235,6 +235,12 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly secretId!: pulumi.Output<string>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.
      */
@@ -290,6 +296,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["replication"] = state ? state.replication : undefined;
             resourceInputs["rotation"] = state ? state.rotation : undefined;
             resourceInputs["secretId"] = state ? state.secretId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["topics"] = state ? state.topics : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["versionAliases"] = state ? state.versionAliases : undefined;
@@ -307,6 +314,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["replication"] = args ? args.replication : undefined;
             resourceInputs["rotation"] = args ? args.rotation : undefined;
             resourceInputs["secretId"] = args ? args.secretId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["topics"] = args ? args.topics : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["versionAliases"] = args ? args.versionAliases : undefined;
@@ -405,6 +413,12 @@ export interface SecretState {
      */
     secretId?: pulumi.Input<string>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.
      */
@@ -496,6 +510,12 @@ export interface SecretArgs {
      * This must be unique within the project.
      */
     secretId?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.

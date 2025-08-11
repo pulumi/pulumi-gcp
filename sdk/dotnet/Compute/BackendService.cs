@@ -26,9 +26,6 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     /// 
-    /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Backend Service Basic

@@ -362,15 +362,6 @@ class BillingAccountSink(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
-        * How-to Guides
-            * [Exporting Logs](https://cloud.google.com/logging/docs/export)
-
-        > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-        [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
-        the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
-        typical IAM roles granted on a project.
-
         ## Example Usage
 
         ```python
@@ -431,15 +422,6 @@ class BillingAccountSink(pulumi.CustomResource):
                  args: BillingAccountSinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
-        * How-to Guides
-            * [Exporting Logs](https://cloud.google.com/logging/docs/export)
-
-        > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-        [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
-        the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
-        typical IAM roles granted on a project.
-
         ## Example Usage
 
         ```python

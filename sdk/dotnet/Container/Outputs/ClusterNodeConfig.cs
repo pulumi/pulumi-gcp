@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigAdvancedMachineFeatures? AdvancedMachineFeatures;
         /// <summary>
-        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         /// </summary>
         public readonly string? BootDiskKmsKey;
         /// <summary>
@@ -79,6 +79,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// List of the type and count of accelerator cards attached to the instance.
         /// Structure documented below.
+        /// **Note**: As of 6.0.0, argument syntax
+        /// is no longer supported for this field in favor of block syntax.
+        /// To dynamically set a list of guest accelerators, use dynamic blocks.
+        /// To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeConfigGuestAccelerator> GuestAccelerators;
         /// <summary>
@@ -152,11 +156,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? MaxRunDuration;
         /// <summary>
-        /// The metadata key/value pairs assigned to instances in
-        /// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-        /// `true` by the API; if `metadata` is set but that default value is not
-        /// included, the provider will attempt to unset the value. To avoid this, set the
-        /// value in your config.
+        /// The metadata key/value pairs assigned to instances in the cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
@@ -199,7 +199,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
         /// <summary>
-        /// Sandbox configuration for this node.
+        /// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodeConfigSandboxConfig? SandboxConfig;
         /// <summary>
@@ -235,14 +236,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        /// to apply to nodes. GKE's API can only set this field on cluster creation.
-        /// However, GKE will add taints to your nodes if you enable certain features such
-        /// as GPUs. If this field is set, any diffs on this field will cause the provider to
-        /// recreate the underlying resource. Taint values can be updated safely in
-        /// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        /// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        /// recommended. Structure is documented below.
+        /// List of Kubernetes taints to be applied to each node.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeConfigTaint> Taints;
         /// <summary>

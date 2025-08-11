@@ -99,6 +99,13 @@ namespace Pulumi.Gcp.Workbench.Inputs
             set => _networkInterfaces = value;
         }
 
+        /// <summary>
+        /// Reservations that this instance can consume from.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.InstanceGceSetupReservationAffinityGetArgs>? ReservationAffinity { get; set; }
+
         [Input("serviceAccounts")]
         private InputList<Inputs.InstanceGceSetupServiceAccountGetArgs>? _serviceAccounts;
 

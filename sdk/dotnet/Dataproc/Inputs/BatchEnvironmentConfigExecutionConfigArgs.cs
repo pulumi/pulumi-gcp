@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class BatchEnvironmentConfigExecutionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Authentication configuration for a workload is used to set the default identity for the workload execution.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("authenticationConfig")]
+        public Input<Inputs.BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs>? AuthenticationConfig { get; set; }
+
+        /// <summary>
         /// The Cloud KMS key to use for encryption.
         /// </summary>
         [Input("kmsKey")]

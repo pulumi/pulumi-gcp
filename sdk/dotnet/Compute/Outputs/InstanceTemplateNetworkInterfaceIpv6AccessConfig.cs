@@ -22,8 +22,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? ExternalIpv6PrefixLength;
         /// <summary>
-        /// The name of the instance template. If you leave
-        /// this blank, the provider will auto-generate a unique name.
+        /// The name of this access configuration.
         /// </summary>
         public readonly string? Name;
         /// <summary>

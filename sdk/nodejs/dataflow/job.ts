@@ -5,96 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
- * the official documentation for
- * [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bigDataJob = new gcp.dataflow.Job("big_data_job", {
- *     name: "dataflow-job",
- *     templateGcsPath: "gs://my-bucket/templates/template_file",
- *     tempGcsLocation: "gs://my-bucket/tmp_dir",
- *     parameters: {
- *         foo: "bar",
- *         baz: "qux",
- *     },
- * });
- * ```
- *
- * ### Streaming Job
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const topic = new gcp.pubsub.Topic("topic", {name: "dataflow-job1"});
- * const bucket1 = new gcp.storage.Bucket("bucket1", {
- *     name: "tf-test-bucket1",
- *     location: "US",
- *     forceDestroy: true,
- * });
- * const bucket2 = new gcp.storage.Bucket("bucket2", {
- *     name: "tf-test-bucket2",
- *     location: "US",
- *     forceDestroy: true,
- * });
- * const pubsubStream = new gcp.dataflow.Job("pubsub_stream", {
- *     name: "tf-test-dataflow-job1",
- *     templateGcsPath: "gs://my-bucket/templates/template_file",
- *     tempGcsLocation: "gs://my-bucket/tmp_dir",
- *     enableStreamingEngine: true,
- *     parameters: {
- *         inputFilePattern: pulumi.interpolate`${bucket1.url}/*.json`,
- *         outputTopic: topic.id,
- *     },
- *     transformNameMapping: {
- *         name: "test_job",
- *         env: "test",
- *     },
- *     onDelete: "cancel",
- * });
- * ```
- *
- * ## Note on "destroy" / "apply"
- *
- * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
- *
- * The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
- *
- * A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `onDelete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
- *
- * You can potentially short-circuit the wait by setting `skipWaitOnJobTermination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a randomId resource, for example:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- *
- * const config = new pulumi.Config();
- * const bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId") || "projects/myproject/subscriptions/messages";
- * const bigDataJobNameSuffix = new random.RandomId("big_data_job_name_suffix", {
- *     byteLength: 4,
- *     keepers: {
- *         region: region,
- *         subscription_id: bigDataJobSubscriptionId,
- *     },
- * });
- * const bigDataJob = new gcp.dataflow.FlexTemplateJob("big_data_job", {
- *     name: pulumi.interpolate`dataflow-flextemplates-job-${bigDataJobNameSuffix.dec}`,
- *     region: region,
- *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
- *     skipWaitOnJobTermination: true,
- *     parameters: {
- *         inputSubscription: bigDataJobSubscriptionId,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Dataflow jobs can be imported using the job `id` e.g.
@@ -181,9 +91,6 @@ export class Job extends pulumi.CustomResource {
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
     public readonly network!: pulumi.Output<string | undefined>;
-    /**
-     * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-     */
     public readonly onDelete!: pulumi.Output<string | undefined>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
@@ -207,9 +114,6 @@ export class Job extends pulumi.CustomResource {
      * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     public readonly serviceAccountEmail!: pulumi.Output<string | undefined>;
-    /**
-     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
-     */
     public readonly skipWaitOnJobTermination!: pulumi.Output<boolean | undefined>;
     /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
@@ -371,9 +275,6 @@ export interface JobState {
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
     network?: pulumi.Input<string>;
-    /**
-     * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-     */
     onDelete?: pulumi.Input<string>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
@@ -397,9 +298,6 @@ export interface JobState {
      * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     serviceAccountEmail?: pulumi.Input<string>;
-    /**
-     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
-     */
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
@@ -475,9 +373,6 @@ export interface JobArgs {
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
     network?: pulumi.Input<string>;
-    /**
-     * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-     */
     onDelete?: pulumi.Input<string>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
@@ -497,9 +392,6 @@ export interface JobArgs {
      * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
     serviceAccountEmail?: pulumi.Input<string>;
-    /**
-     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
-     */
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
      * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`

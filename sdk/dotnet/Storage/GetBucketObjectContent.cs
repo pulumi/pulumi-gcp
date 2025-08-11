@@ -202,6 +202,7 @@ namespace Pulumi.Gcp.Storage
         public readonly string ContentType;
         public readonly string Crc32c;
         public readonly ImmutableArray<Outputs.GetBucketObjectContentCustomerEncryptionResult> CustomerEncryptions;
+        public readonly string DeletionPolicy;
         public readonly string DetectMd5hash;
         public readonly bool EventBasedHold;
         public readonly bool ForceEmptyContentType;
@@ -249,6 +250,8 @@ namespace Pulumi.Gcp.Storage
             string crc32c,
 
             ImmutableArray<Outputs.GetBucketObjectContentCustomerEncryptionResult> customerEncryptions,
+
+            string deletionPolicy,
 
             string detectMd5hash,
 
@@ -298,6 +301,7 @@ namespace Pulumi.Gcp.Storage
             ContentType = contentType;
             Crc32c = crc32c;
             CustomerEncryptions = customerEncryptions;
+            DeletionPolicy = deletionPolicy;
             DetectMd5hash = detectMd5hash;
             EventBasedHold = eventBasedHold;
             ForceEmptyContentType = forceEmptyContentType;

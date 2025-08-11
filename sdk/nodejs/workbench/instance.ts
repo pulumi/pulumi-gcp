@@ -51,6 +51,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
+ *     name: "wbi-reservation",
+ *     zone: "us-central1-a",
+ *     specificReservation: {
+ *         count: 1,
+ *         instanceProperties: {
+ *             machineType: "n1-standard-1",
+ *             guestAccelerators: [{
+ *                 acceleratorType: "nvidia-tesla-t4",
+ *                 acceleratorCount: 1,
+ *             }],
+ *         },
+ *     },
+ *     specificReservationRequired: false,
+ * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
  *     location: "us-central1-a",
@@ -64,7 +79,12 @@ import * as utilities from "../utilities";
  *             project: "cloud-notebooks-managed",
  *             family: "workbench-instances",
  *         },
+ *         reservationAffinity: {
+ *             consumeReservationType: "RESERVATION_ANY",
+ *         },
  *     },
+ * }, {
+ *     dependsOn: [gpuReservation],
  * });
  * ```
  * ### Workbench Instance Labels Stopped
@@ -118,6 +138,21 @@ import * as utilities from "../utilities";
  *     role: "roles/iam.serviceAccountUser",
  *     members: ["user:example@example.com"],
  * });
+ * const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
+ *     name: "wbi-reservation",
+ *     zone: "us-central1-a",
+ *     specificReservation: {
+ *         count: 1,
+ *         instanceProperties: {
+ *             machineType: "n1-standard-4",
+ *             guestAccelerators: [{
+ *                 acceleratorType: "nvidia-tesla-t4",
+ *                 acceleratorCount: 1,
+ *             }],
+ *         },
+ *     },
+ *     specificReservationRequired: true,
+ * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
  *     location: "us-central1-a",
@@ -160,6 +195,11 @@ import * as utilities from "../utilities";
  *             terraform: "true",
  *             "serial-port-logging-enable": "false",
  *         },
+ *         reservationAffinity: {
+ *             consumeReservationType: "RESERVATION_SPECIFIC",
+ *             key: "compute.googleapis.com/reservation-name",
+ *             values: [gpuReservation.name],
+ *         },
  *         enableIpForwarding: true,
  *         tags: [
  *             "abc",
@@ -179,6 +219,7 @@ import * as utilities from "../utilities";
  *         mySubnetwork,
  *         static,
  *         actAsPermission,
+ *         gpuReservation,
  *     ],
  * });
  * ```
@@ -205,6 +246,32 @@ import * as utilities from "../utilities";
  *             confidentialInstanceType: "SEV",
  *         },
  *     },
+ * });
+ * ```
+ * ### Workbench Instance Euc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const actAsPermission = new gcp.serviceaccount.IAMBinding("act_as_permission", {
+ *     serviceAccountId: "projects/my-project-name/serviceAccounts/1111111111111-compute@developer.gserviceaccount.com",
+ *     role: "roles/iam.serviceAccountUser",
+ *     members: ["user:example@example.com"],
+ * });
+ * const instance = new gcp.workbench.Instance("instance", {
+ *     name: "workbench-instance",
+ *     location: "us-central1-a",
+ *     gceSetup: {
+ *         machineType: "e2-standard-4",
+ *         metadata: {
+ *             terraform: "true",
+ *         },
+ *     },
+ *     instanceOwners: ["example@example.com"],
+ *     enableManagedEuc: true,
+ * }, {
+ *     dependsOn: [actAsPermission],
  * });
  * ```
  *
@@ -281,6 +348,10 @@ export class Instance extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Flag to enable managed end user credentials for the instance.
+     */
+    public readonly enableManagedEuc!: pulumi.Output<boolean | undefined>;
     /**
      * Flag that specifies that a notebook can be accessed with third party
      * identity provider.
@@ -377,6 +448,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["disableProxyAccess"] = state ? state.disableProxyAccess : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["enableManagedEuc"] = state ? state.enableManagedEuc : undefined;
             resourceInputs["enableThirdPartyIdentity"] = state ? state.enableThirdPartyIdentity : undefined;
             resourceInputs["gceSetup"] = state ? state.gceSetup : undefined;
             resourceInputs["healthInfos"] = state ? state.healthInfos : undefined;
@@ -399,6 +471,7 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["desiredState"] = args ? args.desiredState : undefined;
             resourceInputs["disableProxyAccess"] = args ? args.disableProxyAccess : undefined;
+            resourceInputs["enableManagedEuc"] = args ? args.enableManagedEuc : undefined;
             resourceInputs["enableThirdPartyIdentity"] = args ? args.enableThirdPartyIdentity : undefined;
             resourceInputs["gceSetup"] = args ? args.gceSetup : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
@@ -450,6 +523,10 @@ export interface InstanceState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Flag to enable managed end user credentials for the instance.
+     */
+    enableManagedEuc?: pulumi.Input<boolean>;
     /**
      * Flag that specifies that a notebook can be accessed with third party
      * identity provider.
@@ -541,6 +618,10 @@ export interface InstanceArgs {
      * Optional. If true, the workbench instance will not register with the proxy.
      */
     disableProxyAccess?: pulumi.Input<boolean>;
+    /**
+     * Flag to enable managed end user credentials for the instance.
+     */
+    enableManagedEuc?: pulumi.Input<boolean>;
     /**
      * Flag that specifies that a notebook can be accessed with third party
      * identity provider.

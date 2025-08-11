@@ -43,6 +43,8 @@ export interface GetAccountKeyArgs {
     /**
      * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
+     *
+     * @deprecated `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
      */
     project?: string;
     /**
@@ -61,6 +63,9 @@ export interface GetAccountKeyResult {
     readonly id: string;
     readonly keyAlgorithm: string;
     readonly name: string;
+    /**
+     * @deprecated `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
+     */
     readonly project?: string;
     /**
      * The public key, base64 encoded
@@ -107,6 +112,8 @@ export interface GetAccountKeyOutputArgs {
     /**
      * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
+     *
+     * @deprecated `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
      */
     project?: pulumi.Input<string>;
     /**

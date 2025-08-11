@@ -68,6 +68,7 @@ import * as utilities from "../utilities";
  *     machineType: "e2-medium",
  *     metadata: {
  *         "proxy-mode": "service_account",
+ *         terraform: "true",
  *     },
  *     containerImage: {
  *         repository: "gcr.io/deeplearning-platform-release/base-cpu",

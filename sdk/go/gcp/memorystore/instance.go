@@ -523,11 +523,10 @@ type Instance struct {
 	// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayOutput `pulumi:"desiredPscAutoConnections"`
 	// (Deprecated)
-	// Output only. Endpoints clients can connect to the instance through. Currently only one
-	// discovery endpoint is supported.
+	// Deprecated. Output only. Endpoints clients can connect to the instance through.
 	// Structure is documented below.
 	//
-	// Deprecated: `discoveryEndpoints` is deprecated  Use `endpoints` instead.
+	// Deprecated: This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
 	DiscoveryEndpoints InstanceDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -703,11 +702,10 @@ type instanceState struct {
 	// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
 	DesiredPscAutoConnections []InstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
 	// (Deprecated)
-	// Output only. Endpoints clients can connect to the instance through. Currently only one
-	// discovery endpoint is supported.
+	// Deprecated. Output only. Endpoints clients can connect to the instance through.
 	// Structure is documented below.
 	//
-	// Deprecated: `discoveryEndpoints` is deprecated  Use `endpoints` instead.
+	// Deprecated: This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
 	DiscoveryEndpoints []InstanceDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -840,11 +838,10 @@ type InstanceState struct {
 	// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayInput
 	// (Deprecated)
-	// Output only. Endpoints clients can connect to the instance through. Currently only one
-	// discovery endpoint is supported.
+	// Deprecated. Output only. Endpoints clients can connect to the instance through.
 	// Structure is documented below.
 	//
-	// Deprecated: `discoveryEndpoints` is deprecated  Use `endpoints` instead.
+	// Deprecated: This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
 	DiscoveryEndpoints InstanceDiscoveryEndpointArrayInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -1258,11 +1255,10 @@ func (o InstanceOutput) DesiredPscAutoConnections() InstanceDesiredPscAutoConnec
 }
 
 // (Deprecated)
-// Output only. Endpoints clients can connect to the instance through. Currently only one
-// discovery endpoint is supported.
+// Deprecated. Output only. Endpoints clients can connect to the instance through.
 // Structure is documented below.
 //
-// Deprecated: `discoveryEndpoints` is deprecated  Use `endpoints` instead.
+// Deprecated: This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
 func (o InstanceOutput) DiscoveryEndpoints() InstanceDiscoveryEndpointArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDiscoveryEndpointArrayOutput { return v.DiscoveryEndpoints }).(InstanceDiscoveryEndpointArrayOutput)
 }

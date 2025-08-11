@@ -58,6 +58,43 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ * ### Oracledatabase Cloud Vmcluster Odbnetwork
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cloudExadataInfrastructures = new gcp.oracledatabase.CloudExadataInfrastructure("cloudExadataInfrastructures", {
+ *     cloudExadataInfrastructureId: "my-exadata",
+ *     displayName: "my-exadata displayname",
+ *     location: "europe-west2",
+ *     project: "my-project",
+ *     properties: {
+ *         shape: "Exadata.X9M",
+ *         computeCount: 2,
+ *         storageCount: 3,
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const myVmcluster = new gcp.oracledatabase.CloudVmCluster("my_vmcluster", {
+ *     cloudVmClusterId: "my-instance",
+ *     displayName: "my-instance displayname",
+ *     location: "europe-west2",
+ *     project: "my-project",
+ *     exadataInfrastructure: cloudExadataInfrastructures.id,
+ *     odbNetwork: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+ *     odbSubnet: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+ *     backupOdbSubnet: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet",
+ *     properties: {
+ *         licenseType: "LICENSE_INCLUDED",
+ *         sshPublicKeys: ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
+ *         cpuCoreCount: 4,
+ *         giVersion: "19.0.0.0",
+ *         hostnamePrefix: "hostname1",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * ```
  * ### Oracledatabase Cloud Vmcluster Full
  *
  * ```typescript
@@ -182,13 +219,19 @@ export class CloudVmCluster extends pulumi.CustomResource {
     }
 
     /**
+     * The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    public readonly backupOdbSubnet!: pulumi.Output<string | undefined>;
+    /**
      * CIDR range of the backup subnet.
      */
-    public readonly backupSubnetCidr!: pulumi.Output<string>;
+    public readonly backupSubnetCidr!: pulumi.Output<string | undefined>;
     /**
      * Network settings. CIDR to use for cluster IP allocation.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    public readonly cidr!: pulumi.Output<string | undefined>;
     /**
      * The ID of the VM Cluster to create. This value is restricted
      * to (^a-z?$) and must be a maximum of 63
@@ -239,7 +282,21 @@ export class CloudVmCluster extends pulumi.CustomResource {
      * The name of the VPC network.
      * Format: projects/{project}/global/networks/{network}
      */
-    public readonly network!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odbSubnet and backup_odb_subnet.
+     */
+    public readonly odbNetwork!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    public readonly odbSubnet!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -269,6 +326,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudVmClusterState | undefined;
+            resourceInputs["backupOdbSubnet"] = state ? state.backupOdbSubnet : undefined;
             resourceInputs["backupSubnetCidr"] = state ? state.backupSubnetCidr : undefined;
             resourceInputs["cidr"] = state ? state.cidr : undefined;
             resourceInputs["cloudVmClusterId"] = state ? state.cloudVmClusterId : undefined;
@@ -282,17 +340,13 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["odbNetwork"] = state ? state.odbNetwork : undefined;
+            resourceInputs["odbSubnet"] = state ? state.odbSubnet : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
         } else {
             const args = argsOrState as CloudVmClusterArgs | undefined;
-            if ((!args || args.backupSubnetCidr === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'backupSubnetCidr'");
-            }
-            if ((!args || args.cidr === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cidr'");
-            }
             if ((!args || args.cloudVmClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cloudVmClusterId'");
             }
@@ -302,9 +356,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'network'");
-            }
+            resourceInputs["backupOdbSubnet"] = args ? args.backupOdbSubnet : undefined;
             resourceInputs["backupSubnetCidr"] = args ? args.backupSubnetCidr : undefined;
             resourceInputs["cidr"] = args ? args.cidr : undefined;
             resourceInputs["cloudVmClusterId"] = args ? args.cloudVmClusterId : undefined;
@@ -314,6 +366,8 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["odbNetwork"] = args ? args.odbNetwork : undefined;
+            resourceInputs["odbSubnet"] = args ? args.odbSubnet : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -333,6 +387,12 @@ export class CloudVmCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudVmCluster resources.
  */
 export interface CloudVmClusterState {
+    /**
+     * The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    backupOdbSubnet?: pulumi.Input<string>;
     /**
      * CIDR range of the backup subnet.
      */
@@ -393,6 +453,20 @@ export interface CloudVmClusterState {
      */
     network?: pulumi.Input<string>;
     /**
+     * The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odbSubnet and backup_odb_subnet.
+     */
+    odbNetwork?: pulumi.Input<string>;
+    /**
+     * The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    odbSubnet?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -414,13 +488,19 @@ export interface CloudVmClusterState {
  */
 export interface CloudVmClusterArgs {
     /**
+     * The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    backupOdbSubnet?: pulumi.Input<string>;
+    /**
      * CIDR range of the backup subnet.
      */
-    backupSubnetCidr: pulumi.Input<string>;
+    backupSubnetCidr?: pulumi.Input<string>;
     /**
      * Network settings. CIDR to use for cluster IP allocation.
      */
-    cidr: pulumi.Input<string>;
+    cidr?: pulumi.Input<string>;
     /**
      * The ID of the VM Cluster to create. This value is restricted
      * to (^a-z?$) and must be a maximum of 63
@@ -453,7 +533,21 @@ export interface CloudVmClusterArgs {
      * The name of the VPC network.
      * Format: projects/{project}/global/networks/{network}
      */
-    network: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
+    /**
+     * The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odbSubnet and backup_odb_subnet.
+     */
+    odbNetwork?: pulumi.Input<string>;
+    /**
+     * The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    odbSubnet?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

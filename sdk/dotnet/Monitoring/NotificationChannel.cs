@@ -10,30 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring
 {
     /// <summary>
-    /// A NotificationChannel is a medium through which an alert is delivered
-    /// when a policy violation is detected. Examples of channels include email, SMS,
-    /// and third-party messaging applications. Fields containing sensitive information
-    /// like authentication tokens or contact info are only partially populated on retrieval.
-    /// 
-    /// Notification Channels are designed to be flexible and are made up of a supported `type`
-    /// and labels to configure that channel. Each `type` has specific labels that need to be
-    /// present for that channel to be correctly configured. The labels that are required to be
-    /// present for one channel `type` are often different than those required for another.
-    /// Due to these loose constraints it's often best to set up a channel through the UI
-    /// and import it to the provider when setting up a brand new channel type to determine which
-    /// labels are required.
-    /// 
-    /// A list of supported channels per project the `list` endpoint can be
-    /// accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
-    /// This provides the channel type and all of the required labels that must be passed.
-    /// 
-    /// To get more information about NotificationChannel, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
-    /// * How-to Guides
-    ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-    ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Notification Channel Basic
@@ -129,14 +105,6 @@ namespace Pulumi.Gcp.Monitoring
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration fields that define the channel and its behavior. The
-        /// permissible and required labels are specified in the
-        /// NotificationChannelDescriptor corresponding to the type field.
-        /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-        /// determine if there are upstream changes to these fields. They can also be configured via
-        /// the sensitive_labels block, but cannot be configured in both places.
-        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
@@ -261,15 +229,6 @@ namespace Pulumi.Gcp.Monitoring
 
         [Input("labels")]
         private InputMap<string>? _labels;
-
-        /// <summary>
-        /// Configuration fields that define the channel and its behavior. The
-        /// permissible and required labels are specified in the
-        /// NotificationChannelDescriptor corresponding to the type field.
-        /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-        /// determine if there are upstream changes to these fields. They can also be configured via
-        /// the sensitive_labels block, but cannot be configured in both places.
-        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
@@ -351,15 +310,6 @@ namespace Pulumi.Gcp.Monitoring
 
         [Input("labels")]
         private InputMap<string>? _labels;
-
-        /// <summary>
-        /// Configuration fields that define the channel and its behavior. The
-        /// permissible and required labels are specified in the
-        /// NotificationChannelDescriptor corresponding to the type field.
-        /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-        /// determine if there are upstream changes to these fields. They can also be configured via
-        /// the sensitive_labels block, but cannot be configured in both places.
-        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());

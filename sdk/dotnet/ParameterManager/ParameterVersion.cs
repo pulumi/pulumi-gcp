@@ -99,6 +99,65 @@ namespace Pulumi.Gcp.ParameterManager
     /// 
     /// });
     /// ```
+    /// ### Parameter Version With Json Format With File
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var parameter_basic = new Gcp.ParameterManager.Parameter("parameter-basic", new()
+    ///     {
+    ///         ParameterId = "parameter",
+    ///         Format = "JSON",
+    ///     });
+    /// 
+    ///     var parameter_version_with_json_format_with_file = new Gcp.ParameterManager.ParameterVersion("parameter-version-with-json-format-with-file", new()
+    ///     {
+    ///         Parameter = parameter_basic.Id,
+    ///         ParameterVersionId = "parameter_version",
+    ///         ParameterData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "parameter-json-data.json",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Parameter Version With Yaml Format With File
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var parameter_basic = new Gcp.ParameterManager.Parameter("parameter-basic", new()
+    ///     {
+    ///         ParameterId = "parameter",
+    ///         Format = "YAML",
+    ///     });
+    /// 
+    ///     var parameter_version_with_yaml_format_with_file = new Gcp.ParameterManager.ParameterVersion("parameter-version-with-yaml-format-with-file", new()
+    ///     {
+    ///         Parameter = parameter_basic.Id,
+    ///         ParameterVersionId = "parameter_version",
+    ///         ParameterData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "parameter-yaml-data.yaml",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ParameterVersion can be imported using any of these accepted formats:

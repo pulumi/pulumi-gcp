@@ -45,6 +45,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         /// </summary>
         public readonly string PodRange;
+        /// <summary>
+        /// The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+        /// </summary>
+        public readonly string Subnetwork;
 
         [OutputConstructor]
         private GetClusterNodePoolNetworkConfigResult(
@@ -62,7 +66,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string podIpv4CidrBlock,
 
-            string podRange)
+            string podRange,
+
+            string subnetwork)
         {
             AdditionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
@@ -72,6 +78,7 @@ namespace Pulumi.Gcp.Container.Outputs
             PodCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             PodIpv4CidrBlock = podIpv4CidrBlock;
             PodRange = podRange;
+            Subnetwork = subnetwork;
         }
     }
 }

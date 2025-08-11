@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Tpu
     ///         Zone = "us-central1-b",
     ///         AcceleratorType = "v3-8",
     ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),
-    ///         Description = "Google Provider test TPU",
+    ///         Description = "Terraform Google Provider test TPU",
     ///         UseServiceNetworking = true,
     ///         Network = privateServiceConnection.Network,
     ///         Labels = 

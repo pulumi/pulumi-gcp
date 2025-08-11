@@ -12,20 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A collection of resources that are deployed and managed together using
-// a configuration file
-//
-// > **Warning:** This resource is intended only to manage a Deployment resource,
-// and attempts to manage the Deployment's resources in the provider as well
-// will likely result in errors or unexpected behavior as the two tools
-// fight over ownership. We strongly discourage doing so unless you are an
-// experienced user of both tools.
-//
-// In addition, due to limitations of the API, the provider will treat
-// deployments in preview as recreate-only for any update operation other
-// than actually deploying an in-preview deployment (i.e. `preview=true` to
-// `preview=false`).
-//
 // ## Example Usage
 //
 // ### Deployment Manager Deployment Basic
@@ -125,15 +111,7 @@ type Deployment struct {
 	// was successfully deployed.
 	Manifest pulumi.StringOutput `pulumi:"manifest"`
 	// Unique name for the deployment
-	Name pulumi.StringOutput `pulumi:"name"`
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
+	Name    pulumi.StringOutput  `pulumi:"name"`
 	Preview pulumi.BoolPtrOutput `pulumi:"preview"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -207,16 +185,8 @@ type deploymentState struct {
 	// was successfully deployed.
 	Manifest *string `pulumi:"manifest"`
 	// Unique name for the deployment
-	Name *string `pulumi:"name"`
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
-	Preview *bool `pulumi:"preview"`
+	Name    *string `pulumi:"name"`
+	Preview *bool   `pulumi:"preview"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -257,15 +227,7 @@ type DeploymentState struct {
 	// was successfully deployed.
 	Manifest pulumi.StringPtrInput
 	// Unique name for the deployment
-	Name pulumi.StringPtrInput
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
+	Name    pulumi.StringPtrInput
 	Preview pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -306,16 +268,8 @@ type deploymentArgs struct {
 	// Structure is documented below.
 	Labels []DeploymentLabel `pulumi:"labels"`
 	// Unique name for the deployment
-	Name *string `pulumi:"name"`
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
-	Preview *bool `pulumi:"preview"`
+	Name    *string `pulumi:"name"`
+	Preview *bool   `pulumi:"preview"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -350,15 +304,7 @@ type DeploymentArgs struct {
 	// Structure is documented below.
 	Labels DeploymentLabelArrayInput
 	// Unique name for the deployment
-	Name pulumi.StringPtrInput
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
+	Name    pulumi.StringPtrInput
 	Preview pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -506,14 +452,6 @@ func (o DeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// If set to true, a deployment is created with "shell" resources
-// that are not actually instantiated. This allows you to preview a
-// deployment. It can be updated to false to actually deploy
-// with real resources.
-// ~>**NOTE:** Deployment Manager does not allow update
-// of a deployment in preview (unless updating to preview=false). Thus,
-// the provider will force-recreate deployments if either preview is updated
-// to true or if other fields are updated while preview is true.
 func (o DeploymentOutput) Preview() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.BoolPtrOutput { return v.Preview }).(pulumi.BoolPtrOutput)
 }

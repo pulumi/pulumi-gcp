@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const igm_no_tp = new gcp.compute.InstanceGroupManager("igm-no-tp", {
- *     description: "Test instance group manager",
+ *     description: "Terraform test instance group manager",
  *     name: "my-igm",
  *     versions: [{
  *         name: "prod",

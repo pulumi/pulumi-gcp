@@ -30,6 +30,7 @@ class RegionalSecretArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rotation: Optional[pulumi.Input['RegionalSecretRotationArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionalSecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -74,6 +75,9 @@ class RegionalSecretArgs:
                will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
                set to configure rotation.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input['RegionalSecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane
                operations are called on the regional secret or its versions.
                Structure is documented below.
@@ -108,6 +112,8 @@ class RegionalSecretArgs:
             pulumi.set(__self__, "project", project)
         if rotation is not None:
             pulumi.set(__self__, "rotation", rotation)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if ttl is not None:
@@ -254,6 +260,20 @@ class RegionalSecretArgs:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionalSecretTopicArgs']]]]:
         """
         A list of up to 10 Pub/Sub topics to which messages are published when control plane
@@ -331,6 +351,7 @@ class _RegionalSecretState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  rotation: Optional[pulumi.Input['RegionalSecretRotationArgs']] = None,
                  secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionalSecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -381,6 +402,9 @@ class _RegionalSecretState:
                set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input['RegionalSecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane
                operations are called on the regional secret or its versions.
                Structure is documented below.
@@ -427,6 +451,8 @@ class _RegionalSecretState:
             pulumi.set(__self__, "rotation", rotation)
         if secret_id is not None:
             pulumi.set(__self__, "secret_id", secret_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if ttl is not None:
@@ -632,6 +658,20 @@ class _RegionalSecretState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionalSecretTopicArgs']]]]:
         """
         A list of up to 10 Pub/Sub topics to which messages are published when control plane
@@ -707,6 +747,7 @@ class RegionalSecret(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rotation: Optional[pulumi.Input[Union['RegionalSecretRotationArgs', 'RegionalSecretRotationArgsDict']]] = None,
                  secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretTopicArgs', 'RegionalSecretTopicArgsDict']]]]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -907,6 +948,9 @@ class RegionalSecret(pulumi.CustomResource):
                set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretTopicArgs', 'RegionalSecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane
                operations are called on the regional secret or its versions.
                Structure is documented below.
@@ -1110,6 +1154,7 @@ class RegionalSecret(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rotation: Optional[pulumi.Input[Union['RegionalSecretRotationArgs', 'RegionalSecretRotationArgsDict']]] = None,
                  secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretTopicArgs', 'RegionalSecretTopicArgsDict']]]]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1136,6 +1181,7 @@ class RegionalSecret(pulumi.CustomResource):
             if secret_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_id'")
             __props__.__dict__["secret_id"] = secret_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["topics"] = topics
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["version_aliases"] = version_aliases
@@ -1171,6 +1217,7 @@ class RegionalSecret(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             rotation: Optional[pulumi.Input[Union['RegionalSecretRotationArgs', 'RegionalSecretRotationArgsDict']]] = None,
             secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretTopicArgs', 'RegionalSecretTopicArgsDict']]]]] = None,
             ttl: Optional[pulumi.Input[_builtins.str]] = None,
             version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1226,6 +1273,9 @@ class RegionalSecret(pulumi.CustomResource):
                set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretTopicArgs', 'RegionalSecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane
                operations are called on the regional secret or its versions.
                Structure is documented below.
@@ -1262,6 +1312,7 @@ class RegionalSecret(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["rotation"] = rotation
         __props__.__dict__["secret_id"] = secret_id
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["topics"] = topics
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["version_aliases"] = version_aliases
@@ -1405,6 +1456,16 @@ class RegionalSecret(pulumi.CustomResource):
         This must be unique within the project.
         """
         return pulumi.get(self, "secret_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter

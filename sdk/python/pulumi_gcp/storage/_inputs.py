@@ -115,6 +115,26 @@ __all__ = [
     'ControlProjectIntelligenceConfigTrialConfigArgsDict',
     'DefaultObjectAccessControlProjectTeamArgs',
     'DefaultObjectAccessControlProjectTeamArgsDict',
+    'InsightsDatasetConfigExcludeCloudStorageBucketsArgs',
+    'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict',
+    'InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs',
+    'InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgsDict',
+    'InsightsDatasetConfigExcludeCloudStorageLocationsArgs',
+    'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict',
+    'InsightsDatasetConfigIdentityArgs',
+    'InsightsDatasetConfigIdentityArgsDict',
+    'InsightsDatasetConfigIncludeCloudStorageBucketsArgs',
+    'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict',
+    'InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs',
+    'InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgsDict',
+    'InsightsDatasetConfigIncludeCloudStorageLocationsArgs',
+    'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict',
+    'InsightsDatasetConfigLinkArgs',
+    'InsightsDatasetConfigLinkArgsDict',
+    'InsightsDatasetConfigSourceFoldersArgs',
+    'InsightsDatasetConfigSourceFoldersArgsDict',
+    'InsightsDatasetConfigSourceProjectsArgs',
+    'InsightsDatasetConfigSourceProjectsArgsDict',
     'InsightsReportConfigCsvOptionsArgs',
     'InsightsReportConfigCsvOptionsArgsDict',
     'InsightsReportConfigFrequencyOptionsArgs',
@@ -816,20 +836,7 @@ if not MYPY:
     class BucketEncryptionArgsDict(TypedDict):
         default_kms_key_name: pulumi.Input[_builtins.str]
         """
-        The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-        You must pay attention to whether the crypto key is available in the location that this bucket is created in.
-        See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
-
-        > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
-        specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
-        project to use the specified key for encryption and decryption operations.
-        Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
-        until a relevant action has occurred which triggers its creation.
-        You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
-        address for the service account when configuring IAM policy on the Cloud KMS key.
-        This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
-        state of the project.
-        You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+        A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
         """
 elif False:
     BucketEncryptionArgsDict: TypeAlias = Mapping[str, Any]
@@ -839,20 +846,7 @@ class BucketEncryptionArgs:
     def __init__(__self__, *,
                  default_kms_key_name: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] default_kms_key_name: The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-               You must pay attention to whether the crypto key is available in the location that this bucket is created in.
-               See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
-               
-               > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
-               specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
-               project to use the specified key for encryption and decryption operations.
-               Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
-               until a relevant action has occurred which triggers its creation.
-               You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
-               address for the service account when configuring IAM policy on the Cloud KMS key.
-               This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
-               state of the project.
-               You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+        :param pulumi.Input[_builtins.str] default_kms_key_name: A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
         """
         pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
 
@@ -860,20 +854,7 @@ class BucketEncryptionArgs:
     @pulumi.getter(name="defaultKmsKeyName")
     def default_kms_key_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-        You must pay attention to whether the crypto key is available in the location that this bucket is created in.
-        See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
-
-        > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
-        specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
-        project to use the specified key for encryption and decryption operations.
-        Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
-        until a relevant action has occurred which triggers its creation.
-        You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
-        address for the service account when configuring IAM policy on the Cloud KMS key.
-        This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
-        state of the project.
-        You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+        A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
         """
         return pulumi.get(self, "default_kms_key_name")
 
@@ -924,13 +905,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     BucketIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -943,11 +917,6 @@ class BucketIAMBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -981,13 +950,6 @@ class BucketIAMBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1006,13 +968,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     BucketIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1025,11 +980,6 @@ class BucketIAMMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1063,13 +1013,6 @@ class BucketIAMMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -3054,6 +2997,437 @@ class DefaultObjectAccessControlProjectTeamArgs:
     @team.setter
     def team(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "team", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict(TypedDict):
+        cloud_storage_buckets: pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgsDict']]]
+        """
+        The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+        Structure is documented below.
+        """
+elif False:
+    InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigExcludeCloudStorageBucketsArgs:
+    def __init__(__self__, *,
+                 cloud_storage_buckets: pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs']]] cloud_storage_buckets: The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "cloud_storage_buckets", cloud_storage_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageBuckets")
+    def cloud_storage_buckets(self) -> pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs']]]:
+        """
+        The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_buckets")
+
+    @cloud_storage_buckets.setter
+    def cloud_storage_buckets(self, value: pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs']]]):
+        pulumi.set(self, "cloud_storage_buckets", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgsDict(TypedDict):
+        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The list of cloud storage bucket names to exclude in the DatasetConfig.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        bucket_prefix_regex: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The list of regex patterns for bucket names matching the regex.
+        Regex should follow the syntax specified in google/re2 on GitHub.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+elif False:
+    InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs:
+    def __init__(__self__, *,
+                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket_prefix_regex: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] bucket_name: The list of cloud storage bucket names to exclude in the DatasetConfig.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        :param pulumi.Input[_builtins.str] bucket_prefix_regex: The list of regex patterns for bucket names matching the regex.
+               Regex should follow the syntax specified in google/re2 on GitHub.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if bucket_prefix_regex is not None:
+            pulumi.set(__self__, "bucket_prefix_regex", bucket_prefix_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The list of cloud storage bucket names to exclude in the DatasetConfig.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketPrefixRegex")
+    def bucket_prefix_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The list of regex patterns for bucket names matching the regex.
+        Regex should follow the syntax specified in google/re2 on GitHub.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_prefix_regex")
+
+    @bucket_prefix_regex.setter
+    def bucket_prefix_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_prefix_regex", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict(TypedDict):
+        locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        The list of cloud storage locations to exclude in the DatasetConfig.
+        """
+elif False:
+    InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigExcludeCloudStorageLocationsArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locations: The list of cloud storage locations to exclude in the DatasetConfig.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @_builtins.property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of cloud storage locations to exclude in the DatasetConfig.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigIdentityArgsDict(TypedDict):
+        type: pulumi.Input[_builtins.str]
+        """
+        Type of identity to use for the DatasetConfig.
+        Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Name of the identity.
+        """
+elif False:
+    InsightsDatasetConfigIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigIdentityArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: Type of identity to use for the DatasetConfig.
+               Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+        :param pulumi.Input[_builtins.str] name: (Output)
+               Name of the identity.
+        """
+        pulumi.set(__self__, "type", type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of identity to use for the DatasetConfig.
+        Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Name of the identity.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict(TypedDict):
+        cloud_storage_buckets: pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgsDict']]]
+        """
+        The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+        Structure is documented below.
+        """
+elif False:
+    InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigIncludeCloudStorageBucketsArgs:
+    def __init__(__self__, *,
+                 cloud_storage_buckets: pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs']]] cloud_storage_buckets: The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "cloud_storage_buckets", cloud_storage_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageBuckets")
+    def cloud_storage_buckets(self) -> pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs']]]:
+        """
+        The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_buckets")
+
+    @cloud_storage_buckets.setter
+    def cloud_storage_buckets(self, value: pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs']]]):
+        pulumi.set(self, "cloud_storage_buckets", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgsDict(TypedDict):
+        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The list of cloud storage bucket names to exclude in the DatasetConfig.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        bucket_prefix_regex: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The list of regex patterns for bucket names matching the regex.
+        Regex should follow the syntax specified in google/re2 on GitHub.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+elif False:
+    InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs:
+    def __init__(__self__, *,
+                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket_prefix_regex: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] bucket_name: The list of cloud storage bucket names to exclude in the DatasetConfig.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        :param pulumi.Input[_builtins.str] bucket_prefix_regex: The list of regex patterns for bucket names matching the regex.
+               Regex should follow the syntax specified in google/re2 on GitHub.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if bucket_prefix_regex is not None:
+            pulumi.set(__self__, "bucket_prefix_regex", bucket_prefix_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The list of cloud storage bucket names to exclude in the DatasetConfig.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketPrefixRegex")
+    def bucket_prefix_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The list of regex patterns for bucket names matching the regex.
+        Regex should follow the syntax specified in google/re2 on GitHub.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_prefix_regex")
+
+    @bucket_prefix_regex.setter
+    def bucket_prefix_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_prefix_regex", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict(TypedDict):
+        locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        The list of cloud storage locations to include in the DatasetConfig.
+        """
+elif False:
+    InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigIncludeCloudStorageLocationsArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locations: The list of cloud storage locations to include in the DatasetConfig.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @_builtins.property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The list of cloud storage locations to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigLinkArgsDict(TypedDict):
+        dataset: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Dataset name for the linked DatasetConfig.
+        """
+        linked: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        (Output)
+        State of the linked DatasetConfig.
+        """
+elif False:
+    InsightsDatasetConfigLinkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigLinkArgs:
+    def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
+                 linked: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dataset: (Output)
+               Dataset name for the linked DatasetConfig.
+        :param pulumi.Input[_builtins.bool] linked: (Output)
+               State of the linked DatasetConfig.
+        """
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if linked is not None:
+            pulumi.set(__self__, "linked", linked)
+
+    @_builtins.property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Dataset name for the linked DatasetConfig.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dataset", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def linked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Output)
+        State of the linked DatasetConfig.
+        """
+        return pulumi.get(self, "linked")
+
+    @linked.setter
+    def linked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "linked", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigSourceFoldersArgsDict(TypedDict):
+        folder_numbers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The list of folder numbers to include in the DatasetConfig.
+        """
+elif False:
+    InsightsDatasetConfigSourceFoldersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigSourceFoldersArgs:
+    def __init__(__self__, *,
+                 folder_numbers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] folder_numbers: The list of folder numbers to include in the DatasetConfig.
+        """
+        if folder_numbers is not None:
+            pulumi.set(__self__, "folder_numbers", folder_numbers)
+
+    @_builtins.property
+    @pulumi.getter(name="folderNumbers")
+    def folder_numbers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of folder numbers to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "folder_numbers")
+
+    @folder_numbers.setter
+    def folder_numbers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "folder_numbers", value)
+
+
+if not MYPY:
+    class InsightsDatasetConfigSourceProjectsArgsDict(TypedDict):
+        project_numbers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The list of project numbers to include in the DatasetConfig.
+        """
+elif False:
+    InsightsDatasetConfigSourceProjectsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsDatasetConfigSourceProjectsArgs:
+    def __init__(__self__, *,
+                 project_numbers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_numbers: The list of project numbers to include in the DatasetConfig.
+        """
+        if project_numbers is not None:
+            pulumi.set(__self__, "project_numbers", project_numbers)
+
+    @_builtins.property
+    @pulumi.getter(name="projectNumbers")
+    def project_numbers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of project numbers to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "project_numbers")
+
+    @project_numbers.setter
+    def project_numbers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "project_numbers", value)
 
 
 if not MYPY:

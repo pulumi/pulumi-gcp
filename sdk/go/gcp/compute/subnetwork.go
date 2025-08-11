@@ -547,6 +547,9 @@ type Subnetwork struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params SubnetworkParamsPtrOutput `pulumi:"params"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolOutput `pulumi:"privateIpGoogleAccess"`
@@ -580,6 +583,9 @@ type Subnetwork struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayOutput `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
@@ -715,6 +721,9 @@ type subnetworkState struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network *string `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *SubnetworkParams `pulumi:"params"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
@@ -748,6 +757,9 @@ type subnetworkState struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
@@ -851,6 +863,9 @@ type SubnetworkState struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params SubnetworkParamsPtrInput
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
@@ -884,6 +899,9 @@ type SubnetworkState struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// The URI of the created resource.
@@ -972,6 +990,9 @@ type subnetworkArgs struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network string `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *SubnetworkParams `pulumi:"params"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
@@ -1005,6 +1026,9 @@ type subnetworkArgs struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// Controls the removal behavior of secondary_ip_range.
@@ -1081,6 +1105,9 @@ type SubnetworkArgs struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network pulumi.StringInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params SubnetworkParamsPtrInput
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
@@ -1114,6 +1141,9 @@ type SubnetworkArgs struct {
 	// contained in this subnetwork. The primary IP of such VM must belong
 	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 	// to either primary or secondary ranges.
+	// **Note**: This field uses attr-as-block mode to avoid
+	// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+	// set `sendSecondaryIpRangeIfEmpty = true`
 	// Structure is documented below.
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// Controls the removal behavior of secondary_ip_range.
@@ -1342,6 +1372,12 @@ func (o SubnetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o SubnetworkOutput) Params() SubnetworkParamsPtrOutput {
+	return o.ApplyT(func(v *Subnetwork) SubnetworkParamsPtrOutput { return v.Params }).(SubnetworkParamsPtrOutput)
+}
+
 // When enabled, VMs in this subnetwork without external IP addresses can
 // access Google APIs and services by using Private Google Access.
 func (o SubnetworkOutput) PrivateIpGoogleAccess() pulumi.BoolOutput {
@@ -1396,6 +1432,9 @@ func (o SubnetworkOutput) Role() pulumi.StringPtrOutput {
 // contained in this subnetwork. The primary IP of such VM must belong
 // to the primary ipCidrRange of the subnetwork. The alias IPs may belong
 // to either primary or secondary ranges.
+// **Note**: This field uses attr-as-block mode to avoid
+// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+// set `sendSecondaryIpRangeIfEmpty = true`
 // Structure is documented below.
 func (o SubnetworkOutput) SecondaryIpRanges() SubnetworkSecondaryIpRangeArrayOutput {
 	return o.ApplyT(func(v *Subnetwork) SubnetworkSecondaryIpRangeArrayOutput { return v.SecondaryIpRanges }).(SubnetworkSecondaryIpRangeArrayOutput)

@@ -468,8 +468,11 @@ class SessionTemplate(pulumi.CustomResource):
             environment_config={
                 "execution_config": {
                     "subnetwork_uri": "default",
-                    "ttl": "3600s",
+                    "idle_ttl": "3600s",
                     "network_tags": ["tag1"],
+                    "authentication_config": {
+                        "user_workload_authentication_type": "END_USER_CREDENTIALS",
+                    },
                 },
             },
             jupyter_session={
@@ -560,6 +563,9 @@ class SessionTemplate(pulumi.CustomResource):
                     "subnetwork_uri": "default",
                     "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                     "staging_bucket": bucket.name,
+                    "authentication_config": {
+                        "user_workload_authentication_type": "SERVICE_ACCOUNT",
+                    },
                 },
                 "peripherals_config": {
                     "metastore_service": ms.name,
@@ -671,8 +677,11 @@ class SessionTemplate(pulumi.CustomResource):
             environment_config={
                 "execution_config": {
                     "subnetwork_uri": "default",
-                    "ttl": "3600s",
+                    "idle_ttl": "3600s",
                     "network_tags": ["tag1"],
+                    "authentication_config": {
+                        "user_workload_authentication_type": "END_USER_CREDENTIALS",
+                    },
                 },
             },
             jupyter_session={
@@ -763,6 +772,9 @@ class SessionTemplate(pulumi.CustomResource):
                     "subnetwork_uri": "default",
                     "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                     "staging_bucket": bucket.name,
+                    "authentication_config": {
+                        "user_workload_authentication_type": "SERVICE_ACCOUNT",
+                    },
                 },
                 "peripherals_config": {
                     "metastore_service": ms.name,

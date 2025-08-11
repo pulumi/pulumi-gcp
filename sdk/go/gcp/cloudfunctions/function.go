@@ -174,6 +174,8 @@ import (
 type Function struct {
 	pulumi.CustomResourceState
 
+	// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+	AutomaticUpdatePolicy FunctionAutomaticUpdatePolicyOutput `pulumi:"automaticUpdatePolicy"`
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrOutput `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
@@ -219,6 +221,8 @@ type Function struct {
 	MinInstances pulumi.IntPtrOutput `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+	OnDeployUpdatePolicy FunctionOnDeployUpdatePolicyPtrOutput `pulumi:"onDeployUpdatePolicy"`
 	// Project of the function. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -296,6 +300,8 @@ func GetFunction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Function resources.
 type functionState struct {
+	// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+	AutomaticUpdatePolicy *FunctionAutomaticUpdatePolicy `pulumi:"automaticUpdatePolicy"`
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
@@ -341,6 +347,8 @@ type functionState struct {
 	MinInstances *int `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally.
 	Name *string `pulumi:"name"`
+	// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+	OnDeployUpdatePolicy *FunctionOnDeployUpdatePolicy `pulumi:"onDeployUpdatePolicy"`
 	// Project of the function. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -381,6 +389,8 @@ type functionState struct {
 }
 
 type FunctionState struct {
+	// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+	AutomaticUpdatePolicy FunctionAutomaticUpdatePolicyPtrInput
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
@@ -426,6 +436,8 @@ type FunctionState struct {
 	MinInstances pulumi.IntPtrInput
 	// A user-defined name of the function. Function names must be unique globally.
 	Name pulumi.StringPtrInput
+	// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+	OnDeployUpdatePolicy FunctionOnDeployUpdatePolicyPtrInput
 	// Project of the function. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -470,6 +482,8 @@ func (FunctionState) ElementType() reflect.Type {
 }
 
 type functionArgs struct {
+	// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+	AutomaticUpdatePolicy *FunctionAutomaticUpdatePolicy `pulumi:"automaticUpdatePolicy"`
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
@@ -513,6 +527,8 @@ type functionArgs struct {
 	MinInstances *int `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally.
 	Name *string `pulumi:"name"`
+	// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+	OnDeployUpdatePolicy *FunctionOnDeployUpdatePolicy `pulumi:"onDeployUpdatePolicy"`
 	// Project of the function. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Region of function. If it is not provided, the provider region is used.
@@ -547,6 +563,8 @@ type functionArgs struct {
 
 // The set of arguments for constructing a Function resource.
 type FunctionArgs struct {
+	// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+	AutomaticUpdatePolicy FunctionAutomaticUpdatePolicyPtrInput
 	// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
@@ -590,6 +608,8 @@ type FunctionArgs struct {
 	MinInstances pulumi.IntPtrInput
 	// A user-defined name of the function. Function names must be unique globally.
 	Name pulumi.StringPtrInput
+	// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+	OnDeployUpdatePolicy FunctionOnDeployUpdatePolicyPtrInput
 	// Project of the function. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Region of function. If it is not provided, the provider region is used.
@@ -709,6 +729,11 @@ func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) Functio
 	return o
 }
 
+// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+func (o FunctionOutput) AutomaticUpdatePolicy() FunctionAutomaticUpdatePolicyOutput {
+	return o.ApplyT(func(v *Function) FunctionAutomaticUpdatePolicyOutput { return v.AutomaticUpdatePolicy }).(FunctionAutomaticUpdatePolicyOutput)
+}
+
 // Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
 func (o FunctionOutput) AvailableMemoryMb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.AvailableMemoryMb }).(pulumi.IntPtrOutput)
@@ -809,6 +834,11 @@ func (o FunctionOutput) MinInstances() pulumi.IntPtrOutput {
 // A user-defined name of the function. Function names must be unique globally.
 func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+func (o FunctionOutput) OnDeployUpdatePolicy() FunctionOnDeployUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *Function) FunctionOnDeployUpdatePolicyPtrOutput { return v.OnDeployUpdatePolicy }).(FunctionOnDeployUpdatePolicyPtrOutput)
 }
 
 // Project of the function. If it is not provided, the provider project is used.

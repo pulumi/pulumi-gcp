@@ -256,8 +256,8 @@ class EntryGroup(pulumi.CustomResource):
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group",
             entry_group_id="my_group",
-            display_name="entry group",
-            description="example entry group")
+            display_name="terraform entry group",
+            description="entry group created by Terraform")
         ```
 
         ## Import
@@ -317,8 +317,8 @@ class EntryGroup(pulumi.CustomResource):
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group",
             entry_group_id="my_group",
-            display_name="entry group",
-            description="example entry group")
+            display_name="terraform entry group",
+            description="entry group created by Terraform")
         ```
 
         ## Import

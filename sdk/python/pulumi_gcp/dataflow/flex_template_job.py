@@ -58,19 +58,14 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **Note**: This field is marked as deprecated as the API does not currently
-               support adding labels.
-               **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
+               page.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] launcher_machine_type: The machine type to use for launching the job. The default is n1-standard-1.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the job.
         :param pulumi.Input[_builtins.int] max_workers: Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         :param pulumi.Input[_builtins.str] name: Immutable. A unique name for the resource, required by Dataflow.
         :param pulumi.Input[_builtins.str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[_builtins.int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
-        :param pulumi.Input[_builtins.str] on_delete: One of "drain" or "cancel". Specifies behavior of
-               deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
@@ -227,11 +222,8 @@ class FlexTemplateJobArgs:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        page. **Note**: This field is marked as deprecated as the API does not currently
-        support adding labels.
-        **NOTE**: Google-provided Dataflow templates often provide default labels
-        that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        labels will be ignored to prevent diffs on re-apply.
+        page.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -314,10 +306,6 @@ class FlexTemplateJobArgs:
     @_builtins.property
     @pulumi.getter(name="onDelete")
     def on_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        One of "drain" or "cancel". Specifies behavior of
-        deletion during `pulumi destroy`.  See above note.
-        """
         return pulumi.get(self, "on_delete")
 
     @on_delete.setter
@@ -487,25 +475,21 @@ class _FlexTemplateJobState:
                Template.
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[_builtins.str] job_id: The unique ID of this job.
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **Note**: This field is marked as deprecated as the API does not currently
-               support adding labels.
-               **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
+               page.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] launcher_machine_type: The machine type to use for launching the job. The default is n1-standard-1.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the job.
         :param pulumi.Input[_builtins.int] max_workers: Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         :param pulumi.Input[_builtins.str] name: Immutable. A unique name for the resource, required by Dataflow.
         :param pulumi.Input[_builtins.str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[_builtins.int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
-        :param pulumi.Input[_builtins.str] on_delete: One of "drain" or "cancel". Specifies behavior of
-               deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
@@ -637,6 +621,9 @@ class _FlexTemplateJobState:
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
@@ -697,11 +684,8 @@ class _FlexTemplateJobState:
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        page. **Note**: This field is marked as deprecated as the API does not currently
-        support adding labels.
-        **NOTE**: Google-provided Dataflow templates often provide default labels
-        that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        labels will be ignored to prevent diffs on re-apply.
+        page.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -784,10 +768,6 @@ class _FlexTemplateJobState:
     @_builtins.property
     @pulumi.getter(name="onDelete")
     def on_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        One of "drain" or "cancel". Specifies behavior of
-        deletion during `pulumi destroy`.  See above note.
-        """
         return pulumi.get(self, "on_delete")
 
     @on_delete.setter
@@ -984,74 +964,6 @@ class FlexTemplateJob(pulumi.CustomResource):
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name="dataflow-flextemplates-job",
-            container_spec_gcs_path="gs://my-bucket/templates/template.json",
-            parameters={
-                "inputSubscription": "messages",
-            })
-        ```
-
-        ## Note on "destroy" / "apply"
-
-        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
-        getting new data from (e.g.) a GCS bucket, and outputting data continuously.
-        Some jobs process a set amount of data then terminate. All jobs can fail while
-        running due to programming errors or other issues. In this way, Dataflow jobs
-        are different from most other provider / Google resources.
-
-        The Dataflow resource is considered 'existing' while it is in a nonterminal
-        state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
-        'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
-        jobs which run continuously, but may surprise users who use this resource for
-        other kinds of Dataflow jobs.
-
-        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
-        "cancelled", the job terminates - any data written remains where it is, but no
-        new data will be processed.  If "drained", no new data will enter the pipeline,
-        but any data currently in the pipeline will finish being processed.  The default
-        is "cancelled", but if a user sets `on_delete` to `"drain"` in the
-        configuration, you may experience a long wait for your `pulumi destroy` to
-        complete.
-
-        You can potentially short-circuit the wait by setting `skip_wait_on_job_termination`
-        to `true`, but beware that unless you take active steps to ensure that the job
-        `name` parameter changes between instances, the name will conflict and the launch
-        of the new job will fail. One way to do this is with a
-        random_id
-        resource, for example:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
-        if big_data_job_subscription_id is None:
-            big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
-            byte_length=4,
-            keepers={
-                "region": region,
-                "subscription_id": big_data_job_subscription_id,
-            })
-        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
-            region=region,
-            container_spec_gcs_path="gs://my-bucket/templates/template.json",
-            skip_wait_on_job_termination=True,
-            parameters={
-                "inputSubscription": big_data_job_subscription_id,
-            })
-        ```
-
         ## Import
 
         This resource does not support import.
@@ -1070,19 +982,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **Note**: This field is marked as deprecated as the API does not currently
-               support adding labels.
-               **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
+               page.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] launcher_machine_type: The machine type to use for launching the job. The default is n1-standard-1.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the job.
         :param pulumi.Input[_builtins.int] max_workers: Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         :param pulumi.Input[_builtins.str] name: Immutable. A unique name for the resource, required by Dataflow.
         :param pulumi.Input[_builtins.str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[_builtins.int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
-        :param pulumi.Input[_builtins.str] on_delete: One of "drain" or "cancel". Specifies behavior of
-               deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
@@ -1103,74 +1010,6 @@ class FlexTemplateJob(pulumi.CustomResource):
                  args: FlexTemplateJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name="dataflow-flextemplates-job",
-            container_spec_gcs_path="gs://my-bucket/templates/template.json",
-            parameters={
-                "inputSubscription": "messages",
-            })
-        ```
-
-        ## Note on "destroy" / "apply"
-
-        There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
-        getting new data from (e.g.) a GCS bucket, and outputting data continuously.
-        Some jobs process a set amount of data then terminate. All jobs can fail while
-        running due to programming errors or other issues. In this way, Dataflow jobs
-        are different from most other provider / Google resources.
-
-        The Dataflow resource is considered 'existing' while it is in a nonterminal
-        state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
-        'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
-        jobs which run continuously, but may surprise users who use this resource for
-        other kinds of Dataflow jobs.
-
-        A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
-        "cancelled", the job terminates - any data written remains where it is, but no
-        new data will be processed.  If "drained", no new data will enter the pipeline,
-        but any data currently in the pipeline will finish being processed.  The default
-        is "cancelled", but if a user sets `on_delete` to `"drain"` in the
-        configuration, you may experience a long wait for your `pulumi destroy` to
-        complete.
-
-        You can potentially short-circuit the wait by setting `skip_wait_on_job_termination`
-        to `true`, but beware that unless you take active steps to ensure that the job
-        `name` parameter changes between instances, the name will conflict and the launch
-        of the new job will fail. One way to do this is with a
-        random_id
-        resource, for example:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        config = pulumi.Config()
-        big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
-        if big_data_job_subscription_id is None:
-            big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-        big_data_job_name_suffix = random.RandomId("big_data_job_name_suffix",
-            byte_length=4,
-            keepers={
-                "region": region,
-                "subscription_id": big_data_job_subscription_id,
-            })
-        big_data_job = gcp.dataflow.FlexTemplateJob("big_data_job",
-            name=big_data_job_name_suffix.dec.apply(lambda dec: f"dataflow-flextemplates-job-{dec}"),
-            region=region,
-            container_spec_gcs_path="gs://my-bucket/templates/template.json",
-            skip_wait_on_job_termination=True,
-            parameters={
-                "inputSubscription": big_data_job_subscription_id,
-            })
-        ```
-
         ## Import
 
         This resource does not support import.
@@ -1312,25 +1151,21 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[_builtins.str] job_id: The unique ID of this job.
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User labels to be specified for the job. Keys and values
                should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-               page. **Note**: This field is marked as deprecated as the API does not currently
-               support adding labels.
-               **NOTE**: Google-provided Dataflow templates often provide default labels
-               that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-               labels will be ignored to prevent diffs on re-apply.
+               page.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] launcher_machine_type: The machine type to use for launching the job. The default is n1-standard-1.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the job.
         :param pulumi.Input[_builtins.int] max_workers: Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         :param pulumi.Input[_builtins.str] name: Immutable. A unique name for the resource, required by Dataflow.
         :param pulumi.Input[_builtins.str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
         :param pulumi.Input[_builtins.int] num_workers: Immutable. The initial number of Google Compute Engine instances for the job.
-        :param pulumi.Input[_builtins.str] on_delete: One of "drain" or "cancel". Specifies behavior of
-               deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
                case-sensitive based on the language on which the pipeline is coded, mostly Java.
                **Note**: do not configure Dataflow options here in parameters.
@@ -1421,6 +1256,9 @@ class FlexTemplateJob(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
@@ -1461,11 +1299,8 @@ class FlexTemplateJob(pulumi.CustomResource):
         """
         User labels to be specified for the job. Keys and values
         should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        page. **Note**: This field is marked as deprecated as the API does not currently
-        support adding labels.
-        **NOTE**: Google-provided Dataflow templates often provide default labels
-        that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-        labels will be ignored to prevent diffs on re-apply.
+        page.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1520,10 +1355,6 @@ class FlexTemplateJob(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="onDelete")
     def on_delete(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        One of "drain" or "cancel". Specifies behavior of
-        deletion during `pulumi destroy`.  See above note.
-        """
         return pulumi.get(self, "on_delete")
 
     @_builtins.property

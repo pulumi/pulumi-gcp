@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         },
     ///         ForceUpdate = true,
     ///         AccessRestriction = "WITHIN_ORGANIZATION",
+    ///         BackupRetentionInheritance = "INHERIT_VAULT_RETENTION",
     ///         IgnoreInactiveDatasources = true,
     ///         IgnoreBackupPlanReferences = true,
     ///         AllowMissing = true,
@@ -111,6 +112,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Output("backupMinimumEnforcedRetentionDuration")]
         public Output<string> BackupMinimumEnforcedRetentionDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+        /// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+        /// </summary>
+        [Output("backupRetentionInheritance")]
+        public Output<string?> BackupRetentionInheritance { get; private set; } = null!;
 
         /// <summary>
         /// Required. ID of the requesting object.
@@ -348,6 +356,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string> BackupMinimumEnforcedRetentionDuration { get; set; } = null!;
 
         /// <summary>
+        /// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+        /// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+        /// </summary>
+        [Input("backupRetentionInheritance")]
+        public Input<string>? BackupRetentionInheritance { get; set; }
+
+        /// <summary>
         /// Required. ID of the requesting object.
         /// </summary>
         [Input("backupVaultId", required: true)]
@@ -474,6 +489,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Input("backupMinimumEnforcedRetentionDuration")]
         public Input<string>? BackupMinimumEnforcedRetentionDuration { get; set; }
+
+        /// <summary>
+        /// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+        /// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+        /// </summary>
+        [Input("backupRetentionInheritance")]
+        public Input<string>? BackupRetentionInheritance { get; set; }
 
         /// <summary>
         /// Required. ID of the requesting object.

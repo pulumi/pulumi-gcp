@@ -122,6 +122,9 @@ import (
 type ListingSubscription struct {
 	pulumi.CustomResourceState
 
+	// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+	// Structure is documented below.
+	CommercialInfos ListingSubscriptionCommercialInfoArrayOutput `pulumi:"commercialInfos"`
 	// Timestamp when the subscription was created.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -205,6 +208,9 @@ func GetListingSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ListingSubscription resources.
 type listingSubscriptionState struct {
+	// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+	// Structure is documented below.
+	CommercialInfos []ListingSubscriptionCommercialInfo `pulumi:"commercialInfos"`
 	// Timestamp when the subscription was created.
 	CreationTime *string `pulumi:"creationTime"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -247,6 +253,9 @@ type listingSubscriptionState struct {
 }
 
 type ListingSubscriptionState struct {
+	// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+	// Structure is documented below.
+	CommercialInfos ListingSubscriptionCommercialInfoArrayInput
 	// Timestamp when the subscription was created.
 	CreationTime pulumi.StringPtrInput
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -408,6 +417,12 @@ func (o ListingSubscriptionOutput) ToListingSubscriptionOutput() ListingSubscrip
 
 func (o ListingSubscriptionOutput) ToListingSubscriptionOutputWithContext(ctx context.Context) ListingSubscriptionOutput {
 	return o
+}
+
+// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+// Structure is documented below.
+func (o ListingSubscriptionOutput) CommercialInfos() ListingSubscriptionCommercialInfoArrayOutput {
+	return o.ApplyT(func(v *ListingSubscription) ListingSubscriptionCommercialInfoArrayOutput { return v.CommercialInfos }).(ListingSubscriptionCommercialInfoArrayOutput)
 }
 
 // Timestamp when the subscription was created.

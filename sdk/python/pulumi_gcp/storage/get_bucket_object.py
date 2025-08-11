@@ -27,7 +27,7 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, force_empty_content_type=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, source_md5hash=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, deletion_policy=None, detect_md5hash=None, event_based_hold=None, force_empty_content_type=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, source_md5hash=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -55,6 +55,9 @@ class GetBucketObjectResult:
         if customer_encryptions and not isinstance(customer_encryptions, list):
             raise TypeError("Expected argument 'customer_encryptions' to be a list")
         pulumi.set(__self__, "customer_encryptions", customer_encryptions)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash and not isinstance(detect_md5hash, str):
             raise TypeError("Expected argument 'detect_md5hash' to be a str")
         pulumi.set(__self__, "detect_md5hash", detect_md5hash)
@@ -173,6 +176,11 @@ class GetBucketObjectResult:
     @pulumi.getter(name="customerEncryptions")
     def customer_encryptions(self) -> Sequence['outputs.GetBucketObjectCustomerEncryptionResult']:
         return pulumi.get(self, "customer_encryptions")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
@@ -306,6 +314,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             content_type=self.content_type,
             crc32c=self.crc32c,
             customer_encryptions=self.customer_encryptions,
+            deletion_policy=self.deletion_policy,
             detect_md5hash=self.detect_md5hash,
             event_based_hold=self.event_based_hold,
             force_empty_content_type=self.force_empty_content_type,
@@ -367,6 +376,7 @@ def get_bucket_object(bucket: Optional[_builtins.str] = None,
         content_type=pulumi.get(__ret__, 'content_type'),
         crc32c=pulumi.get(__ret__, 'crc32c'),
         customer_encryptions=pulumi.get(__ret__, 'customer_encryptions'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         detect_md5hash=pulumi.get(__ret__, 'detect_md5hash'),
         event_based_hold=pulumi.get(__ret__, 'event_based_hold'),
         force_empty_content_type=pulumi.get(__ret__, 'force_empty_content_type'),
@@ -425,6 +435,7 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[Optional[_builtins.st
         content_type=pulumi.get(__response__, 'content_type'),
         crc32c=pulumi.get(__response__, 'crc32c'),
         customer_encryptions=pulumi.get(__response__, 'customer_encryptions'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         detect_md5hash=pulumi.get(__response__, 'detect_md5hash'),
         event_based_hold=pulumi.get(__response__, 'event_based_hold'),
         force_empty_content_type=pulumi.get(__response__, 'force_empty_content_type'),

@@ -53,14 +53,6 @@ class DeploymentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Unique name for the deployment
-        :param pulumi.Input[_builtins.bool] preview: If set to true, a deployment is created with "shell" resources
-               that are not actually instantiated. This allows you to preview a
-               deployment. It can be updated to false to actually deploy
-               with real resources.
-               ~>**NOTE:** Deployment Manager does not allow update
-               of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
-               to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -171,16 +163,6 @@ class DeploymentArgs:
     @_builtins.property
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        If set to true, a deployment is created with "shell" resources
-        that are not actually instantiated. This allows you to preview a
-        deployment. It can be updated to false to actually deploy
-        with real resources.
-        ~>**NOTE:** Deployment Manager does not allow update
-        of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
-        to true or if other fields are updated while preview is true.
-        """
         return pulumi.get(self, "preview")
 
     @preview.setter
@@ -239,14 +221,6 @@ class _DeploymentState:
         :param pulumi.Input[_builtins.str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
         :param pulumi.Input[_builtins.str] name: Unique name for the deployment
-        :param pulumi.Input[_builtins.bool] preview: If set to true, a deployment is created with "shell" resources
-               that are not actually instantiated. This allows you to preview a
-               deployment. It can be updated to false to actually deploy
-               with real resources.
-               ~>**NOTE:** Deployment Manager does not allow update
-               of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
-               to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: Output only. Server defined URL for the resource.
@@ -379,16 +353,6 @@ class _DeploymentState:
     @_builtins.property
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        If set to true, a deployment is created with "shell" resources
-        that are not actually instantiated. This allows you to preview a
-        deployment. It can be updated to false to actually deploy
-        with real resources.
-        ~>**NOTE:** Deployment Manager does not allow update
-        of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
-        to true or if other fields are updated while preview is true.
-        """
         return pulumi.get(self, "preview")
 
     @preview.setter
@@ -451,20 +415,6 @@ class Deployment(pulumi.CustomResource):
                  target: Optional[pulumi.Input[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict']]] = None,
                  __props__=None):
         """
-        A collection of resources that are deployed and managed together using
-        a configuration file
-
-        > **Warning:** This resource is intended only to manage a Deployment resource,
-        and attempts to manage the Deployment's resources in the provider as well
-        will likely result in errors or unexpected behavior as the two tools
-        fight over ownership. We strongly discourage doing so unless you are an
-        experienced user of both tools.
-
-        In addition, due to limitations of the API, the provider will treat
-        deployments in preview as recreate-only for any update operation other
-        than actually deploying an in-preview deployment (i.e. `preview=true` to
-        `preview=false`).
-
         ## Example Usage
 
         ### Deployment Manager Deployment Basic
@@ -531,14 +481,6 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelArgs', 'DeploymentLabelArgsDict']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Unique name for the deployment
-        :param pulumi.Input[_builtins.bool] preview: If set to true, a deployment is created with "shell" resources
-               that are not actually instantiated. This allows you to preview a
-               deployment. It can be updated to false to actually deploy
-               with real resources.
-               ~>**NOTE:** Deployment Manager does not allow update
-               of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
-               to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['DeploymentTargetArgs', 'DeploymentTargetArgsDict']] target: Parameters that define your deployment, including the deployment
@@ -552,20 +494,6 @@ class Deployment(pulumi.CustomResource):
                  args: DeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A collection of resources that are deployed and managed together using
-        a configuration file
-
-        > **Warning:** This resource is intended only to manage a Deployment resource,
-        and attempts to manage the Deployment's resources in the provider as well
-        will likely result in errors or unexpected behavior as the two tools
-        fight over ownership. We strongly discourage doing so unless you are an
-        experienced user of both tools.
-
-        In addition, due to limitations of the API, the provider will treat
-        deployments in preview as recreate-only for any update operation other
-        than actually deploying an in-preview deployment (i.e. `preview=true` to
-        `preview=false`).
-
         ## Example Usage
 
         ### Deployment Manager Deployment Basic
@@ -706,14 +634,6 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
         :param pulumi.Input[_builtins.str] name: Unique name for the deployment
-        :param pulumi.Input[_builtins.bool] preview: If set to true, a deployment is created with "shell" resources
-               that are not actually instantiated. This allows you to preview a
-               deployment. It can be updated to false to actually deploy
-               with real resources.
-               ~>**NOTE:** Deployment Manager does not allow update
-               of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
-               to true or if other fields are updated while preview is true.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: Output only. Server defined URL for the resource.
@@ -812,16 +732,6 @@ class Deployment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def preview(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        If set to true, a deployment is created with "shell" resources
-        that are not actually instantiated. This allows you to preview a
-        deployment. It can be updated to false to actually deploy
-        with real resources.
-        ~>**NOTE:** Deployment Manager does not allow update
-        of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
-        to true or if other fields are updated while preview is true.
-        """
         return pulumi.get(self, "preview")
 
     @_builtins.property

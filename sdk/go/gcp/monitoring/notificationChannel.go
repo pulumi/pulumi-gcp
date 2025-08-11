@@ -12,30 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A NotificationChannel is a medium through which an alert is delivered
-// when a policy violation is detected. Examples of channels include email, SMS,
-// and third-party messaging applications. Fields containing sensitive information
-// like authentication tokens or contact info are only partially populated on retrieval.
-//
-// Notification Channels are designed to be flexible and are made up of a supported `type`
-// and labels to configure that channel. Each `type` has specific labels that need to be
-// present for that channel to be correctly configured. The labels that are required to be
-// present for one channel `type` are often different than those required for another.
-// Due to these loose constraints it's often best to set up a channel through the UI
-// and import it to the provider when setting up a brand new channel type to determine which
-// labels are required.
-//
-// A list of supported channels per project the `list` endpoint can be
-// accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
-// This provides the channel type and all of the required labels that must be passed.
-//
-// To get more information about NotificationChannel, see:
-//
-// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
-// * How-to Guides
-//   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-//   - [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
-//
 // ## Example Usage
 //
 // ### Notification Channel Basic
@@ -126,14 +102,8 @@ type NotificationChannel struct {
 	// to remove the channel). If false, channels that are still
 	// referenced by an existing alerting policy will fail to be
 	// deleted in a delete operation.
-	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
-	// Configuration fields that define the channel and its behavior. The
-	// permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field.
-	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-	// determine if there are upstream changes to these fields. They can also be configured via
-	// the sensitiveLabels block, but cannot be configured in both places.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	ForceDelete pulumi.BoolPtrOutput   `pulumi:"forceDelete"`
+	Labels      pulumi.StringMapOutput `pulumi:"labels"`
 	// The full REST resource name for this channel. The syntax is:
 	// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
 	// The [CHANNEL_ID] is automatically assigned by the server on creation.
@@ -201,14 +171,8 @@ type notificationChannelState struct {
 	// to remove the channel). If false, channels that are still
 	// referenced by an existing alerting policy will fail to be
 	// deleted in a delete operation.
-	ForceDelete *bool `pulumi:"forceDelete"`
-	// Configuration fields that define the channel and its behavior. The
-	// permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field.
-	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-	// determine if there are upstream changes to these fields. They can also be configured via
-	// the sensitiveLabels block, but cannot be configured in both places.
-	Labels map[string]string `pulumi:"labels"`
+	ForceDelete *bool             `pulumi:"forceDelete"`
+	Labels      map[string]string `pulumi:"labels"`
 	// The full REST resource name for this channel. The syntax is:
 	// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
 	// The [CHANNEL_ID] is automatically assigned by the server on creation.
@@ -245,13 +209,7 @@ type NotificationChannelState struct {
 	// referenced by an existing alerting policy will fail to be
 	// deleted in a delete operation.
 	ForceDelete pulumi.BoolPtrInput
-	// Configuration fields that define the channel and its behavior. The
-	// permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field.
-	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-	// determine if there are upstream changes to these fields. They can also be configured via
-	// the sensitiveLabels block, but cannot be configured in both places.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
 	// The full REST resource name for this channel. The syntax is:
 	// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
 	// The [CHANNEL_ID] is automatically assigned by the server on creation.
@@ -291,14 +249,8 @@ type notificationChannelArgs struct {
 	// to remove the channel). If false, channels that are still
 	// referenced by an existing alerting policy will fail to be
 	// deleted in a delete operation.
-	ForceDelete *bool `pulumi:"forceDelete"`
-	// Configuration fields that define the channel and its behavior. The
-	// permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field.
-	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-	// determine if there are upstream changes to these fields. They can also be configured via
-	// the sensitiveLabels block, but cannot be configured in both places.
-	Labels map[string]string `pulumi:"labels"`
+	ForceDelete *bool             `pulumi:"forceDelete"`
+	Labels      map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -330,13 +282,7 @@ type NotificationChannelArgs struct {
 	// referenced by an existing alerting policy will fail to be
 	// deleted in a delete operation.
 	ForceDelete pulumi.BoolPtrInput
-	// Configuration fields that define the channel and its behavior. The
-	// permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field.
-	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-	// determine if there are upstream changes to these fields. They can also be configured via
-	// the sensitiveLabels block, but cannot be configured in both places.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -465,12 +411,6 @@ func (o NotificationChannelOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
-// Configuration fields that define the channel and its behavior. The
-// permissible and required labels are specified in the
-// NotificationChannelDescriptor corresponding to the type field.
-// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-// determine if there are upstream changes to these fields. They can also be configured via
-// the sensitiveLabels block, but cannot be configured in both places.
 func (o NotificationChannelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

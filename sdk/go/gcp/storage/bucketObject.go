@@ -94,7 +94,7 @@ type BucketObject struct {
 	// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl pulumi.StringPtrOutput `pulumi:"cacheControl"`
-	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 	Content pulumi.StringOutput `pulumi:"content"`
 	// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
 	ContentDisposition pulumi.StringPtrOutput `pulumi:"contentDisposition"`
@@ -109,6 +109,7 @@ type BucketObject struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrOutput `pulumi:"customerEncryption"`
+	DeletionPolicy     pulumi.StringPtrOutput                  `pulumi:"deletionPolicy"`
 	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -202,7 +203,7 @@ type bucketObjectState struct {
 	// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl *string `pulumi:"cacheControl"`
-	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 	Content *string `pulumi:"content"`
 	// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
 	ContentDisposition *string `pulumi:"contentDisposition"`
@@ -217,6 +218,7 @@ type bucketObjectState struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
+	DeletionPolicy     *string                         `pulumi:"deletionPolicy"`
 	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -267,7 +269,7 @@ type BucketObjectState struct {
 	// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl pulumi.StringPtrInput
-	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 	Content pulumi.StringPtrInput
 	// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
 	ContentDisposition pulumi.StringPtrInput
@@ -282,6 +284,7 @@ type BucketObjectState struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
+	DeletionPolicy     pulumi.StringPtrInput
 	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
 	DetectMd5hash pulumi.StringPtrInput
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -336,7 +339,7 @@ type bucketObjectArgs struct {
 	// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl *string `pulumi:"cacheControl"`
-	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 	Content *string `pulumi:"content"`
 	// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
 	ContentDisposition *string `pulumi:"contentDisposition"`
@@ -349,6 +352,7 @@ type bucketObjectArgs struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
+	DeletionPolicy     *string                         `pulumi:"deletionPolicy"`
 	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -387,7 +391,7 @@ type BucketObjectArgs struct {
 	// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl pulumi.StringPtrInput
-	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 	Content pulumi.StringPtrInput
 	// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
 	ContentDisposition pulumi.StringPtrInput
@@ -400,6 +404,7 @@ type BucketObjectArgs struct {
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
+	DeletionPolicy     pulumi.StringPtrInput
 	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
 	DetectMd5hash pulumi.StringPtrInput
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -529,7 +534,7 @@ func (o BucketObjectOutput) CacheControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.CacheControl }).(pulumi.StringPtrOutput)
 }
 
-// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
 func (o BucketObjectOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
@@ -563,6 +568,10 @@ func (o BucketObjectOutput) Crc32c() pulumi.StringOutput {
 // Structure is documented below.
 func (o BucketObjectOutput) CustomerEncryption() BucketObjectCustomerEncryptionPtrOutput {
 	return o.ApplyT(func(v *BucketObject) BucketObjectCustomerEncryptionPtrOutput { return v.CustomerEncryption }).(BucketObjectCustomerEncryptionPtrOutput)
+}
+
+func (o BucketObjectOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead

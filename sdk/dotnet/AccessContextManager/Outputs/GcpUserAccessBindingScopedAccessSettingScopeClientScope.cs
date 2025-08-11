@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class GcpUserAccessBindingScopedAccessSettingScopeClientScope
     {
         /// <summary>
-        /// Optional. The application that is subject to this binding's scope.
+        /// Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication? RestrictedClientApplication;

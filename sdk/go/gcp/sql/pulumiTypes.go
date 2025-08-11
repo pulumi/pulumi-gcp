@@ -239,11 +239,7 @@ type DatabaseInstanceDnsName struct {
 	ConnectionType *string `pulumi:"connectionType"`
 	// The scope that the DNS name applies to.
 	DnsScope *string `pulumi:"dnsScope"`
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
 }
 
 // DatabaseInstanceDnsNameInput is an input type that accepts DatabaseInstanceDnsNameArgs and DatabaseInstanceDnsNameOutput values.
@@ -262,11 +258,7 @@ type DatabaseInstanceDnsNameArgs struct {
 	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
 	// The scope that the DNS name applies to.
 	DnsScope pulumi.StringPtrInput `pulumi:"dnsScope"`
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name     pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (DatabaseInstanceDnsNameArgs) ElementType() reflect.Type {
@@ -330,10 +322,6 @@ func (o DatabaseInstanceDnsNameOutput) DnsScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceDnsName) *string { return v.DnsScope }).(pulumi.StringPtrOutput)
 }
 
-// The name of the instance. If the name is left
-// blank, the provider will randomly generate one when the instance is first
-// created. This is done because after a name is used, it cannot be reused for
-// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceDnsNameOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceDnsName) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1380,9 +1368,9 @@ type DatabaseInstanceSettings struct {
 	DiskAutoresize *bool `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit *int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 	DiskSize *int `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
+	// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
 	DiskType *string `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition *string `pulumi:"edition"`
@@ -1460,9 +1448,9 @@ type DatabaseInstanceSettingsArgs struct {
 	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit pulumi.IntPtrInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
+	// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
@@ -1663,12 +1651,12 @@ func (o DatabaseInstanceSettingsOutput) DiskAutoresizeLimit() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskAutoresizeLimit }).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
+// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
 func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -1940,7 +1928,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresizeLimit() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
 		if v == nil {
@@ -1950,7 +1938,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
+// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
 func (o DatabaseInstanceSettingsPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {

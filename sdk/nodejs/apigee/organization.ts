@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  * const org = new gcp.apigee.Organization("org", {
  *     analyticsRegion: "us-central1",
  *     displayName: "apigee-org",
- *     description: "Auto-provisioned Apigee Org.",
+ *     description: "Terraform-provisioned Apigee Org.",
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,

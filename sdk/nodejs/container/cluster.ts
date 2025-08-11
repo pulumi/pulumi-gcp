@@ -7,20 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Manages a Google Kubernetes Engine (GKE) cluster.
- *
- * To get more information about GKE clusters, see:
- *   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
- *   * How-to guides
- *     * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
- *     * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
- *
- * > On version 5.0.0+ of the provider, you must explicitly set `deletionProtection = false`
- * and run `pulumi up` to write the field to state in order to destroy a cluster.
- *
- * > All arguments and attributes (including certificate outputs) will be stored in the raw state as
- * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
- *
  * ## Example Usage
  *
  * ### With A Separately Managed Node Pool (Recommended)
@@ -82,23 +68,6 @@ import * as utilities from "../utilities";
  *             "bar",
  *         ],
  *     },
- * });
- * ```
- *
- * ### Autopilot
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.serviceaccount.Account("default", {
- *     accountId: "service-account-id",
- *     displayName: "Service Account",
- * });
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "marcellus-wallace",
- *     location: "us-central1-a",
- *     enableAutopilot: true,
  * });
  * ```
  *
@@ -175,9 +144,6 @@ export class Cluster extends pulumi.CustomResource {
     public readonly allowNetAdmin!: pulumi.Output<boolean | undefined>;
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     public readonly anonymousAuthenticationConfig!: pulumi.Output<outputs.container.ClusterAnonymousAuthenticationConfig>;
     /**
@@ -418,19 +384,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly meshCertificates!: pulumi.Output<outputs.container.ClusterMeshCertificates>;
     /**
-     * The minimum version of the master. GKE
-     * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `masterVersion` field to obtain that.
-     * If unset, the cluster's version will be set by GKE to the version of the most recent
-     * official release (which is not necessarily the latest version).  Most users will find
-     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available. If you intend to specify versions manually,
-     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-     * describe the various acceptable formats for this field.
-     *
-     * > If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
-     * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
-     * region are guaranteed to support the same version.
+     * The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only masterVersion field to obtain that. If unset, the cluster's version will be
+     * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
      */
     public readonly minMasterVersion!: pulumi.Output<string | undefined>;
     /**
@@ -477,11 +433,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly networkingMode!: pulumi.Output<string>;
     /**
-     * Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn't recommended to be used.
-     * Structure is documented below.
+     * The configuration of the nodepool
      */
     public readonly nodeConfig!: pulumi.Output<outputs.container.ClusterNodeConfig>;
     /**
@@ -517,16 +469,6 @@ export class Cluster extends pulumi.CustomResource {
      * gcp.container.NodePool resource instead of this property.
      */
     public readonly nodePools!: pulumi.Output<outputs.container.ClusterNodePool[]>;
-    /**
-     * The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `minMasterVersion` on create. Defaults to the default
-     * version set by GKE which is not necessarily the latest version. This only affects
-     * nodes in the default node pool. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as the provider will see spurious diffs
-     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
-     * To update nodes in other node pools, use the `version` attribute on the node pool.
-     */
     public readonly nodeVersion!: pulumi.Output<string>;
     /**
      * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -567,15 +509,14 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-     * feature, which provide more control over automatic upgrades of your GKE clusters.
-     * When updating this field, GKE imposes specific version requirements. See
-     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-     * for more details; the `gcp.container.getEngineVersions` datasource can provide
-     * the default version for a channel. Note that removing the `releaseChannel`
-     * field from your config will cause the provider to stop managing your cluster's
-     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
-     * channel. Structure is documented below.
+     * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    public readonly rbacBindingConfig!: pulumi.Output<outputs.container.ClusterRbacBindingConfig>;
+    /**
+     * Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
+     * clusters. Note that removing this field from your config will not unenroll it. Instead, use the "UNSPECIFIED" channel.
      */
     public readonly releaseChannel!: pulumi.Output<outputs.container.ClusterReleaseChannel>;
     /**
@@ -743,6 +684,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protectConfig"] = state ? state.protectConfig : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["rbacBindingConfig"] = state ? state.rbacBindingConfig : undefined;
             resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             resourceInputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = state ? state.resourceLabels : undefined;
@@ -827,6 +769,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protectConfig"] = args ? args.protectConfig : undefined;
+            resourceInputs["rbacBindingConfig"] = args ? args.rbacBindingConfig : undefined;
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
@@ -874,9 +817,6 @@ export interface ClusterState {
     allowNetAdmin?: pulumi.Input<boolean>;
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     anonymousAuthenticationConfig?: pulumi.Input<inputs.container.ClusterAnonymousAuthenticationConfig>;
     /**
@@ -1117,19 +1057,9 @@ export interface ClusterState {
      */
     meshCertificates?: pulumi.Input<inputs.container.ClusterMeshCertificates>;
     /**
-     * The minimum version of the master. GKE
-     * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `masterVersion` field to obtain that.
-     * If unset, the cluster's version will be set by GKE to the version of the most recent
-     * official release (which is not necessarily the latest version).  Most users will find
-     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available. If you intend to specify versions manually,
-     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-     * describe the various acceptable formats for this field.
-     *
-     * > If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
-     * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
-     * region are guaranteed to support the same version.
+     * The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only masterVersion field to obtain that. If unset, the cluster's version will be
+     * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
      */
     minMasterVersion?: pulumi.Input<string>;
     /**
@@ -1176,11 +1106,7 @@ export interface ClusterState {
      */
     networkingMode?: pulumi.Input<string>;
     /**
-     * Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn't recommended to be used.
-     * Structure is documented below.
+     * The configuration of the nodepool
      */
     nodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfig>;
     /**
@@ -1216,16 +1142,6 @@ export interface ClusterState {
      * gcp.container.NodePool resource instead of this property.
      */
     nodePools?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePool>[]>;
-    /**
-     * The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `minMasterVersion` on create. Defaults to the default
-     * version set by GKE which is not necessarily the latest version. This only affects
-     * nodes in the default node pool. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as the provider will see spurious diffs
-     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
-     * To update nodes in other node pools, use the `version` attribute on the node pool.
-     */
     nodeVersion?: pulumi.Input<string>;
     /**
      * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -1266,15 +1182,14 @@ export interface ClusterState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-     * feature, which provide more control over automatic upgrades of your GKE clusters.
-     * When updating this field, GKE imposes specific version requirements. See
-     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-     * for more details; the `gcp.container.getEngineVersions` datasource can provide
-     * the default version for a channel. Note that removing the `releaseChannel`
-     * field from your config will cause the provider to stop managing your cluster's
-     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
-     * channel. Structure is documented below.
+     * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    rbacBindingConfig?: pulumi.Input<inputs.container.ClusterRbacBindingConfig>;
+    /**
+     * Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
+     * clusters. Note that removing this field from your config will not unenroll it. Instead, use the "UNSPECIFIED" channel.
      */
     releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;
     /**
@@ -1375,9 +1290,6 @@ export interface ClusterArgs {
     allowNetAdmin?: pulumi.Input<boolean>;
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     anonymousAuthenticationConfig?: pulumi.Input<inputs.container.ClusterAnonymousAuthenticationConfig>;
     /**
@@ -1600,19 +1512,9 @@ export interface ClusterArgs {
      */
     meshCertificates?: pulumi.Input<inputs.container.ClusterMeshCertificates>;
     /**
-     * The minimum version of the master. GKE
-     * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `masterVersion` field to obtain that.
-     * If unset, the cluster's version will be set by GKE to the version of the most recent
-     * official release (which is not necessarily the latest version).  Most users will find
-     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available. If you intend to specify versions manually,
-     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
-     * describe the various acceptable formats for this field.
-     *
-     * > If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
-     * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
-     * region are guaranteed to support the same version.
+     * The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only masterVersion field to obtain that. If unset, the cluster's version will be
+     * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
      */
     minMasterVersion?: pulumi.Input<string>;
     /**
@@ -1659,11 +1561,7 @@ export interface ClusterArgs {
      */
     networkingMode?: pulumi.Input<string>;
     /**
-     * Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn't recommended to be used.
-     * Structure is documented below.
+     * The configuration of the nodepool
      */
     nodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfig>;
     /**
@@ -1699,16 +1597,6 @@ export interface ClusterArgs {
      * gcp.container.NodePool resource instead of this property.
      */
     nodePools?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePool>[]>;
-    /**
-     * The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `minMasterVersion` on create. Defaults to the default
-     * version set by GKE which is not necessarily the latest version. This only affects
-     * nodes in the default node pool. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as the provider will see spurious diffs
-     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
-     * To update nodes in other node pools, use the `version` attribute on the node pool.
-     */
     nodeVersion?: pulumi.Input<string>;
     /**
      * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -1744,15 +1632,14 @@ export interface ClusterArgs {
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
     /**
-     * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-     * feature, which provide more control over automatic upgrades of your GKE clusters.
-     * When updating this field, GKE imposes specific version requirements. See
-     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-     * for more details; the `gcp.container.getEngineVersions` datasource can provide
-     * the default version for a channel. Note that removing the `releaseChannel`
-     * field from your config will cause the provider to stop managing your cluster's
-     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
-     * channel. Structure is documented below.
+     * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    rbacBindingConfig?: pulumi.Input<inputs.container.ClusterRbacBindingConfig>;
+    /**
+     * Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
+     * clusters. Note that removing this field from your config will not unenroll it. Instead, use the "UNSPECIFIED" channel.
      */
     releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;
     /**

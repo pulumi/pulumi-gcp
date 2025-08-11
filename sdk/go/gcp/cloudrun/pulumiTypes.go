@@ -18,7 +18,7 @@ type DomainMappingMetadata struct {
 	// may be set by external tools to store and retrieve arbitrary metadata.
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -79,7 +79,7 @@ type DomainMappingMetadataArgs struct {
 	// may be set by external tools to store and retrieve arbitrary metadata.
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -205,7 +205,7 @@ func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutputWithContext
 // may be set by external tools to store and retrieve arbitrary metadata.
 // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -306,7 +306,7 @@ func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
 // may be set by external tools to store and retrieve arbitrary metadata.
 // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -1370,7 +1370,7 @@ type ServiceMetadata struct {
 	// may be set by external tools to store and retrieve arbitrary metadata.
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 	// Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
 	// keys to configure features on a Service:
@@ -1442,7 +1442,7 @@ type ServiceMetadataArgs struct {
 	// may be set by external tools to store and retrieve arbitrary metadata.
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 	// Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
 	// keys to configure features on a Service:
@@ -1579,7 +1579,7 @@ func (o ServiceMetadataOutput) ToServiceMetadataPtrOutputWithContext(ctx context
 // may be set by external tools to store and retrieve arbitrary metadata.
 // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
 // keys to configure features on a Service:
@@ -1691,7 +1691,7 @@ func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
 // may be set by external tools to store and retrieve arbitrary metadata.
 // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
 // keys to configure features on a Service:
@@ -2498,7 +2498,7 @@ type ServiceTemplateMetadata struct {
 	// may be set by external tools to store and retrieve arbitrary metadata.
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 	// Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
 	// keys to configure features on a Service:
@@ -2566,7 +2566,7 @@ type ServiceTemplateMetadataArgs struct {
 	// may be set by external tools to store and retrieve arbitrary metadata.
 	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 	// Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
 	// keys to configure features on a Service:
@@ -2699,7 +2699,7 @@ func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutputWithCon
 // may be set by external tools to store and retrieve arbitrary metadata.
 // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
 // keys to configure features on a Service:
@@ -2801,7 +2801,7 @@ func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
 // may be set by external tools to store and retrieve arbitrary metadata.
 // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
-// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// If pulumi preview shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 // Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
 // keys to configure features on a Service:
@@ -3259,8 +3259,7 @@ type ServiceTemplateSpecContainer struct {
 	// Docker image name. This is most often a reference to a container located
 	// in the container registry, such as gcr.io/cloudrun/hello
 	Image string `pulumi:"image"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	// Structure is documented below.
 	LivenessProbe *ServiceTemplateSpecContainerLivenessProbe `pulumi:"livenessProbe"`
 	// Name of the container
@@ -3327,8 +3326,7 @@ type ServiceTemplateSpecContainerArgs struct {
 	// Docker image name. This is most often a reference to a container located
 	// in the container registry, such as gcr.io/cloudrun/hello
 	Image pulumi.StringInput `pulumi:"image"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	// Structure is documented below.
 	LivenessProbe ServiceTemplateSpecContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
 	// Name of the container
@@ -3449,8 +3447,7 @@ func (o ServiceTemplateSpecContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Periodic probe of container liveness. Container will be restarted if the probe fails.
 // Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) LivenessProbe() ServiceTemplateSpecContainerLivenessProbePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerLivenessProbe {

@@ -157,14 +157,6 @@ namespace Pulumi.Gcp.Diagflow
         [Output("supportedLanguageCodes")]
         public Output<ImmutableArray<string>> SupportedLanguageCodes { get; private set; } = null!;
 
-        /// <summary>
-        /// The agent tier. If not specified, TIER_STANDARD is assumed.
-        /// * TIER_STANDARD: Standard tier.
-        /// * TIER_ENTERPRISE: Enterprise tier (Essentials).
-        /// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-        /// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        /// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-        /// </summary>
         [Output("tier")]
         public Output<string?> Tier { get; private set; } = null!;
 
@@ -306,14 +298,6 @@ namespace Pulumi.Gcp.Diagflow
             set => _supportedLanguageCodes = value;
         }
 
-        /// <summary>
-        /// The agent tier. If not specified, TIER_STANDARD is assumed.
-        /// * TIER_STANDARD: Standard tier.
-        /// * TIER_ENTERPRISE: Enterprise tier (Essentials).
-        /// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-        /// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        /// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-        /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
 
@@ -424,14 +408,6 @@ namespace Pulumi.Gcp.Diagflow
             set => _supportedLanguageCodes = value;
         }
 
-        /// <summary>
-        /// The agent tier. If not specified, TIER_STANDARD is assumed.
-        /// * TIER_STANDARD: Standard tier.
-        /// * TIER_ENTERPRISE: Enterprise tier (Essentials).
-        /// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-        /// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-        /// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-        /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
 

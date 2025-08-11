@@ -162,6 +162,9 @@ type Router struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A reference to the network to which this router belongs.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RouterParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -226,6 +229,9 @@ type routerState struct {
 	Name *string `pulumi:"name"`
 	// A reference to the network to which this router belongs.
 	Network *string `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *RouterParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -258,6 +264,9 @@ type RouterState struct {
 	Name pulumi.StringPtrInput
 	// A reference to the network to which this router belongs.
 	Network pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RouterParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -292,6 +301,9 @@ type routerArgs struct {
 	Name *string `pulumi:"name"`
 	// A reference to the network to which this router belongs.
 	Network string `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *RouterParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -321,6 +333,9 @@ type RouterArgs struct {
 	Name pulumi.StringPtrInput
 	// A reference to the network to which this router belongs.
 	Network pulumi.StringInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RouterParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -456,6 +471,12 @@ func (o RouterOutput) Name() pulumi.StringOutput {
 // A reference to the network to which this router belongs.
 func (o RouterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o RouterOutput) Params() RouterParamsPtrOutput {
+	return o.ApplyT(func(v *Router) RouterParamsPtrOutput { return v.Params }).(RouterParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

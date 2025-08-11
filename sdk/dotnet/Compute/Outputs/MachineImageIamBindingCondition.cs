@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class MachineImageIamBindingCondition
     {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// Textual representation of an expression in Common Expression Language syntax.

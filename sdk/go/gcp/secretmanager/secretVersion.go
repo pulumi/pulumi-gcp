@@ -12,17 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A secret version resource.
-//
-// To get more information about SecretVersion, see:
-//
-// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions)
-// * How-to Guides
-//   - [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
-//
-// > **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
-// Read more about Write-only Attributes.
-//
 // ## Example Usage
 //
 // ### Secret Version Basic

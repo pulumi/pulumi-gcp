@@ -153,12 +153,20 @@ __all__ = [
     'FirewallPolicyWithRulesPredefinedRuleMatchArgsDict',
     'FirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs',
     'FirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgsDict',
+    'FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs',
+    'FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgsDict',
+    'FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs',
+    'FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict',
     'FirewallPolicyWithRulesRuleArgs',
     'FirewallPolicyWithRulesRuleArgsDict',
     'FirewallPolicyWithRulesRuleMatchArgs',
     'FirewallPolicyWithRulesRuleMatchArgsDict',
     'FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs',
     'FirewallPolicyWithRulesRuleMatchLayer4ConfigArgsDict',
+    'FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs',
+    'FirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict',
+    'FirewallPolicyWithRulesRuleTargetSecureTagArgs',
+    'FirewallPolicyWithRulesRuleTargetSecureTagArgsDict',
     'ForwardingRuleServiceDirectoryRegistrationsArgs',
     'ForwardingRuleServiceDirectoryRegistrationsArgsDict',
     'FutureReservationAggregateReservationArgs',
@@ -679,6 +687,10 @@ __all__ = [
     'PerInstanceConfigPreservedStateInternalIpArgsDict',
     'PerInstanceConfigPreservedStateInternalIpIpAddressArgs',
     'PerInstanceConfigPreservedStateInternalIpIpAddressArgsDict',
+    'PreviewFeatureRolloutOperationArgs',
+    'PreviewFeatureRolloutOperationArgsDict',
+    'PreviewFeatureRolloutOperationRolloutInputArgs',
+    'PreviewFeatureRolloutOperationRolloutInputArgsDict',
     'RegionAutoscalerAutoscalingPolicyArgs',
     'RegionAutoscalerAutoscalingPolicyArgsDict',
     'RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs',
@@ -1251,6 +1263,8 @@ __all__ = [
     'RouterNatRuleActionArgsDict',
     'RouterNatSubnetworkArgs',
     'RouterNatSubnetworkArgsDict',
+    'RouterParamsArgs',
+    'RouterParamsArgsDict',
     'RouterPeerAdvertisedIpRangeArgs',
     'RouterPeerAdvertisedIpRangeArgsDict',
     'RouterPeerBfdArgs',
@@ -1359,6 +1373,8 @@ __all__ = [
     'SubnetworkIAMMemberConditionArgsDict',
     'SubnetworkLogConfigArgs',
     'SubnetworkLogConfigArgsDict',
+    'SubnetworkParamsArgs',
+    'SubnetworkParamsArgsDict',
     'SubnetworkSecondaryIpRangeArgs',
     'SubnetworkSecondaryIpRangeArgsDict',
     'URLMapDefaultCustomErrorResponsePolicyArgs',
@@ -8077,6 +8093,22 @@ if not MYPY:
         this rule. If this field is left blank, all VMs
         within the organization will receive the rule.
         """
+        target_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict']]]]
+        """
+        (Output)
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target secure tags allowed is 256.
+        Structure is documented below.
+        """
         target_service_accounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         (Output)
@@ -8105,6 +8137,7 @@ class FirewallPolicyWithRulesPredefinedRuleArgs:
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -8143,6 +8176,19 @@ class FirewallPolicyWithRulesPredefinedRuleArgs:
                This field allows you to control which network's VMs get
                this rule. If this field is left blank, all VMs
                within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs']]] target_secure_tags: (Output)
+               A list of secure tags that controls which instances the firewall rule
+               applies to. If <code>targetSecureTag</code> are specified, then the
+               firewall rule applies only to instances in the VPC network that have one
+               of those EFFECTIVE secure tags, if all the target_secure_tag are in
+               INEFFECTIVE state, then this rule will be ignored.
+               <code>targetSecureTag</code> may not be set at the same time as
+               <code>targetServiceAccounts</code>.
+               If neither <code>targetServiceAccounts</code> nor
+               <code>targetSecureTag</code> are specified, the firewall rule applies
+               to all instances on the specified network.
+               Maximum number of target secure tags allowed is 256.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_service_accounts: (Output)
                A list of service accounts indicating the sets of
                instances that are applied with this rule.
@@ -8170,6 +8216,8 @@ class FirewallPolicyWithRulesPredefinedRuleArgs:
             pulumi.set(__self__, "security_profile_group", security_profile_group)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
         if tls_inspect is not None:
@@ -8321,6 +8369,30 @@ class FirewallPolicyWithRulesPredefinedRuleArgs:
         pulumi.set(self, "target_resources", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs']]]]:
+        """
+        (Output)
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target secure tags allowed is 256.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @target_secure_tags.setter
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs']]]]):
+        pulumi.set(self, "target_secure_tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetServiceAccounts")
     def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -8382,9 +8454,6 @@ if not MYPY:
         """
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
-
-
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         src_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -8408,6 +8477,15 @@ if not MYPY:
         ISO 3166 alpha-2 country codes. ex."US"
         Maximum number of source region codes allowed is 5000.
         """
+        src_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgsDict']]]]
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+        """
         src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         Names of Network Threat Intelligence lists.
@@ -8429,6 +8507,7 @@ class FirewallPolicyWithRulesPredefinedRuleMatchArgs:
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dest_address_groups: Address groups which should be matched against the traffic destination.
@@ -8445,9 +8524,6 @@ class FirewallPolicyWithRulesPredefinedRuleMatchArgs:
                The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
                Structure is documented below.
-               
-               
-               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_address_groups: Address groups which should be matched against the traffic source.
                Maximum number of source address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
@@ -8458,6 +8534,12 @@ class FirewallPolicyWithRulesPredefinedRuleMatchArgs:
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
                Maximum number of source region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source
+               of the traffic.
+               For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+               and there is no <code>srcIpRange</code>, this rule will be ignored.
+               Maximum number of source tag values allowed is 256.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -8481,6 +8563,8 @@ class FirewallPolicyWithRulesPredefinedRuleMatchArgs:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
         if src_threat_intelligences is not None:
             pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
 
@@ -8557,9 +8641,6 @@ class FirewallPolicyWithRulesPredefinedRuleMatchArgs:
         """
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
-
-
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -8620,6 +8701,23 @@ class FirewallPolicyWithRulesPredefinedRuleMatchArgs:
     @src_region_codes.setter
     def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "src_region_codes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs']]]]:
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @src_secure_tags.setter
+    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs']]]]):
+        pulumi.set(self, "src_secure_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="srcThreatIntelligences")
@@ -8721,6 +8819,140 @@ class FirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs:
 
 
 if not MYPY:
+    class FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        """
+elif False:
+    FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param pulumi.Input[_builtins.str] state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+               
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+elif False:
+    FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param pulumi.Input[_builtins.str] state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
     class FirewallPolicyWithRulesRuleArgsDict(TypedDict):
         action: pulumi.Input[_builtins.str]
         """
@@ -8779,6 +9011,21 @@ if not MYPY:
         this rule. If this field is left blank, all VMs
         within the organization will receive the rule.
         """
+        target_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleTargetSecureTagArgsDict']]]]
+        """
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target secure tags allowed is 256.
+        Structure is documented below.
+        """
         target_service_accounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         A list of service accounts indicating the sets of
@@ -8805,6 +9052,7 @@ class FirewallPolicyWithRulesRuleArgs:
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleTargetSecureTagArgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -8835,6 +9083,18 @@ class FirewallPolicyWithRulesRuleArgs:
                This field allows you to control which network's VMs get
                this rule. If this field is left blank, all VMs
                within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule
+               applies to. If <code>targetSecureTag</code> are specified, then the
+               firewall rule applies only to instances in the VPC network that have one
+               of those EFFECTIVE secure tags, if all the target_secure_tag are in
+               INEFFECTIVE state, then this rule will be ignored.
+               <code>targetSecureTag</code> may not be set at the same time as
+               <code>targetServiceAccounts</code>.
+               If neither <code>targetServiceAccounts</code> nor
+               <code>targetSecureTag</code> are specified, the firewall rule applies
+               to all instances on the specified network.
+               Maximum number of target secure tags allowed is 256.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of
                instances that are applied with this rule.
         :param pulumi.Input[_builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
@@ -8857,6 +9117,8 @@ class FirewallPolicyWithRulesRuleArgs:
             pulumi.set(__self__, "security_profile_group", security_profile_group)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
         if tls_inspect is not None:
@@ -9000,6 +9262,29 @@ class FirewallPolicyWithRulesRuleArgs:
         pulumi.set(self, "target_resources", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleTargetSecureTagArgs']]]]:
+        """
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target secure tags allowed is 256.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @target_secure_tags.setter
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleTargetSecureTagArgs']]]]):
+        pulumi.set(self, "target_secure_tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetServiceAccounts")
     def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -9032,9 +9317,6 @@ if not MYPY:
         """
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
-
-
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         dest_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -9099,6 +9381,15 @@ if not MYPY:
         ISO 3166 alpha-2 country codes. ex."US"
         Maximum number of source region codes allowed is 5000.
         """
+        src_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict']]]]
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+        """
         src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         Names of Network Threat Intelligence lists.
@@ -9123,13 +9414,11 @@ class FirewallPolicyWithRulesRuleMatchArgs:
                  src_network_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  src_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
                Structure is documented below.
-               
-               
-               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dest_address_groups: Address groups which should be matched against the traffic destination.
                Maximum number of destination address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
@@ -9157,6 +9446,12 @@ class FirewallPolicyWithRulesRuleMatchArgs:
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
                Maximum number of source region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source
+               of the traffic.
+               For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+               and there is no <code>srcIpRange</code>, this rule will be ignored.
+               Maximum number of source tag values allowed is 256.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -9185,6 +9480,8 @@ class FirewallPolicyWithRulesRuleMatchArgs:
             pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
         if src_threat_intelligences is not None:
             pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
 
@@ -9194,9 +9491,6 @@ class FirewallPolicyWithRulesRuleMatchArgs:
         """
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
-
-
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -9364,6 +9658,23 @@ class FirewallPolicyWithRulesRuleMatchArgs:
         pulumi.set(self, "src_region_codes", value)
 
     @_builtins.property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]]]:
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @src_secure_tags.setter
+    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]]]):
+        pulumi.set(self, "src_secure_tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="srcThreatIntelligences")
     def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -9459,6 +9770,140 @@ class FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs:
     @ports.setter
     def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class FirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        """
+elif False:
+    FirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param pulumi.Input[_builtins.str] state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+               
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class FirewallPolicyWithRulesRuleTargetSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+elif False:
+    FirewallPolicyWithRulesRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallPolicyWithRulesRuleTargetSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param pulumi.Input[_builtins.str] state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:
@@ -13124,13 +13569,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     ImageIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -13143,11 +13581,6 @@ class ImageIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -13181,13 +13614,6 @@ class ImageIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -13206,13 +13632,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     ImageIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -13225,11 +13644,6 @@ class ImageIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -13263,13 +13677,6 @@ class ImageIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -22683,13 +23090,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     InstanceIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -22702,11 +23102,6 @@ class InstanceIAMBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -22740,13 +23135,6 @@ class InstanceIAMBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -22765,13 +23153,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     InstanceIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -22784,11 +23165,6 @@ class InstanceIAMMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -22822,13 +23198,6 @@ class InstanceIAMMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -25977,14 +26346,6 @@ class InstanceTemplateIamMemberConditionArgs:
 if not MYPY:
     class InstanceTemplateNetworkInterfaceArgsDict(TypedDict):
         access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgsDict']]]]
-        """
-        Access configurations, i.e. IPs via which this
-        instance can be accessed via the Internet. Omit to ensure that the instance
-        is not accessible from the Internet (this means that ssh provisioners will
-        not work unless you can send traffic to the instance's
-        network (e.g. via tunnel or because it is running on another cloud instance
-        on that network). This block can be specified once per `network_interface`. Structure documented below.
-        """
         alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgsDict']]]]
         """
         An
@@ -26011,8 +26372,7 @@ if not MYPY:
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        The name of the network_interface.
         """
         network: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -26074,12 +26434,6 @@ class InstanceTemplateNetworkInterfaceArgs:
                  subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
                  subnetwork_project: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgs']]] access_configs: Access configurations, i.e. IPs via which this
-               instance can be accessed via the Internet. Omit to ensure that the instance
-               is not accessible from the Internet (this means that ssh provisioners will
-               not work unless you can send traffic to the instance's
-               network (e.g. via tunnel or because it is running on another cloud instance
-               on that network). This block can be specified once per `network_interface`. Structure documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
@@ -26089,8 +26443,7 @@ class InstanceTemplateNetworkInterfaceArgs:
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param pulumi.Input[_builtins.str] ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
         :param pulumi.Input[_builtins.str] ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-        :param pulumi.Input[_builtins.str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
+        :param pulumi.Input[_builtins.str] name: The name of the network_interface.
         :param pulumi.Input[_builtins.str] network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
@@ -26140,14 +26493,6 @@ class InstanceTemplateNetworkInterfaceArgs:
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgs']]]]:
-        """
-        Access configurations, i.e. IPs via which this
-        instance can be accessed via the Internet. Omit to ensure that the instance
-        is not accessible from the Internet (this means that ssh provisioners will
-        not work unless you can send traffic to the instance's
-        network (e.g. via tunnel or because it is running on another cloud instance
-        on that network). This block can be specified once per `network_interface`. Structure documented below.
-        """
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
@@ -26222,8 +26567,7 @@ class InstanceTemplateNetworkInterfaceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        The name of the network_interface.
         """
         return pulumi.get(self, "name")
 
@@ -26497,8 +26841,7 @@ if not MYPY:
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        The name of this access configuration.
         """
         public_ptr_domain_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -26519,8 +26862,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         :param pulumi.Input[_builtins.str] network_tier: The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
         :param pulumi.Input[_builtins.str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
         :param pulumi.Input[_builtins.str] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
-        :param pulumi.Input[_builtins.str] name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
+        :param pulumi.Input[_builtins.str] name: The name of this access configuration.
         :param pulumi.Input[_builtins.str] public_ptr_domain_name: The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
         """
         pulumi.set(__self__, "network_tier", network_tier)
@@ -26573,8 +26915,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
+        The name of this access configuration.
         """
         return pulumi.get(self, "name")
 
@@ -29969,9 +30310,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
 elif False:
     MachineImageIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -29984,7 +30322,6 @@ class MachineImageIamBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -30018,9 +30355,6 @@ class MachineImageIamBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -30039,9 +30373,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
 elif False:
     MachineImageIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -30054,7 +30385,6 @@ class MachineImageIamMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -30088,9 +30418,6 @@ class MachineImageIamMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -34525,6 +34852,75 @@ class PerInstanceConfigPreservedStateInternalIpIpAddressArgs:
     @address.setter
     def address(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "address", value)
+
+
+if not MYPY:
+    class PreviewFeatureRolloutOperationArgsDict(TypedDict):
+        rollout_input: NotRequired[pulumi.Input['PreviewFeatureRolloutOperationRolloutInputArgsDict']]
+        """
+        The input for the rollout operation.
+        Structure is documented below.
+        """
+elif False:
+    PreviewFeatureRolloutOperationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreviewFeatureRolloutOperationArgs:
+    def __init__(__self__, *,
+                 rollout_input: Optional[pulumi.Input['PreviewFeatureRolloutOperationRolloutInputArgs']] = None):
+        """
+        :param pulumi.Input['PreviewFeatureRolloutOperationRolloutInputArgs'] rollout_input: The input for the rollout operation.
+               Structure is documented below.
+        """
+        if rollout_input is not None:
+            pulumi.set(__self__, "rollout_input", rollout_input)
+
+    @_builtins.property
+    @pulumi.getter(name="rolloutInput")
+    def rollout_input(self) -> Optional[pulumi.Input['PreviewFeatureRolloutOperationRolloutInputArgs']]:
+        """
+        The input for the rollout operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rollout_input")
+
+    @rollout_input.setter
+    def rollout_input(self, value: Optional[pulumi.Input['PreviewFeatureRolloutOperationRolloutInputArgs']]):
+        pulumi.set(self, "rollout_input", value)
+
+
+if not MYPY:
+    class PreviewFeatureRolloutOperationRolloutInputArgsDict(TypedDict):
+        predefined_rollout_plan: pulumi.Input[_builtins.str]
+        """
+        Predefined rollout plans.
+        Possible values are: `ROLLOUT_PLAN_FAST_ROLLOUT`.
+        """
+elif False:
+    PreviewFeatureRolloutOperationRolloutInputArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreviewFeatureRolloutOperationRolloutInputArgs:
+    def __init__(__self__, *,
+                 predefined_rollout_plan: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] predefined_rollout_plan: Predefined rollout plans.
+               Possible values are: `ROLLOUT_PLAN_FAST_ROLLOUT`.
+        """
+        pulumi.set(__self__, "predefined_rollout_plan", predefined_rollout_plan)
+
+    @_builtins.property
+    @pulumi.getter(name="predefinedRolloutPlan")
+    def predefined_rollout_plan(self) -> pulumi.Input[_builtins.str]:
+        """
+        Predefined rollout plans.
+        Possible values are: `ROLLOUT_PLAN_FAST_ROLLOUT`.
+        """
+        return pulumi.get(self, "predefined_rollout_plan")
+
+    @predefined_rollout_plan.setter
+    def predefined_rollout_plan(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "predefined_rollout_plan", value)
 
 
 if not MYPY:
@@ -51153,20 +51549,30 @@ if not MYPY:
         The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
         Serverless NEG backends are not currently supported as a mirrored backend service.
         """
+        mirror_percent: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
 elif False:
     RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 backend_service: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 mirror_percent: Optional[pulumi.Input[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
+        :param pulumi.Input[_builtins.float] mirror_percent: The percentage of requests to be mirrored to backendService.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         if backend_service is not None:
             pulumi.set(__self__, "backend_service", backend_service)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @_builtins.property
     @pulumi.getter(name="backendService")
@@ -51181,6 +51587,19 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs:
     @backend_service.setter
     def backend_service(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "backend_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 if not MYPY:
@@ -53030,19 +53449,29 @@ if not MYPY:
         The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
         Serverless NEG backends are not currently supported as a mirrored backend service.
         """
+        mirror_percent: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
 elif False:
     RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[_builtins.str]):
+                 backend_service: pulumi.Input[_builtins.str],
+                 mirror_percent: Optional[pulumi.Input[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
+        :param pulumi.Input[_builtins.float] mirror_percent: The percentage of requests to be mirrored to backendService.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @_builtins.property
     @pulumi.getter(name="backendService")
@@ -53057,6 +53486,19 @@ class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
     @backend_service.setter
     def backend_service(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "backend_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 if not MYPY:
@@ -54725,19 +55167,29 @@ if not MYPY:
         The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
         Serverless NEG backends are not currently supported as a mirrored backend service.
         """
+        mirror_percent: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
 elif False:
     RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[_builtins.str]):
+                 backend_service: pulumi.Input[_builtins.str],
+                 mirror_percent: Optional[pulumi.Input[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
+        :param pulumi.Input[_builtins.float] mirror_percent: The percentage of requests to be mirrored to backendService.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @_builtins.property
     @pulumi.getter(name="backendService")
@@ -54752,6 +55204,19 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     @backend_service.setter
     def backend_service(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "backend_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 if not MYPY:
@@ -57522,19 +57987,29 @@ if not MYPY:
         The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
         Serverless NEG backends are not currently supported as a mirrored backend service.
         """
+        mirror_percent: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
 elif False:
     RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
-                 backend_service: pulumi.Input[_builtins.str]):
+                 backend_service: pulumi.Input[_builtins.str],
+                 mirror_percent: Optional[pulumi.Input[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
+        :param pulumi.Input[_builtins.float] mirror_percent: The percentage of requests to be mirrored to backendService.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
+        if mirror_percent is not None:
+            pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @_builtins.property
     @pulumi.getter(name="backendService")
@@ -57549,6 +58024,19 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     @backend_service.setter
     def backend_service(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "backend_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The percentage of requests to be mirrored to backendService.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "mirror_percent")
+
+    @mirror_percent.setter
+    def mirror_percent(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "mirror_percent", value)
 
 
 if not MYPY:
@@ -62499,6 +62987,44 @@ class RouterNatSubnetworkArgs:
 
 
 if not MYPY:
+    class RouterParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Resource manager tags to be bound to the router. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+elif False:
+    RouterParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouterParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the router. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the router. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+
+if not MYPY:
     class RouterPeerAdvertisedIpRangeArgsDict(TypedDict):
         range: pulumi.Input[_builtins.str]
         """
@@ -66881,13 +67407,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     SubnetworkIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -66900,11 +67419,6 @@ class SubnetworkIAMBindingConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -66938,13 +67452,6 @@ class SubnetworkIAMBindingConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -66963,13 +67470,6 @@ if not MYPY:
         A title for the expression, i.e. a short string describing its purpose.
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
 elif False:
     SubnetworkIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -66982,11 +67482,6 @@ class SubnetworkIAMMemberConditionArgs:
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -67020,13 +67515,6 @@ class SubnetworkIAMMemberConditionArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -67192,6 +67680,53 @@ class SubnetworkLogConfigArgs:
     @metadata_fields.setter
     def metadata_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata_fields", value)
+
+
+if not MYPY:
+    class SubnetworkParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Resource manager tags to be bound to the subnetwork. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+elif False:
+    SubnetworkParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SubnetworkParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the subnetwork. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the subnetwork. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 if not MYPY:

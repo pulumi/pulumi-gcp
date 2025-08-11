@@ -87,6 +87,63 @@ import (
 //	}
 //
 // ```
+// ### Oracledatabase Cloud Vmcluster Odbnetwork
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cloudExadataInfrastructures, err := oracledatabase.NewCloudExadataInfrastructure(ctx, "cloudExadataInfrastructures", &oracledatabase.CloudExadataInfrastructureArgs{
+//				CloudExadataInfrastructureId: pulumi.String("my-exadata"),
+//				DisplayName:                  pulumi.String("my-exadata displayname"),
+//				Location:                     pulumi.String("europe-west2"),
+//				Project:                      pulumi.String("my-project"),
+//				Properties: &oracledatabase.CloudExadataInfrastructurePropertiesArgs{
+//					Shape:        pulumi.String("Exadata.X9M"),
+//					ComputeCount: pulumi.Int(2),
+//					StorageCount: pulumi.Int(3),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oracledatabase.NewCloudVmCluster(ctx, "my_vmcluster", &oracledatabase.CloudVmClusterArgs{
+//				CloudVmClusterId:      pulumi.String("my-instance"),
+//				DisplayName:           pulumi.String("my-instance displayname"),
+//				Location:              pulumi.String("europe-west2"),
+//				Project:               pulumi.String("my-project"),
+//				ExadataInfrastructure: cloudExadataInfrastructures.ID(),
+//				OdbNetwork:            pulumi.String("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork"),
+//				OdbSubnet:             pulumi.String("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"),
+//				BackupOdbSubnet:       pulumi.String("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet"),
+//				Properties: &oracledatabase.CloudVmClusterPropertiesArgs{
+//					LicenseType: pulumi.String("LICENSE_INCLUDED"),
+//					SshPublicKeys: pulumi.StringArray{
+//						pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"),
+//					},
+//					CpuCoreCount:   pulumi.Int(4),
+//					GiVersion:      pulumi.String("19.0.0.0"),
+//					HostnamePrefix: pulumi.String("hostname1"),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Oracledatabase Cloud Vmcluster Full
 //
 // ```go
@@ -212,10 +269,14 @@ import (
 type CloudVmCluster struct {
 	pulumi.CustomResourceState
 
+	// The name of the backup OdbSubnet associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	BackupOdbSubnet pulumi.StringPtrOutput `pulumi:"backupOdbSubnet"`
 	// CIDR range of the backup subnet.
-	BackupSubnetCidr pulumi.StringOutput `pulumi:"backupSubnetCidr"`
+	BackupSubnetCidr pulumi.StringPtrOutput `pulumi:"backupSubnetCidr"`
 	// Network settings. CIDR to use for cluster IP allocation.
-	Cidr pulumi.StringOutput `pulumi:"cidr"`
+	Cidr pulumi.StringPtrOutput `pulumi:"cidr"`
 	// The ID of the VM Cluster to create. This value is restricted
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
@@ -246,7 +307,17 @@ type CloudVmCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
-	Network pulumi.StringOutput `pulumi:"network"`
+	Network pulumi.StringPtrOutput `pulumi:"network"`
+	// The name of the OdbNetwork associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork pulumi.StringPtrOutput `pulumi:"odbNetwork"`
+	// The name of the OdbSubnet associated with the VM Cluster for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet pulumi.StringPtrOutput `pulumi:"odbSubnet"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -265,12 +336,6 @@ func NewCloudVmCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BackupSubnetCidr == nil {
-		return nil, errors.New("invalid value for required argument 'BackupSubnetCidr'")
-	}
-	if args.Cidr == nil {
-		return nil, errors.New("invalid value for required argument 'Cidr'")
-	}
 	if args.CloudVmClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'CloudVmClusterId'")
 	}
@@ -279,9 +344,6 @@ func NewCloudVmCluster(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Network == nil {
-		return nil, errors.New("invalid value for required argument 'Network'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
@@ -311,6 +373,10 @@ func GetCloudVmCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudVmCluster resources.
 type cloudVmClusterState struct {
+	// The name of the backup OdbSubnet associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	BackupOdbSubnet *string `pulumi:"backupOdbSubnet"`
 	// CIDR range of the backup subnet.
 	BackupSubnetCidr *string `pulumi:"backupSubnetCidr"`
 	// Network settings. CIDR to use for cluster IP allocation.
@@ -346,6 +412,16 @@ type cloudVmClusterState struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network *string `pulumi:"network"`
+	// The name of the OdbNetwork associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork *string `pulumi:"odbNetwork"`
+	// The name of the OdbSubnet associated with the VM Cluster for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet *string `pulumi:"odbSubnet"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -358,6 +434,10 @@ type cloudVmClusterState struct {
 }
 
 type CloudVmClusterState struct {
+	// The name of the backup OdbSubnet associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	BackupOdbSubnet pulumi.StringPtrInput
 	// CIDR range of the backup subnet.
 	BackupSubnetCidr pulumi.StringPtrInput
 	// Network settings. CIDR to use for cluster IP allocation.
@@ -393,6 +473,16 @@ type CloudVmClusterState struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringPtrInput
+	// The name of the OdbNetwork associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork pulumi.StringPtrInput
+	// The name of the OdbSubnet associated with the VM Cluster for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -409,10 +499,14 @@ func (CloudVmClusterState) ElementType() reflect.Type {
 }
 
 type cloudVmClusterArgs struct {
+	// The name of the backup OdbSubnet associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	BackupOdbSubnet *string `pulumi:"backupOdbSubnet"`
 	// CIDR range of the backup subnet.
-	BackupSubnetCidr string `pulumi:"backupSubnetCidr"`
+	BackupSubnetCidr *string `pulumi:"backupSubnetCidr"`
 	// Network settings. CIDR to use for cluster IP allocation.
-	Cidr string `pulumi:"cidr"`
+	Cidr *string `pulumi:"cidr"`
 	// The ID of the VM Cluster to create. This value is restricted
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
@@ -433,7 +527,17 @@ type cloudVmClusterArgs struct {
 	Location string `pulumi:"location"`
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
-	Network string `pulumi:"network"`
+	Network *string `pulumi:"network"`
+	// The name of the OdbNetwork associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork *string `pulumi:"odbNetwork"`
+	// The name of the OdbSubnet associated with the VM Cluster for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet *string `pulumi:"odbSubnet"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -444,10 +548,14 @@ type cloudVmClusterArgs struct {
 
 // The set of arguments for constructing a CloudVmCluster resource.
 type CloudVmClusterArgs struct {
+	// The name of the backup OdbSubnet associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	BackupOdbSubnet pulumi.StringPtrInput
 	// CIDR range of the backup subnet.
-	BackupSubnetCidr pulumi.StringInput
+	BackupSubnetCidr pulumi.StringPtrInput
 	// Network settings. CIDR to use for cluster IP allocation.
-	Cidr pulumi.StringInput
+	Cidr pulumi.StringPtrInput
 	// The ID of the VM Cluster to create. This value is restricted
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
@@ -468,7 +576,17 @@ type CloudVmClusterArgs struct {
 	Location pulumi.StringInput
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
-	Network pulumi.StringInput
+	Network pulumi.StringPtrInput
+	// The name of the OdbNetwork associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork pulumi.StringPtrInput
+	// The name of the OdbSubnet associated with the VM Cluster for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -564,14 +682,21 @@ func (o CloudVmClusterOutput) ToCloudVmClusterOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The name of the backup OdbSubnet associated with the VM Cluster.
+// Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+func (o CloudVmClusterOutput) BackupOdbSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.BackupOdbSubnet }).(pulumi.StringPtrOutput)
+}
+
 // CIDR range of the backup subnet.
-func (o CloudVmClusterOutput) BackupSubnetCidr() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.BackupSubnetCidr }).(pulumi.StringOutput)
+func (o CloudVmClusterOutput) BackupSubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.BackupSubnetCidr }).(pulumi.StringPtrOutput)
 }
 
 // Network settings. CIDR to use for cluster IP allocation.
-func (o CloudVmClusterOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
+func (o CloudVmClusterOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.Cidr }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the VM Cluster to create. This value is restricted
@@ -634,8 +759,24 @@ func (o CloudVmClusterOutput) Name() pulumi.StringOutput {
 
 // The name of the VPC network.
 // Format: projects/{project}/global/networks/{network}
-func (o CloudVmClusterOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+func (o CloudVmClusterOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OdbNetwork associated with the VM Cluster.
+// Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+// It is optional but if specified, this should match the parent ODBNetwork of
+// the odbSubnet and backup_odb_subnet.
+func (o CloudVmClusterOutput) OdbNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.OdbNetwork }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OdbSubnet associated with the VM Cluster for
+// IP allocation. Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+func (o CloudVmClusterOutput) OdbSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.OdbSubnet }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

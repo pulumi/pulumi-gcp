@@ -46,8 +46,6 @@ class TableIamBindingArgs:
         :param pulumi.Input[_builtins.str] table: The name or relative resource id of the table to manage IAM policies for.
                
                For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
-        :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
-               is not provided, this provider will use the provider default.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "members", members)
@@ -131,10 +129,6 @@ class TableIamBindingArgs:
     @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The project in which the table belongs. If it
-        is not provided, this provider will use the provider default.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -164,8 +158,6 @@ class _TableIamBindingState:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
-               is not provided, this provider will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -245,10 +237,6 @@ class _TableIamBindingState:
     @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The project in which the table belongs. If it
-        is not provided, this provider will use the provider default.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -433,8 +421,6 @@ class TableIamBinding(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
-               is not provided, this provider will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -652,8 +638,6 @@ class TableIamBinding(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
-               is not provided, this provider will use the provider default.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -715,10 +699,6 @@ class TableIamBinding(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
-        """
-        The project in which the table belongs. If it
-        is not provided, this provider will use the provider default.
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property

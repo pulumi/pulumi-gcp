@@ -45,6 +45,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         /// </summary>
         public readonly string? PodRange;
+        /// <summary>
+        /// The name or self_link of the Google Compute Engine
+        /// subnetwork in which the cluster's instances are launched.
+        /// </summary>
+        public readonly string? Subnetwork;
 
         [OutputConstructor]
         private ClusterNodePoolNetworkConfig(
@@ -62,7 +67,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? podIpv4CidrBlock,
 
-            string? podRange)
+            string? podRange,
+
+            string? subnetwork)
         {
             AdditionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
@@ -72,6 +79,7 @@ namespace Pulumi.Gcp.Container.Outputs
             PodCidrOverprovisionConfig = podCidrOverprovisionConfig;
             PodIpv4CidrBlock = podIpv4CidrBlock;
             PodRange = podRange;
+            Subnetwork = subnetwork;
         }
     }
 }

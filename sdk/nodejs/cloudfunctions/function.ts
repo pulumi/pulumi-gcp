@@ -146,6 +146,10 @@ export class Function extends pulumi.CustomResource {
     }
 
     /**
+     * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+     */
+    public readonly automaticUpdatePolicy!: pulumi.Output<outputs.cloudfunctions.FunctionAutomaticUpdatePolicy>;
+    /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      */
     public readonly availableMemoryMb!: pulumi.Output<number | undefined>;
@@ -229,6 +233,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+     */
+    public readonly onDeployUpdatePolicy!: pulumi.Output<outputs.cloudfunctions.FunctionOnDeployUpdatePolicy | undefined>;
+    /**
      * Project of the function. If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
@@ -311,6 +319,7 @@ export class Function extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
+            resourceInputs["automaticUpdatePolicy"] = state ? state.automaticUpdatePolicy : undefined;
             resourceInputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
             resourceInputs["buildServiceAccount"] = state ? state.buildServiceAccount : undefined;
@@ -330,6 +339,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["maxInstances"] = state ? state.maxInstances : undefined;
             resourceInputs["minInstances"] = state ? state.minInstances : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["onDeployUpdatePolicy"] = state ? state.onDeployUpdatePolicy : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -351,6 +361,7 @@ export class Function extends pulumi.CustomResource {
             if ((!args || args.runtime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
+            resourceInputs["automaticUpdatePolicy"] = args ? args.automaticUpdatePolicy : undefined;
             resourceInputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
             resourceInputs["buildServiceAccount"] = args ? args.buildServiceAccount : undefined;
@@ -369,6 +380,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["maxInstances"] = args ? args.maxInstances : undefined;
             resourceInputs["minInstances"] = args ? args.minInstances : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["onDeployUpdatePolicy"] = args ? args.onDeployUpdatePolicy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["runtime"] = args ? args.runtime : undefined;
@@ -398,6 +410,10 @@ export class Function extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Function resources.
  */
 export interface FunctionState {
+    /**
+     * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+     */
+    automaticUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionAutomaticUpdatePolicy>;
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      */
@@ -482,6 +498,10 @@ export interface FunctionState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+     */
+    onDeployUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionOnDeployUpdatePolicy>;
+    /**
      * Project of the function. If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
@@ -556,6 +576,10 @@ export interface FunctionState {
  * The set of arguments for constructing a Function resource.
  */
 export interface FunctionArgs {
+    /**
+     * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
+     */
+    automaticUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionAutomaticUpdatePolicy>;
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      */
@@ -635,6 +659,10 @@ export interface FunctionArgs {
      * A user-defined name of the function. Function names must be unique globally.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
+     */
+    onDeployUpdatePolicy?: pulumi.Input<inputs.cloudfunctions.FunctionOnDeployUpdatePolicy>;
     /**
      * Project of the function. If it is not provided, the provider project is used.
      */

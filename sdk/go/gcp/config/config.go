@@ -403,6 +403,9 @@ func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
 func GetModelArmorCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:modelArmorCustomEndpoint")
 }
+func GetModelArmorGlobalCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:modelArmorGlobalCustomEndpoint")
+}
 func GetMonitoringCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:monitoringCustomEndpoint")
 }

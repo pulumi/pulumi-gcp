@@ -20,11 +20,6 @@ import (
 // * How-to Guides
 //   - [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 //
-// > **Warning:** Due to limitations of the API, this provider cannot update the
-// number of nodes in a node group and changes to node group size either
-// through provider config or through external changes will cause
-// the provider to delete and recreate the node group.
-//
 // ## Example Usage
 //
 // ### Node Group Basic
@@ -51,8 +46,8 @@ import (
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Name:         pulumi.String("soletenant-group"),
-//				Zone:         pulumi.String("us-central1-a"),
-//				Description:  pulumi.String("example google_compute_node_group for the Google Provider"),
+//				Zone:         pulumi.String("us-central1-f"),
+//				Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				InitialSize:  pulumi.Int(1),
 //				NodeTemplate: soletenant_tmpl.ID(),
 //			})
@@ -126,8 +121,8 @@ import (
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 //				Name:              pulumi.String("soletenant-group"),
-//				Zone:              pulumi.String("us-central1-a"),
-//				Description:       pulumi.String("example google_compute_node_group for Google Provider"),
+//				Zone:              pulumi.String("us-central1-f"),
+//				Description:       pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				MaintenancePolicy: pulumi.String("RESTART_IN_PLACE"),
 //				MaintenanceWindow: &compute.NodeGroupMaintenanceWindowArgs{
 //					StartTime: pulumi.String("08:00"),

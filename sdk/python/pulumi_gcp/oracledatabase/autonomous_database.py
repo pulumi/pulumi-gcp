@@ -22,15 +22,17 @@ __all__ = ['AutonomousDatabaseArgs', 'AutonomousDatabase']
 class AutonomousDatabaseArgs:
     def __init__(__self__, *,
                  autonomous_database_id: pulumi.Input[_builtins.str],
-                 cidr: pulumi.Input[_builtins.str],
                  database: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 network: pulumi.Input[_builtins.str],
                  properties: pulumi.Input['AutonomousDatabasePropertiesArgs'],
                  admin_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network: Optional[pulumi.Input[_builtins.str]] = None,
+                 odb_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutonomousDatabase resource.
@@ -38,38 +40,52 @@ class AutonomousDatabaseArgs:
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-        :param pulumi.Input[_builtins.str] cidr: The subnet CIDR range for the Autonmous Database.
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
-        :param pulumi.Input[_builtins.str] network: The name of the VPC network used by the Autonomous Database.
-               Format: projects/{project}/global/networks/{network}
         :param pulumi.Input['AutonomousDatabasePropertiesArgs'] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] admin_password: The password for the default ADMIN user.
+        :param pulumi.Input[_builtins.str] cidr: The subnet CIDR range for the Autonmous Database.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels or tags associated with the Autonomous Database.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[_builtins.str] network: The name of the VPC network used by the Autonomous Database.
+               Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[_builtins.str] odb_network: The name of the OdbNetwork associated with the Autonomous Database.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}
+               It is optional but if specified, this should match the parent ODBNetwork of
+               the odb_subnet and backup_odb_subnet.
+        :param pulumi.Input[_builtins.str] odb_subnet: The name of the OdbSubnet associated with the Autonomous Database for
+               IP allocation. Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "autonomous_database_id", autonomous_database_id)
-        pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "properties", properties)
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if odb_network is not None:
+            pulumi.set(__self__, "odb_network", odb_network)
+        if odb_subnet is not None:
+            pulumi.set(__self__, "odb_subnet", odb_subnet)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -87,18 +103,6 @@ class AutonomousDatabaseArgs:
     @autonomous_database_id.setter
     def autonomous_database_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "autonomous_database_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def cidr(self) -> pulumi.Input[_builtins.str]:
-        """
-        The subnet CIDR range for the Autonmous Database.
-        """
-        return pulumi.get(self, "cidr")
-
-    @cidr.setter
-    def cidr(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter
@@ -128,19 +132,6 @@ class AutonomousDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the VPC network used by the Autonomous Database.
-        Format: projects/{project}/global/networks/{network}
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network", value)
-
-    @_builtins.property
-    @pulumi.getter
     def properties(self) -> pulumi.Input['AutonomousDatabasePropertiesArgs']:
         """
         The properties of an Autonomous Database.
@@ -163,6 +154,18 @@ class AutonomousDatabaseArgs:
     @admin_password.setter
     def admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "admin_password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The subnet CIDR range for the Autonmous Database.
+        """
+        return pulumi.get(self, "cidr")
+
+    @cidr.setter
+    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -202,6 +205,49 @@ class AutonomousDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the VPC network used by the Autonomous Database.
+        Format: projects/{project}/global/networks/{network}
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="odbNetwork")
+    def odb_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the OdbNetwork associated with the Autonomous Database.
+        Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        It is optional but if specified, this should match the parent ODBNetwork of
+        the odb_subnet and backup_odb_subnet.
+        """
+        return pulumi.get(self, "odb_network")
+
+    @odb_network.setter
+    def odb_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "odb_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="odbSubnet")
+    def odb_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the OdbSubnet associated with the Autonomous Database for
+        IP allocation. Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        """
+        return pulumi.get(self, "odb_subnet")
+
+    @odb_subnet.setter
+    def odb_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "odb_subnet", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -230,6 +276,8 @@ class _AutonomousDatabaseState:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 odb_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input['AutonomousDatabasePropertiesArgs']] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
@@ -258,6 +306,14 @@ class _AutonomousDatabaseState:
                projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
         :param pulumi.Input[_builtins.str] network: The name of the VPC network used by the Autonomous Database.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[_builtins.str] odb_network: The name of the OdbNetwork associated with the Autonomous Database.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}
+               It is optional but if specified, this should match the parent ODBNetwork of
+               the odb_subnet and backup_odb_subnet.
+        :param pulumi.Input[_builtins.str] odb_subnet: The name of the OdbSubnet associated with the Autonomous Database for
+               IP allocation. Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['AutonomousDatabasePropertiesArgs'] properties: The properties of an Autonomous Database.
@@ -291,6 +347,10 @@ class _AutonomousDatabaseState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if odb_network is not None:
+            pulumi.set(__self__, "odb_network", odb_network)
+        if odb_subnet is not None:
+            pulumi.set(__self__, "odb_subnet", odb_subnet)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if properties is not None:
@@ -463,6 +523,36 @@ class _AutonomousDatabaseState:
         pulumi.set(self, "network", value)
 
     @_builtins.property
+    @pulumi.getter(name="odbNetwork")
+    def odb_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the OdbNetwork associated with the Autonomous Database.
+        Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        It is optional but if specified, this should match the parent ODBNetwork of
+        the odb_subnet and backup_odb_subnet.
+        """
+        return pulumi.get(self, "odb_network")
+
+    @odb_network.setter
+    def odb_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "odb_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="odbSubnet")
+    def odb_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the OdbSubnet associated with the Autonomous Database for
+        IP allocation. Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        """
+        return pulumi.get(self, "odb_subnet")
+
+    @odb_subnet.setter
+    def odb_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "odb_subnet", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -517,6 +607,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 odb_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
                  __props__=None):
@@ -599,6 +691,51 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+        ### Oracledatabase Autonomous Database Odbnetwork
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
+            autonomous_database_id="my-instance",
+            location="europe-west2",
+            project="my-project",
+            database="mydatabase",
+            admin_password="123Abpassword",
+            odb_network="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+            odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+            properties={
+                "compute_count": 2,
+                "data_storage_size_tb": 1,
+                "db_version": "19c",
+                "db_workload": "OLTP",
+                "license_type": "LICENSE_INCLUDED",
+            },
+            deletion_protection=True)
+        ```
+        ### Oracledatabase Autonomous Database Publicip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
+            autonomous_database_id="my-instance",
+            location="europe-west2",
+            project="my-project",
+            database="mydatabase",
+            admin_password="123Abpassword",
+            properties={
+                "compute_count": 2,
+                "data_storage_size_tb": 1,
+                "db_version": "19c",
+                "db_workload": "OLTP",
+                "license_type": "LICENSE_INCLUDED",
+                "mtls_connection_required": True,
+            },
+            deletion_protection=True)
+        ```
 
         ## Import
 
@@ -643,6 +780,14 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
         :param pulumi.Input[_builtins.str] network: The name of the VPC network used by the Autonomous Database.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[_builtins.str] odb_network: The name of the OdbNetwork associated with the Autonomous Database.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}
+               It is optional but if specified, this should match the parent ODBNetwork of
+               the odb_subnet and backup_odb_subnet.
+        :param pulumi.Input[_builtins.str] odb_subnet: The name of the OdbSubnet associated with the Autonomous Database for
+               IP allocation. Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
@@ -733,6 +878,51 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+        ### Oracledatabase Autonomous Database Odbnetwork
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
+            autonomous_database_id="my-instance",
+            location="europe-west2",
+            project="my-project",
+            database="mydatabase",
+            admin_password="123Abpassword",
+            odb_network="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+            odb_subnet="projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+            properties={
+                "compute_count": 2,
+                "data_storage_size_tb": 1,
+                "db_version": "19c",
+                "db_workload": "OLTP",
+                "license_type": "LICENSE_INCLUDED",
+            },
+            deletion_protection=True)
+        ```
+        ### Oracledatabase Autonomous Database Publicip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_adb = gcp.oracledatabase.AutonomousDatabase("myADB",
+            autonomous_database_id="my-instance",
+            location="europe-west2",
+            project="my-project",
+            database="mydatabase",
+            admin_password="123Abpassword",
+            properties={
+                "compute_count": 2,
+                "data_storage_size_tb": 1,
+                "db_version": "19c",
+                "db_workload": "OLTP",
+                "license_type": "LICENSE_INCLUDED",
+                "mtls_connection_required": True,
+            },
+            deletion_protection=True)
+        ```
 
         ## Import
 
@@ -782,6 +972,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 odb_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
                  __props__=None):
@@ -797,8 +989,6 @@ class AutonomousDatabase(pulumi.CustomResource):
             if autonomous_database_id is None and not opts.urn:
                 raise TypeError("Missing required property 'autonomous_database_id'")
             __props__.__dict__["autonomous_database_id"] = autonomous_database_id
-            if cidr is None and not opts.urn:
-                raise TypeError("Missing required property 'cidr'")
             __props__.__dict__["cidr"] = cidr
             if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
@@ -809,9 +999,9 @@ class AutonomousDatabase(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if network is None and not opts.urn:
-                raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            __props__.__dict__["odb_network"] = odb_network
+            __props__.__dict__["odb_subnet"] = odb_subnet
             __props__.__dict__["project"] = project
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")
@@ -846,6 +1036,8 @@ class AutonomousDatabase(pulumi.CustomResource):
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
+            odb_network: Optional[pulumi.Input[_builtins.str]] = None,
+            odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             properties: Optional[pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'AutonomousDatabase':
@@ -879,6 +1071,14 @@ class AutonomousDatabase(pulumi.CustomResource):
                projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
         :param pulumi.Input[_builtins.str] network: The name of the VPC network used by the Autonomous Database.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[_builtins.str] odb_network: The name of the OdbNetwork associated with the Autonomous Database.
+               Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}
+               It is optional but if specified, this should match the parent ODBNetwork of
+               the odb_subnet and backup_odb_subnet.
+        :param pulumi.Input[_builtins.str] odb_subnet: The name of the OdbSubnet associated with the Autonomous Database for
+               IP allocation. Format:
+               projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
@@ -903,6 +1103,8 @@ class AutonomousDatabase(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["odb_network"] = odb_network
+        __props__.__dict__["odb_subnet"] = odb_subnet
         __props__.__dict__["project"] = project
         __props__.__dict__["properties"] = properties
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -929,7 +1131,7 @@ class AutonomousDatabase(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> pulumi.Output[_builtins.str]:
+    def cidr(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The subnet CIDR range for the Autonmous Database.
         """
@@ -1013,12 +1215,34 @@ class AutonomousDatabase(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> pulumi.Output[_builtins.str]:
+    def network(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The name of the VPC network used by the Autonomous Database.
         Format: projects/{project}/global/networks/{network}
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="odbNetwork")
+    def odb_network(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the OdbNetwork associated with the Autonomous Database.
+        Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        It is optional but if specified, this should match the parent ODBNetwork of
+        the odb_subnet and backup_odb_subnet.
+        """
+        return pulumi.get(self, "odb_network")
+
+    @_builtins.property
+    @pulumi.getter(name="odbSubnet")
+    def odb_subnet(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the OdbSubnet associated with the Autonomous Database for
+        IP allocation. Format:
+        projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        """
+        return pulumi.get(self, "odb_subnet")
 
     @_builtins.property
     @pulumi.getter

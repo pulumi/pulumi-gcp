@@ -77,6 +77,57 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// ### Oracledatabase Cloud Vmcluster Odbnetwork
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cloudExadataInfrastructures = new Gcp.OracleDatabase.CloudExadataInfrastructure("cloudExadataInfrastructures", new()
+    ///     {
+    ///         CloudExadataInfrastructureId = "my-exadata",
+    ///         DisplayName = "my-exadata displayname",
+    ///         Location = "europe-west2",
+    ///         Project = "my-project",
+    ///         Properties = new Gcp.OracleDatabase.Inputs.CloudExadataInfrastructurePropertiesArgs
+    ///         {
+    ///             Shape = "Exadata.X9M",
+    ///             ComputeCount = 2,
+    ///             StorageCount = 3,
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var myVmcluster = new Gcp.OracleDatabase.CloudVmCluster("my_vmcluster", new()
+    ///     {
+    ///         CloudVmClusterId = "my-instance",
+    ///         DisplayName = "my-instance displayname",
+    ///         Location = "europe-west2",
+    ///         Project = "my-project",
+    ///         ExadataInfrastructure = cloudExadataInfrastructures.Id,
+    ///         OdbNetwork = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+    ///         OdbSubnet = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+    ///         BackupOdbSubnet = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet",
+    ///         Properties = new Gcp.OracleDatabase.Inputs.CloudVmClusterPropertiesArgs
+    ///         {
+    ///             LicenseType = "LICENSE_INCLUDED",
+    ///             SshPublicKeys = new[]
+    ///             {
+    ///                 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com",
+    ///             },
+    ///             CpuCoreCount = 4,
+    ///             GiVersion = "19.0.0.0",
+    ///             HostnamePrefix = "hostname1",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Oracledatabase Cloud Vmcluster Full
     /// 
     /// ```csharp
@@ -198,16 +249,24 @@ namespace Pulumi.Gcp.OracleDatabase
     public partial class CloudVmCluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the backup OdbSubnet associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Output("backupOdbSubnet")]
+        public Output<string?> BackupOdbSubnet { get; private set; } = null!;
+
+        /// <summary>
         /// CIDR range of the backup subnet.
         /// </summary>
         [Output("backupSubnetCidr")]
-        public Output<string> BackupSubnetCidr { get; private set; } = null!;
+        public Output<string?> BackupSubnetCidr { get; private set; } = null!;
 
         /// <summary>
         /// Network settings. CIDR to use for cluster IP allocation.
         /// </summary>
         [Output("cidr")]
-        public Output<string> Cidr { get; private set; } = null!;
+        public Output<string?> Cidr { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VM Cluster to create. This value is restricted
@@ -280,7 +339,25 @@ namespace Pulumi.Gcp.OracleDatabase
         /// Format: projects/{project}/global/networks/{network}
         /// </summary>
         [Output("network")]
-        public Output<string> Network { get; private set; } = null!;
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the OdbNetwork associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        /// It is optional but if specified, this should match the parent ODBNetwork of
+        /// the odb_subnet and backup_odb_subnet.
+        /// </summary>
+        [Output("odbNetwork")]
+        public Output<string?> OdbNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the OdbSubnet associated with the VM Cluster for
+        /// IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Output("odbSubnet")]
+        public Output<string?> OdbSubnet { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -355,16 +432,24 @@ namespace Pulumi.Gcp.OracleDatabase
     public sealed class CloudVmClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the backup OdbSubnet associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Input("backupOdbSubnet")]
+        public Input<string>? BackupOdbSubnet { get; set; }
+
+        /// <summary>
         /// CIDR range of the backup subnet.
         /// </summary>
-        [Input("backupSubnetCidr", required: true)]
-        public Input<string> BackupSubnetCidr { get; set; } = null!;
+        [Input("backupSubnetCidr")]
+        public Input<string>? BackupSubnetCidr { get; set; }
 
         /// <summary>
         /// Network settings. CIDR to use for cluster IP allocation.
         /// </summary>
-        [Input("cidr", required: true)]
-        public Input<string> Cidr { get; set; } = null!;
+        [Input("cidr")]
+        public Input<string>? Cidr { get; set; }
 
         /// <summary>
         /// The ID of the VM Cluster to create. This value is restricted
@@ -416,8 +501,26 @@ namespace Pulumi.Gcp.OracleDatabase
         /// The name of the VPC network.
         /// Format: projects/{project}/global/networks/{network}
         /// </summary>
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The name of the OdbNetwork associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        /// It is optional but if specified, this should match the parent ODBNetwork of
+        /// the odb_subnet and backup_odb_subnet.
+        /// </summary>
+        [Input("odbNetwork")]
+        public Input<string>? OdbNetwork { get; set; }
+
+        /// <summary>
+        /// The name of the OdbSubnet associated with the VM Cluster for
+        /// IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Input("odbSubnet")]
+        public Input<string>? OdbSubnet { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -441,6 +544,14 @@ namespace Pulumi.Gcp.OracleDatabase
 
     public sealed class CloudVmClusterState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the backup OdbSubnet associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Input("backupOdbSubnet")]
+        public Input<string>? BackupOdbSubnet { get; set; }
+
         /// <summary>
         /// CIDR range of the backup subnet.
         /// </summary>
@@ -541,6 +652,24 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The name of the OdbNetwork associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        /// It is optional but if specified, this should match the parent ODBNetwork of
+        /// the odb_subnet and backup_odb_subnet.
+        /// </summary>
+        [Input("odbNetwork")]
+        public Input<string>? OdbNetwork { get; set; }
+
+        /// <summary>
+        /// The name of the OdbSubnet associated with the VM Cluster for
+        /// IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Input("odbSubnet")]
+        public Input<string>? OdbSubnet { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

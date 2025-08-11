@@ -598,7 +598,7 @@ class Node(pulumi.CustomResource):
             zone="us-central1-b",
             accelerator_type="v3-8",
             tensorflow_version=available.versions[0],
-            description="Google Provider test TPU",
+            description="Terraform Google Provider test TPU",
             use_service_networking=True,
             network=private_service_connection.network,
             labels={
@@ -726,7 +726,7 @@ class Node(pulumi.CustomResource):
             zone="us-central1-b",
             accelerator_type="v3-8",
             tensorflow_version=available.versions[0],
-            description="Google Provider test TPU",
+            description="Terraform Google Provider test TPU",
             use_service_networking=True,
             network=private_service_connection.network,
             labels={

@@ -13,6 +13,124 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type FunctionAutomaticUpdatePolicy struct {
+}
+
+// FunctionAutomaticUpdatePolicyInput is an input type that accepts FunctionAutomaticUpdatePolicyArgs and FunctionAutomaticUpdatePolicyOutput values.
+// You can construct a concrete instance of `FunctionAutomaticUpdatePolicyInput` via:
+//
+//	FunctionAutomaticUpdatePolicyArgs{...}
+type FunctionAutomaticUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToFunctionAutomaticUpdatePolicyOutput() FunctionAutomaticUpdatePolicyOutput
+	ToFunctionAutomaticUpdatePolicyOutputWithContext(context.Context) FunctionAutomaticUpdatePolicyOutput
+}
+
+type FunctionAutomaticUpdatePolicyArgs struct {
+}
+
+func (FunctionAutomaticUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i FunctionAutomaticUpdatePolicyArgs) ToFunctionAutomaticUpdatePolicyOutput() FunctionAutomaticUpdatePolicyOutput {
+	return i.ToFunctionAutomaticUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i FunctionAutomaticUpdatePolicyArgs) ToFunctionAutomaticUpdatePolicyOutputWithContext(ctx context.Context) FunctionAutomaticUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAutomaticUpdatePolicyOutput)
+}
+
+func (i FunctionAutomaticUpdatePolicyArgs) ToFunctionAutomaticUpdatePolicyPtrOutput() FunctionAutomaticUpdatePolicyPtrOutput {
+	return i.ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionAutomaticUpdatePolicyArgs) ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionAutomaticUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAutomaticUpdatePolicyOutput).ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// FunctionAutomaticUpdatePolicyPtrInput is an input type that accepts FunctionAutomaticUpdatePolicyArgs, FunctionAutomaticUpdatePolicyPtr and FunctionAutomaticUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `FunctionAutomaticUpdatePolicyPtrInput` via:
+//
+//	        FunctionAutomaticUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type FunctionAutomaticUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToFunctionAutomaticUpdatePolicyPtrOutput() FunctionAutomaticUpdatePolicyPtrOutput
+	ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(context.Context) FunctionAutomaticUpdatePolicyPtrOutput
+}
+
+type functionAutomaticUpdatePolicyPtrType FunctionAutomaticUpdatePolicyArgs
+
+func FunctionAutomaticUpdatePolicyPtr(v *FunctionAutomaticUpdatePolicyArgs) FunctionAutomaticUpdatePolicyPtrInput {
+	return (*functionAutomaticUpdatePolicyPtrType)(v)
+}
+
+func (*functionAutomaticUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i *functionAutomaticUpdatePolicyPtrType) ToFunctionAutomaticUpdatePolicyPtrOutput() FunctionAutomaticUpdatePolicyPtrOutput {
+	return i.ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *functionAutomaticUpdatePolicyPtrType) ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionAutomaticUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionAutomaticUpdatePolicyPtrOutput)
+}
+
+type FunctionAutomaticUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (FunctionAutomaticUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o FunctionAutomaticUpdatePolicyOutput) ToFunctionAutomaticUpdatePolicyOutput() FunctionAutomaticUpdatePolicyOutput {
+	return o
+}
+
+func (o FunctionAutomaticUpdatePolicyOutput) ToFunctionAutomaticUpdatePolicyOutputWithContext(ctx context.Context) FunctionAutomaticUpdatePolicyOutput {
+	return o
+}
+
+func (o FunctionAutomaticUpdatePolicyOutput) ToFunctionAutomaticUpdatePolicyPtrOutput() FunctionAutomaticUpdatePolicyPtrOutput {
+	return o.ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionAutomaticUpdatePolicyOutput) ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionAutomaticUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionAutomaticUpdatePolicy) *FunctionAutomaticUpdatePolicy {
+		return &v
+	}).(FunctionAutomaticUpdatePolicyPtrOutput)
+}
+
+type FunctionAutomaticUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionAutomaticUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o FunctionAutomaticUpdatePolicyPtrOutput) ToFunctionAutomaticUpdatePolicyPtrOutput() FunctionAutomaticUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o FunctionAutomaticUpdatePolicyPtrOutput) ToFunctionAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionAutomaticUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o FunctionAutomaticUpdatePolicyPtrOutput) Elem() FunctionAutomaticUpdatePolicyOutput {
+	return o.ApplyT(func(v *FunctionAutomaticUpdatePolicy) FunctionAutomaticUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionAutomaticUpdatePolicy
+		return ret
+	}).(FunctionAutomaticUpdatePolicyOutput)
+}
+
 type FunctionEventTrigger struct {
 	// The type of event to observe. For example: `"google.storage.object.finalize"`.
 	// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
@@ -663,6 +781,143 @@ func (o FunctionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type FunctionOnDeployUpdatePolicy struct {
+	// The runtime version which was used during latest function deployment.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+}
+
+// FunctionOnDeployUpdatePolicyInput is an input type that accepts FunctionOnDeployUpdatePolicyArgs and FunctionOnDeployUpdatePolicyOutput values.
+// You can construct a concrete instance of `FunctionOnDeployUpdatePolicyInput` via:
+//
+//	FunctionOnDeployUpdatePolicyArgs{...}
+type FunctionOnDeployUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToFunctionOnDeployUpdatePolicyOutput() FunctionOnDeployUpdatePolicyOutput
+	ToFunctionOnDeployUpdatePolicyOutputWithContext(context.Context) FunctionOnDeployUpdatePolicyOutput
+}
+
+type FunctionOnDeployUpdatePolicyArgs struct {
+	// The runtime version which was used during latest function deployment.
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+}
+
+func (FunctionOnDeployUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i FunctionOnDeployUpdatePolicyArgs) ToFunctionOnDeployUpdatePolicyOutput() FunctionOnDeployUpdatePolicyOutput {
+	return i.ToFunctionOnDeployUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i FunctionOnDeployUpdatePolicyArgs) ToFunctionOnDeployUpdatePolicyOutputWithContext(ctx context.Context) FunctionOnDeployUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionOnDeployUpdatePolicyOutput)
+}
+
+func (i FunctionOnDeployUpdatePolicyArgs) ToFunctionOnDeployUpdatePolicyPtrOutput() FunctionOnDeployUpdatePolicyPtrOutput {
+	return i.ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionOnDeployUpdatePolicyArgs) ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionOnDeployUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionOnDeployUpdatePolicyOutput).ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// FunctionOnDeployUpdatePolicyPtrInput is an input type that accepts FunctionOnDeployUpdatePolicyArgs, FunctionOnDeployUpdatePolicyPtr and FunctionOnDeployUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `FunctionOnDeployUpdatePolicyPtrInput` via:
+//
+//	        FunctionOnDeployUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type FunctionOnDeployUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToFunctionOnDeployUpdatePolicyPtrOutput() FunctionOnDeployUpdatePolicyPtrOutput
+	ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(context.Context) FunctionOnDeployUpdatePolicyPtrOutput
+}
+
+type functionOnDeployUpdatePolicyPtrType FunctionOnDeployUpdatePolicyArgs
+
+func FunctionOnDeployUpdatePolicyPtr(v *FunctionOnDeployUpdatePolicyArgs) FunctionOnDeployUpdatePolicyPtrInput {
+	return (*functionOnDeployUpdatePolicyPtrType)(v)
+}
+
+func (*functionOnDeployUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i *functionOnDeployUpdatePolicyPtrType) ToFunctionOnDeployUpdatePolicyPtrOutput() FunctionOnDeployUpdatePolicyPtrOutput {
+	return i.ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *functionOnDeployUpdatePolicyPtrType) ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionOnDeployUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionOnDeployUpdatePolicyPtrOutput)
+}
+
+type FunctionOnDeployUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (FunctionOnDeployUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o FunctionOnDeployUpdatePolicyOutput) ToFunctionOnDeployUpdatePolicyOutput() FunctionOnDeployUpdatePolicyOutput {
+	return o
+}
+
+func (o FunctionOnDeployUpdatePolicyOutput) ToFunctionOnDeployUpdatePolicyOutputWithContext(ctx context.Context) FunctionOnDeployUpdatePolicyOutput {
+	return o
+}
+
+func (o FunctionOnDeployUpdatePolicyOutput) ToFunctionOnDeployUpdatePolicyPtrOutput() FunctionOnDeployUpdatePolicyPtrOutput {
+	return o.ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionOnDeployUpdatePolicyOutput) ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionOnDeployUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionOnDeployUpdatePolicy) *FunctionOnDeployUpdatePolicy {
+		return &v
+	}).(FunctionOnDeployUpdatePolicyPtrOutput)
+}
+
+// The runtime version which was used during latest function deployment.
+func (o FunctionOnDeployUpdatePolicyOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionOnDeployUpdatePolicy) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type FunctionOnDeployUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionOnDeployUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o FunctionOnDeployUpdatePolicyPtrOutput) ToFunctionOnDeployUpdatePolicyPtrOutput() FunctionOnDeployUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o FunctionOnDeployUpdatePolicyPtrOutput) ToFunctionOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionOnDeployUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o FunctionOnDeployUpdatePolicyPtrOutput) Elem() FunctionOnDeployUpdatePolicyOutput {
+	return o.ApplyT(func(v *FunctionOnDeployUpdatePolicy) FunctionOnDeployUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionOnDeployUpdatePolicy
+		return ret
+	}).(FunctionOnDeployUpdatePolicyOutput)
+}
+
+// The runtime version which was used during latest function deployment.
+func (o FunctionOnDeployUpdatePolicyPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionOnDeployUpdatePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 type FunctionSecretEnvironmentVariable struct {
 	// Name of the environment variable.
 	Key string `pulumi:"key"`
@@ -1189,6 +1444,94 @@ func (o FunctionSourceRepositoryPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetFunctionAutomaticUpdatePolicy struct {
+}
+
+// GetFunctionAutomaticUpdatePolicyInput is an input type that accepts GetFunctionAutomaticUpdatePolicyArgs and GetFunctionAutomaticUpdatePolicyOutput values.
+// You can construct a concrete instance of `GetFunctionAutomaticUpdatePolicyInput` via:
+//
+//	GetFunctionAutomaticUpdatePolicyArgs{...}
+type GetFunctionAutomaticUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToGetFunctionAutomaticUpdatePolicyOutput() GetFunctionAutomaticUpdatePolicyOutput
+	ToGetFunctionAutomaticUpdatePolicyOutputWithContext(context.Context) GetFunctionAutomaticUpdatePolicyOutput
+}
+
+type GetFunctionAutomaticUpdatePolicyArgs struct {
+}
+
+func (GetFunctionAutomaticUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetFunctionAutomaticUpdatePolicyArgs) ToGetFunctionAutomaticUpdatePolicyOutput() GetFunctionAutomaticUpdatePolicyOutput {
+	return i.ToGetFunctionAutomaticUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i GetFunctionAutomaticUpdatePolicyArgs) ToGetFunctionAutomaticUpdatePolicyOutputWithContext(ctx context.Context) GetFunctionAutomaticUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionAutomaticUpdatePolicyOutput)
+}
+
+// GetFunctionAutomaticUpdatePolicyArrayInput is an input type that accepts GetFunctionAutomaticUpdatePolicyArray and GetFunctionAutomaticUpdatePolicyArrayOutput values.
+// You can construct a concrete instance of `GetFunctionAutomaticUpdatePolicyArrayInput` via:
+//
+//	GetFunctionAutomaticUpdatePolicyArray{ GetFunctionAutomaticUpdatePolicyArgs{...} }
+type GetFunctionAutomaticUpdatePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionAutomaticUpdatePolicyArrayOutput() GetFunctionAutomaticUpdatePolicyArrayOutput
+	ToGetFunctionAutomaticUpdatePolicyArrayOutputWithContext(context.Context) GetFunctionAutomaticUpdatePolicyArrayOutput
+}
+
+type GetFunctionAutomaticUpdatePolicyArray []GetFunctionAutomaticUpdatePolicyInput
+
+func (GetFunctionAutomaticUpdatePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetFunctionAutomaticUpdatePolicyArray) ToGetFunctionAutomaticUpdatePolicyArrayOutput() GetFunctionAutomaticUpdatePolicyArrayOutput {
+	return i.ToGetFunctionAutomaticUpdatePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionAutomaticUpdatePolicyArray) ToGetFunctionAutomaticUpdatePolicyArrayOutputWithContext(ctx context.Context) GetFunctionAutomaticUpdatePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionAutomaticUpdatePolicyArrayOutput)
+}
+
+type GetFunctionAutomaticUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionAutomaticUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetFunctionAutomaticUpdatePolicyOutput) ToGetFunctionAutomaticUpdatePolicyOutput() GetFunctionAutomaticUpdatePolicyOutput {
+	return o
+}
+
+func (o GetFunctionAutomaticUpdatePolicyOutput) ToGetFunctionAutomaticUpdatePolicyOutputWithContext(ctx context.Context) GetFunctionAutomaticUpdatePolicyOutput {
+	return o
+}
+
+type GetFunctionAutomaticUpdatePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionAutomaticUpdatePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetFunctionAutomaticUpdatePolicyArrayOutput) ToGetFunctionAutomaticUpdatePolicyArrayOutput() GetFunctionAutomaticUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetFunctionAutomaticUpdatePolicyArrayOutput) ToGetFunctionAutomaticUpdatePolicyArrayOutputWithContext(ctx context.Context) GetFunctionAutomaticUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetFunctionAutomaticUpdatePolicyArrayOutput) Index(i pulumi.IntInput) GetFunctionAutomaticUpdatePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionAutomaticUpdatePolicy {
+		return vs[0].([]GetFunctionAutomaticUpdatePolicy)[vs[1].(int)]
+	}).(GetFunctionAutomaticUpdatePolicyOutput)
+}
+
 type GetFunctionEventTrigger struct {
 	// The type of event to observe. For example: `"google.storage.object.finalize"`.
 	// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
@@ -1405,6 +1748,103 @@ func (o GetFunctionEventTriggerFailurePolicyArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionEventTriggerFailurePolicy {
 		return vs[0].([]GetFunctionEventTriggerFailurePolicy)[vs[1].(int)]
 	}).(GetFunctionEventTriggerFailurePolicyOutput)
+}
+
+type GetFunctionOnDeployUpdatePolicy struct {
+	// The runtime version which was used during latest function deployment.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+}
+
+// GetFunctionOnDeployUpdatePolicyInput is an input type that accepts GetFunctionOnDeployUpdatePolicyArgs and GetFunctionOnDeployUpdatePolicyOutput values.
+// You can construct a concrete instance of `GetFunctionOnDeployUpdatePolicyInput` via:
+//
+//	GetFunctionOnDeployUpdatePolicyArgs{...}
+type GetFunctionOnDeployUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToGetFunctionOnDeployUpdatePolicyOutput() GetFunctionOnDeployUpdatePolicyOutput
+	ToGetFunctionOnDeployUpdatePolicyOutputWithContext(context.Context) GetFunctionOnDeployUpdatePolicyOutput
+}
+
+type GetFunctionOnDeployUpdatePolicyArgs struct {
+	// The runtime version which was used during latest function deployment.
+	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
+}
+
+func (GetFunctionOnDeployUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetFunctionOnDeployUpdatePolicyArgs) ToGetFunctionOnDeployUpdatePolicyOutput() GetFunctionOnDeployUpdatePolicyOutput {
+	return i.ToGetFunctionOnDeployUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i GetFunctionOnDeployUpdatePolicyArgs) ToGetFunctionOnDeployUpdatePolicyOutputWithContext(ctx context.Context) GetFunctionOnDeployUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionOnDeployUpdatePolicyOutput)
+}
+
+// GetFunctionOnDeployUpdatePolicyArrayInput is an input type that accepts GetFunctionOnDeployUpdatePolicyArray and GetFunctionOnDeployUpdatePolicyArrayOutput values.
+// You can construct a concrete instance of `GetFunctionOnDeployUpdatePolicyArrayInput` via:
+//
+//	GetFunctionOnDeployUpdatePolicyArray{ GetFunctionOnDeployUpdatePolicyArgs{...} }
+type GetFunctionOnDeployUpdatePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionOnDeployUpdatePolicyArrayOutput() GetFunctionOnDeployUpdatePolicyArrayOutput
+	ToGetFunctionOnDeployUpdatePolicyArrayOutputWithContext(context.Context) GetFunctionOnDeployUpdatePolicyArrayOutput
+}
+
+type GetFunctionOnDeployUpdatePolicyArray []GetFunctionOnDeployUpdatePolicyInput
+
+func (GetFunctionOnDeployUpdatePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetFunctionOnDeployUpdatePolicyArray) ToGetFunctionOnDeployUpdatePolicyArrayOutput() GetFunctionOnDeployUpdatePolicyArrayOutput {
+	return i.ToGetFunctionOnDeployUpdatePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionOnDeployUpdatePolicyArray) ToGetFunctionOnDeployUpdatePolicyArrayOutputWithContext(ctx context.Context) GetFunctionOnDeployUpdatePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionOnDeployUpdatePolicyArrayOutput)
+}
+
+type GetFunctionOnDeployUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionOnDeployUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetFunctionOnDeployUpdatePolicyOutput) ToGetFunctionOnDeployUpdatePolicyOutput() GetFunctionOnDeployUpdatePolicyOutput {
+	return o
+}
+
+func (o GetFunctionOnDeployUpdatePolicyOutput) ToGetFunctionOnDeployUpdatePolicyOutputWithContext(ctx context.Context) GetFunctionOnDeployUpdatePolicyOutput {
+	return o
+}
+
+// The runtime version which was used during latest function deployment.
+func (o GetFunctionOnDeployUpdatePolicyOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionOnDeployUpdatePolicy) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+type GetFunctionOnDeployUpdatePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionOnDeployUpdatePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetFunctionOnDeployUpdatePolicyArrayOutput) ToGetFunctionOnDeployUpdatePolicyArrayOutput() GetFunctionOnDeployUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetFunctionOnDeployUpdatePolicyArrayOutput) ToGetFunctionOnDeployUpdatePolicyArrayOutputWithContext(ctx context.Context) GetFunctionOnDeployUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetFunctionOnDeployUpdatePolicyArrayOutput) Index(i pulumi.IntInput) GetFunctionOnDeployUpdatePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionOnDeployUpdatePolicy {
+		return vs[0].([]GetFunctionOnDeployUpdatePolicy)[vs[1].(int)]
+	}).(GetFunctionOnDeployUpdatePolicyOutput)
 }
 
 type GetFunctionSecretEnvironmentVariable struct {
@@ -1868,6 +2308,8 @@ func (o GetFunctionSourceRepositoryArrayOutput) Index(i pulumi.IntInput) GetFunc
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAutomaticUpdatePolicyInput)(nil)).Elem(), FunctionAutomaticUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAutomaticUpdatePolicyPtrInput)(nil)).Elem(), FunctionAutomaticUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerInput)(nil)).Elem(), FunctionEventTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerPtrInput)(nil)).Elem(), FunctionEventTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEventTriggerFailurePolicyInput)(nil)).Elem(), FunctionEventTriggerFailurePolicyArgs{})
@@ -1876,6 +2318,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamBindingConditionPtrInput)(nil)).Elem(), FunctionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamMemberConditionInput)(nil)).Elem(), FunctionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamMemberConditionPtrInput)(nil)).Elem(), FunctionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionOnDeployUpdatePolicyInput)(nil)).Elem(), FunctionOnDeployUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionOnDeployUpdatePolicyPtrInput)(nil)).Elem(), FunctionOnDeployUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionSecretEnvironmentVariableInput)(nil)).Elem(), FunctionSecretEnvironmentVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionSecretEnvironmentVariableArrayInput)(nil)).Elem(), FunctionSecretEnvironmentVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionSecretVolumeInput)(nil)).Elem(), FunctionSecretVolumeArgs{})
@@ -1884,10 +2328,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionSecretVolumeVersionArrayInput)(nil)).Elem(), FunctionSecretVolumeVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionSourceRepositoryInput)(nil)).Elem(), FunctionSourceRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionSourceRepositoryPtrInput)(nil)).Elem(), FunctionSourceRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionAutomaticUpdatePolicyInput)(nil)).Elem(), GetFunctionAutomaticUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionAutomaticUpdatePolicyArrayInput)(nil)).Elem(), GetFunctionAutomaticUpdatePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerInput)(nil)).Elem(), GetFunctionEventTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerArrayInput)(nil)).Elem(), GetFunctionEventTriggerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerFailurePolicyInput)(nil)).Elem(), GetFunctionEventTriggerFailurePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerFailurePolicyArrayInput)(nil)).Elem(), GetFunctionEventTriggerFailurePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionOnDeployUpdatePolicyInput)(nil)).Elem(), GetFunctionOnDeployUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionOnDeployUpdatePolicyArrayInput)(nil)).Elem(), GetFunctionOnDeployUpdatePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionSecretEnvironmentVariableInput)(nil)).Elem(), GetFunctionSecretEnvironmentVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionSecretEnvironmentVariableArrayInput)(nil)).Elem(), GetFunctionSecretEnvironmentVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionSecretVolumeInput)(nil)).Elem(), GetFunctionSecretVolumeArgs{})
@@ -1896,6 +2344,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionSecretVolumeVersionArrayInput)(nil)).Elem(), GetFunctionSecretVolumeVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionSourceRepositoryInput)(nil)).Elem(), GetFunctionSourceRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionSourceRepositoryArrayInput)(nil)).Elem(), GetFunctionSourceRepositoryArray{})
+	pulumi.RegisterOutputType(FunctionAutomaticUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(FunctionAutomaticUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(FunctionEventTriggerOutput{})
 	pulumi.RegisterOutputType(FunctionEventTriggerPtrOutput{})
 	pulumi.RegisterOutputType(FunctionEventTriggerFailurePolicyOutput{})
@@ -1904,6 +2354,8 @@ func init() {
 	pulumi.RegisterOutputType(FunctionIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FunctionIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(FunctionIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(FunctionOnDeployUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(FunctionOnDeployUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(FunctionSecretEnvironmentVariableOutput{})
 	pulumi.RegisterOutputType(FunctionSecretEnvironmentVariableArrayOutput{})
 	pulumi.RegisterOutputType(FunctionSecretVolumeOutput{})
@@ -1912,10 +2364,14 @@ func init() {
 	pulumi.RegisterOutputType(FunctionSecretVolumeVersionArrayOutput{})
 	pulumi.RegisterOutputType(FunctionSourceRepositoryOutput{})
 	pulumi.RegisterOutputType(FunctionSourceRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GetFunctionAutomaticUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(GetFunctionAutomaticUpdatePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionEventTriggerOutput{})
 	pulumi.RegisterOutputType(GetFunctionEventTriggerArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionEventTriggerFailurePolicyOutput{})
 	pulumi.RegisterOutputType(GetFunctionEventTriggerFailurePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionOnDeployUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(GetFunctionOnDeployUpdatePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionSecretEnvironmentVariableOutput{})
 	pulumi.RegisterOutputType(GetFunctionSecretEnvironmentVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionSecretVolumeOutput{})

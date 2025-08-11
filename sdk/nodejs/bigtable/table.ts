@@ -7,10 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Creates a Google Cloud Bigtable table inside an instance. For more information see
- * [the official documentation](https://cloud.google.com/bigtable/) and
- * [API](https://cloud.google.com/bigtable/docs/go/reference).
- *
  * ## Example Usage
  *
  * ```typescript
@@ -161,11 +157,6 @@ export class Table extends pulumi.CustomResource {
      * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
      */
     public readonly rowKeySchema!: pulumi.Output<string | undefined>;
-    /**
-     * A list of predefined keys to split the table on.
-     * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-     * to delete/recreate the entire `gcp.bigtable.Table` resource.
-     */
     public readonly splitKeys!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -254,11 +245,6 @@ export interface TableState {
      * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
      */
     rowKeySchema?: pulumi.Input<string>;
-    /**
-     * A list of predefined keys to split the table on.
-     * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-     * to delete/recreate the entire `gcp.bigtable.Table` resource.
-     */
     splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -306,10 +292,5 @@ export interface TableArgs {
      * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
      */
     rowKeySchema?: pulumi.Input<string>;
-    /**
-     * A list of predefined keys to split the table on.
-     * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-     * to delete/recreate the entire `gcp.bigtable.Table` resource.
-     */
     splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -13,11 +13,11 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     public sealed class CxWebhookServiceDirectoryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of Service Directory service.
+        /// Represents configuration for a generic web service.
         /// Structure is documented below.
         /// </summary>
-        [Input("genericWebService", required: true)]
-        public Input<Inputs.CxWebhookServiceDirectoryGenericWebServiceGetArgs> GenericWebService { get; set; } = null!;
+        [Input("genericWebService")]
+        public Input<Inputs.CxWebhookServiceDirectoryGenericWebServiceGetArgs>? GenericWebService { get; set; }
 
         /// <summary>
         /// The name of Service Directory service.

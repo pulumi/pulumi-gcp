@@ -66,6 +66,7 @@ type LookupFunctionArgs struct {
 
 // A collection of values returned by getFunction.
 type LookupFunctionResult struct {
+	AutomaticUpdatePolicies []GetFunctionAutomaticUpdatePolicy `pulumi:"automaticUpdatePolicies"`
 	// Available memory (in MB) to the function.
 	AvailableMemoryMb         int               `pulumi:"availableMemoryMb"`
 	BuildEnvironmentVariables map[string]string `pulumi:"buildEnvironmentVariables"`
@@ -95,10 +96,11 @@ type LookupFunctionResult struct {
 	MaxInstances int `pulumi:"maxInstances"`
 	MinInstances int `pulumi:"minInstances"`
 	// The name of the Cloud Function.
-	Name         string            `pulumi:"name"`
-	Project      *string           `pulumi:"project"`
-	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	Region       *string           `pulumi:"region"`
+	Name                   string                            `pulumi:"name"`
+	OnDeployUpdatePolicies []GetFunctionOnDeployUpdatePolicy `pulumi:"onDeployUpdatePolicies"`
+	Project                *string                           `pulumi:"project"`
+	PulumiLabels           map[string]string                 `pulumi:"pulumiLabels"`
+	Region                 *string                           `pulumi:"region"`
 	// The runtime in which the function is running.
 	Runtime                    string                                 `pulumi:"runtime"`
 	SecretEnvironmentVariables []GetFunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -163,6 +165,10 @@ func (o LookupFunctionResultOutput) ToLookupFunctionResultOutput() LookupFunctio
 
 func (o LookupFunctionResultOutput) ToLookupFunctionResultOutputWithContext(ctx context.Context) LookupFunctionResultOutput {
 	return o
+}
+
+func (o LookupFunctionResultOutput) AutomaticUpdatePolicies() GetFunctionAutomaticUpdatePolicyArrayOutput {
+	return o.ApplyT(func(v LookupFunctionResult) []GetFunctionAutomaticUpdatePolicy { return v.AutomaticUpdatePolicies }).(GetFunctionAutomaticUpdatePolicyArrayOutput)
 }
 
 // Available memory (in MB) to the function.
@@ -253,6 +259,10 @@ func (o LookupFunctionResultOutput) MinInstances() pulumi.IntOutput {
 // The name of the Cloud Function.
 func (o LookupFunctionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) OnDeployUpdatePolicies() GetFunctionOnDeployUpdatePolicyArrayOutput {
+	return o.ApplyT(func(v LookupFunctionResult) []GetFunctionOnDeployUpdatePolicy { return v.OnDeployUpdatePolicies }).(GetFunctionOnDeployUpdatePolicyArrayOutput)
 }
 
 func (o LookupFunctionResultOutput) Project() pulumi.StringPtrOutput {

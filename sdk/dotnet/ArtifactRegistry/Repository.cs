@@ -217,19 +217,19 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
     ///         Location = "us-central1",
-    ///         RepositoryId = "debian-buster",
+    ///         RepositoryId = "debian-stable",
     ///         Description = "example remote apt repository",
     ///         Format = "APT",
     ///         Mode = "REMOTE_REPOSITORY",
     ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
     ///         {
-    ///             Description = "Debian buster remote repository",
+    ///             Description = "Debian stable remote repository",
     ///             AptRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs
     ///             {
     ///                 PublicRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs
     ///                 {
     ///                     RepositoryBase = "DEBIAN",
-    ///                     RepositoryPath = "debian/dists/buster",
+    ///                     RepositoryPath = "debian/dists/stable",
     ///                 },
     ///             },
     ///         },

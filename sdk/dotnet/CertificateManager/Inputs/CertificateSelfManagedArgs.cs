@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         /// <summary>
         /// The certificate chain in PEM-encoded form.
         /// Leaf certificate comes first, followed by intermediate ones if any.
-        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("pemCertificate")]
         public Input<string>? PemCertificate { get; set; }

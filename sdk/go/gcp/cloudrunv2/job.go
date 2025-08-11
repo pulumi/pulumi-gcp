@@ -588,6 +588,7 @@ import (
 //						NodeSelector: &cloudrunv2.JobTemplateTemplateNodeSelectorArgs{
 //							Accelerator: pulumi.String("nvidia-l4"),
 //						},
+//						GpuZonalRedundancyDisabled: pulumi.Bool(true),
 //					},
 //				},
 //			})

@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A ScanConfig resource contains the configurations to launch a scan.
-//
-// To get more information about ScanConfig, see:
-//
-// * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
-// * How-to Guides
-//   - [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
-//
 // ## Example Usage
 //
 // ### Scan Config Basic
@@ -45,7 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSecurityScanConfig(ctx, "scan-config", &compute.SecurityScanConfigArgs{
-//				DisplayName: pulumi.String("scan-config"),
+//				DisplayName: pulumi.String("terraform-scan-config"),
 //				StartingUrls: pulumi.StringArray{
 //					scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
 //						return fmt.Sprintf("http://%v", address), nil

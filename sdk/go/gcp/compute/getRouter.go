@@ -74,6 +74,7 @@ type LookupRouterResult struct {
 	Md5AuthenticationKeys []GetRouterMd5AuthenticationKey `pulumi:"md5AuthenticationKeys"`
 	Name                  string                          `pulumi:"name"`
 	Network               string                          `pulumi:"network"`
+	Params                []GetRouterParam                `pulumi:"params"`
 	Project               *string                         `pulumi:"project"`
 	Region                *string                         `pulumi:"region"`
 	SelfLink              string                          `pulumi:"selfLink"`
@@ -152,6 +153,10 @@ func (o LookupRouterResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupRouterResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) Params() GetRouterParamArrayOutput {
+	return o.ApplyT(func(v LookupRouterResult) []GetRouterParam { return v.Params }).(GetRouterParamArrayOutput)
 }
 
 func (o LookupRouterResultOutput) Project() pulumi.StringPtrOutput {

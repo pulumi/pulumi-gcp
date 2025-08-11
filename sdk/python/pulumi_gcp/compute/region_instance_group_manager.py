@@ -101,9 +101,6 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-        :param pulumi.Input[_builtins.bool] wait_for_instances: Whether to wait for all instances to be created/updated before
-               returning. Note that if this is set to true and the operation does not succeed, the provider will
-               continue trying until it times out.
         :param pulumi.Input[_builtins.str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
                When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
                set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -479,11 +476,6 @@ class RegionInstanceGroupManagerArgs:
     @_builtins.property
     @pulumi.getter(name="waitForInstances")
     def wait_for_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether to wait for all instances to be created/updated before
-        returning. Note that if this is set to true and the operation does not succeed, the provider will
-        continue trying until it times out.
-        """
         return pulumi.get(self, "wait_for_instances")
 
     @wait_for_instances.setter
@@ -601,9 +593,6 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input[_builtins.bool] wait_for_instances: Whether to wait for all instances to be created/updated before
-               returning. Note that if this is set to true and the operation does not succeed, the provider will
-               continue trying until it times out.
         :param pulumi.Input[_builtins.str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
                When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
                set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -1065,11 +1054,6 @@ class _RegionInstanceGroupManagerState:
     @_builtins.property
     @pulumi.getter(name="waitForInstances")
     def wait_for_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether to wait for all instances to be created/updated before
-        returning. Note that if this is set to true and the operation does not succeed, the provider will
-        continue trying until it times out.
-        """
         return pulumi.get(self, "wait_for_instances")
 
     @wait_for_instances.setter
@@ -1298,9 +1282,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerVersionArgs', 'RegionInstanceGroupManagerVersionArgsDict']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input[_builtins.bool] wait_for_instances: Whether to wait for all instances to be created/updated before
-               returning. Note that if this is set to true and the operation does not succeed, the provider will
-               continue trying until it times out.
         :param pulumi.Input[_builtins.str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
                When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
                set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -1624,9 +1605,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerVersionArgs', 'RegionInstanceGroupManagerVersionArgsDict']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input[_builtins.bool] wait_for_instances: Whether to wait for all instances to be created/updated before
-               returning. Note that if this is set to true and the operation does not succeed, the provider will
-               continue trying until it times out.
         :param pulumi.Input[_builtins.str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
                When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
                set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -1941,11 +1919,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="waitForInstances")
     def wait_for_instances(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether to wait for all instances to be created/updated before
-        returning. Note that if this is set to true and the operation does not succeed, the provider will
-        continue trying until it times out.
-        """
         return pulumi.get(self, "wait_for_instances")
 
     @_builtins.property

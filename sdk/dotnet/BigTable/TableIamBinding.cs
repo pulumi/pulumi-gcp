@@ -239,10 +239,6 @@ namespace Pulumi.Gcp.BigTable
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
-        /// <summary>
-        /// The project in which the table belongs. If it
-        /// is not provided, this provider will use the provider default.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -338,10 +334,6 @@ namespace Pulumi.Gcp.BigTable
             set => _members = value;
         }
 
-        /// <summary>
-        /// The project in which the table belongs. If it
-        /// is not provided, this provider will use the provider default.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -405,10 +397,6 @@ namespace Pulumi.Gcp.BigTable
             set => _members = value;
         }
 
-        /// <summary>
-        /// The project in which the table belongs. If it
-        /// is not provided, this provider will use the provider default.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

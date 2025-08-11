@@ -29,6 +29,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The self link of the parent network.
         /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// The name of the parent network computed from `network` attribute.
+        /// </summary>
+        public readonly string NetworkName;
+        /// <summary>
+        /// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
+        /// </summary>
         public readonly string NetworkSelfLink;
         /// <summary>
         /// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
@@ -49,6 +56,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string network,
 
+            string networkName,
+
             string networkSelfLink,
 
             bool privateIpGoogleAccess,
@@ -59,6 +68,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             IpCidrRange = ipCidrRange;
             Name = name;
             Network = network;
+            NetworkName = networkName;
             NetworkSelfLink = networkSelfLink;
             PrivateIpGoogleAccess = privateIpGoogleAccess;
             SelfLink = selfLink;

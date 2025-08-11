@@ -10,20 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DeploymentManager
 {
     /// <summary>
-    /// A collection of resources that are deployed and managed together using
-    /// a configuration file
-    /// 
-    /// &gt; **Warning:** This resource is intended only to manage a Deployment resource,
-    /// and attempts to manage the Deployment's resources in the provider as well
-    /// will likely result in errors or unexpected behavior as the two tools
-    /// fight over ownership. We strongly discourage doing so unless you are an
-    /// experienced user of both tools.
-    /// 
-    /// In addition, due to limitations of the API, the provider will treat
-    /// deployments in preview as recreate-only for any update operation other
-    /// than actually deploying an in-preview deployment (i.e. `preview=true` to
-    /// `preview=false`).
-    /// 
     /// ## Example Usage
     /// 
     /// ### Deployment Manager Deployment Basic
@@ -146,16 +132,6 @@ namespace Pulumi.Gcp.DeploymentManager
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// If set to true, a deployment is created with "shell" resources
-        /// that are not actually instantiated. This allows you to preview a
-        /// deployment. It can be updated to false to actually deploy
-        /// with real resources.
-        /// ~&gt;**NOTE:** Deployment Manager does not allow update
-        /// of a deployment in preview (unless updating to preview=false). Thus,
-        /// the provider will force-recreate deployments if either preview is updated
-        /// to true or if other fields are updated while preview is true.
-        /// </summary>
         [Output("preview")]
         public Output<bool?> Preview { get; private set; } = null!;
 
@@ -276,16 +252,6 @@ namespace Pulumi.Gcp.DeploymentManager
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// If set to true, a deployment is created with "shell" resources
-        /// that are not actually instantiated. This allows you to preview a
-        /// deployment. It can be updated to false to actually deploy
-        /// with real resources.
-        /// ~&gt;**NOTE:** Deployment Manager does not allow update
-        /// of a deployment in preview (unless updating to preview=false). Thus,
-        /// the provider will force-recreate deployments if either preview is updated
-        /// to true or if other fields are updated while preview is true.
-        /// </summary>
         [Input("preview")]
         public Input<bool>? Preview { get; set; }
 
@@ -375,16 +341,6 @@ namespace Pulumi.Gcp.DeploymentManager
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// If set to true, a deployment is created with "shell" resources
-        /// that are not actually instantiated. This allows you to preview a
-        /// deployment. It can be updated to false to actually deploy
-        /// with real resources.
-        /// ~&gt;**NOTE:** Deployment Manager does not allow update
-        /// of a deployment in preview (unless updating to preview=false). Thus,
-        /// the provider will force-recreate deployments if either preview is updated
-        /// to true or if other fields are updated while preview is true.
-        /// </summary>
         [Input("preview")]
         public Input<bool>? Preview { get; set; }
 

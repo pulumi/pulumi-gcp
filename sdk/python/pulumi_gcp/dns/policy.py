@@ -35,7 +35,6 @@ class PolicyArgs:
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input['PolicyDns64ConfigArgs'] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
@@ -85,9 +84,6 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A textual description field. Defaults to 'Managed by Pulumi'.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -191,7 +187,6 @@ class _PolicyState:
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input['PolicyDns64ConfigArgs'] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
@@ -241,9 +236,6 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A textual description field. Defaults to 'Managed by Pulumi'.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -424,7 +416,6 @@ class Policy(pulumi.CustomResource):
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
@@ -587,7 +578,6 @@ class Policy(pulumi.CustomResource):
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
@@ -630,9 +620,6 @@ class Policy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        A textual description field. Defaults to 'Managed by Pulumi'.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property

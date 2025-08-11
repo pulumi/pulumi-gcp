@@ -45,7 +45,13 @@ import (
 //				PoolProvisionedThroughput: pulumi.String("100"),
 //				StoragePoolType:           pulumi.String("hyperdisk-throughput"),
 //				Zone:                      pulumi.String("us-central1-a"),
-//				DeletionProtection:        pulumi.Bool(false),
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("test"),
+//					"purpose":     pulumi.String("storage-pool-testing"),
+//					"team":        pulumi.String("infrastructure"),
+//					"cost_center": pulumi.String("engineering"),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -90,8 +96,14 @@ import (
 //				PoolProvisionedIops:         pulumi.String("10000"),
 //				PoolProvisionedThroughput:   pulumi.String("1024"),
 //				StoragePoolType:             pulumi.String(balanced.SelfLink),
-//				DeletionProtection:          pulumi.Bool(false),
-//				Zone:                        pulumi.String("us-central1-a"),
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("test"),
+//					"purpose":     pulumi.String("storage-pool-testing"),
+//					"team":        pulumi.String("infrastructure"),
+//					"cost_center": pulumi.String("engineering"),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//				Zone:               pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {
 //				return err
@@ -146,11 +158,18 @@ type StoragePool struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// A description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Type of the resource.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The fingerprint used for optimistic locking of this resource.
 	// Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
+	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created.
 	// The name must be 1-63 characters long, and comply with RFC1035.
 	// Specifically, the name must be 1-63 characters long and match
@@ -174,6 +193,9 @@ type StoragePool struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Status information for the storage pool resource.
 	// Structure is documented below.
 	ResourceStatuses StoragePoolResourceStatusArrayOutput `pulumi:"resourceStatuses"`
@@ -205,6 +227,11 @@ func NewStoragePool(ctx *pulumi.Context,
 	if args.StoragePoolType == nil {
 		return nil, errors.New("invalid value for required argument 'StoragePoolType'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StoragePool
 	err := ctx.RegisterResource("gcp:compute/storagePool:StoragePool", name, args, &resource, opts...)
@@ -236,11 +263,18 @@ type storagePoolState struct {
 	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// A description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Type of the resource.
 	Kind *string `pulumi:"kind"`
 	// The fingerprint used for optimistic locking of this resource.
 	// Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
+	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created.
 	// The name must be 1-63 characters long, and comply with RFC1035.
 	// Specifically, the name must be 1-63 characters long and match
@@ -264,6 +298,9 @@ type storagePoolState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Status information for the storage pool resource.
 	// Structure is documented below.
 	ResourceStatuses []StoragePoolResourceStatus `pulumi:"resourceStatuses"`
@@ -288,11 +325,18 @@ type StoragePoolState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// A description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Type of the resource.
 	Kind pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource.
 	// Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
+	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is created.
 	// The name must be 1-63 characters long, and comply with RFC1035.
 	// Specifically, the name must be 1-63 characters long and match
@@ -316,6 +360,9 @@ type StoragePoolState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Status information for the storage pool resource.
 	// Structure is documented below.
 	ResourceStatuses StoragePoolResourceStatusArrayInput
@@ -342,6 +389,11 @@ type storagePoolArgs struct {
 	DeletionProtection       *bool   `pulumi:"deletionProtection"`
 	// A description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created.
 	// The name must be 1-63 characters long, and comply with RFC1035.
 	// Specifically, the name must be 1-63 characters long and match
@@ -382,6 +434,11 @@ type StoragePoolArgs struct {
 	DeletionProtection       pulumi.BoolPtrInput
 	// A description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is created.
 	// The name must be 1-63 characters long, and comply with RFC1035.
 	// Specifically, the name must be 1-63 characters long and match
@@ -521,6 +578,11 @@ func (o StoragePoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o StoragePoolOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Type of the resource.
 func (o StoragePoolOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
@@ -530,6 +592,14 @@ func (o StoragePoolOutput) Kind() pulumi.StringOutput {
 // Used internally during updates.
 func (o StoragePoolOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o StoragePoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is created.
@@ -571,6 +641,12 @@ func (o StoragePoolOutput) PoolProvisionedThroughput() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o StoragePoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o StoragePoolOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Status information for the storage pool resource.

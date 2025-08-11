@@ -344,7 +344,8 @@ class Account(pulumi.CustomResource):
 
         > Creation of service accounts is eventually consistent, and that can lead to
         errors when you try to apply ACLs to service accounts immediately after
-        creation.
+        creation. If using these resources in the same config, you can add a
+        `sleep` using `local-exec`.
 
         ## Example Usage
 
@@ -404,7 +405,8 @@ class Account(pulumi.CustomResource):
 
         > Creation of service accounts is eventually consistent, and that can lead to
         errors when you try to apply ACLs to service accounts immediately after
-        creation.
+        creation. If using these resources in the same config, you can add a
+        `sleep` using `local-exec`.
 
         ## Example Usage
 

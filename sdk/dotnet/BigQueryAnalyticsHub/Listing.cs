@@ -367,6 +367,92 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Public Listing
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var listing = new Gcp.BigQueryAnalyticsHub.DataExchange("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "my_data_exchange",
+    ///         DisplayName = "my_data_exchange",
+    ///         Description = "example public listing",
+    ///         DiscoveryType = "DISCOVERY_TYPE_PUBLIC",
+    ///     });
+    /// 
+    ///     var listingDataset = new Gcp.BigQuery.Dataset("listing", new()
+    ///     {
+    ///         DatasetId = "my_listing",
+    ///         FriendlyName = "my_listing",
+    ///         Description = "example public listing",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = listing.DataExchangeId,
+    ///         ListingId = "my_listing",
+    ///         DisplayName = "my_listing",
+    ///         Description = "example public listing",
+    ///         DiscoveryType = "DISCOVERY_TYPE_PUBLIC",
+    ///         AllowOnlyMetadataSharing = false,
+    ///         BigqueryDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetArgs
+    ///         {
+    ///             Dataset = listingDataset.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Bigquery Analyticshub Listing Marketplace
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var listing = new Gcp.BigQueryAnalyticsHub.DataExchange("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "my_data_exchange",
+    ///         DisplayName = "my_data_exchange",
+    ///         Description = "example data exchange",
+    ///     });
+    /// 
+    ///     var listingDataset = new Gcp.BigQuery.Dataset("listing", new()
+    ///     {
+    ///         DatasetId = "my_listing",
+    ///         FriendlyName = "my_listing",
+    ///         Description = "example data exchange",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = listing.DataExchangeId,
+    ///         ListingId = "my_listing",
+    ///         DisplayName = "my_listing",
+    ///         Description = "example data exchange",
+    ///         DeleteCommercial = true,
+    ///         BigqueryDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetArgs
+    ///         {
+    ///             Dataset = listingDataset.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -396,6 +482,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     public partial class Listing : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+        /// </summary>
+        [Output("allowOnlyMetadataSharing")]
+        public Output<bool?> AllowOnlyMetadataSharing { get; private set; } = null!;
+
+        /// <summary>
         /// Shared dataset i.e. BigQuery dataset source.
         /// Structure is documented below.
         /// </summary>
@@ -407,6 +499,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Output("categories")]
         public Output<ImmutableArray<string>> Categories { get; private set; } = null!;
+
+        /// <summary>
+        /// Commercial info contains the information about the commercial data products associated with the listing.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("commercialInfos")]
+        public Output<ImmutableArray<Outputs.ListingCommercialInfo>> CommercialInfos { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -422,10 +521,23 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Output<Outputs.ListingDataProvider?> DataProvider { get; private set; } = null!;
 
         /// <summary>
+        /// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        /// </summary>
+        [Output("deleteCommercial")]
+        public Output<bool?> DeleteCommercial { get; private set; } = null!;
+
+        /// <summary>
         /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+        /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        /// </summary>
+        [Output("discoveryType")]
+        public Output<string> DiscoveryType { get; private set; } = null!;
 
         /// <summary>
         /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can't start or end with spaces.
@@ -509,6 +621,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Output("restrictedExportConfig")]
         public Output<Outputs.ListingRestrictedExportConfig?> RestrictedExportConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Current state of the listing.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Listing resource with the given unique name, arguments, and options.
@@ -556,6 +674,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     public sealed class ListingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+        /// </summary>
+        [Input("allowOnlyMetadataSharing")]
+        public Input<bool>? AllowOnlyMetadataSharing { get; set; }
+
+        /// <summary>
         /// Shared dataset i.e. BigQuery dataset source.
         /// Structure is documented below.
         /// </summary>
@@ -588,10 +712,23 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<Inputs.ListingDataProviderArgs>? DataProvider { get; set; }
 
         /// <summary>
+        /// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        /// </summary>
+        [Input("deleteCommercial")]
+        public Input<bool>? DeleteCommercial { get; set; }
+
+        /// <summary>
         /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+        /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        /// </summary>
+        [Input("discoveryType")]
+        public Input<string>? DiscoveryType { get; set; }
 
         /// <summary>
         /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can't start or end with spaces.
@@ -678,6 +815,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     public sealed class ListingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+        /// </summary>
+        [Input("allowOnlyMetadataSharing")]
+        public Input<bool>? AllowOnlyMetadataSharing { get; set; }
+
+        /// <summary>
         /// Shared dataset i.e. BigQuery dataset source.
         /// Structure is documented below.
         /// </summary>
@@ -696,6 +839,19 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
             set => _categories = value;
         }
 
+        [Input("commercialInfos")]
+        private InputList<Inputs.ListingCommercialInfoGetArgs>? _commercialInfos;
+
+        /// <summary>
+        /// Commercial info contains the information about the commercial data products associated with the listing.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ListingCommercialInfoGetArgs> CommercialInfos
+        {
+            get => _commercialInfos ?? (_commercialInfos = new InputList<Inputs.ListingCommercialInfoGetArgs>());
+            set => _commercialInfos = value;
+        }
+
         /// <summary>
         /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         /// </summary>
@@ -710,10 +866,23 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<Inputs.ListingDataProviderGetArgs>? DataProvider { get; set; }
 
         /// <summary>
+        /// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        /// </summary>
+        [Input("deleteCommercial")]
+        public Input<bool>? DeleteCommercial { get; set; }
+
+        /// <summary>
         /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+        /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        /// </summary>
+        [Input("discoveryType")]
+        public Input<string>? DiscoveryType { get; set; }
 
         /// <summary>
         /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can't start or end with spaces.
@@ -796,6 +965,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Input("restrictedExportConfig")]
         public Input<Inputs.ListingRestrictedExportConfigGetArgs>? RestrictedExportConfig { get; set; }
+
+        /// <summary>
+        /// Current state of the listing.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         public ListingState()
         {

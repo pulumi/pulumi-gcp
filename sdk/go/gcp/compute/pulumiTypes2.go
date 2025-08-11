@@ -13,6 +13,962 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput is an input type that accepts GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs and GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs{...}
+type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput() GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput
+	ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput
+}
+
+type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs) ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput() GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs) ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray and GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray{ GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs{...} }
+type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput() GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput
+	ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray []GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput
+
+func (GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray) ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput() GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray) ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput() GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput) ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput() GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput) ToGetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingMaxRunDuration struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionInstanceTemplateSchedulingMaxRunDurationInput is an input type that accepts GetRegionInstanceTemplateSchedulingMaxRunDurationArgs and GetRegionInstanceTemplateSchedulingMaxRunDurationOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingMaxRunDurationInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingMaxRunDurationArgs{...}
+type GetRegionInstanceTemplateSchedulingMaxRunDurationInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingMaxRunDurationOutput() GetRegionInstanceTemplateSchedulingMaxRunDurationOutput
+	ToGetRegionInstanceTemplateSchedulingMaxRunDurationOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingMaxRunDurationOutput
+}
+
+type GetRegionInstanceTemplateSchedulingMaxRunDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionInstanceTemplateSchedulingMaxRunDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingMaxRunDurationArgs) ToGetRegionInstanceTemplateSchedulingMaxRunDurationOutput() GetRegionInstanceTemplateSchedulingMaxRunDurationOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingMaxRunDurationOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingMaxRunDurationArgs) ToGetRegionInstanceTemplateSchedulingMaxRunDurationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingMaxRunDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingMaxRunDurationOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingMaxRunDurationArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingMaxRunDurationArray and GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingMaxRunDurationArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingMaxRunDurationArray{ GetRegionInstanceTemplateSchedulingMaxRunDurationArgs{...} }
+type GetRegionInstanceTemplateSchedulingMaxRunDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput() GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput
+	ToGetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingMaxRunDurationArray []GetRegionInstanceTemplateSchedulingMaxRunDurationInput
+
+func (GetRegionInstanceTemplateSchedulingMaxRunDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingMaxRunDurationArray) ToGetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput() GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingMaxRunDurationArray) ToGetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingMaxRunDurationOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingMaxRunDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingMaxRunDurationOutput) ToGetRegionInstanceTemplateSchedulingMaxRunDurationOutput() GetRegionInstanceTemplateSchedulingMaxRunDurationOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingMaxRunDurationOutput) ToGetRegionInstanceTemplateSchedulingMaxRunDurationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingMaxRunDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetRegionInstanceTemplateSchedulingMaxRunDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingMaxRunDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetRegionInstanceTemplateSchedulingMaxRunDurationOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingMaxRunDuration) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput) ToGetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput() GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput) ToGetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingMaxRunDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingMaxRunDuration {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingMaxRunDuration)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingMaxRunDurationOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingNodeAffinity struct {
+	// The key for the node affinity label.
+	Key string `pulumi:"key"`
+	// The operator. Can be `IN` for node-affinities
+	// or `NOT_IN` for anti-affinities.
+	Operator string   `pulumi:"operator"`
+	Values   []string `pulumi:"values"`
+}
+
+// GetRegionInstanceTemplateSchedulingNodeAffinityInput is an input type that accepts GetRegionInstanceTemplateSchedulingNodeAffinityArgs and GetRegionInstanceTemplateSchedulingNodeAffinityOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingNodeAffinityInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingNodeAffinityArgs{...}
+type GetRegionInstanceTemplateSchedulingNodeAffinityInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingNodeAffinityOutput() GetRegionInstanceTemplateSchedulingNodeAffinityOutput
+	ToGetRegionInstanceTemplateSchedulingNodeAffinityOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingNodeAffinityOutput
+}
+
+type GetRegionInstanceTemplateSchedulingNodeAffinityArgs struct {
+	// The key for the node affinity label.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The operator. Can be `IN` for node-affinities
+	// or `NOT_IN` for anti-affinities.
+	Operator pulumi.StringInput      `pulumi:"operator"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRegionInstanceTemplateSchedulingNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingNodeAffinityArgs) ToGetRegionInstanceTemplateSchedulingNodeAffinityOutput() GetRegionInstanceTemplateSchedulingNodeAffinityOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingNodeAffinityArgs) ToGetRegionInstanceTemplateSchedulingNodeAffinityOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingNodeAffinityOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingNodeAffinityArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingNodeAffinityArray and GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingNodeAffinityArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingNodeAffinityArray{ GetRegionInstanceTemplateSchedulingNodeAffinityArgs{...} }
+type GetRegionInstanceTemplateSchedulingNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput() GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput
+	ToGetRegionInstanceTemplateSchedulingNodeAffinityArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingNodeAffinityArray []GetRegionInstanceTemplateSchedulingNodeAffinityInput
+
+func (GetRegionInstanceTemplateSchedulingNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingNodeAffinityArray) ToGetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput() GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingNodeAffinityArray) ToGetRegionInstanceTemplateSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingNodeAffinityOutput) ToGetRegionInstanceTemplateSchedulingNodeAffinityOutput() GetRegionInstanceTemplateSchedulingNodeAffinityOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingNodeAffinityOutput) ToGetRegionInstanceTemplateSchedulingNodeAffinityOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingNodeAffinityOutput {
+	return o
+}
+
+// The key for the node affinity label.
+func (o GetRegionInstanceTemplateSchedulingNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The operator. Can be `IN` for node-affinities
+// or `NOT_IN` for anti-affinities.
+func (o GetRegionInstanceTemplateSchedulingNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetRegionInstanceTemplateSchedulingNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput) ToGetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput() GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput) ToGetRegionInstanceTemplateSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingNodeAffinity {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingNodeAffinity)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingNodeAffinityOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopAction struct {
+	// If true, the contents of any attached Local SSD disks will be discarded.
+	DiscardLocalSsd bool `pulumi:"discardLocalSsd"`
+}
+
+// GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput is an input type that accepts GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs and GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs{...}
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput
+	ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs struct {
+	// If true, the contents of any attached Local SSD disks will be discarded.
+	DiscardLocalSsd pulumi.BoolInput `pulumi:"discardLocalSsd"`
+}
+
+func (GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray and GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray{ GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs{...} }
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput
+	ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray []GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput
+
+func (GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+// If true, the contents of any attached Local SSD disks will be discarded.
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput) DiscardLocalSsd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingOnInstanceStopAction) bool { return v.DiscardLocalSsd }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput() GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) ToGetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingOnInstanceStopAction {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingOnInstanceStopAction)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput)
+}
+
+type GetRegionInstanceTemplateServiceAccount struct {
+	// The service account e-mail address. If not given, the
+	// default Google Compute Engine service account is used.
+	Email string `pulumi:"email"`
+	// A list of service scopes. Both OAuth2 URLs and gcloud
+	// short names are supported. To allow full access to all Cloud APIs, use the
+	// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+	Scopes []string `pulumi:"scopes"`
+}
+
+// GetRegionInstanceTemplateServiceAccountInput is an input type that accepts GetRegionInstanceTemplateServiceAccountArgs and GetRegionInstanceTemplateServiceAccountOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateServiceAccountInput` via:
+//
+//	GetRegionInstanceTemplateServiceAccountArgs{...}
+type GetRegionInstanceTemplateServiceAccountInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateServiceAccountOutput() GetRegionInstanceTemplateServiceAccountOutput
+	ToGetRegionInstanceTemplateServiceAccountOutputWithContext(context.Context) GetRegionInstanceTemplateServiceAccountOutput
+}
+
+type GetRegionInstanceTemplateServiceAccountArgs struct {
+	// The service account e-mail address. If not given, the
+	// default Google Compute Engine service account is used.
+	Email pulumi.StringInput `pulumi:"email"`
+	// A list of service scopes. Both OAuth2 URLs and gcloud
+	// short names are supported. To allow full access to all Cloud APIs, use the
+	// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (GetRegionInstanceTemplateServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateServiceAccount)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateServiceAccountArgs) ToGetRegionInstanceTemplateServiceAccountOutput() GetRegionInstanceTemplateServiceAccountOutput {
+	return i.ToGetRegionInstanceTemplateServiceAccountOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateServiceAccountArgs) ToGetRegionInstanceTemplateServiceAccountOutputWithContext(ctx context.Context) GetRegionInstanceTemplateServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateServiceAccountOutput)
+}
+
+// GetRegionInstanceTemplateServiceAccountArrayInput is an input type that accepts GetRegionInstanceTemplateServiceAccountArray and GetRegionInstanceTemplateServiceAccountArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateServiceAccountArrayInput` via:
+//
+//	GetRegionInstanceTemplateServiceAccountArray{ GetRegionInstanceTemplateServiceAccountArgs{...} }
+type GetRegionInstanceTemplateServiceAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateServiceAccountArrayOutput() GetRegionInstanceTemplateServiceAccountArrayOutput
+	ToGetRegionInstanceTemplateServiceAccountArrayOutputWithContext(context.Context) GetRegionInstanceTemplateServiceAccountArrayOutput
+}
+
+type GetRegionInstanceTemplateServiceAccountArray []GetRegionInstanceTemplateServiceAccountInput
+
+func (GetRegionInstanceTemplateServiceAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateServiceAccount)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateServiceAccountArray) ToGetRegionInstanceTemplateServiceAccountArrayOutput() GetRegionInstanceTemplateServiceAccountArrayOutput {
+	return i.ToGetRegionInstanceTemplateServiceAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateServiceAccountArray) ToGetRegionInstanceTemplateServiceAccountArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateServiceAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateServiceAccountArrayOutput)
+}
+
+type GetRegionInstanceTemplateServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateServiceAccount)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateServiceAccountOutput) ToGetRegionInstanceTemplateServiceAccountOutput() GetRegionInstanceTemplateServiceAccountOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateServiceAccountOutput) ToGetRegionInstanceTemplateServiceAccountOutputWithContext(ctx context.Context) GetRegionInstanceTemplateServiceAccountOutput {
+	return o
+}
+
+// The service account e-mail address. If not given, the
+// default Google Compute Engine service account is used.
+func (o GetRegionInstanceTemplateServiceAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateServiceAccount) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// A list of service scopes. Both OAuth2 URLs and gcloud
+// short names are supported. To allow full access to all Cloud APIs, use the
+// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+func (o GetRegionInstanceTemplateServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionInstanceTemplateServiceAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateServiceAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateServiceAccount)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateServiceAccountArrayOutput) ToGetRegionInstanceTemplateServiceAccountArrayOutput() GetRegionInstanceTemplateServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateServiceAccountArrayOutput) ToGetRegionInstanceTemplateServiceAccountArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateServiceAccountArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateServiceAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateServiceAccount {
+		return vs[0].([]GetRegionInstanceTemplateServiceAccount)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateServiceAccountOutput)
+}
+
+type GetRegionInstanceTemplateShieldedInstanceConfig struct {
+	// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
+	// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+	EnableVtpm bool `pulumi:"enableVtpm"`
+}
+
+// GetRegionInstanceTemplateShieldedInstanceConfigInput is an input type that accepts GetRegionInstanceTemplateShieldedInstanceConfigArgs and GetRegionInstanceTemplateShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateShieldedInstanceConfigInput` via:
+//
+//	GetRegionInstanceTemplateShieldedInstanceConfigArgs{...}
+type GetRegionInstanceTemplateShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateShieldedInstanceConfigOutput() GetRegionInstanceTemplateShieldedInstanceConfigOutput
+	ToGetRegionInstanceTemplateShieldedInstanceConfigOutputWithContext(context.Context) GetRegionInstanceTemplateShieldedInstanceConfigOutput
+}
+
+type GetRegionInstanceTemplateShieldedInstanceConfigArgs struct {
+	// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
+	// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+	EnableVtpm pulumi.BoolInput `pulumi:"enableVtpm"`
+}
+
+func (GetRegionInstanceTemplateShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateShieldedInstanceConfigArgs) ToGetRegionInstanceTemplateShieldedInstanceConfigOutput() GetRegionInstanceTemplateShieldedInstanceConfigOutput {
+	return i.ToGetRegionInstanceTemplateShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateShieldedInstanceConfigArgs) ToGetRegionInstanceTemplateShieldedInstanceConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateShieldedInstanceConfigOutput)
+}
+
+// GetRegionInstanceTemplateShieldedInstanceConfigArrayInput is an input type that accepts GetRegionInstanceTemplateShieldedInstanceConfigArray and GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateShieldedInstanceConfigArrayInput` via:
+//
+//	GetRegionInstanceTemplateShieldedInstanceConfigArray{ GetRegionInstanceTemplateShieldedInstanceConfigArgs{...} }
+type GetRegionInstanceTemplateShieldedInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateShieldedInstanceConfigArrayOutput() GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput
+	ToGetRegionInstanceTemplateShieldedInstanceConfigArrayOutputWithContext(context.Context) GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput
+}
+
+type GetRegionInstanceTemplateShieldedInstanceConfigArray []GetRegionInstanceTemplateShieldedInstanceConfigInput
+
+func (GetRegionInstanceTemplateShieldedInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateShieldedInstanceConfigArray) ToGetRegionInstanceTemplateShieldedInstanceConfigArrayOutput() GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return i.ToGetRegionInstanceTemplateShieldedInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateShieldedInstanceConfigArray) ToGetRegionInstanceTemplateShieldedInstanceConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput)
+}
+
+type GetRegionInstanceTemplateShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateShieldedInstanceConfigOutput) ToGetRegionInstanceTemplateShieldedInstanceConfigOutput() GetRegionInstanceTemplateShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateShieldedInstanceConfigOutput) ToGetRegionInstanceTemplateShieldedInstanceConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateShieldedInstanceConfigOutput {
+	return o
+}
+
+// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+func (o GetRegionInstanceTemplateShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateShieldedInstanceConfig) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
+}
+
+// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+func (o GetRegionInstanceTemplateShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+}
+
+// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+func (o GetRegionInstanceTemplateShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateShieldedInstanceConfig) bool { return v.EnableVtpm }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput) ToGetRegionInstanceTemplateShieldedInstanceConfigArrayOutput() GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput) ToGetRegionInstanceTemplateShieldedInstanceConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateShieldedInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateShieldedInstanceConfig {
+		return vs[0].([]GetRegionInstanceTemplateShieldedInstanceConfig)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateShieldedInstanceConfigOutput)
+}
+
+type GetRegionNetworkEndpointGroupAppEngine struct {
+	// Optional serving service.
+	// The service name must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "default", "my-service".
+	Service string `pulumi:"service"`
+	// A template to parse service and version fields from a request URL.
+	// URL mask allows for routing to multiple App Engine services without
+	// having to create multiple Network Endpoint Groups and backend services.
+	//
+	// For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+	// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+	// URL mask "-dot-appname.appspot.com/". The URL mask will parse
+	// them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+	UrlMask string `pulumi:"urlMask"`
+	// Optional serving version.
+	// The version must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "v1", "v2".
+	Version string `pulumi:"version"`
+}
+
+// GetRegionNetworkEndpointGroupAppEngineInput is an input type that accepts GetRegionNetworkEndpointGroupAppEngineArgs and GetRegionNetworkEndpointGroupAppEngineOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupAppEngineInput` via:
+//
+//	GetRegionNetworkEndpointGroupAppEngineArgs{...}
+type GetRegionNetworkEndpointGroupAppEngineInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupAppEngineOutput() GetRegionNetworkEndpointGroupAppEngineOutput
+	ToGetRegionNetworkEndpointGroupAppEngineOutputWithContext(context.Context) GetRegionNetworkEndpointGroupAppEngineOutput
+}
+
+type GetRegionNetworkEndpointGroupAppEngineArgs struct {
+	// Optional serving service.
+	// The service name must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "default", "my-service".
+	Service pulumi.StringInput `pulumi:"service"`
+	// A template to parse service and version fields from a request URL.
+	// URL mask allows for routing to multiple App Engine services without
+	// having to create multiple Network Endpoint Groups and backend services.
+	//
+	// For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+	// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+	// URL mask "-dot-appname.appspot.com/". The URL mask will parse
+	// them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+	UrlMask pulumi.StringInput `pulumi:"urlMask"`
+	// Optional serving version.
+	// The version must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "v1", "v2".
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetRegionNetworkEndpointGroupAppEngineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupAppEngine)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupAppEngineArgs) ToGetRegionNetworkEndpointGroupAppEngineOutput() GetRegionNetworkEndpointGroupAppEngineOutput {
+	return i.ToGetRegionNetworkEndpointGroupAppEngineOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupAppEngineArgs) ToGetRegionNetworkEndpointGroupAppEngineOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupAppEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupAppEngineOutput)
+}
+
+// GetRegionNetworkEndpointGroupAppEngineArrayInput is an input type that accepts GetRegionNetworkEndpointGroupAppEngineArray and GetRegionNetworkEndpointGroupAppEngineArrayOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupAppEngineArrayInput` via:
+//
+//	GetRegionNetworkEndpointGroupAppEngineArray{ GetRegionNetworkEndpointGroupAppEngineArgs{...} }
+type GetRegionNetworkEndpointGroupAppEngineArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupAppEngineArrayOutput() GetRegionNetworkEndpointGroupAppEngineArrayOutput
+	ToGetRegionNetworkEndpointGroupAppEngineArrayOutputWithContext(context.Context) GetRegionNetworkEndpointGroupAppEngineArrayOutput
+}
+
+type GetRegionNetworkEndpointGroupAppEngineArray []GetRegionNetworkEndpointGroupAppEngineInput
+
+func (GetRegionNetworkEndpointGroupAppEngineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupAppEngine)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupAppEngineArray) ToGetRegionNetworkEndpointGroupAppEngineArrayOutput() GetRegionNetworkEndpointGroupAppEngineArrayOutput {
+	return i.ToGetRegionNetworkEndpointGroupAppEngineArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupAppEngineArray) ToGetRegionNetworkEndpointGroupAppEngineArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupAppEngineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupAppEngineArrayOutput)
+}
+
+type GetRegionNetworkEndpointGroupAppEngineOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupAppEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupAppEngine)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupAppEngineOutput) ToGetRegionNetworkEndpointGroupAppEngineOutput() GetRegionNetworkEndpointGroupAppEngineOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupAppEngineOutput) ToGetRegionNetworkEndpointGroupAppEngineOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupAppEngineOutput {
+	return o
+}
+
+// Optional serving service.
+// The service name must be 1-63 characters long, and comply with RFC1035.
+// Example value: "default", "my-service".
+func (o GetRegionNetworkEndpointGroupAppEngineOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupAppEngine) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// A template to parse service and version fields from a request URL.
+// URL mask allows for routing to multiple App Engine services without
+// having to create multiple Network Endpoint Groups and backend services.
+//
+// For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+// URL mask "-dot-appname.appspot.com/". The URL mask will parse
+// them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+func (o GetRegionNetworkEndpointGroupAppEngineOutput) UrlMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupAppEngine) string { return v.UrlMask }).(pulumi.StringOutput)
+}
+
+// Optional serving version.
+// The version must be 1-63 characters long, and comply with RFC1035.
+// Example value: "v1", "v2".
+func (o GetRegionNetworkEndpointGroupAppEngineOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupAppEngine) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetRegionNetworkEndpointGroupAppEngineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupAppEngineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupAppEngine)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupAppEngineArrayOutput) ToGetRegionNetworkEndpointGroupAppEngineArrayOutput() GetRegionNetworkEndpointGroupAppEngineArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupAppEngineArrayOutput) ToGetRegionNetworkEndpointGroupAppEngineArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupAppEngineArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupAppEngineArrayOutput) Index(i pulumi.IntInput) GetRegionNetworkEndpointGroupAppEngineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupAppEngine {
+		return vs[0].([]GetRegionNetworkEndpointGroupAppEngine)[vs[1].(int)]
+	}).(GetRegionNetworkEndpointGroupAppEngineOutput)
+}
+
+type GetRegionNetworkEndpointGroupCloudFunction struct {
+	// A user-defined name of the Cloud Function.
+	// The function name is case-sensitive and must be 1-63 characters long.
+	// Example value: "func1".
+	Function string `pulumi:"function"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	//
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask string `pulumi:"urlMask"`
+}
+
+// GetRegionNetworkEndpointGroupCloudFunctionInput is an input type that accepts GetRegionNetworkEndpointGroupCloudFunctionArgs and GetRegionNetworkEndpointGroupCloudFunctionOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupCloudFunctionInput` via:
+//
+//	GetRegionNetworkEndpointGroupCloudFunctionArgs{...}
+type GetRegionNetworkEndpointGroupCloudFunctionInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupCloudFunctionOutput() GetRegionNetworkEndpointGroupCloudFunctionOutput
+	ToGetRegionNetworkEndpointGroupCloudFunctionOutputWithContext(context.Context) GetRegionNetworkEndpointGroupCloudFunctionOutput
+}
+
+type GetRegionNetworkEndpointGroupCloudFunctionArgs struct {
+	// A user-defined name of the Cloud Function.
+	// The function name is case-sensitive and must be 1-63 characters long.
+	// Example value: "func1".
+	Function pulumi.StringInput `pulumi:"function"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	//
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask pulumi.StringInput `pulumi:"urlMask"`
+}
+
+func (GetRegionNetworkEndpointGroupCloudFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudFunction)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupCloudFunctionArgs) ToGetRegionNetworkEndpointGroupCloudFunctionOutput() GetRegionNetworkEndpointGroupCloudFunctionOutput {
+	return i.ToGetRegionNetworkEndpointGroupCloudFunctionOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupCloudFunctionArgs) ToGetRegionNetworkEndpointGroupCloudFunctionOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupCloudFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupCloudFunctionOutput)
+}
+
+// GetRegionNetworkEndpointGroupCloudFunctionArrayInput is an input type that accepts GetRegionNetworkEndpointGroupCloudFunctionArray and GetRegionNetworkEndpointGroupCloudFunctionArrayOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupCloudFunctionArrayInput` via:
+//
+//	GetRegionNetworkEndpointGroupCloudFunctionArray{ GetRegionNetworkEndpointGroupCloudFunctionArgs{...} }
+type GetRegionNetworkEndpointGroupCloudFunctionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupCloudFunctionArrayOutput() GetRegionNetworkEndpointGroupCloudFunctionArrayOutput
+	ToGetRegionNetworkEndpointGroupCloudFunctionArrayOutputWithContext(context.Context) GetRegionNetworkEndpointGroupCloudFunctionArrayOutput
+}
+
+type GetRegionNetworkEndpointGroupCloudFunctionArray []GetRegionNetworkEndpointGroupCloudFunctionInput
+
+func (GetRegionNetworkEndpointGroupCloudFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupCloudFunction)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupCloudFunctionArray) ToGetRegionNetworkEndpointGroupCloudFunctionArrayOutput() GetRegionNetworkEndpointGroupCloudFunctionArrayOutput {
+	return i.ToGetRegionNetworkEndpointGroupCloudFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupCloudFunctionArray) ToGetRegionNetworkEndpointGroupCloudFunctionArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupCloudFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupCloudFunctionArrayOutput)
+}
+
+type GetRegionNetworkEndpointGroupCloudFunctionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupCloudFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudFunction)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupCloudFunctionOutput) ToGetRegionNetworkEndpointGroupCloudFunctionOutput() GetRegionNetworkEndpointGroupCloudFunctionOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupCloudFunctionOutput) ToGetRegionNetworkEndpointGroupCloudFunctionOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupCloudFunctionOutput {
+	return o
+}
+
+// A user-defined name of the Cloud Function.
+// The function name is case-sensitive and must be 1-63 characters long.
+// Example value: "func1".
+func (o GetRegionNetworkEndpointGroupCloudFunctionOutput) Function() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudFunction) string { return v.Function }).(pulumi.StringOutput)
+}
+
+// A template to parse function field from a request URL. URL mask allows
+// for routing to multiple Cloud Functions without having to create
+// multiple Network Endpoint Groups and backend services.
+//
+// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+// will parse them to { function = "function1" } and { function = "function2" } respectively.
+func (o GetRegionNetworkEndpointGroupCloudFunctionOutput) UrlMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudFunction) string { return v.UrlMask }).(pulumi.StringOutput)
+}
+
+type GetRegionNetworkEndpointGroupCloudFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupCloudFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupCloudFunction)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupCloudFunctionArrayOutput) ToGetRegionNetworkEndpointGroupCloudFunctionArrayOutput() GetRegionNetworkEndpointGroupCloudFunctionArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupCloudFunctionArrayOutput) ToGetRegionNetworkEndpointGroupCloudFunctionArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupCloudFunctionArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupCloudFunctionArrayOutput) Index(i pulumi.IntInput) GetRegionNetworkEndpointGroupCloudFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupCloudFunction {
+		return vs[0].([]GetRegionNetworkEndpointGroupCloudFunction)[vs[1].(int)]
+	}).(GetRegionNetworkEndpointGroupCloudFunctionOutput)
+}
+
 type GetRegionNetworkEndpointGroupCloudRun struct {
 	// Cloud Run service is the main resource of Cloud Run.
 	// The service must be 1-63 characters long, and comply with RFC1035.
@@ -4061,6 +5017,109 @@ func (o GetRouterNatSubnetworkArrayOutput) Index(i pulumi.IntInput) GetRouterNat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterNatSubnetwork {
 		return vs[0].([]GetRouterNatSubnetwork)[vs[1].(int)]
 	}).(GetRouterNatSubnetworkOutput)
+}
+
+type GetRouterParam struct {
+	// Resource manager tags to be bound to the router. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetRouterParamInput is an input type that accepts GetRouterParamArgs and GetRouterParamOutput values.
+// You can construct a concrete instance of `GetRouterParamInput` via:
+//
+//	GetRouterParamArgs{...}
+type GetRouterParamInput interface {
+	pulumi.Input
+
+	ToGetRouterParamOutput() GetRouterParamOutput
+	ToGetRouterParamOutputWithContext(context.Context) GetRouterParamOutput
+}
+
+type GetRouterParamArgs struct {
+	// Resource manager tags to be bound to the router. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetRouterParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterParam)(nil)).Elem()
+}
+
+func (i GetRouterParamArgs) ToGetRouterParamOutput() GetRouterParamOutput {
+	return i.ToGetRouterParamOutputWithContext(context.Background())
+}
+
+func (i GetRouterParamArgs) ToGetRouterParamOutputWithContext(ctx context.Context) GetRouterParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterParamOutput)
+}
+
+// GetRouterParamArrayInput is an input type that accepts GetRouterParamArray and GetRouterParamArrayOutput values.
+// You can construct a concrete instance of `GetRouterParamArrayInput` via:
+//
+//	GetRouterParamArray{ GetRouterParamArgs{...} }
+type GetRouterParamArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterParamArrayOutput() GetRouterParamArrayOutput
+	ToGetRouterParamArrayOutputWithContext(context.Context) GetRouterParamArrayOutput
+}
+
+type GetRouterParamArray []GetRouterParamInput
+
+func (GetRouterParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterParam)(nil)).Elem()
+}
+
+func (i GetRouterParamArray) ToGetRouterParamArrayOutput() GetRouterParamArrayOutput {
+	return i.ToGetRouterParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterParamArray) ToGetRouterParamArrayOutputWithContext(ctx context.Context) GetRouterParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterParamArrayOutput)
+}
+
+type GetRouterParamOutput struct{ *pulumi.OutputState }
+
+func (GetRouterParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterParam)(nil)).Elem()
+}
+
+func (o GetRouterParamOutput) ToGetRouterParamOutput() GetRouterParamOutput {
+	return o
+}
+
+func (o GetRouterParamOutput) ToGetRouterParamOutputWithContext(ctx context.Context) GetRouterParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the router. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o GetRouterParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouterParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetRouterParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterParam)(nil)).Elem()
+}
+
+func (o GetRouterParamArrayOutput) ToGetRouterParamArrayOutput() GetRouterParamArrayOutput {
+	return o
+}
+
+func (o GetRouterParamArrayOutput) ToGetRouterParamArrayOutputWithContext(ctx context.Context) GetRouterParamArrayOutput {
+	return o
+}
+
+func (o GetRouterParamArrayOutput) Index(i pulumi.IntInput) GetRouterParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterParam {
+		return vs[0].([]GetRouterParam)[vs[1].(int)]
+	}).(GetRouterParamOutput)
 }
 
 type GetRouterStatusBestRoute struct {
@@ -9673,7 +10732,12 @@ type GetSubnetworksSubnetwork struct {
 	// The name of the subnetwork.
 	Name string `pulumi:"name"`
 	// The self link of the parent network.
-	Network         string `pulumi:"network"`
+	Network string `pulumi:"network"`
+	// The name of the parent network computed from `network` attribute.
+	NetworkName string `pulumi:"networkName"`
+	// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
+	//
+	// Deprecated: Use `networkName` instead. This field will be removed in a future major release.
 	NetworkSelfLink string `pulumi:"networkSelfLink"`
 	// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
 	PrivateIpGoogleAccess bool `pulumi:"privateIpGoogleAccess"`
@@ -9700,7 +10764,12 @@ type GetSubnetworksSubnetworkArgs struct {
 	// The name of the subnetwork.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The self link of the parent network.
-	Network         pulumi.StringInput `pulumi:"network"`
+	Network pulumi.StringInput `pulumi:"network"`
+	// The name of the parent network computed from `network` attribute.
+	NetworkName pulumi.StringInput `pulumi:"networkName"`
+	// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
+	//
+	// Deprecated: Use `networkName` instead. This field will be removed in a future major release.
 	NetworkSelfLink pulumi.StringInput `pulumi:"networkSelfLink"`
 	// Whether the VMs in the subnet can access Google services without assigned external IP addresses.
 	PrivateIpGoogleAccess pulumi.BoolInput `pulumi:"privateIpGoogleAccess"`
@@ -9779,6 +10848,14 @@ func (o GetSubnetworksSubnetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// The name of the parent network computed from `network` attribute.
+func (o GetSubnetworksSubnetworkOutput) NetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.NetworkName }).(pulumi.StringOutput)
+}
+
+// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `networkName` instead.)
+//
+// Deprecated: Use `networkName` instead. This field will be removed in a future major release.
 func (o GetSubnetworksSubnetworkOutput) NetworkSelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetworksSubnetwork) string { return v.NetworkSelfLink }).(pulumi.StringOutput)
 }
@@ -9814,6 +10891,22 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingMaxRunDurationInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingMaxRunDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingMaxRunDurationArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingMaxRunDurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingNodeAffinityInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingNodeAffinityArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopActionInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingOnInstanceStopActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingOnInstanceStopActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateServiceAccountInput)(nil)).Elem(), GetRegionInstanceTemplateServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateServiceAccountArrayInput)(nil)).Elem(), GetRegionInstanceTemplateServiceAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateShieldedInstanceConfigInput)(nil)).Elem(), GetRegionInstanceTemplateShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateShieldedInstanceConfigArrayInput)(nil)).Elem(), GetRegionInstanceTemplateShieldedInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupAppEngineInput)(nil)).Elem(), GetRegionNetworkEndpointGroupAppEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupAppEngineArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupAppEngineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudFunctionInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudFunctionArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudFunctionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRunInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRunArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudRunArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupPscDataInput)(nil)).Elem(), GetRegionNetworkEndpointGroupPscDataArgs{})
@@ -9880,6 +10973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatRuleActionArrayInput)(nil)).Elem(), GetRouterNatRuleActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatSubnetworkInput)(nil)).Elem(), GetRouterNatSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterNatSubnetworkArrayInput)(nil)).Elem(), GetRouterNatSubnetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterParamInput)(nil)).Elem(), GetRouterParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterParamArrayInput)(nil)).Elem(), GetRouterParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteInput)(nil)).Elem(), GetRouterStatusBestRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteArrayInput)(nil)).Elem(), GetRouterStatusBestRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteAsPathInput)(nil)).Elem(), GetRouterStatusBestRouteAsPathArgs{})
@@ -9966,6 +11061,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingMaxRunDurationOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingNodeAffinityOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingOnInstanceStopActionOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateServiceAccountOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupAppEngineOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupAppEngineArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudFunctionOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudFunctionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudRunOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudRunArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupPscDataOutput{})
@@ -10032,6 +11143,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRouterNatRuleActionArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterNatSubnetworkOutput{})
 	pulumi.RegisterOutputType(GetRouterNatSubnetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterParamOutput{})
+	pulumi.RegisterOutputType(GetRouterParamArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteAsPathOutput{})

@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// The OAuth client ID of the application.
         /// </summary>
         public readonly string? ClientId;
+        /// <summary>
+        /// The name of the application. Example: "Cloud Console"
+        /// </summary>
+        public readonly string? Name;
 
         [OutputConstructor]
-        private GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication(string? clientId)
+        private GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication(
+            string? clientId,
+
+            string? name)
         {
             ClientId = clientId;
+            Name = name;
         }
     }
 }

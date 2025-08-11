@@ -37,7 +37,7 @@ import (
 //					"my_key": pulumi.String("my_value"),
 //				},
 //				EnableCustomerDataSharing: pulumi.Bool(true),
-//				DisableWebGrounding:       pulumi.Bool(true),
+//				WebGroundingType:          pulumi.String("WEB_GROUNDING_FOR_ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err
@@ -76,7 +76,12 @@ type GeminiGcpEnablementSetting struct {
 
 	// Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
+	//
+	// > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+	//
+	// Deprecated: `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
 	DisableWebGrounding pulumi.BoolPtrOutput `pulumi:"disableWebGrounding"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -101,6 +106,11 @@ type GeminiGcpEnablementSetting struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Web grounding type.
+	// Possible values:
+	// GROUNDING_WITH_GOOGLE_SEARCH
+	// WEB_GROUNDING_FOR_ENTERPRISE
+	WebGroundingType pulumi.StringPtrOutput `pulumi:"webGroundingType"`
 }
 
 // NewGeminiGcpEnablementSetting registers a new resource with the given unique name, arguments, and options.
@@ -146,7 +156,12 @@ func GetGeminiGcpEnablementSetting(ctx *pulumi.Context,
 type geminiGcpEnablementSettingState struct {
 	// Create time stamp.
 	CreateTime *string `pulumi:"createTime"`
+	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
+	//
+	// > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+	//
+	// Deprecated: `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
 	DisableWebGrounding *bool `pulumi:"disableWebGrounding"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -171,12 +186,22 @@ type geminiGcpEnablementSettingState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Web grounding type.
+	// Possible values:
+	// GROUNDING_WITH_GOOGLE_SEARCH
+	// WEB_GROUNDING_FOR_ENTERPRISE
+	WebGroundingType *string `pulumi:"webGroundingType"`
 }
 
 type GeminiGcpEnablementSettingState struct {
 	// Create time stamp.
 	CreateTime pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
+	//
+	// > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+	//
+	// Deprecated: `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
 	DisableWebGrounding pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -201,6 +226,11 @@ type GeminiGcpEnablementSettingState struct {
 	PulumiLabels pulumi.StringMapInput
 	// Update time stamp.
 	UpdateTime pulumi.StringPtrInput
+	// Web grounding type.
+	// Possible values:
+	// GROUNDING_WITH_GOOGLE_SEARCH
+	// WEB_GROUNDING_FOR_ENTERPRISE
+	WebGroundingType pulumi.StringPtrInput
 }
 
 func (GeminiGcpEnablementSettingState) ElementType() reflect.Type {
@@ -208,7 +238,12 @@ func (GeminiGcpEnablementSettingState) ElementType() reflect.Type {
 }
 
 type geminiGcpEnablementSettingArgs struct {
+	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
+	//
+	// > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+	//
+	// Deprecated: `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
 	DisableWebGrounding *bool `pulumi:"disableWebGrounding"`
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing *bool `pulumi:"enableCustomerDataSharing"`
@@ -223,11 +258,21 @@ type geminiGcpEnablementSettingArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Web grounding type.
+	// Possible values:
+	// GROUNDING_WITH_GOOGLE_SEARCH
+	// WEB_GROUNDING_FOR_ENTERPRISE
+	WebGroundingType *string `pulumi:"webGroundingType"`
 }
 
 // The set of arguments for constructing a GeminiGcpEnablementSetting resource.
 type GeminiGcpEnablementSettingArgs struct {
+	// (Optional, Deprecated)
 	// Whether web grounding should be disabled.
+	//
+	// > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+	//
+	// Deprecated: `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
 	DisableWebGrounding pulumi.BoolPtrInput
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrInput
@@ -242,6 +287,11 @@ type GeminiGcpEnablementSettingArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Web grounding type.
+	// Possible values:
+	// GROUNDING_WITH_GOOGLE_SEARCH
+	// WEB_GROUNDING_FOR_ENTERPRISE
+	WebGroundingType pulumi.StringPtrInput
 }
 
 func (GeminiGcpEnablementSettingArgs) ElementType() reflect.Type {
@@ -336,7 +386,12 @@ func (o GeminiGcpEnablementSettingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // Whether web grounding should be disabled.
+//
+// > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+//
+// Deprecated: `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
 func (o GeminiGcpEnablementSettingOutput) DisableWebGrounding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.BoolPtrOutput { return v.DisableWebGrounding }).(pulumi.BoolPtrOutput)
 }
@@ -389,6 +444,14 @@ func (o GeminiGcpEnablementSettingOutput) PulumiLabels() pulumi.StringMapOutput 
 // Update time stamp.
 func (o GeminiGcpEnablementSettingOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Web grounding type.
+// Possible values:
+// GROUNDING_WITH_GOOGLE_SEARCH
+// WEB_GROUNDING_FOR_ENTERPRISE
+func (o GeminiGcpEnablementSettingOutput) WebGroundingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringPtrOutput { return v.WebGroundingType }).(pulumi.StringPtrOutput)
 }
 
 type GeminiGcpEnablementSettingArrayOutput struct{ *pulumi.OutputState }

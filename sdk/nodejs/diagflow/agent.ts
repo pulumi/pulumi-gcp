@@ -147,14 +147,6 @@ export class Agent extends pulumi.CustomResource {
      * The list of all languages supported by this agent (except for the defaultLanguageCode).
      */
     public readonly supportedLanguageCodes!: pulumi.Output<string[] | undefined>;
-    /**
-     * The agent tier. If not specified, TIER_STANDARD is assumed.
-     * * TIER_STANDARD: Standard tier.
-     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
-     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-     */
     public readonly tier!: pulumi.Output<string | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
@@ -286,14 +278,6 @@ export interface AgentState {
      * The list of all languages supported by this agent (except for the defaultLanguageCode).
      */
     supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The agent tier. If not specified, TIER_STANDARD is assumed.
-     * * TIER_STANDARD: Standard tier.
-     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
-     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-     */
     tier?: pulumi.Input<string>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
@@ -365,14 +349,6 @@ export interface AgentArgs {
      * The list of all languages supported by this agent (except for the defaultLanguageCode).
      */
     supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The agent tier. If not specified, TIER_STANDARD is assumed.
-     * * TIER_STANDARD: Standard tier.
-     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
-     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
-     */
     tier?: pulumi.Input<string>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,

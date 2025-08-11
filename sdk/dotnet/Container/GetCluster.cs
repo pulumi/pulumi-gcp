@@ -247,6 +247,7 @@ namespace Pulumi.Gcp.Container
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetClusterProtectConfigResult> ProtectConfigs;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        public readonly ImmutableArray<Outputs.GetClusterRbacBindingConfigResult> RbacBindingConfigs;
         public readonly ImmutableArray<Outputs.GetClusterReleaseChannelResult> ReleaseChannels;
         public readonly bool RemoveDefaultNodePool;
         public readonly ImmutableDictionary<string, string> ResourceLabels;
@@ -412,6 +413,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableDictionary<string, string> pulumiLabels,
 
+            ImmutableArray<Outputs.GetClusterRbacBindingConfigResult> rbacBindingConfigs,
+
             ImmutableArray<Outputs.GetClusterReleaseChannelResult> releaseChannels,
 
             bool removeDefaultNodePool,
@@ -517,6 +520,7 @@ namespace Pulumi.Gcp.Container
             Project = project;
             ProtectConfigs = protectConfigs;
             PulumiLabels = pulumiLabels;
+            RbacBindingConfigs = rbacBindingConfigs;
             ReleaseChannels = releaseChannels;
             RemoveDefaultNodePool = removeDefaultNodePool;
             ResourceLabels = resourceLabels;

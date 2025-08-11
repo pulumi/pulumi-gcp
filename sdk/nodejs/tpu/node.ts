@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-b",
  *     acceleratorType: "v3-8",
  *     tensorflowVersion: available.then(available => available.versions?.[0]),
- *     description: "Google Provider test TPU",
+ *     description: "Terraform Google Provider test TPU",
  *     useServiceNetworking: true,
  *     network: privateServiceConnection.network,
  *     labels: {

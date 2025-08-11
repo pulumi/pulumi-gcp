@@ -27,7 +27,10 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_service_account=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, automatic_update_policies=None, available_memory_mb=None, build_environment_variables=None, build_service_account=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, on_deploy_update_policies=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
+        if automatic_update_policies and not isinstance(automatic_update_policies, list):
+            raise TypeError("Expected argument 'automatic_update_policies' to be a list")
+        pulumi.set(__self__, "automatic_update_policies", automatic_update_policies)
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -88,6 +91,9 @@ class GetFunctionResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if on_deploy_update_policies and not isinstance(on_deploy_update_policies, list):
+            raise TypeError("Expected argument 'on_deploy_update_policies' to be a list")
+        pulumi.set(__self__, "on_deploy_update_policies", on_deploy_update_policies)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -136,6 +142,11 @@ class GetFunctionResult:
         if vpc_connector_egress_settings and not isinstance(vpc_connector_egress_settings, str):
             raise TypeError("Expected argument 'vpc_connector_egress_settings' to be a str")
         pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticUpdatePolicies")
+    def automatic_update_policies(self) -> Sequence['outputs.GetFunctionAutomaticUpdatePolicyResult']:
+        return pulumi.get(self, "automatic_update_policies")
 
     @_builtins.property
     @pulumi.getter(name="availableMemoryMb")
@@ -268,6 +279,11 @@ class GetFunctionResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="onDeployUpdatePolicies")
+    def on_deploy_update_policies(self) -> Sequence['outputs.GetFunctionOnDeployUpdatePolicyResult']:
+        return pulumi.get(self, "on_deploy_update_policies")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
@@ -381,6 +397,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
         if False:
             yield self
         return GetFunctionResult(
+            automatic_update_policies=self.automatic_update_policies,
             available_memory_mb=self.available_memory_mb,
             build_environment_variables=self.build_environment_variables,
             build_service_account=self.build_service_account,
@@ -401,6 +418,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             max_instances=self.max_instances,
             min_instances=self.min_instances,
             name=self.name,
+            on_deploy_update_policies=self.on_deploy_update_policies,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             region=self.region,
@@ -454,6 +472,7 @@ def get_function(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudfunctions/getFunction:getFunction', __args__, opts=opts, typ=GetFunctionResult).value
 
     return AwaitableGetFunctionResult(
+        automatic_update_policies=pulumi.get(__ret__, 'automatic_update_policies'),
         available_memory_mb=pulumi.get(__ret__, 'available_memory_mb'),
         build_environment_variables=pulumi.get(__ret__, 'build_environment_variables'),
         build_service_account=pulumi.get(__ret__, 'build_service_account'),
@@ -474,6 +493,7 @@ def get_function(name: Optional[_builtins.str] = None,
         max_instances=pulumi.get(__ret__, 'max_instances'),
         min_instances=pulumi.get(__ret__, 'min_instances'),
         name=pulumi.get(__ret__, 'name'),
+        on_deploy_update_policies=pulumi.get(__ret__, 'on_deploy_update_policies'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
@@ -524,6 +544,7 @@ def get_function_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudfunctions/getFunction:getFunction', __args__, opts=opts, typ=GetFunctionResult)
     return __ret__.apply(lambda __response__: GetFunctionResult(
+        automatic_update_policies=pulumi.get(__response__, 'automatic_update_policies'),
         available_memory_mb=pulumi.get(__response__, 'available_memory_mb'),
         build_environment_variables=pulumi.get(__response__, 'build_environment_variables'),
         build_service_account=pulumi.get(__response__, 'build_service_account'),
@@ -544,6 +565,7 @@ def get_function_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         max_instances=pulumi.get(__response__, 'max_instances'),
         min_instances=pulumi.get(__response__, 'min_instances'),
         name=pulumi.get(__response__, 'name'),
+        on_deploy_update_policies=pulumi.get(__response__, 'on_deploy_update_policies'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         region=pulumi.get(__response__, 'region'),

@@ -839,6 +839,404 @@ func (o ClusterRebalanceConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterTlsConfig struct {
+	// The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
+	SslPrincipalMappingRules *string `pulumi:"sslPrincipalMappingRules"`
+	// The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
+	// Structure is documented below.
+	TrustConfig *ClusterTlsConfigTrustConfig `pulumi:"trustConfig"`
+}
+
+// ClusterTlsConfigInput is an input type that accepts ClusterTlsConfigArgs and ClusterTlsConfigOutput values.
+// You can construct a concrete instance of `ClusterTlsConfigInput` via:
+//
+//	ClusterTlsConfigArgs{...}
+type ClusterTlsConfigInput interface {
+	pulumi.Input
+
+	ToClusterTlsConfigOutput() ClusterTlsConfigOutput
+	ToClusterTlsConfigOutputWithContext(context.Context) ClusterTlsConfigOutput
+}
+
+type ClusterTlsConfigArgs struct {
+	// The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
+	SslPrincipalMappingRules pulumi.StringPtrInput `pulumi:"sslPrincipalMappingRules"`
+	// The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
+	// Structure is documented below.
+	TrustConfig ClusterTlsConfigTrustConfigPtrInput `pulumi:"trustConfig"`
+}
+
+func (ClusterTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTlsConfig)(nil)).Elem()
+}
+
+func (i ClusterTlsConfigArgs) ToClusterTlsConfigOutput() ClusterTlsConfigOutput {
+	return i.ToClusterTlsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterTlsConfigArgs) ToClusterTlsConfigOutputWithContext(ctx context.Context) ClusterTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTlsConfigOutput)
+}
+
+func (i ClusterTlsConfigArgs) ToClusterTlsConfigPtrOutput() ClusterTlsConfigPtrOutput {
+	return i.ToClusterTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTlsConfigArgs) ToClusterTlsConfigPtrOutputWithContext(ctx context.Context) ClusterTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTlsConfigOutput).ToClusterTlsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterTlsConfigPtrInput is an input type that accepts ClusterTlsConfigArgs, ClusterTlsConfigPtr and ClusterTlsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterTlsConfigPtrInput` via:
+//
+//	        ClusterTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterTlsConfigPtrOutput() ClusterTlsConfigPtrOutput
+	ToClusterTlsConfigPtrOutputWithContext(context.Context) ClusterTlsConfigPtrOutput
+}
+
+type clusterTlsConfigPtrType ClusterTlsConfigArgs
+
+func ClusterTlsConfigPtr(v *ClusterTlsConfigArgs) ClusterTlsConfigPtrInput {
+	return (*clusterTlsConfigPtrType)(v)
+}
+
+func (*clusterTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTlsConfig)(nil)).Elem()
+}
+
+func (i *clusterTlsConfigPtrType) ToClusterTlsConfigPtrOutput() ClusterTlsConfigPtrOutput {
+	return i.ToClusterTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTlsConfigPtrType) ToClusterTlsConfigPtrOutputWithContext(ctx context.Context) ClusterTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTlsConfigPtrOutput)
+}
+
+type ClusterTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTlsConfig)(nil)).Elem()
+}
+
+func (o ClusterTlsConfigOutput) ToClusterTlsConfigOutput() ClusterTlsConfigOutput {
+	return o
+}
+
+func (o ClusterTlsConfigOutput) ToClusterTlsConfigOutputWithContext(ctx context.Context) ClusterTlsConfigOutput {
+	return o
+}
+
+func (o ClusterTlsConfigOutput) ToClusterTlsConfigPtrOutput() ClusterTlsConfigPtrOutput {
+	return o.ToClusterTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTlsConfigOutput) ToClusterTlsConfigPtrOutputWithContext(ctx context.Context) ClusterTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterTlsConfig) *ClusterTlsConfig {
+		return &v
+	}).(ClusterTlsConfigPtrOutput)
+}
+
+// The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
+func (o ClusterTlsConfigOutput) SslPrincipalMappingRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTlsConfig) *string { return v.SslPrincipalMappingRules }).(pulumi.StringPtrOutput)
+}
+
+// The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
+// Structure is documented below.
+func (o ClusterTlsConfigOutput) TrustConfig() ClusterTlsConfigTrustConfigPtrOutput {
+	return o.ApplyT(func(v ClusterTlsConfig) *ClusterTlsConfigTrustConfig { return v.TrustConfig }).(ClusterTlsConfigTrustConfigPtrOutput)
+}
+
+type ClusterTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTlsConfig)(nil)).Elem()
+}
+
+func (o ClusterTlsConfigPtrOutput) ToClusterTlsConfigPtrOutput() ClusterTlsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTlsConfigPtrOutput) ToClusterTlsConfigPtrOutputWithContext(ctx context.Context) ClusterTlsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTlsConfigPtrOutput) Elem() ClusterTlsConfigOutput {
+	return o.ApplyT(func(v *ClusterTlsConfig) ClusterTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterTlsConfig
+		return ret
+	}).(ClusterTlsConfigOutput)
+}
+
+// The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
+func (o ClusterTlsConfigPtrOutput) SslPrincipalMappingRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPrincipalMappingRules
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
+// Structure is documented below.
+func (o ClusterTlsConfigPtrOutput) TrustConfig() ClusterTlsConfigTrustConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterTlsConfig) *ClusterTlsConfigTrustConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TrustConfig
+	}).(ClusterTlsConfigTrustConfigPtrOutput)
+}
+
+type ClusterTlsConfigTrustConfig struct {
+	// Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
+	// Structure is documented below.
+	CasConfigs []ClusterTlsConfigTrustConfigCasConfig `pulumi:"casConfigs"`
+}
+
+// ClusterTlsConfigTrustConfigInput is an input type that accepts ClusterTlsConfigTrustConfigArgs and ClusterTlsConfigTrustConfigOutput values.
+// You can construct a concrete instance of `ClusterTlsConfigTrustConfigInput` via:
+//
+//	ClusterTlsConfigTrustConfigArgs{...}
+type ClusterTlsConfigTrustConfigInput interface {
+	pulumi.Input
+
+	ToClusterTlsConfigTrustConfigOutput() ClusterTlsConfigTrustConfigOutput
+	ToClusterTlsConfigTrustConfigOutputWithContext(context.Context) ClusterTlsConfigTrustConfigOutput
+}
+
+type ClusterTlsConfigTrustConfigArgs struct {
+	// Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
+	// Structure is documented below.
+	CasConfigs ClusterTlsConfigTrustConfigCasConfigArrayInput `pulumi:"casConfigs"`
+}
+
+func (ClusterTlsConfigTrustConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTlsConfigTrustConfig)(nil)).Elem()
+}
+
+func (i ClusterTlsConfigTrustConfigArgs) ToClusterTlsConfigTrustConfigOutput() ClusterTlsConfigTrustConfigOutput {
+	return i.ToClusterTlsConfigTrustConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterTlsConfigTrustConfigArgs) ToClusterTlsConfigTrustConfigOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTlsConfigTrustConfigOutput)
+}
+
+func (i ClusterTlsConfigTrustConfigArgs) ToClusterTlsConfigTrustConfigPtrOutput() ClusterTlsConfigTrustConfigPtrOutput {
+	return i.ToClusterTlsConfigTrustConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterTlsConfigTrustConfigArgs) ToClusterTlsConfigTrustConfigPtrOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTlsConfigTrustConfigOutput).ToClusterTlsConfigTrustConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterTlsConfigTrustConfigPtrInput is an input type that accepts ClusterTlsConfigTrustConfigArgs, ClusterTlsConfigTrustConfigPtr and ClusterTlsConfigTrustConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterTlsConfigTrustConfigPtrInput` via:
+//
+//	        ClusterTlsConfigTrustConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterTlsConfigTrustConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterTlsConfigTrustConfigPtrOutput() ClusterTlsConfigTrustConfigPtrOutput
+	ToClusterTlsConfigTrustConfigPtrOutputWithContext(context.Context) ClusterTlsConfigTrustConfigPtrOutput
+}
+
+type clusterTlsConfigTrustConfigPtrType ClusterTlsConfigTrustConfigArgs
+
+func ClusterTlsConfigTrustConfigPtr(v *ClusterTlsConfigTrustConfigArgs) ClusterTlsConfigTrustConfigPtrInput {
+	return (*clusterTlsConfigTrustConfigPtrType)(v)
+}
+
+func (*clusterTlsConfigTrustConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTlsConfigTrustConfig)(nil)).Elem()
+}
+
+func (i *clusterTlsConfigTrustConfigPtrType) ToClusterTlsConfigTrustConfigPtrOutput() ClusterTlsConfigTrustConfigPtrOutput {
+	return i.ToClusterTlsConfigTrustConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterTlsConfigTrustConfigPtrType) ToClusterTlsConfigTrustConfigPtrOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTlsConfigTrustConfigPtrOutput)
+}
+
+type ClusterTlsConfigTrustConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterTlsConfigTrustConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTlsConfigTrustConfig)(nil)).Elem()
+}
+
+func (o ClusterTlsConfigTrustConfigOutput) ToClusterTlsConfigTrustConfigOutput() ClusterTlsConfigTrustConfigOutput {
+	return o
+}
+
+func (o ClusterTlsConfigTrustConfigOutput) ToClusterTlsConfigTrustConfigOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigOutput {
+	return o
+}
+
+func (o ClusterTlsConfigTrustConfigOutput) ToClusterTlsConfigTrustConfigPtrOutput() ClusterTlsConfigTrustConfigPtrOutput {
+	return o.ToClusterTlsConfigTrustConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterTlsConfigTrustConfigOutput) ToClusterTlsConfigTrustConfigPtrOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterTlsConfigTrustConfig) *ClusterTlsConfigTrustConfig {
+		return &v
+	}).(ClusterTlsConfigTrustConfigPtrOutput)
+}
+
+// Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
+// Structure is documented below.
+func (o ClusterTlsConfigTrustConfigOutput) CasConfigs() ClusterTlsConfigTrustConfigCasConfigArrayOutput {
+	return o.ApplyT(func(v ClusterTlsConfigTrustConfig) []ClusterTlsConfigTrustConfigCasConfig { return v.CasConfigs }).(ClusterTlsConfigTrustConfigCasConfigArrayOutput)
+}
+
+type ClusterTlsConfigTrustConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterTlsConfigTrustConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterTlsConfigTrustConfig)(nil)).Elem()
+}
+
+func (o ClusterTlsConfigTrustConfigPtrOutput) ToClusterTlsConfigTrustConfigPtrOutput() ClusterTlsConfigTrustConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTlsConfigTrustConfigPtrOutput) ToClusterTlsConfigTrustConfigPtrOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigPtrOutput {
+	return o
+}
+
+func (o ClusterTlsConfigTrustConfigPtrOutput) Elem() ClusterTlsConfigTrustConfigOutput {
+	return o.ApplyT(func(v *ClusterTlsConfigTrustConfig) ClusterTlsConfigTrustConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterTlsConfigTrustConfig
+		return ret
+	}).(ClusterTlsConfigTrustConfigOutput)
+}
+
+// Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `casConfigs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `casConfigs` blocks.
+// Structure is documented below.
+func (o ClusterTlsConfigTrustConfigPtrOutput) CasConfigs() ClusterTlsConfigTrustConfigCasConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterTlsConfigTrustConfig) []ClusterTlsConfigTrustConfigCasConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CasConfigs
+	}).(ClusterTlsConfigTrustConfigCasConfigArrayOutput)
+}
+
+type ClusterTlsConfigTrustConfigCasConfig struct {
+	// The name of the CA pool to pull CA certificates from. The CA pool does not need to be in the same project or location as the Kafka cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/caPools/CA_POOL_ID.
+	CaPool string `pulumi:"caPool"`
+}
+
+// ClusterTlsConfigTrustConfigCasConfigInput is an input type that accepts ClusterTlsConfigTrustConfigCasConfigArgs and ClusterTlsConfigTrustConfigCasConfigOutput values.
+// You can construct a concrete instance of `ClusterTlsConfigTrustConfigCasConfigInput` via:
+//
+//	ClusterTlsConfigTrustConfigCasConfigArgs{...}
+type ClusterTlsConfigTrustConfigCasConfigInput interface {
+	pulumi.Input
+
+	ToClusterTlsConfigTrustConfigCasConfigOutput() ClusterTlsConfigTrustConfigCasConfigOutput
+	ToClusterTlsConfigTrustConfigCasConfigOutputWithContext(context.Context) ClusterTlsConfigTrustConfigCasConfigOutput
+}
+
+type ClusterTlsConfigTrustConfigCasConfigArgs struct {
+	// The name of the CA pool to pull CA certificates from. The CA pool does not need to be in the same project or location as the Kafka cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/caPools/CA_POOL_ID.
+	CaPool pulumi.StringInput `pulumi:"caPool"`
+}
+
+func (ClusterTlsConfigTrustConfigCasConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTlsConfigTrustConfigCasConfig)(nil)).Elem()
+}
+
+func (i ClusterTlsConfigTrustConfigCasConfigArgs) ToClusterTlsConfigTrustConfigCasConfigOutput() ClusterTlsConfigTrustConfigCasConfigOutput {
+	return i.ToClusterTlsConfigTrustConfigCasConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterTlsConfigTrustConfigCasConfigArgs) ToClusterTlsConfigTrustConfigCasConfigOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigCasConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTlsConfigTrustConfigCasConfigOutput)
+}
+
+// ClusterTlsConfigTrustConfigCasConfigArrayInput is an input type that accepts ClusterTlsConfigTrustConfigCasConfigArray and ClusterTlsConfigTrustConfigCasConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterTlsConfigTrustConfigCasConfigArrayInput` via:
+//
+//	ClusterTlsConfigTrustConfigCasConfigArray{ ClusterTlsConfigTrustConfigCasConfigArgs{...} }
+type ClusterTlsConfigTrustConfigCasConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterTlsConfigTrustConfigCasConfigArrayOutput() ClusterTlsConfigTrustConfigCasConfigArrayOutput
+	ToClusterTlsConfigTrustConfigCasConfigArrayOutputWithContext(context.Context) ClusterTlsConfigTrustConfigCasConfigArrayOutput
+}
+
+type ClusterTlsConfigTrustConfigCasConfigArray []ClusterTlsConfigTrustConfigCasConfigInput
+
+func (ClusterTlsConfigTrustConfigCasConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterTlsConfigTrustConfigCasConfig)(nil)).Elem()
+}
+
+func (i ClusterTlsConfigTrustConfigCasConfigArray) ToClusterTlsConfigTrustConfigCasConfigArrayOutput() ClusterTlsConfigTrustConfigCasConfigArrayOutput {
+	return i.ToClusterTlsConfigTrustConfigCasConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterTlsConfigTrustConfigCasConfigArray) ToClusterTlsConfigTrustConfigCasConfigArrayOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigCasConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTlsConfigTrustConfigCasConfigArrayOutput)
+}
+
+type ClusterTlsConfigTrustConfigCasConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterTlsConfigTrustConfigCasConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTlsConfigTrustConfigCasConfig)(nil)).Elem()
+}
+
+func (o ClusterTlsConfigTrustConfigCasConfigOutput) ToClusterTlsConfigTrustConfigCasConfigOutput() ClusterTlsConfigTrustConfigCasConfigOutput {
+	return o
+}
+
+func (o ClusterTlsConfigTrustConfigCasConfigOutput) ToClusterTlsConfigTrustConfigCasConfigOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigCasConfigOutput {
+	return o
+}
+
+// The name of the CA pool to pull CA certificates from. The CA pool does not need to be in the same project or location as the Kafka cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/caPools/CA_POOL_ID.
+func (o ClusterTlsConfigTrustConfigCasConfigOutput) CaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterTlsConfigTrustConfigCasConfig) string { return v.CaPool }).(pulumi.StringOutput)
+}
+
+type ClusterTlsConfigTrustConfigCasConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterTlsConfigTrustConfigCasConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterTlsConfigTrustConfigCasConfig)(nil)).Elem()
+}
+
+func (o ClusterTlsConfigTrustConfigCasConfigArrayOutput) ToClusterTlsConfigTrustConfigCasConfigArrayOutput() ClusterTlsConfigTrustConfigCasConfigArrayOutput {
+	return o
+}
+
+func (o ClusterTlsConfigTrustConfigCasConfigArrayOutput) ToClusterTlsConfigTrustConfigCasConfigArrayOutputWithContext(ctx context.Context) ClusterTlsConfigTrustConfigCasConfigArrayOutput {
+	return o
+}
+
+func (o ClusterTlsConfigTrustConfigCasConfigArrayOutput) Index(i pulumi.IntInput) ClusterTlsConfigTrustConfigCasConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterTlsConfigTrustConfigCasConfig {
+		return vs[0].([]ClusterTlsConfigTrustConfigCasConfig)[vs[1].(int)]
+	}).(ClusterTlsConfigTrustConfigCasConfigOutput)
+}
+
 type ConnectClusterCapacityConfig struct {
 	// The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB).
 	MemoryBytes string `pulumi:"memoryBytes"`
@@ -1571,6 +1969,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcpConfigAccessConfigNetworkConfigArrayInput)(nil)).Elem(), ClusterGcpConfigAccessConfigNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRebalanceConfigInput)(nil)).Elem(), ClusterRebalanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRebalanceConfigPtrInput)(nil)).Elem(), ClusterRebalanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTlsConfigInput)(nil)).Elem(), ClusterTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTlsConfigPtrInput)(nil)).Elem(), ClusterTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTlsConfigTrustConfigInput)(nil)).Elem(), ClusterTlsConfigTrustConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTlsConfigTrustConfigPtrInput)(nil)).Elem(), ClusterTlsConfigTrustConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTlsConfigTrustConfigCasConfigInput)(nil)).Elem(), ClusterTlsConfigTrustConfigCasConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTlsConfigTrustConfigCasConfigArrayInput)(nil)).Elem(), ClusterTlsConfigTrustConfigCasConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterCapacityConfigInput)(nil)).Elem(), ConnectClusterCapacityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterCapacityConfigPtrInput)(nil)).Elem(), ConnectClusterCapacityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectClusterGcpConfigInput)(nil)).Elem(), ConnectClusterGcpConfigArgs{})
@@ -1593,6 +1997,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterGcpConfigAccessConfigNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterRebalanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterRebalanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTlsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterTlsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTlsConfigTrustConfigOutput{})
+	pulumi.RegisterOutputType(ClusterTlsConfigTrustConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTlsConfigTrustConfigCasConfigOutput{})
+	pulumi.RegisterOutputType(ClusterTlsConfigTrustConfigCasConfigArrayOutput{})
 	pulumi.RegisterOutputType(ConnectClusterCapacityConfigOutput{})
 	pulumi.RegisterOutputType(ConnectClusterCapacityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectClusterGcpConfigOutput{})

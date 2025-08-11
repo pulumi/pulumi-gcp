@@ -1165,6 +1165,7 @@ class Job(pulumi.CustomResource):
                     "node_selector": {
                         "accelerator": "nvidia-l4",
                     },
+                    "gpu_zonal_redundancy_disabled": True,
                 },
             })
         ```
@@ -1563,6 +1564,7 @@ class Job(pulumi.CustomResource):
                     "node_selector": {
                         "accelerator": "nvidia-l4",
                     },
+                    "gpu_zonal_redundancy_disabled": True,
                 },
             })
         ```

@@ -27,8 +27,8 @@ class IamAuditConfigArgs:
         """
         The set of arguments for constructing a IamAuditConfig resource.
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
-        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[_builtins.str] org_id: The organization id of the target organization.
+        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         pulumi.set(__self__, "audit_log_configs", audit_log_configs)
         pulumi.set(__self__, "org_id", org_id)
@@ -50,7 +50,7 @@ class IamAuditConfigArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The numeric ID of the organization in which you want to manage the audit logging config.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -62,7 +62,7 @@ class IamAuditConfigArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 
@@ -81,9 +81,9 @@ class _IamAuditConfigState:
         """
         Input properties used for looking up and filtering IamAuditConfig resources.
         :param pulumi.Input[Sequence[pulumi.Input['IamAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[_builtins.str] etag: The etag of iam policy
-        :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
-        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization's IAM policy.
+        :param pulumi.Input[_builtins.str] org_id: The organization id of the target organization.
+        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         if audit_log_configs is not None:
             pulumi.set(__self__, "audit_log_configs", audit_log_configs)
@@ -110,7 +110,7 @@ class _IamAuditConfigState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The etag of iam policy
+        (Computed) The etag of the organization's IAM policy.
         """
         return pulumi.get(self, "etag")
 
@@ -122,7 +122,7 @@ class _IamAuditConfigState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The numeric ID of the organization in which you want to manage the audit logging config.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -134,7 +134,7 @@ class _IamAuditConfigState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 
@@ -154,36 +154,37 @@ class IamAuditConfig(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        config = gcp.organizations.IamAuditConfig("config",
-            org_id="your-organization-id",
-            service="allServices",
-            audit_log_configs=[{
-                "log_type": "DATA_READ",
-                "exempted_members": ["user:joebloggs@example.com"],
-            }])
-        ```
-
         ## Import
 
-        IAM audit config imports use the identifier of the resource in question and the service, e.g.
+        ### Importing Audit Configs
+
+        An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource's `org_id` and the `service`, e.g:
+
+        * `"{{org_id}} foo.googleapis.com"`
+
+        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+
+        tf
+
+        import {
+
+          id = "{{org_id}} foo.googleapis.com"
+
+          to = google_organization_iam_audit_config.default
+
+        }
+
+        The `pulumi import` command can also be used:
 
         ```sh
-        $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+        $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig default "{{org_id}} foo.googleapis.com"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
-        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[_builtins.str] org_id: The organization id of the target organization.
+        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         ...
     @overload
@@ -192,29 +193,30 @@ class IamAuditConfig(pulumi.CustomResource):
                  args: IamAuditConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        config = gcp.organizations.IamAuditConfig("config",
-            org_id="your-organization-id",
-            service="allServices",
-            audit_log_configs=[{
-                "log_type": "DATA_READ",
-                "exempted_members": ["user:joebloggs@example.com"],
-            }])
-        ```
-
         ## Import
 
-        IAM audit config imports use the identifier of the resource in question and the service, e.g.
+        ### Importing Audit Configs
+
+        An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource's `org_id` and the `service`, e.g:
+
+        * `"{{org_id}} foo.googleapis.com"`
+
+        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+
+        tf
+
+        import {
+
+          id = "{{org_id}} foo.googleapis.com"
+
+          to = google_organization_iam_audit_config.default
+
+        }
+
+        The `pulumi import` command can also be used:
 
         ```sh
-        $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+        $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig default "{{org_id}} foo.googleapis.com"
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,9 +278,9 @@ class IamAuditConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IamAuditConfigAuditLogConfigArgs', 'IamAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-        :param pulumi.Input[_builtins.str] etag: The etag of iam policy
-        :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
-        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization's IAM policy.
+        :param pulumi.Input[_builtins.str] org_id: The organization id of the target organization.
+        :param pulumi.Input[_builtins.str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,7 +304,7 @@ class IamAuditConfig(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         """
-        The etag of iam policy
+        (Computed) The etag of the organization's IAM policy.
         """
         return pulumi.get(self, "etag")
 
@@ -310,7 +312,7 @@ class IamAuditConfig(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The numeric ID of the organization in which you want to manage the audit logging config.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -318,7 +320,7 @@ class IamAuditConfig(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[_builtins.str]:
         """
-        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_organization\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+        Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
         """
         return pulumi.get(self, "service")
 

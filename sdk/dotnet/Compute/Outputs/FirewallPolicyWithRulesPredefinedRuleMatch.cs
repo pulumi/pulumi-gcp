@@ -43,9 +43,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Pairs of IP protocols and ports that the rule should match.
         /// Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_rule_rule_match_layer4_config"&gt;&lt;/a&gt;The `layer4_config` block supports:
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config> Layer4Configs;
         /// <summary>
@@ -70,6 +67,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Maximum number of source region codes allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> SrcRegionCodes;
+        /// <summary>
+        /// List of secure tag values, which should be matched at the source
+        /// of the traffic.
+        /// For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
+        /// and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored.
+        /// Maximum number of source tag values allowed is 256.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag> SrcSecureTags;
         /// <summary>
         /// Names of Network Threat Intelligence lists.
         /// The IPs in these lists will be matched against traffic source.
@@ -98,6 +104,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<string> srcRegionCodes,
 
+            ImmutableArray<Outputs.FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag> srcSecureTags,
+
             ImmutableArray<string> srcThreatIntelligences)
         {
             DestAddressGroups = destAddressGroups;
@@ -110,6 +118,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             SrcFqdns = srcFqdns;
             SrcIpRanges = srcIpRanges;
             SrcRegionCodes = srcRegionCodes;
+            SrcSecureTags = srcSecureTags;
             SrcThreatIntelligences = srcThreatIntelligences;
         }
     }

@@ -26,7 +26,7 @@ class GetBackupVaultResult:
     """
     A collection of values returned by getBackupVault.
     """
-    def __init__(__self__, access_restriction=None, allow_missing=None, annotations=None, backup_count=None, backup_minimum_enforced_retention_duration=None, backup_vault_id=None, create_time=None, deletable=None, description=None, effective_annotations=None, effective_labels=None, effective_time=None, etag=None, force_delete=None, force_update=None, id=None, ignore_backup_plan_references=None, ignore_inactive_datasources=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_account=None, state=None, total_stored_bytes=None, uid=None, update_time=None):
+    def __init__(__self__, access_restriction=None, allow_missing=None, annotations=None, backup_count=None, backup_minimum_enforced_retention_duration=None, backup_retention_inheritance=None, backup_vault_id=None, create_time=None, deletable=None, description=None, effective_annotations=None, effective_labels=None, effective_time=None, etag=None, force_delete=None, force_update=None, id=None, ignore_backup_plan_references=None, ignore_inactive_datasources=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_account=None, state=None, total_stored_bytes=None, uid=None, update_time=None):
         if access_restriction and not isinstance(access_restriction, str):
             raise TypeError("Expected argument 'access_restriction' to be a str")
         pulumi.set(__self__, "access_restriction", access_restriction)
@@ -42,6 +42,9 @@ class GetBackupVaultResult:
         if backup_minimum_enforced_retention_duration and not isinstance(backup_minimum_enforced_retention_duration, str):
             raise TypeError("Expected argument 'backup_minimum_enforced_retention_duration' to be a str")
         pulumi.set(__self__, "backup_minimum_enforced_retention_duration", backup_minimum_enforced_retention_duration)
+        if backup_retention_inheritance and not isinstance(backup_retention_inheritance, str):
+            raise TypeError("Expected argument 'backup_retention_inheritance' to be a str")
+        pulumi.set(__self__, "backup_retention_inheritance", backup_retention_inheritance)
         if backup_vault_id and not isinstance(backup_vault_id, str):
             raise TypeError("Expected argument 'backup_vault_id' to be a str")
         pulumi.set(__self__, "backup_vault_id", backup_vault_id)
@@ -136,6 +139,11 @@ class GetBackupVaultResult:
     @pulumi.getter(name="backupMinimumEnforcedRetentionDuration")
     def backup_minimum_enforced_retention_duration(self) -> _builtins.str:
         return pulumi.get(self, "backup_minimum_enforced_retention_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionInheritance")
+    def backup_retention_inheritance(self) -> _builtins.str:
+        return pulumi.get(self, "backup_retention_inheritance")
 
     @_builtins.property
     @pulumi.getter(name="backupVaultId")
@@ -267,6 +275,7 @@ class AwaitableGetBackupVaultResult(GetBackupVaultResult):
             annotations=self.annotations,
             backup_count=self.backup_count,
             backup_minimum_enforced_retention_duration=self.backup_minimum_enforced_retention_duration,
+            backup_retention_inheritance=self.backup_retention_inheritance,
             backup_vault_id=self.backup_vault_id,
             create_time=self.create_time,
             deletable=self.deletable,
@@ -330,6 +339,7 @@ def get_backup_vault(backup_vault_id: Optional[_builtins.str] = None,
         annotations=pulumi.get(__ret__, 'annotations'),
         backup_count=pulumi.get(__ret__, 'backup_count'),
         backup_minimum_enforced_retention_duration=pulumi.get(__ret__, 'backup_minimum_enforced_retention_duration'),
+        backup_retention_inheritance=pulumi.get(__ret__, 'backup_retention_inheritance'),
         backup_vault_id=pulumi.get(__ret__, 'backup_vault_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
         deletable=pulumi.get(__ret__, 'deletable'),
@@ -390,6 +400,7 @@ def get_backup_vault_output(backup_vault_id: Optional[pulumi.Input[_builtins.str
         annotations=pulumi.get(__response__, 'annotations'),
         backup_count=pulumi.get(__response__, 'backup_count'),
         backup_minimum_enforced_retention_duration=pulumi.get(__response__, 'backup_minimum_enforced_retention_duration'),
+        backup_retention_inheritance=pulumi.get(__response__, 'backup_retention_inheritance'),
         backup_vault_id=pulumi.get(__response__, 'backup_vault_id'),
         create_time=pulumi.get(__response__, 'create_time'),
         deletable=pulumi.get(__response__, 'deletable'),

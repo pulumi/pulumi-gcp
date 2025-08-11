@@ -10,117 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Container
 {
     /// <summary>
-    /// Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
-    /// the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
-    /// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ### Using A Separately Managed Node Pool (Recommended)
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
-    ///     {
-    ///         AccountId = "service-account-id",
-    ///         DisplayName = "Service Account",
-    ///     });
-    /// 
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Name = "my-gke-cluster",
-    ///         Location = "us-central1",
-    ///         RemoveDefaultNodePool = true,
-    ///         InitialNodeCount = 1,
-    ///     });
-    /// 
-    ///     var primaryPreemptibleNodes = new Gcp.Container.NodePool("primary_preemptible_nodes", new()
-    ///     {
-    ///         Name = "my-node-pool",
-    ///         Cluster = primary.Id,
-    ///         NodeCount = 1,
-    ///         NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
-    ///         {
-    ///             Preemptible = true,
-    ///             MachineType = "e2-medium",
-    ///             ServiceAccount = @default.Email,
-    ///             OauthScopes = new[]
-    ///             {
-    ///                 "https://www.googleapis.com/auth/cloud-platform",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
-    ///     {
-    ///         AccountId = "service-account-id",
-    ///         DisplayName = "Service Account",
-    ///     });
-    /// 
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Name = "marcellus-wallace",
-    ///         Location = "us-central1-a",
-    ///         InitialNodeCount = 3,
-    ///         NodeLocations = new[]
-    ///         {
-    ///             "us-central1-c",
-    ///         },
-    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
-    ///         {
-    ///             ServiceAccount = @default.Email,
-    ///             OauthScopes = new[]
-    ///             {
-    ///                 "https://www.googleapis.com/auth/cloud-platform",
-    ///             },
-    ///             GuestAccelerators = new[]
-    ///             {
-    ///                 new Gcp.Container.Inputs.ClusterNodeConfigGuestAcceleratorArgs
-    ///                 {
-    ///                     Type = "nvidia-tesla-k80",
-    ///                     Count = 1,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var np = new Gcp.Container.NodePool("np", new()
-    ///     {
-    ///         Name = "my-node-pool",
-    ///         Cluster = primary.Id,
-    ///         NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
-    ///         {
-    ///             MachineType = "e2-medium",
-    ///             ServiceAccount = @default.Email,
-    ///             OauthScopes = new[]
-    ///             {
-    ///                 "https://www.googleapis.com/auth/cloud-platform",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Node pools can be imported using the `project`, `location`, `cluster` and `name`. If
@@ -160,13 +49,8 @@ namespace Pulumi.Gcp.Container
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// The initial number of nodes for the pool. In
-        /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-        /// this will force recreation of the resource. WARNING: Resizing your node pool manually
-        /// may change this value in your existing cluster, which will trigger destruction
-        /// and recreation on the next provider run (to rectify the discrepancy).  If you don't
-        /// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        /// ignore subsqeuent changes to this field.
+        /// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+        /// Changing this will force recreation of the resource.
         /// </summary>
         [Output("initialNodeCount")]
         public Output<int> InitialNodeCount { get; private set; } = null!;
@@ -208,10 +92,6 @@ namespace Pulumi.Gcp.Container
         [Output("maxPodsPerNode")]
         public Output<int> MaxPodsPerNode { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the node pool. If left blank, the provider will
-        /// auto-generate a unique name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -290,14 +170,6 @@ namespace Pulumi.Gcp.Container
         [Output("upgradeSettings")]
         public Output<Outputs.NodePoolUpgradeSettings> UpgradeSettings { get; private set; } = null!;
 
-        /// <summary>
-        /// The Kubernetes version for the nodes in this pool. Note that if this field
-        /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
-        /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as the provider will see spurious diffs
-        /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
-        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
@@ -363,13 +235,8 @@ namespace Pulumi.Gcp.Container
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// The initial number of nodes for the pool. In
-        /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-        /// this will force recreation of the resource. WARNING: Resizing your node pool manually
-        /// may change this value in your existing cluster, which will trigger destruction
-        /// and recreation on the next provider run (to rectify the discrepancy).  If you don't
-        /// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        /// ignore subsqeuent changes to this field.
+        /// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+        /// Changing this will force recreation of the resource.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
@@ -399,10 +266,6 @@ namespace Pulumi.Gcp.Container
         [Input("maxPodsPerNode")]
         public Input<int>? MaxPodsPerNode { get; set; }
 
-        /// <summary>
-        /// The name of the node pool. If left blank, the provider will
-        /// auto-generate a unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -484,14 +347,6 @@ namespace Pulumi.Gcp.Container
         [Input("upgradeSettings")]
         public Input<Inputs.NodePoolUpgradeSettingsArgs>? UpgradeSettings { get; set; }
 
-        /// <summary>
-        /// The Kubernetes version for the nodes in this pool. Note that if this field
-        /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
-        /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as the provider will see spurious diffs
-        /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -519,13 +374,8 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// The initial number of nodes for the pool. In
-        /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
-        /// this will force recreation of the resource. WARNING: Resizing your node pool manually
-        /// may change this value in your existing cluster, which will trigger destruction
-        /// and recreation on the next provider run (to rectify the discrepancy).  If you don't
-        /// need this value, don't set it.  If you do need it, you can use a lifecycle block to
-        /// ignore subsqeuent changes to this field.
+        /// The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
+        /// Changing this will force recreation of the resource.
         /// </summary>
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
@@ -579,10 +429,6 @@ namespace Pulumi.Gcp.Container
         [Input("maxPodsPerNode")]
         public Input<int>? MaxPodsPerNode { get; set; }
 
-        /// <summary>
-        /// The name of the node pool. If left blank, the provider will
-        /// auto-generate a unique name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -667,14 +513,6 @@ namespace Pulumi.Gcp.Container
         [Input("upgradeSettings")]
         public Input<Inputs.NodePoolUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }
 
-        /// <summary>
-        /// The Kubernetes version for the nodes in this pool. Note that if this field
-        /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
-        /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as the provider will see spurious diffs
-        /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

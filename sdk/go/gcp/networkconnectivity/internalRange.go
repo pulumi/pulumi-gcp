@@ -253,6 +253,93 @@ import (
 //	}
 //
 // ```
+// ### Network Connectivity Internal Ranges Allocation Algoritms
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("internal-ranges"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
+//				Name:         pulumi.String("allocation-algorithms"),
+//				Network:      defaultNetwork.ID(),
+//				Usage:        pulumi.String("FOR_VPC"),
+//				Peering:      pulumi.String("FOR_SELF"),
+//				PrefixLength: pulumi.Int(24),
+//				TargetCidrRanges: pulumi.StringArray{
+//					pulumi.String("192.16.0.0/16"),
+//				},
+//				AllocationOptions: &networkconnectivity.InternalRangeAllocationOptionsArgs{
+//					AllocationStrategy: pulumi.String("FIRST_SMALLEST_FITTING"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Connectivity Internal Ranges Allocation Algoritms Random First N
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("internal-ranges"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
+//				Name:         pulumi.String("allocation-algorithms-random-first-n"),
+//				Network:      defaultNetwork.ID(),
+//				Usage:        pulumi.String("FOR_VPC"),
+//				Peering:      pulumi.String("FOR_SELF"),
+//				PrefixLength: pulumi.Int(24),
+//				TargetCidrRanges: pulumi.StringArray{
+//					pulumi.String("192.16.0.0/16"),
+//				},
+//				AllocationOptions: &networkconnectivity.InternalRangeAllocationOptionsArgs{
+//					AllocationStrategy:             pulumi.String("RANDOM_FIRST_N_AVAILABLE"),
+//					FirstAvailableRangesLookupSize: pulumi.Int(20),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -280,6 +367,9 @@ import (
 type InternalRange struct {
 	pulumi.CustomResourceState
 
+	// Options for automatically allocating a free range with a size given by prefixLength.
+	// Structure is documented below.
+	AllocationOptions InternalRangeAllocationOptionsPtrOutput `pulumi:"allocationOptions"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -378,6 +468,9 @@ func GetInternalRange(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InternalRange resources.
 type internalRangeState struct {
+	// Options for automatically allocating a free range with a size given by prefixLength.
+	// Structure is documented below.
+	AllocationOptions *InternalRangeAllocationOptions `pulumi:"allocationOptions"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -433,6 +526,9 @@ type internalRangeState struct {
 }
 
 type InternalRangeState struct {
+	// Options for automatically allocating a free range with a size given by prefixLength.
+	// Structure is documented below.
+	AllocationOptions InternalRangeAllocationOptionsPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -492,6 +588,9 @@ func (InternalRangeState) ElementType() reflect.Type {
 }
 
 type internalRangeArgs struct {
+	// Options for automatically allocating a free range with a size given by prefixLength.
+	// Structure is documented below.
+	AllocationOptions *InternalRangeAllocationOptions `pulumi:"allocationOptions"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -539,6 +638,9 @@ type internalRangeArgs struct {
 
 // The set of arguments for constructing a InternalRange resource.
 type InternalRangeArgs struct {
+	// Options for automatically allocating a free range with a size given by prefixLength.
+	// Structure is documented below.
+	AllocationOptions InternalRangeAllocationOptionsPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -669,6 +771,12 @@ func (o InternalRangeOutput) ToInternalRangeOutput() InternalRangeOutput {
 
 func (o InternalRangeOutput) ToInternalRangeOutputWithContext(ctx context.Context) InternalRangeOutput {
 	return o
+}
+
+// Options for automatically allocating a free range with a size given by prefixLength.
+// Structure is documented below.
+func (o InternalRangeOutput) AllocationOptions() InternalRangeAllocationOptionsPtrOutput {
+	return o.ApplyT(func(v *InternalRange) InternalRangeAllocationOptionsPtrOutput { return v.AllocationOptions }).(InternalRangeAllocationOptionsPtrOutput)
 }
 
 // An optional description of this resource.

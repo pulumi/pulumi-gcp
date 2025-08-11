@@ -97,6 +97,7 @@ __all__ = [
     'ClusterAddonsConfigHttpLoadBalancing',
     'ClusterAddonsConfigIstioConfig',
     'ClusterAddonsConfigKalmConfig',
+    'ClusterAddonsConfigLustreCsiDriverConfig',
     'ClusterAddonsConfigNetworkPolicyConfig',
     'ClusterAddonsConfigParallelstoreCsiDriverConfig',
     'ClusterAddonsConfigRayOperatorConfig',
@@ -131,6 +132,7 @@ __all__ = [
     'ClusterGkeAutoUpgradeConfig',
     'ClusterIdentityServiceConfig',
     'ClusterIpAllocationPolicy',
+    'ClusterIpAllocationPolicyAdditionalIpRangesConfig',
     'ClusterIpAllocationPolicyAdditionalPodRangesConfig',
     'ClusterIpAllocationPolicyPodCidrOverprovisionConfig',
     'ClusterLoggingConfig',
@@ -243,6 +245,7 @@ __all__ = [
     'ClusterPrivateClusterConfigMasterGlobalAccessConfig',
     'ClusterProtectConfig',
     'ClusterProtectConfigWorkloadConfig',
+    'ClusterRbacBindingConfig',
     'ClusterReleaseChannel',
     'ClusterResourceUsageExportConfig',
     'ClusterResourceUsageExportConfigBigqueryDestination',
@@ -309,6 +312,7 @@ __all__ = [
     'GetClusterAddonsConfigHttpLoadBalancingResult',
     'GetClusterAddonsConfigIstioConfigResult',
     'GetClusterAddonsConfigKalmConfigResult',
+    'GetClusterAddonsConfigLustreCsiDriverConfigResult',
     'GetClusterAddonsConfigNetworkPolicyConfigResult',
     'GetClusterAddonsConfigParallelstoreCsiDriverConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigResult',
@@ -343,6 +347,7 @@ __all__ = [
     'GetClusterGkeAutoUpgradeConfigResult',
     'GetClusterIdentityServiceConfigResult',
     'GetClusterIpAllocationPolicyResult',
+    'GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult',
     'GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult',
     'GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult',
     'GetClusterLoggingConfigResult',
@@ -455,6 +460,7 @@ __all__ = [
     'GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult',
     'GetClusterProtectConfigResult',
     'GetClusterProtectConfigWorkloadConfigResult',
+    'GetClusterRbacBindingConfigResult',
     'GetClusterReleaseChannelResult',
     'GetClusterResourceUsageExportConfigResult',
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
@@ -3919,6 +3925,8 @@ class ClusterAddonsConfig(dict):
             suggest = "istio_config"
         elif key == "kalmConfig":
             suggest = "kalm_config"
+        elif key == "lustreCsiDriverConfig":
+            suggest = "lustre_csi_driver_config"
         elif key == "networkPolicyConfig":
             suggest = "network_policy_config"
         elif key == "parallelstoreCsiDriverConfig":
@@ -3951,6 +3959,7 @@ class ClusterAddonsConfig(dict):
                  http_load_balancing: Optional['outputs.ClusterAddonsConfigHttpLoadBalancing'] = None,
                  istio_config: Optional['outputs.ClusterAddonsConfigIstioConfig'] = None,
                  kalm_config: Optional['outputs.ClusterAddonsConfigKalmConfig'] = None,
+                 lustre_csi_driver_config: Optional['outputs.ClusterAddonsConfigLustreCsiDriverConfig'] = None,
                  network_policy_config: Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig'] = None,
                  parallelstore_csi_driver_config: Optional['outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig'] = None,
                  ray_operator_configs: Optional[Sequence['outputs.ClusterAddonsConfigRayOperatorConfig']] = None,
@@ -3991,6 +4000,16 @@ class ClusterAddonsConfig(dict):
                Structure is documented below.
         :param 'ClusterAddonsConfigKalmConfigArgs' kalm_config: .
                Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+        :param 'ClusterAddonsConfigLustreCsiDriverConfigArgs' lustre_csi_driver_config: The status of the Lustre CSI driver addon,
+               which allows the usage of a Lustre instances as volumes.
+               It is disabled by default for Standard clusters; set `enabled = true` to enable.
+               It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+               Lustre CSI Driver Config has optional subfield
+               `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+               This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+               See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+               
+               This example `addons_config` disables two addons:
         :param 'ClusterAddonsConfigNetworkPolicyConfigArgs' network_policy_config: Whether we should enable the network policy addon
                for the master.  This must be enabled in order to enable network policy for the nodes.
                To enable this, you must also define a `network_policy` block,
@@ -4002,8 +4021,6 @@ class ClusterAddonsConfig(dict):
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
                It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-               
-               This example `addons_config` disables two addons:
         :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: . The status of the [Ray Operator
                addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
                It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -4042,6 +4059,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "istio_config", istio_config)
         if kalm_config is not None:
             pulumi.set(__self__, "kalm_config", kalm_config)
+        if lustre_csi_driver_config is not None:
+            pulumi.set(__self__, "lustre_csi_driver_config", lustre_csi_driver_config)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
         if parallelstore_csi_driver_config is not None:
@@ -4164,6 +4183,23 @@ class ClusterAddonsConfig(dict):
         return pulumi.get(self, "kalm_config")
 
     @_builtins.property
+    @pulumi.getter(name="lustreCsiDriverConfig")
+    def lustre_csi_driver_config(self) -> Optional['outputs.ClusterAddonsConfigLustreCsiDriverConfig']:
+        """
+        The status of the Lustre CSI driver addon,
+        which allows the usage of a Lustre instances as volumes.
+        It is disabled by default for Standard clusters; set `enabled = true` to enable.
+        It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+        Lustre CSI Driver Config has optional subfield
+        `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+        This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "lustre_csi_driver_config")
+
+    @_builtins.property
     @pulumi.getter(name="networkPolicyConfig")
     def network_policy_config(self) -> Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig']:
         """
@@ -4185,8 +4221,6 @@ class ClusterAddonsConfig(dict):
         It is disabled by default for Standard clusters; set `enabled = true` to enable.
         It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
         See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "parallelstore_csi_driver_config")
 
@@ -4427,6 +4461,55 @@ class ClusterAddonsConfigKalmConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigLustreCsiDriverConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLegacyLustrePort":
+            suggest = "enable_legacy_lustre_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAddonsConfigLustreCsiDriverConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAddonsConfigLustreCsiDriverConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAddonsConfigLustreCsiDriverConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 enable_legacy_lustre_port: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether the Lustre CSI driver is enabled for this cluster.
+        :param _builtins.bool enable_legacy_lustre_port: If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+               										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if enable_legacy_lustre_port is not None:
+            pulumi.set(__self__, "enable_legacy_lustre_port", enable_legacy_lustre_port)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Lustre CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="enableLegacyLustrePort")
+    def enable_legacy_lustre_port(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+        										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        """
+        return pulumi.get(self, "enable_legacy_lustre_port")
 
 
 @pulumi.output_type
@@ -5975,7 +6058,9 @@ class ClusterIpAllocationPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "additionalPodRangesConfig":
+        if key == "additionalIpRangesConfigs":
+            suggest = "additional_ip_ranges_configs"
+        elif key == "additionalPodRangesConfig":
             suggest = "additional_pod_ranges_config"
         elif key == "clusterIpv4CidrBlock":
             suggest = "cluster_ipv4_cidr_block"
@@ -6002,6 +6087,7 @@ class ClusterIpAllocationPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_ip_ranges_configs: Optional[Sequence['outputs.ClusterIpAllocationPolicyAdditionalIpRangesConfig']] = None,
                  additional_pod_ranges_config: Optional['outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig'] = None,
                  cluster_ipv4_cidr_block: Optional[_builtins.str] = None,
                  cluster_secondary_range_name: Optional[_builtins.str] = None,
@@ -6010,6 +6096,8 @@ class ClusterIpAllocationPolicy(dict):
                  services_secondary_range_name: Optional[_builtins.str] = None,
                  stack_type: Optional[_builtins.str] = None):
         """
+        :param Sequence['ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs'] additional_ip_ranges_configs: The configuration for individual additional subnetworks attached to the cluster.
+               Structure is documented below.
         :param 'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs' additional_pod_ranges_config: The configuration for additional pod secondary ranges at
                the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
                secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
@@ -6035,6 +6123,8 @@ class ClusterIpAllocationPolicy(dict):
                Default value is `IPV4`.
                Possible values are `IPV4` and `IPV4_IPV6`.
         """
+        if additional_ip_ranges_configs is not None:
+            pulumi.set(__self__, "additional_ip_ranges_configs", additional_ip_ranges_configs)
         if additional_pod_ranges_config is not None:
             pulumi.set(__self__, "additional_pod_ranges_config", additional_pod_ranges_config)
         if cluster_ipv4_cidr_block is not None:
@@ -6049,6 +6139,15 @@ class ClusterIpAllocationPolicy(dict):
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalIpRangesConfigs")
+    def additional_ip_ranges_configs(self) -> Optional[Sequence['outputs.ClusterIpAllocationPolicyAdditionalIpRangesConfig']]:
+        """
+        The configuration for individual additional subnetworks attached to the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_ip_ranges_configs")
 
     @_builtins.property
     @pulumi.getter(name="additionalPodRangesConfig")
@@ -6122,6 +6221,53 @@ class ClusterIpAllocationPolicy(dict):
         Possible values are `IPV4` and `IPV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
+
+
+@pulumi.output_type
+class ClusterIpAllocationPolicyAdditionalIpRangesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podIpv4RangeNames":
+            suggest = "pod_ipv4_range_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterIpAllocationPolicyAdditionalIpRangesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterIpAllocationPolicyAdditionalIpRangesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterIpAllocationPolicyAdditionalIpRangesConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnetwork: _builtins.str,
+                 pod_ipv4_range_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str subnetwork: Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+        :param Sequence[_builtins.str] pod_ipv4_range_names: List of secondary ranges names within this subnetwork that can be used for pod IPs.
+        """
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        if pod_ipv4_range_names is not None:
+            pulumi.set(__self__, "pod_ipv4_range_names", pod_ipv4_range_names)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> _builtins.str:
+        """
+        Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @_builtins.property
+    @pulumi.getter(name="podIpv4RangeNames")
+    def pod_ipv4_range_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of secondary ranges names within this subnetwork that can be used for pod IPs.
+        """
+        return pulumi.get(self, "pod_ipv4_range_names")
 
 
 @pulumi.output_type
@@ -7237,7 +7383,7 @@ class ClusterNodeConfig(dict):
         """
         :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
-        :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param _builtins.int disk_size_gb: Size of the disk attached to each node, specified
@@ -7261,6 +7407,10 @@ class ClusterNodeConfig(dict):
                Structure is documented below.
         :param Sequence['ClusterNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param 'ClusterNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
@@ -7295,11 +7445,7 @@ class ClusterNodeConfig(dict):
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         :param _builtins.str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
-        :param Mapping[str, _builtins.str] metadata: The metadata key/value pairs assigned to instances in
-               the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-               `true` by the API; if `metadata` is set but that default value is not
-               included, the provider will attempt to unset the value. To avoid this, set the
-               value in your config.
+        :param Mapping[str, _builtins.str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param _builtins.str min_cpu_platform: Minimum CPU platform to be used by this instance.
                The instance may be scheduled on the specified or newer CPU platform. Applicable
                values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -7318,7 +7464,8 @@ class ClusterNodeConfig(dict):
         :param Mapping[str, _builtins.str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+               Structure is documented below.
         :param Sequence['ClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param _builtins.str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
@@ -7330,14 +7477,7 @@ class ClusterNodeConfig(dict):
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-               to apply to nodes. GKE's API can only set this field on cluster creation.
-               However, GKE will add taints to your nodes if you enable certain features such
-               as GPUs. If this field is set, any diffs on this field will cause the provider to
-               recreate the underlying resource. Taint values can be updated safely in
-               Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-               this field to manage taints. If you do, `lifecycle.ignore_changes` is
-               recommended. Structure is documented below.
+        :param Sequence['ClusterNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
         :param 'ClusterNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         :param 'ClusterNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
@@ -7446,7 +7586,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[_builtins.str]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -7554,6 +7694,10 @@ class ClusterNodeConfig(dict):
         """
         List of the type and count of accelerator cards attached to the instance.
         Structure documented below.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -7679,11 +7823,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The metadata key/value pairs assigned to instances in
-        the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-        `true` by the API; if `metadata` is set but that default value is not
-        included, the provider will attempt to unset the value. To avoid this, set the
-        value in your config.
+        The metadata key/value pairs assigned to instances in the cluster.
         """
         return pulumi.get(self, "metadata")
 
@@ -7758,7 +7898,8 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodeConfigSandboxConfig']:
         """
-        Sandbox configuration for this node.
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
 
@@ -7826,14 +7967,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.ClusterNodeConfigTaint']]:
         """
-        A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
+        List of Kubernetes taints to be applied to each node.
         """
         return pulumi.get(self, "taints")
 
@@ -9269,7 +9403,7 @@ class ClusterNodeConfigWorkloadMetadataConfig(dict):
         """
         :param _builtins.str mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
-               * UNSPECIFIED: Not Set
+               * MODE_UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -9281,7 +9415,7 @@ class ClusterNodeConfigWorkloadMetadataConfig(dict):
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
-        * UNSPECIFIED: Not Set
+        * MODE_UNSPECIFIED: Not Set
         * GCE_METADATA: Expose all Compute Engine metadata to pods.
         * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -9363,13 +9497,8 @@ class ClusterNodePool(dict):
                
                - - -
         :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
-        :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
-               [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-        :param 'ClusterNodePoolNodeConfigArgs' node_config: Parameters used in creating the default node pool.
-               Generally, this field should not be used at the same time as a
-               `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used.
-               Structure is documented below.
+        :param 'ClusterNodePoolNetworkConfigArgs' network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        :param 'ClusterNodePoolNodeConfigArgs' node_config: The configuration of the nodepool
         :param _builtins.int node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
         :param Sequence[_builtins.str] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
@@ -9495,8 +9624,7 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional['outputs.ClusterNodePoolNetworkConfig']:
         """
-        Configuration for
-        [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         """
         return pulumi.get(self, "network_config")
 
@@ -9504,11 +9632,7 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional['outputs.ClusterNodePoolNodeConfig']:
         """
-        Parameters used in creating the default node pool.
-        Generally, this field should not be used at the same time as a
-        `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used.
-        Structure is documented below.
+        The configuration of the nodepool
         """
         return pulumi.get(self, "node_config")
 
@@ -10230,7 +10354,8 @@ class ClusterNodePoolNetworkConfig(dict):
                  network_performance_config: Optional['outputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfig'] = None,
                  pod_cidr_overprovision_config: Optional['outputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig'] = None,
                  pod_ipv4_cidr_block: Optional[_builtins.str] = None,
-                 pod_range: Optional[_builtins.str] = None):
+                 pod_range: Optional[_builtins.str] = None,
+                 subnetwork: Optional[_builtins.str] = None):
         """
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
@@ -10240,6 +10365,8 @@ class ClusterNodePoolNetworkConfig(dict):
         :param 'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
         :param _builtins.str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param _builtins.str pod_range: The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
+        :param _builtins.str subnetwork: The name or self_link of the Google Compute Engine
+               subnetwork in which the cluster's instances are launched.
         """
         if additional_node_network_configs is not None:
             pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
@@ -10257,6 +10384,8 @@ class ClusterNodePoolNetworkConfig(dict):
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         if pod_range is not None:
             pulumi.set(__self__, "pod_range", pod_range)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @_builtins.property
     @pulumi.getter(name="additionalNodeNetworkConfigs")
@@ -10321,6 +10450,15 @@ class ClusterNodePoolNetworkConfig(dict):
         The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[_builtins.str]:
+        """
+        The name or self_link of the Google Compute Engine
+        subnetwork in which the cluster's instances are launched.
+        """
+        return pulumi.get(self, "subnetwork")
 
 
 @pulumi.output_type
@@ -10623,7 +10761,7 @@ class ClusterNodePoolNodeConfig(dict):
         """
         :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
-        :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param _builtins.int disk_size_gb: Size of the disk attached to each node, specified
@@ -10647,6 +10785,10 @@ class ClusterNodePoolNodeConfig(dict):
                Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
+               **Note**: As of 6.0.0, argument syntax
+               is no longer supported for this field in favor of block syntax.
+               To dynamically set a list of guest accelerators, use dynamic blocks.
+               To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         :param 'ClusterNodePoolNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
@@ -10681,11 +10823,7 @@ class ClusterNodePoolNodeConfig(dict):
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         :param _builtins.str max_run_duration: The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
-        :param Mapping[str, _builtins.str] metadata: The metadata key/value pairs assigned to instances in
-               the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-               `true` by the API; if `metadata` is set but that default value is not
-               included, the provider will attempt to unset the value. To avoid this, set the
-               value in your config.
+        :param Mapping[str, _builtins.str] metadata: The metadata key/value pairs assigned to instances in the cluster.
         :param _builtins.str min_cpu_platform: Minimum CPU platform to be used by this instance.
                The instance may be scheduled on the specified or newer CPU platform. Applicable
                values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -10704,7 +10842,8 @@ class ClusterNodePoolNodeConfig(dict):
         :param Mapping[str, _builtins.str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+               Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param _builtins.str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
@@ -10716,14 +10855,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param Sequence[_builtins.str] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-               to apply to nodes. GKE's API can only set this field on cluster creation.
-               However, GKE will add taints to your nodes if you enable certain features such
-               as GPUs. If this field is set, any diffs on this field will cause the provider to
-               recreate the underlying resource. Taint values can be updated safely in
-               Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-               this field to manage taints. If you do, `lifecycle.ignore_changes` is
-               recommended. Structure is documented below.
+        :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: List of Kubernetes taints to be applied to each node.
         :param 'ClusterNodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
@@ -10832,7 +10964,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[_builtins.str]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -10940,6 +11072,10 @@ class ClusterNodePoolNodeConfig(dict):
         """
         List of the type and count of accelerator cards attached to the instance.
         Structure documented below.
+        **Note**: As of 6.0.0, argument syntax
+        is no longer supported for this field in favor of block syntax.
+        To dynamically set a list of guest accelerators, use dynamic blocks.
+        To set an empty list, use a single `guest_accelerator` block with `count = 0`.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -11065,11 +11201,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The metadata key/value pairs assigned to instances in
-        the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-        `true` by the API; if `metadata` is set but that default value is not
-        included, the provider will attempt to unset the value. To avoid this, set the
-        value in your config.
+        The metadata key/value pairs assigned to instances in the cluster.
         """
         return pulumi.get(self, "metadata")
 
@@ -11144,7 +11276,8 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig']:
         """
-        Sandbox configuration for this node.
+        [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
 
@@ -11212,14 +11345,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def taints(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']]:
         """
-        A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-        to apply to nodes. GKE's API can only set this field on cluster creation.
-        However, GKE will add taints to your nodes if you enable certain features such
-        as GPUs. If this field is set, any diffs on this field will cause the provider to
-        recreate the underlying resource. Taint values can be updated safely in
-        Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-        this field to manage taints. If you do, `lifecycle.ignore_changes` is
-        recommended. Structure is documented below.
+        List of Kubernetes taints to be applied to each node.
         """
         return pulumi.get(self, "taints")
 
@@ -12655,7 +12781,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
         """
         :param _builtins.str mode: How to expose the node metadata to the workload running on the node.
                Accepted values are:
-               * UNSPECIFIED: Not Set
+               * MODE_UNSPECIFIED: Not Set
                * GCE_METADATA: Expose all Compute Engine metadata to pods.
                * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -12667,7 +12793,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
         """
         How to expose the node metadata to the workload running on the node.
         Accepted values are:
-        * UNSPECIFIED: Not Set
+        * MODE_UNSPECIFIED: Not Set
         * GCE_METADATA: Expose all Compute Engine metadata to pods.
         * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
         """
@@ -13153,9 +13279,7 @@ class ClusterPrivateClusterConfig(dict):
                creating a private endpoint on the cluster. In a private cluster, nodes only
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
-        :param 'ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs' master_global_access_config: Controls cluster master global
-               access settings. If unset, the provider will no longer manage this field and will
-               not modify the previously-set value. Structure is documented below.
+        :param 'ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs' master_global_access_config: Controls cluster master global access settings.
         :param _builtins.str master_ipv4_cidr_block: The IP range in CIDR notation to use for
                the hosted master network. This range will be used for assigning private IP
                addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -13215,9 +13339,7 @@ class ClusterPrivateClusterConfig(dict):
     @pulumi.getter(name="masterGlobalAccessConfig")
     def master_global_access_config(self) -> Optional['outputs.ClusterPrivateClusterConfigMasterGlobalAccessConfig']:
         """
-        Controls cluster master global
-        access settings. If unset, the provider will no longer manage this field and will
-        not modify the previously-set value. Structure is documented below.
+        Controls cluster master global access settings.
         """
         return pulumi.get(self, "master_global_access_config")
 
@@ -13375,6 +13497,56 @@ class ClusterProtectConfigWorkloadConfig(dict):
         Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
         """
         return pulumi.get(self, "audit_mode")
+
+
+@pulumi.output_type
+class ClusterRbacBindingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableInsecureBindingSystemAuthenticated":
+            suggest = "enable_insecure_binding_system_authenticated"
+        elif key == "enableInsecureBindingSystemUnauthenticated":
+            suggest = "enable_insecure_binding_system_unauthenticated"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRbacBindingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRbacBindingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRbacBindingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_insecure_binding_system_authenticated: Optional[_builtins.bool] = None,
+                 enable_insecure_binding_system_unauthenticated: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enable_insecure_binding_system_authenticated: Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+        :param _builtins.bool enable_insecure_binding_system_unauthenticated: Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+        """
+        if enable_insecure_binding_system_authenticated is not None:
+            pulumi.set(__self__, "enable_insecure_binding_system_authenticated", enable_insecure_binding_system_authenticated)
+        if enable_insecure_binding_system_unauthenticated is not None:
+            pulumi.set(__self__, "enable_insecure_binding_system_unauthenticated", enable_insecure_binding_system_unauthenticated)
+
+    @_builtins.property
+    @pulumi.getter(name="enableInsecureBindingSystemAuthenticated")
+    def enable_insecure_binding_system_authenticated(self) -> Optional[_builtins.bool]:
+        """
+        Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+        """
+        return pulumi.get(self, "enable_insecure_binding_system_authenticated")
+
+    @_builtins.property
+    @pulumi.getter(name="enableInsecureBindingSystemUnauthenticated")
+    def enable_insecure_binding_system_unauthenticated(self) -> Optional[_builtins.bool]:
+        """
+        Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+        """
+        return pulumi.get(self, "enable_insecure_binding_system_unauthenticated")
 
 
 @pulumi.output_type
@@ -14166,7 +14338,8 @@ class NodePoolNetworkConfig(dict):
                  network_performance_config: Optional['outputs.NodePoolNetworkConfigNetworkPerformanceConfig'] = None,
                  pod_cidr_overprovision_config: Optional['outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig'] = None,
                  pod_ipv4_cidr_block: Optional[_builtins.str] = None,
-                 pod_range: Optional[_builtins.str] = None):
+                 pod_range: Optional[_builtins.str] = None,
+                 subnetwork: Optional[_builtins.str] = None):
         """
         :param Sequence['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
                Structure is documented below
@@ -14178,6 +14351,7 @@ class NodePoolNetworkConfig(dict):
         :param 'NodePoolNetworkConfigPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
         :param _builtins.str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param _builtins.str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        :param _builtins.str subnetwork: The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
         """
         if additional_node_network_configs is not None:
             pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
@@ -14195,6 +14369,8 @@ class NodePoolNetworkConfig(dict):
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         if pod_range is not None:
             pulumi.set(__self__, "pod_range", pod_range)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @_builtins.property
     @pulumi.getter(name="additionalNodeNetworkConfigs")
@@ -14261,6 +14437,14 @@ class NodePoolNetworkConfig(dict):
         The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[_builtins.str]:
+        """
+        The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+        """
+        return pulumi.get(self, "subnetwork")
 
 
 @pulumi.output_type
@@ -16704,6 +16888,7 @@ class GetClusterAddonsConfigResult(dict):
                  http_load_balancings: Sequence['outputs.GetClusterAddonsConfigHttpLoadBalancingResult'],
                  istio_configs: Sequence['outputs.GetClusterAddonsConfigIstioConfigResult'],
                  kalm_configs: Sequence['outputs.GetClusterAddonsConfigKalmConfigResult'],
+                 lustre_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigLustreCsiDriverConfigResult'],
                  network_policy_configs: Sequence['outputs.GetClusterAddonsConfigNetworkPolicyConfigResult'],
                  parallelstore_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult'],
                  ray_operator_configs: Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigResult'],
@@ -16720,6 +16905,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigHttpLoadBalancingArgs'] http_load_balancings: The status of the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. It is enabled by default; set disabled = true to disable.
         :param Sequence['GetClusterAddonsConfigIstioConfigArgs'] istio_configs: The status of the Istio addon.
         :param Sequence['GetClusterAddonsConfigKalmConfigArgs'] kalm_configs: Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
+        :param Sequence['GetClusterAddonsConfigLustreCsiDriverConfigArgs'] lustre_csi_driver_configs: Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigNetworkPolicyConfigArgs'] network_policy_configs: Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
         :param Sequence['GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs'] parallelstore_csi_driver_configs: The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
@@ -16736,6 +16922,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "http_load_balancings", http_load_balancings)
         pulumi.set(__self__, "istio_configs", istio_configs)
         pulumi.set(__self__, "kalm_configs", kalm_configs)
+        pulumi.set(__self__, "lustre_csi_driver_configs", lustre_csi_driver_configs)
         pulumi.set(__self__, "network_policy_configs", network_policy_configs)
         pulumi.set(__self__, "parallelstore_csi_driver_configs", parallelstore_csi_driver_configs)
         pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
@@ -16828,6 +17015,14 @@ class GetClusterAddonsConfigResult(dict):
         Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
         """
         return pulumi.get(self, "kalm_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="lustreCsiDriverConfigs")
+    def lustre_csi_driver_configs(self) -> Sequence['outputs.GetClusterAddonsConfigLustreCsiDriverConfigResult']:
+        """
+        Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "lustre_csi_driver_configs")
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyConfigs")
@@ -17015,6 +17210,37 @@ class GetClusterAddonsConfigKalmConfigResult(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigLustreCsiDriverConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_legacy_lustre_port: _builtins.bool,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enable_legacy_lustre_port: If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+               										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        :param _builtins.bool enabled: Whether the Lustre CSI driver is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enable_legacy_lustre_port", enable_legacy_lustre_port)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="enableLegacyLustrePort")
+    def enable_legacy_lustre_port(self) -> _builtins.bool:
+        """
+        If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+        										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        """
+        return pulumi.get(self, "enable_legacy_lustre_port")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Lustre CSI driver is enabled for this cluster.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -18039,6 +18265,7 @@ class GetClusterIdentityServiceConfigResult(dict):
 @pulumi.output_type
 class GetClusterIpAllocationPolicyResult(dict):
     def __init__(__self__, *,
+                 additional_ip_ranges_configs: Sequence['outputs.GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult'],
                  additional_pod_ranges_configs: Sequence['outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult'],
                  cluster_ipv4_cidr_block: _builtins.str,
                  cluster_secondary_range_name: _builtins.str,
@@ -18047,6 +18274,7 @@ class GetClusterIpAllocationPolicyResult(dict):
                  services_secondary_range_name: _builtins.str,
                  stack_type: _builtins.str):
         """
+        :param Sequence['GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs'] additional_ip_ranges_configs: AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
         :param Sequence['GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs'] additional_pod_ranges_configs: AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
         :param _builtins.str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
         :param _builtins.str cluster_secondary_range_name: The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
@@ -18055,6 +18283,7 @@ class GetClusterIpAllocationPolicyResult(dict):
         :param _builtins.str services_secondary_range_name: The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
         :param _builtins.str stack_type: The IP Stack type of the cluster. Choose between IPV4 and IPV4_IPV6. Default type is IPV4 Only if not set
         """
+        pulumi.set(__self__, "additional_ip_ranges_configs", additional_ip_ranges_configs)
         pulumi.set(__self__, "additional_pod_ranges_configs", additional_pod_ranges_configs)
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
@@ -18062,6 +18291,14 @@ class GetClusterIpAllocationPolicyResult(dict):
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         pulumi.set(__self__, "stack_type", stack_type)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalIpRangesConfigs")
+    def additional_ip_ranges_configs(self) -> Sequence['outputs.GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult']:
+        """
+        AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
+        """
+        return pulumi.get(self, "additional_ip_ranges_configs")
 
     @_builtins.property
     @pulumi.getter(name="additionalPodRangesConfigs")
@@ -18118,6 +18355,35 @@ class GetClusterIpAllocationPolicyResult(dict):
         The IP Stack type of the cluster. Choose between IPV4 and IPV4_IPV6. Default type is IPV4 Only if not set
         """
         return pulumi.get(self, "stack_type")
+
+
+@pulumi.output_type
+class GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult(dict):
+    def __init__(__self__, *,
+                 pod_ipv4_range_names: Sequence[_builtins.str],
+                 subnetwork: _builtins.str):
+        """
+        :param Sequence[_builtins.str] pod_ipv4_range_names: List of secondary ranges names within this subnetwork that can be used for pod IPs.
+        :param _builtins.str subnetwork: Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+        """
+        pulumi.set(__self__, "pod_ipv4_range_names", pod_ipv4_range_names)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter(name="podIpv4RangeNames")
+    def pod_ipv4_range_names(self) -> Sequence[_builtins.str]:
+        """
+        List of secondary ranges names within this subnetwork that can be used for pod IPs.
+        """
+        return pulumi.get(self, "pod_ipv4_range_names")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> _builtins.str:
+        """
+        Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+        """
+        return pulumi.get(self, "subnetwork")
 
 
 @pulumi.output_type
@@ -20604,7 +20870,8 @@ class GetClusterNodePoolNetworkConfigResult(dict):
                  network_performance_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigNetworkPerformanceConfigResult'],
                  pod_cidr_overprovision_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult'],
                  pod_ipv4_cidr_block: _builtins.str,
-                 pod_range: _builtins.str):
+                 pod_range: _builtins.str,
+                 subnetwork: _builtins.str):
         """
         :param Sequence['GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         :param Sequence['GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
@@ -20614,6 +20881,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
         :param Sequence['GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs'] pod_cidr_overprovision_configs: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
         :param _builtins.str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param _builtins.str pod_range: The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
+        :param _builtins.str subnetwork: The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
         """
         pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
         pulumi.set(__self__, "additional_pod_network_configs", additional_pod_network_configs)
@@ -20623,6 +20891,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
         pulumi.set(__self__, "pod_cidr_overprovision_configs", pod_cidr_overprovision_configs)
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         pulumi.set(__self__, "pod_range", pod_range)
+        pulumi.set(__self__, "subnetwork", subnetwork)
 
     @_builtins.property
     @pulumi.getter(name="additionalNodeNetworkConfigs")
@@ -20687,6 +20956,14 @@ class GetClusterNodePoolNetworkConfigResult(dict):
         The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> _builtins.str:
+        """
+        The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+        """
+        return pulumi.get(self, "subnetwork")
 
 
 @pulumi.output_type
@@ -22651,6 +22928,35 @@ class GetClusterProtectConfigWorkloadConfigResult(dict):
         Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
         """
         return pulumi.get(self, "audit_mode")
+
+
+@pulumi.output_type
+class GetClusterRbacBindingConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_insecure_binding_system_authenticated: _builtins.bool,
+                 enable_insecure_binding_system_unauthenticated: _builtins.bool):
+        """
+        :param _builtins.bool enable_insecure_binding_system_authenticated: Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+        :param _builtins.bool enable_insecure_binding_system_unauthenticated: Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+        """
+        pulumi.set(__self__, "enable_insecure_binding_system_authenticated", enable_insecure_binding_system_authenticated)
+        pulumi.set(__self__, "enable_insecure_binding_system_unauthenticated", enable_insecure_binding_system_unauthenticated)
+
+    @_builtins.property
+    @pulumi.getter(name="enableInsecureBindingSystemAuthenticated")
+    def enable_insecure_binding_system_authenticated(self) -> _builtins.bool:
+        """
+        Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+        """
+        return pulumi.get(self, "enable_insecure_binding_system_authenticated")
+
+    @_builtins.property
+    @pulumi.getter(name="enableInsecureBindingSystemUnauthenticated")
+    def enable_insecure_binding_system_unauthenticated(self) -> _builtins.bool:
+        """
+        Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+        """
+        return pulumi.get(self, "enable_insecure_binding_system_unauthenticated")
 
 
 @pulumi.output_type

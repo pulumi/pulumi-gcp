@@ -387,52 +387,6 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Cloud Run Service Pubsub
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrun.Service("default",
-            name="cloud_run_service_name",
-            location="us-central1",
-            template={
-                "spec": {
-                    "containers": [{
-                        "image": "gcr.io/cloudrun/hello",
-                    }],
-                },
-            },
-            traffics=[{
-                "percent": 100,
-                "latest_revision": True,
-            }])
-        sa = gcp.serviceaccount.Account("sa",
-            account_id="cloud-run-pubsub-invoker",
-            display_name="Cloud Run Pub/Sub Invoker")
-        binding = gcp.cloudrun.IamBinding("binding",
-            location=default.location,
-            service=default.name,
-            role="roles/run.invoker",
-            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        project = gcp.projects.IAMBinding("project",
-            role="roles/iam.serviceAccountTokenCreator",
-            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        topic = gcp.pubsub.Topic("topic", name="pubsub_topic")
-        subscription = gcp.pubsub.Subscription("subscription",
-            name="pubsub_subscription",
-            topic=topic.name,
-            push_config={
-                "push_endpoint": default.statuses[0].url,
-                "oidc_token": {
-                    "service_account_email": sa.email,
-                },
-                "attributes": {
-                    "x-goog-version": "v1",
-                },
-            })
-        ```
-
         ### Cloud Run Service Basic
 
         ```python
@@ -519,7 +473,7 @@ class Service(pulumi.CustomResource):
                     "annotations": {
                         "autoscaling.knative.dev/maxScale": "1000",
                         "run.googleapis.com/cloudsql-instances": instance.connection_name,
-                        "run.googleapis.com/client-name": "demo",
+                        "run.googleapis.com/client-name": "terraform",
                     },
                 },
             },
@@ -744,52 +698,6 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Cloud Run Service Pubsub
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrun.Service("default",
-            name="cloud_run_service_name",
-            location="us-central1",
-            template={
-                "spec": {
-                    "containers": [{
-                        "image": "gcr.io/cloudrun/hello",
-                    }],
-                },
-            },
-            traffics=[{
-                "percent": 100,
-                "latest_revision": True,
-            }])
-        sa = gcp.serviceaccount.Account("sa",
-            account_id="cloud-run-pubsub-invoker",
-            display_name="Cloud Run Pub/Sub Invoker")
-        binding = gcp.cloudrun.IamBinding("binding",
-            location=default.location,
-            service=default.name,
-            role="roles/run.invoker",
-            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        project = gcp.projects.IAMBinding("project",
-            role="roles/iam.serviceAccountTokenCreator",
-            members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        topic = gcp.pubsub.Topic("topic", name="pubsub_topic")
-        subscription = gcp.pubsub.Subscription("subscription",
-            name="pubsub_subscription",
-            topic=topic.name,
-            push_config={
-                "push_endpoint": default.statuses[0].url,
-                "oidc_token": {
-                    "service_account_email": sa.email,
-                },
-                "attributes": {
-                    "x-goog-version": "v1",
-                },
-            })
-        ```
-
         ### Cloud Run Service Basic
 
         ```python
@@ -876,7 +784,7 @@ class Service(pulumi.CustomResource):
                     "annotations": {
                         "autoscaling.knative.dev/maxScale": "1000",
                         "run.googleapis.com/cloudsql-instances": instance.connection_name,
-                        "run.googleapis.com/client-name": "demo",
+                        "run.googleapis.com/client-name": "terraform",
                     },
                 },
             },

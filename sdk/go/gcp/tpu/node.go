@@ -108,7 +108,7 @@ import (
 //				Zone:                 pulumi.String("us-central1-b"),
 //				AcceleratorType:      pulumi.String("v3-8"),
 //				TensorflowVersion:    pulumi.String(available.Versions[0]),
-//				Description:          pulumi.String("Google Provider test TPU"),
+//				Description:          pulumi.String("Terraform Google Provider test TPU"),
 //				UseServiceNetworking: pulumi.Bool(true),
 //				Network:              privateServiceConnection.Network,
 //				Labels: pulumi.StringMap{

@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudExadataInfrastructure{}
 	case "gcp:oracledatabase/cloudVmCluster:CloudVmCluster":
 		r = &CloudVmCluster{}
+	case "gcp:oracledatabase/odbNetwork:OdbNetwork":
+		r = &OdbNetwork{}
+	case "gcp:oracledatabase/odbSubnet:OdbSubnet":
+		r = &OdbSubnet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +57,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"oracledatabase/cloudVmCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"oracledatabase/odbNetwork",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"oracledatabase/odbSubnet",
 		&module{version},
 	)
 }

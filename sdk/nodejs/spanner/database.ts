@@ -7,20 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A Cloud Spanner Database which is hosted on a Spanner instance.
- *
- * To get more information about Database, see:
- *
- * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
- *
- * > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
- * (and run `pulumi up` to write the field to state) in order to destroy an instance.
- * It is recommended to not set this field (or set it to true) until you're ready to destroy.
- * On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
- * on databases in order to prevent accidental data loss.
- *
  * ## Example Usage
  *
  * ### Spanner Database Basic
@@ -117,10 +103,6 @@ export class Database extends pulumi.CustomResource {
      * from the tz database. Default value is "America/Los_angeles".
      */
     public readonly defaultTimeZone!: pulumi.Output<string | undefined>;
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
-     */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     public readonly enableDropProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -217,10 +199,6 @@ export interface DatabaseState {
      * from the tz database. Default value is "America/Los_angeles".
      */
     defaultTimeZone?: pulumi.Input<string>;
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
-     */
     deletionProtection?: pulumi.Input<boolean>;
     enableDropProtection?: pulumi.Input<boolean>;
     /**
@@ -272,10 +250,6 @@ export interface DatabaseArgs {
      * from the tz database. Default value is "America/Los_angeles".
      */
     defaultTimeZone?: pulumi.Input<string>;
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
-     */
     deletionProtection?: pulumi.Input<boolean>;
     enableDropProtection?: pulumi.Input<boolean>;
     /**

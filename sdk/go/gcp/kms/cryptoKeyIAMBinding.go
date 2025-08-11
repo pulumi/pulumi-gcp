@@ -76,7 +76,7 @@ import (
 //
 // ```
 //
-// With IAM Conditions:
+// With IAM Conditions (beta):
 //
 // ```go
 // package main
@@ -142,7 +142,7 @@ import (
 //
 // ```
 //
-// With IAM Conditions:
+// With IAM Conditions (beta):
 //
 // ```go
 // package main
@@ -203,7 +203,7 @@ import (
 //
 // ```
 //
-// With IAM Conditions:
+// With IAM Conditions (beta):
 //
 // ```go
 // package main

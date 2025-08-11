@@ -27,12 +27,16 @@ __all__ = [
     'DataExchangeSubscriptionLinkedResource',
     'ListingBigqueryDataset',
     'ListingBigqueryDatasetSelectedResource',
+    'ListingCommercialInfo',
+    'ListingCommercialInfoCloudMarketplace',
     'ListingDataProvider',
     'ListingIamBindingCondition',
     'ListingIamMemberCondition',
     'ListingPublisher',
     'ListingPubsubTopic',
     'ListingRestrictedExportConfig',
+    'ListingSubscriptionCommercialInfo',
+    'ListingSubscriptionCommercialInfoCloudMarketplace',
     'ListingSubscriptionDestinationDataset',
     'ListingSubscriptionDestinationDatasetDatasetReference',
     'ListingSubscriptionLinkedDatasetMap',
@@ -507,6 +511,100 @@ class ListingBigqueryDatasetSelectedResource(dict):
 
 
 @pulumi.output_type
+class ListingCommercialInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudMarketplaces":
+            suggest = "cloud_marketplaces"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingCommercialInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingCommercialInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingCommercialInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_marketplaces: Optional[Sequence['outputs.ListingCommercialInfoCloudMarketplace']] = None):
+        """
+        :param Sequence['ListingCommercialInfoCloudMarketplaceArgs'] cloud_marketplaces: (Output)
+               Details of the Marketplace Data Product associated with the Listing.
+               Structure is documented below.
+        """
+        if cloud_marketplaces is not None:
+            pulumi.set(__self__, "cloud_marketplaces", cloud_marketplaces)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudMarketplaces")
+    def cloud_marketplaces(self) -> Optional[Sequence['outputs.ListingCommercialInfoCloudMarketplace']]:
+        """
+        (Output)
+        Details of the Marketplace Data Product associated with the Listing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_marketplaces")
+
+
+@pulumi.output_type
+class ListingCommercialInfoCloudMarketplace(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commercialState":
+            suggest = "commercial_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingCommercialInfoCloudMarketplace. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingCommercialInfoCloudMarketplace.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingCommercialInfoCloudMarketplace.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 commercial_state: Optional[_builtins.str] = None,
+                 service: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str commercial_state: (Output)
+               Commercial state of the Marketplace Data Product.
+               Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+        :param _builtins.str service: (Output)
+               Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+        """
+        if commercial_state is not None:
+            pulumi.set(__self__, "commercial_state", commercial_state)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter(name="commercialState")
+    def commercial_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Commercial state of the Marketplace Data Product.
+        Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+        """
+        return pulumi.get(self, "commercial_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
 class ListingDataProvider(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -765,6 +863,67 @@ class ListingRestrictedExportConfig(dict):
         If true, restrict export of query result derived from restricted linked dataset table.
         """
         return pulumi.get(self, "restrict_query_result")
+
+
+@pulumi.output_type
+class ListingSubscriptionCommercialInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudMarketplaces":
+            suggest = "cloud_marketplaces"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingSubscriptionCommercialInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingSubscriptionCommercialInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingSubscriptionCommercialInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_marketplaces: Optional[Sequence['outputs.ListingSubscriptionCommercialInfoCloudMarketplace']] = None):
+        """
+        :param Sequence['ListingSubscriptionCommercialInfoCloudMarketplaceArgs'] cloud_marketplaces: (Output)
+               Cloud Marketplace commercial metadata for this subscription.
+               Structure is documented below.
+        """
+        if cloud_marketplaces is not None:
+            pulumi.set(__self__, "cloud_marketplaces", cloud_marketplaces)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudMarketplaces")
+    def cloud_marketplaces(self) -> Optional[Sequence['outputs.ListingSubscriptionCommercialInfoCloudMarketplace']]:
+        """
+        (Output)
+        Cloud Marketplace commercial metadata for this subscription.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_marketplaces")
+
+
+@pulumi.output_type
+class ListingSubscriptionCommercialInfoCloudMarketplace(dict):
+    def __init__(__self__, *,
+                 order: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str order: (Output)
+               Resource name of the Marketplace Order.
+        """
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Resource name of the Marketplace Order.
+        """
+        return pulumi.get(self, "order")
 
 
 @pulumi.output_type

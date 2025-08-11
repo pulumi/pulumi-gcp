@@ -12,20 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Cloud Spanner Database which is hosted on a Spanner instance.
-//
-// To get more information about Database, see:
-//
-// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/spanner/)
-//
-// > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
-// (and run `pulumi up` to write the field to state) in order to destroy an instance.
-// It is recommended to not set this field (or set it to true) until you're ready to destroy.
-// On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
-// on databases in order to prevent accidental data loss.
-//
 // ## Example Usage
 //
 // ### Spanner Database Basic
@@ -109,11 +95,9 @@ type Database struct {
 	Ddls            pulumi.StringArrayOutput `pulumi:"ddls"`
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
-	DefaultTimeZone pulumi.StringPtrOutput `pulumi:"defaultTimeZone"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection   pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	EnableDropProtection pulumi.BoolPtrOutput `pulumi:"enableDropProtection"`
+	DefaultTimeZone      pulumi.StringPtrOutput `pulumi:"defaultTimeZone"`
+	DeletionProtection   pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
+	EnableDropProtection pulumi.BoolPtrOutput   `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
 	EncryptionConfig DatabaseEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
@@ -175,11 +159,9 @@ type databaseState struct {
 	Ddls            []string `pulumi:"ddls"`
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
-	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection   *bool `pulumi:"deletionProtection"`
-	EnableDropProtection *bool `pulumi:"enableDropProtection"`
+	DefaultTimeZone      *string `pulumi:"defaultTimeZone"`
+	DeletionProtection   *bool   `pulumi:"deletionProtection"`
+	EnableDropProtection *bool   `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
 	EncryptionConfig *DatabaseEncryptionConfig `pulumi:"encryptionConfig"`
@@ -209,9 +191,7 @@ type DatabaseState struct {
 	Ddls            pulumi.StringArrayInput
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
-	DefaultTimeZone pulumi.StringPtrInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	DefaultTimeZone      pulumi.StringPtrInput
 	DeletionProtection   pulumi.BoolPtrInput
 	EnableDropProtection pulumi.BoolPtrInput
 	// Encryption configuration for the database
@@ -247,11 +227,9 @@ type databaseArgs struct {
 	Ddls            []string `pulumi:"ddls"`
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
-	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
-	DeletionProtection   *bool `pulumi:"deletionProtection"`
-	EnableDropProtection *bool `pulumi:"enableDropProtection"`
+	DefaultTimeZone      *string `pulumi:"defaultTimeZone"`
+	DeletionProtection   *bool   `pulumi:"deletionProtection"`
+	EnableDropProtection *bool   `pulumi:"enableDropProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
 	EncryptionConfig *DatabaseEncryptionConfig `pulumi:"encryptionConfig"`
@@ -280,9 +258,7 @@ type DatabaseArgs struct {
 	Ddls            pulumi.StringArrayInput
 	// The default time zone for the database. The default time zone must be a valid name
 	// from the tz database. Default value is "America/Los_angeles".
-	DefaultTimeZone pulumi.StringPtrInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` that would delete the instance will fail.
+	DefaultTimeZone      pulumi.StringPtrInput
 	DeletionProtection   pulumi.BoolPtrInput
 	EnableDropProtection pulumi.BoolPtrInput
 	// Encryption configuration for the database
@@ -408,8 +384,6 @@ func (o DatabaseOutput) DefaultTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
 }
 
-// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-// in state, a `destroy` or `update` that would delete the instance will fail.
 func (o DatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

@@ -85,6 +85,7 @@ export interface GetBucketObjectContentResult {
     readonly contentType: string;
     readonly crc32c: string;
     readonly customerEncryptions: outputs.storage.GetBucketObjectContentCustomerEncryption[];
+    readonly deletionPolicy: string;
     readonly detectMd5hash: string;
     readonly eventBasedHold: boolean;
     readonly forceEmptyContentType: boolean;

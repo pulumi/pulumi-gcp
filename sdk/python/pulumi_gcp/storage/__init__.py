@@ -30,12 +30,14 @@ from .get_buckets import *
 from .get_control_folder_intelligence_config import *
 from .get_control_organization_intelligence_config import *
 from .get_control_project_intelligence_config import *
+from .get_insights_dataset_config import *
 from .get_managed_folder_iam_policy import *
 from .get_object_signed_url import *
 from .get_project_service_account import *
 from .get_transfer_project_service_account import *
 from .get_transfer_project_servie_account import *
 from .hmac_key import *
+from .insights_dataset_config import *
 from .insights_report_config import *
 from .managed_folder import *
 from .managed_folder_iam_binding import *

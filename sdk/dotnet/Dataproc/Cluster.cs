@@ -69,6 +69,7 @@ namespace Pulumi.Gcp.Dataproc
     ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {
     ///             StagingBucket = "dataproc-staging-bucket",
+    ///             ClusterTier = "CLUSTER_TIER_STANDARD",
     ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
     ///             {
     ///                 NumInstances = 1,
@@ -188,6 +189,17 @@ namespace Pulumi.Gcp.Dataproc
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
+        /// <summary>
+        /// Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+        /// Does not affect auto scaling decomissioning from an autoscaling policy.
+        /// Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+        /// Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+        /// Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+        /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// Only supported on Dataproc image versions 1.2 and higher.
+        /// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+        /// - - -
+        /// </summary>
         [Output("gracefulDecommissionTimeout")]
         public Output<string?> GracefulDecommissionTimeout { get; private set; } = null!;
 
@@ -293,6 +305,17 @@ namespace Pulumi.Gcp.Dataproc
         [Input("clusterConfig")]
         public Input<Inputs.ClusterClusterConfigArgs>? ClusterConfig { get; set; }
 
+        /// <summary>
+        /// Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+        /// Does not affect auto scaling decomissioning from an autoscaling policy.
+        /// Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+        /// Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+        /// Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+        /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// Only supported on Dataproc image versions 1.2 and higher.
+        /// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+        /// - - -
+        /// </summary>
         [Input("gracefulDecommissionTimeout")]
         public Input<string>? GracefulDecommissionTimeout { get; set; }
 
@@ -373,6 +396,17 @@ namespace Pulumi.Gcp.Dataproc
             }
         }
 
+        /// <summary>
+        /// Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+        /// Does not affect auto scaling decomissioning from an autoscaling policy.
+        /// Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+        /// Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+        /// Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+        /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// Only supported on Dataproc image versions 1.2 and higher.
+        /// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+        /// - - -
+        /// </summary>
         [Input("gracefulDecommissionTimeout")]
         public Input<string>? GracefulDecommissionTimeout { get; set; }
 

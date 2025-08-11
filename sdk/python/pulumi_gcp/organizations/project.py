@@ -33,11 +33,6 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
                that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
                if you set auto_create_network to false, since the network will exist momentarily.
-        :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with the provider
-               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-               See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-               for more details.
         :param pulumi.Input[_builtins.str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
                specified. If the `folder_id` is specified, then the project is
@@ -92,13 +87,6 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The alphanumeric ID of the billing account this project
-        belongs to. The user or service account performing this operation with the provider
-        must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-        See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-        for more details.
-        """
         return pulumi.get(self, "billing_account")
 
     @billing_account.setter
@@ -218,11 +206,6 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
                that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
                if you set auto_create_network to false, since the network will exist momentarily.
-        :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with the provider
-               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-               See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-               for more details.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
@@ -286,13 +269,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The alphanumeric ID of the billing account this project
-        belongs to. The user or service account performing this operation with the provider
-        must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-        See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-        for more details.
-        """
         return pulumi.get(self, "billing_account")
 
     @billing_account.setter
@@ -445,28 +421,6 @@ class Project(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Allows creation and management of a Google Cloud Platform project.
-
-        Projects created with this resource must be associated with an Organization.
-        See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-
-        The user or service account that is running this provider when creating a `organizations.Project`
-        resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-        [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-        doc for more information.
-
-        > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
-
-        > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
-
-        > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
-
-        To get more information about projects, see:
-
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-        * How-to Guides
-            * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
-
         ## Example Usage
 
         ```python
@@ -526,11 +480,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
                that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
                if you set auto_create_network to false, since the network will exist momentarily.
-        :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with the provider
-               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-               See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-               for more details.
         :param pulumi.Input[_builtins.str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
                specified. If the `folder_id` is specified, then the project is
@@ -556,28 +505,6 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows creation and management of a Google Cloud Platform project.
-
-        Projects created with this resource must be associated with an Organization.
-        See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-
-        The user or service account that is running this provider when creating a `organizations.Project`
-        resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-        [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-        doc for more information.
-
-        > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
-
-        > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
-
-        > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
-
-        To get more information about projects, see:
-
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-        * How-to Guides
-            * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
-
         ## Example Usage
 
         ```python
@@ -711,11 +638,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
                that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
                if you set auto_create_network to false, since the network will exist momentarily.
-        :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with the provider
-               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-               See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-               for more details.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
@@ -768,13 +690,6 @@ class Project(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The alphanumeric ID of the billing account this project
-        belongs to. The user or service account performing this operation with the provider
-        must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-        See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-        for more details.
-        """
         return pulumi.get(self, "billing_account")
 
     @_builtins.property

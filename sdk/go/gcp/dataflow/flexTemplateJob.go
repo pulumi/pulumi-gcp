@@ -12,116 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataflow"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataflow.NewFlexTemplateJob(ctx, "big_data_job", &dataflow.FlexTemplateJobArgs{
-//				Name:                 pulumi.String("dataflow-flextemplates-job"),
-//				ContainerSpecGcsPath: pulumi.String("gs://my-bucket/templates/template.json"),
-//				Parameters: pulumi.StringMap{
-//					"inputSubscription": pulumi.String("messages"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Note on "destroy" / "apply"
-//
-// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
-// getting new data from (e.g.) a GCS bucket, and outputting data continuously.
-// Some jobs process a set amount of data then terminate. All jobs can fail while
-// running due to programming errors or other issues. In this way, Dataflow jobs
-// are different from most other provider / Google resources.
-//
-// The Dataflow resource is considered 'existing' while it is in a nonterminal
-// state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
-// 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
-// jobs which run continuously, but may surprise users who use this resource for
-// other kinds of Dataflow jobs.
-//
-// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
-// "cancelled", the job terminates - any data written remains where it is, but no
-// new data will be processed.  If "drained", no new data will enter the pipeline,
-// but any data currently in the pipeline will finish being processed.  The default
-// is "cancelled", but if a user sets `onDelete` to `"drain"` in the
-// configuration, you may experience a long wait for your `pulumi destroy` to
-// complete.
-//
-// You can potentially short-circuit the wait by setting `skipWaitOnJobTermination`
-// to `true`, but beware that unless you take active steps to ensure that the job
-// `name` parameter changes between instances, the name will conflict and the launch
-// of the new job will fail. One way to do this is with a
-// randomId
-// resource, for example:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataflow"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			bigDataJobSubscriptionId := "projects/myproject/subscriptions/messages"
-//			if param := cfg.Get("bigDataJobSubscriptionId"); param != "" {
-//				bigDataJobSubscriptionId = param
-//			}
-//			bigDataJobNameSuffix, err := random.NewRandomId(ctx, "big_data_job_name_suffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//				Keepers: pulumi.StringMap{
-//					"region":          pulumi.Any(region),
-//					"subscription_id": pulumi.String(bigDataJobSubscriptionId),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataflow.NewFlexTemplateJob(ctx, "big_data_job", &dataflow.FlexTemplateJobArgs{
-//				Name: bigDataJobNameSuffix.Dec.ApplyT(func(dec string) (string, error) {
-//					return fmt.Sprintf("dataflow-flextemplates-job-%v", dec), nil
-//				}).(pulumi.StringOutput),
-//				Region:                   pulumi.Any(region),
-//				ContainerSpecGcsPath:     pulumi.String("gs://my-bucket/templates/template.json"),
-//				SkipWaitOnJobTermination: pulumi.Bool(true),
-//				Parameters: pulumi.StringMap{
-//					"inputSubscription": pulumi.String(bigDataJobSubscriptionId),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // This resource does not support import.
@@ -138,8 +28,9 @@ type FlexTemplateJob struct {
 	// Template.
 	//
 	// ***
-	ContainerSpecGcsPath pulumi.StringOutput    `pulumi:"containerSpecGcsPath"`
-	EffectiveLabels      pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	ContainerSpecGcsPath pulumi.StringOutput `pulumi:"containerSpecGcsPath"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine pulumi.BoolPtrOutput `pulumi:"enableStreamingEngine"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -150,11 +41,8 @@ type FlexTemplateJob struct {
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringOutput `pulumi:"launcherMachineType"`
@@ -167,10 +55,8 @@ type FlexTemplateJob struct {
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Immutable. The initial number of Google Compute Engine instances for the job.
-	NumWorkers pulumi.IntOutput `pulumi:"numWorkers"`
-	// One of "drain" or "cancel". Specifies behavior of
-	// deletion during `pulumi destroy`.  See above note.
-	OnDelete pulumi.StringPtrOutput `pulumi:"onDelete"`
+	NumWorkers pulumi.IntOutput       `pulumi:"numWorkers"`
+	OnDelete   pulumi.StringPtrOutput `pulumi:"onDelete"`
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
@@ -249,8 +135,9 @@ type flexTemplateJobState struct {
 	// Template.
 	//
 	// ***
-	ContainerSpecGcsPath *string           `pulumi:"containerSpecGcsPath"`
-	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	ContainerSpecGcsPath *string `pulumi:"containerSpecGcsPath"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -261,11 +148,8 @@ type flexTemplateJobState struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType *string `pulumi:"launcherMachineType"`
@@ -278,10 +162,8 @@ type flexTemplateJobState struct {
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network *string `pulumi:"network"`
 	// Immutable. The initial number of Google Compute Engine instances for the job.
-	NumWorkers *int `pulumi:"numWorkers"`
-	// One of "drain" or "cancel". Specifies behavior of
-	// deletion during `pulumi destroy`.  See above note.
-	OnDelete *string `pulumi:"onDelete"`
+	NumWorkers *int    `pulumi:"numWorkers"`
+	OnDelete   *string `pulumi:"onDelete"`
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
@@ -324,7 +206,8 @@ type FlexTemplateJobState struct {
 	//
 	// ***
 	ContainerSpecGcsPath pulumi.StringPtrInput
-	EffectiveLabels      pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine pulumi.BoolPtrInput
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -335,11 +218,8 @@ type FlexTemplateJobState struct {
 	KmsKeyName pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringPtrInput
@@ -353,9 +233,7 @@ type FlexTemplateJobState struct {
 	Network pulumi.StringPtrInput
 	// Immutable. The initial number of Google Compute Engine instances for the job.
 	NumWorkers pulumi.IntPtrInput
-	// One of "drain" or "cancel". Specifies behavior of
-	// deletion during `pulumi destroy`.  See above note.
-	OnDelete pulumi.StringPtrInput
+	OnDelete   pulumi.StringPtrInput
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
@@ -410,11 +288,8 @@ type flexTemplateJobArgs struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType *string `pulumi:"launcherMachineType"`
@@ -427,10 +302,8 @@ type flexTemplateJobArgs struct {
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network *string `pulumi:"network"`
 	// Immutable. The initial number of Google Compute Engine instances for the job.
-	NumWorkers *int `pulumi:"numWorkers"`
-	// One of "drain" or "cancel". Specifies behavior of
-	// deletion during `pulumi destroy`.  See above note.
-	OnDelete *string `pulumi:"onDelete"`
+	NumWorkers *int    `pulumi:"numWorkers"`
+	OnDelete   *string `pulumi:"onDelete"`
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
@@ -476,11 +349,8 @@ type FlexTemplateJobArgs struct {
 	KmsKeyName pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values
 	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-	// page. **Note**: This field is marked as deprecated as the API does not currently
-	// support adding labels.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels
-	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-	// labels will be ignored to prevent diffs on re-apply.
+	// page.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to use for launching the job. The default is n1-standard-1.
 	LauncherMachineType pulumi.StringPtrInput
@@ -494,9 +364,7 @@ type FlexTemplateJobArgs struct {
 	Network pulumi.StringPtrInput
 	// Immutable. The initial number of Google Compute Engine instances for the job.
 	NumWorkers pulumi.IntPtrInput
-	// One of "drain" or "cancel". Specifies behavior of
-	// deletion during `pulumi destroy`.  See above note.
-	OnDelete pulumi.StringPtrInput
+	OnDelete   pulumi.StringPtrInput
 	// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
 	// case-sensitive based on the language on which the pipeline is coded, mostly Java.
 	// **Note**: do not configure Dataflow options here in parameters.
@@ -631,6 +499,7 @@ func (o FlexTemplateJobOutput) ContainerSpecGcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.ContainerSpecGcsPath }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o FlexTemplateJobOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -657,11 +526,8 @@ func (o FlexTemplateJobOutput) KmsKeyName() pulumi.StringOutput {
 
 // User labels to be specified for the job. Keys and values
 // should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-// page. **Note**: This field is marked as deprecated as the API does not currently
-// support adding labels.
-// **NOTE**: Google-provided Dataflow templates often provide default labels
-// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-// labels will be ignored to prevent diffs on re-apply.
+// page.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o FlexTemplateJobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -696,8 +562,6 @@ func (o FlexTemplateJobOutput) NumWorkers() pulumi.IntOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.IntOutput { return v.NumWorkers }).(pulumi.IntOutput)
 }
 
-// One of "drain" or "cancel". Specifies behavior of
-// deletion during `pulumi destroy`.  See above note.
 func (o FlexTemplateJobOutput) OnDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringPtrOutput { return v.OnDelete }).(pulumi.StringPtrOutput)
 }

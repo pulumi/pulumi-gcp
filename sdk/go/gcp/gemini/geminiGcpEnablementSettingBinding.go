@@ -41,7 +41,7 @@ import (
 //					"my_key": pulumi.String("my_value"),
 //				},
 //				EnableCustomerDataSharing: pulumi.Bool(true),
-//				DisableWebGrounding:       pulumi.Bool(true),
+//				WebGroundingType:          pulumi.String("WEB_GROUNDING_FOR_ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err

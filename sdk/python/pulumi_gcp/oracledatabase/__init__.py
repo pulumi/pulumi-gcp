@@ -17,5 +17,7 @@ from .get_cloud_vm_cluster import *
 from .get_cloud_vm_clusters import *
 from .get_db_nodes import *
 from .get_db_servers import *
+from .odb_network import *
+from .odb_subnet import *
 from ._inputs import *
 from . import outputs

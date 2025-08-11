@@ -90,10 +90,6 @@ export class ObjectACL extends pulumi.CustomResource {
      * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
     public readonly predefinedAcl!: pulumi.Output<string | undefined>;
-    /**
-     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefinedAcl` is not.
-     */
     public readonly roleEntities!: pulumi.Output<string[]>;
 
     /**
@@ -149,10 +145,6 @@ export interface ObjectACLState {
      * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
     predefinedAcl?: pulumi.Input<string>;
-    /**
-     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefinedAcl` is not.
-     */
     roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -174,9 +166,5 @@ export interface ObjectACLArgs {
      * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
     predefinedAcl?: pulumi.Input<string>;
-    /**
-     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefinedAcl` is not.
-     */
     roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
 }

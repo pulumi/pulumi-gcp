@@ -14,6 +14,19 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class SessionTemplateEnvironmentConfigExecutionConfig
     {
         /// <summary>
+        /// Authentication configuration for a workload is used to set the default identity for the workload execution.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig? AuthenticationConfig;
+        /// <summary>
+        /// The duration to keep the session alive while it's idling.
+        /// Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+        /// Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+        /// are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+        /// been exceeded, whichever occurs first.
+        /// </summary>
+        public readonly string? IdleTtl;
+        /// <summary>
         /// The Cloud KMS key to use for encryption.
         /// </summary>
         public readonly string? KmsKey;
@@ -51,6 +64,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
         [OutputConstructor]
         private SessionTemplateEnvironmentConfigExecutionConfig(
+            Outputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig? authenticationConfig,
+
+            string? idleTtl,
+
             string? kmsKey,
 
             ImmutableArray<string> networkTags,
@@ -63,6 +80,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? ttl)
         {
+            AuthenticationConfig = authenticationConfig;
+            IdleTtl = idleTtl;
             KmsKey = kmsKey;
             NetworkTags = networkTags;
             ServiceAccount = serviceAccount;

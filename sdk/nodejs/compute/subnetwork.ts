@@ -408,6 +408,11 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.SubnetworkParams | undefined>;
+    /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
@@ -455,6 +460,9 @@ export class Subnetwork extends pulumi.CustomResource {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `sendSecondaryIpRangeIfEmpty = true`
      * Structure is documented below.
      */
     public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
@@ -518,6 +526,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["privateIpGoogleAccess"] = state ? state.privateIpGoogleAccess : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -546,6 +555,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -686,6 +696,11 @@ export interface SubnetworkState {
      */
     network?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.SubnetworkParams>;
+    /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
@@ -733,6 +748,9 @@ export interface SubnetworkState {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `sendSecondaryIpRangeIfEmpty = true`
      * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
@@ -852,6 +870,11 @@ export interface SubnetworkArgs {
      */
     network: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.SubnetworkParams>;
+    /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
@@ -899,6 +922,9 @@ export interface SubnetworkArgs {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `sendSecondaryIpRangeIfEmpty = true`
      * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;

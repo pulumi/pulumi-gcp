@@ -68,6 +68,75 @@ import (
 //	}
 //
 // ```
+// ### Managedkafka Cluster Mtls
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/managedkafka"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			caPool, err := certificateauthority.NewCaPool(ctx, "ca_pool", &certificateauthority.CaPoolArgs{
+//				Name:     pulumi.String("my-ca-pool"),
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
+//					PublishCaCert: pulumi.Bool(true),
+//					PublishCrl:    pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = managedkafka.NewCluster(ctx, "example", &managedkafka.ClusterArgs{
+//				ClusterId: pulumi.String("my-cluster"),
+//				Location:  pulumi.String("us-central1"),
+//				CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
+//					VcpuCount:   pulumi.String("3"),
+//					MemoryBytes: pulumi.String("3221225472"),
+//				},
+//				GcpConfig: &managedkafka.ClusterGcpConfigArgs{
+//					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
+//						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
+//							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
+//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
+//							},
+//						},
+//					},
+//				},
+//				TlsConfig: &managedkafka.ClusterTlsConfigArgs{
+//					TrustConfig: &managedkafka.ClusterTlsConfigTrustConfigArgs{
+//						CasConfigs: managedkafka.ClusterTlsConfigTrustConfigCasConfigArray{
+//							&managedkafka.ClusterTlsConfigTrustConfigCasConfigArgs{
+//								CaPool: caPool.ID(),
+//							},
+//						},
+//					},
+//					SslPrincipalMappingRules: pulumi.String("RULE:pattern/replacement/L,DEFAULT"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Managedkafka Cluster Cmek
 //
 // ```go
@@ -206,6 +275,9 @@ type Cluster struct {
 	RebalanceConfig ClusterRebalanceConfigPtrOutput `pulumi:"rebalanceConfig"`
 	// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State pulumi.StringOutput `pulumi:"state"`
+	// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+	// Structure is documented below.
+	TlsConfig ClusterTlsConfigOutput `pulumi:"tlsConfig"`
 	// The time when the cluster was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -288,6 +360,9 @@ type clusterState struct {
 	RebalanceConfig *ClusterRebalanceConfig `pulumi:"rebalanceConfig"`
 	// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State *string `pulumi:"state"`
+	// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+	// Structure is documented below.
+	TlsConfig *ClusterTlsConfig `pulumi:"tlsConfig"`
 	// The time when the cluster was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -324,6 +399,9 @@ type ClusterState struct {
 	RebalanceConfig ClusterRebalanceConfigPtrInput
 	// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State pulumi.StringPtrInput
+	// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+	// Structure is documented below.
+	TlsConfig ClusterTlsConfigPtrInput
 	// The time when the cluster was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -353,6 +431,9 @@ type clusterArgs struct {
 	// Defines rebalancing behavior of a Kafka cluster.
 	// Structure is documented below.
 	RebalanceConfig *ClusterRebalanceConfig `pulumi:"rebalanceConfig"`
+	// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+	// Structure is documented below.
+	TlsConfig *ClusterTlsConfig `pulumi:"tlsConfig"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -377,6 +458,9 @@ type ClusterArgs struct {
 	// Defines rebalancing behavior of a Kafka cluster.
 	// Structure is documented below.
 	RebalanceConfig ClusterRebalanceConfigPtrInput
+	// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+	// Structure is documented below.
+	TlsConfig ClusterTlsConfigPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -531,6 +615,12 @@ func (o ClusterOutput) RebalanceConfig() ClusterRebalanceConfigPtrOutput {
 // The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 func (o ClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+// Structure is documented below.
+func (o ClusterOutput) TlsConfig() ClusterTlsConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterTlsConfigOutput { return v.TlsConfig }).(ClusterTlsConfigOutput)
 }
 
 // The time when the cluster was last updated.

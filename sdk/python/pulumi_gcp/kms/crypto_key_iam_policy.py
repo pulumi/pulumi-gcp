@@ -166,7 +166,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -193,7 +193,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -220,7 +220,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -309,7 +309,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -336,7 +336,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             members=["user:jane@example.com"])
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi
@@ -363,7 +363,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        With IAM Conditions:
+        With IAM Conditions (beta):
 
         ```python
         import pulumi

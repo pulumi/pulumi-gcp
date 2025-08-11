@@ -159,6 +159,7 @@ namespace Pulumi.Gcp.OracleDatabase
     [OutputType]
     public sealed class GetCloudVmClusterResult
     {
+        public readonly string BackupOdbSubnet;
         public readonly string BackupSubnetCidr;
         public readonly string Cidr;
         public readonly string CloudVmClusterId;
@@ -176,12 +177,16 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string Location;
         public readonly string Name;
         public readonly string Network;
+        public readonly string OdbNetwork;
+        public readonly string OdbSubnet;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetCloudVmClusterPropertyResult> Properties;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
 
         [OutputConstructor]
         private GetCloudVmClusterResult(
+            string backupOdbSubnet,
+
             string backupSubnetCidr,
 
             string cidr,
@@ -210,12 +215,17 @@ namespace Pulumi.Gcp.OracleDatabase
 
             string network,
 
+            string odbNetwork,
+
+            string odbSubnet,
+
             string? project,
 
             ImmutableArray<Outputs.GetCloudVmClusterPropertyResult> properties,
 
             ImmutableDictionary<string, string> pulumiLabels)
         {
+            BackupOdbSubnet = backupOdbSubnet;
             BackupSubnetCidr = backupSubnetCidr;
             Cidr = cidr;
             CloudVmClusterId = cloudVmClusterId;
@@ -230,6 +240,8 @@ namespace Pulumi.Gcp.OracleDatabase
             Location = location;
             Name = name;
             Network = network;
+            OdbNetwork = odbNetwork;
+            OdbSubnet = odbSubnet;
             Project = project;
             Properties = properties;
             PulumiLabels = pulumiLabels;

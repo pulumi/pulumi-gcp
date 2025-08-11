@@ -125,6 +125,11 @@ export const getControlProjectIntelligenceConfig: typeof import("./getControlPro
 export const getControlProjectIntelligenceConfigOutput: typeof import("./getControlProjectIntelligenceConfig").getControlProjectIntelligenceConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getControlProjectIntelligenceConfig","getControlProjectIntelligenceConfigOutput"], () => require("./getControlProjectIntelligenceConfig"));
 
+export { GetInsightsDatasetConfigArgs, GetInsightsDatasetConfigResult, GetInsightsDatasetConfigOutputArgs } from "./getInsightsDatasetConfig";
+export const getInsightsDatasetConfig: typeof import("./getInsightsDatasetConfig").getInsightsDatasetConfig = null as any;
+export const getInsightsDatasetConfigOutput: typeof import("./getInsightsDatasetConfig").getInsightsDatasetConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getInsightsDatasetConfig","getInsightsDatasetConfigOutput"], () => require("./getInsightsDatasetConfig"));
+
 export { GetManagedFolderIamPolicyArgs, GetManagedFolderIamPolicyResult, GetManagedFolderIamPolicyOutputArgs } from "./getManagedFolderIamPolicy";
 export const getManagedFolderIamPolicy: typeof import("./getManagedFolderIamPolicy").getManagedFolderIamPolicy = null as any;
 export const getManagedFolderIamPolicyOutput: typeof import("./getManagedFolderIamPolicy").getManagedFolderIamPolicyOutput = null as any;
@@ -154,6 +159,11 @@ export { HmacKeyArgs, HmacKeyState } from "./hmacKey";
 export type HmacKey = import("./hmacKey").HmacKey;
 export const HmacKey: typeof import("./hmacKey").HmacKey = null as any;
 utilities.lazyLoad(exports, ["HmacKey"], () => require("./hmacKey"));
+
+export { InsightsDatasetConfigArgs, InsightsDatasetConfigState } from "./insightsDatasetConfig";
+export type InsightsDatasetConfig = import("./insightsDatasetConfig").InsightsDatasetConfig;
+export const InsightsDatasetConfig: typeof import("./insightsDatasetConfig").InsightsDatasetConfig = null as any;
+utilities.lazyLoad(exports, ["InsightsDatasetConfig"], () => require("./insightsDatasetConfig"));
 
 export { InsightsReportConfigArgs, InsightsReportConfigState } from "./insightsReportConfig";
 export type InsightsReportConfig = import("./insightsReportConfig").InsightsReportConfig;
@@ -243,6 +253,8 @@ const _module = {
                 return new Folder(name, <any>undefined, { urn })
             case "gcp:storage/hmacKey:HmacKey":
                 return new HmacKey(name, <any>undefined, { urn })
+            case "gcp:storage/insightsDatasetConfig:InsightsDatasetConfig":
+                return new InsightsDatasetConfig(name, <any>undefined, { urn })
             case "gcp:storage/insightsReportConfig:InsightsReportConfig":
                 return new InsightsReportConfig(name, <any>undefined, { urn })
             case "gcp:storage/managedFolder:ManagedFolder":
@@ -284,6 +296,7 @@ pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/folder", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/hmacKey", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/insightsDatasetConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/insightsReportConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/managedFolder", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/managedFolderIamBinding", _module)

@@ -137,6 +137,51 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Connectivity Internal Ranges Allocation Algoritms
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "internal-ranges",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const _default = new gcp.networkconnectivity.InternalRange("default", {
+ *     name: "allocation-algorithms",
+ *     network: defaultNetwork.id,
+ *     usage: "FOR_VPC",
+ *     peering: "FOR_SELF",
+ *     prefixLength: 24,
+ *     targetCidrRanges: ["192.16.0.0/16"],
+ *     allocationOptions: {
+ *         allocationStrategy: "FIRST_SMALLEST_FITTING",
+ *     },
+ * });
+ * ```
+ * ### Network Connectivity Internal Ranges Allocation Algoritms Random First N
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "internal-ranges",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const _default = new gcp.networkconnectivity.InternalRange("default", {
+ *     name: "allocation-algorithms-random-first-n",
+ *     network: defaultNetwork.id,
+ *     usage: "FOR_VPC",
+ *     peering: "FOR_SELF",
+ *     prefixLength: 24,
+ *     targetCidrRanges: ["192.16.0.0/16"],
+ *     allocationOptions: {
+ *         allocationStrategy: "RANDOM_FIRST_N_AVAILABLE",
+ *         firstAvailableRangesLookupSize: 20,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -190,6 +235,11 @@ export class InternalRange extends pulumi.CustomResource {
         return obj['__pulumiType'] === InternalRange.__pulumiType;
     }
 
+    /**
+     * Options for automatically allocating a free range with a size given by prefixLength.
+     * Structure is documented below.
+     */
+    public readonly allocationOptions!: pulumi.Output<outputs.networkconnectivity.InternalRangeAllocationOptions | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -290,6 +340,7 @@ export class InternalRange extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InternalRangeState | undefined;
+            resourceInputs["allocationOptions"] = state ? state.allocationOptions : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["excludeCidrRanges"] = state ? state.excludeCidrRanges : undefined;
@@ -318,6 +369,7 @@ export class InternalRange extends pulumi.CustomResource {
             if ((!args || args.usage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'usage'");
             }
+            resourceInputs["allocationOptions"] = args ? args.allocationOptions : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["excludeCidrRanges"] = args ? args.excludeCidrRanges : undefined;
             resourceInputs["immutable"] = args ? args.immutable : undefined;
@@ -347,6 +399,11 @@ export class InternalRange extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InternalRange resources.
  */
 export interface InternalRangeState {
+    /**
+     * Options for automatically allocating a free range with a size given by prefixLength.
+     * Structure is documented below.
+     */
+    allocationOptions?: pulumi.Input<inputs.networkconnectivity.InternalRangeAllocationOptions>;
     /**
      * An optional description of this resource.
      */
@@ -439,6 +496,11 @@ export interface InternalRangeState {
  * The set of arguments for constructing a InternalRange resource.
  */
 export interface InternalRangeArgs {
+    /**
+     * Options for automatically allocating a free range with a size given by prefixLength.
+     * Structure is documented below.
+     */
+    allocationOptions?: pulumi.Input<inputs.networkconnectivity.InternalRangeAllocationOptions>;
     /**
      * An optional description of this resource.
      */

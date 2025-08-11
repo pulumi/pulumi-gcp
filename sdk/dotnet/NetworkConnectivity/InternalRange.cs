@@ -203,6 +203,77 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Internal Ranges Allocation Algoritms
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "internal-ranges",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.InternalRange("default", new()
+    ///     {
+    ///         Name = "allocation-algorithms",
+    ///         Network = defaultNetwork.Id,
+    ///         Usage = "FOR_VPC",
+    ///         Peering = "FOR_SELF",
+    ///         PrefixLength = 24,
+    ///         TargetCidrRanges = new[]
+    ///         {
+    ///             "192.16.0.0/16",
+    ///         },
+    ///         AllocationOptions = new Gcp.NetworkConnectivity.Inputs.InternalRangeAllocationOptionsArgs
+    ///         {
+    ///             AllocationStrategy = "FIRST_SMALLEST_FITTING",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Connectivity Internal Ranges Allocation Algoritms Random First N
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "internal-ranges",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.InternalRange("default", new()
+    ///     {
+    ///         Name = "allocation-algorithms-random-first-n",
+    ///         Network = defaultNetwork.Id,
+    ///         Usage = "FOR_VPC",
+    ///         Peering = "FOR_SELF",
+    ///         PrefixLength = 24,
+    ///         TargetCidrRanges = new[]
+    ///         {
+    ///             "192.16.0.0/16",
+    ///         },
+    ///         AllocationOptions = new Gcp.NetworkConnectivity.Inputs.InternalRangeAllocationOptionsArgs
+    ///         {
+    ///             AllocationStrategy = "RANDOM_FIRST_N_AVAILABLE",
+    ///             FirstAvailableRangesLookupSize = 20,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -231,6 +302,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     [GcpResourceType("gcp:networkconnectivity/internalRange:InternalRange")]
     public partial class InternalRange : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Options for automatically allocating a free range with a size given by prefixLength.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("allocationOptions")]
+        public Output<Outputs.InternalRangeAllocationOptions?> AllocationOptions { get; private set; } = null!;
+
         /// <summary>
         /// An optional description of this resource.
         /// </summary>
@@ -403,6 +481,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     public sealed class InternalRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Options for automatically allocating a free range with a size given by prefixLength.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("allocationOptions")]
+        public Input<Inputs.InternalRangeAllocationOptionsArgs>? AllocationOptions { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
@@ -533,6 +618,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
     public sealed class InternalRangeState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Options for automatically allocating a free range with a size given by prefixLength.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("allocationOptions")]
+        public Input<Inputs.InternalRangeAllocationOptionsGetArgs>? AllocationOptions { get; set; }
+
         /// <summary>
         /// An optional description of this resource.
         /// </summary>

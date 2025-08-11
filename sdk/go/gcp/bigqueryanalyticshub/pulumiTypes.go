@@ -1629,6 +1629,224 @@ func (o ListingBigqueryDatasetSelectedResourceArrayOutput) Index(i pulumi.IntInp
 	}).(ListingBigqueryDatasetSelectedResourceOutput)
 }
 
+type ListingCommercialInfo struct {
+	// (Output)
+	// Details of the Marketplace Data Product associated with the Listing.
+	// Structure is documented below.
+	CloudMarketplaces []ListingCommercialInfoCloudMarketplace `pulumi:"cloudMarketplaces"`
+}
+
+// ListingCommercialInfoInput is an input type that accepts ListingCommercialInfoArgs and ListingCommercialInfoOutput values.
+// You can construct a concrete instance of `ListingCommercialInfoInput` via:
+//
+//	ListingCommercialInfoArgs{...}
+type ListingCommercialInfoInput interface {
+	pulumi.Input
+
+	ToListingCommercialInfoOutput() ListingCommercialInfoOutput
+	ToListingCommercialInfoOutputWithContext(context.Context) ListingCommercialInfoOutput
+}
+
+type ListingCommercialInfoArgs struct {
+	// (Output)
+	// Details of the Marketplace Data Product associated with the Listing.
+	// Structure is documented below.
+	CloudMarketplaces ListingCommercialInfoCloudMarketplaceArrayInput `pulumi:"cloudMarketplaces"`
+}
+
+func (ListingCommercialInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingCommercialInfo)(nil)).Elem()
+}
+
+func (i ListingCommercialInfoArgs) ToListingCommercialInfoOutput() ListingCommercialInfoOutput {
+	return i.ToListingCommercialInfoOutputWithContext(context.Background())
+}
+
+func (i ListingCommercialInfoArgs) ToListingCommercialInfoOutputWithContext(ctx context.Context) ListingCommercialInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingCommercialInfoOutput)
+}
+
+// ListingCommercialInfoArrayInput is an input type that accepts ListingCommercialInfoArray and ListingCommercialInfoArrayOutput values.
+// You can construct a concrete instance of `ListingCommercialInfoArrayInput` via:
+//
+//	ListingCommercialInfoArray{ ListingCommercialInfoArgs{...} }
+type ListingCommercialInfoArrayInput interface {
+	pulumi.Input
+
+	ToListingCommercialInfoArrayOutput() ListingCommercialInfoArrayOutput
+	ToListingCommercialInfoArrayOutputWithContext(context.Context) ListingCommercialInfoArrayOutput
+}
+
+type ListingCommercialInfoArray []ListingCommercialInfoInput
+
+func (ListingCommercialInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingCommercialInfo)(nil)).Elem()
+}
+
+func (i ListingCommercialInfoArray) ToListingCommercialInfoArrayOutput() ListingCommercialInfoArrayOutput {
+	return i.ToListingCommercialInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ListingCommercialInfoArray) ToListingCommercialInfoArrayOutputWithContext(ctx context.Context) ListingCommercialInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingCommercialInfoArrayOutput)
+}
+
+type ListingCommercialInfoOutput struct{ *pulumi.OutputState }
+
+func (ListingCommercialInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingCommercialInfo)(nil)).Elem()
+}
+
+func (o ListingCommercialInfoOutput) ToListingCommercialInfoOutput() ListingCommercialInfoOutput {
+	return o
+}
+
+func (o ListingCommercialInfoOutput) ToListingCommercialInfoOutputWithContext(ctx context.Context) ListingCommercialInfoOutput {
+	return o
+}
+
+// (Output)
+// Details of the Marketplace Data Product associated with the Listing.
+// Structure is documented below.
+func (o ListingCommercialInfoOutput) CloudMarketplaces() ListingCommercialInfoCloudMarketplaceArrayOutput {
+	return o.ApplyT(func(v ListingCommercialInfo) []ListingCommercialInfoCloudMarketplace { return v.CloudMarketplaces }).(ListingCommercialInfoCloudMarketplaceArrayOutput)
+}
+
+type ListingCommercialInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ListingCommercialInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingCommercialInfo)(nil)).Elem()
+}
+
+func (o ListingCommercialInfoArrayOutput) ToListingCommercialInfoArrayOutput() ListingCommercialInfoArrayOutput {
+	return o
+}
+
+func (o ListingCommercialInfoArrayOutput) ToListingCommercialInfoArrayOutputWithContext(ctx context.Context) ListingCommercialInfoArrayOutput {
+	return o
+}
+
+func (o ListingCommercialInfoArrayOutput) Index(i pulumi.IntInput) ListingCommercialInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListingCommercialInfo {
+		return vs[0].([]ListingCommercialInfo)[vs[1].(int)]
+	}).(ListingCommercialInfoOutput)
+}
+
+type ListingCommercialInfoCloudMarketplace struct {
+	// (Output)
+	// Commercial state of the Marketplace Data Product.
+	// Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+	CommercialState *string `pulumi:"commercialState"`
+	// (Output)
+	// Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+	Service *string `pulumi:"service"`
+}
+
+// ListingCommercialInfoCloudMarketplaceInput is an input type that accepts ListingCommercialInfoCloudMarketplaceArgs and ListingCommercialInfoCloudMarketplaceOutput values.
+// You can construct a concrete instance of `ListingCommercialInfoCloudMarketplaceInput` via:
+//
+//	ListingCommercialInfoCloudMarketplaceArgs{...}
+type ListingCommercialInfoCloudMarketplaceInput interface {
+	pulumi.Input
+
+	ToListingCommercialInfoCloudMarketplaceOutput() ListingCommercialInfoCloudMarketplaceOutput
+	ToListingCommercialInfoCloudMarketplaceOutputWithContext(context.Context) ListingCommercialInfoCloudMarketplaceOutput
+}
+
+type ListingCommercialInfoCloudMarketplaceArgs struct {
+	// (Output)
+	// Commercial state of the Marketplace Data Product.
+	// Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+	CommercialState pulumi.StringPtrInput `pulumi:"commercialState"`
+	// (Output)
+	// Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ListingCommercialInfoCloudMarketplaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingCommercialInfoCloudMarketplace)(nil)).Elem()
+}
+
+func (i ListingCommercialInfoCloudMarketplaceArgs) ToListingCommercialInfoCloudMarketplaceOutput() ListingCommercialInfoCloudMarketplaceOutput {
+	return i.ToListingCommercialInfoCloudMarketplaceOutputWithContext(context.Background())
+}
+
+func (i ListingCommercialInfoCloudMarketplaceArgs) ToListingCommercialInfoCloudMarketplaceOutputWithContext(ctx context.Context) ListingCommercialInfoCloudMarketplaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingCommercialInfoCloudMarketplaceOutput)
+}
+
+// ListingCommercialInfoCloudMarketplaceArrayInput is an input type that accepts ListingCommercialInfoCloudMarketplaceArray and ListingCommercialInfoCloudMarketplaceArrayOutput values.
+// You can construct a concrete instance of `ListingCommercialInfoCloudMarketplaceArrayInput` via:
+//
+//	ListingCommercialInfoCloudMarketplaceArray{ ListingCommercialInfoCloudMarketplaceArgs{...} }
+type ListingCommercialInfoCloudMarketplaceArrayInput interface {
+	pulumi.Input
+
+	ToListingCommercialInfoCloudMarketplaceArrayOutput() ListingCommercialInfoCloudMarketplaceArrayOutput
+	ToListingCommercialInfoCloudMarketplaceArrayOutputWithContext(context.Context) ListingCommercialInfoCloudMarketplaceArrayOutput
+}
+
+type ListingCommercialInfoCloudMarketplaceArray []ListingCommercialInfoCloudMarketplaceInput
+
+func (ListingCommercialInfoCloudMarketplaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingCommercialInfoCloudMarketplace)(nil)).Elem()
+}
+
+func (i ListingCommercialInfoCloudMarketplaceArray) ToListingCommercialInfoCloudMarketplaceArrayOutput() ListingCommercialInfoCloudMarketplaceArrayOutput {
+	return i.ToListingCommercialInfoCloudMarketplaceArrayOutputWithContext(context.Background())
+}
+
+func (i ListingCommercialInfoCloudMarketplaceArray) ToListingCommercialInfoCloudMarketplaceArrayOutputWithContext(ctx context.Context) ListingCommercialInfoCloudMarketplaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingCommercialInfoCloudMarketplaceArrayOutput)
+}
+
+type ListingCommercialInfoCloudMarketplaceOutput struct{ *pulumi.OutputState }
+
+func (ListingCommercialInfoCloudMarketplaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingCommercialInfoCloudMarketplace)(nil)).Elem()
+}
+
+func (o ListingCommercialInfoCloudMarketplaceOutput) ToListingCommercialInfoCloudMarketplaceOutput() ListingCommercialInfoCloudMarketplaceOutput {
+	return o
+}
+
+func (o ListingCommercialInfoCloudMarketplaceOutput) ToListingCommercialInfoCloudMarketplaceOutputWithContext(ctx context.Context) ListingCommercialInfoCloudMarketplaceOutput {
+	return o
+}
+
+// (Output)
+// Commercial state of the Marketplace Data Product.
+// Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+func (o ListingCommercialInfoCloudMarketplaceOutput) CommercialState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingCommercialInfoCloudMarketplace) *string { return v.CommercialState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+func (o ListingCommercialInfoCloudMarketplaceOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingCommercialInfoCloudMarketplace) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ListingCommercialInfoCloudMarketplaceArrayOutput struct{ *pulumi.OutputState }
+
+func (ListingCommercialInfoCloudMarketplaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingCommercialInfoCloudMarketplace)(nil)).Elem()
+}
+
+func (o ListingCommercialInfoCloudMarketplaceArrayOutput) ToListingCommercialInfoCloudMarketplaceArrayOutput() ListingCommercialInfoCloudMarketplaceArrayOutput {
+	return o
+}
+
+func (o ListingCommercialInfoCloudMarketplaceArrayOutput) ToListingCommercialInfoCloudMarketplaceArrayOutputWithContext(ctx context.Context) ListingCommercialInfoCloudMarketplaceArrayOutput {
+	return o
+}
+
+func (o ListingCommercialInfoCloudMarketplaceArrayOutput) Index(i pulumi.IntInput) ListingCommercialInfoCloudMarketplaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListingCommercialInfoCloudMarketplace {
+		return vs[0].([]ListingCommercialInfoCloudMarketplace)[vs[1].(int)]
+	}).(ListingCommercialInfoCloudMarketplaceOutput)
+}
+
 type ListingDataProvider struct {
 	// Name of the data provider.
 	Name string `pulumi:"name"`
@@ -2606,6 +2824,211 @@ func (o ListingRestrictedExportConfigPtrOutput) RestrictQueryResult() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ListingSubscriptionCommercialInfo struct {
+	// (Output)
+	// Cloud Marketplace commercial metadata for this subscription.
+	// Structure is documented below.
+	CloudMarketplaces []ListingSubscriptionCommercialInfoCloudMarketplace `pulumi:"cloudMarketplaces"`
+}
+
+// ListingSubscriptionCommercialInfoInput is an input type that accepts ListingSubscriptionCommercialInfoArgs and ListingSubscriptionCommercialInfoOutput values.
+// You can construct a concrete instance of `ListingSubscriptionCommercialInfoInput` via:
+//
+//	ListingSubscriptionCommercialInfoArgs{...}
+type ListingSubscriptionCommercialInfoInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionCommercialInfoOutput() ListingSubscriptionCommercialInfoOutput
+	ToListingSubscriptionCommercialInfoOutputWithContext(context.Context) ListingSubscriptionCommercialInfoOutput
+}
+
+type ListingSubscriptionCommercialInfoArgs struct {
+	// (Output)
+	// Cloud Marketplace commercial metadata for this subscription.
+	// Structure is documented below.
+	CloudMarketplaces ListingSubscriptionCommercialInfoCloudMarketplaceArrayInput `pulumi:"cloudMarketplaces"`
+}
+
+func (ListingSubscriptionCommercialInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionCommercialInfo)(nil)).Elem()
+}
+
+func (i ListingSubscriptionCommercialInfoArgs) ToListingSubscriptionCommercialInfoOutput() ListingSubscriptionCommercialInfoOutput {
+	return i.ToListingSubscriptionCommercialInfoOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionCommercialInfoArgs) ToListingSubscriptionCommercialInfoOutputWithContext(ctx context.Context) ListingSubscriptionCommercialInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionCommercialInfoOutput)
+}
+
+// ListingSubscriptionCommercialInfoArrayInput is an input type that accepts ListingSubscriptionCommercialInfoArray and ListingSubscriptionCommercialInfoArrayOutput values.
+// You can construct a concrete instance of `ListingSubscriptionCommercialInfoArrayInput` via:
+//
+//	ListingSubscriptionCommercialInfoArray{ ListingSubscriptionCommercialInfoArgs{...} }
+type ListingSubscriptionCommercialInfoArrayInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionCommercialInfoArrayOutput() ListingSubscriptionCommercialInfoArrayOutput
+	ToListingSubscriptionCommercialInfoArrayOutputWithContext(context.Context) ListingSubscriptionCommercialInfoArrayOutput
+}
+
+type ListingSubscriptionCommercialInfoArray []ListingSubscriptionCommercialInfoInput
+
+func (ListingSubscriptionCommercialInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingSubscriptionCommercialInfo)(nil)).Elem()
+}
+
+func (i ListingSubscriptionCommercialInfoArray) ToListingSubscriptionCommercialInfoArrayOutput() ListingSubscriptionCommercialInfoArrayOutput {
+	return i.ToListingSubscriptionCommercialInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionCommercialInfoArray) ToListingSubscriptionCommercialInfoArrayOutputWithContext(ctx context.Context) ListingSubscriptionCommercialInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionCommercialInfoArrayOutput)
+}
+
+type ListingSubscriptionCommercialInfoOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionCommercialInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionCommercialInfo)(nil)).Elem()
+}
+
+func (o ListingSubscriptionCommercialInfoOutput) ToListingSubscriptionCommercialInfoOutput() ListingSubscriptionCommercialInfoOutput {
+	return o
+}
+
+func (o ListingSubscriptionCommercialInfoOutput) ToListingSubscriptionCommercialInfoOutputWithContext(ctx context.Context) ListingSubscriptionCommercialInfoOutput {
+	return o
+}
+
+// (Output)
+// Cloud Marketplace commercial metadata for this subscription.
+// Structure is documented below.
+func (o ListingSubscriptionCommercialInfoOutput) CloudMarketplaces() ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput {
+	return o.ApplyT(func(v ListingSubscriptionCommercialInfo) []ListingSubscriptionCommercialInfoCloudMarketplace {
+		return v.CloudMarketplaces
+	}).(ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput)
+}
+
+type ListingSubscriptionCommercialInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionCommercialInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingSubscriptionCommercialInfo)(nil)).Elem()
+}
+
+func (o ListingSubscriptionCommercialInfoArrayOutput) ToListingSubscriptionCommercialInfoArrayOutput() ListingSubscriptionCommercialInfoArrayOutput {
+	return o
+}
+
+func (o ListingSubscriptionCommercialInfoArrayOutput) ToListingSubscriptionCommercialInfoArrayOutputWithContext(ctx context.Context) ListingSubscriptionCommercialInfoArrayOutput {
+	return o
+}
+
+func (o ListingSubscriptionCommercialInfoArrayOutput) Index(i pulumi.IntInput) ListingSubscriptionCommercialInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListingSubscriptionCommercialInfo {
+		return vs[0].([]ListingSubscriptionCommercialInfo)[vs[1].(int)]
+	}).(ListingSubscriptionCommercialInfoOutput)
+}
+
+type ListingSubscriptionCommercialInfoCloudMarketplace struct {
+	// (Output)
+	// Resource name of the Marketplace Order.
+	Order *string `pulumi:"order"`
+}
+
+// ListingSubscriptionCommercialInfoCloudMarketplaceInput is an input type that accepts ListingSubscriptionCommercialInfoCloudMarketplaceArgs and ListingSubscriptionCommercialInfoCloudMarketplaceOutput values.
+// You can construct a concrete instance of `ListingSubscriptionCommercialInfoCloudMarketplaceInput` via:
+//
+//	ListingSubscriptionCommercialInfoCloudMarketplaceArgs{...}
+type ListingSubscriptionCommercialInfoCloudMarketplaceInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionCommercialInfoCloudMarketplaceOutput() ListingSubscriptionCommercialInfoCloudMarketplaceOutput
+	ToListingSubscriptionCommercialInfoCloudMarketplaceOutputWithContext(context.Context) ListingSubscriptionCommercialInfoCloudMarketplaceOutput
+}
+
+type ListingSubscriptionCommercialInfoCloudMarketplaceArgs struct {
+	// (Output)
+	// Resource name of the Marketplace Order.
+	Order pulumi.StringPtrInput `pulumi:"order"`
+}
+
+func (ListingSubscriptionCommercialInfoCloudMarketplaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionCommercialInfoCloudMarketplace)(nil)).Elem()
+}
+
+func (i ListingSubscriptionCommercialInfoCloudMarketplaceArgs) ToListingSubscriptionCommercialInfoCloudMarketplaceOutput() ListingSubscriptionCommercialInfoCloudMarketplaceOutput {
+	return i.ToListingSubscriptionCommercialInfoCloudMarketplaceOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionCommercialInfoCloudMarketplaceArgs) ToListingSubscriptionCommercialInfoCloudMarketplaceOutputWithContext(ctx context.Context) ListingSubscriptionCommercialInfoCloudMarketplaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionCommercialInfoCloudMarketplaceOutput)
+}
+
+// ListingSubscriptionCommercialInfoCloudMarketplaceArrayInput is an input type that accepts ListingSubscriptionCommercialInfoCloudMarketplaceArray and ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput values.
+// You can construct a concrete instance of `ListingSubscriptionCommercialInfoCloudMarketplaceArrayInput` via:
+//
+//	ListingSubscriptionCommercialInfoCloudMarketplaceArray{ ListingSubscriptionCommercialInfoCloudMarketplaceArgs{...} }
+type ListingSubscriptionCommercialInfoCloudMarketplaceArrayInput interface {
+	pulumi.Input
+
+	ToListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput() ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput
+	ToListingSubscriptionCommercialInfoCloudMarketplaceArrayOutputWithContext(context.Context) ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput
+}
+
+type ListingSubscriptionCommercialInfoCloudMarketplaceArray []ListingSubscriptionCommercialInfoCloudMarketplaceInput
+
+func (ListingSubscriptionCommercialInfoCloudMarketplaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingSubscriptionCommercialInfoCloudMarketplace)(nil)).Elem()
+}
+
+func (i ListingSubscriptionCommercialInfoCloudMarketplaceArray) ToListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput() ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput {
+	return i.ToListingSubscriptionCommercialInfoCloudMarketplaceArrayOutputWithContext(context.Background())
+}
+
+func (i ListingSubscriptionCommercialInfoCloudMarketplaceArray) ToListingSubscriptionCommercialInfoCloudMarketplaceArrayOutputWithContext(ctx context.Context) ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput)
+}
+
+type ListingSubscriptionCommercialInfoCloudMarketplaceOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionCommercialInfoCloudMarketplaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingSubscriptionCommercialInfoCloudMarketplace)(nil)).Elem()
+}
+
+func (o ListingSubscriptionCommercialInfoCloudMarketplaceOutput) ToListingSubscriptionCommercialInfoCloudMarketplaceOutput() ListingSubscriptionCommercialInfoCloudMarketplaceOutput {
+	return o
+}
+
+func (o ListingSubscriptionCommercialInfoCloudMarketplaceOutput) ToListingSubscriptionCommercialInfoCloudMarketplaceOutputWithContext(ctx context.Context) ListingSubscriptionCommercialInfoCloudMarketplaceOutput {
+	return o
+}
+
+// (Output)
+// Resource name of the Marketplace Order.
+func (o ListingSubscriptionCommercialInfoCloudMarketplaceOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingSubscriptionCommercialInfoCloudMarketplace) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+type ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput struct{ *pulumi.OutputState }
+
+func (ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingSubscriptionCommercialInfoCloudMarketplace)(nil)).Elem()
+}
+
+func (o ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput) ToListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput() ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput {
+	return o
+}
+
+func (o ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput) ToListingSubscriptionCommercialInfoCloudMarketplaceArrayOutputWithContext(ctx context.Context) ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput {
+	return o
+}
+
+func (o ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput) Index(i pulumi.IntInput) ListingSubscriptionCommercialInfoCloudMarketplaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListingSubscriptionCommercialInfoCloudMarketplace {
+		return vs[0].([]ListingSubscriptionCommercialInfoCloudMarketplace)[vs[1].(int)]
+	}).(ListingSubscriptionCommercialInfoCloudMarketplaceOutput)
+}
+
 type ListingSubscriptionDestinationDataset struct {
 	// A reference that identifies the destination dataset.
 	// Structure is documented below.
@@ -3245,6 +3668,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetPtrInput)(nil)).Elem(), ListingBigqueryDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetSelectedResourceInput)(nil)).Elem(), ListingBigqueryDatasetSelectedResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetSelectedResourceArrayInput)(nil)).Elem(), ListingBigqueryDatasetSelectedResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingCommercialInfoInput)(nil)).Elem(), ListingCommercialInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingCommercialInfoArrayInput)(nil)).Elem(), ListingCommercialInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingCommercialInfoCloudMarketplaceInput)(nil)).Elem(), ListingCommercialInfoCloudMarketplaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingCommercialInfoCloudMarketplaceArrayInput)(nil)).Elem(), ListingCommercialInfoCloudMarketplaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingDataProviderInput)(nil)).Elem(), ListingDataProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingDataProviderPtrInput)(nil)).Elem(), ListingDataProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingIamBindingConditionInput)(nil)).Elem(), ListingIamBindingConditionArgs{})
@@ -3257,6 +3684,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingPubsubTopicPtrInput)(nil)).Elem(), ListingPubsubTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingRestrictedExportConfigInput)(nil)).Elem(), ListingRestrictedExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingRestrictedExportConfigPtrInput)(nil)).Elem(), ListingRestrictedExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionCommercialInfoInput)(nil)).Elem(), ListingSubscriptionCommercialInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionCommercialInfoArrayInput)(nil)).Elem(), ListingSubscriptionCommercialInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionCommercialInfoCloudMarketplaceInput)(nil)).Elem(), ListingSubscriptionCommercialInfoCloudMarketplaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionCommercialInfoCloudMarketplaceArrayInput)(nil)).Elem(), ListingSubscriptionCommercialInfoCloudMarketplaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetPtrInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionDestinationDatasetDatasetReferenceInput)(nil)).Elem(), ListingSubscriptionDestinationDatasetDatasetReferenceArgs{})
@@ -3287,6 +3718,10 @@ func init() {
 	pulumi.RegisterOutputType(ListingBigqueryDatasetPtrOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetSelectedResourceOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetSelectedResourceArrayOutput{})
+	pulumi.RegisterOutputType(ListingCommercialInfoOutput{})
+	pulumi.RegisterOutputType(ListingCommercialInfoArrayOutput{})
+	pulumi.RegisterOutputType(ListingCommercialInfoCloudMarketplaceOutput{})
+	pulumi.RegisterOutputType(ListingCommercialInfoCloudMarketplaceArrayOutput{})
 	pulumi.RegisterOutputType(ListingDataProviderOutput{})
 	pulumi.RegisterOutputType(ListingDataProviderPtrOutput{})
 	pulumi.RegisterOutputType(ListingIamBindingConditionOutput{})
@@ -3299,6 +3734,10 @@ func init() {
 	pulumi.RegisterOutputType(ListingPubsubTopicPtrOutput{})
 	pulumi.RegisterOutputType(ListingRestrictedExportConfigOutput{})
 	pulumi.RegisterOutputType(ListingRestrictedExportConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionCommercialInfoOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionCommercialInfoArrayOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionCommercialInfoCloudMarketplaceOutput{})
+	pulumi.RegisterOutputType(ListingSubscriptionCommercialInfoCloudMarketplaceArrayOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetPtrOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionDestinationDatasetDatasetReferenceOutput{})

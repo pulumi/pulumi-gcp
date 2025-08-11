@@ -15,6 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
  *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `http_check.auth_info.password_wo`.
+ * Read more about Write-only Attributes.
+ *
  * ## Example Usage
  *
  * ### Uptime Check Config Http

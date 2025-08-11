@@ -19,6 +19,8 @@ __all__ = [
     'GroupAutoAcceptArgsDict',
     'HubRoutingVpcArgs',
     'HubRoutingVpcArgsDict',
+    'InternalRangeAllocationOptionsArgs',
+    'InternalRangeAllocationOptionsArgsDict',
     'InternalRangeMigrationArgs',
     'InternalRangeMigrationArgsDict',
     'PolicyBasedRouteFilterArgs',
@@ -116,6 +118,64 @@ class HubRoutingVpcArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "uri", value)
+
+
+if not MYPY:
+    class InternalRangeAllocationOptionsArgsDict(TypedDict):
+        allocation_strategy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
+        Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
+        """
+        first_available_ranges_lookup_size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+        in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
+        """
+elif False:
+    InternalRangeAllocationOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InternalRangeAllocationOptionsArgs:
+    def __init__(__self__, *,
+                 allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 first_available_ranges_lookup_size: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] allocation_strategy: Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
+               Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
+        :param pulumi.Input[_builtins.int] first_available_ranges_lookup_size: Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+               in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
+        """
+        if allocation_strategy is not None:
+            pulumi.set(__self__, "allocation_strategy", allocation_strategy)
+        if first_available_ranges_lookup_size is not None:
+            pulumi.set(__self__, "first_available_ranges_lookup_size", first_available_ranges_lookup_size)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationStrategy")
+    def allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
+        Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
+        """
+        return pulumi.get(self, "allocation_strategy")
+
+    @allocation_strategy.setter
+    def allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "allocation_strategy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firstAvailableRangesLookupSize")
+    def first_available_ranges_lookup_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+        in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
+        """
+        return pulumi.get(self, "first_available_ranges_lookup_size")
+
+    @first_available_ranges_lookup_size.setter
+    def first_available_ranges_lookup_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "first_available_ranges_lookup_size", value)
 
 
 if not MYPY:

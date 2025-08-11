@@ -24,9 +24,7 @@ import (
 //
 // > **Note:** `serviceaccount.IAMBinding` resources **can be** used in conjunction with `serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## Example Usage
-//
-// ### Service Account IAM Policy
+// ## serviceaccount.IAMPolicy
 //
 // ```go
 // package main
@@ -74,7 +72,7 @@ import (
 //
 // ```
 //
-// ### Service Account IAM Binding
+// ## serviceaccount.IAMBinding
 //
 // ```go
 // package main
@@ -111,7 +109,7 @@ import (
 //
 // ```
 //
-// ### Service Account IAM Binding With IAM Conditions:
+// With IAM Conditions:
 //
 // ```go
 // package main
@@ -153,7 +151,7 @@ import (
 //
 // ```
 //
-// ### Service Account IAM Member
+// ## serviceaccount.IAMMember
 //
 // ```go
 // package main
@@ -206,7 +204,7 @@ import (
 //
 // ```
 //
-// ### Service Account IAM Member With IAM Conditions:
+// With IAM Conditions:
 //
 // ```go
 // package main
@@ -246,57 +244,7 @@ import (
 //
 // ```
 //
-// ### Additional Examples
-//
-// ### Service Account IAM Policy
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					{
-//						Role: "roles/iam.serviceAccountUser",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
-//				DisplayName: pulumi.String("A service account that only Jane can interact with"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = serviceaccount.NewIAMPolicy(ctx, "admin-account-iam", &serviceaccount.IAMPolicyArgs{
-//				ServiceAccountId: sa.Name,
-//				PolicyData:       pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Service Account IAM Binding
+// ## serviceaccount.IAMBinding
 //
 // ```go
 // package main
@@ -333,7 +281,7 @@ import (
 //
 // ```
 //
-// ### Service Account IAM Binding With IAM Conditions:
+// With IAM Conditions:
 //
 // ```go
 // package main
@@ -375,7 +323,7 @@ import (
 //
 // ```
 //
-// ### Service Account IAM Member
+// ## serviceaccount.IAMMember
 //
 // ```go
 // package main
@@ -428,7 +376,7 @@ import (
 //
 // ```
 //
-// ### Service Account IAM Member With IAM Conditions:
+// With IAM Conditions:
 //
 // ```go
 // package main

@@ -25,6 +25,7 @@ class BackupVaultArgs:
                  access_restriction: Optional[pulumi.Input[_builtins.str]] = None,
                  allow_missing: Optional[pulumi.Input[_builtins.bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_time: Optional[pulumi.Input[_builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -46,6 +47,8 @@ class BackupVaultArgs:
                Stores small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] backup_retention_inheritance: How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+               Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
         :param pulumi.Input[_builtins.bool] force_delete: (Optional, Deprecated)
@@ -77,6 +80,8 @@ class BackupVaultArgs:
             pulumi.set(__self__, "allow_missing", allow_missing)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if backup_retention_inheritance is not None:
+            pulumi.set(__self__, "backup_retention_inheritance", backup_retention_inheritance)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_time is not None:
@@ -173,6 +178,19 @@ class BackupVaultArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionInheritance")
+    def backup_retention_inheritance(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+        Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+        """
+        return pulumi.get(self, "backup_retention_inheritance")
+
+    @backup_retention_inheritance.setter
+    def backup_retention_inheritance(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "backup_retention_inheritance", value)
 
     @_builtins.property
     @pulumi.getter
@@ -293,6 +311,7 @@ class _BackupVaultState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  backup_count: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_minimum_enforced_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  deletable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -327,6 +346,8 @@ class _BackupVaultState:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] backup_count: Output only. The number of backups in this backup vault.
         :param pulumi.Input[_builtins.str] backup_minimum_enforced_retention_duration: Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
+        :param pulumi.Input[_builtins.str] backup_retention_inheritance: How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+               Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. ID of the requesting object.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the instance was created.
         :param pulumi.Input[_builtins.bool] deletable: Output only. Set to true when there are no backups nested under this resource.
@@ -379,6 +400,8 @@ class _BackupVaultState:
             pulumi.set(__self__, "backup_count", backup_count)
         if backup_minimum_enforced_retention_duration is not None:
             pulumi.set(__self__, "backup_minimum_enforced_retention_duration", backup_minimum_enforced_retention_duration)
+        if backup_retention_inheritance is not None:
+            pulumi.set(__self__, "backup_retention_inheritance", backup_retention_inheritance)
         if backup_vault_id is not None:
             pulumi.set(__self__, "backup_vault_id", backup_vault_id)
         if create_time is not None:
@@ -491,6 +514,19 @@ class _BackupVaultState:
     @backup_minimum_enforced_retention_duration.setter
     def backup_minimum_enforced_retention_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "backup_minimum_enforced_retention_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionInheritance")
+    def backup_retention_inheritance(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+        Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+        """
+        return pulumi.get(self, "backup_retention_inheritance")
+
+    @backup_retention_inheritance.setter
+    def backup_retention_inheritance(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "backup_retention_inheritance", value)
 
     @_builtins.property
     @pulumi.getter(name="backupVaultId")
@@ -785,6 +821,7 @@ class BackupVault(pulumi.CustomResource):
                  allow_missing: Optional[pulumi.Input[_builtins.bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  backup_minimum_enforced_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -822,6 +859,7 @@ class BackupVault(pulumi.CustomResource):
             },
             force_update=True,
             access_restriction="WITHIN_ORGANIZATION",
+            backup_retention_inheritance="INHERIT_VAULT_RETENTION",
             ignore_inactive_datasources=True,
             ignore_backup_plan_references=True,
             allow_missing=True)
@@ -862,6 +900,8 @@ class BackupVault(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] backup_minimum_enforced_retention_duration: Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
+        :param pulumi.Input[_builtins.str] backup_retention_inheritance: How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+               Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. ID of the requesting object.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
@@ -918,6 +958,7 @@ class BackupVault(pulumi.CustomResource):
             },
             force_update=True,
             access_restriction="WITHIN_ORGANIZATION",
+            backup_retention_inheritance="INHERIT_VAULT_RETENTION",
             ignore_inactive_datasources=True,
             ignore_backup_plan_references=True,
             allow_missing=True)
@@ -966,6 +1007,7 @@ class BackupVault(pulumi.CustomResource):
                  allow_missing: Optional[pulumi.Input[_builtins.bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  backup_minimum_enforced_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
                  backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -991,6 +1033,7 @@ class BackupVault(pulumi.CustomResource):
             if backup_minimum_enforced_retention_duration is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_minimum_enforced_retention_duration'")
             __props__.__dict__["backup_minimum_enforced_retention_duration"] = backup_minimum_enforced_retention_duration
+            __props__.__dict__["backup_retention_inheritance"] = backup_retention_inheritance
             if backup_vault_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_vault_id'")
             __props__.__dict__["backup_vault_id"] = backup_vault_id
@@ -1035,6 +1078,7 @@ class BackupVault(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             backup_count: Optional[pulumi.Input[_builtins.str]] = None,
             backup_minimum_enforced_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
+            backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
             backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             deletable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1074,6 +1118,8 @@ class BackupVault(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] backup_count: Output only. The number of backups in this backup vault.
         :param pulumi.Input[_builtins.str] backup_minimum_enforced_retention_duration: Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
+        :param pulumi.Input[_builtins.str] backup_retention_inheritance: How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+               Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. ID of the requesting object.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the instance was created.
         :param pulumi.Input[_builtins.bool] deletable: Output only. Set to true when there are no backups nested under this resource.
@@ -1125,6 +1171,7 @@ class BackupVault(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["backup_count"] = backup_count
         __props__.__dict__["backup_minimum_enforced_retention_duration"] = backup_minimum_enforced_retention_duration
+        __props__.__dict__["backup_retention_inheritance"] = backup_retention_inheritance
         __props__.__dict__["backup_vault_id"] = backup_vault_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletable"] = deletable
@@ -1193,6 +1240,15 @@ class BackupVault(pulumi.CustomResource):
         Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
         """
         return pulumi.get(self, "backup_minimum_enforced_retention_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="backupRetentionInheritance")
+    def backup_retention_inheritance(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+        Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+        """
+        return pulumi.get(self, "backup_retention_inheritance")
 
     @_builtins.property
     @pulumi.getter(name="backupVaultId")

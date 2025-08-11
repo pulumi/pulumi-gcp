@@ -11,22 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## subcategory: "Cloud Bigtable"
-//
-// description: |-
-//
-//	Creates a Google Bigtable instance.
-//
-// ---
-//
-// # bigtable.Instance
-//
-// Creates a Google Bigtable instance. For more information see:
-//
-// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/bigtable/docs)
-//
 // ## Example Usage
 //
 // ### Simple Instance
@@ -143,17 +127,15 @@ type Instance struct {
 	// to default to the backend value. See structure below.
 	//
 	// ***
-	Clusters InstanceClusterArrayOutput `pulumi:"clusters"`
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	Clusters           InstanceClusterArrayOutput `pulumi:"clusters"`
+	DeletionProtection pulumi.BoolPtrOutput       `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	//
 	// ***
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// When deleting a BigTable instance, this boolean option will delete all backups within the instance.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -217,17 +199,15 @@ type instanceState struct {
 	// to default to the backend value. See structure below.
 	//
 	// ***
-	Clusters []InstanceCluster `pulumi:"clusters"`
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
+	Clusters           []InstanceCluster `pulumi:"clusters"`
+	DeletionProtection *bool             `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	//
 	// ***
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// When deleting a BigTable instance, this boolean option will delete all backups within the instance.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -257,9 +237,7 @@ type InstanceState struct {
 	// to default to the backend value. See structure below.
 	//
 	// ***
-	Clusters InstanceClusterArrayInput
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	Clusters           InstanceClusterArrayInput
 	DeletionProtection pulumi.BoolPtrInput
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringPtrInput
@@ -267,7 +245,7 @@ type InstanceState struct {
 	//
 	// ***
 	EffectiveLabels pulumi.StringMapInput
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// When deleting a BigTable instance, this boolean option will delete all backups within the instance.
 	ForceDestroy pulumi.BoolPtrInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -301,13 +279,11 @@ type instanceArgs struct {
 	// to default to the backend value. See structure below.
 	//
 	// ***
-	Clusters []InstanceCluster `pulumi:"clusters"`
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
+	Clusters           []InstanceCluster `pulumi:"clusters"`
+	DeletionProtection *bool             `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName *string `pulumi:"displayName"`
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// When deleting a BigTable instance, this boolean option will delete all backups within the instance.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -336,13 +312,11 @@ type InstanceArgs struct {
 	// to default to the backend value. See structure below.
 	//
 	// ***
-	Clusters InstanceClusterArrayInput
-	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	Clusters           InstanceClusterArrayInput
 	DeletionProtection pulumi.BoolPtrInput
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringPtrInput
-	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+	// When deleting a BigTable instance, this boolean option will delete all backups within the instance.
 	ForceDestroy pulumi.BoolPtrInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -460,8 +434,6 @@ func (o InstanceOutput) Clusters() InstanceClusterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceClusterArrayOutput { return v.Clusters }).(InstanceClusterArrayOutput)
 }
 
-// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -478,7 +450,7 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+// When deleting a BigTable instance, this boolean option will delete all backups within the instance.
 func (o InstanceOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }

@@ -19,11 +19,20 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Serverless NEG backends are not currently supported as a mirrored backend service.
         /// </summary>
         public readonly string BackendService;
+        /// <summary>
+        /// The percentage of requests to be mirrored to backendService.
+        /// The value must be between 0.0 and 100.0 inclusive.
+        /// </summary>
+        public readonly double? MirrorPercent;
 
         [OutputConstructor]
-        private RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(string backendService)
+        private RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(
+            string backendService,
+
+            double? mirrorPercent)
         {
             BackendService = backendService;
+            MirrorPercent = mirrorPercent;
         }
     }
 }

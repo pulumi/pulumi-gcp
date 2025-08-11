@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// <summary>
         /// Specifies whether to use BigQuery's legacy SQL for this view.
         /// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        /// &gt; **Note**: Starting in provider version `7.0.0`, no default value is
+        /// provided for this field unless explicitly set in the configuration.
         /// </summary>
         public readonly bool? UseLegacySql;
 

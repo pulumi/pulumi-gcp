@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a folder-level logging exclusion. For more information see:
- *
- * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.exclusions)
- * * How-to Guides
- *     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
- *
- * > You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.FolderSink`
- *
  * ## Example Usage
  *
  * ```typescript

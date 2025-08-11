@@ -37,6 +37,8 @@ __all__ = [
     'InstanceIamBindingConditionArgsDict',
     'InstanceIamMemberConditionArgs',
     'InstanceIamMemberConditionArgsDict',
+    'SchemaBundleProtoSchemaArgs',
+    'SchemaBundleProtoSchemaArgsDict',
     'TableAutomatedBackupPolicyArgs',
     'TableAutomatedBackupPolicyArgsDict',
     'TableColumnFamilyArgs',
@@ -421,16 +423,7 @@ if not MYPY:
         """
         node_scaling_factor: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
-
-        > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-
-        !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-
-        !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-        `cluster_id`) will cause the provider to delete/recreate the entire
-        `bigtable.Instance` resource. If these values are changing, use a new
-        `cluster_id`.
+        The node scaling factor of this cluster. One of "NodeScalingFactor1X" or "NodeScalingFactor2X". Defaults to "NodeScalingFactor1X".
         """
         num_nodes: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -470,16 +463,7 @@ class InstanceClusterArgs:
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
         :param pulumi.Input['InstanceClusterAutoscalingConfigArgs'] autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         :param pulumi.Input[_builtins.str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
-        :param pulumi.Input[_builtins.str] node_scaling_factor: The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
-               
-               > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-               
-               !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-               
-               !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-               `cluster_id`) will cause the provider to delete/recreate the entire
-               `bigtable.Instance` resource. If these values are changing, use a new
-               `cluster_id`.
+        :param pulumi.Input[_builtins.str] node_scaling_factor: The node scaling factor of this cluster. One of "NodeScalingFactor1X" or "NodeScalingFactor2X". Defaults to "NodeScalingFactor1X".
         :param pulumi.Input[_builtins.int] num_nodes: The number of nodes in the cluster.
                If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         :param pulumi.Input[_builtins.str] state: describes the current state of the cluster.
@@ -545,16 +529,7 @@ class InstanceClusterArgs:
     @pulumi.getter(name="nodeScalingFactor")
     def node_scaling_factor(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
-
-        > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-
-        !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-
-        !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-        `cluster_id`) will cause the provider to delete/recreate the entire
-        `bigtable.Instance` resource. If these values are changing, use a new
-        `cluster_id`.
+        The node scaling factor of this cluster. One of "NodeScalingFactor1X" or "NodeScalingFactor2X". Defaults to "NodeScalingFactor1X".
         """
         return pulumi.get(self, "node_scaling_factor")
 
@@ -860,6 +835,37 @@ class InstanceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class SchemaBundleProtoSchemaArgsDict(TypedDict):
+        proto_descriptors: pulumi.Input[_builtins.str]
+        """
+        Base64 encoded content of the file.
+        """
+elif False:
+    SchemaBundleProtoSchemaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SchemaBundleProtoSchemaArgs:
+    def __init__(__self__, *,
+                 proto_descriptors: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] proto_descriptors: Base64 encoded content of the file.
+        """
+        pulumi.set(__self__, "proto_descriptors", proto_descriptors)
+
+    @_builtins.property
+    @pulumi.getter(name="protoDescriptors")
+    def proto_descriptors(self) -> pulumi.Input[_builtins.str]:
+        """
+        Base64 encoded content of the file.
+        """
+        return pulumi.get(self, "proto_descriptors")
+
+    @proto_descriptors.setter
+    def proto_descriptors(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "proto_descriptors", value)
 
 
 if not MYPY:

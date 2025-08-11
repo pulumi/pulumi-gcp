@@ -220,14 +220,6 @@ class ProjectExclusion(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a project-level logging exclusion. For more information see:
-
-        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.exclusions)
-        * How-to Guides
-            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
-
-        > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.ProjectSink`
-
         ## Example Usage
 
         ```python
@@ -271,14 +263,6 @@ class ProjectExclusion(pulumi.CustomResource):
                  args: ProjectExclusionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a project-level logging exclusion. For more information see:
-
-        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.exclusions)
-        * How-to Guides
-            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
-
-        > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.ProjectSink`
-
         ## Example Usage
 
         ```python

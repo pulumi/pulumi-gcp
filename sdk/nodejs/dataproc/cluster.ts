@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     },
  *     clusterConfig: {
  *         stagingBucket: "dataproc-staging-bucket",
+ *         clusterTier: "CLUSTER_TIER_STANDARD",
  *         masterConfig: {
  *             numInstances: 1,
  *             machineType: "e2-medium",
@@ -158,6 +159,17 @@ export class Cluster extends pulumi.CustomResource {
      * which is the name of the cluster.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+     * Does not affect auto scaling decomissioning from an autoscaling policy.
+     * Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+     * Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+     * Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+     * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+     * Only supported on Dataproc image versions 1.2 and higher.
+     * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+     * - - -
+     */
     public readonly gracefulDecommissionTimeout!: pulumi.Output<string | undefined>;
     /**
      * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
@@ -248,6 +260,17 @@ export interface ClusterState {
      * which is the name of the cluster.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+     * Does not affect auto scaling decomissioning from an autoscaling policy.
+     * Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+     * Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+     * Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+     * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+     * Only supported on Dataproc image versions 1.2 and higher.
+     * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+     * - - -
+     */
     gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
      * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
@@ -292,6 +315,17 @@ export interface ClusterArgs {
      * Structure defined below.
      */
     clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
+    /**
+     * Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+     * Does not affect auto scaling decomissioning from an autoscaling policy.
+     * Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+     * Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+     * Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+     * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+     * Only supported on Dataproc image versions 1.2 and higher.
+     * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+     * - - -
+     */
     gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
      * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.

@@ -535,33 +535,20 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Certificate Basic
+        ### Certificate Manager Self Managed Certificate
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        instance = gcp.certificatemanager.DnsAuthorization("instance",
-            name="dns-auth",
-            description="The default dnss",
-            domain="subdomain.hashicorptest.com")
-        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
-            name="dns-auth2",
-            description="The default dnss",
-            domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
             name="self-managed-cert",
             description="Global cert",
-            scope="EDGE_CACHE",
-            managed={
-                "domains": [
-                    instance.domain,
-                    instance2.domain,
-                ],
-                "dns_authorizations": [
-                    instance.id,
-                    instance2.id,
-                ],
+            scope="ALL_REGIONS",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Self Managed Certificate Regional
@@ -877,33 +864,20 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Certificate Basic
+        ### Certificate Manager Self Managed Certificate
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
-        instance = gcp.certificatemanager.DnsAuthorization("instance",
-            name="dns-auth",
-            description="The default dnss",
-            domain="subdomain.hashicorptest.com")
-        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
-            name="dns-auth2",
-            description="The default dnss",
-            domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
             name="self-managed-cert",
             description="Global cert",
-            scope="EDGE_CACHE",
-            managed={
-                "domains": [
-                    instance.domain,
-                    instance2.domain,
-                ],
-                "dns_authorizations": [
-                    instance.id,
-                    instance2.id,
-                ],
+            scope="ALL_REGIONS",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Self Managed Certificate Regional

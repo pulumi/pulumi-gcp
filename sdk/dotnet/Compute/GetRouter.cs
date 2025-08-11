@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRouterMd5AuthenticationKeyResult> Md5AuthenticationKeys;
         public readonly string Name;
         public readonly string Network;
+        public readonly ImmutableArray<Outputs.GetRouterParamResult> Params;
         public readonly string? Project;
         public readonly string? Region;
         public readonly string SelfLink;
@@ -193,6 +194,8 @@ namespace Pulumi.Gcp.Compute
 
             string network,
 
+            ImmutableArray<Outputs.GetRouterParamResult> @params,
+
             string? project,
 
             string? region,
@@ -207,6 +210,7 @@ namespace Pulumi.Gcp.Compute
             Md5AuthenticationKeys = md5AuthenticationKeys;
             Name = name;
             Network = network;
+            Params = @params;
             Project = project;
             Region = region;
             SelfLink = selfLink;

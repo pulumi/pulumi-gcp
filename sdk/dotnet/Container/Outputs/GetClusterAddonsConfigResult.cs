@@ -58,6 +58,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigKalmConfigResult> KalmConfigs;
         /// <summary>
+        /// Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigLustreCsiDriverConfigResult> LustreCsiDriverConfigs;
+        /// <summary>
         /// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> NetworkPolicyConfigs;
@@ -98,6 +102,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigKalmConfigResult> kalmConfigs,
 
+            ImmutableArray<Outputs.GetClusterAddonsConfigLustreCsiDriverConfigResult> lustreCsiDriverConfigs,
+
             ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> networkPolicyConfigs,
 
             ImmutableArray<Outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult> parallelstoreCsiDriverConfigs,
@@ -117,6 +123,7 @@ namespace Pulumi.Gcp.Container.Outputs
             HttpLoadBalancings = httpLoadBalancings;
             IstioConfigs = istioConfigs;
             KalmConfigs = kalmConfigs;
+            LustreCsiDriverConfigs = lustreCsiDriverConfigs;
             NetworkPolicyConfigs = networkPolicyConfigs;
             ParallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
             RayOperatorConfigs = rayOperatorConfigs;

@@ -30,8 +30,6 @@ class ObjectACLArgs:
                
                - - -
         :param pulumi.Input[_builtins.str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-               Must be set if `predefined_acl` is not.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "object", object)
@@ -81,10 +79,6 @@ class ObjectACLArgs:
     @_builtins.property
     @pulumi.getter(name="roleEntities")
     def role_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        Must be set if `predefined_acl` is not.
-        """
         return pulumi.get(self, "role_entities")
 
     @role_entities.setter
@@ -106,8 +100,6 @@ class _ObjectACLState:
                
                - - -
         :param pulumi.Input[_builtins.str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-               Must be set if `predefined_acl` is not.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -159,10 +151,6 @@ class _ObjectACLState:
     @_builtins.property
     @pulumi.getter(name="roleEntities")
     def role_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        Must be set if `predefined_acl` is not.
-        """
         return pulumi.get(self, "role_entities")
 
     @role_entities.setter
@@ -229,8 +217,6 @@ class ObjectACL(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[_builtins.str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-               Must be set if `predefined_acl` is not.
         """
         ...
     @overload
@@ -341,8 +327,6 @@ class ObjectACL(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[_builtins.str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-               Must be set if `predefined_acl` is not.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -383,9 +367,5 @@ class ObjectACL(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="roleEntities")
     def role_entities(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        Must be set if `predefined_acl` is not.
-        """
         return pulumi.get(self, "role_entities")
 

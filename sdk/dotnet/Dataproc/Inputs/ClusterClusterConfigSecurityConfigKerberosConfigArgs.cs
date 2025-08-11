@@ -114,8 +114,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The Cloud Storage URI of the truststore file used for
         /// SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-        /// 
-        /// - - -
         /// </summary>
         [Input("truststoreUri")]
         public Input<string>? TruststoreUri { get; set; }

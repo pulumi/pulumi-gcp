@@ -247,6 +247,170 @@ func (o HubRoutingVpcArrayOutput) Index(i pulumi.IntInput) HubRoutingVpcOutput {
 	}).(HubRoutingVpcOutput)
 }
 
+type InternalRangeAllocationOptions struct {
+	// Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
+	// Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
+	AllocationStrategy *string `pulumi:"allocationStrategy"`
+	// Must be set when allocationStrategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+	// in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
+	FirstAvailableRangesLookupSize *int `pulumi:"firstAvailableRangesLookupSize"`
+}
+
+// InternalRangeAllocationOptionsInput is an input type that accepts InternalRangeAllocationOptionsArgs and InternalRangeAllocationOptionsOutput values.
+// You can construct a concrete instance of `InternalRangeAllocationOptionsInput` via:
+//
+//	InternalRangeAllocationOptionsArgs{...}
+type InternalRangeAllocationOptionsInput interface {
+	pulumi.Input
+
+	ToInternalRangeAllocationOptionsOutput() InternalRangeAllocationOptionsOutput
+	ToInternalRangeAllocationOptionsOutputWithContext(context.Context) InternalRangeAllocationOptionsOutput
+}
+
+type InternalRangeAllocationOptionsArgs struct {
+	// Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
+	// Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
+	AllocationStrategy pulumi.StringPtrInput `pulumi:"allocationStrategy"`
+	// Must be set when allocationStrategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+	// in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
+	FirstAvailableRangesLookupSize pulumi.IntPtrInput `pulumi:"firstAvailableRangesLookupSize"`
+}
+
+func (InternalRangeAllocationOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangeAllocationOptions)(nil)).Elem()
+}
+
+func (i InternalRangeAllocationOptionsArgs) ToInternalRangeAllocationOptionsOutput() InternalRangeAllocationOptionsOutput {
+	return i.ToInternalRangeAllocationOptionsOutputWithContext(context.Background())
+}
+
+func (i InternalRangeAllocationOptionsArgs) ToInternalRangeAllocationOptionsOutputWithContext(ctx context.Context) InternalRangeAllocationOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeAllocationOptionsOutput)
+}
+
+func (i InternalRangeAllocationOptionsArgs) ToInternalRangeAllocationOptionsPtrOutput() InternalRangeAllocationOptionsPtrOutput {
+	return i.ToInternalRangeAllocationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InternalRangeAllocationOptionsArgs) ToInternalRangeAllocationOptionsPtrOutputWithContext(ctx context.Context) InternalRangeAllocationOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeAllocationOptionsOutput).ToInternalRangeAllocationOptionsPtrOutputWithContext(ctx)
+}
+
+// InternalRangeAllocationOptionsPtrInput is an input type that accepts InternalRangeAllocationOptionsArgs, InternalRangeAllocationOptionsPtr and InternalRangeAllocationOptionsPtrOutput values.
+// You can construct a concrete instance of `InternalRangeAllocationOptionsPtrInput` via:
+//
+//	        InternalRangeAllocationOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InternalRangeAllocationOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInternalRangeAllocationOptionsPtrOutput() InternalRangeAllocationOptionsPtrOutput
+	ToInternalRangeAllocationOptionsPtrOutputWithContext(context.Context) InternalRangeAllocationOptionsPtrOutput
+}
+
+type internalRangeAllocationOptionsPtrType InternalRangeAllocationOptionsArgs
+
+func InternalRangeAllocationOptionsPtr(v *InternalRangeAllocationOptionsArgs) InternalRangeAllocationOptionsPtrInput {
+	return (*internalRangeAllocationOptionsPtrType)(v)
+}
+
+func (*internalRangeAllocationOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalRangeAllocationOptions)(nil)).Elem()
+}
+
+func (i *internalRangeAllocationOptionsPtrType) ToInternalRangeAllocationOptionsPtrOutput() InternalRangeAllocationOptionsPtrOutput {
+	return i.ToInternalRangeAllocationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *internalRangeAllocationOptionsPtrType) ToInternalRangeAllocationOptionsPtrOutputWithContext(ctx context.Context) InternalRangeAllocationOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeAllocationOptionsPtrOutput)
+}
+
+type InternalRangeAllocationOptionsOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeAllocationOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangeAllocationOptions)(nil)).Elem()
+}
+
+func (o InternalRangeAllocationOptionsOutput) ToInternalRangeAllocationOptionsOutput() InternalRangeAllocationOptionsOutput {
+	return o
+}
+
+func (o InternalRangeAllocationOptionsOutput) ToInternalRangeAllocationOptionsOutputWithContext(ctx context.Context) InternalRangeAllocationOptionsOutput {
+	return o
+}
+
+func (o InternalRangeAllocationOptionsOutput) ToInternalRangeAllocationOptionsPtrOutput() InternalRangeAllocationOptionsPtrOutput {
+	return o.ToInternalRangeAllocationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangeAllocationOptionsOutput) ToInternalRangeAllocationOptionsPtrOutputWithContext(ctx context.Context) InternalRangeAllocationOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InternalRangeAllocationOptions) *InternalRangeAllocationOptions {
+		return &v
+	}).(InternalRangeAllocationOptionsPtrOutput)
+}
+
+// Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
+// Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
+func (o InternalRangeAllocationOptionsOutput) AllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InternalRangeAllocationOptions) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Must be set when allocationStrategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+// in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
+func (o InternalRangeAllocationOptionsOutput) FirstAvailableRangesLookupSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InternalRangeAllocationOptions) *int { return v.FirstAvailableRangesLookupSize }).(pulumi.IntPtrOutput)
+}
+
+type InternalRangeAllocationOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeAllocationOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalRangeAllocationOptions)(nil)).Elem()
+}
+
+func (o InternalRangeAllocationOptionsPtrOutput) ToInternalRangeAllocationOptionsPtrOutput() InternalRangeAllocationOptionsPtrOutput {
+	return o
+}
+
+func (o InternalRangeAllocationOptionsPtrOutput) ToInternalRangeAllocationOptionsPtrOutputWithContext(ctx context.Context) InternalRangeAllocationOptionsPtrOutput {
+	return o
+}
+
+func (o InternalRangeAllocationOptionsPtrOutput) Elem() InternalRangeAllocationOptionsOutput {
+	return o.ApplyT(func(v *InternalRangeAllocationOptions) InternalRangeAllocationOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InternalRangeAllocationOptions
+		return ret
+	}).(InternalRangeAllocationOptionsOutput)
+}
+
+// Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
+// Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
+func (o InternalRangeAllocationOptionsPtrOutput) AllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalRangeAllocationOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Must be set when allocationStrategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+// in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
+func (o InternalRangeAllocationOptionsPtrOutput) FirstAvailableRangesLookupSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InternalRangeAllocationOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FirstAvailableRangesLookupSize
+	}).(pulumi.IntPtrOutput)
+}
+
 type InternalRangeMigration struct {
 	// Resource path as an URI of the source resource, for example a subnet.
 	// The project for the source resource should match the project for the
@@ -2962,6 +3126,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptPtrInput)(nil)).Elem(), GroupAutoAcceptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcInput)(nil)).Elem(), HubRoutingVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcArrayInput)(nil)).Elem(), HubRoutingVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeAllocationOptionsInput)(nil)).Elem(), InternalRangeAllocationOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeAllocationOptionsPtrInput)(nil)).Elem(), InternalRangeAllocationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeMigrationInput)(nil)).Elem(), InternalRangeMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeMigrationPtrInput)(nil)).Elem(), InternalRangeMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteFilterInput)(nil)).Elem(), PolicyBasedRouteFilterArgs{})
@@ -2998,6 +3164,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupAutoAcceptPtrOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcArrayOutput{})
+	pulumi.RegisterOutputType(InternalRangeAllocationOptionsOutput{})
+	pulumi.RegisterOutputType(InternalRangeAllocationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InternalRangeMigrationOutput{})
 	pulumi.RegisterOutputType(InternalRangeMigrationPtrOutput{})
 	pulumi.RegisterOutputType(PolicyBasedRouteFilterOutput{})

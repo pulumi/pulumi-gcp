@@ -39,6 +39,13 @@ namespace Pulumi.Gcp.Compute
     ///         PoolProvisionedThroughput = "100",
     ///         StoragePoolType = "hyperdisk-throughput",
     ///         Zone = "us-central1-a",
+    ///         Labels = 
+    ///         {
+    ///             { "environment", "test" },
+    ///             { "purpose", "storage-pool-testing" },
+    ///             { "team", "infrastructure" },
+    ///             { "cost_center", "engineering" },
+    ///         },
     ///         DeletionProtection = false,
     ///     });
     /// 
@@ -72,6 +79,13 @@ namespace Pulumi.Gcp.Compute
     ///         PoolProvisionedIops = "10000",
     ///         PoolProvisionedThroughput = "1024",
     ///         StoragePoolType = balanced.Apply(getStoragePoolTypesResult =&gt; getStoragePoolTypesResult.SelfLink),
+    ///         Labels = 
+    ///         {
+    ///             { "environment", "test" },
+    ///             { "purpose", "storage-pool-testing" },
+    ///             { "team", "infrastructure" },
+    ///             { "cost_center", "engineering" },
+    ///         },
     ///         DeletionProtection = false,
     ///         Zone = "us-central1-a",
     ///     });
@@ -137,6 +151,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource.
         /// </summary>
         [Output("kind")]
@@ -148,6 +168,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created.
@@ -195,6 +224,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// Status information for the storage pool resource.
@@ -248,6 +284,11 @@ namespace Pulumi.Gcp.Compute
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -286,6 +327,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created.
@@ -379,6 +435,22 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// Type of the resource.
         /// </summary>
@@ -391,6 +463,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels to apply to this storage pool. These can be later modified by the setLabels method.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created.
@@ -438,6 +525,23 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         [Input("resourceStatuses")]
         private InputList<Inputs.StoragePoolResourceStatusGetArgs>? _resourceStatuses;

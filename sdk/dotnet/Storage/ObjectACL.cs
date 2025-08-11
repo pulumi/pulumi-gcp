@@ -88,10 +88,6 @@ namespace Pulumi.Gcp.Storage
         [Output("predefinedAcl")]
         public Output<string?> PredefinedAcl { get; private set; } = null!;
 
-        /// <summary>
-        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        /// Must be set if `predefined_acl` is not.
-        /// </summary>
         [Output("roleEntities")]
         public Output<ImmutableArray<string>> RoleEntities { get; private set; } = null!;
 
@@ -163,11 +159,6 @@ namespace Pulumi.Gcp.Storage
 
         [Input("roleEntities")]
         private InputList<string>? _roleEntities;
-
-        /// <summary>
-        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        /// Must be set if `predefined_acl` is not.
-        /// </summary>
         public InputList<string> RoleEntities
         {
             get => _roleEntities ?? (_roleEntities = new InputList<string>());
@@ -204,11 +195,6 @@ namespace Pulumi.Gcp.Storage
 
         [Input("roleEntities")]
         private InputList<string>? _roleEntities;
-
-        /// <summary>
-        /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        /// Must be set if `predefined_acl` is not.
-        /// </summary>
         public InputList<string> RoleEntities
         {
             get => _roleEntities ?? (_roleEntities = new InputList<string>());

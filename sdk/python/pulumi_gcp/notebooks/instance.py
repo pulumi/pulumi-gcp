@@ -1428,6 +1428,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             metadata={
                 "proxy-mode": "service_account",
+                "terraform": "true",
             },
             container_image={
                 "repository": "gcr.io/deeplearning-platform-release/base-cpu",
@@ -1669,6 +1670,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             metadata={
                 "proxy-mode": "service_account",
+                "terraform": "true",
             },
             container_image={
                 "repository": "gcr.io/deeplearning-platform-release/base-cpu",

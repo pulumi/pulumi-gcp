@@ -642,7 +642,25 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+        ### Pubsub Topic Single Smt
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            message_transforms=[{
+                "javascript_udf": {
+                    "function_name": "isYearEven",
+                    "code": \"\"\"function isYearEven(message, metadata) {
+          const data = JSON.parse(message.data);
+          return message.year %2 === 0;
+        }
+        \"\"\",
+                },
+            }])
+        ```
         ## Import
 
         Topic can be imported using any of these accepted formats:
@@ -889,7 +907,25 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+        ### Pubsub Topic Single Smt
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            message_transforms=[{
+                "javascript_udf": {
+                    "function_name": "isYearEven",
+                    "code": \"\"\"function isYearEven(message, metadata) {
+          const data = JSON.parse(message.data);
+          return message.year %2 === 0;
+        }
+        \"\"\",
+                },
+            }])
+        ```
         ## Import
 
         Topic can be imported using any of these accepted formats:

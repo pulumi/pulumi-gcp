@@ -67,6 +67,46 @@ import * as utilities from "../utilities";
  *     parameterData: "regional-parameter-version-data",
  * });
  * ```
+ * ### Regional Parameter Version With Json Format With File
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const regional_parameter_basic = new gcp.parametermanager.RegionalParameter("regional-parameter-basic", {
+ *     parameterId: "regional_parameter",
+ *     format: "JSON",
+ *     location: "us-central1",
+ * });
+ * const regional_parameter_version_with_json_format_with_file = new gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-json-format-with-file", {
+ *     parameter: regional_parameter_basic.id,
+ *     parameterVersionId: "regional_parameter_version",
+ *     parameterData: std.file({
+ *         input: "regional-parameter-json-data.json",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ * ### Regional Parameter Version With Yaml Format With File
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const regional_parameter_basic = new gcp.parametermanager.RegionalParameter("regional-parameter-basic", {
+ *     parameterId: "regional_parameter",
+ *     format: "YAML",
+ *     location: "us-central1",
+ * });
+ * const regional_parameter_version_with_yaml_format_with_file = new gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-yaml-format-with-file", {
+ *     parameter: regional_parameter_basic.id,
+ *     parameterVersionId: "regional_parameter_version",
+ *     parameterData: std.file({
+ *         input: "regional-parameter-yaml-data.yaml",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
  *
  * ## Import
  *

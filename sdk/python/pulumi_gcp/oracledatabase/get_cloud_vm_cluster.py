@@ -27,7 +27,10 @@ class GetCloudVmClusterResult:
     """
     A collection of values returned by getCloudVmCluster.
     """
-    def __init__(__self__, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, network=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, backup_odb_subnet=None, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
+        if backup_odb_subnet and not isinstance(backup_odb_subnet, str):
+            raise TypeError("Expected argument 'backup_odb_subnet' to be a str")
+        pulumi.set(__self__, "backup_odb_subnet", backup_odb_subnet)
         if backup_subnet_cidr and not isinstance(backup_subnet_cidr, str):
             raise TypeError("Expected argument 'backup_subnet_cidr' to be a str")
         pulumi.set(__self__, "backup_subnet_cidr", backup_subnet_cidr)
@@ -70,6 +73,12 @@ class GetCloudVmClusterResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if odb_network and not isinstance(odb_network, str):
+            raise TypeError("Expected argument 'odb_network' to be a str")
+        pulumi.set(__self__, "odb_network", odb_network)
+        if odb_subnet and not isinstance(odb_subnet, str):
+            raise TypeError("Expected argument 'odb_subnet' to be a str")
+        pulumi.set(__self__, "odb_subnet", odb_subnet)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -79,6 +88,11 @@ class GetCloudVmClusterResult:
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+
+    @_builtins.property
+    @pulumi.getter(name="backupOdbSubnet")
+    def backup_odb_subnet(self) -> _builtins.str:
+        return pulumi.get(self, "backup_odb_subnet")
 
     @_builtins.property
     @pulumi.getter(name="backupSubnetCidr")
@@ -154,6 +168,16 @@ class GetCloudVmClusterResult:
         return pulumi.get(self, "network")
 
     @_builtins.property
+    @pulumi.getter(name="odbNetwork")
+    def odb_network(self) -> _builtins.str:
+        return pulumi.get(self, "odb_network")
+
+    @_builtins.property
+    @pulumi.getter(name="odbSubnet")
+    def odb_subnet(self) -> _builtins.str:
+        return pulumi.get(self, "odb_subnet")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
@@ -175,6 +199,7 @@ class AwaitableGetCloudVmClusterResult(GetCloudVmClusterResult):
         if False:
             yield self
         return GetCloudVmClusterResult(
+            backup_odb_subnet=self.backup_odb_subnet,
             backup_subnet_cidr=self.backup_subnet_cidr,
             cidr=self.cidr,
             cloud_vm_cluster_id=self.cloud_vm_cluster_id,
@@ -189,6 +214,8 @@ class AwaitableGetCloudVmClusterResult(GetCloudVmClusterResult):
             location=self.location,
             name=self.name,
             network=self.network,
+            odb_network=self.odb_network,
+            odb_subnet=self.odb_subnet,
             project=self.project,
             properties=self.properties,
             pulumi_labels=self.pulumi_labels)
@@ -230,6 +257,7 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:oracledatabase/getCloudVmCluster:getCloudVmCluster', __args__, opts=opts, typ=GetCloudVmClusterResult).value
 
     return AwaitableGetCloudVmClusterResult(
+        backup_odb_subnet=pulumi.get(__ret__, 'backup_odb_subnet'),
         backup_subnet_cidr=pulumi.get(__ret__, 'backup_subnet_cidr'),
         cidr=pulumi.get(__ret__, 'cidr'),
         cloud_vm_cluster_id=pulumi.get(__ret__, 'cloud_vm_cluster_id'),
@@ -244,6 +272,8 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
+        odb_network=pulumi.get(__ret__, 'odb_network'),
+        odb_subnet=pulumi.get(__ret__, 'odb_subnet'),
         project=pulumi.get(__ret__, 'project'),
         properties=pulumi.get(__ret__, 'properties'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'))
@@ -282,6 +312,7 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: Optional[pulumi.Input[_buil
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:oracledatabase/getCloudVmCluster:getCloudVmCluster', __args__, opts=opts, typ=GetCloudVmClusterResult)
     return __ret__.apply(lambda __response__: GetCloudVmClusterResult(
+        backup_odb_subnet=pulumi.get(__response__, 'backup_odb_subnet'),
         backup_subnet_cidr=pulumi.get(__response__, 'backup_subnet_cidr'),
         cidr=pulumi.get(__response__, 'cidr'),
         cloud_vm_cluster_id=pulumi.get(__response__, 'cloud_vm_cluster_id'),
@@ -296,6 +327,8 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: Optional[pulumi.Input[_buil
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
+        odb_network=pulumi.get(__response__, 'odb_network'),
+        odb_subnet=pulumi.get(__response__, 'odb_subnet'),
         project=pulumi.get(__response__, 'project'),
         properties=pulumi.get(__response__, 'properties'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels')))

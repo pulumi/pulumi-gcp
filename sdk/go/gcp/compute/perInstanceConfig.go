@@ -76,7 +76,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstanceGroupManager(ctx, "igm-no-tp", &compute.InstanceGroupManagerArgs{
-//				Description: pulumi.String("Test instance group manager"),
+//				Description: pulumi.String("Terraform test instance group manager"),
 //				Name:        pulumi.String("my-igm"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{

@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// With IAM Conditions:
+    /// With IAM Conditions (beta):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// With IAM Conditions:
+    /// With IAM Conditions (beta):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// With IAM Conditions:
+    /// With IAM Conditions (beta):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -227,7 +227,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// With IAM Conditions:
+    /// With IAM Conditions (beta):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.Kms
     /// });
     /// ```
     /// 
-    /// With IAM Conditions:
+    /// With IAM Conditions (beta):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

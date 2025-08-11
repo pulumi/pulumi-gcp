@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Gemini
     ///             { "my_key", "my_value" },
     ///         },
     ///         EnableCustomerDataSharing = true,
-    ///         DisableWebGrounding = true,
+    ///         WebGroundingType = "WEB_GROUNDING_FOR_ENTERPRISE",
     ///     });
     /// 
     ///     var example = new Gcp.Gemini.GeminiGcpEnablementSettingBinding("example", new()

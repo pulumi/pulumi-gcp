@@ -93,6 +93,7 @@ namespace Pulumi.Gcp.Notebooks
     ///         Metadata = 
     ///         {
     ///             { "proxy-mode", "service_account" },
+    ///             { "terraform", "true" },
     ///         },
     ///         ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
     ///         {

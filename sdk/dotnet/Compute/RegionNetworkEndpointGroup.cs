@@ -10,16 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// A regional NEG that can support Serverless Products, proxying traffic to
-    /// external backends and providing traffic to the PSC port mapping endpoints.
-    /// 
-    /// To get more information about RegionNetworkEndpointGroup, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
-    /// * How-to Guides
-    ///     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
-    ///     * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Region Network Endpoint Group Functions

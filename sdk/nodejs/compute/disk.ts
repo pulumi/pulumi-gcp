@@ -332,19 +332,6 @@ export class Disk extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     */
     public readonly size!: pulumi.Output<number>;
     /**
      * The source snapshot used to create this disk. You can provide this as
@@ -741,19 +728,6 @@ export interface DiskState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     */
     size?: pulumi.Input<number>;
     /**
      * The source snapshot used to create this disk. You can provide this as
@@ -1006,19 +980,6 @@ export interface DiskArgs {
      * to allow for updating the resource policy attached to the disk.
      */
     resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~>**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     */
     size?: pulumi.Input<number>;
     /**
      * The source snapshot used to create this disk. You can provide this as

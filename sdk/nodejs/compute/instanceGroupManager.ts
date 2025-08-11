@@ -360,11 +360,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly versions!: pulumi.Output<outputs.compute.InstanceGroupManagerVersion[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
-     * continue trying until it times out.
-     */
     public readonly waitForInstances!: pulumi.Output<boolean | undefined>;
     /**
      * When used with `waitForInstances` it specifies the status to wait for.
@@ -609,11 +604,6 @@ export interface InstanceGroupManagerState {
      * Structure is documented below.
      */
     versions?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerVersion>[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
-     * continue trying until it times out.
-     */
     waitForInstances?: pulumi.Input<boolean>;
     /**
      * When used with `waitForInstances` it specifies the status to wait for.
@@ -745,11 +735,6 @@ export interface InstanceGroupManagerArgs {
      * Structure is documented below.
      */
     versions: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerVersion>[]>;
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
-     * continue trying until it times out.
-     */
     waitForInstances?: pulumi.Input<boolean>;
     /**
      * When used with `waitForInstances` it specifies the status to wait for.

@@ -314,6 +314,38 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter_version_id="regional_parameter_version",
             parameter_data="regional-parameter-version-data")
         ```
+        ### Regional Parameter Version With Json Format With File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        regional_parameter_basic = gcp.parametermanager.RegionalParameter("regional-parameter-basic",
+            parameter_id="regional_parameter",
+            format="JSON",
+            location="us-central1")
+        regional_parameter_version_with_json_format_with_file = gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-json-format-with-file",
+            parameter=regional_parameter_basic.id,
+            parameter_version_id="regional_parameter_version",
+            parameter_data=std.file(input="regional-parameter-json-data.json").result)
+        ```
+        ### Regional Parameter Version With Yaml Format With File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        regional_parameter_basic = gcp.parametermanager.RegionalParameter("regional-parameter-basic",
+            parameter_id="regional_parameter",
+            format="YAML",
+            location="us-central1")
+        regional_parameter_version_with_yaml_format_with_file = gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-yaml-format-with-file",
+            parameter=regional_parameter_basic.id,
+            parameter_version_id="regional_parameter_version",
+            parameter_data=std.file(input="regional-parameter-yaml-data.yaml").result)
+        ```
 
         ## Import
 
@@ -398,6 +430,38 @@ class RegionalParameterVersion(pulumi.CustomResource):
             parameter=regional_parameter_basic.id,
             parameter_version_id="regional_parameter_version",
             parameter_data="regional-parameter-version-data")
+        ```
+        ### Regional Parameter Version With Json Format With File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        regional_parameter_basic = gcp.parametermanager.RegionalParameter("regional-parameter-basic",
+            parameter_id="regional_parameter",
+            format="JSON",
+            location="us-central1")
+        regional_parameter_version_with_json_format_with_file = gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-json-format-with-file",
+            parameter=regional_parameter_basic.id,
+            parameter_version_id="regional_parameter_version",
+            parameter_data=std.file(input="regional-parameter-json-data.json").result)
+        ```
+        ### Regional Parameter Version With Yaml Format With File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        regional_parameter_basic = gcp.parametermanager.RegionalParameter("regional-parameter-basic",
+            parameter_id="regional_parameter",
+            format="YAML",
+            location="us-central1")
+        regional_parameter_version_with_yaml_format_with_file = gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-yaml-format-with-file",
+            parameter=regional_parameter_basic.id,
+            parameter_version_id="regional_parameter_version",
+            parameter_data=std.file(input="regional-parameter-yaml-data.yaml").result)
         ```
 
         ## Import

@@ -24,6 +24,7 @@ class InstanceArgs:
                  location: pulumi.Input[_builtins.str],
                  desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  gce_setup: Optional[pulumi.Input['InstanceGceSetupArgs']] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,6 +37,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
+        :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
         :param pulumi.Input['InstanceGceSetupArgs'] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
@@ -60,6 +62,8 @@ class InstanceArgs:
             pulumi.set(__self__, "desired_state", desired_state)
         if disable_proxy_access is not None:
             pulumi.set(__self__, "disable_proxy_access", disable_proxy_access)
+        if enable_managed_euc is not None:
+            pulumi.set(__self__, "enable_managed_euc", enable_managed_euc)
         if enable_third_party_identity is not None:
             pulumi.set(__self__, "enable_third_party_identity", enable_third_party_identity)
         if gce_setup is not None:
@@ -110,6 +114,18 @@ class InstanceArgs:
     @disable_proxy_access.setter
     def disable_proxy_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_proxy_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableManagedEuc")
+    def enable_managed_euc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Flag to enable managed end user credentials for the instance.
+        """
+        return pulumi.get(self, "enable_managed_euc")
+
+    @enable_managed_euc.setter
+    def enable_managed_euc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_managed_euc", value)
 
     @_builtins.property
     @pulumi.getter(name="enableThirdPartyIdentity")
@@ -215,6 +231,7 @@ class _InstanceState:
                  desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  gce_setup: Optional[pulumi.Input['InstanceGceSetupArgs']] = None,
                  health_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHealthInfoArgs']]]] = None,
@@ -238,6 +255,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
         :param pulumi.Input['InstanceGceSetupArgs'] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
@@ -281,6 +299,8 @@ class _InstanceState:
             pulumi.set(__self__, "disable_proxy_access", disable_proxy_access)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if enable_managed_euc is not None:
+            pulumi.set(__self__, "enable_managed_euc", enable_managed_euc)
         if enable_third_party_identity is not None:
             pulumi.set(__self__, "enable_third_party_identity", enable_third_party_identity)
         if gce_setup is not None:
@@ -372,6 +392,18 @@ class _InstanceState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableManagedEuc")
+    def enable_managed_euc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Flag to enable managed end user credentials for the instance.
+        """
+        return pulumi.get(self, "enable_managed_euc")
+
+    @enable_managed_euc.setter
+    def enable_managed_euc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_managed_euc", value)
 
     @_builtins.property
     @pulumi.getter(name="enableThirdPartyIdentity")
@@ -579,6 +611,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -631,6 +664,20 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        gpu_reservation = gcp.compute.Reservation("gpu_reservation",
+            name="wbi-reservation",
+            zone="us-central1-a",
+            specific_reservation={
+                "count": 1,
+                "instance_properties": {
+                    "machine_type": "n1-standard-1",
+                    "guest_accelerators": [{
+                        "accelerator_type": "nvidia-tesla-t4",
+                        "accelerator_count": 1,
+                    }],
+                },
+            },
+            specific_reservation_required=False)
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
@@ -644,7 +691,11 @@ class Instance(pulumi.CustomResource):
                     "project": "cloud-notebooks-managed",
                     "family": "workbench-instances",
                 },
-            })
+                "reservation_affinity": {
+                    "consume_reservation_type": "RESERVATION_ANY",
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[gpu_reservation]))
         ```
         ### Workbench Instance Labels Stopped
 
@@ -693,6 +744,20 @@ class Instance(pulumi.CustomResource):
             service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
             role="roles/iam.serviceAccountUser",
             members=["user:example@example.com"])
+        gpu_reservation = gcp.compute.Reservation("gpu_reservation",
+            name="wbi-reservation",
+            zone="us-central1-a",
+            specific_reservation={
+                "count": 1,
+                "instance_properties": {
+                    "machine_type": "n1-standard-4",
+                    "guest_accelerators": [{
+                        "accelerator_type": "nvidia-tesla-t4",
+                        "accelerator_count": 1,
+                    }],
+                },
+            },
+            specific_reservation_required=True)
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
@@ -735,6 +800,11 @@ class Instance(pulumi.CustomResource):
                     "terraform": "true",
                     "serial-port-logging-enable": "false",
                 },
+                "reservation_affinity": {
+                    "consume_reservation_type": "RESERVATION_SPECIFIC",
+                    "key": "compute.googleapis.com/reservation-name",
+                    "values": [gpu_reservation.name],
+                },
                 "enable_ip_forwarding": True,
                 "tags": [
                     "abc",
@@ -753,6 +823,7 @@ class Instance(pulumi.CustomResource):
                     my_subnetwork,
                     static,
                     act_as_permission,
+                    gpu_reservation,
                 ]))
         ```
         ### Workbench Instance Confidential Compute
@@ -778,6 +849,29 @@ class Instance(pulumi.CustomResource):
                     "confidential_instance_type": "SEV",
                 },
             })
+        ```
+        ### Workbench Instance Euc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+            service_account_id="projects/my-project-name/serviceAccounts/1111111111111-compute@developer.gserviceaccount.com",
+            role="roles/iam.serviceAccountUser",
+            members=["user:example@example.com"])
+        instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-central1-a",
+            gce_setup={
+                "machine_type": "e2-standard-4",
+                "metadata": {
+                    "terraform": "true",
+                },
+            },
+            instance_owners=["example@example.com"],
+            enable_managed_euc=True,
+            opts = pulumi.ResourceOptions(depends_on=[act_as_permission]))
         ```
 
         ## Import
@@ -808,6 +902,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
+        :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
         :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
@@ -877,6 +972,20 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        gpu_reservation = gcp.compute.Reservation("gpu_reservation",
+            name="wbi-reservation",
+            zone="us-central1-a",
+            specific_reservation={
+                "count": 1,
+                "instance_properties": {
+                    "machine_type": "n1-standard-1",
+                    "guest_accelerators": [{
+                        "accelerator_type": "nvidia-tesla-t4",
+                        "accelerator_count": 1,
+                    }],
+                },
+            },
+            specific_reservation_required=False)
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
@@ -890,7 +999,11 @@ class Instance(pulumi.CustomResource):
                     "project": "cloud-notebooks-managed",
                     "family": "workbench-instances",
                 },
-            })
+                "reservation_affinity": {
+                    "consume_reservation_type": "RESERVATION_ANY",
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[gpu_reservation]))
         ```
         ### Workbench Instance Labels Stopped
 
@@ -939,6 +1052,20 @@ class Instance(pulumi.CustomResource):
             service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
             role="roles/iam.serviceAccountUser",
             members=["user:example@example.com"])
+        gpu_reservation = gcp.compute.Reservation("gpu_reservation",
+            name="wbi-reservation",
+            zone="us-central1-a",
+            specific_reservation={
+                "count": 1,
+                "instance_properties": {
+                    "machine_type": "n1-standard-4",
+                    "guest_accelerators": [{
+                        "accelerator_type": "nvidia-tesla-t4",
+                        "accelerator_count": 1,
+                    }],
+                },
+            },
+            specific_reservation_required=True)
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
@@ -981,6 +1108,11 @@ class Instance(pulumi.CustomResource):
                     "terraform": "true",
                     "serial-port-logging-enable": "false",
                 },
+                "reservation_affinity": {
+                    "consume_reservation_type": "RESERVATION_SPECIFIC",
+                    "key": "compute.googleapis.com/reservation-name",
+                    "values": [gpu_reservation.name],
+                },
                 "enable_ip_forwarding": True,
                 "tags": [
                     "abc",
@@ -999,6 +1131,7 @@ class Instance(pulumi.CustomResource):
                     my_subnetwork,
                     static,
                     act_as_permission,
+                    gpu_reservation,
                 ]))
         ```
         ### Workbench Instance Confidential Compute
@@ -1024,6 +1157,29 @@ class Instance(pulumi.CustomResource):
                     "confidential_instance_type": "SEV",
                 },
             })
+        ```
+        ### Workbench Instance Euc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+            service_account_id="projects/my-project-name/serviceAccounts/1111111111111-compute@developer.gserviceaccount.com",
+            role="roles/iam.serviceAccountUser",
+            members=["user:example@example.com"])
+        instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-central1-a",
+            gce_setup={
+                "machine_type": "e2-standard-4",
+                "metadata": {
+                    "terraform": "true",
+                },
+            },
+            instance_owners=["example@example.com"],
+            enable_managed_euc=True,
+            opts = pulumi.ResourceOptions(depends_on=[act_as_permission]))
         ```
 
         ## Import
@@ -1067,6 +1223,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1086,6 +1243,7 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["disable_proxy_access"] = disable_proxy_access
+            __props__.__dict__["enable_managed_euc"] = enable_managed_euc
             __props__.__dict__["enable_third_party_identity"] = enable_third_party_identity
             __props__.__dict__["gce_setup"] = gce_setup
             __props__.__dict__["instance_id"] = instance_id
@@ -1123,6 +1281,7 @@ class Instance(pulumi.CustomResource):
             desired_state: Optional[pulumi.Input[_builtins.str]] = None,
             disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
             gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
             health_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]]] = None,
@@ -1151,6 +1310,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
         :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
@@ -1193,6 +1353,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["disable_proxy_access"] = disable_proxy_access
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["enable_managed_euc"] = enable_managed_euc
         __props__.__dict__["enable_third_party_identity"] = enable_third_party_identity
         __props__.__dict__["gce_setup"] = gce_setup
         __props__.__dict__["health_infos"] = health_infos
@@ -1250,6 +1411,14 @@ class Instance(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="enableManagedEuc")
+    def enable_managed_euc(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Flag to enable managed end user credentials for the instance.
+        """
+        return pulumi.get(self, "enable_managed_euc")
 
     @_builtins.property
     @pulumi.getter(name="enableThirdPartyIdentity")

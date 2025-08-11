@@ -37,16 +37,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:   pulumi.String("us-central1"),
-//				InstanceId: pulumi.String("my-instance"),
+//				Location:       pulumi.String("us-central1"),
+//				InstanceId:     pulumi.String("my-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
-//				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("my-repository"),
-//				Instance:     instance.Name,
+//				Location:       pulumi.String("us-central1"),
+//				RepositoryId:   pulumi.String("my-repository"),
+//				Instance:       instance.Name,
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
@@ -71,8 +73,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:   pulumi.String("us-central1"),
-//				InstanceId: pulumi.String("my-instance"),
+//				Location:       pulumi.String("us-central1"),
+//				InstanceId:     pulumi.String("my-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
@@ -90,6 +93,7 @@ import (
 //					License: pulumi.String("mit"),
 //					Readme:  pulumi.String("default"),
 //				},
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
@@ -134,6 +138,15 @@ type Repository struct {
 
 	// Time the repository was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The deletion policy for the repository. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+	// by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Description of the repository, which cannot exceed 500 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Initial configurations for the repository.
@@ -200,6 +213,15 @@ func GetRepository(ctx *pulumi.Context,
 type repositoryState struct {
 	// Time the repository was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// The deletion policy for the repository. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+	// by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the repository, which cannot exceed 500 characters.
 	Description *string `pulumi:"description"`
 	// Initial configurations for the repository.
@@ -228,6 +250,15 @@ type repositoryState struct {
 type RepositoryState struct {
 	// Time the repository was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// The deletion policy for the repository. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+	// by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the repository, which cannot exceed 500 characters.
 	Description pulumi.StringPtrInput
 	// Initial configurations for the repository.
@@ -258,6 +289,15 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
+	// The deletion policy for the repository. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+	// by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the repository, which cannot exceed 500 characters.
 	Description *string `pulumi:"description"`
 	// Initial configurations for the repository.
@@ -276,6 +316,15 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
+	// The deletion policy for the repository. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+	// by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the repository, which cannot exceed 500 characters.
 	Description pulumi.StringPtrInput
 	// Initial configurations for the repository.
@@ -382,6 +431,18 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 // Time the repository was created in UTC.
 func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The deletion policy for the repository. Setting `ABANDON` allows the resource
+// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+// by erroring out during plan.
+// Default is `DELETE`.  Possible values are:
+// * DELETE
+// * PREVENT
+// * ABANDON
+func (o RepositoryOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Description of the repository, which cannot exceed 500 characters.

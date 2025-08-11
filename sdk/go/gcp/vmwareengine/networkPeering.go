@@ -160,7 +160,7 @@ type NetworkPeering struct {
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
 	PeerNetwork pulumi.StringOutput `pulumi:"peerNetwork"`
 	// The type of the network to peer with the VMware Engine network.
-	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
 	PeerNetworkType pulumi.StringOutput `pulumi:"peerNetworkType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -245,7 +245,7 @@ type networkPeeringState struct {
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
 	PeerNetwork *string `pulumi:"peerNetwork"`
 	// The type of the network to peer with the VMware Engine network.
-	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
 	PeerNetworkType *string `pulumi:"peerNetworkType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -292,7 +292,7 @@ type NetworkPeeringState struct {
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
 	PeerNetwork pulumi.StringPtrInput
 	// The type of the network to peer with the VMware Engine network.
-	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
 	PeerNetworkType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -339,7 +339,7 @@ type networkPeeringArgs struct {
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
 	PeerNetwork string `pulumi:"peerNetwork"`
 	// The type of the network to peer with the VMware Engine network.
-	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
 	PeerNetworkType string `pulumi:"peerNetworkType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -368,7 +368,7 @@ type NetworkPeeringArgs struct {
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
 	PeerNetwork pulumi.StringInput
 	// The type of the network to peer with the VMware Engine network.
-	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+	// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
 	PeerNetworkType pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -510,7 +510,7 @@ func (o NetworkPeeringOutput) PeerNetwork() pulumi.StringOutput {
 }
 
 // The type of the network to peer with the VMware Engine network.
-// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
 func (o NetworkPeeringOutput) PeerNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPeering) pulumi.StringOutput { return v.PeerNetworkType }).(pulumi.StringOutput)
 }

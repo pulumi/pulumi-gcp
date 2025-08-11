@@ -10812,6 +10812,17 @@ type ClusterAddonsConfig struct {
 	// .
 	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
 	KalmConfig *ClusterAddonsConfigKalmConfig `pulumi:"kalmConfig"`
+	// The status of the Lustre CSI driver addon,
+	// which allows the usage of a Lustre instances as volumes.
+	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+	// It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+	// Lustre CSI Driver Config has optional subfield
+	// `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+	// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+	// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+	//
+	// This example `addonsConfig` disables two addons:
+	LustreCsiDriverConfig *ClusterAddonsConfigLustreCsiDriverConfig `pulumi:"lustreCsiDriverConfig"`
 	// Whether we should enable the network policy addon
 	// for the master.  This must be enabled in order to enable network policy for the nodes.
 	// To enable this, you must also define a `networkPolicy` block,
@@ -10824,8 +10835,6 @@ type ClusterAddonsConfig struct {
 	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
 	// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
 	// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-	//
-	// This example `addonsConfig` disables two addons:
 	ParallelstoreCsiDriverConfig *ClusterAddonsConfigParallelstoreCsiDriverConfig `pulumi:"parallelstoreCsiDriverConfig"`
 	// . The status of the [Ray Operator
 	// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
@@ -10904,6 +10913,17 @@ type ClusterAddonsConfigArgs struct {
 	// .
 	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
 	KalmConfig ClusterAddonsConfigKalmConfigPtrInput `pulumi:"kalmConfig"`
+	// The status of the Lustre CSI driver addon,
+	// which allows the usage of a Lustre instances as volumes.
+	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+	// It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+	// Lustre CSI Driver Config has optional subfield
+	// `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+	// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+	// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+	//
+	// This example `addonsConfig` disables two addons:
+	LustreCsiDriverConfig ClusterAddonsConfigLustreCsiDriverConfigPtrInput `pulumi:"lustreCsiDriverConfig"`
 	// Whether we should enable the network policy addon
 	// for the master.  This must be enabled in order to enable network policy for the nodes.
 	// To enable this, you must also define a `networkPolicy` block,
@@ -10916,8 +10936,6 @@ type ClusterAddonsConfigArgs struct {
 	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
 	// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
 	// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-	//
-	// This example `addonsConfig` disables two addons:
 	ParallelstoreCsiDriverConfig ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput `pulumi:"parallelstoreCsiDriverConfig"`
 	// . The status of the [Ray Operator
 	// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
@@ -11102,6 +11120,20 @@ func (o ClusterAddonsConfigOutput) KalmConfig() ClusterAddonsConfigKalmConfigPtr
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigKalmConfig { return v.KalmConfig }).(ClusterAddonsConfigKalmConfigPtrOutput)
 }
 
+// The status of the Lustre CSI driver addon,
+// which allows the usage of a Lustre instances as volumes.
+// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+// It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+// Lustre CSI Driver Config has optional subfield
+// `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigOutput) LustreCsiDriverConfig() ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigLustreCsiDriverConfig { return v.LustreCsiDriverConfig }).(ClusterAddonsConfigLustreCsiDriverConfigPtrOutput)
+}
+
 // Whether we should enable the network policy addon
 // for the master.  This must be enabled in order to enable network policy for the nodes.
 // To enable this, you must also define a `networkPolicy` block,
@@ -11117,8 +11149,6 @@ func (o ClusterAddonsConfigOutput) NetworkPolicyConfig() ClusterAddonsConfigNetw
 // It is disabled by default for Standard clusters; set `enabled = true` to enable.
 // It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
 // See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigOutput) ParallelstoreCsiDriverConfig() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigParallelstoreCsiDriverConfig {
 		return v.ParallelstoreCsiDriverConfig
@@ -11306,6 +11336,25 @@ func (o ClusterAddonsConfigPtrOutput) KalmConfig() ClusterAddonsConfigKalmConfig
 	}).(ClusterAddonsConfigKalmConfigPtrOutput)
 }
 
+// The status of the Lustre CSI driver addon,
+// which allows the usage of a Lustre instances as volumes.
+// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+// It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+// Lustre CSI Driver Config has optional subfield
+// `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigPtrOutput) LustreCsiDriverConfig() ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigLustreCsiDriverConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LustreCsiDriverConfig
+	}).(ClusterAddonsConfigLustreCsiDriverConfigPtrOutput)
+}
+
 // Whether we should enable the network policy addon
 // for the master.  This must be enabled in order to enable network policy for the nodes.
 // To enable this, you must also define a `networkPolicy` block,
@@ -11326,8 +11375,6 @@ func (o ClusterAddonsConfigPtrOutput) NetworkPolicyConfig() ClusterAddonsConfigN
 // It is disabled by default for Standard clusters; set `enabled = true` to enable.
 // It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
 // See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigPtrOutput) ParallelstoreCsiDriverConfig() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigParallelstoreCsiDriverConfig {
 		if v == nil {
@@ -12904,6 +12951,168 @@ func (o ClusterAddonsConfigKalmConfigPtrOutput) Elem() ClusterAddonsConfigKalmCo
 
 func (o ClusterAddonsConfigKalmConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigKalmConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigLustreCsiDriverConfig struct {
+	// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+	// 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+	EnableLegacyLustrePort *bool `pulumi:"enableLegacyLustrePort"`
+	// Whether the Lustre CSI driver is enabled for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigLustreCsiDriverConfigInput is an input type that accepts ClusterAddonsConfigLustreCsiDriverConfigArgs and ClusterAddonsConfigLustreCsiDriverConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigLustreCsiDriverConfigInput` via:
+//
+//	ClusterAddonsConfigLustreCsiDriverConfigArgs{...}
+type ClusterAddonsConfigLustreCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigLustreCsiDriverConfigOutput() ClusterAddonsConfigLustreCsiDriverConfigOutput
+	ToClusterAddonsConfigLustreCsiDriverConfigOutputWithContext(context.Context) ClusterAddonsConfigLustreCsiDriverConfigOutput
+}
+
+type ClusterAddonsConfigLustreCsiDriverConfigArgs struct {
+	// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+	// 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+	EnableLegacyLustrePort pulumi.BoolPtrInput `pulumi:"enableLegacyLustrePort"`
+	// Whether the Lustre CSI driver is enabled for this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigLustreCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigLustreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigLustreCsiDriverConfigArgs) ToClusterAddonsConfigLustreCsiDriverConfigOutput() ClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return i.ToClusterAddonsConfigLustreCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigLustreCsiDriverConfigArgs) ToClusterAddonsConfigLustreCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigLustreCsiDriverConfigOutput)
+}
+
+func (i ClusterAddonsConfigLustreCsiDriverConfigArgs) ToClusterAddonsConfigLustreCsiDriverConfigPtrOutput() ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigLustreCsiDriverConfigArgs) ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigLustreCsiDriverConfigOutput).ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigLustreCsiDriverConfigPtrInput is an input type that accepts ClusterAddonsConfigLustreCsiDriverConfigArgs, ClusterAddonsConfigLustreCsiDriverConfigPtr and ClusterAddonsConfigLustreCsiDriverConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigLustreCsiDriverConfigPtrInput` via:
+//
+//	        ClusterAddonsConfigLustreCsiDriverConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAddonsConfigLustreCsiDriverConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigLustreCsiDriverConfigPtrOutput() ClusterAddonsConfigLustreCsiDriverConfigPtrOutput
+	ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigLustreCsiDriverConfigPtrOutput
+}
+
+type clusterAddonsConfigLustreCsiDriverConfigPtrType ClusterAddonsConfigLustreCsiDriverConfigArgs
+
+func ClusterAddonsConfigLustreCsiDriverConfigPtr(v *ClusterAddonsConfigLustreCsiDriverConfigArgs) ClusterAddonsConfigLustreCsiDriverConfigPtrInput {
+	return (*clusterAddonsConfigLustreCsiDriverConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigLustreCsiDriverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigLustreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigLustreCsiDriverConfigPtrType) ToClusterAddonsConfigLustreCsiDriverConfigPtrOutput() ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigLustreCsiDriverConfigPtrType) ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigLustreCsiDriverConfigPtrOutput)
+}
+
+type ClusterAddonsConfigLustreCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigLustreCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigLustreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigLustreCsiDriverConfigOutput) ToClusterAddonsConfigLustreCsiDriverConfigOutput() ClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigLustreCsiDriverConfigOutput) ToClusterAddonsConfigLustreCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigLustreCsiDriverConfigOutput) ToClusterAddonsConfigLustreCsiDriverConfigPtrOutput() ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return o.ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigLustreCsiDriverConfigOutput) ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigLustreCsiDriverConfig) *ClusterAddonsConfigLustreCsiDriverConfig {
+		return &v
+	}).(ClusterAddonsConfigLustreCsiDriverConfigPtrOutput)
+}
+
+// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+//
+//	This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+func (o ClusterAddonsConfigLustreCsiDriverConfigOutput) EnableLegacyLustrePort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigLustreCsiDriverConfig) *bool { return v.EnableLegacyLustrePort }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the Lustre CSI driver is enabled for this cluster.
+func (o ClusterAddonsConfigLustreCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigLustreCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigLustreCsiDriverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigLustreCsiDriverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigLustreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigLustreCsiDriverConfigPtrOutput) ToClusterAddonsConfigLustreCsiDriverConfigPtrOutput() ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigLustreCsiDriverConfigPtrOutput) ToClusterAddonsConfigLustreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigLustreCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigLustreCsiDriverConfigPtrOutput) Elem() ClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigLustreCsiDriverConfig) ClusterAddonsConfigLustreCsiDriverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigLustreCsiDriverConfig
+		return ret
+	}).(ClusterAddonsConfigLustreCsiDriverConfigOutput)
+}
+
+// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+//
+//	This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+func (o ClusterAddonsConfigLustreCsiDriverConfigPtrOutput) EnableLegacyLustrePort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigLustreCsiDriverConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableLegacyLustrePort
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the Lustre CSI driver is enabled for this cluster.
+func (o ClusterAddonsConfigLustreCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigLustreCsiDriverConfig) *bool {
 		if v == nil {
 			return nil
 		}
@@ -18184,6 +18393,9 @@ func (o ClusterIdentityServiceConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterIpAllocationPolicy struct {
+	// The configuration for individual additional subnetworks attached to the cluster.
+	// Structure is documented below.
+	AdditionalIpRangesConfigs []ClusterIpAllocationPolicyAdditionalIpRangesConfig `pulumi:"additionalIpRangesConfigs"`
 	// The configuration for additional pod secondary ranges at
 	// the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
 	// secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
@@ -18229,6 +18441,9 @@ type ClusterIpAllocationPolicyInput interface {
 }
 
 type ClusterIpAllocationPolicyArgs struct {
+	// The configuration for individual additional subnetworks attached to the cluster.
+	// Structure is documented below.
+	AdditionalIpRangesConfigs ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput `pulumi:"additionalIpRangesConfigs"`
 	// The configuration for additional pod secondary ranges at
 	// the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
 	// secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
@@ -18339,6 +18554,14 @@ func (o ClusterIpAllocationPolicyOutput) ToClusterIpAllocationPolicyPtrOutputWit
 	}).(ClusterIpAllocationPolicyPtrOutput)
 }
 
+// The configuration for individual additional subnetworks attached to the cluster.
+// Structure is documented below.
+func (o ClusterIpAllocationPolicyOutput) AdditionalIpRangesConfigs() ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) []ClusterIpAllocationPolicyAdditionalIpRangesConfig {
+		return v.AdditionalIpRangesConfigs
+	}).(ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput)
+}
+
 // The configuration for additional pod secondary ranges at
 // the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
 // secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
@@ -18417,6 +18640,17 @@ func (o ClusterIpAllocationPolicyPtrOutput) Elem() ClusterIpAllocationPolicyOutp
 		var ret ClusterIpAllocationPolicy
 		return ret
 	}).(ClusterIpAllocationPolicyOutput)
+}
+
+// The configuration for individual additional subnetworks attached to the cluster.
+// Structure is documented below.
+func (o ClusterIpAllocationPolicyPtrOutput) AdditionalIpRangesConfigs() ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterIpAllocationPolicy) []ClusterIpAllocationPolicyAdditionalIpRangesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalIpRangesConfigs
+	}).(ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput)
 }
 
 // The configuration for additional pod secondary ranges at
@@ -18504,6 +18738,112 @@ func (o ClusterIpAllocationPolicyPtrOutput) StackType() pulumi.StringPtrOutput {
 		}
 		return v.StackType
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterIpAllocationPolicyAdditionalIpRangesConfig struct {
+	// List of secondary ranges names within this subnetwork that can be used for pod IPs.
+	PodIpv4RangeNames []string `pulumi:"podIpv4RangeNames"`
+	// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// ClusterIpAllocationPolicyAdditionalIpRangesConfigInput is an input type that accepts ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs and ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput values.
+// You can construct a concrete instance of `ClusterIpAllocationPolicyAdditionalIpRangesConfigInput` via:
+//
+//	ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs{...}
+type ClusterIpAllocationPolicyAdditionalIpRangesConfigInput interface {
+	pulumi.Input
+
+	ToClusterIpAllocationPolicyAdditionalIpRangesConfigOutput() ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput
+	ToClusterIpAllocationPolicyAdditionalIpRangesConfigOutputWithContext(context.Context) ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput
+}
+
+type ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs struct {
+	// List of secondary ranges names within this subnetwork that can be used for pod IPs.
+	PodIpv4RangeNames pulumi.StringArrayInput `pulumi:"podIpv4RangeNames"`
+	// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalIpRangesConfig)(nil)).Elem()
+}
+
+func (i ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs) ToClusterIpAllocationPolicyAdditionalIpRangesConfigOutput() ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return i.ToClusterIpAllocationPolicyAdditionalIpRangesConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs) ToClusterIpAllocationPolicyAdditionalIpRangesConfigOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput)
+}
+
+// ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput is an input type that accepts ClusterIpAllocationPolicyAdditionalIpRangesConfigArray and ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput` via:
+//
+//	ClusterIpAllocationPolicyAdditionalIpRangesConfigArray{ ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs{...} }
+type ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput() ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput
+	ToClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutputWithContext(context.Context) ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput
+}
+
+type ClusterIpAllocationPolicyAdditionalIpRangesConfigArray []ClusterIpAllocationPolicyAdditionalIpRangesConfigInput
+
+func (ClusterIpAllocationPolicyAdditionalIpRangesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIpAllocationPolicyAdditionalIpRangesConfig)(nil)).Elem()
+}
+
+func (i ClusterIpAllocationPolicyAdditionalIpRangesConfigArray) ToClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput() ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return i.ToClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterIpAllocationPolicyAdditionalIpRangesConfigArray) ToClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput)
+}
+
+type ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalIpRangesConfig)(nil)).Elem()
+}
+
+func (o ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) ToClusterIpAllocationPolicyAdditionalIpRangesConfigOutput() ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) ToClusterIpAllocationPolicyAdditionalIpRangesConfigOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return o
+}
+
+// List of secondary ranges names within this subnetwork that can be used for pod IPs.
+func (o ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) PodIpv4RangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterIpAllocationPolicyAdditionalIpRangesConfig) []string { return v.PodIpv4RangeNames }).(pulumi.StringArrayOutput)
+}
+
+// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+func (o ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIpAllocationPolicyAdditionalIpRangesConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIpAllocationPolicyAdditionalIpRangesConfig)(nil)).Elem()
+}
+
+func (o ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput) ToClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput() ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput) ToClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput) Index(i pulumi.IntInput) ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIpAllocationPolicyAdditionalIpRangesConfig {
+		return vs[0].([]ClusterIpAllocationPolicyAdditionalIpRangesConfig)[vs[1].(int)]
+	}).(ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput)
 }
 
 type ClusterIpAllocationPolicyAdditionalPodRangesConfig struct {
@@ -21456,7 +21796,7 @@ type ClusterNodeConfig struct {
 	// Specifies options for controlling
 	// advanced machine features. Structure is documented below.
 	AdvancedMachineFeatures *ClusterNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes *ClusterNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
@@ -21492,6 +21832,10 @@ type ClusterNodeConfig struct {
 	GcfsConfig *ClusterNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators []ClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
 	// Google Virtual NIC (gVNIC) is a virtual network interface.
 	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -21530,11 +21874,7 @@ type ClusterNodeConfig struct {
 	MachineType *string `pulumi:"machineType"`
 	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
 	MaxRunDuration *string `pulumi:"maxRunDuration"`
-	// The metadata key/value pairs assigned to instances in
-	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-	// `true` by the API; if `metadata` is set but that default value is not
-	// included, the provider will attempt to unset the value. To avoid this, set the
-	// value in your config.
+	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -21561,7 +21901,8 @@ type ClusterNodeConfig struct {
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
-	// Sandbox configuration for this node.
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
 	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
 	SecondaryBootDisks []ClusterNodeConfigSecondaryBootDisk `pulumi:"secondaryBootDisks"`
@@ -21581,14 +21922,7 @@ type ClusterNodeConfig struct {
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags []string `pulumi:"tags"`
-	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-	// to apply to nodes. GKE's API can only set this field on cluster creation.
-	// However, GKE will add taints to your nodes if you enable certain features such
-	// as GPUs. If this field is set, any diffs on this field will cause the provider to
-	// recreate the underlying resource. Taint values can be updated safely in
-	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-	// recommended. Structure is documented below.
+	// List of Kubernetes taints to be applied to each node.
 	Taints []ClusterNodeConfigTaint `pulumi:"taints"`
 	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 	WindowsNodeConfig *ClusterNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
@@ -21612,7 +21946,7 @@ type ClusterNodeConfigArgs struct {
 	// Specifies options for controlling
 	// advanced machine features. Structure is documented below.
 	AdvancedMachineFeatures ClusterNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes ClusterNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
@@ -21648,6 +21982,10 @@ type ClusterNodeConfigArgs struct {
 	GcfsConfig ClusterNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators ClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
 	// Google Virtual NIC (gVNIC) is a virtual network interface.
 	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -21686,11 +22024,7 @@ type ClusterNodeConfigArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
 	MaxRunDuration pulumi.StringPtrInput `pulumi:"maxRunDuration"`
-	// The metadata key/value pairs assigned to instances in
-	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-	// `true` by the API; if `metadata` is set but that default value is not
-	// included, the provider will attempt to unset the value. To avoid this, set the
-	// value in your config.
+	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -21717,7 +22051,8 @@ type ClusterNodeConfigArgs struct {
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
 	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
-	// Sandbox configuration for this node.
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
 	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
 	SecondaryBootDisks ClusterNodeConfigSecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
@@ -21737,14 +22072,7 @@ type ClusterNodeConfigArgs struct {
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-	// to apply to nodes. GKE's API can only set this field on cluster creation.
-	// However, GKE will add taints to your nodes if you enable certain features such
-	// as GPUs. If this field is set, any diffs on this field will cause the provider to
-	// recreate the underlying resource. Taint values can be updated safely in
-	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-	// recommended. Structure is documented below.
+	// List of Kubernetes taints to be applied to each node.
 	Taints ClusterNodeConfigTaintArrayInput `pulumi:"taints"`
 	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 	WindowsNodeConfig ClusterNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
@@ -21836,7 +22164,7 @@ func (o ClusterNodeConfigOutput) AdvancedMachineFeatures() ClusterNodeConfigAdva
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigAdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -21910,6 +22238,10 @@ func (o ClusterNodeConfigOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutp
 
 // List of the type and count of accelerator cards attached to the instance.
 // Structure documented below.
+// **Note**: As of 6.0.0, argument syntax
+// is no longer supported for this field in favor of block syntax.
+// To dynamically set a list of guest accelerators, use dynamic blocks.
+// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
 }
@@ -21987,11 +22319,7 @@ func (o ClusterNodeConfigOutput) MaxRunDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MaxRunDuration }).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in
-// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-// `true` by the API; if `metadata` is set but that default value is not
-// included, the provider will attempt to unset the value. To avoid this, set the
-// value in your config.
+// The metadata key/value pairs assigned to instances in the cluster.
 func (o ClusterNodeConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -22042,7 +22370,8 @@ func (o ClusterNodeConfigOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
-// Sandbox configuration for this node.
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
@@ -22086,14 +22415,7 @@ func (o ClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-// to apply to nodes. GKE's API can only set this field on cluster creation.
-// However, GKE will add taints to your nodes if you enable certain features such
-// as GPUs. If this field is set, any diffs on this field will cause the provider to
-// recreate the underlying resource. Taint values can be updated safely in
-// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-// recommended. Structure is documented below.
+// List of Kubernetes taints to be applied to each node.
 func (o ClusterNodeConfigOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
 }
@@ -22144,7 +22466,7 @@ func (o ClusterNodeConfigPtrOutput) AdvancedMachineFeatures() ClusterNodeConfigA
 	}).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -22276,6 +22598,10 @@ func (o ClusterNodeConfigPtrOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrO
 
 // List of the type and count of accelerator cards attached to the instance.
 // Structure documented below.
+// **Note**: As of 6.0.0, argument syntax
+// is no longer supported for this field in favor of block syntax.
+// To dynamically set a list of guest accelerators, use dynamic blocks.
+// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 func (o ClusterNodeConfigPtrOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator {
 		if v == nil {
@@ -22418,11 +22744,7 @@ func (o ClusterNodeConfigPtrOutput) MaxRunDuration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in
-// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-// `true` by the API; if `metadata` is set but that default value is not
-// included, the provider will attempt to unset the value. To avoid this, set the
-// value in your config.
+// The metadata key/value pairs assigned to instances in the cluster.
 func (o ClusterNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) map[string]string {
 		if v == nil {
@@ -22513,7 +22835,8 @@ func (o ClusterNodeConfigPtrOutput) ResourceManagerTags() pulumi.StringMapOutput
 	}).(pulumi.StringMapOutput)
 }
 
-// Sandbox configuration for this node.
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSandboxConfig {
 		if v == nil {
@@ -22597,14 +22920,7 @@ func (o ClusterNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-// to apply to nodes. GKE's API can only set this field on cluster creation.
-// However, GKE will add taints to your nodes if you enable certain features such
-// as GPUs. If this field is set, any diffs on this field will cause the provider to
-// recreate the underlying resource. Taint values can be updated safely in
-// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-// recommended. Structure is documented below.
+// List of Kubernetes taints to be applied to each node.
 func (o ClusterNodeConfigPtrOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) []ClusterNodeConfigTaint {
 		if v == nil {
@@ -26884,7 +27200,7 @@ func (o ClusterNodeConfigWindowsNodeConfigPtrOutput) Osversion() pulumi.StringPt
 type ClusterNodeConfigWorkloadMetadataConfig struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
-	// * UNSPECIFIED: Not Set
+	// * MODE_UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 	Mode string `pulumi:"mode"`
@@ -26904,7 +27220,7 @@ type ClusterNodeConfigWorkloadMetadataConfigInput interface {
 type ClusterNodeConfigWorkloadMetadataConfigArgs struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
-	// * UNSPECIFIED: Not Set
+	// * MODE_UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -26989,7 +27305,7 @@ func (o ClusterNodeConfigWorkloadMetadataConfigOutput) ToClusterNodeConfigWorklo
 
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
-// * UNSPECIFIED: Not Set
+// * MODE_UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 func (o ClusterNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
@@ -27022,7 +27338,7 @@ func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Elem() ClusterNodeConf
 
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
-// * UNSPECIFIED: Not Set
+// * MODE_UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPtrOutput {
@@ -27059,14 +27375,9 @@ type ClusterNodePool struct {
 	Name *string `pulumi:"name"`
 	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// Configuration for
-	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig *ClusterNodePoolNetworkConfig `pulumi:"networkConfig"`
-	// Parameters used in creating the default node pool.
-	// Generally, this field should not be used at the same time as a
-	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used.
-	// Structure is documented below.
+	// The configuration of the nodepool
 	NodeConfig *ClusterNodePoolNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
 	NodeCount *int `pulumi:"nodeCount"`
@@ -27127,14 +27438,9 @@ type ClusterNodePoolArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
-	// Configuration for
-	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig ClusterNodePoolNetworkConfigPtrInput `pulumi:"networkConfig"`
-	// Parameters used in creating the default node pool.
-	// Generally, this field should not be used at the same time as a
-	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used.
-	// Structure is documented below.
+	// The configuration of the nodepool
 	NodeConfig ClusterNodePoolNodeConfigPtrInput `pulumi:"nodeConfig"`
 	// The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
 	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
@@ -27258,17 +27564,12 @@ func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for
-// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 func (o ClusterNodePoolOutput) NetworkConfig() ClusterNodePoolNetworkConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolNetworkConfig { return v.NetworkConfig }).(ClusterNodePoolNetworkConfigPtrOutput)
 }
 
-// Parameters used in creating the default node pool.
-// Generally, this field should not be used at the same time as a
-// `container.NodePool` or a `nodePool` block; this configuration
-// manages the default node pool, which isn't recommended to be used.
-// Structure is documented below.
+// The configuration of the nodepool
 func (o ClusterNodePoolOutput) NodeConfig() ClusterNodePoolNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolNodeConfig { return v.NodeConfig }).(ClusterNodePoolNodeConfigPtrOutput)
 }
@@ -29292,6 +29593,9 @@ type ClusterNodePoolNetworkConfig struct {
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 	PodRange *string `pulumi:"podRange"`
+	// The name or selfLink of the Google Compute Engine
+	// subnetwork in which the cluster's instances are launched.
+	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 // ClusterNodePoolNetworkConfigInput is an input type that accepts ClusterNodePoolNetworkConfigArgs and ClusterNodePoolNetworkConfigOutput values.
@@ -29322,6 +29626,9 @@ type ClusterNodePoolNetworkConfigArgs struct {
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 	PodRange pulumi.StringPtrInput `pulumi:"podRange"`
+	// The name or selfLink of the Google Compute Engine
+	// subnetwork in which the cluster's instances are launched.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
 func (ClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -29449,6 +29756,12 @@ func (o ClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodRange }).(pulumi.StringPtrOutput)
 }
 
+// The name or selfLink of the Google Compute Engine
+// subnetwork in which the cluster's instances are launched.
+func (o ClusterNodePoolNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
 type ClusterNodePoolNetworkConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNetworkConfigPtrOutput) ElementType() reflect.Type {
@@ -29550,6 +29863,17 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.PodRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name or selfLink of the Google Compute Engine
+// subnetwork in which the cluster's instances are launched.
+func (o ClusterNodePoolNetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30072,7 +30396,7 @@ type ClusterNodePoolNodeConfig struct {
 	// Specifies options for controlling
 	// advanced machine features. Structure is documented below.
 	AdvancedMachineFeatures *ClusterNodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes *ClusterNodePoolNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
@@ -30108,6 +30432,10 @@ type ClusterNodePoolNodeConfig struct {
 	GcfsConfig *ClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators []ClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
 	// Google Virtual NIC (gVNIC) is a virtual network interface.
 	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -30146,11 +30474,7 @@ type ClusterNodePoolNodeConfig struct {
 	MachineType *string `pulumi:"machineType"`
 	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
 	MaxRunDuration *string `pulumi:"maxRunDuration"`
-	// The metadata key/value pairs assigned to instances in
-	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-	// `true` by the API; if `metadata` is set but that default value is not
-	// included, the provider will attempt to unset the value. To avoid this, set the
-	// value in your config.
+	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -30177,7 +30501,8 @@ type ClusterNodePoolNodeConfig struct {
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
-	// Sandbox configuration for this node.
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
 	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
 	SecondaryBootDisks []ClusterNodePoolNodeConfigSecondaryBootDisk `pulumi:"secondaryBootDisks"`
@@ -30197,14 +30522,7 @@ type ClusterNodePoolNodeConfig struct {
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags []string `pulumi:"tags"`
-	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-	// to apply to nodes. GKE's API can only set this field on cluster creation.
-	// However, GKE will add taints to your nodes if you enable certain features such
-	// as GPUs. If this field is set, any diffs on this field will cause the provider to
-	// recreate the underlying resource. Taint values can be updated safely in
-	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-	// recommended. Structure is documented below.
+	// List of Kubernetes taints to be applied to each node.
 	Taints []ClusterNodePoolNodeConfigTaint `pulumi:"taints"`
 	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 	WindowsNodeConfig *ClusterNodePoolNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
@@ -30228,7 +30546,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Specifies options for controlling
 	// advanced machine features. Structure is documented below.
 	AdvancedMachineFeatures ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes ClusterNodePoolNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
@@ -30264,6 +30582,10 @@ type ClusterNodePoolNodeConfigArgs struct {
 	GcfsConfig ClusterNodePoolNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
+	// **Note**: As of 6.0.0, argument syntax
+	// is no longer supported for this field in favor of block syntax.
+	// To dynamically set a list of guest accelerators, use dynamic blocks.
+	// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 	GuestAccelerators ClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
 	// Google Virtual NIC (gVNIC) is a virtual network interface.
 	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -30302,11 +30624,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
 	MaxRunDuration pulumi.StringPtrInput `pulumi:"maxRunDuration"`
-	// The metadata key/value pairs assigned to instances in
-	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-	// `true` by the API; if `metadata` is set but that default value is not
-	// included, the provider will attempt to unset the value. To avoid this, set the
-	// value in your config.
+	// The metadata key/value pairs assigned to instances in the cluster.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -30333,7 +30651,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
 	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
-	// Sandbox configuration for this node.
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
 	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
 	SecondaryBootDisks ClusterNodePoolNodeConfigSecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
@@ -30353,14 +30672,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-	// to apply to nodes. GKE's API can only set this field on cluster creation.
-	// However, GKE will add taints to your nodes if you enable certain features such
-	// as GPUs. If this field is set, any diffs on this field will cause the provider to
-	// recreate the underlying resource. Taint values can be updated safely in
-	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-	// recommended. Structure is documented below.
+	// List of Kubernetes taints to be applied to each node.
 	Taints ClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
 	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 	WindowsNodeConfig ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
@@ -30454,7 +30766,7 @@ func (o ClusterNodePoolNodeConfigOutput) AdvancedMachineFeatures() ClusterNodePo
 	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -30534,6 +30846,10 @@ func (o ClusterNodePoolNodeConfigOutput) GcfsConfig() ClusterNodePoolNodeConfigG
 
 // List of the type and count of accelerator cards attached to the instance.
 // Structure documented below.
+// **Note**: As of 6.0.0, argument syntax
+// is no longer supported for this field in favor of block syntax.
+// To dynamically set a list of guest accelerators, use dynamic blocks.
+// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
 		return v.GuestAccelerators
@@ -30617,11 +30933,7 @@ func (o ClusterNodePoolNodeConfigOutput) MaxRunDuration() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MaxRunDuration }).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in
-// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-// `true` by the API; if `metadata` is set but that default value is not
-// included, the provider will attempt to unset the value. To avoid this, set the
-// value in your config.
+// The metadata key/value pairs assigned to instances in the cluster.
 func (o ClusterNodePoolNodeConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -30674,7 +30986,8 @@ func (o ClusterNodePoolNodeConfigOutput) ResourceManagerTags() pulumi.StringMapO
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
-// Sandbox configuration for this node.
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
@@ -30724,14 +31037,7 @@ func (o ClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-// to apply to nodes. GKE's API can only set this field on cluster creation.
-// However, GKE will add taints to your nodes if you enable certain features such
-// as GPUs. If this field is set, any diffs on this field will cause the provider to
-// recreate the underlying resource. Taint values can be updated safely in
-// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-// recommended. Structure is documented below.
+// List of Kubernetes taints to be applied to each node.
 func (o ClusterNodePoolNodeConfigOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
@@ -30786,7 +31092,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) AdvancedMachineFeatures() ClusterNod
 	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
 		if v == nil {
@@ -30918,6 +31224,10 @@ func (o ClusterNodePoolNodeConfigPtrOutput) GcfsConfig() ClusterNodePoolNodeConf
 
 // List of the type and count of accelerator cards attached to the instance.
 // Structure documented below.
+// **Note**: As of 6.0.0, argument syntax
+// is no longer supported for this field in favor of block syntax.
+// To dynamically set a list of guest accelerators, use dynamic blocks.
+// To set an empty list, use a single `guestAccelerator` block with `count = 0`.
 func (o ClusterNodePoolNodeConfigPtrOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
 		if v == nil {
@@ -31060,11 +31370,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) MaxRunDuration() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in
-// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-// `true` by the API; if `metadata` is set but that default value is not
-// included, the provider will attempt to unset the value. To avoid this, set the
-// value in your config.
+// The metadata key/value pairs assigned to instances in the cluster.
 func (o ClusterNodePoolNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) map[string]string {
 		if v == nil {
@@ -31155,7 +31461,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ResourceManagerTags() pulumi.StringM
 	}).(pulumi.StringMapOutput)
 }
 
-// Sandbox configuration for this node.
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig {
 		if v == nil {
@@ -31239,14 +31546,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-// to apply to nodes. GKE's API can only set this field on cluster creation.
-// However, GKE will add taints to your nodes if you enable certain features such
-// as GPUs. If this field is set, any diffs on this field will cause the provider to
-// recreate the underlying resource. Taint values can be updated safely in
-// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-// recommended. Structure is documented below.
+// List of Kubernetes taints to be applied to each node.
 func (o ClusterNodePoolNodeConfigPtrOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint {
 		if v == nil {
@@ -35528,7 +35828,7 @@ func (o ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput) Osversion() pulumi.
 type ClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
-	// * UNSPECIFIED: Not Set
+	// * MODE_UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 	Mode string `pulumi:"mode"`
@@ -35548,7 +35848,7 @@ type ClusterNodePoolNodeConfigWorkloadMetadataConfigInput interface {
 type ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
-	// * UNSPECIFIED: Not Set
+	// * MODE_UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -35633,7 +35933,7 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToClusterNodePool
 
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
-// * UNSPECIFIED: Not Set
+// * MODE_UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
@@ -35666,7 +35966,7 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Elem() Cluster
 
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
-// * UNSPECIFIED: Not Set
+// * MODE_UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPtrOutput {
@@ -37283,9 +37583,7 @@ type ClusterPrivateClusterConfig struct {
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
 	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
-	// Controls cluster master global
-	// access settings. If unset, the provider will no longer manage this field and will
-	// not modify the previously-set value. Structure is documented below.
+	// Controls cluster master global access settings.
 	MasterGlobalAccessConfig *ClusterPrivateClusterConfigMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -37331,9 +37629,7 @@ type ClusterPrivateClusterConfigArgs struct {
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
 	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
-	// Controls cluster master global
-	// access settings. If unset, the provider will no longer manage this field and will
-	// not modify the previously-set value. Structure is documented below.
+	// Controls cluster master global access settings.
 	MasterGlobalAccessConfig ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -37450,9 +37746,7 @@ func (o ClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOu
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
-// Controls cluster master global
-// access settings. If unset, the provider will no longer manage this field and will
-// not modify the previously-set value. Structure is documented below.
+// Controls cluster master global access settings.
 func (o ClusterPrivateClusterConfigOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		return v.MasterGlobalAccessConfig
@@ -37544,9 +37838,7 @@ func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Controls cluster master global
-// access settings. If unset, the provider will no longer manage this field and will
-// not modify the previously-set value. Structure is documented below.
+// Controls cluster master global access settings.
 func (o ClusterPrivateClusterConfigPtrOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		if v == nil {
@@ -38048,6 +38340,162 @@ func (o ClusterProtectConfigWorkloadConfigPtrOutput) AuditMode() pulumi.StringPt
 		}
 		return &v.AuditMode
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterRbacBindingConfig struct {
+	// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+	EnableInsecureBindingSystemAuthenticated *bool `pulumi:"enableInsecureBindingSystemAuthenticated"`
+	// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+	EnableInsecureBindingSystemUnauthenticated *bool `pulumi:"enableInsecureBindingSystemUnauthenticated"`
+}
+
+// ClusterRbacBindingConfigInput is an input type that accepts ClusterRbacBindingConfigArgs and ClusterRbacBindingConfigOutput values.
+// You can construct a concrete instance of `ClusterRbacBindingConfigInput` via:
+//
+//	ClusterRbacBindingConfigArgs{...}
+type ClusterRbacBindingConfigInput interface {
+	pulumi.Input
+
+	ToClusterRbacBindingConfigOutput() ClusterRbacBindingConfigOutput
+	ToClusterRbacBindingConfigOutputWithContext(context.Context) ClusterRbacBindingConfigOutput
+}
+
+type ClusterRbacBindingConfigArgs struct {
+	// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+	EnableInsecureBindingSystemAuthenticated pulumi.BoolPtrInput `pulumi:"enableInsecureBindingSystemAuthenticated"`
+	// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+	EnableInsecureBindingSystemUnauthenticated pulumi.BoolPtrInput `pulumi:"enableInsecureBindingSystemUnauthenticated"`
+}
+
+func (ClusterRbacBindingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRbacBindingConfig)(nil)).Elem()
+}
+
+func (i ClusterRbacBindingConfigArgs) ToClusterRbacBindingConfigOutput() ClusterRbacBindingConfigOutput {
+	return i.ToClusterRbacBindingConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterRbacBindingConfigArgs) ToClusterRbacBindingConfigOutputWithContext(ctx context.Context) ClusterRbacBindingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRbacBindingConfigOutput)
+}
+
+func (i ClusterRbacBindingConfigArgs) ToClusterRbacBindingConfigPtrOutput() ClusterRbacBindingConfigPtrOutput {
+	return i.ToClusterRbacBindingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRbacBindingConfigArgs) ToClusterRbacBindingConfigPtrOutputWithContext(ctx context.Context) ClusterRbacBindingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRbacBindingConfigOutput).ToClusterRbacBindingConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterRbacBindingConfigPtrInput is an input type that accepts ClusterRbacBindingConfigArgs, ClusterRbacBindingConfigPtr and ClusterRbacBindingConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterRbacBindingConfigPtrInput` via:
+//
+//	        ClusterRbacBindingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterRbacBindingConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterRbacBindingConfigPtrOutput() ClusterRbacBindingConfigPtrOutput
+	ToClusterRbacBindingConfigPtrOutputWithContext(context.Context) ClusterRbacBindingConfigPtrOutput
+}
+
+type clusterRbacBindingConfigPtrType ClusterRbacBindingConfigArgs
+
+func ClusterRbacBindingConfigPtr(v *ClusterRbacBindingConfigArgs) ClusterRbacBindingConfigPtrInput {
+	return (*clusterRbacBindingConfigPtrType)(v)
+}
+
+func (*clusterRbacBindingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRbacBindingConfig)(nil)).Elem()
+}
+
+func (i *clusterRbacBindingConfigPtrType) ToClusterRbacBindingConfigPtrOutput() ClusterRbacBindingConfigPtrOutput {
+	return i.ToClusterRbacBindingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRbacBindingConfigPtrType) ToClusterRbacBindingConfigPtrOutputWithContext(ctx context.Context) ClusterRbacBindingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRbacBindingConfigPtrOutput)
+}
+
+type ClusterRbacBindingConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterRbacBindingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRbacBindingConfig)(nil)).Elem()
+}
+
+func (o ClusterRbacBindingConfigOutput) ToClusterRbacBindingConfigOutput() ClusterRbacBindingConfigOutput {
+	return o
+}
+
+func (o ClusterRbacBindingConfigOutput) ToClusterRbacBindingConfigOutputWithContext(ctx context.Context) ClusterRbacBindingConfigOutput {
+	return o
+}
+
+func (o ClusterRbacBindingConfigOutput) ToClusterRbacBindingConfigPtrOutput() ClusterRbacBindingConfigPtrOutput {
+	return o.ToClusterRbacBindingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRbacBindingConfigOutput) ToClusterRbacBindingConfigPtrOutputWithContext(ctx context.Context) ClusterRbacBindingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterRbacBindingConfig) *ClusterRbacBindingConfig {
+		return &v
+	}).(ClusterRbacBindingConfigPtrOutput)
+}
+
+// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+func (o ClusterRbacBindingConfigOutput) EnableInsecureBindingSystemAuthenticated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterRbacBindingConfig) *bool { return v.EnableInsecureBindingSystemAuthenticated }).(pulumi.BoolPtrOutput)
+}
+
+// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+func (o ClusterRbacBindingConfigOutput) EnableInsecureBindingSystemUnauthenticated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterRbacBindingConfig) *bool { return v.EnableInsecureBindingSystemUnauthenticated }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterRbacBindingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRbacBindingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRbacBindingConfig)(nil)).Elem()
+}
+
+func (o ClusterRbacBindingConfigPtrOutput) ToClusterRbacBindingConfigPtrOutput() ClusterRbacBindingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterRbacBindingConfigPtrOutput) ToClusterRbacBindingConfigPtrOutputWithContext(ctx context.Context) ClusterRbacBindingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterRbacBindingConfigPtrOutput) Elem() ClusterRbacBindingConfigOutput {
+	return o.ApplyT(func(v *ClusterRbacBindingConfig) ClusterRbacBindingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterRbacBindingConfig
+		return ret
+	}).(ClusterRbacBindingConfigOutput)
+}
+
+// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+func (o ClusterRbacBindingConfigPtrOutput) EnableInsecureBindingSystemAuthenticated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterRbacBindingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInsecureBindingSystemAuthenticated
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+func (o ClusterRbacBindingConfigPtrOutput) EnableInsecureBindingSystemUnauthenticated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterRbacBindingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInsecureBindingSystemUnauthenticated
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterReleaseChannel struct {
@@ -40442,6 +40890,8 @@ type NodePoolNetworkConfig struct {
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 	PodRange *string `pulumi:"podRange"`
+	// The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 // NodePoolNetworkConfigInput is an input type that accepts NodePoolNetworkConfigArgs and NodePoolNetworkConfigOutput values.
@@ -40474,6 +40924,8 @@ type NodePoolNetworkConfigArgs struct {
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 	PodRange pulumi.StringPtrInput `pulumi:"podRange"`
+	// The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
 func (NodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -40603,6 +41055,11 @@ func (o NodePoolNetworkConfigOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *string { return v.PodRange }).(pulumi.StringPtrOutput)
 }
 
+// The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+func (o NodePoolNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
 type NodePoolNetworkConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNetworkConfigPtrOutput) ElementType() reflect.Type {
@@ -40706,6 +41163,16 @@ func (o NodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PodRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+func (o NodePoolNetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -47334,6 +47801,8 @@ type GetClusterAddonsConfig struct {
 	IstioConfigs []GetClusterAddonsConfigIstioConfig `pulumi:"istioConfigs"`
 	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
 	KalmConfigs []GetClusterAddonsConfigKalmConfig `pulumi:"kalmConfigs"`
+	// Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
+	LustreCsiDriverConfigs []GetClusterAddonsConfigLustreCsiDriverConfig `pulumi:"lustreCsiDriverConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs []GetClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfigs"`
 	// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
@@ -47378,6 +47847,8 @@ type GetClusterAddonsConfigArgs struct {
 	IstioConfigs GetClusterAddonsConfigIstioConfigArrayInput `pulumi:"istioConfigs"`
 	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
 	KalmConfigs GetClusterAddonsConfigKalmConfigArrayInput `pulumi:"kalmConfigs"`
+	// Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
+	LustreCsiDriverConfigs GetClusterAddonsConfigLustreCsiDriverConfigArrayInput `pulumi:"lustreCsiDriverConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs GetClusterAddonsConfigNetworkPolicyConfigArrayInput `pulumi:"networkPolicyConfigs"`
 	// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
@@ -47504,6 +47975,13 @@ func (o GetClusterAddonsConfigOutput) IstioConfigs() GetClusterAddonsConfigIstio
 // Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
 func (o GetClusterAddonsConfigOutput) KalmConfigs() GetClusterAddonsConfigKalmConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigKalmConfig { return v.KalmConfigs }).(GetClusterAddonsConfigKalmConfigArrayOutput)
+}
+
+// Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
+func (o GetClusterAddonsConfigOutput) LustreCsiDriverConfigs() GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigLustreCsiDriverConfig {
+		return v.LustreCsiDriverConfigs
+	}).(GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput)
 }
 
 // Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
@@ -48600,6 +49078,116 @@ func (o GetClusterAddonsConfigKalmConfigArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigKalmConfig {
 		return vs[0].([]GetClusterAddonsConfigKalmConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigKalmConfigOutput)
+}
+
+type GetClusterAddonsConfigLustreCsiDriverConfig struct {
+	// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+	// 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+	EnableLegacyLustrePort bool `pulumi:"enableLegacyLustrePort"`
+	// Whether the Lustre CSI driver is enabled for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigLustreCsiDriverConfigInput is an input type that accepts GetClusterAddonsConfigLustreCsiDriverConfigArgs and GetClusterAddonsConfigLustreCsiDriverConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigLustreCsiDriverConfigInput` via:
+//
+//	GetClusterAddonsConfigLustreCsiDriverConfigArgs{...}
+type GetClusterAddonsConfigLustreCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigLustreCsiDriverConfigOutput() GetClusterAddonsConfigLustreCsiDriverConfigOutput
+	ToGetClusterAddonsConfigLustreCsiDriverConfigOutputWithContext(context.Context) GetClusterAddonsConfigLustreCsiDriverConfigOutput
+}
+
+type GetClusterAddonsConfigLustreCsiDriverConfigArgs struct {
+	// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+	// 										This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+	EnableLegacyLustrePort pulumi.BoolInput `pulumi:"enableLegacyLustrePort"`
+	// Whether the Lustre CSI driver is enabled for this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigLustreCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigLustreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigLustreCsiDriverConfigArgs) ToGetClusterAddonsConfigLustreCsiDriverConfigOutput() GetClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return i.ToGetClusterAddonsConfigLustreCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigLustreCsiDriverConfigArgs) ToGetClusterAddonsConfigLustreCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigLustreCsiDriverConfigOutput)
+}
+
+// GetClusterAddonsConfigLustreCsiDriverConfigArrayInput is an input type that accepts GetClusterAddonsConfigLustreCsiDriverConfigArray and GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigLustreCsiDriverConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigLustreCsiDriverConfigArray{ GetClusterAddonsConfigLustreCsiDriverConfigArgs{...} }
+type GetClusterAddonsConfigLustreCsiDriverConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigLustreCsiDriverConfigArrayOutput() GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput
+	ToGetClusterAddonsConfigLustreCsiDriverConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput
+}
+
+type GetClusterAddonsConfigLustreCsiDriverConfigArray []GetClusterAddonsConfigLustreCsiDriverConfigInput
+
+func (GetClusterAddonsConfigLustreCsiDriverConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigLustreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigLustreCsiDriverConfigArray) ToGetClusterAddonsConfigLustreCsiDriverConfigArrayOutput() GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigLustreCsiDriverConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigLustreCsiDriverConfigArray) ToGetClusterAddonsConfigLustreCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigLustreCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigLustreCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigLustreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigLustreCsiDriverConfigOutput) ToGetClusterAddonsConfigLustreCsiDriverConfigOutput() GetClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigLustreCsiDriverConfigOutput) ToGetClusterAddonsConfigLustreCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return o
+}
+
+// If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
+//
+//	This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+func (o GetClusterAddonsConfigLustreCsiDriverConfigOutput) EnableLegacyLustrePort() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigLustreCsiDriverConfig) bool { return v.EnableLegacyLustrePort }).(pulumi.BoolOutput)
+}
+
+// Whether the Lustre CSI driver is enabled for this cluster.
+func (o GetClusterAddonsConfigLustreCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigLustreCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigLustreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigLustreCsiDriverConfigArrayOutput() GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigLustreCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigLustreCsiDriverConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigLustreCsiDriverConfig {
+		return vs[0].([]GetClusterAddonsConfigLustreCsiDriverConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigLustreCsiDriverConfigOutput)
 }
 
 type GetClusterAddonsConfigNetworkPolicyConfig struct {
@@ -52215,6 +52803,8 @@ func (o GetClusterIdentityServiceConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClusterIpAllocationPolicy struct {
+	// AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
+	AdditionalIpRangesConfigs []GetClusterIpAllocationPolicyAdditionalIpRangesConfig `pulumi:"additionalIpRangesConfigs"`
 	// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 	AdditionalPodRangesConfigs []GetClusterIpAllocationPolicyAdditionalPodRangesConfig `pulumi:"additionalPodRangesConfigs"`
 	// The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
@@ -52243,6 +52833,8 @@ type GetClusterIpAllocationPolicyInput interface {
 }
 
 type GetClusterIpAllocationPolicyArgs struct {
+	// AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
+	AdditionalIpRangesConfigs GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput `pulumi:"additionalIpRangesConfigs"`
 	// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 	AdditionalPodRangesConfigs GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayInput `pulumi:"additionalPodRangesConfigs"`
 	// The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
@@ -52310,6 +52902,13 @@ func (o GetClusterIpAllocationPolicyOutput) ToGetClusterIpAllocationPolicyOutput
 	return o
 }
 
+// AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
+func (o GetClusterIpAllocationPolicyOutput) AdditionalIpRangesConfigs() GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) []GetClusterIpAllocationPolicyAdditionalIpRangesConfig {
+		return v.AdditionalIpRangesConfigs
+	}).(GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput)
+}
+
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 func (o GetClusterIpAllocationPolicyOutput) AdditionalPodRangesConfigs() GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterIpAllocationPolicy) []GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
@@ -52367,6 +52966,112 @@ func (o GetClusterIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) GetClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIpAllocationPolicy {
 		return vs[0].([]GetClusterIpAllocationPolicy)[vs[1].(int)]
 	}).(GetClusterIpAllocationPolicyOutput)
+}
+
+type GetClusterIpAllocationPolicyAdditionalIpRangesConfig struct {
+	// List of secondary ranges names within this subnetwork that can be used for pod IPs.
+	PodIpv4RangeNames []string `pulumi:"podIpv4RangeNames"`
+	// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// GetClusterIpAllocationPolicyAdditionalIpRangesConfigInput is an input type that accepts GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs and GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput values.
+// You can construct a concrete instance of `GetClusterIpAllocationPolicyAdditionalIpRangesConfigInput` via:
+//
+//	GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs{...}
+type GetClusterIpAllocationPolicyAdditionalIpRangesConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput() GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput
+	ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigOutputWithContext(context.Context) GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput
+}
+
+type GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs struct {
+	// List of secondary ranges names within this subnetwork that can be used for pod IPs.
+	PodIpv4RangeNames pulumi.StringArrayInput `pulumi:"podIpv4RangeNames"`
+	// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalIpRangesConfig)(nil)).Elem()
+}
+
+func (i GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs) ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput() GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return i.ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs) ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput)
+}
+
+// GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput is an input type that accepts GetClusterIpAllocationPolicyAdditionalIpRangesConfigArray and GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput` via:
+//
+//	GetClusterIpAllocationPolicyAdditionalIpRangesConfigArray{ GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs{...} }
+type GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput() GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput
+	ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutputWithContext(context.Context) GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput
+}
+
+type GetClusterIpAllocationPolicyAdditionalIpRangesConfigArray []GetClusterIpAllocationPolicyAdditionalIpRangesConfigInput
+
+func (GetClusterIpAllocationPolicyAdditionalIpRangesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIpAllocationPolicyAdditionalIpRangesConfig)(nil)).Elem()
+}
+
+func (i GetClusterIpAllocationPolicyAdditionalIpRangesConfigArray) ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput() GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return i.ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterIpAllocationPolicyAdditionalIpRangesConfigArray) ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput)
+}
+
+type GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalIpRangesConfig)(nil)).Elem()
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput() GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return o
+}
+
+// List of secondary ranges names within this subnetwork that can be used for pod IPs.
+func (o GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) PodIpv4RangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterIpAllocationPolicyAdditionalIpRangesConfig) []string { return v.PodIpv4RangeNames }).(pulumi.StringArrayOutput)
+}
+
+// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
+func (o GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIpAllocationPolicyAdditionalIpRangesConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIpAllocationPolicyAdditionalIpRangesConfig)(nil)).Elem()
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput) ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput() GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput) ToGetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput) Index(i pulumi.IntInput) GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIpAllocationPolicyAdditionalIpRangesConfig {
+		return vs[0].([]GetClusterIpAllocationPolicyAdditionalIpRangesConfig)[vs[1].(int)]
+	}).(GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput)
 }
 
 type GetClusterIpAllocationPolicyAdditionalPodRangesConfig struct {
@@ -59677,6 +60382,8 @@ type GetClusterNodePoolNetworkConfig struct {
 	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 	PodRange string `pulumi:"podRange"`
+	// The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+	Subnetwork string `pulumi:"subnetwork"`
 }
 
 // GetClusterNodePoolNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigArgs and GetClusterNodePoolNetworkConfigOutput values.
@@ -59707,6 +60414,8 @@ type GetClusterNodePoolNetworkConfigArgs struct {
 	PodIpv4CidrBlock pulumi.StringInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 	PodRange pulumi.StringInput `pulumi:"podRange"`
+	// The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 }
 
 func (GetClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -59806,6 +60515,11 @@ func (o GetClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringO
 // The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
 func (o GetClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.PodRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+func (o GetClusterNodePoolNetworkConfigOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
 type GetClusterNodePoolNetworkConfigArrayOutput struct{ *pulumi.OutputState }
@@ -65467,6 +66181,112 @@ func (o GetClusterProtectConfigWorkloadConfigArrayOutput) Index(i pulumi.IntInpu
 	}).(GetClusterProtectConfigWorkloadConfigOutput)
 }
 
+type GetClusterRbacBindingConfig struct {
+	// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+	EnableInsecureBindingSystemAuthenticated bool `pulumi:"enableInsecureBindingSystemAuthenticated"`
+	// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+	EnableInsecureBindingSystemUnauthenticated bool `pulumi:"enableInsecureBindingSystemUnauthenticated"`
+}
+
+// GetClusterRbacBindingConfigInput is an input type that accepts GetClusterRbacBindingConfigArgs and GetClusterRbacBindingConfigOutput values.
+// You can construct a concrete instance of `GetClusterRbacBindingConfigInput` via:
+//
+//	GetClusterRbacBindingConfigArgs{...}
+type GetClusterRbacBindingConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterRbacBindingConfigOutput() GetClusterRbacBindingConfigOutput
+	ToGetClusterRbacBindingConfigOutputWithContext(context.Context) GetClusterRbacBindingConfigOutput
+}
+
+type GetClusterRbacBindingConfigArgs struct {
+	// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+	EnableInsecureBindingSystemAuthenticated pulumi.BoolInput `pulumi:"enableInsecureBindingSystemAuthenticated"`
+	// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+	EnableInsecureBindingSystemUnauthenticated pulumi.BoolInput `pulumi:"enableInsecureBindingSystemUnauthenticated"`
+}
+
+func (GetClusterRbacBindingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRbacBindingConfig)(nil)).Elem()
+}
+
+func (i GetClusterRbacBindingConfigArgs) ToGetClusterRbacBindingConfigOutput() GetClusterRbacBindingConfigOutput {
+	return i.ToGetClusterRbacBindingConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterRbacBindingConfigArgs) ToGetClusterRbacBindingConfigOutputWithContext(ctx context.Context) GetClusterRbacBindingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRbacBindingConfigOutput)
+}
+
+// GetClusterRbacBindingConfigArrayInput is an input type that accepts GetClusterRbacBindingConfigArray and GetClusterRbacBindingConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterRbacBindingConfigArrayInput` via:
+//
+//	GetClusterRbacBindingConfigArray{ GetClusterRbacBindingConfigArgs{...} }
+type GetClusterRbacBindingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterRbacBindingConfigArrayOutput() GetClusterRbacBindingConfigArrayOutput
+	ToGetClusterRbacBindingConfigArrayOutputWithContext(context.Context) GetClusterRbacBindingConfigArrayOutput
+}
+
+type GetClusterRbacBindingConfigArray []GetClusterRbacBindingConfigInput
+
+func (GetClusterRbacBindingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterRbacBindingConfig)(nil)).Elem()
+}
+
+func (i GetClusterRbacBindingConfigArray) ToGetClusterRbacBindingConfigArrayOutput() GetClusterRbacBindingConfigArrayOutput {
+	return i.ToGetClusterRbacBindingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterRbacBindingConfigArray) ToGetClusterRbacBindingConfigArrayOutputWithContext(ctx context.Context) GetClusterRbacBindingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRbacBindingConfigArrayOutput)
+}
+
+type GetClusterRbacBindingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRbacBindingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRbacBindingConfig)(nil)).Elem()
+}
+
+func (o GetClusterRbacBindingConfigOutput) ToGetClusterRbacBindingConfigOutput() GetClusterRbacBindingConfigOutput {
+	return o
+}
+
+func (o GetClusterRbacBindingConfigOutput) ToGetClusterRbacBindingConfigOutputWithContext(ctx context.Context) GetClusterRbacBindingConfigOutput {
+	return o
+}
+
+// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+func (o GetClusterRbacBindingConfigOutput) EnableInsecureBindingSystemAuthenticated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterRbacBindingConfig) bool { return v.EnableInsecureBindingSystemAuthenticated }).(pulumi.BoolOutput)
+}
+
+// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
+func (o GetClusterRbacBindingConfigOutput) EnableInsecureBindingSystemUnauthenticated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterRbacBindingConfig) bool { return v.EnableInsecureBindingSystemUnauthenticated }).(pulumi.BoolOutput)
+}
+
+type GetClusterRbacBindingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRbacBindingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterRbacBindingConfig)(nil)).Elem()
+}
+
+func (o GetClusterRbacBindingConfigArrayOutput) ToGetClusterRbacBindingConfigArrayOutput() GetClusterRbacBindingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterRbacBindingConfigArrayOutput) ToGetClusterRbacBindingConfigArrayOutputWithContext(ctx context.Context) GetClusterRbacBindingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterRbacBindingConfigArrayOutput) Index(i pulumi.IntInput) GetClusterRbacBindingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterRbacBindingConfig {
+		return vs[0].([]GetClusterRbacBindingConfig)[vs[1].(int)]
+	}).(GetClusterRbacBindingConfigOutput)
+}
+
 type GetClusterReleaseChannel struct {
 	// The selected release channel. Accepted values are:
 	// * UNSPECIFIED: Not set.
@@ -66939,6 +67759,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigIstioConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigIstioConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigKalmConfigInput)(nil)).Elem(), ClusterAddonsConfigKalmConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigKalmConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigKalmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigLustreCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigLustreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigLustreCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigLustreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigParallelstoreCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigParallelstoreCsiDriverConfigArgs{})
@@ -67007,6 +67829,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigPtrInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPtrInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalIpRangesConfigInput)(nil)).Elem(), ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput)(nil)).Elem(), ClusterIpAllocationPolicyAdditionalIpRangesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalPodRangesConfigInput)(nil)).Elem(), ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrInput)(nil)).Elem(), ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPodCidrOverprovisionConfigInput)(nil)).Elem(), ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{})
@@ -67228,6 +68052,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterProtectConfigPtrInput)(nil)).Elem(), ClusterProtectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterProtectConfigWorkloadConfigInput)(nil)).Elem(), ClusterProtectConfigWorkloadConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterProtectConfigWorkloadConfigPtrInput)(nil)).Elem(), ClusterProtectConfigWorkloadConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRbacBindingConfigInput)(nil)).Elem(), ClusterRbacBindingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRbacBindingConfigPtrInput)(nil)).Elem(), ClusterRbacBindingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterReleaseChannelInput)(nil)).Elem(), ClusterReleaseChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterReleaseChannelPtrInput)(nil)).Elem(), ClusterReleaseChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigInput)(nil)).Elem(), ClusterResourceUsageExportConfigArgs{})
@@ -67359,6 +68185,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigIstioConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigIstioConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigKalmConfigInput)(nil)).Elem(), GetClusterAddonsConfigKalmConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigKalmConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigKalmConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigLustreCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigLustreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigLustreCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigLustreCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigParallelstoreCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs{})
@@ -67427,6 +68255,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigArrayInput)(nil)).Elem(), GetClusterIdentityServiceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyInput)(nil)).Elem(), GetClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalIpRangesConfigInput)(nil)).Elem(), GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyAdditionalIpRangesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalPodRangesConfigInput)(nil)).Elem(), GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyAdditionalPodRangesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyPodCidrOverprovisionConfigInput)(nil)).Elem(), GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{})
@@ -67651,6 +68481,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterProtectConfigArrayInput)(nil)).Elem(), GetClusterProtectConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterProtectConfigWorkloadConfigInput)(nil)).Elem(), GetClusterProtectConfigWorkloadConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterProtectConfigWorkloadConfigArrayInput)(nil)).Elem(), GetClusterProtectConfigWorkloadConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRbacBindingConfigInput)(nil)).Elem(), GetClusterRbacBindingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRbacBindingConfigArrayInput)(nil)).Elem(), GetClusterRbacBindingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterReleaseChannelInput)(nil)).Elem(), GetClusterReleaseChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterReleaseChannelArrayInput)(nil)).Elem(), GetClusterReleaseChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigInput)(nil)).Elem(), GetClusterResourceUsageExportConfigArgs{})
@@ -67837,6 +68669,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigIstioConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigLustreCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigLustreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigParallelstoreCsiDriverConfigOutput{})
@@ -67905,6 +68739,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterIdentityServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIpAllocationPolicyAdditionalIpRangesConfigOutput{})
+	pulumi.RegisterOutputType(ClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput{})
@@ -68126,6 +68962,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterProtectConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterProtectConfigWorkloadConfigOutput{})
 	pulumi.RegisterOutputType(ClusterProtectConfigWorkloadConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRbacBindingConfigOutput{})
+	pulumi.RegisterOutputType(ClusterRbacBindingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterReleaseChannelOutput{})
 	pulumi.RegisterOutputType(ClusterReleaseChannelPtrOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigOutput{})
@@ -68257,6 +69095,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigIstioConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigLustreCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput{})
@@ -68325,6 +69165,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyAdditionalIpRangesConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyAdditionalIpRangesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput{})
@@ -68549,6 +69391,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterProtectConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterProtectConfigWorkloadConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterProtectConfigWorkloadConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterRbacBindingConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterRbacBindingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterReleaseChannelOutput{})
 	pulumi.RegisterOutputType(GetClusterReleaseChannelArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigOutput{})

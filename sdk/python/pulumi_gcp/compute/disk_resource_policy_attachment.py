@@ -182,7 +182,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         Adds existing resource policies to a disk. You can only add one policy
         which will be applied to this disk for scheduling snapshot creation.
 
-        > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to the `compute.RegionDiskResourcePolicyAttachment` resource.
+        > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to `compute.RegionDiskResourcePolicyAttachment`
 
         ## Example Usage
 
@@ -266,7 +266,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         Adds existing resource policies to a disk. You can only add one policy
         which will be applied to this disk for scheduling snapshot creation.
 
-        > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to the `compute.RegionDiskResourcePolicyAttachment` resource.
+        > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to `compute.RegionDiskResourcePolicyAttachment`
 
         ## Example Usage
 

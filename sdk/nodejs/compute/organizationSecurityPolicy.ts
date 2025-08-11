@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Organization security policies are used to control incoming/outgoing traffic.
- *
- * To get more information about OrganizationSecurityPolicy, see:
- *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
- * * How-to Guides
- *     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
- *
  * ## Example Usage
  *
  * ### Organization Security Policy Basic
@@ -22,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     displayName: "tf-test",
+ *     displayName: "tf-test_21197",
  *     parent: "organizations/123456789",
  * });
  * ```

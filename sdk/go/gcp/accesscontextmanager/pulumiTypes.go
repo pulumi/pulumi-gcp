@@ -4729,7 +4729,7 @@ func (o GcpUserAccessBindingScopedAccessSettingScopePtrOutput) ClientScope() Gcp
 }
 
 type GcpUserAccessBindingScopedAccessSettingScopeClientScope struct {
-	// Optional. The application that is subject to this binding's scope.
+	// Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
 	// Structure is documented below.
 	RestrictedClientApplication *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication `pulumi:"restrictedClientApplication"`
 }
@@ -4746,7 +4746,7 @@ type GcpUserAccessBindingScopedAccessSettingScopeClientScopeInput interface {
 }
 
 type GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs struct {
-	// Optional. The application that is subject to this binding's scope.
+	// Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
 	// Structure is documented below.
 	RestrictedClientApplication GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput `pulumi:"restrictedClientApplication"`
 }
@@ -4828,7 +4828,7 @@ func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) ToGcpUser
 	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput)
 }
 
-// Optional. The application that is subject to this binding's scope.
+// Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
 // Structure is documented below.
 func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) RestrictedClientApplication() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
 	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingScopeClientScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
@@ -4860,7 +4860,7 @@ func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) Elem()
 	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput)
 }
 
-// Optional. The application that is subject to this binding's scope.
+// Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
 // Structure is documented below.
 func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) RestrictedClientApplication() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
 	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
@@ -4874,6 +4874,8 @@ func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) Restri
 type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication struct {
 	// The OAuth client ID of the application.
 	ClientId *string `pulumi:"clientId"`
+	// The name of the application. Example: "Cloud Console"
+	Name *string `pulumi:"name"`
 }
 
 // GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs and GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput values.
@@ -4890,6 +4892,8 @@ type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientAppl
 type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs struct {
 	// The OAuth client ID of the application.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The name of the application. Example: "Cloud Console"
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs) ElementType() reflect.Type {
@@ -4976,6 +4980,13 @@ func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientA
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the application. Example: "Cloud Console"
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput) ElementType() reflect.Type {
@@ -5007,6 +5018,16 @@ func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientA
 			return nil
 		}
 		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the application. Example: "Cloud Console"
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 

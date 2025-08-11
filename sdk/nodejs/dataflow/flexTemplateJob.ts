@@ -5,75 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bigDataJob = new gcp.dataflow.FlexTemplateJob("big_data_job", {
- *     name: "dataflow-flextemplates-job",
- *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
- *     parameters: {
- *         inputSubscription: "messages",
- *     },
- * });
- * ```
- *
- * ## Note on "destroy" / "apply"
- *
- * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
- * getting new data from (e.g.) a GCS bucket, and outputting data continuously.
- * Some jobs process a set amount of data then terminate. All jobs can fail while
- * running due to programming errors or other issues. In this way, Dataflow jobs
- * are different from most other provider / Google resources.
- *
- * The Dataflow resource is considered 'existing' while it is in a nonterminal
- * state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE',
- * 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for
- * jobs which run continuously, but may surprise users who use this resource for
- * other kinds of Dataflow jobs.
- *
- * A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If
- * "cancelled", the job terminates - any data written remains where it is, but no
- * new data will be processed.  If "drained", no new data will enter the pipeline,
- * but any data currently in the pipeline will finish being processed.  The default
- * is "cancelled", but if a user sets `onDelete` to `"drain"` in the
- * configuration, you may experience a long wait for your `pulumi destroy` to
- * complete.
- *
- * You can potentially short-circuit the wait by setting `skipWaitOnJobTermination`
- * to `true`, but beware that unless you take active steps to ensure that the job
- * `name` parameter changes between instances, the name will conflict and the launch
- * of the new job will fail. One way to do this is with a
- * randomId
- * resource, for example:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- *
- * const config = new pulumi.Config();
- * const bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId") || "projects/myproject/subscriptions/messages";
- * const bigDataJobNameSuffix = new random.RandomId("big_data_job_name_suffix", {
- *     byteLength: 4,
- *     keepers: {
- *         region: region,
- *         subscription_id: bigDataJobSubscriptionId,
- *     },
- * });
- * const bigDataJob = new gcp.dataflow.FlexTemplateJob("big_data_job", {
- *     name: pulumi.interpolate`dataflow-flextemplates-job-${bigDataJobNameSuffix.dec}`,
- *     region: region,
- *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
- *     skipWaitOnJobTermination: true,
- *     parameters: {
- *         inputSubscription: bigDataJobSubscriptionId,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * This resource does not support import.
@@ -125,6 +56,9 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * - - -
      */
     public readonly containerSpecGcsPath!: pulumi.Output<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. Indicates if the job should use the streaming engine feature.
@@ -145,11 +79,8 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -176,10 +107,6 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * Immutable. The initial number of Google Compute Engine instances for the job.
      */
     public readonly numWorkers!: pulumi.Output<number>;
-    /**
-     * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     */
     public readonly onDelete!: pulumi.Output<string | undefined>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
@@ -343,6 +270,9 @@ export interface FlexTemplateJobState {
      * - - -
      */
     containerSpecGcsPath?: pulumi.Input<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. Indicates if the job should use the streaming engine feature.
@@ -363,11 +293,8 @@ export interface FlexTemplateJobState {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -394,10 +321,6 @@ export interface FlexTemplateJobState {
      * Immutable. The initial number of Google Compute Engine instances for the job.
      */
     numWorkers?: pulumi.Input<number>;
-    /**
-     * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     */
     onDelete?: pulumi.Input<string>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
@@ -491,11 +414,8 @@ export interface FlexTemplateJobArgs {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels
-     * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
-     * labels will be ignored to prevent diffs on re-apply.
+     * page.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -522,10 +442,6 @@ export interface FlexTemplateJobArgs {
      * Immutable. The initial number of Google Compute Engine instances for the job.
      */
     numWorkers?: pulumi.Input<number>;
-    /**
-     * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     */
     onDelete?: pulumi.Input<string>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are

@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * An association for the OrganizationSecurityPolicy.
- *
- * To get more information about OrganizationSecurityPolicyAssociation, see:
- *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
- * * How-to Guides
- *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
- *
  * ## Example Usage
  *
  * ### Organization Security Policy Association Basic
@@ -22,12 +14,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const securityPolicyTarget = new gcp.organizations.Folder("security_policy_target", {
- *     displayName: "tf-test-secpol",
+ *     displayName: "tf-test-secpol-_52865",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     displayName: "tf-test",
+ *     displayName: "tf-test_85840",
  *     parent: securityPolicyTarget.name,
  * });
  * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policy", {
@@ -55,7 +47,7 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * const policyOrganizationSecurityPolicyAssociation = new gcp.compute.OrganizationSecurityPolicyAssociation("policy", {
- *     name: "tf-test",
+ *     name: "tf-test_60302",
  *     attachmentId: policy.parent,
  *     policyId: policy.id,
  * });

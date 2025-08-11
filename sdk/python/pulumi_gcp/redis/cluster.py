@@ -22,6 +22,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  shard_count: pulumi.Input[_builtins.int],
+                 allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
@@ -43,6 +44,10 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the Redis cluster.
+        :param pulumi.Input[_builtins.bool] allow_fewer_zones_deployment: Allows customers to specify if they are okay with deploying a multi-zone
+               cluster in less than 3 zones. Once set, if there is a zonal outage during
+               the cluster creation, the cluster will only be deployed in 2 zones, and
+               stay within the 2 zones for its lifecycle.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -86,6 +91,8 @@ class ClusterArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "shard_count", shard_count)
+        if allow_fewer_zones_deployment is not None:
+            pulumi.set(__self__, "allow_fewer_zones_deployment", allow_fewer_zones_deployment)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
@@ -134,6 +141,21 @@ class ClusterArgs:
     @shard_count.setter
     def shard_count(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "shard_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowFewerZonesDeployment")
+    def allow_fewer_zones_deployment(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allows customers to specify if they are okay with deploying a multi-zone
+        cluster in less than 3 zones. Once set, if there is a zonal outage during
+        the cluster creation, the cluster will only be deployed in 2 zones, and
+        stay within the 2 zones for its lifecycle.
+        """
+        return pulumi.get(self, "allow_fewer_zones_deployment")
+
+    @allow_fewer_zones_deployment.setter
+    def allow_fewer_zones_deployment(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_fewer_zones_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -378,6 +400,7 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']] = None,
                  backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
@@ -411,6 +434,10 @@ class _ClusterState:
                  zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[_builtins.bool] allow_fewer_zones_deployment: Allows customers to specify if they are okay with deploying a multi-zone
+               cluster in less than 3 zones. Once set, if there is a zonal outage during
+               the cluster creation, the cluster will only be deployed in 2 zones, and
+               stay within the 2 zones for its lifecycle.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -477,6 +504,8 @@ class _ClusterState:
         :param pulumi.Input['ClusterZoneDistributionConfigArgs'] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
                Structure is documented below.
         """
+        if allow_fewer_zones_deployment is not None:
+            pulumi.set(__self__, "allow_fewer_zones_deployment", allow_fewer_zones_deployment)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
@@ -539,6 +568,21 @@ class _ClusterState:
             pulumi.set(__self__, "uid", uid)
         if zone_distribution_config is not None:
             pulumi.set(__self__, "zone_distribution_config", zone_distribution_config)
+
+    @_builtins.property
+    @pulumi.getter(name="allowFewerZonesDeployment")
+    def allow_fewer_zones_deployment(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allows customers to specify if they are okay with deploying a multi-zone
+        cluster in less than 3 zones. Once set, if there is a zonal outage during
+        the cluster creation, the cluster will only be deployed in 2 zones, and
+        stay within the 2 zones for its lifecycle.
+        """
+        return pulumi.get(self, "allow_fewer_zones_deployment")
+
+    @allow_fewer_zones_deployment.setter
+    def allow_fewer_zones_deployment(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_fewer_zones_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -953,6 +997,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
@@ -1297,6 +1342,7 @@ class Cluster(pulumi.CustomResource):
                 "maxmemory-policy": "volatile-ttl",
             },
             deletion_protection_enabled=True,
+            allow_fewer_zones_deployment=True,
             zone_distribution_config={
                 "mode": "MULTI_ZONE",
             },
@@ -1387,6 +1433,10 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_fewer_zones_deployment: Allows customers to specify if they are okay with deploying a multi-zone
+               cluster in less than 3 zones. Once set, if there is a zonal outage during
+               the cluster creation, the cluster will only be deployed in 2 zones, and
+               stay within the 2 zones for its lifecycle.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1760,6 +1810,7 @@ class Cluster(pulumi.CustomResource):
                 "maxmemory-policy": "volatile-ttl",
             },
             deletion_protection_enabled=True,
+            allow_fewer_zones_deployment=True,
             zone_distribution_config={
                 "mode": "MULTI_ZONE",
             },
@@ -1863,6 +1914,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
@@ -1891,6 +1943,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["allow_fewer_zones_deployment"] = allow_fewer_zones_deployment
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["automated_backup_config"] = automated_backup_config
             __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
@@ -1934,6 +1987,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
             authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
             automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
             backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1972,6 +2026,10 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_fewer_zones_deployment: Allows customers to specify if they are okay with deploying a multi-zone
+               cluster in less than 3 zones. Once set, if there is a zonal outage during
+               the cluster creation, the cluster will only be deployed in 2 zones, and
+               stay within the 2 zones for its lifecycle.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -2042,6 +2100,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["allow_fewer_zones_deployment"] = allow_fewer_zones_deployment
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["automated_backup_config"] = automated_backup_config
         __props__.__dict__["backup_collection"] = backup_collection
@@ -2074,6 +2133,17 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         __props__.__dict__["zone_distribution_config"] = zone_distribution_config
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="allowFewerZonesDeployment")
+    def allow_fewer_zones_deployment(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Allows customers to specify if they are okay with deploying a multi-zone
+        cluster in less than 3 zones. Once set, if there is a zonal outage during
+        the cluster creation, the cluster will only be deployed in 2 zones, and
+        stay within the 2 zones for its lifecycle.
+        """
+        return pulumi.get(self, "allow_fewer_zones_deployment")
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")

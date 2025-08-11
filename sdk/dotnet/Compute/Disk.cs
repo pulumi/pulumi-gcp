@@ -399,19 +399,6 @@ namespace Pulumi.Gcp.Compute
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
-        /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
-        /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
-        /// the value must not be less than the size of the image
-        /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
-        /// if upsizing is detected but recreates the disk if downsizing is requested.
-        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        /// and recreating.
-        /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
@@ -803,19 +790,6 @@ namespace Pulumi.Gcp.Compute
             set => _resourcePolicies = value;
         }
 
-        /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
-        /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
-        /// the value must not be less than the size of the image
-        /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
-        /// if upsizing is detected but recreates the disk if downsizing is requested.
-        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        /// and recreating.
-        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
@@ -1188,19 +1162,6 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this
-        /// field when creating a persistent disk using the `image` or
-        /// `snapshot` parameter, or specify it alone to create an empty
-        /// persistent disk.
-        /// If you specify this field along with `image` or `snapshot`,
-        /// the value must not be less than the size of the image
-        /// or the size of the snapshot.
-        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
-        /// if upsizing is detected but recreates the disk if downsizing is requested.
-        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        /// and recreating.
-        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 

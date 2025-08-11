@@ -587,7 +587,7 @@ class Reservation(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.InstanceTemplate("foobar",
-            name="tf-test-instance-template",
+            name="instance-template",
             machine_type="n2-standard-2",
             can_ip_forward=False,
             tags=[
@@ -636,7 +636,7 @@ class Reservation(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.InstanceTemplate("foobar",
-            name="tf-test-instance-template",
+            name="instance-template",
             machine_type="g2-standard-4",
             can_ip_forward=False,
             tags=[
@@ -807,7 +807,7 @@ class Reservation(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.InstanceTemplate("foobar",
-            name="tf-test-instance-template",
+            name="instance-template",
             machine_type="n2-standard-2",
             can_ip_forward=False,
             tags=[
@@ -856,7 +856,7 @@ class Reservation(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         foobar = gcp.compute.InstanceTemplate("foobar",
-            name="tf-test-instance-template",
+            name="instance-template",
             machine_type="g2-standard-4",
             can_ip_forward=False,
             tags=[

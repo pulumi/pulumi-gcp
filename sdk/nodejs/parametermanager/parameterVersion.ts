@@ -62,6 +62,45 @@ import * as utilities from "../utilities";
  *     parameterData: "app-parameter-version-data",
  * });
  * ```
+ * ### Parameter Version With Json Format With File
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const parameter_basic = new gcp.parametermanager.Parameter("parameter-basic", {
+ *     parameterId: "parameter",
+ *     format: "JSON",
+ * });
+ * const parameter_version_with_json_format_with_file = new gcp.parametermanager.ParameterVersion("parameter-version-with-json-format-with-file", {
+ *     parameter: parameter_basic.id,
+ *     parameterVersionId: "parameter_version",
+ *     parameterData: std.file({
+ *         input: "parameter-json-data.json",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ * ### Parameter Version With Yaml Format With File
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const parameter_basic = new gcp.parametermanager.Parameter("parameter-basic", {
+ *     parameterId: "parameter",
+ *     format: "YAML",
+ * });
+ * const parameter_version_with_yaml_format_with_file = new gcp.parametermanager.ParameterVersion("parameter-version-with-yaml-format-with-file", {
+ *     parameter: parameter_basic.id,
+ *     parameterVersionId: "parameter_version",
+ *     parameterData: std.file({
+ *         input: "parameter-yaml-data.yaml",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ *
  * ## Import
  *
  * ParameterVersion can be imported using any of these accepted formats:

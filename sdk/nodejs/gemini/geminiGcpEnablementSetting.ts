@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *         my_key: "my_value",
  *     },
  *     enableCustomerDataSharing: true,
- *     disableWebGrounding: true,
+ *     webGroundingType: "WEB_GROUNDING_FOR_ENTERPRISE",
  * });
  * ```
  *
@@ -83,7 +83,12 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * Whether web grounding should be disabled.
+     *
+     * > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+     *
+     * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      */
     public readonly disableWebGrounding!: pulumi.Output<boolean | undefined>;
     /**
@@ -127,6 +132,13 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
      * Update time stamp.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Web grounding type.
+     * Possible values:
+     * GROUNDING_WITH_GOOGLE_SEARCH
+     * WEB_GROUNDING_FOR_ENTERPRISE
+     */
+    public readonly webGroundingType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a GeminiGcpEnablementSetting resource with the given unique name, arguments, and options.
@@ -152,6 +164,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["webGroundingType"] = state ? state.webGroundingType : undefined;
         } else {
             const args = argsOrState as GeminiGcpEnablementSettingArgs | undefined;
             if ((!args || args.geminiGcpEnablementSettingId === undefined) && !opts.urn) {
@@ -166,6 +179,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["webGroundingType"] = args ? args.webGroundingType : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -188,7 +202,12 @@ export interface GeminiGcpEnablementSettingState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Whether web grounding should be disabled.
+     *
+     * > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+     *
+     * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      */
     disableWebGrounding?: pulumi.Input<boolean>;
     /**
@@ -232,6 +251,13 @@ export interface GeminiGcpEnablementSettingState {
      * Update time stamp.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Web grounding type.
+     * Possible values:
+     * GROUNDING_WITH_GOOGLE_SEARCH
+     * WEB_GROUNDING_FOR_ENTERPRISE
+     */
+    webGroundingType?: pulumi.Input<string>;
 }
 
 /**
@@ -239,7 +265,12 @@ export interface GeminiGcpEnablementSettingState {
  */
 export interface GeminiGcpEnablementSettingArgs {
     /**
+     * (Optional, Deprecated)
      * Whether web grounding should be disabled.
+     *
+     * > **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
+     *
+     * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      */
     disableWebGrounding?: pulumi.Input<boolean>;
     /**
@@ -265,4 +296,11 @@ export interface GeminiGcpEnablementSettingArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Web grounding type.
+     * Possible values:
+     * GROUNDING_WITH_GOOGLE_SEARCH
+     * WEB_GROUNDING_FOR_ENTERPRISE
+     */
+    webGroundingType?: pulumi.Input<string>;
 }

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSpark = new gcp.dataproc.Batch("example_batch_spark", {
- *     batchId: "tf-test-batch_22375",
+ *     batchId: "tf-test-batch_79169",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",
@@ -128,6 +128,9 @@ import * as utilities from "../utilities";
  *             networkUri: "default",
  *             serviceAccount: project.then(project => `${project.number}-compute@developer.gserviceaccount.com`),
  *             stagingBucket: bucket.name,
+ *             authenticationConfig: {
+ *                 userWorkloadAuthenticationType: "SERVICE_ACCOUNT",
+ *             },
  *         },
  *         peripheralsConfig: {
  *             metastoreService: ms.name,
@@ -152,7 +155,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSparsql = new gcp.dataproc.Batch("example_batch_sparsql", {
- *     batchId: "tf-test-batch_29439",
+ *     batchId: "tf-test-batch_56529",
  *     location: "us-central1",
  *     runtimeConfig: {
  *         properties: {
@@ -181,7 +184,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchPyspark = new gcp.dataproc.Batch("example_batch_pyspark", {
- *     batchId: "tf-test-batch_87786",
+ *     batchId: "tf-test-batch_75413",
  *     location: "us-central1",
  *     runtimeConfig: {
  *         properties: {
@@ -215,7 +218,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSparkr = new gcp.dataproc.Batch("example_batch_sparkr", {
- *     batchId: "tf-test-batch_2067",
+ *     batchId: "tf-test-batch_55138",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",
@@ -246,7 +249,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchAutotuning = new gcp.dataproc.Batch("example_batch_autotuning", {
- *     batchId: "tf-test-batch_40785",
+ *     batchId: "tf-test-batch_37559",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",

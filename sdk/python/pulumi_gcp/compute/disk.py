@@ -130,17 +130,6 @@ class DiskArgs:
                one at a time. Use
                `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
-        :param pulumi.Input[_builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
-               field when creating a persistent disk using the `image` or
-               `snapshot` parameter, or specify it alone to create an empty
-               persistent disk.
-               If you specify this field along with `image` or `snapshot`,
-               the value must not be less than the size of the image
-               or the size of the snapshot.
-               ~>**NOTE** If you change the size, the provider updates the disk size
-               if upsizing is detected but recreates the disk if downsizing is requested.
-               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-               and recreating.
         :param pulumi.Input[_builtins.str] snapshot: The source snapshot used to create this disk. You can provide this as
                a partial or full URL to the resource. If the snapshot is in another
                project than this disk, you must supply a full URL. For example, the
@@ -560,19 +549,6 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Size of the persistent disk, specified in GB. You can specify this
-        field when creating a persistent disk using the `image` or
-        `snapshot` parameter, or specify it alone to create an empty
-        persistent disk.
-        If you specify this field along with `image` or `snapshot`,
-        the value must not be less than the size of the image
-        or the size of the snapshot.
-        ~>**NOTE** If you change the size, the provider updates the disk size
-        if upsizing is detected but recreates the disk if downsizing is requested.
-        You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        and recreating.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -855,17 +831,6 @@ class _DiskState:
                `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[_builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
-               field when creating a persistent disk using the `image` or
-               `snapshot` parameter, or specify it alone to create an empty
-               persistent disk.
-               If you specify this field along with `image` or `snapshot`,
-               the value must not be less than the size of the image
-               or the size of the snapshot.
-               ~>**NOTE** If you change the size, the provider updates the disk size
-               if upsizing is detected but recreates the disk if downsizing is requested.
-               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-               and recreating.
         :param pulumi.Input[_builtins.str] snapshot: The source snapshot used to create this disk. You can provide this as
                a partial or full URL to the resource. If the snapshot is in another
                project than this disk, you must supply a full URL. For example, the
@@ -1430,19 +1395,6 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Size of the persistent disk, specified in GB. You can specify this
-        field when creating a persistent disk using the `image` or
-        `snapshot` parameter, or specify it alone to create an empty
-        persistent disk.
-        If you specify this field along with `image` or `snapshot`,
-        the value must not be less than the size of the image
-        or the size of the snapshot.
-        ~>**NOTE** If you change the size, the provider updates the disk size
-        if upsizing is detected but recreates the disk if downsizing is requested.
-        You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        and recreating.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -1901,17 +1853,6 @@ class Disk(pulumi.CustomResource):
                one at a time. Use
                `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
-        :param pulumi.Input[_builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
-               field when creating a persistent disk using the `image` or
-               `snapshot` parameter, or specify it alone to create an empty
-               persistent disk.
-               If you specify this field along with `image` or `snapshot`,
-               the value must not be less than the size of the image
-               or the size of the snapshot.
-               ~>**NOTE** If you change the size, the provider updates the disk size
-               if upsizing is detected but recreates the disk if downsizing is requested.
-               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-               and recreating.
         :param pulumi.Input[_builtins.str] snapshot: The source snapshot used to create this disk. You can provide this as
                a partial or full URL to the resource. If the snapshot is in another
                project than this disk, you must supply a full URL. For example, the
@@ -2327,17 +2268,6 @@ class Disk(pulumi.CustomResource):
                `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[_builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
-               field when creating a persistent disk using the `image` or
-               `snapshot` parameter, or specify it alone to create an empty
-               persistent disk.
-               If you specify this field along with `image` or `snapshot`,
-               the value must not be less than the size of the image
-               or the size of the snapshot.
-               ~>**NOTE** If you change the size, the provider updates the disk size
-               if upsizing is detected but recreates the disk if downsizing is requested.
-               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-               and recreating.
         :param pulumi.Input[_builtins.str] snapshot: The source snapshot used to create this disk. You can provide this as
                a partial or full URL to the resource. If the snapshot is in another
                project than this disk, you must supply a full URL. For example, the
@@ -2744,19 +2674,6 @@ class Disk(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
-        """
-        Size of the persistent disk, specified in GB. You can specify this
-        field when creating a persistent disk using the `image` or
-        `snapshot` parameter, or specify it alone to create an empty
-        persistent disk.
-        If you specify this field along with `image` or `snapshot`,
-        the value must not be less than the size of the image
-        or the size of the snapshot.
-        ~>**NOTE** If you change the size, the provider updates the disk size
-        if upsizing is detected but recreates the disk if downsizing is requested.
-        You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-        and recreating.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property

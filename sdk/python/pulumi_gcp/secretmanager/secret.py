@@ -29,6 +29,7 @@ class SecretArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
                  secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -70,6 +71,9 @@ class SecretArgs:
         :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ttl: The TTL for the Secret.
@@ -103,6 +107,8 @@ class SecretArgs:
             pulumi.set(__self__, "rotation", rotation)
         if secret_id is not None:
             pulumi.set(__self__, "secret_id", secret_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if ttl is not None:
@@ -235,6 +241,20 @@ class SecretArgs:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]]:
         """
         A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
@@ -311,6 +331,7 @@ class _SecretState:
                  replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
                  rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
                  secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -358,6 +379,9 @@ class _SecretState:
         :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ttl: The TTL for the Secret.
@@ -402,6 +426,8 @@ class _SecretState:
             pulumi.set(__self__, "rotation", rotation)
         if secret_id is not None:
             pulumi.set(__self__, "secret_id", secret_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if ttl is not None:
@@ -593,6 +619,20 @@ class _SecretState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]]:
         """
         A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
@@ -667,6 +707,7 @@ class Secret(pulumi.CustomResource):
                  replication: Optional[pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
                  rotation: Optional[pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
                  secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -827,6 +868,9 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ttl: The TTL for the Secret.
@@ -992,6 +1036,7 @@ class Secret(pulumi.CustomResource):
                  replication: Optional[pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
                  rotation: Optional[pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
                  secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1015,6 +1060,7 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["replication"] = replication
             __props__.__dict__["rotation"] = rotation
             __props__.__dict__["secret_id"] = secret_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["topics"] = topics
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["version_aliases"] = version_aliases
@@ -1049,6 +1095,7 @@ class Secret(pulumi.CustomResource):
             replication: Optional[pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']]] = None,
             rotation: Optional[pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']]] = None,
             secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]]] = None,
             ttl: Optional[pulumi.Input[_builtins.str]] = None,
             version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1101,6 +1148,9 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] ttl: The TTL for the Secret.
@@ -1136,6 +1186,7 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["replication"] = replication
         __props__.__dict__["rotation"] = rotation
         __props__.__dict__["secret_id"] = secret_id
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["topics"] = topics
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["version_aliases"] = version_aliases
@@ -1269,6 +1320,16 @@ class Secret(pulumi.CustomResource):
         This must be unique within the project.
         """
         return pulumi.get(self, "secret_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter

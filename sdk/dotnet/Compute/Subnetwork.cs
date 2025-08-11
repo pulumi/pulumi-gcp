@@ -519,6 +519,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.SubnetworkParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// When enabled, VMs in this subnetwork without external IP addresses can
         /// access Google APIs and services by using Private Google Access.
         /// </summary>
@@ -580,6 +587,9 @@ namespace Pulumi.Gcp.Compute
         /// contained in this subnetwork. The primary IP of such VM must belong
         /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
         /// to either primary or secondary ranges.
+        /// **Note**: This field uses attr-as-block mode to avoid
+        /// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+        /// set `send_secondary_ip_range_if_empty = true`
         /// Structure is documented below.
         /// </summary>
         [Output("secondaryIpRanges")]
@@ -769,6 +779,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.SubnetworkParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// When enabled, VMs in this subnetwork without external IP addresses can
         /// access Google APIs and services by using Private Google Access.
         /// </summary>
@@ -833,6 +850,9 @@ namespace Pulumi.Gcp.Compute
         /// contained in this subnetwork. The primary IP of such VM must belong
         /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
         /// to either primary or secondary ranges.
+        /// **Note**: This field uses attr-as-block mode to avoid
+        /// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+        /// set `send_secondary_ip_range_if_empty = true`
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SubnetworkSecondaryIpRangeArgs> SecondaryIpRanges
@@ -1007,6 +1027,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.SubnetworkParamsGetArgs>? Params { get; set; }
+
+        /// <summary>
         /// When enabled, VMs in this subnetwork without external IP addresses can
         /// access Google APIs and services by using Private Google Access.
         /// </summary>
@@ -1071,6 +1098,9 @@ namespace Pulumi.Gcp.Compute
         /// contained in this subnetwork. The primary IP of such VM must belong
         /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
         /// to either primary or secondary ranges.
+        /// **Note**: This field uses attr-as-block mode to avoid
+        /// breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+        /// set `send_secondary_ip_range_if_empty = true`
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SubnetworkSecondaryIpRangeGetArgs> SecondaryIpRanges

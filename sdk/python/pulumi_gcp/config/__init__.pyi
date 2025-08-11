@@ -271,6 +271,8 @@ mlEngineCustomEndpoint: Optional[str]
 
 modelArmorCustomEndpoint: Optional[str]
 
+modelArmorGlobalCustomEndpoint: Optional[str]
+
 monitoringCustomEndpoint: Optional[str]
 
 netappCustomEndpoint: Optional[str]

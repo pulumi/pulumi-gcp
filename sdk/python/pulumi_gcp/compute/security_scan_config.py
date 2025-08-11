@@ -432,14 +432,6 @@ class SecurityScanConfig(pulumi.CustomResource):
                  user_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        A ScanConfig resource contains the configurations to launch a scan.
-
-        To get more information about ScanConfig, see:
-
-        * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
-        * How-to Guides
-            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
-
         ## Example Usage
 
         ### Scan Config Basic
@@ -450,7 +442,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-basic-static-ip")
         scan_config = gcp.compute.SecurityScanConfig("scan-config",
-            display_name="scan-config",
+            display_name="terraform-scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
@@ -510,14 +502,6 @@ class SecurityScanConfig(pulumi.CustomResource):
                  args: SecurityScanConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A ScanConfig resource contains the configurations to launch a scan.
-
-        To get more information about ScanConfig, see:
-
-        * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
-        * How-to Guides
-            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
-
         ## Example Usage
 
         ### Scan Config Basic
@@ -528,7 +512,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-basic-static-ip")
         scan_config = gcp.compute.SecurityScanConfig("scan-config",
-            display_name="scan-config",
+            display_name="terraform-scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```

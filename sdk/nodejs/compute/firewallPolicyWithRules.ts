@@ -44,6 +44,20 @@ import * as utilities from "../utilities";
  *     name: "network",
  *     autoCreateSubnetworks: false,
  * });
+ * const basicKey = new gcp.tags.TagKey("basic_key", {
+ *     description: "For keyname resources.",
+ *     parent: "organizations/123456789",
+ *     purpose: "GCE_FIREWALL",
+ *     shortName: "tag-key",
+ *     purposeData: {
+ *         organization: "auto",
+ *     },
+ * });
+ * const basicValue = new gcp.tags.TagValue("basic_value", {
+ *     description: "For valuename resources.",
+ *     parent: basicKey.id,
+ *     shortName: "tag-value",
+ * });
  * const primary = new gcp.compute.FirewallPolicyWithRules("primary", {
  *     shortName: "fw-policy",
  *     description: "Terraform test",
@@ -121,6 +135,27 @@ import * as utilities from "../utilities";
  *                 srcIpRanges: ["0.0.0.0/0"],
  *                 layer4Configs: [{
  *                     ipProtocol: "tcp",
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             description: "secure tags",
+ *             ruleName: "secure tags rule",
+ *             priority: 4000,
+ *             enableLogging: false,
+ *             action: "allow",
+ *             direction: "INGRESS",
+ *             targetSecureTags: [{
+ *                 name: basicValue.id,
+ *             }],
+ *             match: {
+ *                 srcIpRanges: ["11.100.0.1/32"],
+ *                 srcSecureTags: [{
+ *                     name: basicValue.id,
+ *                 }],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
+ *                     ports: ["8080"],
  *                 }],
  *             },
  *         },

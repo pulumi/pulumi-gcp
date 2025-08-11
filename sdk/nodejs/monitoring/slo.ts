@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * const appengSlo = new gcp.monitoring.Slo("appeng_slo", {
  *     service: _default.then(_default => _default.serviceId),
  *     sloId: "ae-slo",
- *     displayName: "Test SLO for App Engine",
+ *     displayName: "Terraform Test SLO for App Engine",
  *     goal: 0.9,
  *     calendarPeriod: "DAY",
  *     basicSli: {
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * const requestBasedSlo = new gcp.monitoring.Slo("request_based_slo", {
  *     service: customsrv.serviceId,
  *     sloId: "consumed-api-slo",
- *     displayName: "Test SLO with request based SLI (good total ratio)",
+ *     displayName: "Terraform Test SLO with request based SLI (good total ratio)",
  *     goal: 0.9,
  *     rollingPeriodDays: 30,
  *     requestBasedSli: {
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * const windowsBased = new gcp.monitoring.Slo("windows_based", {
  *     service: customsrv.serviceId,
- *     displayName: "Test SLO with window based SLI",
+ *     displayName: "Terraform Test SLO with window based SLI",
  *     goal: 0.95,
  *     calendarPeriod: "FORTNIGHT",
  *     windowsBasedSli: {
@@ -117,7 +117,7 @@ import * as utilities from "../utilities";
  * });
  * const windowsBased = new gcp.monitoring.Slo("windows_based", {
  *     service: customsrv.serviceId,
- *     displayName: "Test SLO with window based SLI",
+ *     displayName: "Terraform Test SLO with window based SLI",
  *     goal: 0.9,
  *     rollingPeriodDays: 20,
  *     windowsBasedSli: {
@@ -150,7 +150,7 @@ import * as utilities from "../utilities";
  * });
  * const windowsBased = new gcp.monitoring.Slo("windows_based", {
  *     service: customsrv.serviceId,
- *     displayName: "Test SLO with window based SLI",
+ *     displayName: "Terraform Test SLO with window based SLI",
  *     goal: 0.9,
  *     rollingPeriodDays: 20,
  *     windowsBasedSli: {
@@ -183,7 +183,7 @@ import * as utilities from "../utilities";
  * });
  * const windowsBased = new gcp.monitoring.Slo("windows_based", {
  *     service: customsrv.serviceId,
- *     displayName: "Test SLO with window based SLI",
+ *     displayName: "Terraform Test SLO with window based SLI",
  *     goal: 0.9,
  *     rollingPeriodDays: 20,
  *     windowsBasedSli: {

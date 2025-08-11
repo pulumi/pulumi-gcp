@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///     {
     ///         Location = "us-central1",
     ///         InstanceId = "my-basic-instance",
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     ///     var repository = new Gcp.SecureSourceManager.Repository("repository", new()
@@ -41,6 +42,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         RepositoryId = "my-basic-repository",
     ///         Location = instance.Location,
     ///         Instance = instance.Name,
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     ///     var basic = new Gcp.SecureSourceManager.BranchRule("basic", new()
@@ -67,6 +69,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///     {
     ///         Location = "us-central1",
     ///         InstanceId = "my-initial-instance",
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     ///     var repository = new Gcp.SecureSourceManager.Repository("repository", new()
@@ -74,6 +77,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         RepositoryId = "my-initial-repository",
     ///         Instance = instance.Name,
     ///         Location = instance.Location,
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     ///     var @default = new Gcp.SecureSourceManager.BranchRule("default", new()

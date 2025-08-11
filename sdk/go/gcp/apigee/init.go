@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AddonsConfig{}
 	case "gcp:apigee/api:Api":
 		r = &Api{}
+	case "gcp:apigee/apiProduct:ApiProduct":
+		r = &ApiProduct{}
 	case "gcp:apigee/appGroup:AppGroup":
 		r = &AppGroup{}
 	case "gcp:apigee/controlPlaneAccess:ControlPlaneAccess":
@@ -73,6 +75,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatAddress{}
 	case "gcp:apigee/organization:Organization":
 		r = &Organization{}
+	case "gcp:apigee/securityAction:SecurityAction":
+		r = &SecurityAction{}
 	case "gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition":
 		r = &SecurityMonitoringCondition{}
 	case "gcp:apigee/securityProfileV2:SecurityProfileV2":
@@ -106,6 +110,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/api",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/apiProduct",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -226,6 +235,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/securityAction",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

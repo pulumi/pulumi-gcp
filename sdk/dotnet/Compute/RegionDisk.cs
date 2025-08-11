@@ -32,9 +32,6 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
     /// 
-    /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Region Disk Basic

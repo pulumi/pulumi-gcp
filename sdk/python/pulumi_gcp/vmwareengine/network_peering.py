@@ -34,7 +34,7 @@ class NetworkPeeringArgs:
         :param pulumi.Input[_builtins.str] peer_network: The relative resource name of the network to peer with a standard VMware Engine network.
                The provided network can be a consumer VPC network or another standard VMware Engine network.
         :param pulumi.Input[_builtins.str] peer_network_type: The type of the network to peer with the VMware Engine network.
-               Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+               Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
         :param pulumi.Input[_builtins.str] vmware_engine_network: The relative resource name of the VMware Engine network. Specify the name in the following form:
                projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
                can either be a project number or a project ID.
@@ -83,7 +83,7 @@ class NetworkPeeringArgs:
     def peer_network_type(self) -> pulumi.Input[_builtins.str]:
         """
         The type of the network to peer with the VMware Engine network.
-        Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+        Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
         """
         return pulumi.get(self, "peer_network_type")
 
@@ -224,7 +224,7 @@ class _NetworkPeeringState:
         :param pulumi.Input[_builtins.str] peer_network: The relative resource name of the network to peer with a standard VMware Engine network.
                The provided network can be a consumer VPC network or another standard VMware Engine network.
         :param pulumi.Input[_builtins.str] peer_network_type: The type of the network to peer with the VMware Engine network.
-               Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+               Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: State of the network peering.
@@ -378,7 +378,7 @@ class _NetworkPeeringState:
     def peer_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The type of the network to peer with the VMware Engine network.
-        Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+        Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
         """
         return pulumi.get(self, "peer_network_type")
 
@@ -584,7 +584,7 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] peer_network: The relative resource name of the network to peer with a standard VMware Engine network.
                The provided network can be a consumer VPC network or another standard VMware Engine network.
         :param pulumi.Input[_builtins.str] peer_network_type: The type of the network to peer with the VMware Engine network.
-               Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+               Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] vmware_engine_network: The relative resource name of the VMware Engine network. Specify the name in the following form:
@@ -775,7 +775,7 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] peer_network: The relative resource name of the network to peer with a standard VMware Engine network.
                The provided network can be a consumer VPC network or another standard VMware Engine network.
         :param pulumi.Input[_builtins.str] peer_network_type: The type of the network to peer with the VMware Engine network.
-               Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+               Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: State of the network peering.
@@ -886,7 +886,7 @@ class NetworkPeering(pulumi.CustomResource):
     def peer_network_type(self) -> pulumi.Output[_builtins.str]:
         """
         The type of the network to peer with the VMware Engine network.
-        Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+        Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
         """
         return pulumi.get(self, "peer_network_type")
 

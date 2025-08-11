@@ -33,8 +33,8 @@ class ServiceArgs:
                Defaults to `false`.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
-               destroyed. If `false` or unset, an error will be generated if any enabled
-               services depend on this service when destroying it.
+               destroyed. If `false` or unset, an error will be returned if any enabled
+               services depend on this service when attempting to destroy it.
         :param pulumi.Input[_builtins.str] project: The project ID. If not provided, the provider project
                is used.
         """
@@ -81,8 +81,8 @@ class ServiceArgs:
         """
         If `true`, services that are enabled
         and which depend on this service should also be disabled when this service is
-        destroyed. If `false` or unset, an error will be generated if any enabled
-        services depend on this service when destroying it.
+        destroyed. If `false` or unset, an error will be returned if any enabled
+        services depend on this service when attempting to destroy it.
         """
         return pulumi.get(self, "disable_dependent_services")
 
@@ -129,8 +129,8 @@ class _ServiceState:
                Defaults to `false`.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
-               destroyed. If `false` or unset, an error will be generated if any enabled
-               services depend on this service when destroying it.
+               destroyed. If `false` or unset, an error will be returned if any enabled
+               services depend on this service when attempting to destroy it.
         :param pulumi.Input[_builtins.str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[_builtins.str] service: The service to enable.
@@ -167,8 +167,8 @@ class _ServiceState:
         """
         If `true`, services that are enabled
         and which depend on this service should also be disabled when this service is
-        destroyed. If `false` or unset, an error will be generated if any enabled
-        services depend on this service when destroying it.
+        destroyed. If `false` or unset, an error will be returned if any enabled
+        services depend on this service when attempting to destroy it.
         """
         return pulumi.get(self, "disable_dependent_services")
 
@@ -266,8 +266,8 @@ class Service(pulumi.CustomResource):
                Defaults to `false`.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
-               destroyed. If `false` or unset, an error will be generated if any enabled
-               services depend on this service when destroying it.
+               destroyed. If `false` or unset, an error will be returned if any enabled
+               services depend on this service when attempting to destroy it.
         :param pulumi.Input[_builtins.str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[_builtins.str] service: The service to enable.
@@ -377,8 +377,8 @@ class Service(pulumi.CustomResource):
                Defaults to `false`.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
-               destroyed. If `false` or unset, an error will be generated if any enabled
-               services depend on this service when destroying it.
+               destroyed. If `false` or unset, an error will be returned if any enabled
+               services depend on this service when attempting to destroy it.
         :param pulumi.Input[_builtins.str] project: The project ID. If not provided, the provider project
                is used.
         :param pulumi.Input[_builtins.str] service: The service to enable.
@@ -411,8 +411,8 @@ class Service(pulumi.CustomResource):
         """
         If `true`, services that are enabled
         and which depend on this service should also be disabled when this service is
-        destroyed. If `false` or unset, an error will be generated if any enabled
-        services depend on this service when destroying it.
+        destroyed. If `false` or unset, an error will be returned if any enabled
+        services depend on this service when attempting to destroy it.
         """
         return pulumi.get(self, "disable_dependent_services")
 

@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "gcp:developerconnect/gitRepositoryLink:GitRepositoryLink":
 		r = &GitRepositoryLink{}
+	case "gcp:developerconnect/insightsConfig:InsightsConfig":
+		r = &InsightsConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"developerconnect/gitRepositoryLink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"developerconnect/insightsConfig",
 		&module{version},
 	)
 }

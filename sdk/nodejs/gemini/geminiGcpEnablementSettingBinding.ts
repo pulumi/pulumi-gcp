@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *         my_key: "my_value",
  *     },
  *     enableCustomerDataSharing: true,
- *     disableWebGrounding: true,
+ *     webGroundingType: "WEB_GROUNDING_FOR_ENTERPRISE",
  * });
  * const example = new gcp.gemini.GeminiGcpEnablementSettingBinding("example", {
  *     geminiGcpEnablementSettingId: basic.geminiGcpEnablementSettingId,

@@ -69,8 +69,8 @@ namespace Pulumi.Gcp.Redis
     ///         LocationId = "us-central1-a",
     ///         AlternativeLocationId = "us-central1-f",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         RedisVersion = "REDIS_4_0",
-    ///         DisplayName = "Test Instance",
+    ///         RedisVersion = "REDIS_7_2",
+    ///         DisplayName = "Terraform Test Instance",
     ///         ReservedIpRange = "192.168.0.0/29",
     ///         Labels = 
     ///         {
@@ -175,8 +175,8 @@ namespace Pulumi.Gcp.Redis
     ///         AlternativeLocationId = "us-central1-f",
     ///         AuthorizedNetwork = redis_network.Id,
     ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
-    ///         RedisVersion = "REDIS_4_0",
-    ///         DisplayName = "Test Instance",
+    ///         RedisVersion = "REDIS_7_2",
+    ///         DisplayName = "Terraform Test Instance",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -218,9 +218,8 @@ namespace Pulumi.Gcp.Redis
     ///         LocationId = "us-central1-a",
     ///         AlternativeLocationId = "us-central1-f",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         RedisVersion = "REDIS_6_X",
+    ///         RedisVersion = "REDIS_7_2",
     ///         DisplayName = "Terraform Test Instance",
-    ///         ReservedIpRange = "192.168.0.0/28",
     ///         ReplicaCount = 5,
     ///         ReadReplicasMode = "READ_REPLICAS_ENABLED",
     ///         Labels = 
@@ -275,9 +274,8 @@ namespace Pulumi.Gcp.Redis
     ///         LocationId = "us-central1-a",
     ///         AlternativeLocationId = "us-central1-f",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///         RedisVersion = "REDIS_6_X",
+    ///         RedisVersion = "REDIS_7_2",
     ///         DisplayName = "Terraform Test Instance",
-    ///         ReservedIpRange = "192.168.0.0/29",
     ///         Labels = 
     ///         {
     ///             { "my_key", "my_val" },

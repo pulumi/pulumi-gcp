@@ -158,7 +158,7 @@ import * as utilities from "../utilities";
  * const apigeeOrg = new gcp.apigee.Organization("apigee_org", {
  *     analyticsRegion: "us-central1",
  *     displayName: "apigee-org",
- *     description: "Auto-provisioned Apigee Org.",
+ *     description: "Terraform-provisioned Apigee Org.",
  *     projectId: current.then(current => current.project),
  *     authorizedNetwork: apigeeNetwork.id,
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
@@ -171,7 +171,7 @@ import * as utilities from "../utilities";
  * const apigeeInstance = new gcp.apigee.Instance("apigee_instance", {
  *     name: "my-instance-name",
  *     location: "us-central1",
- *     description: "Auto-managed Apigee Runtime Instance",
+ *     description: "Terraform-managed Apigee Runtime Instance",
  *     displayName: "my-instance-name",
  *     orgId: apigeeOrg.id,
  *     diskEncryptionKeyName: apigeeKey.id,

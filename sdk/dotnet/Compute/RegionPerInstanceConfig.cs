@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var rigm = new Gcp.Compute.RegionInstanceGroupManager("rigm", new()
     ///     {
-    ///         Description = "Demo test instance group manager",
+    ///         Description = "Terraform test instance group manager",
     ///         Name = "my-rigm",
     ///         Versions = new[]
     ///         {

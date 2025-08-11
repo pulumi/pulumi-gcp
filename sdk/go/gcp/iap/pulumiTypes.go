@@ -14,11 +14,6 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AppEngineServiceIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -38,11 +33,6 @@ type AppEngineServiceIamBindingConditionInput interface {
 }
 
 type AppEngineServiceIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -127,11 +117,6 @@ func (o AppEngineServiceIamBindingConditionOutput) ToAppEngineServiceIamBindingC
 	}).(AppEngineServiceIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o AppEngineServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -170,11 +155,6 @@ func (o AppEngineServiceIamBindingConditionPtrOutput) Elem() AppEngineServiceIam
 	}).(AppEngineServiceIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o AppEngineServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEngineServiceIamBindingCondition) *string {
 		if v == nil {
@@ -205,11 +185,6 @@ func (o AppEngineServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type AppEngineServiceIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -229,11 +204,6 @@ type AppEngineServiceIamMemberConditionInput interface {
 }
 
 type AppEngineServiceIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -318,11 +288,6 @@ func (o AppEngineServiceIamMemberConditionOutput) ToAppEngineServiceIamMemberCon
 	}).(AppEngineServiceIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o AppEngineServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -361,11 +326,6 @@ func (o AppEngineServiceIamMemberConditionPtrOutput) Elem() AppEngineServiceIamM
 	}).(AppEngineServiceIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o AppEngineServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEngineServiceIamMemberCondition) *string {
 		if v == nil {
@@ -396,11 +356,6 @@ func (o AppEngineServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOut
 }
 
 type AppEngineVersionIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -420,11 +375,6 @@ type AppEngineVersionIamBindingConditionInput interface {
 }
 
 type AppEngineVersionIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -509,11 +459,6 @@ func (o AppEngineVersionIamBindingConditionOutput) ToAppEngineVersionIamBindingC
 	}).(AppEngineVersionIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o AppEngineVersionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -552,11 +497,6 @@ func (o AppEngineVersionIamBindingConditionPtrOutput) Elem() AppEngineVersionIam
 	}).(AppEngineVersionIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o AppEngineVersionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEngineVersionIamBindingCondition) *string {
 		if v == nil {
@@ -587,11 +527,6 @@ func (o AppEngineVersionIamBindingConditionPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type AppEngineVersionIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -611,11 +546,6 @@ type AppEngineVersionIamMemberConditionInput interface {
 }
 
 type AppEngineVersionIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -700,11 +630,6 @@ func (o AppEngineVersionIamMemberConditionOutput) ToAppEngineVersionIamMemberCon
 	}).(AppEngineVersionIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o AppEngineVersionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -743,11 +668,6 @@ func (o AppEngineVersionIamMemberConditionPtrOutput) Elem() AppEngineVersionIamM
 	}).(AppEngineVersionIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o AppEngineVersionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEngineVersionIamMemberCondition) *string {
 		if v == nil {
@@ -3415,7 +3335,6 @@ func (o TunnelDestGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutp
 }
 
 type TunnelIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -3435,7 +3354,6 @@ type TunnelIamBindingConditionInput interface {
 }
 
 type TunnelIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -3520,7 +3438,6 @@ func (o TunnelIamBindingConditionOutput) ToTunnelIamBindingConditionPtrOutputWit
 	}).(TunnelIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o TunnelIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TunnelIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -3559,7 +3476,6 @@ func (o TunnelIamBindingConditionPtrOutput) Elem() TunnelIamBindingConditionOutp
 	}).(TunnelIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o TunnelIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TunnelIamBindingCondition) *string {
 		if v == nil {
@@ -3590,7 +3506,6 @@ func (o TunnelIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type TunnelIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -3610,7 +3525,6 @@ type TunnelIamMemberConditionInput interface {
 }
 
 type TunnelIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -3695,7 +3609,6 @@ func (o TunnelIamMemberConditionOutput) ToTunnelIamMemberConditionPtrOutputWithC
 	}).(TunnelIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o TunnelIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TunnelIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -3734,7 +3647,6 @@ func (o TunnelIamMemberConditionPtrOutput) Elem() TunnelIamMemberConditionOutput
 	}).(TunnelIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o TunnelIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TunnelIamMemberCondition) *string {
 		if v == nil {
@@ -3765,11 +3677,6 @@ func (o TunnelIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type TunnelInstanceIAMBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -3789,11 +3696,6 @@ type TunnelInstanceIAMBindingConditionInput interface {
 }
 
 type TunnelInstanceIAMBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -3878,11 +3780,6 @@ func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingCondi
 	}).(TunnelInstanceIAMBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o TunnelInstanceIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -3921,11 +3818,6 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) Elem() TunnelInstanceIAMBind
 	}).(TunnelInstanceIAMBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o TunnelInstanceIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) *string {
 		if v == nil {
@@ -3956,11 +3848,6 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutp
 }
 
 type TunnelInstanceIAMMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -3980,11 +3867,6 @@ type TunnelInstanceIAMMemberConditionInput interface {
 }
 
 type TunnelInstanceIAMMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -4069,11 +3951,6 @@ func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditi
 	}).(TunnelInstanceIAMMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o TunnelInstanceIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -4112,11 +3989,6 @@ func (o TunnelInstanceIAMMemberConditionPtrOutput) Elem() TunnelInstanceIAMMembe
 	}).(TunnelInstanceIAMMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o TunnelInstanceIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) *string {
 		if v == nil {
@@ -4147,11 +4019,6 @@ func (o TunnelInstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutpu
 }
 
 type WebBackendServiceIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -4171,11 +4038,6 @@ type WebBackendServiceIamBindingConditionInput interface {
 }
 
 type WebBackendServiceIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -4260,11 +4122,6 @@ func (o WebBackendServiceIamBindingConditionOutput) ToWebBackendServiceIamBindin
 	}).(WebBackendServiceIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebBackendServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -4303,11 +4160,6 @@ func (o WebBackendServiceIamBindingConditionPtrOutput) Elem() WebBackendServiceI
 	}).(WebBackendServiceIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebBackendServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebBackendServiceIamBindingCondition) *string {
 		if v == nil {
@@ -4338,11 +4190,6 @@ func (o WebBackendServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrO
 }
 
 type WebBackendServiceIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -4362,11 +4209,6 @@ type WebBackendServiceIamMemberConditionInput interface {
 }
 
 type WebBackendServiceIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -4451,11 +4293,6 @@ func (o WebBackendServiceIamMemberConditionOutput) ToWebBackendServiceIamMemberC
 	}).(WebBackendServiceIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebBackendServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -4494,11 +4331,6 @@ func (o WebBackendServiceIamMemberConditionPtrOutput) Elem() WebBackendServiceIa
 	}).(WebBackendServiceIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebBackendServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebBackendServiceIamMemberCondition) *string {
 		if v == nil {
@@ -4871,11 +4703,6 @@ func (o WebCloudRunServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrO
 }
 
 type WebIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -4895,11 +4722,6 @@ type WebIamBindingConditionInput interface {
 }
 
 type WebIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -4984,11 +4806,6 @@ func (o WebIamBindingConditionOutput) ToWebIamBindingConditionPtrOutputWithConte
 	}).(WebIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -5027,11 +4844,6 @@ func (o WebIamBindingConditionPtrOutput) Elem() WebIamBindingConditionOutput {
 	}).(WebIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebIamBindingCondition) *string {
 		if v == nil {
@@ -5062,11 +4874,6 @@ func (o WebIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type WebIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -5086,11 +4893,6 @@ type WebIamMemberConditionInput interface {
 }
 
 type WebIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -5175,11 +4977,6 @@ func (o WebIamMemberConditionOutput) ToWebIamMemberConditionPtrOutputWithContext
 	}).(WebIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -5218,11 +5015,6 @@ func (o WebIamMemberConditionPtrOutput) Elem() WebIamMemberConditionOutput {
 	}).(WebIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebIamMemberCondition) *string {
 		if v == nil {
@@ -5595,11 +5387,6 @@ func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Title() pulumi.Strin
 }
 
 type WebTypeAppEngingIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -5619,11 +5406,6 @@ type WebTypeAppEngingIamBindingConditionInput interface {
 }
 
 type WebTypeAppEngingIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -5708,11 +5490,6 @@ func (o WebTypeAppEngingIamBindingConditionOutput) ToWebTypeAppEngingIamBindingC
 	}).(WebTypeAppEngingIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebTypeAppEngingIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -5751,11 +5528,6 @@ func (o WebTypeAppEngingIamBindingConditionPtrOutput) Elem() WebTypeAppEngingIam
 	}).(WebTypeAppEngingIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebTypeAppEngingIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebTypeAppEngingIamBindingCondition) *string {
 		if v == nil {
@@ -5786,11 +5558,6 @@ func (o WebTypeAppEngingIamBindingConditionPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type WebTypeAppEngingIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -5810,11 +5577,6 @@ type WebTypeAppEngingIamMemberConditionInput interface {
 }
 
 type WebTypeAppEngingIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -5899,11 +5661,6 @@ func (o WebTypeAppEngingIamMemberConditionOutput) ToWebTypeAppEngingIamMemberCon
 	}).(WebTypeAppEngingIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebTypeAppEngingIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -5942,11 +5699,6 @@ func (o WebTypeAppEngingIamMemberConditionPtrOutput) Elem() WebTypeAppEngingIamM
 	}).(WebTypeAppEngingIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebTypeAppEngingIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebTypeAppEngingIamMemberCondition) *string {
 		if v == nil {
@@ -5977,11 +5729,6 @@ func (o WebTypeAppEngingIamMemberConditionPtrOutput) Title() pulumi.StringPtrOut
 }
 
 type WebTypeComputeIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -6001,11 +5748,6 @@ type WebTypeComputeIamBindingConditionInput interface {
 }
 
 type WebTypeComputeIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -6090,11 +5832,6 @@ func (o WebTypeComputeIamBindingConditionOutput) ToWebTypeComputeIamBindingCondi
 	}).(WebTypeComputeIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebTypeComputeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -6133,11 +5870,6 @@ func (o WebTypeComputeIamBindingConditionPtrOutput) Elem() WebTypeComputeIamBind
 	}).(WebTypeComputeIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebTypeComputeIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebTypeComputeIamBindingCondition) *string {
 		if v == nil {
@@ -6168,11 +5900,6 @@ func (o WebTypeComputeIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutp
 }
 
 type WebTypeComputeIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -6192,11 +5919,6 @@ type WebTypeComputeIamMemberConditionInput interface {
 }
 
 type WebTypeComputeIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -6281,11 +6003,6 @@ func (o WebTypeComputeIamMemberConditionOutput) ToWebTypeComputeIamMemberConditi
 	}).(WebTypeComputeIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebTypeComputeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -6324,11 +6041,6 @@ func (o WebTypeComputeIamMemberConditionPtrOutput) Elem() WebTypeComputeIamMembe
 	}).(WebTypeComputeIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
 func (o WebTypeComputeIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebTypeComputeIamMemberCondition) *string {
 		if v == nil {

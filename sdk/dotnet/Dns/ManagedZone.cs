@@ -29,13 +29,19 @@ namespace Pulumi.Gcp.Dns
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var rnd = new Random.RandomId("rnd", new()
+    ///     {
+    ///         ByteLength = 4,
+    ///     });
+    /// 
     ///     var example_zone = new Gcp.Dns.ManagedZone("example-zone", new()
     ///     {
     ///         Name = "example-zone",
-    ///         DnsName = "my-domain.com.",
+    ///         DnsName = rnd.Hex.Apply(hex =&gt; $"example-{hex}.com."),
     ///         Description = "Example DNS zone",
     ///         Labels = 
     ///         {
@@ -409,9 +415,6 @@ namespace Pulumi.Gcp.Dns
         [Output("creationTime")]
         public Output<string> CreationTime { get; private set; } = null!;
 
-        /// <summary>
-        /// A textual description field. Defaults to 'Managed by Pulumi'.
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
@@ -590,9 +593,6 @@ namespace Pulumi.Gcp.Dns
         [Input("cloudLoggingConfig")]
         public Input<Inputs.ManagedZoneCloudLoggingConfigArgs>? CloudLoggingConfig { get; set; }
 
-        /// <summary>
-        /// A textual description field. Defaults to 'Managed by Pulumi'.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -716,9 +716,6 @@ namespace Pulumi.Gcp.Dns
         [Input("creationTime")]
         public Input<string>? CreationTime { get; set; }
 
-        /// <summary>
-        /// A textual description field. Defaults to 'Managed by Pulumi'.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 

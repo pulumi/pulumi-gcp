@@ -441,7 +441,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                 ],
             })
         igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
-            description="Test instance group manager",
+            description="Terraform test instance group manager",
             name="my-igm",
             versions=[{
                 "name": "prod",
@@ -580,7 +580,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                 ],
             })
         igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
-            description="Test instance group manager",
+            description="Terraform test instance group manager",
             name="my-igm",
             versions=[{
                 "name": "prod",

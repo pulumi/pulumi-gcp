@@ -780,6 +780,11 @@ export type PerInstanceConfig = import("./perInstanceConfig").PerInstanceConfig;
 export const PerInstanceConfig: typeof import("./perInstanceConfig").PerInstanceConfig = null as any;
 utilities.lazyLoad(exports, ["PerInstanceConfig"], () => require("./perInstanceConfig"));
 
+export { PreviewFeatureArgs, PreviewFeatureState } from "./previewFeature";
+export type PreviewFeature = import("./previewFeature").PreviewFeature;
+export const PreviewFeature: typeof import("./previewFeature").PreviewFeature = null as any;
+utilities.lazyLoad(exports, ["PreviewFeature"], () => require("./previewFeature"));
+
 export { ProjectCloudArmorTierArgs, ProjectCloudArmorTierState } from "./projectCloudArmorTier";
 export type ProjectCloudArmorTier = import("./projectCloudArmorTier").ProjectCloudArmorTier;
 export const ProjectCloudArmorTier: typeof import("./projectCloudArmorTier").ProjectCloudArmorTier = null as any;
@@ -1365,6 +1370,8 @@ const _module = {
                 return new PacketMirroring(name, <any>undefined, { urn })
             case "gcp:compute/perInstanceConfig:PerInstanceConfig":
                 return new PerInstanceConfig(name, <any>undefined, { urn })
+            case "gcp:compute/previewFeature:PreviewFeature":
+                return new PreviewFeature(name, <any>undefined, { urn })
             case "gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier":
                 return new ProjectCloudArmorTier(name, <any>undefined, { urn })
             case "gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier":
@@ -1618,6 +1625,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/organizationSecurityPolicy
 pulumi.runtime.registerResourceModule("gcp", "compute/organizationSecurityPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/packetMirroring", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/perInstanceConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/previewFeature", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectCloudArmorTier", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectDefaultNetworkTier", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectMetadata", _module)

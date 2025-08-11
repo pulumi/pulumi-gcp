@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:discoveryengine/chatEngine:ChatEngine":
 		r = &ChatEngine{}
+	case "gcp:discoveryengine/cmekConfig:CmekConfig":
+		r = &CmekConfig{}
 	case "gcp:discoveryengine/dataStore:DataStore":
 		r = &DataStore{}
+	case "gcp:discoveryengine/recommendationEngine:RecommendationEngine":
+		r = &RecommendationEngine{}
 	case "gcp:discoveryengine/schema:Schema":
 		r = &Schema{}
 	case "gcp:discoveryengine/searchEngine:SearchEngine":
@@ -53,7 +57,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"discoveryengine/cmekConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"discoveryengine/dataStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/recommendationEngine",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

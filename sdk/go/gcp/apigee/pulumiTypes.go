@@ -1102,6 +1102,2076 @@ func (o ApiMetaDataArrayOutput) Index(i pulumi.IntInput) ApiMetaDataOutput {
 	}).(ApiMetaDataOutput)
 }
 
+type ApiProductAttribute struct {
+	// Key of the attribute.
+	Name *string `pulumi:"name"`
+	// Value of the attribute.
+	Value *string `pulumi:"value"`
+}
+
+// ApiProductAttributeInput is an input type that accepts ApiProductAttributeArgs and ApiProductAttributeOutput values.
+// You can construct a concrete instance of `ApiProductAttributeInput` via:
+//
+//	ApiProductAttributeArgs{...}
+type ApiProductAttributeInput interface {
+	pulumi.Input
+
+	ToApiProductAttributeOutput() ApiProductAttributeOutput
+	ToApiProductAttributeOutputWithContext(context.Context) ApiProductAttributeOutput
+}
+
+type ApiProductAttributeArgs struct {
+	// Key of the attribute.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the attribute.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ApiProductAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductAttribute)(nil)).Elem()
+}
+
+func (i ApiProductAttributeArgs) ToApiProductAttributeOutput() ApiProductAttributeOutput {
+	return i.ToApiProductAttributeOutputWithContext(context.Background())
+}
+
+func (i ApiProductAttributeArgs) ToApiProductAttributeOutputWithContext(ctx context.Context) ApiProductAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductAttributeOutput)
+}
+
+// ApiProductAttributeArrayInput is an input type that accepts ApiProductAttributeArray and ApiProductAttributeArrayOutput values.
+// You can construct a concrete instance of `ApiProductAttributeArrayInput` via:
+//
+//	ApiProductAttributeArray{ ApiProductAttributeArgs{...} }
+type ApiProductAttributeArrayInput interface {
+	pulumi.Input
+
+	ToApiProductAttributeArrayOutput() ApiProductAttributeArrayOutput
+	ToApiProductAttributeArrayOutputWithContext(context.Context) ApiProductAttributeArrayOutput
+}
+
+type ApiProductAttributeArray []ApiProductAttributeInput
+
+func (ApiProductAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductAttribute)(nil)).Elem()
+}
+
+func (i ApiProductAttributeArray) ToApiProductAttributeArrayOutput() ApiProductAttributeArrayOutput {
+	return i.ToApiProductAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductAttributeArray) ToApiProductAttributeArrayOutputWithContext(ctx context.Context) ApiProductAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductAttributeArrayOutput)
+}
+
+type ApiProductAttributeOutput struct{ *pulumi.OutputState }
+
+func (ApiProductAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductAttribute)(nil)).Elem()
+}
+
+func (o ApiProductAttributeOutput) ToApiProductAttributeOutput() ApiProductAttributeOutput {
+	return o
+}
+
+func (o ApiProductAttributeOutput) ToApiProductAttributeOutputWithContext(ctx context.Context) ApiProductAttributeOutput {
+	return o
+}
+
+// Key of the attribute.
+func (o ApiProductAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the attribute.
+func (o ApiProductAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductAttribute)(nil)).Elem()
+}
+
+func (o ApiProductAttributeArrayOutput) ToApiProductAttributeArrayOutput() ApiProductAttributeArrayOutput {
+	return o
+}
+
+func (o ApiProductAttributeArrayOutput) ToApiProductAttributeArrayOutputWithContext(ctx context.Context) ApiProductAttributeArrayOutput {
+	return o
+}
+
+func (o ApiProductAttributeArrayOutput) Index(i pulumi.IntInput) ApiProductAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductAttribute {
+		return vs[0].([]ApiProductAttribute)[vs[1].(int)]
+	}).(ApiProductAttributeOutput)
+}
+
+type ApiProductGraphqlOperationGroup struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Possible values are: `proxy`, `remoteservice`.
+	OperationConfigType *string `pulumi:"operationConfigType"`
+	// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+	// Structure is documented below.
+	OperationConfigs []ApiProductGraphqlOperationGroupOperationConfig `pulumi:"operationConfigs"`
+}
+
+// ApiProductGraphqlOperationGroupInput is an input type that accepts ApiProductGraphqlOperationGroupArgs and ApiProductGraphqlOperationGroupOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupInput` via:
+//
+//	ApiProductGraphqlOperationGroupArgs{...}
+type ApiProductGraphqlOperationGroupInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOutput() ApiProductGraphqlOperationGroupOutput
+	ToApiProductGraphqlOperationGroupOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOutput
+}
+
+type ApiProductGraphqlOperationGroupArgs struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Possible values are: `proxy`, `remoteservice`.
+	OperationConfigType pulumi.StringPtrInput `pulumi:"operationConfigType"`
+	// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+	// Structure is documented below.
+	OperationConfigs ApiProductGraphqlOperationGroupOperationConfigArrayInput `pulumi:"operationConfigs"`
+}
+
+func (ApiProductGraphqlOperationGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroup)(nil)).Elem()
+}
+
+func (i ApiProductGraphqlOperationGroupArgs) ToApiProductGraphqlOperationGroupOutput() ApiProductGraphqlOperationGroupOutput {
+	return i.ToApiProductGraphqlOperationGroupOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupArgs) ToApiProductGraphqlOperationGroupOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOutput)
+}
+
+func (i ApiProductGraphqlOperationGroupArgs) ToApiProductGraphqlOperationGroupPtrOutput() ApiProductGraphqlOperationGroupPtrOutput {
+	return i.ToApiProductGraphqlOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupArgs) ToApiProductGraphqlOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOutput).ToApiProductGraphqlOperationGroupPtrOutputWithContext(ctx)
+}
+
+// ApiProductGraphqlOperationGroupPtrInput is an input type that accepts ApiProductGraphqlOperationGroupArgs, ApiProductGraphqlOperationGroupPtr and ApiProductGraphqlOperationGroupPtrOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupPtrInput` via:
+//
+//	        ApiProductGraphqlOperationGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiProductGraphqlOperationGroupPtrInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupPtrOutput() ApiProductGraphqlOperationGroupPtrOutput
+	ToApiProductGraphqlOperationGroupPtrOutputWithContext(context.Context) ApiProductGraphqlOperationGroupPtrOutput
+}
+
+type apiProductGraphqlOperationGroupPtrType ApiProductGraphqlOperationGroupArgs
+
+func ApiProductGraphqlOperationGroupPtr(v *ApiProductGraphqlOperationGroupArgs) ApiProductGraphqlOperationGroupPtrInput {
+	return (*apiProductGraphqlOperationGroupPtrType)(v)
+}
+
+func (*apiProductGraphqlOperationGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductGraphqlOperationGroup)(nil)).Elem()
+}
+
+func (i *apiProductGraphqlOperationGroupPtrType) ToApiProductGraphqlOperationGroupPtrOutput() ApiProductGraphqlOperationGroupPtrOutput {
+	return i.ToApiProductGraphqlOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *apiProductGraphqlOperationGroupPtrType) ToApiProductGraphqlOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupPtrOutput)
+}
+
+type ApiProductGraphqlOperationGroupOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroup)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOutput) ToApiProductGraphqlOperationGroupOutput() ApiProductGraphqlOperationGroupOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOutput) ToApiProductGraphqlOperationGroupOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOutput) ToApiProductGraphqlOperationGroupPtrOutput() ApiProductGraphqlOperationGroupPtrOutput {
+	return o.ToApiProductGraphqlOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductGraphqlOperationGroupOutput) ToApiProductGraphqlOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiProductGraphqlOperationGroup) *ApiProductGraphqlOperationGroup {
+		return &v
+	}).(ApiProductGraphqlOperationGroupPtrOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Possible values are: `proxy`, `remoteservice`.
+func (o ApiProductGraphqlOperationGroupOutput) OperationConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroup) *string { return v.OperationConfigType }).(pulumi.StringPtrOutput)
+}
+
+// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+// Structure is documented below.
+func (o ApiProductGraphqlOperationGroupOutput) OperationConfigs() ApiProductGraphqlOperationGroupOperationConfigArrayOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroup) []ApiProductGraphqlOperationGroupOperationConfig {
+		return v.OperationConfigs
+	}).(ApiProductGraphqlOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductGraphqlOperationGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductGraphqlOperationGroup)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupPtrOutput) ToApiProductGraphqlOperationGroupPtrOutput() ApiProductGraphqlOperationGroupPtrOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupPtrOutput) ToApiProductGraphqlOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupPtrOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupPtrOutput) Elem() ApiProductGraphqlOperationGroupOutput {
+	return o.ApplyT(func(v *ApiProductGraphqlOperationGroup) ApiProductGraphqlOperationGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ApiProductGraphqlOperationGroup
+		return ret
+	}).(ApiProductGraphqlOperationGroupOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Possible values are: `proxy`, `remoteservice`.
+func (o ApiProductGraphqlOperationGroupPtrOutput) OperationConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductGraphqlOperationGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+// Structure is documented below.
+func (o ApiProductGraphqlOperationGroupPtrOutput) OperationConfigs() ApiProductGraphqlOperationGroupOperationConfigArrayOutput {
+	return o.ApplyT(func(v *ApiProductGraphqlOperationGroup) []ApiProductGraphqlOperationGroupOperationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigs
+	}).(ApiProductGraphqlOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfig struct {
+	// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+	ApiSource *string `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	// Structure is documented below.
+	Attributes []ApiProductGraphqlOperationGroupOperationConfigAttribute `pulumi:"attributes"`
+	// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+	// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+	// Structure is documented below.
+	Operations []ApiProductGraphqlOperationGroupOperationConfigOperation `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+	// Structure is documented below.
+	Quota *ApiProductGraphqlOperationGroupOperationConfigQuota `pulumi:"quota"`
+}
+
+// ApiProductGraphqlOperationGroupOperationConfigInput is an input type that accepts ApiProductGraphqlOperationGroupOperationConfigArgs and ApiProductGraphqlOperationGroupOperationConfigOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupOperationConfigInput` via:
+//
+//	ApiProductGraphqlOperationGroupOperationConfigArgs{...}
+type ApiProductGraphqlOperationGroupOperationConfigInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOperationConfigOutput() ApiProductGraphqlOperationGroupOperationConfigOutput
+	ToApiProductGraphqlOperationGroupOperationConfigOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOperationConfigOutput
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigArgs struct {
+	// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+	ApiSource pulumi.StringPtrInput `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	// Structure is documented below.
+	Attributes ApiProductGraphqlOperationGroupOperationConfigAttributeArrayInput `pulumi:"attributes"`
+	// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+	// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+	// Structure is documented below.
+	Operations ApiProductGraphqlOperationGroupOperationConfigOperationArrayInput `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+	// Structure is documented below.
+	Quota ApiProductGraphqlOperationGroupOperationConfigQuotaPtrInput `pulumi:"quota"`
+}
+
+func (ApiProductGraphqlOperationGroupOperationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigArgs) ToApiProductGraphqlOperationGroupOperationConfigOutput() ApiProductGraphqlOperationGroupOperationConfigOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigArgs) ToApiProductGraphqlOperationGroupOperationConfigOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigOutput)
+}
+
+// ApiProductGraphqlOperationGroupOperationConfigArrayInput is an input type that accepts ApiProductGraphqlOperationGroupOperationConfigArray and ApiProductGraphqlOperationGroupOperationConfigArrayOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupOperationConfigArrayInput` via:
+//
+//	ApiProductGraphqlOperationGroupOperationConfigArray{ ApiProductGraphqlOperationGroupOperationConfigArgs{...} }
+type ApiProductGraphqlOperationGroupOperationConfigArrayInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOperationConfigArrayOutput() ApiProductGraphqlOperationGroupOperationConfigArrayOutput
+	ToApiProductGraphqlOperationGroupOperationConfigArrayOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOperationConfigArrayOutput
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigArray []ApiProductGraphqlOperationGroupOperationConfigInput
+
+func (ApiProductGraphqlOperationGroupOperationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGraphqlOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigArray) ToApiProductGraphqlOperationGroupOperationConfigArrayOutput() ApiProductGraphqlOperationGroupOperationConfigArrayOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigArray) ToApiProductGraphqlOperationGroupOperationConfigArrayOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOperationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigOutput) ToApiProductGraphqlOperationGroupOperationConfigOutput() ApiProductGraphqlOperationGroupOperationConfigOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigOutput) ToApiProductGraphqlOperationGroupOperationConfigOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigOutput {
+	return o
+}
+
+// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+func (o ApiProductGraphqlOperationGroupOperationConfigOutput) ApiSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfig) *string { return v.ApiSource }).(pulumi.StringPtrOutput)
+}
+
+// Custom attributes associated with the operation.
+// Structure is documented below.
+func (o ApiProductGraphqlOperationGroupOperationConfigOutput) Attributes() ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfig) []ApiProductGraphqlOperationGroupOperationConfigAttribute {
+		return v.Attributes
+	}).(ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput)
+}
+
+// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+// Structure is documented below.
+func (o ApiProductGraphqlOperationGroupOperationConfigOutput) Operations() ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfig) []ApiProductGraphqlOperationGroupOperationConfigOperation {
+		return v.Operations
+	}).(ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput)
+}
+
+// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+// Structure is documented below.
+func (o ApiProductGraphqlOperationGroupOperationConfigOutput) Quota() ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfig) *ApiProductGraphqlOperationGroupOperationConfigQuota {
+		return v.Quota
+	}).(ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOperationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGraphqlOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigArrayOutput) ToApiProductGraphqlOperationGroupOperationConfigArrayOutput() ApiProductGraphqlOperationGroupOperationConfigArrayOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigArrayOutput) ToApiProductGraphqlOperationGroupOperationConfigArrayOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigArrayOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigArrayOutput) Index(i pulumi.IntInput) ApiProductGraphqlOperationGroupOperationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductGraphqlOperationGroupOperationConfig {
+		return vs[0].([]ApiProductGraphqlOperationGroupOperationConfig)[vs[1].(int)]
+	}).(ApiProductGraphqlOperationGroupOperationConfigOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigAttribute struct {
+	// Key of the attribute.
+	Name *string `pulumi:"name"`
+	// Value of the attribute.
+	Value *string `pulumi:"value"`
+}
+
+// ApiProductGraphqlOperationGroupOperationConfigAttributeInput is an input type that accepts ApiProductGraphqlOperationGroupOperationConfigAttributeArgs and ApiProductGraphqlOperationGroupOperationConfigAttributeOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupOperationConfigAttributeInput` via:
+//
+//	ApiProductGraphqlOperationGroupOperationConfigAttributeArgs{...}
+type ApiProductGraphqlOperationGroupOperationConfigAttributeInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOperationConfigAttributeOutput() ApiProductGraphqlOperationGroupOperationConfigAttributeOutput
+	ToApiProductGraphqlOperationGroupOperationConfigAttributeOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOperationConfigAttributeOutput
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigAttributeArgs struct {
+	// Key of the attribute.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the attribute.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ApiProductGraphqlOperationGroupOperationConfigAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigAttributeArgs) ToApiProductGraphqlOperationGroupOperationConfigAttributeOutput() ApiProductGraphqlOperationGroupOperationConfigAttributeOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigAttributeOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigAttributeArgs) ToApiProductGraphqlOperationGroupOperationConfigAttributeOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigAttributeOutput)
+}
+
+// ApiProductGraphqlOperationGroupOperationConfigAttributeArrayInput is an input type that accepts ApiProductGraphqlOperationGroupOperationConfigAttributeArray and ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupOperationConfigAttributeArrayInput` via:
+//
+//	ApiProductGraphqlOperationGroupOperationConfigAttributeArray{ ApiProductGraphqlOperationGroupOperationConfigAttributeArgs{...} }
+type ApiProductGraphqlOperationGroupOperationConfigAttributeArrayInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput() ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput
+	ToApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigAttributeArray []ApiProductGraphqlOperationGroupOperationConfigAttributeInput
+
+func (ApiProductGraphqlOperationGroupOperationConfigAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGraphqlOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigAttributeArray) ToApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput() ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigAttributeArray) ToApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigAttributeOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOperationConfigAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigAttributeOutput) ToApiProductGraphqlOperationGroupOperationConfigAttributeOutput() ApiProductGraphqlOperationGroupOperationConfigAttributeOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigAttributeOutput) ToApiProductGraphqlOperationGroupOperationConfigAttributeOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigAttributeOutput {
+	return o
+}
+
+// Key of the attribute.
+func (o ApiProductGraphqlOperationGroupOperationConfigAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfigAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the attribute.
+func (o ApiProductGraphqlOperationGroupOperationConfigAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfigAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGraphqlOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput) ToApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput() ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput) ToApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput) Index(i pulumi.IntInput) ApiProductGraphqlOperationGroupOperationConfigAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductGraphqlOperationGroupOperationConfigAttribute {
+		return vs[0].([]ApiProductGraphqlOperationGroupOperationConfigAttribute)[vs[1].(int)]
+	}).(ApiProductGraphqlOperationGroupOperationConfigAttributeOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigOperation struct {
+	// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
+	Operation *string `pulumi:"operation"`
+	// Required. GraphQL operation types. Valid values include query or mutation.
+	// Note: Apigee does not currently support subscription types.
+	OperationTypes []string `pulumi:"operationTypes"`
+}
+
+// ApiProductGraphqlOperationGroupOperationConfigOperationInput is an input type that accepts ApiProductGraphqlOperationGroupOperationConfigOperationArgs and ApiProductGraphqlOperationGroupOperationConfigOperationOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupOperationConfigOperationInput` via:
+//
+//	ApiProductGraphqlOperationGroupOperationConfigOperationArgs{...}
+type ApiProductGraphqlOperationGroupOperationConfigOperationInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOperationConfigOperationOutput() ApiProductGraphqlOperationGroupOperationConfigOperationOutput
+	ToApiProductGraphqlOperationGroupOperationConfigOperationOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOperationConfigOperationOutput
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigOperationArgs struct {
+	// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	// Required. GraphQL operation types. Valid values include query or mutation.
+	// Note: Apigee does not currently support subscription types.
+	OperationTypes pulumi.StringArrayInput `pulumi:"operationTypes"`
+}
+
+func (ApiProductGraphqlOperationGroupOperationConfigOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigOperation)(nil)).Elem()
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigOperationArgs) ToApiProductGraphqlOperationGroupOperationConfigOperationOutput() ApiProductGraphqlOperationGroupOperationConfigOperationOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigOperationOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigOperationArgs) ToApiProductGraphqlOperationGroupOperationConfigOperationOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigOperationOutput)
+}
+
+// ApiProductGraphqlOperationGroupOperationConfigOperationArrayInput is an input type that accepts ApiProductGraphqlOperationGroupOperationConfigOperationArray and ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupOperationConfigOperationArrayInput` via:
+//
+//	ApiProductGraphqlOperationGroupOperationConfigOperationArray{ ApiProductGraphqlOperationGroupOperationConfigOperationArgs{...} }
+type ApiProductGraphqlOperationGroupOperationConfigOperationArrayInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput() ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput
+	ToApiProductGraphqlOperationGroupOperationConfigOperationArrayOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigOperationArray []ApiProductGraphqlOperationGroupOperationConfigOperationInput
+
+func (ApiProductGraphqlOperationGroupOperationConfigOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGraphqlOperationGroupOperationConfigOperation)(nil)).Elem()
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigOperationArray) ToApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput() ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigOperationArray) ToApiProductGraphqlOperationGroupOperationConfigOperationArrayOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigOperationOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOperationConfigOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigOperation)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigOperationOutput) ToApiProductGraphqlOperationGroupOperationConfigOperationOutput() ApiProductGraphqlOperationGroupOperationConfigOperationOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigOperationOutput) ToApiProductGraphqlOperationGroupOperationConfigOperationOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigOperationOutput {
+	return o
+}
+
+// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
+func (o ApiProductGraphqlOperationGroupOperationConfigOperationOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfigOperation) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+// Required. GraphQL operation types. Valid values include query or mutation.
+// Note: Apigee does not currently support subscription types.
+func (o ApiProductGraphqlOperationGroupOperationConfigOperationOutput) OperationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfigOperation) []string { return v.OperationTypes }).(pulumi.StringArrayOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGraphqlOperationGroupOperationConfigOperation)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput) ToApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput() ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput) ToApiProductGraphqlOperationGroupOperationConfigOperationArrayOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput) Index(i pulumi.IntInput) ApiProductGraphqlOperationGroupOperationConfigOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductGraphqlOperationGroupOperationConfigOperation {
+		return vs[0].([]ApiProductGraphqlOperationGroupOperationConfigOperation)[vs[1].(int)]
+	}).(ApiProductGraphqlOperationGroupOperationConfigOperationOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigQuota struct {
+	// Required. Time interval over which the number of request messages is calculated.
+	Interval *string `pulumi:"interval"`
+	// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+	Limit *string `pulumi:"limit"`
+	// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+	TimeUnit *string `pulumi:"timeUnit"`
+}
+
+// ApiProductGraphqlOperationGroupOperationConfigQuotaInput is an input type that accepts ApiProductGraphqlOperationGroupOperationConfigQuotaArgs and ApiProductGraphqlOperationGroupOperationConfigQuotaOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupOperationConfigQuotaInput` via:
+//
+//	ApiProductGraphqlOperationGroupOperationConfigQuotaArgs{...}
+type ApiProductGraphqlOperationGroupOperationConfigQuotaInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOperationConfigQuotaOutput() ApiProductGraphqlOperationGroupOperationConfigQuotaOutput
+	ToApiProductGraphqlOperationGroupOperationConfigQuotaOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOperationConfigQuotaOutput
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigQuotaArgs struct {
+	// Required. Time interval over which the number of request messages is calculated.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+	Limit pulumi.StringPtrInput `pulumi:"limit"`
+	// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+	TimeUnit pulumi.StringPtrInput `pulumi:"timeUnit"`
+}
+
+func (ApiProductGraphqlOperationGroupOperationConfigQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigQuotaArgs) ToApiProductGraphqlOperationGroupOperationConfigQuotaOutput() ApiProductGraphqlOperationGroupOperationConfigQuotaOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigQuotaOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigQuotaArgs) ToApiProductGraphqlOperationGroupOperationConfigQuotaOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigQuotaOutput)
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigQuotaArgs) ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput() ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i ApiProductGraphqlOperationGroupOperationConfigQuotaArgs) ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigQuotaOutput).ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx)
+}
+
+// ApiProductGraphqlOperationGroupOperationConfigQuotaPtrInput is an input type that accepts ApiProductGraphqlOperationGroupOperationConfigQuotaArgs, ApiProductGraphqlOperationGroupOperationConfigQuotaPtr and ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput values.
+// You can construct a concrete instance of `ApiProductGraphqlOperationGroupOperationConfigQuotaPtrInput` via:
+//
+//	        ApiProductGraphqlOperationGroupOperationConfigQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiProductGraphqlOperationGroupOperationConfigQuotaPtrInput interface {
+	pulumi.Input
+
+	ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput() ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput
+	ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Context) ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput
+}
+
+type apiProductGraphqlOperationGroupOperationConfigQuotaPtrType ApiProductGraphqlOperationGroupOperationConfigQuotaArgs
+
+func ApiProductGraphqlOperationGroupOperationConfigQuotaPtr(v *ApiProductGraphqlOperationGroupOperationConfigQuotaArgs) ApiProductGraphqlOperationGroupOperationConfigQuotaPtrInput {
+	return (*apiProductGraphqlOperationGroupOperationConfigQuotaPtrType)(v)
+}
+
+func (*apiProductGraphqlOperationGroupOperationConfigQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductGraphqlOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (i *apiProductGraphqlOperationGroupOperationConfigQuotaPtrType) ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput() ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return i.ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *apiProductGraphqlOperationGroupOperationConfigQuotaPtrType) ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigQuotaOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOperationConfigQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaOutput) ToApiProductGraphqlOperationGroupOperationConfigQuotaOutput() ApiProductGraphqlOperationGroupOperationConfigQuotaOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaOutput) ToApiProductGraphqlOperationGroupOperationConfigQuotaOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigQuotaOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaOutput) ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput() ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaOutput) ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiProductGraphqlOperationGroupOperationConfigQuota) *ApiProductGraphqlOperationGroupOperationConfigQuota {
+		return &v
+	}).(ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+// Required. Time interval over which the number of request messages is calculated.
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfigQuota) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfigQuota) *string { return v.Limit }).(pulumi.StringPtrOutput)
+}
+
+// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGraphqlOperationGroupOperationConfigQuota) *string { return v.TimeUnit }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductGraphqlOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput) ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput() ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput) ToApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput {
+	return o
+}
+
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput) Elem() ApiProductGraphqlOperationGroupOperationConfigQuotaOutput {
+	return o.ApplyT(func(v *ApiProductGraphqlOperationGroupOperationConfigQuota) ApiProductGraphqlOperationGroupOperationConfigQuota {
+		if v != nil {
+			return *v
+		}
+		var ret ApiProductGraphqlOperationGroupOperationConfigQuota
+		return ret
+	}).(ApiProductGraphqlOperationGroupOperationConfigQuotaOutput)
+}
+
+// Required. Time interval over which the number of request messages is calculated.
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductGraphqlOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductGraphqlOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+func (o ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductGraphqlOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApiProductGrpcOperationGroup struct {
+	// Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
+	// Structure is documented below.
+	OperationConfigs []ApiProductGrpcOperationGroupOperationConfig `pulumi:"operationConfigs"`
+}
+
+// ApiProductGrpcOperationGroupInput is an input type that accepts ApiProductGrpcOperationGroupArgs and ApiProductGrpcOperationGroupOutput values.
+// You can construct a concrete instance of `ApiProductGrpcOperationGroupInput` via:
+//
+//	ApiProductGrpcOperationGroupArgs{...}
+type ApiProductGrpcOperationGroupInput interface {
+	pulumi.Input
+
+	ToApiProductGrpcOperationGroupOutput() ApiProductGrpcOperationGroupOutput
+	ToApiProductGrpcOperationGroupOutputWithContext(context.Context) ApiProductGrpcOperationGroupOutput
+}
+
+type ApiProductGrpcOperationGroupArgs struct {
+	// Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
+	// Structure is documented below.
+	OperationConfigs ApiProductGrpcOperationGroupOperationConfigArrayInput `pulumi:"operationConfigs"`
+}
+
+func (ApiProductGrpcOperationGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGrpcOperationGroup)(nil)).Elem()
+}
+
+func (i ApiProductGrpcOperationGroupArgs) ToApiProductGrpcOperationGroupOutput() ApiProductGrpcOperationGroupOutput {
+	return i.ToApiProductGrpcOperationGroupOutputWithContext(context.Background())
+}
+
+func (i ApiProductGrpcOperationGroupArgs) ToApiProductGrpcOperationGroupOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOutput)
+}
+
+func (i ApiProductGrpcOperationGroupArgs) ToApiProductGrpcOperationGroupPtrOutput() ApiProductGrpcOperationGroupPtrOutput {
+	return i.ToApiProductGrpcOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ApiProductGrpcOperationGroupArgs) ToApiProductGrpcOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOutput).ToApiProductGrpcOperationGroupPtrOutputWithContext(ctx)
+}
+
+// ApiProductGrpcOperationGroupPtrInput is an input type that accepts ApiProductGrpcOperationGroupArgs, ApiProductGrpcOperationGroupPtr and ApiProductGrpcOperationGroupPtrOutput values.
+// You can construct a concrete instance of `ApiProductGrpcOperationGroupPtrInput` via:
+//
+//	        ApiProductGrpcOperationGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiProductGrpcOperationGroupPtrInput interface {
+	pulumi.Input
+
+	ToApiProductGrpcOperationGroupPtrOutput() ApiProductGrpcOperationGroupPtrOutput
+	ToApiProductGrpcOperationGroupPtrOutputWithContext(context.Context) ApiProductGrpcOperationGroupPtrOutput
+}
+
+type apiProductGrpcOperationGroupPtrType ApiProductGrpcOperationGroupArgs
+
+func ApiProductGrpcOperationGroupPtr(v *ApiProductGrpcOperationGroupArgs) ApiProductGrpcOperationGroupPtrInput {
+	return (*apiProductGrpcOperationGroupPtrType)(v)
+}
+
+func (*apiProductGrpcOperationGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductGrpcOperationGroup)(nil)).Elem()
+}
+
+func (i *apiProductGrpcOperationGroupPtrType) ToApiProductGrpcOperationGroupPtrOutput() ApiProductGrpcOperationGroupPtrOutput {
+	return i.ToApiProductGrpcOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *apiProductGrpcOperationGroupPtrType) ToApiProductGrpcOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupPtrOutput)
+}
+
+type ApiProductGrpcOperationGroupOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGrpcOperationGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGrpcOperationGroup)(nil)).Elem()
+}
+
+func (o ApiProductGrpcOperationGroupOutput) ToApiProductGrpcOperationGroupOutput() ApiProductGrpcOperationGroupOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOutput) ToApiProductGrpcOperationGroupOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOutput) ToApiProductGrpcOperationGroupPtrOutput() ApiProductGrpcOperationGroupPtrOutput {
+	return o.ToApiProductGrpcOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductGrpcOperationGroupOutput) ToApiProductGrpcOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiProductGrpcOperationGroup) *ApiProductGrpcOperationGroup {
+		return &v
+	}).(ApiProductGrpcOperationGroupPtrOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
+// Structure is documented below.
+func (o ApiProductGrpcOperationGroupOutput) OperationConfigs() ApiProductGrpcOperationGroupOperationConfigArrayOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroup) []ApiProductGrpcOperationGroupOperationConfig {
+		return v.OperationConfigs
+	}).(ApiProductGrpcOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductGrpcOperationGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGrpcOperationGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductGrpcOperationGroup)(nil)).Elem()
+}
+
+func (o ApiProductGrpcOperationGroupPtrOutput) ToApiProductGrpcOperationGroupPtrOutput() ApiProductGrpcOperationGroupPtrOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupPtrOutput) ToApiProductGrpcOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupPtrOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupPtrOutput) Elem() ApiProductGrpcOperationGroupOutput {
+	return o.ApplyT(func(v *ApiProductGrpcOperationGroup) ApiProductGrpcOperationGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ApiProductGrpcOperationGroup
+		return ret
+	}).(ApiProductGrpcOperationGroupOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
+// Structure is documented below.
+func (o ApiProductGrpcOperationGroupPtrOutput) OperationConfigs() ApiProductGrpcOperationGroupOperationConfigArrayOutput {
+	return o.ApplyT(func(v *ApiProductGrpcOperationGroup) []ApiProductGrpcOperationGroupOperationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigs
+	}).(ApiProductGrpcOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfig struct {
+	// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+	ApiSource *string `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	// Structure is documented below.
+	Attributes []ApiProductGrpcOperationGroupOperationConfigAttribute `pulumi:"attributes"`
+	// List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
+	// Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+	// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+	Methods []string `pulumi:"methods"`
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+	// Structure is documented below.
+	Quota *ApiProductGrpcOperationGroupOperationConfigQuota `pulumi:"quota"`
+	// Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+	Service *string `pulumi:"service"`
+}
+
+// ApiProductGrpcOperationGroupOperationConfigInput is an input type that accepts ApiProductGrpcOperationGroupOperationConfigArgs and ApiProductGrpcOperationGroupOperationConfigOutput values.
+// You can construct a concrete instance of `ApiProductGrpcOperationGroupOperationConfigInput` via:
+//
+//	ApiProductGrpcOperationGroupOperationConfigArgs{...}
+type ApiProductGrpcOperationGroupOperationConfigInput interface {
+	pulumi.Input
+
+	ToApiProductGrpcOperationGroupOperationConfigOutput() ApiProductGrpcOperationGroupOperationConfigOutput
+	ToApiProductGrpcOperationGroupOperationConfigOutputWithContext(context.Context) ApiProductGrpcOperationGroupOperationConfigOutput
+}
+
+type ApiProductGrpcOperationGroupOperationConfigArgs struct {
+	// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+	ApiSource pulumi.StringPtrInput `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	// Structure is documented below.
+	Attributes ApiProductGrpcOperationGroupOperationConfigAttributeArrayInput `pulumi:"attributes"`
+	// List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
+	// Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+	// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+	// Structure is documented below.
+	Quota ApiProductGrpcOperationGroupOperationConfigQuotaPtrInput `pulumi:"quota"`
+	// Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ApiProductGrpcOperationGroupOperationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigArgs) ToApiProductGrpcOperationGroupOperationConfigOutput() ApiProductGrpcOperationGroupOperationConfigOutput {
+	return i.ToApiProductGrpcOperationGroupOperationConfigOutputWithContext(context.Background())
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigArgs) ToApiProductGrpcOperationGroupOperationConfigOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOperationConfigOutput)
+}
+
+// ApiProductGrpcOperationGroupOperationConfigArrayInput is an input type that accepts ApiProductGrpcOperationGroupOperationConfigArray and ApiProductGrpcOperationGroupOperationConfigArrayOutput values.
+// You can construct a concrete instance of `ApiProductGrpcOperationGroupOperationConfigArrayInput` via:
+//
+//	ApiProductGrpcOperationGroupOperationConfigArray{ ApiProductGrpcOperationGroupOperationConfigArgs{...} }
+type ApiProductGrpcOperationGroupOperationConfigArrayInput interface {
+	pulumi.Input
+
+	ToApiProductGrpcOperationGroupOperationConfigArrayOutput() ApiProductGrpcOperationGroupOperationConfigArrayOutput
+	ToApiProductGrpcOperationGroupOperationConfigArrayOutputWithContext(context.Context) ApiProductGrpcOperationGroupOperationConfigArrayOutput
+}
+
+type ApiProductGrpcOperationGroupOperationConfigArray []ApiProductGrpcOperationGroupOperationConfigInput
+
+func (ApiProductGrpcOperationGroupOperationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGrpcOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigArray) ToApiProductGrpcOperationGroupOperationConfigArrayOutput() ApiProductGrpcOperationGroupOperationConfigArrayOutput {
+	return i.ToApiProductGrpcOperationGroupOperationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigArray) ToApiProductGrpcOperationGroupOperationConfigArrayOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfigOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGrpcOperationGroupOperationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigOutput) ToApiProductGrpcOperationGroupOperationConfigOutput() ApiProductGrpcOperationGroupOperationConfigOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigOutput) ToApiProductGrpcOperationGroupOperationConfigOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigOutput {
+	return o
+}
+
+// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+func (o ApiProductGrpcOperationGroupOperationConfigOutput) ApiSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfig) *string { return v.ApiSource }).(pulumi.StringPtrOutput)
+}
+
+// Custom attributes associated with the operation.
+// Structure is documented below.
+func (o ApiProductGrpcOperationGroupOperationConfigOutput) Attributes() ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfig) []ApiProductGrpcOperationGroupOperationConfigAttribute {
+		return v.Attributes
+	}).(ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput)
+}
+
+// List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
+// Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+func (o ApiProductGrpcOperationGroupOperationConfigOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfig) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+// Structure is documented below.
+func (o ApiProductGrpcOperationGroupOperationConfigOutput) Quota() ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfig) *ApiProductGrpcOperationGroupOperationConfigQuota {
+		return v.Quota
+	}).(ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+// Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+func (o ApiProductGrpcOperationGroupOperationConfigOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGrpcOperationGroupOperationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGrpcOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigArrayOutput) ToApiProductGrpcOperationGroupOperationConfigArrayOutput() ApiProductGrpcOperationGroupOperationConfigArrayOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigArrayOutput) ToApiProductGrpcOperationGroupOperationConfigArrayOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigArrayOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigArrayOutput) Index(i pulumi.IntInput) ApiProductGrpcOperationGroupOperationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductGrpcOperationGroupOperationConfig {
+		return vs[0].([]ApiProductGrpcOperationGroupOperationConfig)[vs[1].(int)]
+	}).(ApiProductGrpcOperationGroupOperationConfigOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfigAttribute struct {
+	// Key of the attribute.
+	Name *string `pulumi:"name"`
+	// Value of the attribute.
+	Value *string `pulumi:"value"`
+}
+
+// ApiProductGrpcOperationGroupOperationConfigAttributeInput is an input type that accepts ApiProductGrpcOperationGroupOperationConfigAttributeArgs and ApiProductGrpcOperationGroupOperationConfigAttributeOutput values.
+// You can construct a concrete instance of `ApiProductGrpcOperationGroupOperationConfigAttributeInput` via:
+//
+//	ApiProductGrpcOperationGroupOperationConfigAttributeArgs{...}
+type ApiProductGrpcOperationGroupOperationConfigAttributeInput interface {
+	pulumi.Input
+
+	ToApiProductGrpcOperationGroupOperationConfigAttributeOutput() ApiProductGrpcOperationGroupOperationConfigAttributeOutput
+	ToApiProductGrpcOperationGroupOperationConfigAttributeOutputWithContext(context.Context) ApiProductGrpcOperationGroupOperationConfigAttributeOutput
+}
+
+type ApiProductGrpcOperationGroupOperationConfigAttributeArgs struct {
+	// Key of the attribute.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the attribute.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ApiProductGrpcOperationGroupOperationConfigAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigAttributeArgs) ToApiProductGrpcOperationGroupOperationConfigAttributeOutput() ApiProductGrpcOperationGroupOperationConfigAttributeOutput {
+	return i.ToApiProductGrpcOperationGroupOperationConfigAttributeOutputWithContext(context.Background())
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigAttributeArgs) ToApiProductGrpcOperationGroupOperationConfigAttributeOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOperationConfigAttributeOutput)
+}
+
+// ApiProductGrpcOperationGroupOperationConfigAttributeArrayInput is an input type that accepts ApiProductGrpcOperationGroupOperationConfigAttributeArray and ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput values.
+// You can construct a concrete instance of `ApiProductGrpcOperationGroupOperationConfigAttributeArrayInput` via:
+//
+//	ApiProductGrpcOperationGroupOperationConfigAttributeArray{ ApiProductGrpcOperationGroupOperationConfigAttributeArgs{...} }
+type ApiProductGrpcOperationGroupOperationConfigAttributeArrayInput interface {
+	pulumi.Input
+
+	ToApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput() ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput
+	ToApiProductGrpcOperationGroupOperationConfigAttributeArrayOutputWithContext(context.Context) ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput
+}
+
+type ApiProductGrpcOperationGroupOperationConfigAttributeArray []ApiProductGrpcOperationGroupOperationConfigAttributeInput
+
+func (ApiProductGrpcOperationGroupOperationConfigAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGrpcOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigAttributeArray) ToApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput() ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput {
+	return i.ToApiProductGrpcOperationGroupOperationConfigAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigAttributeArray) ToApiProductGrpcOperationGroupOperationConfigAttributeArrayOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfigAttributeOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGrpcOperationGroupOperationConfigAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigAttributeOutput) ToApiProductGrpcOperationGroupOperationConfigAttributeOutput() ApiProductGrpcOperationGroupOperationConfigAttributeOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigAttributeOutput) ToApiProductGrpcOperationGroupOperationConfigAttributeOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigAttributeOutput {
+	return o
+}
+
+// Key of the attribute.
+func (o ApiProductGrpcOperationGroupOperationConfigAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfigAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the attribute.
+func (o ApiProductGrpcOperationGroupOperationConfigAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfigAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductGrpcOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput) ToApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput() ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput) ToApiProductGrpcOperationGroupOperationConfigAttributeArrayOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput) Index(i pulumi.IntInput) ApiProductGrpcOperationGroupOperationConfigAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductGrpcOperationGroupOperationConfigAttribute {
+		return vs[0].([]ApiProductGrpcOperationGroupOperationConfigAttribute)[vs[1].(int)]
+	}).(ApiProductGrpcOperationGroupOperationConfigAttributeOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfigQuota struct {
+	// Required. Time interval over which the number of request messages is calculated.
+	Interval *string `pulumi:"interval"`
+	// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+	Limit *string `pulumi:"limit"`
+	// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+	TimeUnit *string `pulumi:"timeUnit"`
+}
+
+// ApiProductGrpcOperationGroupOperationConfigQuotaInput is an input type that accepts ApiProductGrpcOperationGroupOperationConfigQuotaArgs and ApiProductGrpcOperationGroupOperationConfigQuotaOutput values.
+// You can construct a concrete instance of `ApiProductGrpcOperationGroupOperationConfigQuotaInput` via:
+//
+//	ApiProductGrpcOperationGroupOperationConfigQuotaArgs{...}
+type ApiProductGrpcOperationGroupOperationConfigQuotaInput interface {
+	pulumi.Input
+
+	ToApiProductGrpcOperationGroupOperationConfigQuotaOutput() ApiProductGrpcOperationGroupOperationConfigQuotaOutput
+	ToApiProductGrpcOperationGroupOperationConfigQuotaOutputWithContext(context.Context) ApiProductGrpcOperationGroupOperationConfigQuotaOutput
+}
+
+type ApiProductGrpcOperationGroupOperationConfigQuotaArgs struct {
+	// Required. Time interval over which the number of request messages is calculated.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+	Limit pulumi.StringPtrInput `pulumi:"limit"`
+	// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+	TimeUnit pulumi.StringPtrInput `pulumi:"timeUnit"`
+}
+
+func (ApiProductGrpcOperationGroupOperationConfigQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigQuotaArgs) ToApiProductGrpcOperationGroupOperationConfigQuotaOutput() ApiProductGrpcOperationGroupOperationConfigQuotaOutput {
+	return i.ToApiProductGrpcOperationGroupOperationConfigQuotaOutputWithContext(context.Background())
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigQuotaArgs) ToApiProductGrpcOperationGroupOperationConfigQuotaOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOperationConfigQuotaOutput)
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigQuotaArgs) ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput() ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return i.ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i ApiProductGrpcOperationGroupOperationConfigQuotaArgs) ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOperationConfigQuotaOutput).ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx)
+}
+
+// ApiProductGrpcOperationGroupOperationConfigQuotaPtrInput is an input type that accepts ApiProductGrpcOperationGroupOperationConfigQuotaArgs, ApiProductGrpcOperationGroupOperationConfigQuotaPtr and ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput values.
+// You can construct a concrete instance of `ApiProductGrpcOperationGroupOperationConfigQuotaPtrInput` via:
+//
+//	        ApiProductGrpcOperationGroupOperationConfigQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiProductGrpcOperationGroupOperationConfigQuotaPtrInput interface {
+	pulumi.Input
+
+	ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput() ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput
+	ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Context) ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput
+}
+
+type apiProductGrpcOperationGroupOperationConfigQuotaPtrType ApiProductGrpcOperationGroupOperationConfigQuotaArgs
+
+func ApiProductGrpcOperationGroupOperationConfigQuotaPtr(v *ApiProductGrpcOperationGroupOperationConfigQuotaArgs) ApiProductGrpcOperationGroupOperationConfigQuotaPtrInput {
+	return (*apiProductGrpcOperationGroupOperationConfigQuotaPtrType)(v)
+}
+
+func (*apiProductGrpcOperationGroupOperationConfigQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductGrpcOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (i *apiProductGrpcOperationGroupOperationConfigQuotaPtrType) ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput() ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return i.ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *apiProductGrpcOperationGroupOperationConfigQuotaPtrType) ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfigQuotaOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGrpcOperationGroupOperationConfigQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaOutput) ToApiProductGrpcOperationGroupOperationConfigQuotaOutput() ApiProductGrpcOperationGroupOperationConfigQuotaOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaOutput) ToApiProductGrpcOperationGroupOperationConfigQuotaOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigQuotaOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaOutput) ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput() ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaOutput) ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiProductGrpcOperationGroupOperationConfigQuota) *ApiProductGrpcOperationGroupOperationConfigQuota {
+		return &v
+	}).(ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+// Required. Time interval over which the number of request messages is calculated.
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfigQuota) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfigQuota) *string { return v.Limit }).(pulumi.StringPtrOutput)
+}
+
+// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductGrpcOperationGroupOperationConfigQuota) *string { return v.TimeUnit }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductGrpcOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput) ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput() ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput) ToApiProductGrpcOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput {
+	return o
+}
+
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput) Elem() ApiProductGrpcOperationGroupOperationConfigQuotaOutput {
+	return o.ApplyT(func(v *ApiProductGrpcOperationGroupOperationConfigQuota) ApiProductGrpcOperationGroupOperationConfigQuota {
+		if v != nil {
+			return *v
+		}
+		var ret ApiProductGrpcOperationGroupOperationConfigQuota
+		return ret
+	}).(ApiProductGrpcOperationGroupOperationConfigQuotaOutput)
+}
+
+// Required. Time interval over which the number of request messages is calculated.
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductGrpcOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductGrpcOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+func (o ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductGrpcOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApiProductOperationGroup struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Possible values are: `proxy`, `remoteservice`.
+	OperationConfigType *string `pulumi:"operationConfigType"`
+	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+	// Structure is documented below.
+	OperationConfigs []ApiProductOperationGroupOperationConfig `pulumi:"operationConfigs"`
+}
+
+// ApiProductOperationGroupInput is an input type that accepts ApiProductOperationGroupArgs and ApiProductOperationGroupOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupInput` via:
+//
+//	ApiProductOperationGroupArgs{...}
+type ApiProductOperationGroupInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOutput() ApiProductOperationGroupOutput
+	ToApiProductOperationGroupOutputWithContext(context.Context) ApiProductOperationGroupOutput
+}
+
+type ApiProductOperationGroupArgs struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	// Possible values are: `proxy`, `remoteservice`.
+	OperationConfigType pulumi.StringPtrInput `pulumi:"operationConfigType"`
+	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+	// Structure is documented below.
+	OperationConfigs ApiProductOperationGroupOperationConfigArrayInput `pulumi:"operationConfigs"`
+}
+
+func (ApiProductOperationGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroup)(nil)).Elem()
+}
+
+func (i ApiProductOperationGroupArgs) ToApiProductOperationGroupOutput() ApiProductOperationGroupOutput {
+	return i.ToApiProductOperationGroupOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupArgs) ToApiProductOperationGroupOutputWithContext(ctx context.Context) ApiProductOperationGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOutput)
+}
+
+func (i ApiProductOperationGroupArgs) ToApiProductOperationGroupPtrOutput() ApiProductOperationGroupPtrOutput {
+	return i.ToApiProductOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupArgs) ToApiProductOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductOperationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOutput).ToApiProductOperationGroupPtrOutputWithContext(ctx)
+}
+
+// ApiProductOperationGroupPtrInput is an input type that accepts ApiProductOperationGroupArgs, ApiProductOperationGroupPtr and ApiProductOperationGroupPtrOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupPtrInput` via:
+//
+//	        ApiProductOperationGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiProductOperationGroupPtrInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupPtrOutput() ApiProductOperationGroupPtrOutput
+	ToApiProductOperationGroupPtrOutputWithContext(context.Context) ApiProductOperationGroupPtrOutput
+}
+
+type apiProductOperationGroupPtrType ApiProductOperationGroupArgs
+
+func ApiProductOperationGroupPtr(v *ApiProductOperationGroupArgs) ApiProductOperationGroupPtrInput {
+	return (*apiProductOperationGroupPtrType)(v)
+}
+
+func (*apiProductOperationGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductOperationGroup)(nil)).Elem()
+}
+
+func (i *apiProductOperationGroupPtrType) ToApiProductOperationGroupPtrOutput() ApiProductOperationGroupPtrOutput {
+	return i.ToApiProductOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *apiProductOperationGroupPtrType) ToApiProductOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductOperationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupPtrOutput)
+}
+
+type ApiProductOperationGroupOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroup)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOutput) ToApiProductOperationGroupOutput() ApiProductOperationGroupOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOutput) ToApiProductOperationGroupOutputWithContext(ctx context.Context) ApiProductOperationGroupOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOutput) ToApiProductOperationGroupPtrOutput() ApiProductOperationGroupPtrOutput {
+	return o.ToApiProductOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductOperationGroupOutput) ToApiProductOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductOperationGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiProductOperationGroup) *ApiProductOperationGroup {
+		return &v
+	}).(ApiProductOperationGroupPtrOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Possible values are: `proxy`, `remoteservice`.
+func (o ApiProductOperationGroupOutput) OperationConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroup) *string { return v.OperationConfigType }).(pulumi.StringPtrOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+// Structure is documented below.
+func (o ApiProductOperationGroupOutput) OperationConfigs() ApiProductOperationGroupOperationConfigArrayOutput {
+	return o.ApplyT(func(v ApiProductOperationGroup) []ApiProductOperationGroupOperationConfig { return v.OperationConfigs }).(ApiProductOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductOperationGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductOperationGroup)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupPtrOutput) ToApiProductOperationGroupPtrOutput() ApiProductOperationGroupPtrOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupPtrOutput) ToApiProductOperationGroupPtrOutputWithContext(ctx context.Context) ApiProductOperationGroupPtrOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupPtrOutput) Elem() ApiProductOperationGroupOutput {
+	return o.ApplyT(func(v *ApiProductOperationGroup) ApiProductOperationGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ApiProductOperationGroup
+		return ret
+	}).(ApiProductOperationGroupOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+// Possible values are: `proxy`, `remoteservice`.
+func (o ApiProductOperationGroupPtrOutput) OperationConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductOperationGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+// Structure is documented below.
+func (o ApiProductOperationGroupPtrOutput) OperationConfigs() ApiProductOperationGroupOperationConfigArrayOutput {
+	return o.ApplyT(func(v *ApiProductOperationGroup) []ApiProductOperationGroupOperationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigs
+	}).(ApiProductOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductOperationGroupOperationConfig struct {
+	// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+	ApiSource *string `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	// Structure is documented below.
+	Attributes []ApiProductOperationGroupOperationConfigAttribute `pulumi:"attributes"`
+	// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+	// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+	// Structure is documented below.
+	Operations []ApiProductOperationGroupOperationConfigOperation `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+	// Structure is documented below.
+	Quota *ApiProductOperationGroupOperationConfigQuota `pulumi:"quota"`
+}
+
+// ApiProductOperationGroupOperationConfigInput is an input type that accepts ApiProductOperationGroupOperationConfigArgs and ApiProductOperationGroupOperationConfigOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupOperationConfigInput` via:
+//
+//	ApiProductOperationGroupOperationConfigArgs{...}
+type ApiProductOperationGroupOperationConfigInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOperationConfigOutput() ApiProductOperationGroupOperationConfigOutput
+	ToApiProductOperationGroupOperationConfigOutputWithContext(context.Context) ApiProductOperationGroupOperationConfigOutput
+}
+
+type ApiProductOperationGroupOperationConfigArgs struct {
+	// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+	ApiSource pulumi.StringPtrInput `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	// Structure is documented below.
+	Attributes ApiProductOperationGroupOperationConfigAttributeArrayInput `pulumi:"attributes"`
+	// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+	// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+	// Structure is documented below.
+	Operations ApiProductOperationGroupOperationConfigOperationArrayInput `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+	// Structure is documented below.
+	Quota ApiProductOperationGroupOperationConfigQuotaPtrInput `pulumi:"quota"`
+}
+
+func (ApiProductOperationGroupOperationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (i ApiProductOperationGroupOperationConfigArgs) ToApiProductOperationGroupOperationConfigOutput() ApiProductOperationGroupOperationConfigOutput {
+	return i.ToApiProductOperationGroupOperationConfigOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupOperationConfigArgs) ToApiProductOperationGroupOperationConfigOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigOutput)
+}
+
+// ApiProductOperationGroupOperationConfigArrayInput is an input type that accepts ApiProductOperationGroupOperationConfigArray and ApiProductOperationGroupOperationConfigArrayOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupOperationConfigArrayInput` via:
+//
+//	ApiProductOperationGroupOperationConfigArray{ ApiProductOperationGroupOperationConfigArgs{...} }
+type ApiProductOperationGroupOperationConfigArrayInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOperationConfigArrayOutput() ApiProductOperationGroupOperationConfigArrayOutput
+	ToApiProductOperationGroupOperationConfigArrayOutputWithContext(context.Context) ApiProductOperationGroupOperationConfigArrayOutput
+}
+
+type ApiProductOperationGroupOperationConfigArray []ApiProductOperationGroupOperationConfigInput
+
+func (ApiProductOperationGroupOperationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (i ApiProductOperationGroupOperationConfigArray) ToApiProductOperationGroupOperationConfigArrayOutput() ApiProductOperationGroupOperationConfigArrayOutput {
+	return i.ToApiProductOperationGroupOperationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupOperationConfigArray) ToApiProductOperationGroupOperationConfigArrayOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigArrayOutput)
+}
+
+type ApiProductOperationGroupOperationConfigOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOperationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOperationConfigOutput) ToApiProductOperationGroupOperationConfigOutput() ApiProductOperationGroupOperationConfigOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigOutput) ToApiProductOperationGroupOperationConfigOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigOutput {
+	return o
+}
+
+// Required. Name of the API proxy with which the gRPC operation and quota are associated.
+func (o ApiProductOperationGroupOperationConfigOutput) ApiSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfig) *string { return v.ApiSource }).(pulumi.StringPtrOutput)
+}
+
+// Custom attributes associated with the operation.
+// Structure is documented below.
+func (o ApiProductOperationGroupOperationConfigOutput) Attributes() ApiProductOperationGroupOperationConfigAttributeArrayOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfig) []ApiProductOperationGroupOperationConfigAttribute {
+		return v.Attributes
+	}).(ApiProductOperationGroupOperationConfigAttributeArrayOutput)
+}
+
+// Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+// Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+// Structure is documented below.
+func (o ApiProductOperationGroupOperationConfigOutput) Operations() ApiProductOperationGroupOperationConfigOperationArrayOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfig) []ApiProductOperationGroupOperationConfigOperation {
+		return v.Operations
+	}).(ApiProductOperationGroupOperationConfigOperationArrayOutput)
+}
+
+// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+// Structure is documented below.
+func (o ApiProductOperationGroupOperationConfigOutput) Quota() ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfig) *ApiProductOperationGroupOperationConfigQuota {
+		return v.Quota
+	}).(ApiProductOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+type ApiProductOperationGroupOperationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOperationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductOperationGroupOperationConfig)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOperationConfigArrayOutput) ToApiProductOperationGroupOperationConfigArrayOutput() ApiProductOperationGroupOperationConfigArrayOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigArrayOutput) ToApiProductOperationGroupOperationConfigArrayOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigArrayOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigArrayOutput) Index(i pulumi.IntInput) ApiProductOperationGroupOperationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductOperationGroupOperationConfig {
+		return vs[0].([]ApiProductOperationGroupOperationConfig)[vs[1].(int)]
+	}).(ApiProductOperationGroupOperationConfigOutput)
+}
+
+type ApiProductOperationGroupOperationConfigAttribute struct {
+	// Key of the attribute.
+	Name *string `pulumi:"name"`
+	// Value of the attribute.
+	Value *string `pulumi:"value"`
+}
+
+// ApiProductOperationGroupOperationConfigAttributeInput is an input type that accepts ApiProductOperationGroupOperationConfigAttributeArgs and ApiProductOperationGroupOperationConfigAttributeOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupOperationConfigAttributeInput` via:
+//
+//	ApiProductOperationGroupOperationConfigAttributeArgs{...}
+type ApiProductOperationGroupOperationConfigAttributeInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOperationConfigAttributeOutput() ApiProductOperationGroupOperationConfigAttributeOutput
+	ToApiProductOperationGroupOperationConfigAttributeOutputWithContext(context.Context) ApiProductOperationGroupOperationConfigAttributeOutput
+}
+
+type ApiProductOperationGroupOperationConfigAttributeArgs struct {
+	// Key of the attribute.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the attribute.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ApiProductOperationGroupOperationConfigAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (i ApiProductOperationGroupOperationConfigAttributeArgs) ToApiProductOperationGroupOperationConfigAttributeOutput() ApiProductOperationGroupOperationConfigAttributeOutput {
+	return i.ToApiProductOperationGroupOperationConfigAttributeOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupOperationConfigAttributeArgs) ToApiProductOperationGroupOperationConfigAttributeOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigAttributeOutput)
+}
+
+// ApiProductOperationGroupOperationConfigAttributeArrayInput is an input type that accepts ApiProductOperationGroupOperationConfigAttributeArray and ApiProductOperationGroupOperationConfigAttributeArrayOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupOperationConfigAttributeArrayInput` via:
+//
+//	ApiProductOperationGroupOperationConfigAttributeArray{ ApiProductOperationGroupOperationConfigAttributeArgs{...} }
+type ApiProductOperationGroupOperationConfigAttributeArrayInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOperationConfigAttributeArrayOutput() ApiProductOperationGroupOperationConfigAttributeArrayOutput
+	ToApiProductOperationGroupOperationConfigAttributeArrayOutputWithContext(context.Context) ApiProductOperationGroupOperationConfigAttributeArrayOutput
+}
+
+type ApiProductOperationGroupOperationConfigAttributeArray []ApiProductOperationGroupOperationConfigAttributeInput
+
+func (ApiProductOperationGroupOperationConfigAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (i ApiProductOperationGroupOperationConfigAttributeArray) ToApiProductOperationGroupOperationConfigAttributeArrayOutput() ApiProductOperationGroupOperationConfigAttributeArrayOutput {
+	return i.ToApiProductOperationGroupOperationConfigAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupOperationConfigAttributeArray) ToApiProductOperationGroupOperationConfigAttributeArrayOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigAttributeArrayOutput)
+}
+
+type ApiProductOperationGroupOperationConfigAttributeOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOperationConfigAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOperationConfigAttributeOutput) ToApiProductOperationGroupOperationConfigAttributeOutput() ApiProductOperationGroupOperationConfigAttributeOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigAttributeOutput) ToApiProductOperationGroupOperationConfigAttributeOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigAttributeOutput {
+	return o
+}
+
+// Key of the attribute.
+func (o ApiProductOperationGroupOperationConfigAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfigAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the attribute.
+func (o ApiProductOperationGroupOperationConfigAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfigAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductOperationGroupOperationConfigAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOperationConfigAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductOperationGroupOperationConfigAttribute)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOperationConfigAttributeArrayOutput) ToApiProductOperationGroupOperationConfigAttributeArrayOutput() ApiProductOperationGroupOperationConfigAttributeArrayOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigAttributeArrayOutput) ToApiProductOperationGroupOperationConfigAttributeArrayOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigAttributeArrayOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigAttributeArrayOutput) Index(i pulumi.IntInput) ApiProductOperationGroupOperationConfigAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductOperationGroupOperationConfigAttribute {
+		return vs[0].([]ApiProductOperationGroupOperationConfigAttribute)[vs[1].(int)]
+	}).(ApiProductOperationGroupOperationConfigAttributeOutput)
+}
+
+type ApiProductOperationGroupOperationConfigOperation struct {
+	// Methods refers to the REST verbs, when none specified, all verb types are allowed.
+	Methods []string `pulumi:"methods"`
+	// Required. REST resource path associated with the API proxy or remote service.
+	Resource *string `pulumi:"resource"`
+}
+
+// ApiProductOperationGroupOperationConfigOperationInput is an input type that accepts ApiProductOperationGroupOperationConfigOperationArgs and ApiProductOperationGroupOperationConfigOperationOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupOperationConfigOperationInput` via:
+//
+//	ApiProductOperationGroupOperationConfigOperationArgs{...}
+type ApiProductOperationGroupOperationConfigOperationInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOperationConfigOperationOutput() ApiProductOperationGroupOperationConfigOperationOutput
+	ToApiProductOperationGroupOperationConfigOperationOutputWithContext(context.Context) ApiProductOperationGroupOperationConfigOperationOutput
+}
+
+type ApiProductOperationGroupOperationConfigOperationArgs struct {
+	// Methods refers to the REST verbs, when none specified, all verb types are allowed.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// Required. REST resource path associated with the API proxy or remote service.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (ApiProductOperationGroupOperationConfigOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroupOperationConfigOperation)(nil)).Elem()
+}
+
+func (i ApiProductOperationGroupOperationConfigOperationArgs) ToApiProductOperationGroupOperationConfigOperationOutput() ApiProductOperationGroupOperationConfigOperationOutput {
+	return i.ToApiProductOperationGroupOperationConfigOperationOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupOperationConfigOperationArgs) ToApiProductOperationGroupOperationConfigOperationOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigOperationOutput)
+}
+
+// ApiProductOperationGroupOperationConfigOperationArrayInput is an input type that accepts ApiProductOperationGroupOperationConfigOperationArray and ApiProductOperationGroupOperationConfigOperationArrayOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupOperationConfigOperationArrayInput` via:
+//
+//	ApiProductOperationGroupOperationConfigOperationArray{ ApiProductOperationGroupOperationConfigOperationArgs{...} }
+type ApiProductOperationGroupOperationConfigOperationArrayInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOperationConfigOperationArrayOutput() ApiProductOperationGroupOperationConfigOperationArrayOutput
+	ToApiProductOperationGroupOperationConfigOperationArrayOutputWithContext(context.Context) ApiProductOperationGroupOperationConfigOperationArrayOutput
+}
+
+type ApiProductOperationGroupOperationConfigOperationArray []ApiProductOperationGroupOperationConfigOperationInput
+
+func (ApiProductOperationGroupOperationConfigOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductOperationGroupOperationConfigOperation)(nil)).Elem()
+}
+
+func (i ApiProductOperationGroupOperationConfigOperationArray) ToApiProductOperationGroupOperationConfigOperationArrayOutput() ApiProductOperationGroupOperationConfigOperationArrayOutput {
+	return i.ToApiProductOperationGroupOperationConfigOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupOperationConfigOperationArray) ToApiProductOperationGroupOperationConfigOperationArrayOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigOperationArrayOutput)
+}
+
+type ApiProductOperationGroupOperationConfigOperationOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOperationConfigOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroupOperationConfigOperation)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOperationConfigOperationOutput) ToApiProductOperationGroupOperationConfigOperationOutput() ApiProductOperationGroupOperationConfigOperationOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigOperationOutput) ToApiProductOperationGroupOperationConfigOperationOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigOperationOutput {
+	return o
+}
+
+// Methods refers to the REST verbs, when none specified, all verb types are allowed.
+func (o ApiProductOperationGroupOperationConfigOperationOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfigOperation) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Required. REST resource path associated with the API proxy or remote service.
+func (o ApiProductOperationGroupOperationConfigOperationOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfigOperation) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductOperationGroupOperationConfigOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOperationConfigOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiProductOperationGroupOperationConfigOperation)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOperationConfigOperationArrayOutput) ToApiProductOperationGroupOperationConfigOperationArrayOutput() ApiProductOperationGroupOperationConfigOperationArrayOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigOperationArrayOutput) ToApiProductOperationGroupOperationConfigOperationArrayOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigOperationArrayOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigOperationArrayOutput) Index(i pulumi.IntInput) ApiProductOperationGroupOperationConfigOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiProductOperationGroupOperationConfigOperation {
+		return vs[0].([]ApiProductOperationGroupOperationConfigOperation)[vs[1].(int)]
+	}).(ApiProductOperationGroupOperationConfigOperationOutput)
+}
+
+type ApiProductOperationGroupOperationConfigQuota struct {
+	// Required. Time interval over which the number of request messages is calculated.
+	Interval *string `pulumi:"interval"`
+	// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+	Limit *string `pulumi:"limit"`
+	// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+	TimeUnit *string `pulumi:"timeUnit"`
+}
+
+// ApiProductOperationGroupOperationConfigQuotaInput is an input type that accepts ApiProductOperationGroupOperationConfigQuotaArgs and ApiProductOperationGroupOperationConfigQuotaOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupOperationConfigQuotaInput` via:
+//
+//	ApiProductOperationGroupOperationConfigQuotaArgs{...}
+type ApiProductOperationGroupOperationConfigQuotaInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOperationConfigQuotaOutput() ApiProductOperationGroupOperationConfigQuotaOutput
+	ToApiProductOperationGroupOperationConfigQuotaOutputWithContext(context.Context) ApiProductOperationGroupOperationConfigQuotaOutput
+}
+
+type ApiProductOperationGroupOperationConfigQuotaArgs struct {
+	// Required. Time interval over which the number of request messages is calculated.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+	Limit pulumi.StringPtrInput `pulumi:"limit"`
+	// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+	TimeUnit pulumi.StringPtrInput `pulumi:"timeUnit"`
+}
+
+func (ApiProductOperationGroupOperationConfigQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (i ApiProductOperationGroupOperationConfigQuotaArgs) ToApiProductOperationGroupOperationConfigQuotaOutput() ApiProductOperationGroupOperationConfigQuotaOutput {
+	return i.ToApiProductOperationGroupOperationConfigQuotaOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupOperationConfigQuotaArgs) ToApiProductOperationGroupOperationConfigQuotaOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigQuotaOutput)
+}
+
+func (i ApiProductOperationGroupOperationConfigQuotaArgs) ToApiProductOperationGroupOperationConfigQuotaPtrOutput() ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return i.ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i ApiProductOperationGroupOperationConfigQuotaArgs) ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigQuotaOutput).ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx)
+}
+
+// ApiProductOperationGroupOperationConfigQuotaPtrInput is an input type that accepts ApiProductOperationGroupOperationConfigQuotaArgs, ApiProductOperationGroupOperationConfigQuotaPtr and ApiProductOperationGroupOperationConfigQuotaPtrOutput values.
+// You can construct a concrete instance of `ApiProductOperationGroupOperationConfigQuotaPtrInput` via:
+//
+//	        ApiProductOperationGroupOperationConfigQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiProductOperationGroupOperationConfigQuotaPtrInput interface {
+	pulumi.Input
+
+	ToApiProductOperationGroupOperationConfigQuotaPtrOutput() ApiProductOperationGroupOperationConfigQuotaPtrOutput
+	ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Context) ApiProductOperationGroupOperationConfigQuotaPtrOutput
+}
+
+type apiProductOperationGroupOperationConfigQuotaPtrType ApiProductOperationGroupOperationConfigQuotaArgs
+
+func ApiProductOperationGroupOperationConfigQuotaPtr(v *ApiProductOperationGroupOperationConfigQuotaArgs) ApiProductOperationGroupOperationConfigQuotaPtrInput {
+	return (*apiProductOperationGroupOperationConfigQuotaPtrType)(v)
+}
+
+func (*apiProductOperationGroupOperationConfigQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (i *apiProductOperationGroupOperationConfigQuotaPtrType) ToApiProductOperationGroupOperationConfigQuotaPtrOutput() ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return i.ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *apiProductOperationGroupOperationConfigQuotaPtrType) ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+type ApiProductOperationGroupOperationConfigQuotaOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOperationConfigQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOperationConfigQuotaOutput) ToApiProductOperationGroupOperationConfigQuotaOutput() ApiProductOperationGroupOperationConfigQuotaOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigQuotaOutput) ToApiProductOperationGroupOperationConfigQuotaOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigQuotaOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigQuotaOutput) ToApiProductOperationGroupOperationConfigQuotaPtrOutput() ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductOperationGroupOperationConfigQuotaOutput) ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiProductOperationGroupOperationConfigQuota) *ApiProductOperationGroupOperationConfigQuota {
+		return &v
+	}).(ApiProductOperationGroupOperationConfigQuotaPtrOutput)
+}
+
+// Required. Time interval over which the number of request messages is calculated.
+func (o ApiProductOperationGroupOperationConfigQuotaOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfigQuota) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+func (o ApiProductOperationGroupOperationConfigQuotaOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfigQuota) *string { return v.Limit }).(pulumi.StringPtrOutput)
+}
+
+// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+func (o ApiProductOperationGroupOperationConfigQuotaOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiProductOperationGroupOperationConfigQuota) *string { return v.TimeUnit }).(pulumi.StringPtrOutput)
+}
+
+type ApiProductOperationGroupOperationConfigQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiProductOperationGroupOperationConfigQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductOperationGroupOperationConfigQuota)(nil)).Elem()
+}
+
+func (o ApiProductOperationGroupOperationConfigQuotaPtrOutput) ToApiProductOperationGroupOperationConfigQuotaPtrOutput() ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigQuotaPtrOutput) ToApiProductOperationGroupOperationConfigQuotaPtrOutputWithContext(ctx context.Context) ApiProductOperationGroupOperationConfigQuotaPtrOutput {
+	return o
+}
+
+func (o ApiProductOperationGroupOperationConfigQuotaPtrOutput) Elem() ApiProductOperationGroupOperationConfigQuotaOutput {
+	return o.ApplyT(func(v *ApiProductOperationGroupOperationConfigQuota) ApiProductOperationGroupOperationConfigQuota {
+		if v != nil {
+			return *v
+		}
+		var ret ApiProductOperationGroupOperationConfigQuota
+		return ret
+	}).(ApiProductOperationGroupOperationConfigQuotaOutput)
+}
+
+// Required. Time interval over which the number of request messages is calculated.
+func (o ApiProductOperationGroupOperationConfigQuotaPtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+func (o ApiProductOperationGroupOperationConfigQuotaPtrOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+func (o ApiProductOperationGroupOperationConfigQuotaPtrOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiProductOperationGroupOperationConfigQuota) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeUnit
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppGroupAttribute struct {
 	// Key of the attribute
 	Name *string `pulumi:"name"`
@@ -4370,6 +6440,859 @@ func (o OrganizationPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) Orga
 	}).(OrganizationPropertiesPropertyOutput)
 }
 
+type SecurityActionAllow struct {
+}
+
+// SecurityActionAllowInput is an input type that accepts SecurityActionAllowArgs and SecurityActionAllowOutput values.
+// You can construct a concrete instance of `SecurityActionAllowInput` via:
+//
+//	SecurityActionAllowArgs{...}
+type SecurityActionAllowInput interface {
+	pulumi.Input
+
+	ToSecurityActionAllowOutput() SecurityActionAllowOutput
+	ToSecurityActionAllowOutputWithContext(context.Context) SecurityActionAllowOutput
+}
+
+type SecurityActionAllowArgs struct {
+}
+
+func (SecurityActionAllowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionAllow)(nil)).Elem()
+}
+
+func (i SecurityActionAllowArgs) ToSecurityActionAllowOutput() SecurityActionAllowOutput {
+	return i.ToSecurityActionAllowOutputWithContext(context.Background())
+}
+
+func (i SecurityActionAllowArgs) ToSecurityActionAllowOutputWithContext(ctx context.Context) SecurityActionAllowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionAllowOutput)
+}
+
+func (i SecurityActionAllowArgs) ToSecurityActionAllowPtrOutput() SecurityActionAllowPtrOutput {
+	return i.ToSecurityActionAllowPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityActionAllowArgs) ToSecurityActionAllowPtrOutputWithContext(ctx context.Context) SecurityActionAllowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionAllowOutput).ToSecurityActionAllowPtrOutputWithContext(ctx)
+}
+
+// SecurityActionAllowPtrInput is an input type that accepts SecurityActionAllowArgs, SecurityActionAllowPtr and SecurityActionAllowPtrOutput values.
+// You can construct a concrete instance of `SecurityActionAllowPtrInput` via:
+//
+//	        SecurityActionAllowArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityActionAllowPtrInput interface {
+	pulumi.Input
+
+	ToSecurityActionAllowPtrOutput() SecurityActionAllowPtrOutput
+	ToSecurityActionAllowPtrOutputWithContext(context.Context) SecurityActionAllowPtrOutput
+}
+
+type securityActionAllowPtrType SecurityActionAllowArgs
+
+func SecurityActionAllowPtr(v *SecurityActionAllowArgs) SecurityActionAllowPtrInput {
+	return (*securityActionAllowPtrType)(v)
+}
+
+func (*securityActionAllowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionAllow)(nil)).Elem()
+}
+
+func (i *securityActionAllowPtrType) ToSecurityActionAllowPtrOutput() SecurityActionAllowPtrOutput {
+	return i.ToSecurityActionAllowPtrOutputWithContext(context.Background())
+}
+
+func (i *securityActionAllowPtrType) ToSecurityActionAllowPtrOutputWithContext(ctx context.Context) SecurityActionAllowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionAllowPtrOutput)
+}
+
+type SecurityActionAllowOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionAllowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionAllow)(nil)).Elem()
+}
+
+func (o SecurityActionAllowOutput) ToSecurityActionAllowOutput() SecurityActionAllowOutput {
+	return o
+}
+
+func (o SecurityActionAllowOutput) ToSecurityActionAllowOutputWithContext(ctx context.Context) SecurityActionAllowOutput {
+	return o
+}
+
+func (o SecurityActionAllowOutput) ToSecurityActionAllowPtrOutput() SecurityActionAllowPtrOutput {
+	return o.ToSecurityActionAllowPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityActionAllowOutput) ToSecurityActionAllowPtrOutputWithContext(ctx context.Context) SecurityActionAllowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityActionAllow) *SecurityActionAllow {
+		return &v
+	}).(SecurityActionAllowPtrOutput)
+}
+
+type SecurityActionAllowPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionAllowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionAllow)(nil)).Elem()
+}
+
+func (o SecurityActionAllowPtrOutput) ToSecurityActionAllowPtrOutput() SecurityActionAllowPtrOutput {
+	return o
+}
+
+func (o SecurityActionAllowPtrOutput) ToSecurityActionAllowPtrOutputWithContext(ctx context.Context) SecurityActionAllowPtrOutput {
+	return o
+}
+
+func (o SecurityActionAllowPtrOutput) Elem() SecurityActionAllowOutput {
+	return o.ApplyT(func(v *SecurityActionAllow) SecurityActionAllow {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityActionAllow
+		return ret
+	}).(SecurityActionAllowOutput)
+}
+
+type SecurityActionConditionConfig struct {
+	// A list of accessTokens. Limit 1000 per action.
+	AccessTokens []string `pulumi:"accessTokens"`
+	// A list of API keys. Limit 1000 per action.
+	ApiKeys []string `pulumi:"apiKeys"`
+	// A list of API Products. Limit 1000 per action.
+	ApiProducts []string `pulumi:"apiProducts"`
+	// A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+	// This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+	Asns []string `pulumi:"asns"`
+	// A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
+	// OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
+	// Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+	BotReasons []string `pulumi:"botReasons"`
+	// A list of developer apps. Limit 1000 per action.
+	DeveloperApps []string `pulumi:"developerApps"`
+	// A list of developers. Limit 1000 per action.
+	Developers []string `pulumi:"developers"`
+	// Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
+	// Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+	HttpMethods []string `pulumi:"httpMethods"`
+	// A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+	IpAddressRanges []string `pulumi:"ipAddressRanges"`
+	// A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+	RegionCodes []string `pulumi:"regionCodes"`
+	// A list of user agents to deny. We look for exact matches. Limit 50 per action.
+	UserAgents []string `pulumi:"userAgents"`
+}
+
+// SecurityActionConditionConfigInput is an input type that accepts SecurityActionConditionConfigArgs and SecurityActionConditionConfigOutput values.
+// You can construct a concrete instance of `SecurityActionConditionConfigInput` via:
+//
+//	SecurityActionConditionConfigArgs{...}
+type SecurityActionConditionConfigInput interface {
+	pulumi.Input
+
+	ToSecurityActionConditionConfigOutput() SecurityActionConditionConfigOutput
+	ToSecurityActionConditionConfigOutputWithContext(context.Context) SecurityActionConditionConfigOutput
+}
+
+type SecurityActionConditionConfigArgs struct {
+	// A list of accessTokens. Limit 1000 per action.
+	AccessTokens pulumi.StringArrayInput `pulumi:"accessTokens"`
+	// A list of API keys. Limit 1000 per action.
+	ApiKeys pulumi.StringArrayInput `pulumi:"apiKeys"`
+	// A list of API Products. Limit 1000 per action.
+	ApiProducts pulumi.StringArrayInput `pulumi:"apiProducts"`
+	// A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+	// This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+	Asns pulumi.StringArrayInput `pulumi:"asns"`
+	// A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
+	// OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
+	// Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+	BotReasons pulumi.StringArrayInput `pulumi:"botReasons"`
+	// A list of developer apps. Limit 1000 per action.
+	DeveloperApps pulumi.StringArrayInput `pulumi:"developerApps"`
+	// A list of developers. Limit 1000 per action.
+	Developers pulumi.StringArrayInput `pulumi:"developers"`
+	// Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
+	// Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+	HttpMethods pulumi.StringArrayInput `pulumi:"httpMethods"`
+	// A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+	IpAddressRanges pulumi.StringArrayInput `pulumi:"ipAddressRanges"`
+	// A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+	RegionCodes pulumi.StringArrayInput `pulumi:"regionCodes"`
+	// A list of user agents to deny. We look for exact matches. Limit 50 per action.
+	UserAgents pulumi.StringArrayInput `pulumi:"userAgents"`
+}
+
+func (SecurityActionConditionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionConditionConfig)(nil)).Elem()
+}
+
+func (i SecurityActionConditionConfigArgs) ToSecurityActionConditionConfigOutput() SecurityActionConditionConfigOutput {
+	return i.ToSecurityActionConditionConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityActionConditionConfigArgs) ToSecurityActionConditionConfigOutputWithContext(ctx context.Context) SecurityActionConditionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionConditionConfigOutput)
+}
+
+func (i SecurityActionConditionConfigArgs) ToSecurityActionConditionConfigPtrOutput() SecurityActionConditionConfigPtrOutput {
+	return i.ToSecurityActionConditionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityActionConditionConfigArgs) ToSecurityActionConditionConfigPtrOutputWithContext(ctx context.Context) SecurityActionConditionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionConditionConfigOutput).ToSecurityActionConditionConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityActionConditionConfigPtrInput is an input type that accepts SecurityActionConditionConfigArgs, SecurityActionConditionConfigPtr and SecurityActionConditionConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityActionConditionConfigPtrInput` via:
+//
+//	        SecurityActionConditionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityActionConditionConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityActionConditionConfigPtrOutput() SecurityActionConditionConfigPtrOutput
+	ToSecurityActionConditionConfigPtrOutputWithContext(context.Context) SecurityActionConditionConfigPtrOutput
+}
+
+type securityActionConditionConfigPtrType SecurityActionConditionConfigArgs
+
+func SecurityActionConditionConfigPtr(v *SecurityActionConditionConfigArgs) SecurityActionConditionConfigPtrInput {
+	return (*securityActionConditionConfigPtrType)(v)
+}
+
+func (*securityActionConditionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionConditionConfig)(nil)).Elem()
+}
+
+func (i *securityActionConditionConfigPtrType) ToSecurityActionConditionConfigPtrOutput() SecurityActionConditionConfigPtrOutput {
+	return i.ToSecurityActionConditionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityActionConditionConfigPtrType) ToSecurityActionConditionConfigPtrOutputWithContext(ctx context.Context) SecurityActionConditionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionConditionConfigPtrOutput)
+}
+
+type SecurityActionConditionConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionConditionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionConditionConfig)(nil)).Elem()
+}
+
+func (o SecurityActionConditionConfigOutput) ToSecurityActionConditionConfigOutput() SecurityActionConditionConfigOutput {
+	return o
+}
+
+func (o SecurityActionConditionConfigOutput) ToSecurityActionConditionConfigOutputWithContext(ctx context.Context) SecurityActionConditionConfigOutput {
+	return o
+}
+
+func (o SecurityActionConditionConfigOutput) ToSecurityActionConditionConfigPtrOutput() SecurityActionConditionConfigPtrOutput {
+	return o.ToSecurityActionConditionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityActionConditionConfigOutput) ToSecurityActionConditionConfigPtrOutputWithContext(ctx context.Context) SecurityActionConditionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityActionConditionConfig) *SecurityActionConditionConfig {
+		return &v
+	}).(SecurityActionConditionConfigPtrOutput)
+}
+
+// A list of accessTokens. Limit 1000 per action.
+func (o SecurityActionConditionConfigOutput) AccessTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.AccessTokens }).(pulumi.StringArrayOutput)
+}
+
+// A list of API keys. Limit 1000 per action.
+func (o SecurityActionConditionConfigOutput) ApiKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.ApiKeys }).(pulumi.StringArrayOutput)
+}
+
+// A list of API Products. Limit 1000 per action.
+func (o SecurityActionConditionConfigOutput) ApiProducts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.ApiProducts }).(pulumi.StringArrayOutput)
+}
+
+// A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+// This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+func (o SecurityActionConditionConfigOutput) Asns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.Asns }).(pulumi.StringArrayOutput)
+}
+
+// A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
+// OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
+// Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+func (o SecurityActionConditionConfigOutput) BotReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.BotReasons }).(pulumi.StringArrayOutput)
+}
+
+// A list of developer apps. Limit 1000 per action.
+func (o SecurityActionConditionConfigOutput) DeveloperApps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.DeveloperApps }).(pulumi.StringArrayOutput)
+}
+
+// A list of developers. Limit 1000 per action.
+func (o SecurityActionConditionConfigOutput) Developers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.Developers }).(pulumi.StringArrayOutput)
+}
+
+// Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
+// Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+func (o SecurityActionConditionConfigOutput) HttpMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.HttpMethods }).(pulumi.StringArrayOutput)
+}
+
+// A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+func (o SecurityActionConditionConfigOutput) IpAddressRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.IpAddressRanges }).(pulumi.StringArrayOutput)
+}
+
+// A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+func (o SecurityActionConditionConfigOutput) RegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.RegionCodes }).(pulumi.StringArrayOutput)
+}
+
+// A list of user agents to deny. We look for exact matches. Limit 50 per action.
+func (o SecurityActionConditionConfigOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityActionConditionConfig) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
+}
+
+type SecurityActionConditionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionConditionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionConditionConfig)(nil)).Elem()
+}
+
+func (o SecurityActionConditionConfigPtrOutput) ToSecurityActionConditionConfigPtrOutput() SecurityActionConditionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityActionConditionConfigPtrOutput) ToSecurityActionConditionConfigPtrOutputWithContext(ctx context.Context) SecurityActionConditionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityActionConditionConfigPtrOutput) Elem() SecurityActionConditionConfigOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) SecurityActionConditionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityActionConditionConfig
+		return ret
+	}).(SecurityActionConditionConfigOutput)
+}
+
+// A list of accessTokens. Limit 1000 per action.
+func (o SecurityActionConditionConfigPtrOutput) AccessTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTokens
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of API keys. Limit 1000 per action.
+func (o SecurityActionConditionConfigPtrOutput) ApiKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of API Products. Limit 1000 per action.
+func (o SecurityActionConditionConfigPtrOutput) ApiProducts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiProducts
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+// This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+func (o SecurityActionConditionConfigPtrOutput) Asns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Asns
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
+// OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
+// Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+func (o SecurityActionConditionConfigPtrOutput) BotReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BotReasons
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of developer apps. Limit 1000 per action.
+func (o SecurityActionConditionConfigPtrOutput) DeveloperApps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeveloperApps
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of developers. Limit 1000 per action.
+func (o SecurityActionConditionConfigPtrOutput) Developers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Developers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
+// Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+func (o SecurityActionConditionConfigPtrOutput) HttpMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+func (o SecurityActionConditionConfigPtrOutput) IpAddressRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddressRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+func (o SecurityActionConditionConfigPtrOutput) RegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of user agents to deny. We look for exact matches. Limit 50 per action.
+func (o SecurityActionConditionConfigPtrOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityActionConditionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAgents
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityActionDeny struct {
+	// The HTTP response code if the Action = DENY.
+	ResponseCode *int `pulumi:"responseCode"`
+}
+
+// SecurityActionDenyInput is an input type that accepts SecurityActionDenyArgs and SecurityActionDenyOutput values.
+// You can construct a concrete instance of `SecurityActionDenyInput` via:
+//
+//	SecurityActionDenyArgs{...}
+type SecurityActionDenyInput interface {
+	pulumi.Input
+
+	ToSecurityActionDenyOutput() SecurityActionDenyOutput
+	ToSecurityActionDenyOutputWithContext(context.Context) SecurityActionDenyOutput
+}
+
+type SecurityActionDenyArgs struct {
+	// The HTTP response code if the Action = DENY.
+	ResponseCode pulumi.IntPtrInput `pulumi:"responseCode"`
+}
+
+func (SecurityActionDenyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionDeny)(nil)).Elem()
+}
+
+func (i SecurityActionDenyArgs) ToSecurityActionDenyOutput() SecurityActionDenyOutput {
+	return i.ToSecurityActionDenyOutputWithContext(context.Background())
+}
+
+func (i SecurityActionDenyArgs) ToSecurityActionDenyOutputWithContext(ctx context.Context) SecurityActionDenyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionDenyOutput)
+}
+
+func (i SecurityActionDenyArgs) ToSecurityActionDenyPtrOutput() SecurityActionDenyPtrOutput {
+	return i.ToSecurityActionDenyPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityActionDenyArgs) ToSecurityActionDenyPtrOutputWithContext(ctx context.Context) SecurityActionDenyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionDenyOutput).ToSecurityActionDenyPtrOutputWithContext(ctx)
+}
+
+// SecurityActionDenyPtrInput is an input type that accepts SecurityActionDenyArgs, SecurityActionDenyPtr and SecurityActionDenyPtrOutput values.
+// You can construct a concrete instance of `SecurityActionDenyPtrInput` via:
+//
+//	        SecurityActionDenyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityActionDenyPtrInput interface {
+	pulumi.Input
+
+	ToSecurityActionDenyPtrOutput() SecurityActionDenyPtrOutput
+	ToSecurityActionDenyPtrOutputWithContext(context.Context) SecurityActionDenyPtrOutput
+}
+
+type securityActionDenyPtrType SecurityActionDenyArgs
+
+func SecurityActionDenyPtr(v *SecurityActionDenyArgs) SecurityActionDenyPtrInput {
+	return (*securityActionDenyPtrType)(v)
+}
+
+func (*securityActionDenyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionDeny)(nil)).Elem()
+}
+
+func (i *securityActionDenyPtrType) ToSecurityActionDenyPtrOutput() SecurityActionDenyPtrOutput {
+	return i.ToSecurityActionDenyPtrOutputWithContext(context.Background())
+}
+
+func (i *securityActionDenyPtrType) ToSecurityActionDenyPtrOutputWithContext(ctx context.Context) SecurityActionDenyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionDenyPtrOutput)
+}
+
+type SecurityActionDenyOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionDenyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionDeny)(nil)).Elem()
+}
+
+func (o SecurityActionDenyOutput) ToSecurityActionDenyOutput() SecurityActionDenyOutput {
+	return o
+}
+
+func (o SecurityActionDenyOutput) ToSecurityActionDenyOutputWithContext(ctx context.Context) SecurityActionDenyOutput {
+	return o
+}
+
+func (o SecurityActionDenyOutput) ToSecurityActionDenyPtrOutput() SecurityActionDenyPtrOutput {
+	return o.ToSecurityActionDenyPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityActionDenyOutput) ToSecurityActionDenyPtrOutputWithContext(ctx context.Context) SecurityActionDenyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityActionDeny) *SecurityActionDeny {
+		return &v
+	}).(SecurityActionDenyPtrOutput)
+}
+
+// The HTTP response code if the Action = DENY.
+func (o SecurityActionDenyOutput) ResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityActionDeny) *int { return v.ResponseCode }).(pulumi.IntPtrOutput)
+}
+
+type SecurityActionDenyPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionDenyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionDeny)(nil)).Elem()
+}
+
+func (o SecurityActionDenyPtrOutput) ToSecurityActionDenyPtrOutput() SecurityActionDenyPtrOutput {
+	return o
+}
+
+func (o SecurityActionDenyPtrOutput) ToSecurityActionDenyPtrOutputWithContext(ctx context.Context) SecurityActionDenyPtrOutput {
+	return o
+}
+
+func (o SecurityActionDenyPtrOutput) Elem() SecurityActionDenyOutput {
+	return o.ApplyT(func(v *SecurityActionDeny) SecurityActionDeny {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityActionDeny
+		return ret
+	}).(SecurityActionDenyOutput)
+}
+
+// The HTTP response code if the Action = DENY.
+func (o SecurityActionDenyPtrOutput) ResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityActionDeny) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseCode
+	}).(pulumi.IntPtrOutput)
+}
+
+type SecurityActionFlag struct {
+	// A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
+	// Limit 5 headers per SecurityAction.
+	// At least one is mandatory.
+	// Structure is documented below.
+	Headers []SecurityActionFlagHeader `pulumi:"headers"`
+}
+
+// SecurityActionFlagInput is an input type that accepts SecurityActionFlagArgs and SecurityActionFlagOutput values.
+// You can construct a concrete instance of `SecurityActionFlagInput` via:
+//
+//	SecurityActionFlagArgs{...}
+type SecurityActionFlagInput interface {
+	pulumi.Input
+
+	ToSecurityActionFlagOutput() SecurityActionFlagOutput
+	ToSecurityActionFlagOutputWithContext(context.Context) SecurityActionFlagOutput
+}
+
+type SecurityActionFlagArgs struct {
+	// A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
+	// Limit 5 headers per SecurityAction.
+	// At least one is mandatory.
+	// Structure is documented below.
+	Headers SecurityActionFlagHeaderArrayInput `pulumi:"headers"`
+}
+
+func (SecurityActionFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionFlag)(nil)).Elem()
+}
+
+func (i SecurityActionFlagArgs) ToSecurityActionFlagOutput() SecurityActionFlagOutput {
+	return i.ToSecurityActionFlagOutputWithContext(context.Background())
+}
+
+func (i SecurityActionFlagArgs) ToSecurityActionFlagOutputWithContext(ctx context.Context) SecurityActionFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionFlagOutput)
+}
+
+func (i SecurityActionFlagArgs) ToSecurityActionFlagPtrOutput() SecurityActionFlagPtrOutput {
+	return i.ToSecurityActionFlagPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityActionFlagArgs) ToSecurityActionFlagPtrOutputWithContext(ctx context.Context) SecurityActionFlagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionFlagOutput).ToSecurityActionFlagPtrOutputWithContext(ctx)
+}
+
+// SecurityActionFlagPtrInput is an input type that accepts SecurityActionFlagArgs, SecurityActionFlagPtr and SecurityActionFlagPtrOutput values.
+// You can construct a concrete instance of `SecurityActionFlagPtrInput` via:
+//
+//	        SecurityActionFlagArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityActionFlagPtrInput interface {
+	pulumi.Input
+
+	ToSecurityActionFlagPtrOutput() SecurityActionFlagPtrOutput
+	ToSecurityActionFlagPtrOutputWithContext(context.Context) SecurityActionFlagPtrOutput
+}
+
+type securityActionFlagPtrType SecurityActionFlagArgs
+
+func SecurityActionFlagPtr(v *SecurityActionFlagArgs) SecurityActionFlagPtrInput {
+	return (*securityActionFlagPtrType)(v)
+}
+
+func (*securityActionFlagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionFlag)(nil)).Elem()
+}
+
+func (i *securityActionFlagPtrType) ToSecurityActionFlagPtrOutput() SecurityActionFlagPtrOutput {
+	return i.ToSecurityActionFlagPtrOutputWithContext(context.Background())
+}
+
+func (i *securityActionFlagPtrType) ToSecurityActionFlagPtrOutputWithContext(ctx context.Context) SecurityActionFlagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionFlagPtrOutput)
+}
+
+type SecurityActionFlagOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionFlag)(nil)).Elem()
+}
+
+func (o SecurityActionFlagOutput) ToSecurityActionFlagOutput() SecurityActionFlagOutput {
+	return o
+}
+
+func (o SecurityActionFlagOutput) ToSecurityActionFlagOutputWithContext(ctx context.Context) SecurityActionFlagOutput {
+	return o
+}
+
+func (o SecurityActionFlagOutput) ToSecurityActionFlagPtrOutput() SecurityActionFlagPtrOutput {
+	return o.ToSecurityActionFlagPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityActionFlagOutput) ToSecurityActionFlagPtrOutputWithContext(ctx context.Context) SecurityActionFlagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityActionFlag) *SecurityActionFlag {
+		return &v
+	}).(SecurityActionFlagPtrOutput)
+}
+
+// A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
+// Limit 5 headers per SecurityAction.
+// At least one is mandatory.
+// Structure is documented below.
+func (o SecurityActionFlagOutput) Headers() SecurityActionFlagHeaderArrayOutput {
+	return o.ApplyT(func(v SecurityActionFlag) []SecurityActionFlagHeader { return v.Headers }).(SecurityActionFlagHeaderArrayOutput)
+}
+
+type SecurityActionFlagPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionFlagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityActionFlag)(nil)).Elem()
+}
+
+func (o SecurityActionFlagPtrOutput) ToSecurityActionFlagPtrOutput() SecurityActionFlagPtrOutput {
+	return o
+}
+
+func (o SecurityActionFlagPtrOutput) ToSecurityActionFlagPtrOutputWithContext(ctx context.Context) SecurityActionFlagPtrOutput {
+	return o
+}
+
+func (o SecurityActionFlagPtrOutput) Elem() SecurityActionFlagOutput {
+	return o.ApplyT(func(v *SecurityActionFlag) SecurityActionFlag {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityActionFlag
+		return ret
+	}).(SecurityActionFlagOutput)
+}
+
+// A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
+// Limit 5 headers per SecurityAction.
+// At least one is mandatory.
+// Structure is documented below.
+func (o SecurityActionFlagPtrOutput) Headers() SecurityActionFlagHeaderArrayOutput {
+	return o.ApplyT(func(v *SecurityActionFlag) []SecurityActionFlagHeader {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(SecurityActionFlagHeaderArrayOutput)
+}
+
+type SecurityActionFlagHeader struct {
+	// The header name to be sent to the target.
+	Name *string `pulumi:"name"`
+	// The header value to be sent to the target.
+	Value *string `pulumi:"value"`
+}
+
+// SecurityActionFlagHeaderInput is an input type that accepts SecurityActionFlagHeaderArgs and SecurityActionFlagHeaderOutput values.
+// You can construct a concrete instance of `SecurityActionFlagHeaderInput` via:
+//
+//	SecurityActionFlagHeaderArgs{...}
+type SecurityActionFlagHeaderInput interface {
+	pulumi.Input
+
+	ToSecurityActionFlagHeaderOutput() SecurityActionFlagHeaderOutput
+	ToSecurityActionFlagHeaderOutputWithContext(context.Context) SecurityActionFlagHeaderOutput
+}
+
+type SecurityActionFlagHeaderArgs struct {
+	// The header name to be sent to the target.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header value to be sent to the target.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SecurityActionFlagHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionFlagHeader)(nil)).Elem()
+}
+
+func (i SecurityActionFlagHeaderArgs) ToSecurityActionFlagHeaderOutput() SecurityActionFlagHeaderOutput {
+	return i.ToSecurityActionFlagHeaderOutputWithContext(context.Background())
+}
+
+func (i SecurityActionFlagHeaderArgs) ToSecurityActionFlagHeaderOutputWithContext(ctx context.Context) SecurityActionFlagHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionFlagHeaderOutput)
+}
+
+// SecurityActionFlagHeaderArrayInput is an input type that accepts SecurityActionFlagHeaderArray and SecurityActionFlagHeaderArrayOutput values.
+// You can construct a concrete instance of `SecurityActionFlagHeaderArrayInput` via:
+//
+//	SecurityActionFlagHeaderArray{ SecurityActionFlagHeaderArgs{...} }
+type SecurityActionFlagHeaderArrayInput interface {
+	pulumi.Input
+
+	ToSecurityActionFlagHeaderArrayOutput() SecurityActionFlagHeaderArrayOutput
+	ToSecurityActionFlagHeaderArrayOutputWithContext(context.Context) SecurityActionFlagHeaderArrayOutput
+}
+
+type SecurityActionFlagHeaderArray []SecurityActionFlagHeaderInput
+
+func (SecurityActionFlagHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityActionFlagHeader)(nil)).Elem()
+}
+
+func (i SecurityActionFlagHeaderArray) ToSecurityActionFlagHeaderArrayOutput() SecurityActionFlagHeaderArrayOutput {
+	return i.ToSecurityActionFlagHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityActionFlagHeaderArray) ToSecurityActionFlagHeaderArrayOutputWithContext(ctx context.Context) SecurityActionFlagHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityActionFlagHeaderArrayOutput)
+}
+
+type SecurityActionFlagHeaderOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionFlagHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityActionFlagHeader)(nil)).Elem()
+}
+
+func (o SecurityActionFlagHeaderOutput) ToSecurityActionFlagHeaderOutput() SecurityActionFlagHeaderOutput {
+	return o
+}
+
+func (o SecurityActionFlagHeaderOutput) ToSecurityActionFlagHeaderOutputWithContext(ctx context.Context) SecurityActionFlagHeaderOutput {
+	return o
+}
+
+// The header name to be sent to the target.
+func (o SecurityActionFlagHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityActionFlagHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The header value to be sent to the target.
+func (o SecurityActionFlagHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityActionFlagHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SecurityActionFlagHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityActionFlagHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityActionFlagHeader)(nil)).Elem()
+}
+
+func (o SecurityActionFlagHeaderArrayOutput) ToSecurityActionFlagHeaderArrayOutput() SecurityActionFlagHeaderArrayOutput {
+	return o
+}
+
+func (o SecurityActionFlagHeaderArrayOutput) ToSecurityActionFlagHeaderArrayOutputWithContext(ctx context.Context) SecurityActionFlagHeaderArrayOutput {
+	return o
+}
+
+func (o SecurityActionFlagHeaderArrayOutput) Index(i pulumi.IntInput) SecurityActionFlagHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityActionFlagHeader {
+		return vs[0].([]SecurityActionFlagHeader)[vs[1].(int)]
+	}).(SecurityActionFlagHeaderOutput)
+}
+
 type SecurityMonitoringConditionIncludeAllResources struct {
 }
 
@@ -5195,6 +8118,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigMonetizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiMetaDataInput)(nil)).Elem(), ApiMetaDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiMetaDataArrayInput)(nil)).Elem(), ApiMetaDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductAttributeInput)(nil)).Elem(), ApiProductAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductAttributeArrayInput)(nil)).Elem(), ApiProductAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupInput)(nil)).Elem(), ApiProductGraphqlOperationGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupPtrInput)(nil)).Elem(), ApiProductGraphqlOperationGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigInput)(nil)).Elem(), ApiProductGraphqlOperationGroupOperationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigArrayInput)(nil)).Elem(), ApiProductGraphqlOperationGroupOperationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigAttributeInput)(nil)).Elem(), ApiProductGraphqlOperationGroupOperationConfigAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigAttributeArrayInput)(nil)).Elem(), ApiProductGraphqlOperationGroupOperationConfigAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigOperationInput)(nil)).Elem(), ApiProductGraphqlOperationGroupOperationConfigOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigOperationArrayInput)(nil)).Elem(), ApiProductGraphqlOperationGroupOperationConfigOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigQuotaInput)(nil)).Elem(), ApiProductGraphqlOperationGroupOperationConfigQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGraphqlOperationGroupOperationConfigQuotaPtrInput)(nil)).Elem(), ApiProductGraphqlOperationGroupOperationConfigQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGrpcOperationGroupInput)(nil)).Elem(), ApiProductGrpcOperationGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGrpcOperationGroupPtrInput)(nil)).Elem(), ApiProductGrpcOperationGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigInput)(nil)).Elem(), ApiProductGrpcOperationGroupOperationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigArrayInput)(nil)).Elem(), ApiProductGrpcOperationGroupOperationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigAttributeInput)(nil)).Elem(), ApiProductGrpcOperationGroupOperationConfigAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigAttributeArrayInput)(nil)).Elem(), ApiProductGrpcOperationGroupOperationConfigAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigQuotaInput)(nil)).Elem(), ApiProductGrpcOperationGroupOperationConfigQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductGrpcOperationGroupOperationConfigQuotaPtrInput)(nil)).Elem(), ApiProductGrpcOperationGroupOperationConfigQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupInput)(nil)).Elem(), ApiProductOperationGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupPtrInput)(nil)).Elem(), ApiProductOperationGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigArrayInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigAttributeInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigAttributeArrayInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigOperationInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigOperationArrayInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigQuotaInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductOperationGroupOperationConfigQuotaPtrInput)(nil)).Elem(), ApiProductOperationGroupOperationConfigQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeInput)(nil)).Elem(), AppGroupAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeArrayInput)(nil)).Elem(), AppGroupAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeInput)(nil)).Elem(), DeveloperAttributeArgs{})
@@ -5237,6 +8190,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPtrInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyInput)(nil)).Elem(), OrganizationPropertiesPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyArrayInput)(nil)).Elem(), OrganizationPropertiesPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionAllowInput)(nil)).Elem(), SecurityActionAllowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionAllowPtrInput)(nil)).Elem(), SecurityActionAllowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionConditionConfigInput)(nil)).Elem(), SecurityActionConditionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionConditionConfigPtrInput)(nil)).Elem(), SecurityActionConditionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionDenyInput)(nil)).Elem(), SecurityActionDenyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionDenyPtrInput)(nil)).Elem(), SecurityActionDenyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionFlagInput)(nil)).Elem(), SecurityActionFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionFlagPtrInput)(nil)).Elem(), SecurityActionFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionFlagHeaderInput)(nil)).Elem(), SecurityActionFlagHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionFlagHeaderArrayInput)(nil)).Elem(), SecurityActionFlagHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityMonitoringConditionIncludeAllResourcesInput)(nil)).Elem(), SecurityMonitoringConditionIncludeAllResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityMonitoringConditionIncludeAllResourcesPtrInput)(nil)).Elem(), SecurityMonitoringConditionIncludeAllResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileV2ProfileAssessmentConfigInput)(nil)).Elem(), SecurityProfileV2ProfileAssessmentConfigArgs{})
@@ -5261,6 +8224,36 @@ func init() {
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigMonetizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApiMetaDataOutput{})
 	pulumi.RegisterOutputType(ApiMetaDataArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductAttributeOutput{})
+	pulumi.RegisterOutputType(ApiProductAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupPtrOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOperationConfigOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOperationConfigArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOperationConfigAttributeOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOperationConfigAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOperationConfigOperationOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOperationConfigOperationArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOperationConfigQuotaOutput{})
+	pulumi.RegisterOutputType(ApiProductGraphqlOperationGroupOperationConfigQuotaPtrOutput{})
+	pulumi.RegisterOutputType(ApiProductGrpcOperationGroupOutput{})
+	pulumi.RegisterOutputType(ApiProductGrpcOperationGroupPtrOutput{})
+	pulumi.RegisterOutputType(ApiProductGrpcOperationGroupOperationConfigOutput{})
+	pulumi.RegisterOutputType(ApiProductGrpcOperationGroupOperationConfigArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductGrpcOperationGroupOperationConfigAttributeOutput{})
+	pulumi.RegisterOutputType(ApiProductGrpcOperationGroupOperationConfigAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductGrpcOperationGroupOperationConfigQuotaOutput{})
+	pulumi.RegisterOutputType(ApiProductGrpcOperationGroupOperationConfigQuotaPtrOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupPtrOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigAttributeOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigOperationOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigOperationArrayOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigQuotaOutput{})
+	pulumi.RegisterOutputType(ApiProductOperationGroupOperationConfigQuotaPtrOutput{})
 	pulumi.RegisterOutputType(AppGroupAttributeOutput{})
 	pulumi.RegisterOutputType(AppGroupAttributeArrayOutput{})
 	pulumi.RegisterOutputType(DeveloperAttributeOutput{})
@@ -5303,6 +8296,16 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyArrayOutput{})
+	pulumi.RegisterOutputType(SecurityActionAllowOutput{})
+	pulumi.RegisterOutputType(SecurityActionAllowPtrOutput{})
+	pulumi.RegisterOutputType(SecurityActionConditionConfigOutput{})
+	pulumi.RegisterOutputType(SecurityActionConditionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityActionDenyOutput{})
+	pulumi.RegisterOutputType(SecurityActionDenyPtrOutput{})
+	pulumi.RegisterOutputType(SecurityActionFlagOutput{})
+	pulumi.RegisterOutputType(SecurityActionFlagPtrOutput{})
+	pulumi.RegisterOutputType(SecurityActionFlagHeaderOutput{})
+	pulumi.RegisterOutputType(SecurityActionFlagHeaderArrayOutput{})
 	pulumi.RegisterOutputType(SecurityMonitoringConditionIncludeAllResourcesOutput{})
 	pulumi.RegisterOutputType(SecurityMonitoringConditionIncludeAllResourcesPtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileV2ProfileAssessmentConfigOutput{})

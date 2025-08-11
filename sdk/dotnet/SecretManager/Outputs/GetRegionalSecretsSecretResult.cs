@@ -64,6 +64,12 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// </summary>
         public readonly string SecretId;
         /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
         /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
         /// Structure is documented below.
         /// </summary>
@@ -112,6 +118,8 @@ namespace Pulumi.Gcp.SecretManager.Outputs
 
             string secretId,
 
+            ImmutableDictionary<string, string> tags,
+
             ImmutableArray<Outputs.GetRegionalSecretsSecretTopicResult> topics,
 
             string ttl,
@@ -134,6 +142,7 @@ namespace Pulumi.Gcp.SecretManager.Outputs
             PulumiLabels = pulumiLabels;
             Rotations = rotations;
             SecretId = secretId;
+            Tags = tags;
             Topics = topics;
             Ttl = ttl;
             VersionAliases = versionAliases;

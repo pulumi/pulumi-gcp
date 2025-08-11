@@ -22,6 +22,7 @@ __all__ = ['FunctionArgs', 'Function']
 class FunctionArgs:
     def __init__(__self__, *,
                  runtime: pulumi.Input[_builtins.str],
+                 automatic_update_policy: Optional[pulumi.Input['FunctionAutomaticUpdatePolicyArgs']] = None,
                  available_memory_mb: Optional[pulumi.Input[_builtins.int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,6 +41,7 @@ class FunctionArgs:
                  max_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  min_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 on_deploy_update_policy: Optional[pulumi.Input['FunctionOnDeployUpdatePolicyArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]]] = None,
@@ -58,6 +60,7 @@ class FunctionArgs:
                Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
                - - -
+        :param pulumi.Input['FunctionAutomaticUpdatePolicyArgs'] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
         :param pulumi.Input[_builtins.int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
@@ -83,6 +86,7 @@ class FunctionArgs:
         :param pulumi.Input[_builtins.int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.str] name: A user-defined name of the function. Function names must be unique globally.
+        :param pulumi.Input['FunctionOnDeployUpdatePolicyArgs'] on_deploy_update_policy: Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
@@ -98,6 +102,8 @@ class FunctionArgs:
         :param pulumi.Input[_builtins.str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """
         pulumi.set(__self__, "runtime", runtime)
+        if automatic_update_policy is not None:
+            pulumi.set(__self__, "automatic_update_policy", automatic_update_policy)
         if available_memory_mb is not None:
             pulumi.set(__self__, "available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
@@ -134,6 +140,8 @@ class FunctionArgs:
             pulumi.set(__self__, "min_instances", min_instances)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if on_deploy_update_policy is not None:
+            pulumi.set(__self__, "on_deploy_update_policy", on_deploy_update_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -173,6 +181,18 @@ class FunctionArgs:
     @runtime.setter
     def runtime(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "runtime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticUpdatePolicy")
+    def automatic_update_policy(self) -> Optional[pulumi.Input['FunctionAutomaticUpdatePolicyArgs']]:
+        """
+        Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        """
+        return pulumi.get(self, "automatic_update_policy")
+
+    @automatic_update_policy.setter
+    def automatic_update_policy(self, value: Optional[pulumi.Input['FunctionAutomaticUpdatePolicyArgs']]):
+        pulumi.set(self, "automatic_update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="availableMemoryMb")
@@ -398,6 +418,18 @@ class FunctionArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="onDeployUpdatePolicy")
+    def on_deploy_update_policy(self) -> Optional[pulumi.Input['FunctionOnDeployUpdatePolicyArgs']]:
+        """
+        Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        """
+        return pulumi.get(self, "on_deploy_update_policy")
+
+    @on_deploy_update_policy.setter
+    def on_deploy_update_policy(self, value: Optional[pulumi.Input['FunctionOnDeployUpdatePolicyArgs']]):
+        pulumi.set(self, "on_deploy_update_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -546,6 +578,7 @@ class FunctionArgs:
 @pulumi.input_type
 class _FunctionState:
     def __init__(__self__, *,
+                 automatic_update_policy: Optional[pulumi.Input['FunctionAutomaticUpdatePolicyArgs']] = None,
                  available_memory_mb: Optional[pulumi.Input[_builtins.int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -565,6 +598,7 @@ class _FunctionState:
                  max_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  min_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 on_deploy_update_policy: Optional[pulumi.Input['FunctionOnDeployUpdatePolicyArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -583,6 +617,7 @@ class _FunctionState:
                  vpc_connector_egress_settings: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
+        :param pulumi.Input['FunctionAutomaticUpdatePolicyArgs'] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
         :param pulumi.Input[_builtins.int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
@@ -609,6 +644,7 @@ class _FunctionState:
         :param pulumi.Input[_builtins.int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.str] name: A user-defined name of the function. Function names must be unique globally.
+        :param pulumi.Input['FunctionOnDeployUpdatePolicyArgs'] on_deploy_update_policy: Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: Region of function. If it is not provided, the provider region is used.
@@ -631,6 +667,8 @@ class _FunctionState:
         :param pulumi.Input[_builtins.str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[_builtins.str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """
+        if automatic_update_policy is not None:
+            pulumi.set(__self__, "automatic_update_policy", automatic_update_policy)
         if available_memory_mb is not None:
             pulumi.set(__self__, "available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
@@ -669,6 +707,8 @@ class _FunctionState:
             pulumi.set(__self__, "min_instances", min_instances)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if on_deploy_update_policy is not None:
+            pulumi.set(__self__, "on_deploy_update_policy", on_deploy_update_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -701,6 +741,18 @@ class _FunctionState:
             pulumi.set(__self__, "vpc_connector", vpc_connector)
         if vpc_connector_egress_settings is not None:
             pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticUpdatePolicy")
+    def automatic_update_policy(self) -> Optional[pulumi.Input['FunctionAutomaticUpdatePolicyArgs']]:
+        """
+        Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        """
+        return pulumi.get(self, "automatic_update_policy")
+
+    @automatic_update_policy.setter
+    def automatic_update_policy(self, value: Optional[pulumi.Input['FunctionAutomaticUpdatePolicyArgs']]):
+        pulumi.set(self, "automatic_update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="availableMemoryMb")
@@ -938,6 +990,18 @@ class _FunctionState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="onDeployUpdatePolicy")
+    def on_deploy_update_policy(self) -> Optional[pulumi.Input['FunctionOnDeployUpdatePolicyArgs']]:
+        """
+        Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        """
+        return pulumi.get(self, "on_deploy_update_policy")
+
+    @on_deploy_update_policy.setter
+    def on_deploy_update_policy(self, value: Optional[pulumi.Input['FunctionOnDeployUpdatePolicyArgs']]):
+        pulumi.set(self, "on_deploy_update_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1141,6 +1205,7 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 automatic_update_policy: Optional[pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']]] = None,
                  available_memory_mb: Optional[pulumi.Input[_builtins.int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1159,6 +1224,7 @@ class Function(pulumi.CustomResource):
                  max_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  min_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 on_deploy_update_policy: Optional[pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1278,6 +1344,7 @@ class Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
         :param pulumi.Input[_builtins.int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
@@ -1303,6 +1370,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.str] name: A user-defined name of the function. Function names must be unique globally.
+        :param pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']] on_deploy_update_policy: Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region of function. If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] runtime: The runtime in which the function is going to run.
@@ -1445,6 +1513,7 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 automatic_update_policy: Optional[pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']]] = None,
                  available_memory_mb: Optional[pulumi.Input[_builtins.int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1463,6 +1532,7 @@ class Function(pulumi.CustomResource):
                  max_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  min_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 on_deploy_update_policy: Optional[pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1485,6 +1555,7 @@ class Function(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FunctionArgs.__new__(FunctionArgs)
 
+            __props__.__dict__["automatic_update_policy"] = automatic_update_policy
             __props__.__dict__["available_memory_mb"] = available_memory_mb
             __props__.__dict__["build_environment_variables"] = build_environment_variables
             __props__.__dict__["build_service_account"] = build_service_account
@@ -1503,6 +1574,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["max_instances"] = max_instances
             __props__.__dict__["min_instances"] = min_instances
             __props__.__dict__["name"] = name
+            __props__.__dict__["on_deploy_update_policy"] = on_deploy_update_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             if runtime is None and not opts.urn:
@@ -1534,6 +1606,7 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            automatic_update_policy: Optional[pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']]] = None,
             available_memory_mb: Optional[pulumi.Input[_builtins.int]] = None,
             build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             build_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1553,6 +1626,7 @@ class Function(pulumi.CustomResource):
             max_instances: Optional[pulumi.Input[_builtins.int]] = None,
             min_instances: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            on_deploy_update_policy: Optional[pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1576,6 +1650,7 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['FunctionAutomaticUpdatePolicyArgs', 'FunctionAutomaticUpdatePolicyArgsDict']] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
         :param pulumi.Input[_builtins.int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
@@ -1602,6 +1677,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.int] min_instances: The limit on the minimum number of function instances that may coexist at a given time.
         :param pulumi.Input[_builtins.str] name: A user-defined name of the function. Function names must be unique globally.
+        :param pulumi.Input[Union['FunctionOnDeployUpdatePolicyArgs', 'FunctionOnDeployUpdatePolicyArgsDict']] on_deploy_update_policy: Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
         :param pulumi.Input[_builtins.str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: Region of function. If it is not provided, the provider region is used.
@@ -1628,6 +1704,7 @@ class Function(pulumi.CustomResource):
 
         __props__ = _FunctionState.__new__(_FunctionState)
 
+        __props__.__dict__["automatic_update_policy"] = automatic_update_policy
         __props__.__dict__["available_memory_mb"] = available_memory_mb
         __props__.__dict__["build_environment_variables"] = build_environment_variables
         __props__.__dict__["build_service_account"] = build_service_account
@@ -1647,6 +1724,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["max_instances"] = max_instances
         __props__.__dict__["min_instances"] = min_instances
         __props__.__dict__["name"] = name
+        __props__.__dict__["on_deploy_update_policy"] = on_deploy_update_policy
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
@@ -1664,6 +1742,14 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["vpc_connector"] = vpc_connector
         __props__.__dict__["vpc_connector_egress_settings"] = vpc_connector_egress_settings
         return Function(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticUpdatePolicy")
+    def automatic_update_policy(self) -> pulumi.Output['outputs.FunctionAutomaticUpdatePolicy']:
+        """
+        Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        """
+        return pulumi.get(self, "automatic_update_policy")
 
     @_builtins.property
     @pulumi.getter(name="availableMemoryMb")
@@ -1823,6 +1909,14 @@ class Function(pulumi.CustomResource):
         A user-defined name of the function. Function names must be unique globally.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="onDeployUpdatePolicy")
+    def on_deploy_update_policy(self) -> pulumi.Output[Optional['outputs.FunctionOnDeployUpdatePolicy']]:
+        """
+        Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        """
+        return pulumi.get(self, "on_deploy_update_policy")
 
     @_builtins.property
     @pulumi.getter

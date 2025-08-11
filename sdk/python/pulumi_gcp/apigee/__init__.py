@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .addons_config import *
 from .api import *
+from .api_product import *
 from .app_group import *
 from .control_plane_access import *
 from .developer import *
@@ -33,6 +34,7 @@ from .keystores_aliases_pkcs12 import *
 from .keystores_aliases_self_signed_cert import *
 from .nat_address import *
 from .organization import *
+from .security_action import *
 from .security_monitoring_condition import *
 from .security_profile_v2 import *
 from .sharedflow import *

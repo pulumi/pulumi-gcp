@@ -219,14 +219,6 @@ class FolderExclusion(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a folder-level logging exclusion. For more information see:
-
-        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.exclusions)
-        * How-to Guides
-            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
-
-        > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.FolderSink`
-
         ## Example Usage
 
         ```python
@@ -274,14 +266,6 @@ class FolderExclusion(pulumi.CustomResource):
                  args: FolderExclusionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a folder-level logging exclusion. For more information see:
-
-        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.exclusions)
-        * How-to Guides
-            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
-
-        > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.FolderSink`
-
         ## Example Usage
 
         ```python

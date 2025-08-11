@@ -88,7 +88,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly cacheControl!: pulumi.Output<string | undefined>;
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      */
     public readonly content!: pulumi.Output<string>;
     /**
@@ -116,6 +116,7 @@ export class BucketObject extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly customerEncryption!: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
      */
@@ -215,6 +216,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["contentType"] = state ? state.contentType : undefined;
             resourceInputs["crc32c"] = state ? state.crc32c : undefined;
             resourceInputs["customerEncryption"] = state ? state.customerEncryption : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
             resourceInputs["eventBasedHold"] = state ? state.eventBasedHold : undefined;
             resourceInputs["forceEmptyContentType"] = state ? state.forceEmptyContentType : undefined;
@@ -245,6 +247,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["contentLanguage"] = args ? args.contentLanguage : undefined;
             resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["customerEncryption"] = args?.customerEncryption ? pulumi.secret(args.customerEncryption) : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
             resourceInputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
             resourceInputs["forceEmptyContentType"] = args ? args.forceEmptyContentType : undefined;
@@ -285,7 +288,7 @@ export interface BucketObjectState {
      */
     cacheControl?: pulumi.Input<string>;
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      */
     content?: pulumi.Input<string>;
     /**
@@ -313,6 +316,7 @@ export interface BucketObjectState {
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
      */
@@ -405,7 +409,7 @@ export interface BucketObjectArgs {
      */
     cacheControl?: pulumi.Input<string>;
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      */
     content?: pulumi.Input<string>;
     /**
@@ -429,6 +433,7 @@ export interface BucketObjectArgs {
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
      */

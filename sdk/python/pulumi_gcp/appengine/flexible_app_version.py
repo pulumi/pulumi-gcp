@@ -73,7 +73,6 @@ class FlexibleAppVersionArgs:
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs'] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -322,9 +321,6 @@ class FlexibleAppVersionArgs:
     @_builtins.property
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-        """
         return pulumi.get(self, "env_variables")
 
     @env_variables.setter
@@ -604,7 +600,6 @@ class _FlexibleAppVersionState:
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input['FlexibleAppVersionFlexibleRuntimeSettingsArgs'] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -816,9 +811,6 @@ class _FlexibleAppVersionState:
     @_builtins.property
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-        """
         return pulumi.get(self, "env_variables")
 
     @env_variables.setter
@@ -1297,7 +1289,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['FlexibleAppVersionEntrypointArgs', 'FlexibleAppVersionEntrypointArgsDict']] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[Union['FlexibleAppVersionFlexibleRuntimeSettingsArgs', 'FlexibleAppVersionFlexibleRuntimeSettingsArgsDict']] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlexibleAppVersionHandlerArgs', 'FlexibleAppVersionHandlerArgsDict']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -1635,7 +1626,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['FlexibleAppVersionEntrypointArgs', 'FlexibleAppVersionEntrypointArgsDict']] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[Union['FlexibleAppVersionFlexibleRuntimeSettingsArgs', 'FlexibleAppVersionFlexibleRuntimeSettingsArgsDict']] flexible_runtime_settings: Runtime settings for App Engine flexible environment.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlexibleAppVersionHandlerArgs', 'FlexibleAppVersionHandlerArgsDict']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
@@ -1789,9 +1779,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-        """
         return pulumi.get(self, "env_variables")
 
     @_builtins.property

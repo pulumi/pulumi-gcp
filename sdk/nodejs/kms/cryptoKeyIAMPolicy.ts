@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * With IAM Conditions:
+ * With IAM Conditions (beta):
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * With IAM Conditions:
+ * With IAM Conditions (beta):
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * With IAM Conditions:
+ * With IAM Conditions (beta):
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -10,11 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Manages a single key/value pair on metadata common to all instances for
-    /// a project in GCE. Using `gcp.compute.ProjectMetadataItem` lets you
-    /// manage a single key/value setting in the provider rather than the entire
-    /// project metadata map.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

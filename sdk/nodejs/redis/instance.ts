@@ -52,8 +52,8 @@ import * as utilities from "../utilities";
  *     locationId: "us-central1-a",
  *     alternativeLocationId: "us-central1-f",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
- *     redisVersion: "REDIS_4_0",
- *     displayName: "Test Instance",
+ *     redisVersion: "REDIS_7_2",
+ *     displayName: "Terraform Test Instance",
  *     reservedIpRange: "192.168.0.0/29",
  *     labels: {
  *         my_key: "my_val",
@@ -125,8 +125,8 @@ import * as utilities from "../utilities";
  *     alternativeLocationId: "us-central1-f",
  *     authorizedNetwork: redis_network.id,
  *     connectMode: "PRIVATE_SERVICE_ACCESS",
- *     redisVersion: "REDIS_4_0",
- *     displayName: "Test Instance",
+ *     redisVersion: "REDIS_7_2",
+ *     displayName: "Terraform Test Instance",
  * }, {
  *     dependsOn: [privateServiceConnection],
  * });
@@ -155,9 +155,8 @@ import * as utilities from "../utilities";
  *     locationId: "us-central1-a",
  *     alternativeLocationId: "us-central1-f",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
- *     redisVersion: "REDIS_6_X",
+ *     redisVersion: "REDIS_7_2",
  *     displayName: "Terraform Test Instance",
- *     reservedIpRange: "192.168.0.0/28",
  *     replicaCount: 5,
  *     readReplicasMode: "READ_REPLICAS_ENABLED",
  *     labels: {
@@ -198,9 +197,8 @@ import * as utilities from "../utilities";
  *     locationId: "us-central1-a",
  *     alternativeLocationId: "us-central1-f",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
- *     redisVersion: "REDIS_6_X",
+ *     redisVersion: "REDIS_7_2",
  *     displayName: "Terraform Test Instance",
- *     reservedIpRange: "192.168.0.0/29",
  *     labels: {
  *         my_key: "my_val",
  *         other_key: "other_val",

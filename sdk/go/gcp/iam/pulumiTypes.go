@@ -2691,6 +2691,332 @@ func (o WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput) Index(i pulumi
 	}).(WorkforcePoolAccessRestrictionsAllowedServiceOutput)
 }
 
+type WorkforcePoolIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// WorkforcePoolIamBindingConditionInput is an input type that accepts WorkforcePoolIamBindingConditionArgs and WorkforcePoolIamBindingConditionOutput values.
+// You can construct a concrete instance of `WorkforcePoolIamBindingConditionInput` via:
+//
+//	WorkforcePoolIamBindingConditionArgs{...}
+type WorkforcePoolIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolIamBindingConditionOutput() WorkforcePoolIamBindingConditionOutput
+	ToWorkforcePoolIamBindingConditionOutputWithContext(context.Context) WorkforcePoolIamBindingConditionOutput
+}
+
+type WorkforcePoolIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WorkforcePoolIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolIamBindingCondition)(nil)).Elem()
+}
+
+func (i WorkforcePoolIamBindingConditionArgs) ToWorkforcePoolIamBindingConditionOutput() WorkforcePoolIamBindingConditionOutput {
+	return i.ToWorkforcePoolIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolIamBindingConditionArgs) ToWorkforcePoolIamBindingConditionOutputWithContext(ctx context.Context) WorkforcePoolIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolIamBindingConditionOutput)
+}
+
+func (i WorkforcePoolIamBindingConditionArgs) ToWorkforcePoolIamBindingConditionPtrOutput() WorkforcePoolIamBindingConditionPtrOutput {
+	return i.ToWorkforcePoolIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolIamBindingConditionArgs) ToWorkforcePoolIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkforcePoolIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolIamBindingConditionOutput).ToWorkforcePoolIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolIamBindingConditionPtrInput is an input type that accepts WorkforcePoolIamBindingConditionArgs, WorkforcePoolIamBindingConditionPtr and WorkforcePoolIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolIamBindingConditionPtrInput` via:
+//
+//	        WorkforcePoolIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolIamBindingConditionPtrOutput() WorkforcePoolIamBindingConditionPtrOutput
+	ToWorkforcePoolIamBindingConditionPtrOutputWithContext(context.Context) WorkforcePoolIamBindingConditionPtrOutput
+}
+
+type workforcePoolIamBindingConditionPtrType WorkforcePoolIamBindingConditionArgs
+
+func WorkforcePoolIamBindingConditionPtr(v *WorkforcePoolIamBindingConditionArgs) WorkforcePoolIamBindingConditionPtrInput {
+	return (*workforcePoolIamBindingConditionPtrType)(v)
+}
+
+func (*workforcePoolIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolIamBindingCondition)(nil)).Elem()
+}
+
+func (i *workforcePoolIamBindingConditionPtrType) ToWorkforcePoolIamBindingConditionPtrOutput() WorkforcePoolIamBindingConditionPtrOutput {
+	return i.ToWorkforcePoolIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolIamBindingConditionPtrType) ToWorkforcePoolIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkforcePoolIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolIamBindingConditionPtrOutput)
+}
+
+type WorkforcePoolIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolIamBindingCondition)(nil)).Elem()
+}
+
+func (o WorkforcePoolIamBindingConditionOutput) ToWorkforcePoolIamBindingConditionOutput() WorkforcePoolIamBindingConditionOutput {
+	return o
+}
+
+func (o WorkforcePoolIamBindingConditionOutput) ToWorkforcePoolIamBindingConditionOutputWithContext(ctx context.Context) WorkforcePoolIamBindingConditionOutput {
+	return o
+}
+
+func (o WorkforcePoolIamBindingConditionOutput) ToWorkforcePoolIamBindingConditionPtrOutput() WorkforcePoolIamBindingConditionPtrOutput {
+	return o.ToWorkforcePoolIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolIamBindingConditionOutput) ToWorkforcePoolIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkforcePoolIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolIamBindingCondition) *WorkforcePoolIamBindingCondition {
+		return &v
+	}).(WorkforcePoolIamBindingConditionPtrOutput)
+}
+
+func (o WorkforcePoolIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkforcePoolIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WorkforcePoolIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkforcePoolIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolIamBindingCondition)(nil)).Elem()
+}
+
+func (o WorkforcePoolIamBindingConditionPtrOutput) ToWorkforcePoolIamBindingConditionPtrOutput() WorkforcePoolIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolIamBindingConditionPtrOutput) ToWorkforcePoolIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkforcePoolIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolIamBindingConditionPtrOutput) Elem() WorkforcePoolIamBindingConditionOutput {
+	return o.ApplyT(func(v *WorkforcePoolIamBindingCondition) WorkforcePoolIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolIamBindingCondition
+		return ret
+	}).(WorkforcePoolIamBindingConditionOutput)
+}
+
+func (o WorkforcePoolIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkforcePoolIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkforcePoolIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// WorkforcePoolIamMemberConditionInput is an input type that accepts WorkforcePoolIamMemberConditionArgs and WorkforcePoolIamMemberConditionOutput values.
+// You can construct a concrete instance of `WorkforcePoolIamMemberConditionInput` via:
+//
+//	WorkforcePoolIamMemberConditionArgs{...}
+type WorkforcePoolIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolIamMemberConditionOutput() WorkforcePoolIamMemberConditionOutput
+	ToWorkforcePoolIamMemberConditionOutputWithContext(context.Context) WorkforcePoolIamMemberConditionOutput
+}
+
+type WorkforcePoolIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WorkforcePoolIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolIamMemberCondition)(nil)).Elem()
+}
+
+func (i WorkforcePoolIamMemberConditionArgs) ToWorkforcePoolIamMemberConditionOutput() WorkforcePoolIamMemberConditionOutput {
+	return i.ToWorkforcePoolIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolIamMemberConditionArgs) ToWorkforcePoolIamMemberConditionOutputWithContext(ctx context.Context) WorkforcePoolIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolIamMemberConditionOutput)
+}
+
+func (i WorkforcePoolIamMemberConditionArgs) ToWorkforcePoolIamMemberConditionPtrOutput() WorkforcePoolIamMemberConditionPtrOutput {
+	return i.ToWorkforcePoolIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolIamMemberConditionArgs) ToWorkforcePoolIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkforcePoolIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolIamMemberConditionOutput).ToWorkforcePoolIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolIamMemberConditionPtrInput is an input type that accepts WorkforcePoolIamMemberConditionArgs, WorkforcePoolIamMemberConditionPtr and WorkforcePoolIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolIamMemberConditionPtrInput` via:
+//
+//	        WorkforcePoolIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolIamMemberConditionPtrOutput() WorkforcePoolIamMemberConditionPtrOutput
+	ToWorkforcePoolIamMemberConditionPtrOutputWithContext(context.Context) WorkforcePoolIamMemberConditionPtrOutput
+}
+
+type workforcePoolIamMemberConditionPtrType WorkforcePoolIamMemberConditionArgs
+
+func WorkforcePoolIamMemberConditionPtr(v *WorkforcePoolIamMemberConditionArgs) WorkforcePoolIamMemberConditionPtrInput {
+	return (*workforcePoolIamMemberConditionPtrType)(v)
+}
+
+func (*workforcePoolIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolIamMemberCondition)(nil)).Elem()
+}
+
+func (i *workforcePoolIamMemberConditionPtrType) ToWorkforcePoolIamMemberConditionPtrOutput() WorkforcePoolIamMemberConditionPtrOutput {
+	return i.ToWorkforcePoolIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolIamMemberConditionPtrType) ToWorkforcePoolIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkforcePoolIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolIamMemberConditionPtrOutput)
+}
+
+type WorkforcePoolIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolIamMemberCondition)(nil)).Elem()
+}
+
+func (o WorkforcePoolIamMemberConditionOutput) ToWorkforcePoolIamMemberConditionOutput() WorkforcePoolIamMemberConditionOutput {
+	return o
+}
+
+func (o WorkforcePoolIamMemberConditionOutput) ToWorkforcePoolIamMemberConditionOutputWithContext(ctx context.Context) WorkforcePoolIamMemberConditionOutput {
+	return o
+}
+
+func (o WorkforcePoolIamMemberConditionOutput) ToWorkforcePoolIamMemberConditionPtrOutput() WorkforcePoolIamMemberConditionPtrOutput {
+	return o.ToWorkforcePoolIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolIamMemberConditionOutput) ToWorkforcePoolIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkforcePoolIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolIamMemberCondition) *WorkforcePoolIamMemberCondition {
+		return &v
+	}).(WorkforcePoolIamMemberConditionPtrOutput)
+}
+
+func (o WorkforcePoolIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkforcePoolIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WorkforcePoolIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkforcePoolIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolIamMemberCondition)(nil)).Elem()
+}
+
+func (o WorkforcePoolIamMemberConditionPtrOutput) ToWorkforcePoolIamMemberConditionPtrOutput() WorkforcePoolIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolIamMemberConditionPtrOutput) ToWorkforcePoolIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkforcePoolIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolIamMemberConditionPtrOutput) Elem() WorkforcePoolIamMemberConditionOutput {
+	return o.ApplyT(func(v *WorkforcePoolIamMemberCondition) WorkforcePoolIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolIamMemberCondition
+		return ret
+	}).(WorkforcePoolIamMemberConditionOutput)
+}
+
+func (o WorkforcePoolIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkforcePoolIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkforcePoolIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkforcePoolProviderExtraAttributesOauth2Client struct {
 	// Represents the IdP and type of claims that should be fetched.
 	// * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
@@ -8380,6 +8706,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsPtrInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedServiceInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsAllowedServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedServiceArrayInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsAllowedServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolIamBindingConditionInput)(nil)).Elem(), WorkforcePoolIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolIamBindingConditionPtrInput)(nil)).Elem(), WorkforcePoolIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolIamMemberConditionInput)(nil)).Elem(), WorkforcePoolIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolIamMemberConditionPtrInput)(nil)).Elem(), WorkforcePoolIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientPtrInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretInput)(nil)).Elem(), WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs{})
@@ -8486,6 +8816,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsAllowedServiceOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretOutput{})

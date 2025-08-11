@@ -5,20 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Allows creation and management of a Google Cloud Billing Subaccount.
- *
- * !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const subaccount = new gcp.billing.SubAccount("subaccount", {
- *     displayName: "My Billing Account",
- *     masterBillingAccount: "012345-567890-ABCDEF",
- * });
- * ```
- *
  * ## Import
  *
  * Billing Subaccounts can be imported using any of these accepted formats:
@@ -63,11 +49,6 @@ export class SubAccount extends pulumi.CustomResource {
      * The billing account id.
      */
     public /*out*/ readonly billingAccountId!: pulumi.Output<string>;
-    /**
-     * If set to "RENAME_ON_DESTROY" the billing account displayName
-     * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-     * Default is "".
-     */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * The display name of the billing account.
@@ -134,11 +115,6 @@ export interface SubAccountState {
      * The billing account id.
      */
     billingAccountId?: pulumi.Input<string>;
-    /**
-     * If set to "RENAME_ON_DESTROY" the billing account displayName
-     * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-     * Default is "".
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The display name of the billing account.
@@ -163,11 +139,6 @@ export interface SubAccountState {
  * The set of arguments for constructing a SubAccount resource.
  */
 export interface SubAccountArgs {
-    /**
-     * If set to "RENAME_ON_DESTROY" the billing account displayName
-     * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-     * Default is "".
-     */
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The display name of the billing account.

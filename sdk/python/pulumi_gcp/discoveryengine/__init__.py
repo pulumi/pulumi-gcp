@@ -7,7 +7,9 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .chat_engine import *
+from .cmek_config import *
 from .data_store import *
+from .recommendation_engine import *
 from .schema import *
 from .search_engine import *
 from .sitemap import *

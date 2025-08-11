@@ -38,11 +38,6 @@ class TargetPoolArgs:
                backup pool (which must also be set).
         :param pulumi.Input[_builtins.str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
-               target pool.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
                
@@ -131,13 +126,6 @@ class TargetPoolArgs:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of instances in the pool. They can be given as
-        URLs, or in the form of "zone/name". Note that the instances need not exist
-        at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
-        target pool.
-        """
         return pulumi.get(self, "instances")
 
     @instances.setter
@@ -235,11 +223,6 @@ class _TargetPoolState:
                backup pool (which must also be set).
         :param pulumi.Input[_builtins.str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
-               target pool.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
                
@@ -331,13 +314,6 @@ class _TargetPoolState:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of instances in the pool. They can be given as
-        URLs, or in the form of "zone/name". Note that the instances need not exist
-        at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
-        target pool.
-        """
         return pulumi.get(self, "instances")
 
     @instances.setter
@@ -507,11 +483,6 @@ class TargetPool(pulumi.CustomResource):
                backup pool (which must also be set).
         :param pulumi.Input[_builtins.str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
-               target pool.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
                
@@ -668,11 +639,6 @@ class TargetPool(pulumi.CustomResource):
                backup pool (which must also be set).
         :param pulumi.Input[_builtins.str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
-               target pool.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
                
@@ -742,13 +708,6 @@ class TargetPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def instances(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        List of instances in the pool. They can be given as
-        URLs, or in the form of "zone/name". Note that the instances need not exist
-        at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
-        target pool.
-        """
         return pulumi.get(self, "instances")
 
     @_builtins.property

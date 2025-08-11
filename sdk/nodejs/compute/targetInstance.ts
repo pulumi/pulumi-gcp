@@ -121,7 +121,7 @@ import * as utilities from "../utilities";
  * });
  * const policyddosprotection = new gcp.compute.RegionSecurityPolicy("policyddosprotection", {
  *     region: "southamerica-west1",
- *     name: "tf-test-policyddos_21197",
+ *     name: "tf-test-policyddos_91042",
  *     description: "ddos protection security policy to set target instance",
  *     type: "CLOUD_ARMOR_NETWORK",
  *     ddosProtectionConfig: {
@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  * });
  * const edgeSecService = new gcp.compute.NetworkEdgeSecurityService("edge_sec_service", {
  *     region: "southamerica-west1",
- *     name: "tf-test-edgesec_52865",
+ *     name: "tf-test-edgesec_72490",
  *     securityPolicy: policyddosprotection.selfLink,
  * });
  * const regionsecuritypolicy = new gcp.compute.RegionSecurityPolicy("regionsecuritypolicy", {

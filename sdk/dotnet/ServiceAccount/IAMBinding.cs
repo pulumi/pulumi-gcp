@@ -22,9 +22,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// &gt; **Note:** `gcp.serviceaccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Service Account IAM Policy
+    /// ## gcp.serviceaccount.IAMPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -64,7 +62,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Service Account IAM Binding
+    /// ## gcp.serviceaccount.IAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -93,7 +91,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Service Account IAM Binding With IAM Conditions:
+    /// With IAM Conditions:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -128,7 +126,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Service Account IAM Member
+    /// ## gcp.serviceaccount.IAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -164,7 +162,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Service Account IAM Member With IAM Conditions:
+    /// With IAM Conditions:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -196,49 +194,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Additional Examples
-    /// 
-    /// ### Service Account IAM Policy
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
-    ///     {
-    ///         Bindings = new[]
-    ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
-    ///             {
-    ///                 Role = "roles/iam.serviceAccountUser",
-    ///                 Members = new[]
-    ///                 {
-    ///                     "user:jane@example.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
-    ///     {
-    ///         AccountId = "my-service-account",
-    ///         DisplayName = "A service account that only Jane can interact with",
-    ///     });
-    /// 
-    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMPolicy("admin-account-iam", new()
-    ///     {
-    ///         ServiceAccountId = sa.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Service Account IAM Binding
+    /// ## gcp.serviceaccount.IAMBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -267,7 +223,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Service Account IAM Binding With IAM Conditions:
+    /// With IAM Conditions:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -302,7 +258,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Service Account IAM Member
+    /// ## gcp.serviceaccount.IAMMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -338,7 +294,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Service Account IAM Member With IAM Conditions:
+    /// With IAM Conditions:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

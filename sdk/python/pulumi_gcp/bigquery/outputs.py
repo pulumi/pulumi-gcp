@@ -2704,8 +2704,8 @@ class JobLoad(dict):
                GeoJSON: set to GEOJSON.
         :param _builtins.int max_bad_records: The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
                an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
-        :param _builtins.str null_marker: Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-               property to a custom value, BigQuery throws an error if an
+        :param _builtins.str null_marker: Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
+               when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
                empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
                an empty value.
         :param 'JobLoadParquetOptionsArgs' parquet_options: Parquet Options for load and make external tables.
@@ -2916,8 +2916,8 @@ class JobLoad(dict):
     @pulumi.getter(name="nullMarker")
     def null_marker(self) -> Optional[_builtins.str]:
         """
-        Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-        property to a custom value, BigQuery throws an error if an
+        Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
+        when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
         """
@@ -5653,13 +5653,6 @@ class TableExternalDataConfigurationCsvOptions(dict):
                  field_delimiter: Optional[_builtins.str] = None,
                  skip_leading_rows: Optional[_builtins.int] = None):
         """
-        :param _builtins.str quote: The value that is used to quote data sections in a
-               CSV file. If your data does not contain quoted sections, set the
-               property value to an empty string. If your data contains quoted newline
-               characters, you must also set the `allow_quoted_newlines` property to true.
-               The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
-               limitations with default values, this value is required to be
-               explicitly set.
         :param _builtins.bool allow_jagged_rows: Indicates if BigQuery should accept rows
                that are missing trailing optional columns.
         :param _builtins.bool allow_quoted_newlines: Indicates if BigQuery should allow
@@ -5686,15 +5679,6 @@ class TableExternalDataConfigurationCsvOptions(dict):
     @_builtins.property
     @pulumi.getter
     def quote(self) -> _builtins.str:
-        """
-        The value that is used to quote data sections in a
-        CSV file. If your data does not contain quoted sections, set the
-        property value to an empty string. If your data contains quoted newline
-        characters, you must also set the `allow_quoted_newlines` property to true.
-        The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
-        limitations with default values, this value is required to be
-        explicitly set.
-        """
         return pulumi.get(self, "quote")
 
     @_builtins.property
@@ -6609,6 +6593,8 @@ class TableView(dict):
         :param _builtins.str query: A query that BigQuery executes when the view is referenced.
         :param _builtins.bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view.
                The default value is true. If set to false, the view will use BigQuery's standard SQL.
+               > **Note**: Starting in provider version `7.0.0`, no default value is
+               provided for this field unless explicitly set in the configuration.
         """
         pulumi.set(__self__, "query", query)
         if use_legacy_sql is not None:
@@ -6628,6 +6614,8 @@ class TableView(dict):
         """
         Specifies whether to use BigQuery's legacy SQL for this view.
         The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        > **Note**: Starting in provider version `7.0.0`, no default value is
+        provided for this field unless explicitly set in the configuration.
         """
         return pulumi.get(self, "use_legacy_sql")
 

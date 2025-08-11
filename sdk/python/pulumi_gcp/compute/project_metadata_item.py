@@ -149,11 +149,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a single key/value pair on metadata common to all instances for
-        a project in GCE. Using `compute.ProjectMetadataItem` lets you
-        manage a single key/value setting in the provider rather than the entire
-        project metadata map.
-
         ## Example Usage
 
         ```python
@@ -199,11 +194,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
                  args: ProjectMetadataItemArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a single key/value pair on metadata common to all instances for
-        a project in GCE. Using `compute.ProjectMetadataItem` lets you
-        manage a single key/value setting in the provider rather than the entire
-        project metadata map.
-
         ## Example Usage
 
         ```python

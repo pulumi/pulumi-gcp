@@ -217,11 +217,6 @@ export class Bucket extends pulumi.CustomResource {
      * The bucket's encryption configuration. Structure is documented below.
      */
     public readonly encryption!: pulumi.Output<outputs.storage.BucketEncryption | undefined>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
@@ -250,7 +245,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly logging!: pulumi.Output<outputs.storage.BucketLogging | undefined>;
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -437,11 +432,6 @@ export interface BucketState {
      * The bucket's encryption configuration. Structure is documented below.
      */
     encryption?: pulumi.Input<inputs.storage.BucketEncryption>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     */
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
@@ -470,7 +460,7 @@ export interface BucketState {
      */
     logging?: pulumi.Input<inputs.storage.BucketLogging>;
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      */
     name?: pulumi.Input<string>;
     /**
@@ -569,11 +559,6 @@ export interface BucketArgs {
      * The bucket's encryption configuration. Structure is documented below.
      */
     encryption?: pulumi.Input<inputs.storage.BucketEncryption>;
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     */
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
@@ -602,7 +587,7 @@ export interface BucketArgs {
      */
     logging?: pulumi.Input<inputs.storage.BucketLogging>;
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      */
     name?: pulumi.Input<string>;
     /**

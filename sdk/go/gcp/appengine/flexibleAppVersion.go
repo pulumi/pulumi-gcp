@@ -234,9 +234,8 @@ type FlexibleAppVersion struct {
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrOutput `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.
 	// Structure is documented below.
-	Entrypoint FlexibleAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
-	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-	EnvVariables pulumi.StringMapOutput `pulumi:"envVariables"`
+	Entrypoint   FlexibleAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
+	EnvVariables pulumi.StringMapOutput                `pulumi:"envVariables"`
 	// Runtime settings for App Engine flexible environment.
 	// Structure is documented below.
 	FlexibleRuntimeSettings FlexibleAppVersionFlexibleRuntimeSettingsPtrOutput `pulumi:"flexibleRuntimeSettings"`
@@ -366,9 +365,8 @@ type flexibleAppVersionState struct {
 	EndpointsApiService *FlexibleAppVersionEndpointsApiService `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.
 	// Structure is documented below.
-	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
-	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-	EnvVariables map[string]string `pulumi:"envVariables"`
+	Entrypoint   *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
+	EnvVariables map[string]string             `pulumi:"envVariables"`
 	// Runtime settings for App Engine flexible environment.
 	// Structure is documented below.
 	FlexibleRuntimeSettings *FlexibleAppVersionFlexibleRuntimeSettings `pulumi:"flexibleRuntimeSettings"`
@@ -457,8 +455,7 @@ type FlexibleAppVersionState struct {
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrInput
 	// The entrypoint for the application.
 	// Structure is documented below.
-	Entrypoint FlexibleAppVersionEntrypointPtrInput
-	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+	Entrypoint   FlexibleAppVersionEntrypointPtrInput
 	EnvVariables pulumi.StringMapInput
 	// Runtime settings for App Engine flexible environment.
 	// Structure is documented below.
@@ -552,9 +549,8 @@ type flexibleAppVersionArgs struct {
 	EndpointsApiService *FlexibleAppVersionEndpointsApiService `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.
 	// Structure is documented below.
-	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
-	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-	EnvVariables map[string]string `pulumi:"envVariables"`
+	Entrypoint   *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
+	EnvVariables map[string]string             `pulumi:"envVariables"`
 	// Runtime settings for App Engine flexible environment.
 	// Structure is documented below.
 	FlexibleRuntimeSettings *FlexibleAppVersionFlexibleRuntimeSettings `pulumi:"flexibleRuntimeSettings"`
@@ -642,8 +638,7 @@ type FlexibleAppVersionArgs struct {
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrInput
 	// The entrypoint for the application.
 	// Structure is documented below.
-	Entrypoint FlexibleAppVersionEntrypointPtrInput
-	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+	Entrypoint   FlexibleAppVersionEntrypointPtrInput
 	EnvVariables pulumi.StringMapInput
 	// Runtime settings for App Engine flexible environment.
 	// Structure is documented below.
@@ -844,7 +839,6 @@ func (o FlexibleAppVersionOutput) Entrypoint() FlexibleAppVersionEntrypointPtrOu
 	return o.ApplyT(func(v *FlexibleAppVersion) FlexibleAppVersionEntrypointPtrOutput { return v.Entrypoint }).(FlexibleAppVersionEntrypointPtrOutput)
 }
 
-// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 func (o FlexibleAppVersionOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringMapOutput { return v.EnvVariables }).(pulumi.StringMapOutput)
 }

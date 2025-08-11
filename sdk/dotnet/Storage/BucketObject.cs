@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> CacheControl { get; private set; } = null!;
 
         /// <summary>
-        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
@@ -125,6 +125,9 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("customerEncryption")]
         public Output<Outputs.BucketObjectCustomerEncryption?> CustomerEncryption { get; private set; } = null!;
+
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         [Output("detectMd5hash")]
         public Output<string?> DetectMd5hash { get; private set; } = null!;
@@ -301,7 +304,7 @@ namespace Pulumi.Gcp.Storage
         private Input<string>? _content;
 
         /// <summary>
-        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
         /// </summary>
         public Input<string>? Content
         {
@@ -353,6 +356,9 @@ namespace Pulumi.Gcp.Storage
                 _customerEncryption = Output.Tuple<Input<Inputs.BucketObjectCustomerEncryptionArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
@@ -455,7 +461,7 @@ namespace Pulumi.Gcp.Storage
         private Input<string>? _content;
 
         /// <summary>
-        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+        /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
         /// </summary>
         public Input<string>? Content
         {
@@ -513,6 +519,9 @@ namespace Pulumi.Gcp.Storage
                 _customerEncryption = Output.Tuple<Input<Inputs.BucketObjectCustomerEncryptionGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }

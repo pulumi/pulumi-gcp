@@ -57,6 +57,22 @@ __all__ = [
     'ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict',
     'ConnectionInstallationStateArgs',
     'ConnectionInstallationStateArgsDict',
+    'InsightsConfigArtifactConfigArgs',
+    'InsightsConfigArtifactConfigArgsDict',
+    'InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs',
+    'InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict',
+    'InsightsConfigArtifactConfigGoogleArtifactRegistryArgs',
+    'InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict',
+    'InsightsConfigErrorArgs',
+    'InsightsConfigErrorArgsDict',
+    'InsightsConfigErrorDetailArgs',
+    'InsightsConfigErrorDetailArgsDict',
+    'InsightsConfigRuntimeConfigArgs',
+    'InsightsConfigRuntimeConfigArgsDict',
+    'InsightsConfigRuntimeConfigAppHubWorkloadArgs',
+    'InsightsConfigRuntimeConfigAppHubWorkloadArgsDict',
+    'InsightsConfigRuntimeConfigGkeWorkloadArgs',
+    'InsightsConfigRuntimeConfigGkeWorkloadArgsDict',
 ]
 
 MYPY = False
@@ -1826,5 +1842,572 @@ class ConnectionInstallationStateArgs:
     @stage.setter
     def stage(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "stage", value)
+
+
+if not MYPY:
+    class InsightsConfigArtifactConfigArgsDict(TypedDict):
+        google_artifact_analysis: NotRequired[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict']]
+        """
+        Google Artifact Analysis configurations.
+        Structure is documented below.
+        """
+        google_artifact_registry: NotRequired[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict']]
+        """
+        Google Artifact Registry configurations.
+        Structure is documented below.
+        """
+        uri: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The URI of the artifact that is deployed.
+        e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
+        The URI does not include the tag / digest because it captures a lineage of
+        artifacts.
+        """
+elif False:
+    InsightsConfigArtifactConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsConfigArtifactConfigArgs:
+    def __init__(__self__, *,
+                 google_artifact_analysis: Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']] = None,
+                 google_artifact_registry: Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']] = None,
+                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs'] google_artifact_analysis: Google Artifact Analysis configurations.
+               Structure is documented below.
+        :param pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs'] google_artifact_registry: Google Artifact Registry configurations.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] uri: The URI of the artifact that is deployed.
+               e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
+               The URI does not include the tag / digest because it captures a lineage of
+               artifacts.
+        """
+        if google_artifact_analysis is not None:
+            pulumi.set(__self__, "google_artifact_analysis", google_artifact_analysis)
+        if google_artifact_registry is not None:
+            pulumi.set(__self__, "google_artifact_registry", google_artifact_registry)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter(name="googleArtifactAnalysis")
+    def google_artifact_analysis(self) -> Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']]:
+        """
+        Google Artifact Analysis configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_artifact_analysis")
+
+    @google_artifact_analysis.setter
+    def google_artifact_analysis(self, value: Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']]):
+        pulumi.set(self, "google_artifact_analysis", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleArtifactRegistry")
+    def google_artifact_registry(self) -> Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']]:
+        """
+        Google Artifact Registry configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_artifact_registry")
+
+    @google_artifact_registry.setter
+    def google_artifact_registry(self, value: Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']]):
+        pulumi.set(self, "google_artifact_registry", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The URI of the artifact that is deployed.
+        e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
+        The URI does not include the tag / digest because it captures a lineage of
+        artifacts.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uri", value)
+
+
+if not MYPY:
+    class InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict(TypedDict):
+        project_id: pulumi.Input[_builtins.str]
+        """
+        The project id of the project where the provenance is stored.
+        """
+elif False:
+    InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] project_id: The project id of the project where the provenance is stored.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The project id of the project where the provenance is stored.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict(TypedDict):
+        artifact_registry_package: pulumi.Input[_builtins.str]
+        """
+        The name of the artifact registry package.
+        """
+        project_id: pulumi.Input[_builtins.str]
+        """
+        The host project of Artifact Registry.
+        """
+elif False:
+    InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsConfigArtifactConfigGoogleArtifactRegistryArgs:
+    def __init__(__self__, *,
+                 artifact_registry_package: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] artifact_registry_package: The name of the artifact registry package.
+        :param pulumi.Input[_builtins.str] project_id: The host project of Artifact Registry.
+        """
+        pulumi.set(__self__, "artifact_registry_package", artifact_registry_package)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="artifactRegistryPackage")
+    def artifact_registry_package(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the artifact registry package.
+        """
+        return pulumi.get(self, "artifact_registry_package")
+
+    @artifact_registry_package.setter
+    def artifact_registry_package(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "artifact_registry_package", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The host project of Artifact Registry.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class InsightsConfigErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgsDict']]]]
+        """
+        (Output)
+        A list of messages that carry the error details.  There is a common set of
+        message types for APIs to use.
+        Structure is documented below.
+        """
+        message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+elif False:
+    InsightsConfigErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsConfigErrorArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[_builtins.int]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]] = None,
+                 message: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]] details: (Output)
+               A list of messages that carry the error details.  There is a common set of
+               message types for APIs to use.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.  There is a common set of
+        message types for APIs to use.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]]):
+        pulumi.set(self, "details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class InsightsConfigErrorDetailArgsDict(TypedDict):
+        detail_message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        A message with details about the error.
+        """
+elif False:
+    InsightsConfigErrorDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsConfigErrorDetailArgs:
+    def __init__(__self__, *,
+                 detail_message: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] detail_message: (Output)
+               A message with details about the error.
+        """
+        if detail_message is not None:
+            pulumi.set(__self__, "detail_message", detail_message)
+
+    @_builtins.property
+    @pulumi.getter(name="detailMessage")
+    def detail_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        A message with details about the error.
+        """
+        return pulumi.get(self, "detail_message")
+
+    @detail_message.setter
+    def detail_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "detail_message", value)
+
+
+if not MYPY:
+    class InsightsConfigRuntimeConfigArgsDict(TypedDict):
+        uri: pulumi.Input[_builtins.str]
+        """
+        The URI of the runtime configuration.
+        For GKE, this is the cluster name.
+        For Cloud Run, this is the service name.
+        """
+        app_hub_workload: NotRequired[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgsDict']]
+        """
+        AppHubWorkload represents the App Hub Workload.
+        Structure is documented below.
+        """
+        gke_workload: NotRequired[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgsDict']]
+        """
+        GKEWorkload represents the Google Kubernetes Engine runtime.
+        Structure is documented below.
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the Runtime.
+        Possible values:
+        STATE_UNSPECIFIED
+        LINKED
+        UNLINKED
+        """
+elif False:
+    InsightsConfigRuntimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsConfigRuntimeConfigArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[_builtins.str],
+                 app_hub_workload: Optional[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgs']] = None,
+                 gke_workload: Optional[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgs']] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] uri: The URI of the runtime configuration.
+               For GKE, this is the cluster name.
+               For Cloud Run, this is the service name.
+        :param pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgs'] app_hub_workload: AppHubWorkload represents the App Hub Workload.
+               Structure is documented below.
+        :param pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgs'] gke_workload: GKEWorkload represents the Google Kubernetes Engine runtime.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the Runtime.
+               Possible values:
+               STATE_UNSPECIFIED
+               LINKED
+               UNLINKED
+        """
+        pulumi.set(__self__, "uri", uri)
+        if app_hub_workload is not None:
+            pulumi.set(__self__, "app_hub_workload", app_hub_workload)
+        if gke_workload is not None:
+            pulumi.set(__self__, "gke_workload", gke_workload)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URI of the runtime configuration.
+        For GKE, this is the cluster name.
+        For Cloud Run, this is the service name.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="appHubWorkload")
+    def app_hub_workload(self) -> Optional[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgs']]:
+        """
+        AppHubWorkload represents the App Hub Workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "app_hub_workload")
+
+    @app_hub_workload.setter
+    def app_hub_workload(self, value: Optional[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgs']]):
+        pulumi.set(self, "app_hub_workload", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gkeWorkload")
+    def gke_workload(self) -> Optional[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgs']]:
+        """
+        GKEWorkload represents the Google Kubernetes Engine runtime.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_workload")
+
+    @gke_workload.setter
+    def gke_workload(self, value: Optional[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgs']]):
+        pulumi.set(self, "gke_workload", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the Runtime.
+        Possible values:
+        STATE_UNSPECIFIED
+        LINKED
+        UNLINKED
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class InsightsConfigRuntimeConfigAppHubWorkloadArgsDict(TypedDict):
+        criticality: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The criticality of the App Hub Workload.
+        """
+        environment: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The environment of the App Hub Workload.
+        """
+        workload: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. The name of the App Hub Workload.
+        Format:
+        `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+        """
+elif False:
+    InsightsConfigRuntimeConfigAppHubWorkloadArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsConfigRuntimeConfigAppHubWorkloadArgs:
+    def __init__(__self__, *,
+                 criticality: Optional[pulumi.Input[_builtins.str]] = None,
+                 environment: Optional[pulumi.Input[_builtins.str]] = None,
+                 workload: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] criticality: (Output)
+               The criticality of the App Hub Workload.
+        :param pulumi.Input[_builtins.str] environment: (Output)
+               The environment of the App Hub Workload.
+        :param pulumi.Input[_builtins.str] workload: (Output)
+               Output only. The name of the App Hub Workload.
+               Format:
+               `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+        """
+        if criticality is not None:
+            pulumi.set(__self__, "criticality", criticality)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if workload is not None:
+            pulumi.set(__self__, "workload", workload)
+
+    @_builtins.property
+    @pulumi.getter
+    def criticality(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The criticality of the App Hub Workload.
+        """
+        return pulumi.get(self, "criticality")
+
+    @criticality.setter
+    def criticality(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "criticality", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The environment of the App Hub Workload.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "environment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def workload(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. The name of the App Hub Workload.
+        Format:
+        `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+        """
+        return pulumi.get(self, "workload")
+
+    @workload.setter
+    def workload(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workload", value)
+
+
+if not MYPY:
+    class InsightsConfigRuntimeConfigGkeWorkloadArgsDict(TypedDict):
+        cluster: pulumi.Input[_builtins.str]
+        """
+        The name of the GKE cluster.
+        Format:
+        `projects/{project}/locations/{location}/clusters/{cluster}`.
+        """
+        deployment: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The name of the GKE deployment.
+        Format:
+        `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+        """
+elif False:
+    InsightsConfigRuntimeConfigGkeWorkloadArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InsightsConfigRuntimeConfigGkeWorkloadArgs:
+    def __init__(__self__, *,
+                 cluster: pulumi.Input[_builtins.str],
+                 deployment: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cluster: The name of the GKE cluster.
+               Format:
+               `projects/{project}/locations/{location}/clusters/{cluster}`.
+        :param pulumi.Input[_builtins.str] deployment: (Output)
+               The name of the GKE deployment.
+               Format:
+               `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
+
+    @_builtins.property
+    @pulumi.getter
+    def cluster(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the GKE cluster.
+        Format:
+        `projects/{project}/locations/{location}/clusters/{cluster}`.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "cluster", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deployment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The name of the GKE deployment.
+        Format:
+        `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+        """
+        return pulumi.get(self, "deployment")
+
+    @deployment.setter
+    def deployment(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deployment", value)
 
 
