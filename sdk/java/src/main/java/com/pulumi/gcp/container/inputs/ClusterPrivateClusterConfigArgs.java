@@ -60,18 +60,14 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Controls cluster master global
-     * access settings. If unset, the provider will no longer manage this field and will
-     * not modify the previously-set value. Structure is documented below.
+     * Controls cluster master global access settings.
      * 
      */
     @Import(name="masterGlobalAccessConfig")
     private @Nullable Output<ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs> masterGlobalAccessConfig;
 
     /**
-     * @return Controls cluster master global
-     * access settings. If unset, the provider will no longer manage this field and will
-     * not modify the previously-set value. Structure is documented below.
+     * @return Controls cluster master global access settings.
      * 
      */
     public Optional<Output<ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs>> masterGlobalAccessConfig() {
@@ -259,9 +255,7 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param masterGlobalAccessConfig Controls cluster master global
-         * access settings. If unset, the provider will no longer manage this field and will
-         * not modify the previously-set value. Structure is documented below.
+         * @param masterGlobalAccessConfig Controls cluster master global access settings.
          * 
          * @return builder
          * 
@@ -272,9 +266,7 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param masterGlobalAccessConfig Controls cluster master global
-         * access settings. If unset, the provider will no longer manage this field and will
-         * not modify the previously-set value. Structure is documented below.
+         * @param masterGlobalAccessConfig Controls cluster master global access settings.
          * 
          * @return builder
          * 

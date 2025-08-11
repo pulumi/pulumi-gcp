@@ -27,6 +27,8 @@ import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArg
 import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
+import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyArgs;
 import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
@@ -46,6 +48,7 @@ import com.pulumi.gcp.storage.outputs.GetBucketsResult;
 import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigResult;
 import com.pulumi.gcp.storage.outputs.GetControlProjectIntelligenceConfigResult;
+import com.pulumi.gcp.storage.outputs.GetInsightsDatasetConfigResult;
 import com.pulumi.gcp.storage.outputs.GetManagedFolderIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetObjectSignedUrlResult;
 import com.pulumi.gcp.storage.outputs.GetProjectServiceAccountResult;
@@ -2306,6 +2309,241 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfigPlain(GetControlProjectIntelligenceConfigPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig", TypeShape.of(GetControlProjectIntelligenceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Storage Insights Dataset Config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/insights/datasets)
+     * and
+     * [API](https://cloud.google.com/storage/docs/insights/reference/rest/v1/projects.locations.datasetConfigs).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getInsightsDatasetConfig(GetInsightsDatasetConfigArgs.builder()
+     *             .project("sample_project")
+     *             .location("sample_location")
+     *             .datasetConfigId("sample_dataset_config_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInsightsDatasetConfigResult> getInsightsDatasetConfig(GetInsightsDatasetConfigArgs args) {
+        return getInsightsDatasetConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Storage Insights Dataset Config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/insights/datasets)
+     * and
+     * [API](https://cloud.google.com/storage/docs/insights/reference/rest/v1/projects.locations.datasetConfigs).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getInsightsDatasetConfig(GetInsightsDatasetConfigArgs.builder()
+     *             .project("sample_project")
+     *             .location("sample_location")
+     *             .datasetConfigId("sample_dataset_config_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInsightsDatasetConfigResult> getInsightsDatasetConfigPlain(GetInsightsDatasetConfigPlainArgs args) {
+        return getInsightsDatasetConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Storage Insights Dataset Config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/insights/datasets)
+     * and
+     * [API](https://cloud.google.com/storage/docs/insights/reference/rest/v1/projects.locations.datasetConfigs).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getInsightsDatasetConfig(GetInsightsDatasetConfigArgs.builder()
+     *             .project("sample_project")
+     *             .location("sample_location")
+     *             .datasetConfigId("sample_dataset_config_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInsightsDatasetConfigResult> getInsightsDatasetConfig(GetInsightsDatasetConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig", TypeShape.of(GetInsightsDatasetConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Storage Insights Dataset Config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/insights/datasets)
+     * and
+     * [API](https://cloud.google.com/storage/docs/insights/reference/rest/v1/projects.locations.datasetConfigs).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getInsightsDatasetConfig(GetInsightsDatasetConfigArgs.builder()
+     *             .project("sample_project")
+     *             .location("sample_location")
+     *             .datasetConfigId("sample_dataset_config_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInsightsDatasetConfigResult> getInsightsDatasetConfig(GetInsightsDatasetConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig", TypeShape.of(GetInsightsDatasetConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Storage Insights Dataset Config resource.
+     * See [the official documentation](https://cloud.google.com/storage/docs/insights/datasets)
+     * and
+     * [API](https://cloud.google.com/storage/docs/insights/reference/rest/v1/projects.locations.datasetConfigs).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample-config = StorageFunctions.getInsightsDatasetConfig(GetInsightsDatasetConfigArgs.builder()
+     *             .project("sample_project")
+     *             .location("sample_location")
+     *             .datasetConfigId("sample_dataset_config_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInsightsDatasetConfigResult> getInsightsDatasetConfigPlain(GetInsightsDatasetConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig", TypeShape.of(GetInsightsDatasetConfigResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(GetManagedFolderIamPolicyArgs args) {
         return getManagedFolderIamPolicy(args, InvokeOptions.Empty);

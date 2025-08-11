@@ -19,16 +19,30 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     public static final GeminiGcpEnablementSettingArgs Empty = new GeminiGcpEnablementSettingArgs();
 
     /**
+     * (Optional, Deprecated)
      * Whether web grounding should be disabled.
      * 
+     * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * 
+     * @deprecated
+     * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * 
      */
+    @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
     @Import(name="disableWebGrounding")
     private @Nullable Output<Boolean> disableWebGrounding;
 
     /**
-     * @return Whether web grounding should be disabled.
+     * @return (Optional, Deprecated)
+     * Whether web grounding should be disabled.
+     * 
+     * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * 
+     * @deprecated
+     * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
      * 
      */
+    @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
     public Optional<Output<Boolean>> disableWebGrounding() {
         return Optional.ofNullable(this.disableWebGrounding);
     }
@@ -114,6 +128,27 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Web grounding type.
+     * Possible values:
+     * GROUNDING_WITH_GOOGLE_SEARCH
+     * WEB_GROUNDING_FOR_ENTERPRISE
+     * 
+     */
+    @Import(name="webGroundingType")
+    private @Nullable Output<String> webGroundingType;
+
+    /**
+     * @return Web grounding type.
+     * Possible values:
+     * GROUNDING_WITH_GOOGLE_SEARCH
+     * WEB_GROUNDING_FOR_ENTERPRISE
+     * 
+     */
+    public Optional<Output<String>> webGroundingType() {
+        return Optional.ofNullable(this.webGroundingType);
+    }
+
     private GeminiGcpEnablementSettingArgs() {}
 
     private GeminiGcpEnablementSettingArgs(GeminiGcpEnablementSettingArgs $) {
@@ -123,6 +158,7 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         this.labels = $.labels;
         this.location = $.location;
         this.project = $.project;
+        this.webGroundingType = $.webGroundingType;
     }
 
     public static Builder builder() {
@@ -144,22 +180,36 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param disableWebGrounding Whether web grounding should be disabled.
+         * @param disableWebGrounding (Optional, Deprecated)
+         * Whether web grounding should be disabled.
+         * 
+         * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+         * 
          */
+        @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
         public Builder disableWebGrounding(@Nullable Output<Boolean> disableWebGrounding) {
             $.disableWebGrounding = disableWebGrounding;
             return this;
         }
 
         /**
-         * @param disableWebGrounding Whether web grounding should be disabled.
+         * @param disableWebGrounding (Optional, Deprecated)
+         * Whether web grounding should be disabled.
+         * 
+         * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+         * 
          */
+        @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
         public Builder disableWebGrounding(Boolean disableWebGrounding) {
             return disableWebGrounding(Output.of(disableWebGrounding));
         }
@@ -273,6 +323,33 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param webGroundingType Web grounding type.
+         * Possible values:
+         * GROUNDING_WITH_GOOGLE_SEARCH
+         * WEB_GROUNDING_FOR_ENTERPRISE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webGroundingType(@Nullable Output<String> webGroundingType) {
+            $.webGroundingType = webGroundingType;
+            return this;
+        }
+
+        /**
+         * @param webGroundingType Web grounding type.
+         * Possible values:
+         * GROUNDING_WITH_GOOGLE_SEARCH
+         * WEB_GROUNDING_FOR_ENTERPRISE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webGroundingType(String webGroundingType) {
+            return webGroundingType(Output.of(webGroundingType));
         }
 
         public GeminiGcpEnablementSettingArgs build() {

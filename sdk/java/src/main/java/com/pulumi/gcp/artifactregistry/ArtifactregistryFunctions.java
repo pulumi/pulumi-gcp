@@ -11,6 +11,8 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImageArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagePlainArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetLocationsPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
@@ -18,6 +20,7 @@ import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryPlainArgs;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImageResult;
+import com.pulumi.gcp.artifactregistry.outputs.GetDockerImagesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetLocationsResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryIamPolicyResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryResult;
@@ -353,6 +356,231 @@ public final class ArtifactregistryFunctions {
      */
     public static CompletableFuture<GetDockerImageResult> getDockerImagePlain(GetDockerImagePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getDockerImage:getDockerImage", TypeShape.of(GetDockerImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry Docker images.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/docker)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myImages = ArtifactregistryFunctions.getDockerImages(GetDockerImagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDockerImagesResult> getDockerImages(GetDockerImagesArgs args) {
+        return getDockerImages(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Artifact Registry Docker images.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/docker)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myImages = ArtifactregistryFunctions.getDockerImages(GetDockerImagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDockerImagesResult> getDockerImagesPlain(GetDockerImagesPlainArgs args) {
+        return getDockerImagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Artifact Registry Docker images.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/docker)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myImages = ArtifactregistryFunctions.getDockerImages(GetDockerImagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDockerImagesResult> getDockerImages(GetDockerImagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getDockerImages:getDockerImages", TypeShape.of(GetDockerImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry Docker images.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/docker)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myImages = ArtifactregistryFunctions.getDockerImages(GetDockerImagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDockerImagesResult> getDockerImages(GetDockerImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getDockerImages:getDockerImages", TypeShape.of(GetDockerImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry Docker images.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/docker)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myImages = ArtifactregistryFunctions.getDockerImages(GetDockerImagesArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDockerImagesResult> getDockerImagesPlain(GetDockerImagesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getDockerImages:getDockerImages", TypeShape.of(GetDockerImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get Artifact Registry locations available for a project.

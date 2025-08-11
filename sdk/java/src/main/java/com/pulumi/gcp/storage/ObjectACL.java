@@ -138,19 +138,9 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> predefinedAcl() {
         return Codegen.optional(this.predefinedAcl);
     }
-    /**
-     * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
-     * 
-     */
     @Export(name="roleEntities", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roleEntities;
 
-    /**
-     * @return List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
-     * 
-     */
     public Output<List<String>> roleEntities() {
         return this.roleEntities;
     }

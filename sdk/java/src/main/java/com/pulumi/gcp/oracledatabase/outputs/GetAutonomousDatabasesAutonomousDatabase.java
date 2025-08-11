@@ -86,6 +86,22 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      */
     private String network;
     /**
+     * @return The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    private String odbNetwork;
+    /**
+     * @return The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    private String odbSubnet;
+    /**
      * @return The project to which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -202,6 +218,26 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
         return this.network;
     }
     /**
+     * @return The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    public String odbNetwork() {
+        return this.odbNetwork;
+    }
+    /**
+     * @return The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public String odbSubnet() {
+        return this.odbSubnet;
+    }
+    /**
      * @return The project to which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -247,6 +283,8 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
         private String location;
         private String name;
         private String network;
+        private String odbNetwork;
+        private String odbSubnet;
         private String project;
         private List<GetAutonomousDatabasesAutonomousDatabaseProperty> properties;
         private Map<String,String> pulumiLabels;
@@ -266,6 +304,8 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.odbNetwork = defaults.odbNetwork;
+    	      this.odbSubnet = defaults.odbSubnet;
     	      this.project = defaults.project;
     	      this.properties = defaults.properties;
     	      this.pulumiLabels = defaults.pulumiLabels;
@@ -376,6 +416,22 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             return this;
         }
         @CustomType.Setter
+        public Builder odbNetwork(String odbNetwork) {
+            if (odbNetwork == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "odbNetwork");
+            }
+            this.odbNetwork = odbNetwork;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder odbSubnet(String odbSubnet) {
+            if (odbSubnet == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "odbSubnet");
+            }
+            this.odbSubnet = odbSubnet;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "project");
@@ -417,6 +473,8 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.odbNetwork = odbNetwork;
+            _resultValue.odbSubnet = odbSubnet;
             _resultValue.project = project;
             _resultValue.properties = properties;
             _resultValue.pulumiLabels = pulumiLabels;

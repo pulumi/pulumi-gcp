@@ -54,14 +54,14 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * @return Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      * 
      */
     public Optional<Output<String>> content() {
@@ -143,6 +143,13 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<BucketObjectCustomerEncryptionArgs>> customerEncryption() {
         return Optional.ofNullable(this.customerEncryption);
+    }
+
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -339,6 +346,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         this.contentLanguage = $.contentLanguage;
         this.contentType = $.contentType;
         this.customerEncryption = $.customerEncryption;
+        this.deletionPolicy = $.deletionPolicy;
         this.detectMd5hash = $.detectMd5hash;
         this.eventBasedHold = $.eventBasedHold;
         this.forceEmptyContentType = $.forceEmptyContentType;
@@ -415,7 +423,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+         * @param content Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
          * 
          * @return builder
          * 
@@ -426,7 +434,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+         * @param content Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
          * 
          * @return builder
          * 
@@ -540,6 +548,15 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customerEncryption(BucketObjectCustomerEncryptionArgs customerEncryption) {
             return customerEncryption(Output.of(customerEncryption));
+        }
+
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

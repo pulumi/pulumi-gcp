@@ -47,16 +47,14 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
     }
 
     /**
-     * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * The name of this access configuration.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
+     * @return The name of this access configuration.
      * 
      */
     public Optional<Output<String>> name() {
@@ -164,8 +162,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
         }
 
         /**
-         * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
+         * @param name The name of this access configuration.
          * 
          * @return builder
          * 
@@ -176,8 +173,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
         }
 
         /**
-         * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
+         * @param name The name of this access configuration.
          * 
          * @return builder
          * 

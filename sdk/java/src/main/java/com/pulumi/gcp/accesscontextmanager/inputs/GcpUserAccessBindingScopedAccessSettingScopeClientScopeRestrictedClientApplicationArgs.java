@@ -30,10 +30,26 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestri
         return Optional.ofNullable(this.clientId);
     }
 
+    /**
+     * The name of the application. Example: &#34;Cloud Console&#34;
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the application. Example: &#34;Cloud Console&#34;
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
     private GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs() {}
 
     private GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs $) {
         this.clientId = $.clientId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -73,6 +89,27 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestri
          */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param name The name of the application. Example: &#34;Cloud Console&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The name of the application. Example: &#34;Cloud Console&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         public GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs build() {

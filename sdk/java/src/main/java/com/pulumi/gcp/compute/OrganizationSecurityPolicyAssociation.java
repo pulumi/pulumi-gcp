@@ -14,14 +14,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * An association for the OrganizationSecurityPolicy.
- * 
- * To get more information about OrganizationSecurityPolicyAssociation, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
- * * How-to Guides
- *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
- * 
  * ## Example Usage
  * 
  * ### Organization Security Policy Association Basic
@@ -58,13 +50,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var securityPolicyTarget = new Folder("securityPolicyTarget", FolderArgs.builder()
- *             .displayName("tf-test-secpol")
+ *             .displayName("tf-test-secpol-_52865")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
  * 
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .displayName("tf-test")
+ *             .displayName("tf-test_85840")
  *             .parent(securityPolicyTarget.name())
  *             .build());
  * 
@@ -92,7 +84,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policyOrganizationSecurityPolicyAssociation = new OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", OrganizationSecurityPolicyAssociationArgs.builder()
- *             .name("tf-test")
+ *             .name("tf-test_60302")
  *             .attachmentId(policy.parent())
  *             .policyId(policy.id())
  *             .build());

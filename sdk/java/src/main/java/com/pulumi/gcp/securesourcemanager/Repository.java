@@ -58,12 +58,14 @@ import javax.annotation.Nullable;
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .location("us-central1")
  *             .instanceId("my-instance")
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var default_ = new Repository("default", RepositoryArgs.builder()
  *             .location("us-central1")
  *             .repositoryId("my-repository")
  *             .instance(instance.name())
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *     }
@@ -102,6 +104,7 @@ import javax.annotation.Nullable;
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .location("us-central1")
  *             .instanceId("my-instance")
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var default_ = new Repository("default", RepositoryArgs.builder()
@@ -115,6 +118,7 @@ import javax.annotation.Nullable;
  *                 .license("mit")
  *                 .readme("default")
  *                 .build())
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *     }
@@ -169,6 +173,34 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The deletion policy for the repository. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+     * by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the repository. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+     * by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * Description of the repository, which cannot exceed 500 characters.

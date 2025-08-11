@@ -121,21 +121,9 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.encryption);
     }
 
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     * 
-     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
-    /**
-     * @return When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     * 
-     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
@@ -235,14 +223,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the bucket.
+     * @return The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      * 
      */
     public Optional<Output<String>> name() {
@@ -586,27 +574,11 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
             return encryption(Output.of(encryption));
         }
 
-        /**
-         * @param forceDestroy When deleting a bucket, this
-         * boolean option will delete all contained objects. If you try to delete a
-         * bucket that contains objects, the provider will fail that run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
-        /**
-         * @param forceDestroy When deleting a bucket, this
-         * boolean option will delete all contained objects. If you try to delete a
-         * bucket that contains objects, the provider will fail that run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }
@@ -752,7 +724,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the bucket.
+         * @param name The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
          * 
          * @return builder
          * 
@@ -763,7 +735,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the bucket.
+         * @param name The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
          * 
          * @return builder
          * 

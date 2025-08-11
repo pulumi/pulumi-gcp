@@ -163,17 +163,9 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.entrypoint);
     }
 
-    /**
-     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-     * 
-     */
     @Import(name="envVariables")
     private @Nullable Output<Map<String,String>> envVariables;
 
-    /**
-     * @return Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-     * 
-     */
     public Optional<Output<Map<String,String>>> envVariables() {
         return Optional.ofNullable(this.envVariables);
     }
@@ -782,23 +774,11 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
             return entrypoint(Output.of(entrypoint));
         }
 
-        /**
-         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-         * 
-         * @return builder
-         * 
-         */
         public Builder envVariables(@Nullable Output<Map<String,String>> envVariables) {
             $.envVariables = envVariables;
             return this;
         }
 
-        /**
-         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-         * 
-         * @return builder
-         * 
-         */
         public Builder envVariables(Map<String,String> envVariables) {
             return envVariables(Output.of(envVariables));
         }

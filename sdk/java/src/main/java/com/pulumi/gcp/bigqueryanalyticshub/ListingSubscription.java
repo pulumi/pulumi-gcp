@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscriptionArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionState;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionCommercialInfo;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionDestinationDataset;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionLinkedDatasetMap;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionLinkedResource;
@@ -139,6 +140,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription")
 public class ListingSubscription extends com.pulumi.resources.CustomResource {
+    /**
+     * Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="commercialInfos", refs={List.class,ListingSubscriptionCommercialInfo.class}, tree="[0,1]")
+    private Output<List<ListingSubscriptionCommercialInfo>> commercialInfos;
+
+    /**
+     * @return Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ListingSubscriptionCommercialInfo>> commercialInfos() {
+        return this.commercialInfos;
+    }
     /**
      * Timestamp when the subscription was created.
      * 

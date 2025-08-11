@@ -101,8 +101,8 @@ public class Service extends com.pulumi.resources.CustomResource {
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
-     * destroyed. If `false` or unset, an error will be generated if any enabled
-     * services depend on this service when destroying it.
+     * destroyed. If `false` or unset, an error will be returned if any enabled
+     * services depend on this service when attempting to destroy it.
      * 
      */
     @Export(name="disableDependentServices", refs={Boolean.class}, tree="[0]")
@@ -111,8 +111,8 @@ public class Service extends com.pulumi.resources.CustomResource {
     /**
      * @return If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
-     * destroyed. If `false` or unset, an error will be generated if any enabled
-     * services depend on this service when destroying it.
+     * destroyed. If `false` or unset, an error will be returned if any enabled
+     * services depend on this service when attempting to destroy it.
      * 
      */
     public Output<Optional<Boolean>> disableDependentServices() {

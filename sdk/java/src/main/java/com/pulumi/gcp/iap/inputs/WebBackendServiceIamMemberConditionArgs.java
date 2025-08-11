@@ -16,25 +16,9 @@ public final class WebBackendServiceIamMemberConditionArgs extends com.pulumi.re
 
     public static final WebBackendServiceIamMemberConditionArgs Empty = new WebBackendServiceIamMemberConditionArgs();
 
-    /**
-     * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     * &gt; **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-     * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-     * consider it to be an entirely different resource and will treat it as such.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     * &gt; **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-     * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-     * consider it to be an entirely different resource and will treat it as such.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -95,31 +79,11 @@ public final class WebBackendServiceIamMemberConditionArgs extends com.pulumi.re
             $ = new WebBackendServiceIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         * 
-         * &gt; **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         * 
-         * &gt; **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

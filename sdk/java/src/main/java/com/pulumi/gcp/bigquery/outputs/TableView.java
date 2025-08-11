@@ -21,6 +21,8 @@ public final class TableView {
     /**
      * @return Specifies whether to use BigQuery&#39;s legacy SQL for this view.
      * The default value is true. If set to false, the view will use BigQuery&#39;s standard SQL.
+     * &gt; **Note**: Starting in provider version `7.0.0`, no default value is
+     * provided for this field unless explicitly set in the configuration.
      * 
      */
     private @Nullable Boolean useLegacySql;
@@ -36,6 +38,8 @@ public final class TableView {
     /**
      * @return Specifies whether to use BigQuery&#39;s legacy SQL for this view.
      * The default value is true. If set to false, the view will use BigQuery&#39;s standard SQL.
+     * &gt; **Note**: Starting in provider version `7.0.0`, no default value is
+     * provided for this field unless explicitly set in the configuration.
      * 
      */
     public Optional<Boolean> useLegacySql() {

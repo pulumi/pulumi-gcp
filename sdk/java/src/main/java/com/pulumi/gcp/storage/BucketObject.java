@@ -148,14 +148,14 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cacheControl);
     }
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
-     * @return Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
+     * @return Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
      * 
      */
     public Output<String> content() {
@@ -246,6 +246,12 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<BucketObjectCustomerEncryption>> customerEncryption() {
         return Codegen.optional(this.customerEncryption);
+    }
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * @deprecated

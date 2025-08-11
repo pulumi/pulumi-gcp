@@ -154,21 +154,9 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rowKeySchema);
     }
 
-    /**
-     * A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-     * to delete/recreate the entire `gcp.bigtable.Table` resource.
-     * 
-     */
     @Import(name="splitKeys")
     private @Nullable Output<List<String>> splitKeys;
 
-    /**
-     * @return A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-     * to delete/recreate the entire `gcp.bigtable.Table` resource.
-     * 
-     */
     public Optional<Output<List<String>>> splitKeys() {
         return Optional.ofNullable(this.splitKeys);
     }
@@ -399,39 +387,15 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
             return rowKeySchema(Output.of(rowKeySchema));
         }
 
-        /**
-         * @param splitKeys A list of predefined keys to split the table on.
-         * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-         * to delete/recreate the entire `gcp.bigtable.Table` resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder splitKeys(@Nullable Output<List<String>> splitKeys) {
             $.splitKeys = splitKeys;
             return this;
         }
 
-        /**
-         * @param splitKeys A list of predefined keys to split the table on.
-         * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-         * to delete/recreate the entire `gcp.bigtable.Table` resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder splitKeys(List<String> splitKeys) {
             return splitKeys(Output.of(splitKeys));
         }
 
-        /**
-         * @param splitKeys A list of predefined keys to split the table on.
-         * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-         * to delete/recreate the entire `gcp.bigtable.Table` resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder splitKeys(String... splitKeys) {
             return splitKeys(List.of(splitKeys));
         }

@@ -464,14 +464,16 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      * 
      */
     @Import(name="scratchDisks")
     private @Nullable Output<List<InstanceFromTemplateScratchDiskArgs>> scratchDisks;
 
     /**
-     * @return The scratch disks attached to the instance.
+     * @return * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      * 
      */
     public Optional<Output<List<InstanceFromTemplateScratchDiskArgs>>> scratchDisks() {
@@ -547,24 +549,16 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The zone that the machine should be created in. If not
-     * set, the provider zone is used.
-     * 
-     * In addition to these, all arguments from `gcp.compute.Instance` are supported
-     * as a way to override the properties in the template. All exported attributes
-     * from `gcp.compute.Instance` are likewise exported here.
+     * The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+     * the provider zone is used.
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return The zone that the machine should be created in. If not
-     * set, the provider zone is used.
-     * 
-     * In addition to these, all arguments from `gcp.compute.Instance` are supported
-     * as a way to override the properties in the template. All exported attributes
-     * from `gcp.compute.Instance` are likewise exported here.
+     * @return The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+     * the provider zone is used.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -1253,7 +1247,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 
@@ -1264,7 +1259,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 
@@ -1274,7 +1270,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 
@@ -1386,12 +1383,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zone The zone that the machine should be created in. If not
-         * set, the provider zone is used.
-         * 
-         * In addition to these, all arguments from `gcp.compute.Instance` are supported
-         * as a way to override the properties in the template. All exported attributes
-         * from `gcp.compute.Instance` are likewise exported here.
+         * @param zone The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+         * the provider zone is used.
          * 
          * @return builder
          * 
@@ -1402,12 +1395,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zone The zone that the machine should be created in. If not
-         * set, the provider zone is used.
-         * 
-         * In addition to these, all arguments from `gcp.compute.Instance` are supported
-         * as a way to override the properties in the template. All exported attributes
-         * from `gcp.compute.Instance` are likewise exported here.
+         * @param zone The zone of the instance. If self_link is provided, this value is ignored. If neither self_link nor zone are provided,
+         * the provider zone is used.
          * 
          * @return builder
          * 

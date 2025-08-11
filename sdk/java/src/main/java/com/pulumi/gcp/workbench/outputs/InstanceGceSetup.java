@@ -10,6 +10,7 @@ import com.pulumi.gcp.workbench.outputs.InstanceGceSetupConfidentialInstanceConf
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupContainerImage;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupDataDisks;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupNetworkInterface;
+import com.pulumi.gcp.workbench.outputs.InstanceGceSetupReservationAffinity;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupServiceAccount;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupShieldedInstanceConfig;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupVmImage;
@@ -82,6 +83,12 @@ public final class InstanceGceSetup {
      * 
      */
     private @Nullable List<InstanceGceSetupNetworkInterface> networkInterfaces;
+    /**
+     * @return Reservations that this instance can consume from.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceGceSetupReservationAffinity reservationAffinity;
     /**
      * @return The service account that serves as an identity for the VM instance. Currently supports only one service account.
      * Structure is documented below.
@@ -191,6 +198,14 @@ public final class InstanceGceSetup {
         return this.networkInterfaces == null ? List.of() : this.networkInterfaces;
     }
     /**
+     * @return Reservations that this instance can consume from.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<InstanceGceSetupReservationAffinity> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
+    /**
      * @return The service account that serves as an identity for the VM instance. Currently supports only one service account.
      * Structure is documented below.
      * 
@@ -245,6 +260,7 @@ public final class InstanceGceSetup {
         private @Nullable String machineType;
         private @Nullable Map<String,String> metadata;
         private @Nullable List<InstanceGceSetupNetworkInterface> networkInterfaces;
+        private @Nullable InstanceGceSetupReservationAffinity reservationAffinity;
         private @Nullable List<InstanceGceSetupServiceAccount> serviceAccounts;
         private @Nullable InstanceGceSetupShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable List<String> tags;
@@ -262,6 +278,7 @@ public final class InstanceGceSetup {
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
     	      this.networkInterfaces = defaults.networkInterfaces;
+    	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.serviceAccounts = defaults.serviceAccounts;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.tags = defaults.tags;
@@ -335,6 +352,12 @@ public final class InstanceGceSetup {
             return networkInterfaces(List.of(networkInterfaces));
         }
         @CustomType.Setter
+        public Builder reservationAffinity(@Nullable InstanceGceSetupReservationAffinity reservationAffinity) {
+
+            this.reservationAffinity = reservationAffinity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceAccounts(@Nullable List<InstanceGceSetupServiceAccount> serviceAccounts) {
 
             this.serviceAccounts = serviceAccounts;
@@ -376,6 +399,7 @@ public final class InstanceGceSetup {
             _resultValue.machineType = machineType;
             _resultValue.metadata = metadata;
             _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.reservationAffinity = reservationAffinity;
             _resultValue.serviceAccounts = serviceAccounts;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
             _resultValue.tags = tags;

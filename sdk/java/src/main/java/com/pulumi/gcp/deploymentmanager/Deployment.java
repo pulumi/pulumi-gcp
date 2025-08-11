@@ -19,20 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A collection of resources that are deployed and managed together using
- * a configuration file
- * 
- * &gt; **Warning:** This resource is intended only to manage a Deployment resource,
- * and attempts to manage the Deployment&#39;s resources in the provider as well
- * will likely result in errors or unexpected behavior as the two tools
- * fight over ownership. We strongly discourage doing so unless you are an
- * experienced user of both tools.
- * 
- * In addition, due to limitations of the API, the provider will treat
- * deployments in preview as recreate-only for any update operation other
- * than actually deploying an in-preview deployment (i.e. `preview=true` to
- * `preview=false`).
- * 
  * ## Example Usage
  * 
  * ### Deployment Manager Deployment Basic
@@ -240,31 +226,9 @@ public class Deployment extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * If set to true, a deployment is created with &#34;shell&#34; resources
-     * that are not actually instantiated. This allows you to preview a
-     * deployment. It can be updated to false to actually deploy
-     * with real resources.
-     * ~&gt;**NOTE:** Deployment Manager does not allow update
-     * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
-     * to true or if other fields are updated while preview is true.
-     * 
-     */
     @Export(name="preview", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> preview;
 
-    /**
-     * @return If set to true, a deployment is created with &#34;shell&#34; resources
-     * that are not actually instantiated. This allows you to preview a
-     * deployment. It can be updated to false to actually deploy
-     * with real resources.
-     * ~&gt;**NOTE:** Deployment Manager does not allow update
-     * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
-     * to true or if other fields are updated while preview is true.
-     * 
-     */
     public Output<Optional<Boolean>> preview() {
         return Codegen.optional(this.preview);
     }

@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *             .locationId("us-central1-a")
  *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
- *             .redisVersion("REDIS_4_0")
- *             .displayName("Test Instance")
+ *             .redisVersion("REDIS_7_2")
+ *             .displayName("Terraform Test Instance")
  *             .reservedIpRange("192.168.0.0/29")
  *             .labels(Map.ofEntries(
  *                 Map.entry("my_key", "my_val"),
@@ -250,8 +250,8 @@ import javax.annotation.Nullable;
  *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
  *             .connectMode("PRIVATE_SERVICE_ACCESS")
- *             .redisVersion("REDIS_4_0")
- *             .displayName("Test Instance")
+ *             .redisVersion("REDIS_7_2")
+ *             .displayName("Terraform Test Instance")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(privateServiceConnection)
  *                 .build());
@@ -307,9 +307,8 @@ import javax.annotation.Nullable;
  *             .locationId("us-central1-a")
  *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
- *             .redisVersion("REDIS_6_X")
+ *             .redisVersion("REDIS_7_2")
  *             .displayName("Terraform Test Instance")
- *             .reservedIpRange("192.168.0.0/28")
  *             .replicaCount(5)
  *             .readReplicasMode("READ_REPLICAS_ENABLED")
  *             .labels(Map.ofEntries(
@@ -383,9 +382,8 @@ import javax.annotation.Nullable;
  *             .locationId("us-central1-a")
  *             .alternativeLocationId("us-central1-f")
  *             .authorizedNetwork(redis_network.id())
- *             .redisVersion("REDIS_6_X")
+ *             .redisVersion("REDIS_7_2")
  *             .displayName("Terraform Test Instance")
- *             .reservedIpRange("192.168.0.0/29")
  *             .labels(Map.ofEntries(
  *                 Map.entry("my_key", "my_val"),
  *                 Map.entry("other_key", "other_val")

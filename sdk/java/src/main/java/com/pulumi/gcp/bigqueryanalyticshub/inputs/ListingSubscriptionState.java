@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigqueryanalyticshub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionCommercialInfoArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionLinkedDatasetMapArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionLinkedResourceArgs;
@@ -19,6 +20,23 @@ import javax.annotation.Nullable;
 public final class ListingSubscriptionState extends com.pulumi.resources.ResourceArgs {
 
     public static final ListingSubscriptionState Empty = new ListingSubscriptionState();
+
+    /**
+     * Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="commercialInfos")
+    private @Nullable Output<List<ListingSubscriptionCommercialInfoArgs>> commercialInfos;
+
+    /**
+     * @return Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ListingSubscriptionCommercialInfoArgs>>> commercialInfos() {
+        return Optional.ofNullable(this.commercialInfos);
+    }
 
     /**
      * Timestamp when the subscription was created.
@@ -288,6 +306,7 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
     private ListingSubscriptionState() {}
 
     private ListingSubscriptionState(ListingSubscriptionState $) {
+        this.commercialInfos = $.commercialInfos;
         this.creationTime = $.creationTime;
         this.dataExchangeId = $.dataExchangeId;
         this.destinationDataset = $.destinationDataset;
@@ -323,6 +342,40 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
 
         public Builder(ListingSubscriptionState defaults) {
             $ = new ListingSubscriptionState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param commercialInfos Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commercialInfos(@Nullable Output<List<ListingSubscriptionCommercialInfoArgs>> commercialInfos) {
+            $.commercialInfos = commercialInfos;
+            return this;
+        }
+
+        /**
+         * @param commercialInfos Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commercialInfos(List<ListingSubscriptionCommercialInfoArgs> commercialInfos) {
+            return commercialInfos(Output.of(commercialInfos));
+        }
+
+        /**
+         * @param commercialInfos Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commercialInfos(ListingSubscriptionCommercialInfoArgs... commercialInfos) {
+            return commercialInfos(List.of(commercialInfos));
         }
 
         /**

@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudfunctions.FunctionArgs;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionState;
+import com.pulumi.gcp.cloudfunctions.outputs.FunctionAutomaticUpdatePolicy;
 import com.pulumi.gcp.cloudfunctions.outputs.FunctionEventTrigger;
+import com.pulumi.gcp.cloudfunctions.outputs.FunctionOnDeployUpdatePolicy;
 import com.pulumi.gcp.cloudfunctions.outputs.FunctionSecretEnvironmentVariable;
 import com.pulumi.gcp.cloudfunctions.outputs.FunctionSecretVolume;
 import com.pulumi.gcp.cloudfunctions.outputs.FunctionSourceRepository;
@@ -200,6 +202,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:cloudfunctions/function:Function")
 public class Function extends com.pulumi.resources.CustomResource {
+    /**
+     * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+     * 
+     */
+    @Export(name="automaticUpdatePolicy", refs={FunctionAutomaticUpdatePolicy.class}, tree="[0]")
+    private Output<FunctionAutomaticUpdatePolicy> automaticUpdatePolicy;
+
+    /**
+     * @return Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+     * 
+     */
+    public Output<FunctionAutomaticUpdatePolicy> automaticUpdatePolicy() {
+        return this.automaticUpdatePolicy;
+    }
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      * 
@@ -479,6 +495,20 @@ public class Function extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+     * 
+     */
+    @Export(name="onDeployUpdatePolicy", refs={FunctionOnDeployUpdatePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ FunctionOnDeployUpdatePolicy> onDeployUpdatePolicy;
+
+    /**
+     * @return Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+     * 
+     */
+    public Output<Optional<FunctionOnDeployUpdatePolicy>> onDeployUpdatePolicy() {
+        return Codegen.optional(this.onDeployUpdatePolicy);
     }
     /**
      * Project of the function. If it is not provided, the provider project is used.

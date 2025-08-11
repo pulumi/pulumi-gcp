@@ -21,13 +21,6 @@ public final class DatabaseInstanceDnsName {
      * 
      */
     private @Nullable String dnsScope;
-    /**
-     * @return The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     * 
-     */
     private @Nullable String name;
 
     private DatabaseInstanceDnsName() {}
@@ -45,13 +38,6 @@ public final class DatabaseInstanceDnsName {
     public Optional<String> dnsScope() {
         return Optional.ofNullable(this.dnsScope);
     }
-    /**
-     * @return The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

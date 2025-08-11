@@ -352,35 +352,15 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
     public Output<List<String>> members() {
         return this.members;
     }
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     * 
-     */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
-    /**
-     * @return The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     * 
-     */
     public Output<String> region() {
         return this.region;
     }

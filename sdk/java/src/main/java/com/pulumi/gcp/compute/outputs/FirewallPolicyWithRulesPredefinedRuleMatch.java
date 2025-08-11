@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config;
+import com.pulumi.gcp.compute.outputs.FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -48,8 +49,6 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
-     * 
      */
     private @Nullable List<FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config> layer4Configs;
     /**
@@ -78,6 +77,16 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
      * 
      */
     private @Nullable List<String> srcRegionCodes;
+    /**
+     * @return List of secure tag values, which should be matched at the source
+     * of the traffic.
+     * For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
+     * and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored.
+     * Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag> srcSecureTags;
     /**
      * @return Names of Network Threat Intelligence lists.
      * The IPs in these lists will be matched against traffic source.
@@ -132,8 +141,6 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
-     * 
      */
     public List<FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config> layer4Configs() {
         return this.layer4Configs == null ? List.of() : this.layer4Configs;
@@ -173,6 +180,18 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
         return this.srcRegionCodes == null ? List.of() : this.srcRegionCodes;
     }
     /**
+     * @return List of secure tag values, which should be matched at the source
+     * of the traffic.
+     * For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
+     * and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored.
+     * Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
+     * 
+     */
+    public List<FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag> srcSecureTags() {
+        return this.srcSecureTags == null ? List.of() : this.srcSecureTags;
+    }
+    /**
      * @return Names of Network Threat Intelligence lists.
      * The IPs in these lists will be matched against traffic source.
      * 
@@ -200,6 +219,7 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
         private @Nullable List<String> srcFqdns;
         private @Nullable List<String> srcIpRanges;
         private @Nullable List<String> srcRegionCodes;
+        private @Nullable List<FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag> srcSecureTags;
         private @Nullable List<String> srcThreatIntelligences;
         public Builder() {}
         public Builder(FirewallPolicyWithRulesPredefinedRuleMatch defaults) {
@@ -214,6 +234,7 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
     	      this.srcFqdns = defaults.srcFqdns;
     	      this.srcIpRanges = defaults.srcIpRanges;
     	      this.srcRegionCodes = defaults.srcRegionCodes;
+    	      this.srcSecureTags = defaults.srcSecureTags;
     	      this.srcThreatIntelligences = defaults.srcThreatIntelligences;
         }
 
@@ -308,6 +329,15 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
             return srcRegionCodes(List.of(srcRegionCodes));
         }
         @CustomType.Setter
+        public Builder srcSecureTags(@Nullable List<FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag> srcSecureTags) {
+
+            this.srcSecureTags = srcSecureTags;
+            return this;
+        }
+        public Builder srcSecureTags(FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag... srcSecureTags) {
+            return srcSecureTags(List.of(srcSecureTags));
+        }
+        @CustomType.Setter
         public Builder srcThreatIntelligences(@Nullable List<String> srcThreatIntelligences) {
 
             this.srcThreatIntelligences = srcThreatIntelligences;
@@ -328,6 +358,7 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
             _resultValue.srcFqdns = srcFqdns;
             _resultValue.srcIpRanges = srcIpRanges;
             _resultValue.srcRegionCodes = srcRegionCodes;
+            _resultValue.srcSecureTags = srcSecureTags;
             _resultValue.srcThreatIntelligences = srcThreatIntelligences;
             return _resultValue;
         }

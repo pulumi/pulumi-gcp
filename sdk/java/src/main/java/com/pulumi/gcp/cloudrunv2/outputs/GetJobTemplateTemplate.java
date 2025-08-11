@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateNodeSelector;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVpcAccess;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -31,6 +32,11 @@ public final class GetJobTemplateTemplate {
      * 
      */
     private String executionEnvironment;
+    /**
+     * @return True if GPU zonal redundancy is disabled on this execution.
+     * 
+     */
+    private Boolean gpuZonalRedundancyDisabled;
     /**
      * @return Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
      * 
@@ -85,6 +91,13 @@ public final class GetJobTemplateTemplate {
      */
     public String executionEnvironment() {
         return this.executionEnvironment;
+    }
+    /**
+     * @return True if GPU zonal redundancy is disabled on this execution.
+     * 
+     */
+    public Boolean gpuZonalRedundancyDisabled() {
+        return this.gpuZonalRedundancyDisabled;
     }
     /**
      * @return Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
@@ -143,6 +156,7 @@ public final class GetJobTemplateTemplate {
         private List<GetJobTemplateTemplateContainer> containers;
         private String encryptionKey;
         private String executionEnvironment;
+        private Boolean gpuZonalRedundancyDisabled;
         private Integer maxRetries;
         private List<GetJobTemplateTemplateNodeSelector> nodeSelectors;
         private String serviceAccount;
@@ -155,6 +169,7 @@ public final class GetJobTemplateTemplate {
     	      this.containers = defaults.containers;
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.executionEnvironment = defaults.executionEnvironment;
+    	      this.gpuZonalRedundancyDisabled = defaults.gpuZonalRedundancyDisabled;
     	      this.maxRetries = defaults.maxRetries;
     	      this.nodeSelectors = defaults.nodeSelectors;
     	      this.serviceAccount = defaults.serviceAccount;
@@ -188,6 +203,14 @@ public final class GetJobTemplateTemplate {
               throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "executionEnvironment");
             }
             this.executionEnvironment = executionEnvironment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuZonalRedundancyDisabled(Boolean gpuZonalRedundancyDisabled) {
+            if (gpuZonalRedundancyDisabled == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "gpuZonalRedundancyDisabled");
+            }
+            this.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             return this;
         }
         @CustomType.Setter
@@ -252,6 +275,7 @@ public final class GetJobTemplateTemplate {
             _resultValue.containers = containers;
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.executionEnvironment = executionEnvironment;
+            _resultValue.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             _resultValue.maxRetries = maxRetries;
             _resultValue.nodeSelectors = nodeSelectors;
             _resultValue.serviceAccount = serviceAccount;

@@ -749,6 +749,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> modelArmorCustomEndpoint() {
         return Codegen.optional(this.modelArmorCustomEndpoint);
     }
+    @Export(name="modelArmorGlobalCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> modelArmorGlobalCustomEndpoint;
+
+    public Output<Optional<String>> modelArmorGlobalCustomEndpoint() {
+        return Codegen.optional(this.modelArmorGlobalCustomEndpoint);
+    }
     @Export(name="monitoringCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> monitoringCustomEndpoint;
 

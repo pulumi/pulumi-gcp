@@ -146,17 +146,9 @@ public class Policy extends com.pulumi.resources.CustomResource {
     public Output<Optional<PolicyAlternativeNameServerConfig>> alternativeNameServerConfig() {
         return Codegen.optional(this.alternativeNameServerConfig);
     }
-    /**
-     * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }

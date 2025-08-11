@@ -408,21 +408,9 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     public Output<Optional<BucketEncryption>> encryption() {
         return Codegen.optional(this.encryption);
     }
-    /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     * 
-     */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
-    /**
-     * @return When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
-     * 
-     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
@@ -515,14 +503,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logging);
     }
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the bucket.
+     * @return The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      * 
      */
     public Output<String> name() {

@@ -19,6 +19,7 @@ public final class GetBackupVaultResult {
     private Map<String,String> annotations;
     private String backupCount;
     private String backupMinimumEnforcedRetentionDuration;
+    private String backupRetentionInheritance;
     private String backupVaultId;
     private String createTime;
     private Boolean deletable;
@@ -62,6 +63,9 @@ public final class GetBackupVaultResult {
     }
     public String backupMinimumEnforcedRetentionDuration() {
         return this.backupMinimumEnforcedRetentionDuration;
+    }
+    public String backupRetentionInheritance() {
+        return this.backupRetentionInheritance;
     }
     public String backupVaultId() {
         return this.backupVaultId;
@@ -151,6 +155,7 @@ public final class GetBackupVaultResult {
         private Map<String,String> annotations;
         private String backupCount;
         private String backupMinimumEnforcedRetentionDuration;
+        private String backupRetentionInheritance;
         private String backupVaultId;
         private String createTime;
         private Boolean deletable;
@@ -182,6 +187,7 @@ public final class GetBackupVaultResult {
     	      this.annotations = defaults.annotations;
     	      this.backupCount = defaults.backupCount;
     	      this.backupMinimumEnforcedRetentionDuration = defaults.backupMinimumEnforcedRetentionDuration;
+    	      this.backupRetentionInheritance = defaults.backupRetentionInheritance;
     	      this.backupVaultId = defaults.backupVaultId;
     	      this.createTime = defaults.createTime;
     	      this.deletable = defaults.deletable;
@@ -245,6 +251,14 @@ public final class GetBackupVaultResult {
               throw new MissingRequiredPropertyException("GetBackupVaultResult", "backupMinimumEnforcedRetentionDuration");
             }
             this.backupMinimumEnforcedRetentionDuration = backupMinimumEnforcedRetentionDuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupRetentionInheritance(String backupRetentionInheritance) {
+            if (backupRetentionInheritance == null) {
+              throw new MissingRequiredPropertyException("GetBackupVaultResult", "backupRetentionInheritance");
+            }
+            this.backupRetentionInheritance = backupRetentionInheritance;
             return this;
         }
         @CustomType.Setter
@@ -436,6 +450,7 @@ public final class GetBackupVaultResult {
             _resultValue.annotations = annotations;
             _resultValue.backupCount = backupCount;
             _resultValue.backupMinimumEnforcedRetentionDuration = backupMinimumEnforcedRetentionDuration;
+            _resultValue.backupRetentionInheritance = backupRetentionInheritance;
             _resultValue.backupVaultId = backupVaultId;
             _resultValue.createTime = createTime;
             _resultValue.deletable = deletable;

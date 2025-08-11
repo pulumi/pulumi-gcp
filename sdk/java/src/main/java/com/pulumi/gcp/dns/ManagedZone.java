@@ -46,6 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import java.util.List;
@@ -61,9 +63,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var rnd = new RandomId("rnd", RandomIdArgs.builder()
+ *             .byteLength(4)
+ *             .build());
+ * 
  *         var example_zone = new ManagedZone("example-zone", ManagedZoneArgs.builder()
  *             .name("example-zone")
- *             .dnsName("my-domain.com.")
+ *             .dnsName(rnd.hex().applyValue(_hex -> String.format("example-%s.com.", _hex)))
  *             .description("Example DNS zone")
  *             .labels(Map.of("foo", "bar"))
  *             .build());
@@ -529,17 +535,9 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     public Output<String> creationTime() {
         return this.creationTime;
     }
-    /**
-     * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
-    /**
-     * @return A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-     * 
-     */
     public Output<String> description() {
         return this.description;
     }

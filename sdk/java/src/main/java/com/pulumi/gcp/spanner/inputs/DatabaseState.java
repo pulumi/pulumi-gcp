@@ -61,19 +61,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.defaultTimeZone);
     }
 
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
-     * 
-     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
-    /**
-     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
-     * 
-     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -284,25 +274,11 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
             return defaultTimeZone(Output.of(defaultTimeZone));
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-         * in state, a `destroy` or `update` that would delete the instance will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-         * in state, a `destroy` or `update` that would delete the instance will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }

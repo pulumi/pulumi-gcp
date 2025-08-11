@@ -36,6 +36,7 @@ public final class GetSecretResult {
     private List<GetSecretReplication> replications;
     private List<GetSecretRotation> rotations;
     private String secretId;
+    private Map<String,String> tags;
     private List<GetSecretTopic> topics;
     private String ttl;
     private Map<String,String> versionAliases;
@@ -88,6 +89,9 @@ public final class GetSecretResult {
     public String secretId() {
         return this.secretId;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
     public List<GetSecretTopic> topics() {
         return this.topics;
     }
@@ -124,6 +128,7 @@ public final class GetSecretResult {
         private List<GetSecretReplication> replications;
         private List<GetSecretRotation> rotations;
         private String secretId;
+        private Map<String,String> tags;
         private List<GetSecretTopic> topics;
         private String ttl;
         private Map<String,String> versionAliases;
@@ -145,6 +150,7 @@ public final class GetSecretResult {
     	      this.replications = defaults.replications;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
+    	      this.tags = defaults.tags;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
     	      this.versionAliases = defaults.versionAliases;
@@ -268,6 +274,14 @@ public final class GetSecretResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder topics(List<GetSecretTopic> topics) {
             if (topics == null) {
               throw new MissingRequiredPropertyException("GetSecretResult", "topics");
@@ -318,6 +332,7 @@ public final class GetSecretResult {
             _resultValue.replications = replications;
             _resultValue.rotations = rotations;
             _resultValue.secretId = secretId;
+            _resultValue.tags = tags;
             _resultValue.topics = topics;
             _resultValue.ttl = ttl;
             _resultValue.versionAliases = versionAliases;

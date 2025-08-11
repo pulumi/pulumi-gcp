@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeState;
+import com.pulumi.gcp.networkconnectivity.outputs.InternalRangeAllocationOptions;
 import com.pulumi.gcp.networkconnectivity.outputs.InternalRangeMigration;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -293,6 +294,107 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Internal Ranges Allocation Algoritms
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.InternalRange;
+ * import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeAllocationOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("internal-ranges")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
+ *             .name("allocation-algorithms")
+ *             .network(defaultNetwork.id())
+ *             .usage("FOR_VPC")
+ *             .peering("FOR_SELF")
+ *             .prefixLength(24)
+ *             .targetCidrRanges("192.16.0.0/16")
+ *             .allocationOptions(InternalRangeAllocationOptionsArgs.builder()
+ *                 .allocationStrategy("FIRST_SMALLEST_FITTING")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Internal Ranges Allocation Algoritms Random First N
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.InternalRange;
+ * import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeAllocationOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("internal-ranges")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
+ *             .name("allocation-algorithms-random-first-n")
+ *             .network(defaultNetwork.id())
+ *             .usage("FOR_VPC")
+ *             .peering("FOR_SELF")
+ *             .prefixLength(24)
+ *             .targetCidrRanges("192.16.0.0/16")
+ *             .allocationOptions(InternalRangeAllocationOptionsArgs.builder()
+ *                 .allocationStrategy("RANDOM_FIRST_N_AVAILABLE")
+ *                 .firstAvailableRangesLookupSize(20)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -321,6 +423,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:networkconnectivity/internalRange:InternalRange")
 public class InternalRange extends com.pulumi.resources.CustomResource {
+    /**
+     * Options for automatically allocating a free range with a size given by prefixLength.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="allocationOptions", refs={InternalRangeAllocationOptions.class}, tree="[0]")
+    private Output</* @Nullable */ InternalRangeAllocationOptions> allocationOptions;
+
+    /**
+     * @return Options for automatically allocating a free range with a size given by prefixLength.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InternalRangeAllocationOptions>> allocationOptions() {
+        return Codegen.optional(this.allocationOptions);
+    }
     /**
      * An optional description of this resource.
      * 

@@ -114,6 +114,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .stagingBucket("dataproc-staging-bucket")
+ *                 .clusterTier("CLUSTER_TIER_STANDARD")
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .numInstances(1)
  *                     .machineType("e2-medium")
@@ -249,9 +250,33 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
     }
+    /**
+     * Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+     * Does not affect auto scaling decomissioning from an autoscaling policy.
+     * Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+     * Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+     * Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+     * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+     * Only supported on Dataproc image versions 1.2 and higher.
+     * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+     * ***
+     * 
+     */
     @Export(name="gracefulDecommissionTimeout", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gracefulDecommissionTimeout;
 
+    /**
+     * @return Allows graceful decomissioning when you change the number of worker nodes directly through a pulumi up.
+     * Does not affect auto scaling decomissioning from an autoscaling policy.
+     * Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+     * Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+     * Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+     * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+     * Only supported on Dataproc image versions 1.2 and higher.
+     * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
+     * ***
+     * 
+     */
     public Output<Optional<String>> gracefulDecommissionTimeout() {
         return Codegen.optional(this.gracefulDecommissionTimeout);
     }

@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var appengSlo = new Slo("appengSlo", SloArgs.builder()
  *             .service(default_.serviceId())
  *             .sloId("ae-slo")
- *             .displayName("Test SLO for App Engine")
+ *             .displayName("Terraform Test SLO for App Engine")
  *             .goal(0.9)
  *             .calendarPeriod("DAY")
  *             .basicSli(SloBasicSliArgs.builder()
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *         var requestBasedSlo = new Slo("requestBasedSlo", SloArgs.builder()
  *             .service(customsrv.serviceId())
  *             .sloId("consumed-api-slo")
- *             .displayName("Test SLO with request based SLI (good total ratio)")
+ *             .displayName("Terraform Test SLO with request based SLI (good total ratio)")
  *             .goal(0.9)
  *             .rollingPeriodDays(30)
  *             .requestBasedSli(SloRequestBasedSliArgs.builder()
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  * 
  *         var windowsBased = new Slo("windowsBased", SloArgs.builder()
  *             .service(customsrv.serviceId())
- *             .displayName("Test SLO with window based SLI")
+ *             .displayName("Terraform Test SLO with window based SLI")
  *             .goal(0.95)
  *             .calendarPeriod("FORTNIGHT")
  *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
@@ -244,7 +244,7 @@ import javax.annotation.Nullable;
  * 
  *         var windowsBased = new Slo("windowsBased", SloArgs.builder()
  *             .service(customsrv.serviceId())
- *             .displayName("Test SLO with window based SLI")
+ *             .displayName("Terraform Test SLO with window based SLI")
  *             .goal(0.9)
  *             .rollingPeriodDays(20)
  *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
@@ -307,7 +307,7 @@ import javax.annotation.Nullable;
  * 
  *         var windowsBased = new Slo("windowsBased", SloArgs.builder()
  *             .service(customsrv.serviceId())
- *             .displayName("Test SLO with window based SLI")
+ *             .displayName("Terraform Test SLO with window based SLI")
  *             .goal(0.9)
  *             .rollingPeriodDays(20)
  *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()
@@ -372,7 +372,7 @@ import javax.annotation.Nullable;
  * 
  *         var windowsBased = new Slo("windowsBased", SloArgs.builder()
  *             .service(customsrv.serviceId())
- *             .displayName("Test SLO with window based SLI")
+ *             .displayName("Terraform Test SLO with window based SLI")
  *             .goal(0.9)
  *             .rollingPeriodDays(20)
  *             .windowsBasedSli(SloWindowsBasedSliArgs.builder()

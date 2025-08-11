@@ -42,19 +42,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusters);
     }
 
-    /**
-     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-     * 
-     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
-    /**
-     * @return Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-     * 
-     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -75,14 +65,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * When deleting a BigTable instance, this boolean option will delete all backups within the instance.
      * 
      */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
     /**
-     * @return Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * @return When deleting a BigTable instance, this boolean option will delete all backups within the instance.
      * 
      */
     public Optional<Output<Boolean>> forceDestroy() {
@@ -247,25 +237,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return clusters(List.of(clusters));
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-         * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-         * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }
@@ -292,7 +268,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+         * @param forceDestroy When deleting a BigTable instance, this boolean option will delete all backups within the instance.
          * 
          * @return builder
          * 
@@ -303,7 +279,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+         * @param forceDestroy When deleting a BigTable instance, this boolean option will delete all backups within the instance.
          * 
          * @return builder
          * 

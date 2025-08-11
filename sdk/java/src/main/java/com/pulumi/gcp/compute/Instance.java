@@ -225,19 +225,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<InstanceAdvancedMachineFeatures>> advancedMachineFeatures() {
         return Codegen.optional(this.advancedMachineFeatures);
     }
-    /**
-     * If true, allows this prvider to stop the instance to update its properties.
-     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-     * 
-     */
     @Export(name="allowStoppingForUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowStoppingForUpdate;
 
-    /**
-     * @return If true, allows this prvider to stop the instance to update its properties.
-     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-     * 
-     */
     public Output<Optional<Boolean>> allowStoppingForUpdate() {
         return Codegen.optional(this.allowStoppingForUpdate);
     }
@@ -346,16 +336,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.currentStatus;
     }
     /**
-     * Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+     * Whether deletion protection is enabled on this instance.
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+     * @return Whether deletion protection is enabled on this instance.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -424,6 +412,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
      * 
      */
     @Export(name="guestAccelerators", refs={List.class,InstanceGuestAccelerator.class}, tree="[0,1]")
@@ -432,6 +424,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+     * **Note**: As of 6.0.0, argument syntax
+     * is no longer supported for this field in favor of block syntax.
+     * To dynamically set a list of guest accelerators, use dynamic blocks.
+     * To set an empty list, use a single `guest_accelerator` block with `count = 0`.
      * 
      */
     public Output<List<InstanceGuestAccelerator>> guestAccelerators() {
@@ -612,32 +608,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.metadataFingerprint;
     }
     /**
-     * An alternative to using the
-     * startup-script metadata key, except this one forces the instance to be recreated
-     * (thus re-running the script) if it is changed. This replaces the startup-script
-     * metadata key on the created instance and thus the two mechanisms are not
-     * allowed to be used simultaneously.  Users are free to use either mechanism - the
-     * only distinction is that this separate attribute will cause a recreate on
-     * modification.  On import, `metadata_startup_script` will not be set - if you
-     * choose to specify it you will see a diff immediately after import causing a
-     * destroy/recreate operation. If importing an instance and specifying this value
-     * is desired, you will need to modify your state file.
+     * Metadata startup scripts made available within the instance.
      * 
      */
     @Export(name="metadataStartupScript", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metadataStartupScript;
 
     /**
-     * @return An alternative to using the
-     * startup-script metadata key, except this one forces the instance to be recreated
-     * (thus re-running the script) if it is changed. This replaces the startup-script
-     * metadata key on the created instance and thus the two mechanisms are not
-     * allowed to be used simultaneously.  Users are free to use either mechanism - the
-     * only distinction is that this separate attribute will cause a recreate on
-     * modification.  On import, `metadata_startup_script` will not be set - if you
-     * choose to specify it you will see a diff immediately after import causing a
-     * destroy/recreate operation. If importing an instance and specifying this value
-     * is desired, you will need to modify your state file.
+     * @return Metadata startup scripts made available within the instance.
      * 
      */
     public Output<Optional<String>> metadataStartupScript() {

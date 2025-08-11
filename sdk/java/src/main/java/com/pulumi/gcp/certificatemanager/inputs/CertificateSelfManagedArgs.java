@@ -51,7 +51,6 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
     /**
      * The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="pemCertificate")
@@ -60,7 +59,6 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
     /**
      * @return The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> pemCertificate() {
@@ -184,7 +182,6 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
         /**
          * @param pemCertificate The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -197,7 +194,6 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
         /**
          * @param pemCertificate The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

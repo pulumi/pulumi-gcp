@@ -41,6 +41,7 @@ import com.pulumi.gcp.container.outputs.GetClusterPodAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.GetClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.GetClusterProtectConfig;
+import com.pulumi.gcp.container.outputs.GetClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.GetClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.GetClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecretManagerConfig;
@@ -139,6 +140,7 @@ public final class GetClusterResult {
     private @Nullable String project;
     private List<GetClusterProtectConfig> protectConfigs;
     private Map<String,String> pulumiLabels;
+    private List<GetClusterRbacBindingConfig> rbacBindingConfigs;
     private List<GetClusterReleaseChannel> releaseChannels;
     private Boolean removeDefaultNodePool;
     private Map<String,String> resourceLabels;
@@ -380,6 +382,9 @@ public final class GetClusterResult {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    public List<GetClusterRbacBindingConfig> rbacBindingConfigs() {
+        return this.rbacBindingConfigs;
+    }
     public List<GetClusterReleaseChannel> releaseChannels() {
         return this.releaseChannels;
     }
@@ -511,6 +516,7 @@ public final class GetClusterResult {
         private @Nullable String project;
         private List<GetClusterProtectConfig> protectConfigs;
         private Map<String,String> pulumiLabels;
+        private List<GetClusterRbacBindingConfig> rbacBindingConfigs;
         private List<GetClusterReleaseChannel> releaseChannels;
         private Boolean removeDefaultNodePool;
         private Map<String,String> resourceLabels;
@@ -603,6 +609,7 @@ public final class GetClusterResult {
     	      this.project = defaults.project;
     	      this.protectConfigs = defaults.protectConfigs;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.rbacBindingConfigs = defaults.rbacBindingConfigs;
     	      this.releaseChannels = defaults.releaseChannels;
     	      this.removeDefaultNodePool = defaults.removeDefaultNodePool;
     	      this.resourceLabels = defaults.resourceLabels;
@@ -1313,6 +1320,17 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder rbacBindingConfigs(List<GetClusterRbacBindingConfig> rbacBindingConfigs) {
+            if (rbacBindingConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "rbacBindingConfigs");
+            }
+            this.rbacBindingConfigs = rbacBindingConfigs;
+            return this;
+        }
+        public Builder rbacBindingConfigs(GetClusterRbacBindingConfig... rbacBindingConfigs) {
+            return rbacBindingConfigs(List.of(rbacBindingConfigs));
+        }
+        @CustomType.Setter
         public Builder releaseChannels(List<GetClusterReleaseChannel> releaseChannels) {
             if (releaseChannels == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "releaseChannels");
@@ -1545,6 +1563,7 @@ public final class GetClusterResult {
             _resultValue.project = project;
             _resultValue.protectConfigs = protectConfigs;
             _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.rbacBindingConfigs = rbacBindingConfigs;
             _resultValue.releaseChannels = releaseChannels;
             _resultValue.removeDefaultNodePool = removeDefaultNodePool;
             _resultValue.resourceLabels = resourceLabels;

@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesPredefinedRuleMatchArgs;
+import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -221,6 +222,45 @@ public final class FirewallPolicyWithRulesPredefinedRuleArgs extends com.pulumi.
 
     /**
      * (Output)
+     * A list of secure tags that controls which instances the firewall rule
+     * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
+     * firewall rule applies only to instances in the VPC network that have one
+     * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+     * INEFFECTIVE state, then this rule will be ignored.
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
+     * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
+     * If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies
+     * to all instances on the specified network.
+     * Maximum number of target secure tags allowed is 256.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="targetSecureTags")
+    private @Nullable Output<List<FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs>> targetSecureTags;
+
+    /**
+     * @return (Output)
+     * A list of secure tags that controls which instances the firewall rule
+     * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
+     * firewall rule applies only to instances in the VPC network that have one
+     * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+     * INEFFECTIVE state, then this rule will be ignored.
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
+     * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
+     * If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies
+     * to all instances on the specified network.
+     * Maximum number of target secure tags allowed is 256.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs>>> targetSecureTags() {
+        return Optional.ofNullable(this.targetSecureTags);
+    }
+
+    /**
+     * (Output)
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      * 
@@ -270,6 +310,7 @@ public final class FirewallPolicyWithRulesPredefinedRuleArgs extends com.pulumi.
         this.ruleName = $.ruleName;
         this.securityProfileGroup = $.securityProfileGroup;
         this.targetResources = $.targetResources;
+        this.targetSecureTags = $.targetSecureTags;
         this.targetServiceAccounts = $.targetServiceAccounts;
         this.tlsInspect = $.tlsInspect;
     }
@@ -576,6 +617,73 @@ public final class FirewallPolicyWithRulesPredefinedRuleArgs extends com.pulumi.
          */
         public Builder targetResources(String... targetResources) {
             return targetResources(List.of(targetResources));
+        }
+
+        /**
+         * @param targetSecureTags (Output)
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
+         * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
+         * If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target secure tags allowed is 256.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSecureTags(@Nullable Output<List<FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs>> targetSecureTags) {
+            $.targetSecureTags = targetSecureTags;
+            return this;
+        }
+
+        /**
+         * @param targetSecureTags (Output)
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
+         * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
+         * If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target secure tags allowed is 256.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSecureTags(List<FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs> targetSecureTags) {
+            return targetSecureTags(Output.of(targetSecureTags));
+        }
+
+        /**
+         * @param targetSecureTags (Output)
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
+         * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
+         * If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target secure tags allowed is 256.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetSecureTags(FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs... targetSecureTags) {
+            return targetSecureTags(List.of(targetSecureTags));
         }
 
         /**

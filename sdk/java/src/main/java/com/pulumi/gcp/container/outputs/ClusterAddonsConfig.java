@@ -15,6 +15,7 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHorizontalPodAutoscal
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigKalmConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigLustreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigNetworkPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigRayOperatorConfig;
@@ -106,6 +107,20 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigKalmConfig kalmConfig;
     /**
+     * @return The status of the Lustre CSI driver addon,
+     * which allows the usage of a Lustre instances as volumes.
+     * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+     * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+     * Lustre CSI Driver Config has optional subfield
+     * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+     * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    private @Nullable ClusterAddonsConfigLustreCsiDriverConfig lustreCsiDriverConfig;
+    /**
      * @return Whether we should enable the network policy addon
      * for the master.  This must be enabled in order to enable network policy for the nodes.
      * To enable this, you must also define a `network_policy` block,
@@ -121,8 +136,6 @@ public final class ClusterAddonsConfig {
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
      * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
      * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
@@ -253,6 +266,22 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.kalmConfig);
     }
     /**
+     * @return The status of the Lustre CSI driver addon,
+     * which allows the usage of a Lustre instances as volumes.
+     * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+     * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+     * Lustre CSI Driver Config has optional subfield
+     * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+     * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    public Optional<ClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfig() {
+        return Optional.ofNullable(this.lustreCsiDriverConfig);
+    }
+    /**
      * @return Whether we should enable the network policy addon
      * for the master.  This must be enabled in order to enable network policy for the nodes.
      * To enable this, you must also define a `network_policy` block,
@@ -270,8 +299,6 @@ public final class ClusterAddonsConfig {
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
      * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
      * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     public Optional<ClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfig() {
@@ -325,6 +352,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigHttpLoadBalancing httpLoadBalancing;
         private @Nullable ClusterAddonsConfigIstioConfig istioConfig;
         private @Nullable ClusterAddonsConfigKalmConfig kalmConfig;
+        private @Nullable ClusterAddonsConfigLustreCsiDriverConfig lustreCsiDriverConfig;
         private @Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig;
         private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
         private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
@@ -343,6 +371,7 @@ public final class ClusterAddonsConfig {
     	      this.httpLoadBalancing = defaults.httpLoadBalancing;
     	      this.istioConfig = defaults.istioConfig;
     	      this.kalmConfig = defaults.kalmConfig;
+    	      this.lustreCsiDriverConfig = defaults.lustreCsiDriverConfig;
     	      this.networkPolicyConfig = defaults.networkPolicyConfig;
     	      this.parallelstoreCsiDriverConfig = defaults.parallelstoreCsiDriverConfig;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
@@ -416,6 +445,12 @@ public final class ClusterAddonsConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder lustreCsiDriverConfig(@Nullable ClusterAddonsConfigLustreCsiDriverConfig lustreCsiDriverConfig) {
+
+            this.lustreCsiDriverConfig = lustreCsiDriverConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkPolicyConfig(@Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig) {
 
             this.networkPolicyConfig = networkPolicyConfig;
@@ -455,6 +490,7 @@ public final class ClusterAddonsConfig {
             _resultValue.httpLoadBalancing = httpLoadBalancing;
             _resultValue.istioConfig = istioConfig;
             _resultValue.kalmConfig = kalmConfig;
+            _resultValue.lustreCsiDriverConfig = lustreCsiDriverConfig;
             _resultValue.networkPolicyConfig = networkPolicyConfig;
             _resultValue.parallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;

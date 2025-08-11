@@ -42,17 +42,9 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cloudLoggingConfig);
     }
 
-    /**
-     * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -335,23 +327,11 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
             return cloudLoggingConfig(Output.of(cloudLoggingConfig));
         }
 
-        /**
-         * @param description A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

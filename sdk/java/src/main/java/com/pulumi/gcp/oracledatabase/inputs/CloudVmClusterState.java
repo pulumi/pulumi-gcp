@@ -19,6 +19,25 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
     public static final CloudVmClusterState Empty = new CloudVmClusterState();
 
     /**
+     * The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    @Import(name="backupOdbSubnet")
+    private @Nullable Output<String> backupOdbSubnet;
+
+    /**
+     * @return The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public Optional<Output<String>> backupOdbSubnet() {
+        return Optional.ofNullable(this.backupOdbSubnet);
+    }
+
+    /**
      * CIDR range of the backup subnet.
      * 
      */
@@ -226,6 +245,48 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    @Import(name="odbNetwork")
+    private @Nullable Output<String> odbNetwork;
+
+    /**
+     * @return The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    public Optional<Output<String>> odbNetwork() {
+        return Optional.ofNullable(this.odbNetwork);
+    }
+
+    /**
+     * The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    @Import(name="odbSubnet")
+    private @Nullable Output<String> odbSubnet;
+
+    /**
+     * @return The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public Optional<Output<String>> odbSubnet() {
+        return Optional.ofNullable(this.odbSubnet);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -279,6 +340,7 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
     private CloudVmClusterState() {}
 
     private CloudVmClusterState(CloudVmClusterState $) {
+        this.backupOdbSubnet = $.backupOdbSubnet;
         this.backupSubnetCidr = $.backupSubnetCidr;
         this.cidr = $.cidr;
         this.cloudVmClusterId = $.cloudVmClusterId;
@@ -292,6 +354,8 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
         this.location = $.location;
         this.name = $.name;
         this.network = $.network;
+        this.odbNetwork = $.odbNetwork;
+        this.odbSubnet = $.odbSubnet;
         this.project = $.project;
         this.properties = $.properties;
         this.pulumiLabels = $.pulumiLabels;
@@ -313,6 +377,31 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
 
         public Builder(CloudVmClusterState defaults) {
             $ = new CloudVmClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupOdbSubnet The name of the backup OdbSubnet associated with the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupOdbSubnet(@Nullable Output<String> backupOdbSubnet) {
+            $.backupOdbSubnet = backupOdbSubnet;
+            return this;
+        }
+
+        /**
+         * @param backupOdbSubnet The name of the backup OdbSubnet associated with the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupOdbSubnet(String backupOdbSubnet) {
+            return backupOdbSubnet(Output.of(backupOdbSubnet));
         }
 
         /**
@@ -594,6 +683,60 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param odbNetwork The name of the OdbNetwork associated with the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+         * It is optional but if specified, this should match the parent ODBNetwork of
+         * the odb_subnet and backup_odb_subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbNetwork(@Nullable Output<String> odbNetwork) {
+            $.odbNetwork = odbNetwork;
+            return this;
+        }
+
+        /**
+         * @param odbNetwork The name of the OdbNetwork associated with the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+         * It is optional but if specified, this should match the parent ODBNetwork of
+         * the odb_subnet and backup_odb_subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbNetwork(String odbNetwork) {
+            return odbNetwork(Output.of(odbNetwork));
+        }
+
+        /**
+         * @param odbSubnet The name of the OdbSubnet associated with the VM Cluster for
+         * IP allocation. Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbSubnet(@Nullable Output<String> odbSubnet) {
+            $.odbSubnet = odbSubnet;
+            return this;
+        }
+
+        /**
+         * @param odbSubnet The name of the OdbSubnet associated with the VM Cluster for
+         * IP allocation. Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbSubnet(String odbSubnet) {
+            return odbSubnet(Output.of(odbSubnet));
         }
 
         /**

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.SubnetworkArgs;
 import com.pulumi.gcp.compute.inputs.SubnetworkState;
 import com.pulumi.gcp.compute.outputs.SubnetworkLogConfig;
+import com.pulumi.gcp.compute.outputs.SubnetworkParams;
 import com.pulumi.gcp.compute.outputs.SubnetworkSecondaryIpRange;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -855,6 +856,22 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return this.network;
     }
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={SubnetworkParams.class}, tree="[0]")
+    private Output</* @Nullable */ SubnetworkParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SubnetworkParams>> params() {
+        return Codegen.optional(this.params);
+    }
+    /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      * 
@@ -987,6 +1004,9 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `send_secondary_ip_range_if_empty = true`
      * Structure is documented below.
      * 
      */
@@ -998,6 +1018,9 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * contained in this subnetwork. The primary IP of such VM must belong
      * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
      * to either primary or secondary ranges.
+     * **Note**: This field uses attr-as-block mode to avoid
+     * breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
+     * set `send_secondary_ip_range_if_empty = true`
      * Structure is documented below.
      * 
      */

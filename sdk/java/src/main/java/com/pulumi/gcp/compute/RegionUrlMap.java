@@ -1101,6 +1101,360 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Url Map Default Mirror Percent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()
+ *             .region("us-central1")
+ *             .name("health-check")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var mirror = new RegionBackendService("mirror", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("mirror")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()
+ *             .region("us-central1")
+ *             .name("regionurlmap")
+ *             .description("Test for default route action mirror percent")
+ *             .defaultService(home.id())
+ *             .defaultRouteAction(RegionUrlMapDefaultRouteActionArgs.builder()
+ *                 .requestMirrorPolicy(RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs.builder()
+ *                     .backendService(mirror.id())
+ *                     .mirrorPercent(50.0)
+ *                     .build())
+ *                 .build())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(home.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Url Map Path Matcher Default Mirror Percent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()
+ *             .region("us-central1")
+ *             .name("health-check")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var mirror = new RegionBackendService("mirror", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("mirror")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()
+ *             .region("us-central1")
+ *             .name("regionurlmap")
+ *             .description("Test for default route action mirror percent")
+ *             .defaultService(home.id())
+ *             .defaultRouteAction(RegionUrlMapDefaultRouteActionArgs.builder()
+ *                 .requestMirrorPolicy(RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs.builder()
+ *                     .backendService(mirror.id())
+ *                     .mirrorPercent(50.0)
+ *                     .build())
+ *                 .build())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(home.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Url Map Path Rule Mirror Percent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()
+ *             .region("us-central1")
+ *             .name("health-check")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var mirror = new RegionBackendService("mirror", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("mirror")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()
+ *             .region("us-central1")
+ *             .name("regionurlmap")
+ *             .description("Test for path matcher default route action mirror percent")
+ *             .defaultService(home.id())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(home.id())
+ *                 .defaultRouteAction(RegionUrlMapPathMatcherDefaultRouteActionArgs.builder()
+ *                     .requestMirrorPolicy(RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs.builder()
+ *                         .backendService(mirror.id())
+ *                         .mirrorPercent(75.0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Url Map Route Rule Mirror Percent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()
+ *             .region("us-central1")
+ *             .name("health-check")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home = new RegionBackendService("home", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("home")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var mirror = new RegionBackendService("mirror", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("mirror")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var regionurlmap = new RegionUrlMap("regionurlmap", RegionUrlMapArgs.builder()
+ *             .region("us-central1")
+ *             .name("regionurlmap")
+ *             .description("Test for path rule route action mirror percent")
+ *             .defaultService(home.id())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(home.id())
+ *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
+ *                     .paths("/home")
+ *                     .service(home.id())
+ *                     .routeAction(RegionUrlMapPathMatcherPathRuleRouteActionArgs.builder()
+ *                         .requestMirrorPolicy(RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs.builder()
+ *                             .backendService(mirror.id())
+ *                             .mirrorPercent(25.0)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

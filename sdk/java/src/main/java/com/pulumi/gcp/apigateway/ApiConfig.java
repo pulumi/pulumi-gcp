@@ -21,14 +21,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * An API Configuration is an association of an API Controller Config and a Gateway Config
- * 
- * To get more information about ApiConfig, see:
- * 
- * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
- * 
  * ## Example Usage
  * 
  * ## Import

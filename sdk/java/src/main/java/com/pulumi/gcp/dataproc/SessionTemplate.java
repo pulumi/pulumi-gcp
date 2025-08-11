@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateRuntimeConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigExecutionConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateJupyterSessionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -74,8 +75,11 @@ import javax.annotation.Nullable;
  *             .environmentConfig(SessionTemplateEnvironmentConfigArgs.builder()
  *                 .executionConfig(SessionTemplateEnvironmentConfigExecutionConfigArgs.builder()
  *                     .subnetworkUri("default")
- *                     .ttl("3600s")
+ *                     .idleTtl("3600s")
  *                     .networkTags("tag1")
+ *                     .authenticationConfig(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs.builder()
+ *                         .userWorkloadAuthenticationType("END_USER_CREDENTIALS")
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .jupyterSession(SessionTemplateJupyterSessionArgs.builder()
@@ -126,6 +130,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateRuntimeConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigExecutionConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigPeripheralsConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.SessionTemplateJupyterSessionArgs;
@@ -230,6 +235,9 @@ import javax.annotation.Nullable;
  *                     .subnetworkUri("default")
  *                     .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *                     .stagingBucket(bucket.name())
+ *                     .authenticationConfig(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs.builder()
+ *                         .userWorkloadAuthenticationType("SERVICE_ACCOUNT")
+ *                         .build())
  *                     .build())
  *                 .peripheralsConfig(SessionTemplateEnvironmentConfigPeripheralsConfigArgs.builder()
  *                     .metastoreService(ms.name())

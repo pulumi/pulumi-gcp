@@ -45,23 +45,9 @@ public final class DatabaseInstanceDnsNameArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.dnsScope);
     }
 
-    /**
-     * The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -134,29 +120,11 @@ public final class DatabaseInstanceDnsNameArgs extends com.pulumi.resources.Reso
             return dnsScope(Output.of(dnsScope));
         }
 
-        /**
-         * @param name The name of the instance. If the name is left
-         * blank, the provider will randomly generate one when the instance is first
-         * created. This is done because after a name is used, it cannot be reused for
-         * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the instance. If the name is left
-         * blank, the provider will randomly generate one when the instance is first
-         * created. This is done because after a name is used, it cannot be reused for
-         * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

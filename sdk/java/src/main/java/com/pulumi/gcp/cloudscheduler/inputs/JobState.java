@@ -176,17 +176,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pubsubTarget);
     }
 
-    /**
-     * Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -499,23 +491,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return pubsubTarget(Output.of(pubsubTarget));
         }
 
-        /**
-         * @param region Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

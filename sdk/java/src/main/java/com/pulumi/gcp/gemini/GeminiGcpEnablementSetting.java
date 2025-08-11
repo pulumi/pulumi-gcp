@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .location("global")
  *             .labels(Map.of("my_key", "my_value"))
  *             .enableCustomerDataSharing(true)
- *             .disableWebGrounding(true)
+ *             .webGroundingType("WEB_GROUNDING_FOR_ENTERPRISE")
  *             .build());
  * 
  *     }
@@ -103,14 +103,24 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
         return this.createTime;
     }
     /**
+     * (Optional, Deprecated)
      * Whether web grounding should be disabled.
      * 
+     * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * 
+     * @deprecated
+     * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * 
      */
+    @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
     @Export(name="disableWebGrounding", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableWebGrounding;
 
     /**
-     * @return Whether web grounding should be disabled.
+     * @return (Optional, Deprecated)
+     * Whether web grounding should be disabled.
+     * 
+     * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
      * 
      */
     public Output<Optional<Boolean>> disableWebGrounding() {
@@ -251,6 +261,26 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Web grounding type.
+     * Possible values:
+     * GROUNDING_WITH_GOOGLE_SEARCH
+     * WEB_GROUNDING_FOR_ENTERPRISE
+     * 
+     */
+    @Export(name="webGroundingType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> webGroundingType;
+
+    /**
+     * @return Web grounding type.
+     * Possible values:
+     * GROUNDING_WITH_GOOGLE_SEARCH
+     * WEB_GROUNDING_FOR_ENTERPRISE
+     * 
+     */
+    public Output<Optional<String>> webGroundingType() {
+        return Codegen.optional(this.webGroundingType);
     }
 
     /**

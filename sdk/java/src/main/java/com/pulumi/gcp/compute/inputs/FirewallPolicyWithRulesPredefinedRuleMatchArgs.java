@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs;
+import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -110,8 +111,6 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatchArgs extends com.pu
      * Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
-     * 
      */
     @Import(name="layer4Configs")
     private @Nullable Output<List<FirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs>> layer4Configs;
@@ -119,8 +118,6 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatchArgs extends com.pu
     /**
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
      * 
      */
     public Optional<Output<List<FirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs>>> layer4Configs() {
@@ -200,6 +197,31 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatchArgs extends com.pu
     }
 
     /**
+     * List of secure tag values, which should be matched at the source
+     * of the traffic.
+     * For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
+     * and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored.
+     * Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="srcSecureTags")
+    private @Nullable Output<List<FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs>> srcSecureTags;
+
+    /**
+     * @return List of secure tag values, which should be matched at the source
+     * of the traffic.
+     * For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
+     * and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored.
+     * Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs>>> srcSecureTags() {
+        return Optional.ofNullable(this.srcSecureTags);
+    }
+
+    /**
      * Names of Network Threat Intelligence lists.
      * The IPs in these lists will be matched against traffic source.
      * 
@@ -229,6 +251,7 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatchArgs extends com.pu
         this.srcFqdns = $.srcFqdns;
         this.srcIpRanges = $.srcIpRanges;
         this.srcRegionCodes = $.srcRegionCodes;
+        this.srcSecureTags = $.srcSecureTags;
         this.srcThreatIntelligences = $.srcThreatIntelligences;
     }
 
@@ -430,8 +453,6 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatchArgs extends com.pu
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
-         * 
          * @return builder
          * 
          */
@@ -444,8 +465,6 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatchArgs extends com.pu
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
-         * 
          * @return builder
          * 
          */
@@ -456,8 +475,6 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatchArgs extends com.pu
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
          * 
          * @return builder
          * 
@@ -606,6 +623,52 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatchArgs extends com.pu
          */
         public Builder srcRegionCodes(String... srcRegionCodes) {
             return srcRegionCodes(List.of(srcRegionCodes));
+        }
+
+        /**
+         * @param srcSecureTags List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
+         * and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcSecureTags(@Nullable Output<List<FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs>> srcSecureTags) {
+            $.srcSecureTags = srcSecureTags;
+            return this;
+        }
+
+        /**
+         * @param srcSecureTags List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
+         * and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcSecureTags(List<FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs> srcSecureTags) {
+            return srcSecureTags(Output.of(srcSecureTags));
+        }
+
+        /**
+         * @param srcSecureTags List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
+         * and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcSecureTags(FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs... srcSecureTags) {
+            return srcSecureTags(List.of(srcSecureTags));
         }
 
         /**

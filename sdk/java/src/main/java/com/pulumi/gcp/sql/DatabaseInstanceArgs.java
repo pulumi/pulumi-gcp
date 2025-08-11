@@ -24,18 +24,14 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     public static final DatabaseInstanceArgs Empty = new DatabaseInstanceArgs();
 
     /**
-     * The context needed to create this instance as a clone of another instance. When this field is set during
-     * resource creation, this provider will attempt to clone another instance as indicated in the context. The
-     * configuration is detailed below.
+     * Configuration for creating a new instance as a clone of another instance.
      * 
      */
     @Import(name="clone")
     private @Nullable Output<DatabaseInstanceCloneArgs> clone;
 
     /**
-     * @return The context needed to create this instance as a clone of another instance. When this field is set during
-     * resource creation, this provider will attempt to clone another instance as indicated in the context. The
-     * configuration is detailed below.
+     * @return Configuration for creating a new instance as a clone of another instance.
      * 
      */
     public Optional<Output<DatabaseInstanceCloneArgs>> clone_() {
@@ -73,48 +69,16 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         return this.databaseVersion;
     }
 
-    /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
-     * 
-     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
-    /**
-     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
-     * 
-     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
 
-    /**
-     * The full path to the encryption key used for the CMEK disk encryption.  Setting
-     * up disk encryption currently requires manual steps outside of this provider.
-     * The provided key must be in the same region as the SQL instance.  In order
-     * to use this feature, a special kind of service account must be created and
-     * granted permission on this key.  This step can currently only be done
-     * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-     * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-     * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-     * 
-     */
     @Import(name="encryptionKeyName")
     private @Nullable Output<String> encryptionKeyName;
 
-    /**
-     * @return The full path to the encryption key used for the CMEK disk encryption.  Setting
-     * up disk encryption currently requires manual steps outside of this provider.
-     * The provided key must be in the same region as the SQL instance.  In order
-     * to use this feature, a special kind of service account must be created and
-     * granted permission on this key.  This step can currently only be done
-     * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-     * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-     * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-     * 
-     */
     public Optional<Output<String>> encryptionKeyName() {
         return Optional.ofNullable(this.encryptionKeyName);
     }
@@ -168,23 +132,9 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.masterInstanceName);
     }
 
-    /**
-     * The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -276,23 +226,9 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.replicationCluster);
     }
 
-    /**
-     * The context needed to restore the database to a backup run. This field will
-     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-     * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-     * block during resource creation/update will trigger the restore action after the resource is created/updated.
-     * 
-     */
     @Import(name="restoreBackupContext")
     private @Nullable Output<DatabaseInstanceRestoreBackupContextArgs> restoreBackupContext;
 
-    /**
-     * @return The context needed to restore the database to a backup run. This field will
-     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-     * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-     * block during resource creation/update will trigger the restore action after the resource is created/updated.
-     * 
-     */
     public Optional<Output<DatabaseInstanceRestoreBackupContextArgs>> restoreBackupContext() {
         return Optional.ofNullable(this.restoreBackupContext);
     }
@@ -369,9 +305,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clone The context needed to create this instance as a clone of another instance. When this field is set during
-         * resource creation, this provider will attempt to clone another instance as indicated in the context. The
-         * configuration is detailed below.
+         * @param clone Configuration for creating a new instance as a clone of another instance.
          * 
          * @return builder
          * 
@@ -382,9 +316,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clone The context needed to create this instance as a clone of another instance. When this field is set during
-         * resource creation, this provider will attempt to clone another instance as indicated in the context. The
-         * configuration is detailed below.
+         * @param clone Configuration for creating a new instance as a clone of another instance.
          * 
          * @return builder
          * 
@@ -430,60 +362,20 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
             return databaseVersion(Output.of(databaseVersion));
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-         * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
-        /**
-         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-         * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }
 
-        /**
-         * @param encryptionKeyName The full path to the encryption key used for the CMEK disk encryption.  Setting
-         * up disk encryption currently requires manual steps outside of this provider.
-         * The provided key must be in the same region as the SQL instance.  In order
-         * to use this feature, a special kind of service account must be created and
-         * granted permission on this key.  This step can currently only be done
-         * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-         * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-         * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-         * 
-         * @return builder
-         * 
-         */
         public Builder encryptionKeyName(@Nullable Output<String> encryptionKeyName) {
             $.encryptionKeyName = encryptionKeyName;
             return this;
         }
 
-        /**
-         * @param encryptionKeyName The full path to the encryption key used for the CMEK disk encryption.  Setting
-         * up disk encryption currently requires manual steps outside of this provider.
-         * The provided key must be in the same region as the SQL instance.  In order
-         * to use this feature, a special kind of service account must be created and
-         * granted permission on this key.  This step can currently only be done
-         * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-         * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-         * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-         * 
-         * @return builder
-         * 
-         */
         public Builder encryptionKeyName(String encryptionKeyName) {
             return encryptionKeyName(Output.of(encryptionKeyName));
         }
@@ -555,29 +447,11 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
             return masterInstanceName(Output.of(masterInstanceName));
         }
 
-        /**
-         * @param name The name of the instance. If the name is left
-         * blank, the provider will randomly generate one when the instance is first
-         * created. This is done because after a name is used, it cannot be reused for
-         * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the instance. If the name is left
-         * blank, the provider will randomly generate one when the instance is first
-         * created. This is done because after a name is used, it cannot be reused for
-         * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -709,29 +583,11 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
             return replicationCluster(Output.of(replicationCluster));
         }
 
-        /**
-         * @param restoreBackupContext The context needed to restore the database to a backup run. This field will
-         * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-         * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-         * block during resource creation/update will trigger the restore action after the resource is created/updated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder restoreBackupContext(@Nullable Output<DatabaseInstanceRestoreBackupContextArgs> restoreBackupContext) {
             $.restoreBackupContext = restoreBackupContext;
             return this;
         }
 
-        /**
-         * @param restoreBackupContext The context needed to restore the database to a backup run. This field will
-         * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-         * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-         * block during resource creation/update will trigger the restore action after the resource is created/updated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder restoreBackupContext(DatabaseInstanceRestoreBackupContextArgs restoreBackupContext) {
             return restoreBackupContext(Output.of(restoreBackupContext));
         }

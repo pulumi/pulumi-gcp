@@ -59,17 +59,9 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.creationTime);
     }
 
-    /**
-     * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -444,23 +436,11 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
             return creationTime(Output.of(creationTime));
         }
 
-        /**
-         * @param description A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

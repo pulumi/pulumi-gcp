@@ -18,10 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates a Google Cloud Bigtable table inside an instance. For more information see
- * [the official documentation](https://cloud.google.com/bigtable/) and
- * [API](https://cloud.google.com/bigtable/docs/go/reference).
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -264,21 +260,9 @@ public class Table extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> rowKeySchema() {
         return Codegen.optional(this.rowKeySchema);
     }
-    /**
-     * A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-     * to delete/recreate the entire `gcp.bigtable.Table` resource.
-     * 
-     */
     @Export(name="splitKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> splitKeys;
 
-    /**
-     * @return A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-     * to delete/recreate the entire `gcp.bigtable.Table` resource.
-     * 
-     */
     public Output<Optional<List<String>>> splitKeys() {
         return Codegen.optional(this.splitKeys);
     }

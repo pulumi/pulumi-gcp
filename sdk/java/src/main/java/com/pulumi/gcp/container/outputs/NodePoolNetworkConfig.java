@@ -59,6 +59,11 @@ public final class NodePoolNetworkConfig {
      * 
      */
     private @Nullable String podRange;
+    /**
+     * @return The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+     * 
+     */
+    private @Nullable String subnetwork;
 
     private NodePoolNetworkConfig() {}
     /**
@@ -119,6 +124,13 @@ public final class NodePoolNetworkConfig {
     public Optional<String> podRange() {
         return Optional.ofNullable(this.podRange);
     }
+    /**
+     * @return The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+     * 
+     */
+    public Optional<String> subnetwork() {
+        return Optional.ofNullable(this.subnetwork);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -137,6 +149,7 @@ public final class NodePoolNetworkConfig {
         private @Nullable NodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
         private @Nullable String podIpv4CidrBlock;
         private @Nullable String podRange;
+        private @Nullable String subnetwork;
         public Builder() {}
         public Builder(NodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -148,6 +161,7 @@ public final class NodePoolNetworkConfig {
     	      this.podCidrOverprovisionConfig = defaults.podCidrOverprovisionConfig;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
+    	      this.subnetwork = defaults.subnetwork;
         }
 
         @CustomType.Setter
@@ -204,6 +218,12 @@ public final class NodePoolNetworkConfig {
             this.podRange = podRange;
             return this;
         }
+        @CustomType.Setter
+        public Builder subnetwork(@Nullable String subnetwork) {
+
+            this.subnetwork = subnetwork;
+            return this;
+        }
         public NodePoolNetworkConfig build() {
             final var _resultValue = new NodePoolNetworkConfig();
             _resultValue.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
@@ -214,6 +234,7 @@ public final class NodePoolNetworkConfig {
             _resultValue.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             _resultValue.podIpv4CidrBlock = podIpv4CidrBlock;
             _resultValue.podRange = podRange;
+            _resultValue.subnetwork = subnetwork;
             return _resultValue;
         }
     }

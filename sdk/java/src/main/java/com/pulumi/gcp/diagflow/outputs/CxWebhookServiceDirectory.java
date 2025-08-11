@@ -8,15 +8,17 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.outputs.CxWebhookServiceDirectoryGenericWebService;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class CxWebhookServiceDirectory {
     /**
-     * @return The name of Service Directory service.
+     * @return Represents configuration for a generic web service.
      * Structure is documented below.
      * 
      */
-    private CxWebhookServiceDirectoryGenericWebService genericWebService;
+    private @Nullable CxWebhookServiceDirectoryGenericWebService genericWebService;
     /**
      * @return The name of Service Directory service.
      * 
@@ -25,12 +27,12 @@ public final class CxWebhookServiceDirectory {
 
     private CxWebhookServiceDirectory() {}
     /**
-     * @return The name of Service Directory service.
+     * @return Represents configuration for a generic web service.
      * Structure is documented below.
      * 
      */
-    public CxWebhookServiceDirectoryGenericWebService genericWebService() {
-        return this.genericWebService;
+    public Optional<CxWebhookServiceDirectoryGenericWebService> genericWebService() {
+        return Optional.ofNullable(this.genericWebService);
     }
     /**
      * @return The name of Service Directory service.
@@ -49,7 +51,7 @@ public final class CxWebhookServiceDirectory {
     }
     @CustomType.Builder
     public static final class Builder {
-        private CxWebhookServiceDirectoryGenericWebService genericWebService;
+        private @Nullable CxWebhookServiceDirectoryGenericWebService genericWebService;
         private String service;
         public Builder() {}
         public Builder(CxWebhookServiceDirectory defaults) {
@@ -59,10 +61,8 @@ public final class CxWebhookServiceDirectory {
         }
 
         @CustomType.Setter
-        public Builder genericWebService(CxWebhookServiceDirectoryGenericWebService genericWebService) {
-            if (genericWebService == null) {
-              throw new MissingRequiredPropertyException("CxWebhookServiceDirectory", "genericWebService");
-            }
+        public Builder genericWebService(@Nullable CxWebhookServiceDirectoryGenericWebService genericWebService) {
+
             this.genericWebService = genericWebService;
             return this;
         }

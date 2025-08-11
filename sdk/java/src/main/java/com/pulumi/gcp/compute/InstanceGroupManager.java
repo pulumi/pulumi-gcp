@@ -776,21 +776,9 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     public Output<List<InstanceGroupManagerVersion>> versions() {
         return this.versions;
     }
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
-     * continue trying until it times out.
-     * 
-     */
     @Export(name="waitForInstances", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForInstances;
 
-    /**
-     * @return Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, this provider will
-     * continue trying until it times out.
-     * 
-     */
     public Output<Optional<Boolean>> waitForInstances() {
         return Codegen.optional(this.waitForInstances);
     }

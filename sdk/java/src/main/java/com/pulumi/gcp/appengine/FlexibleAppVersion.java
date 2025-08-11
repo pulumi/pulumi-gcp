@@ -357,17 +357,9 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
     public Output<Optional<FlexibleAppVersionEntrypoint>> entrypoint() {
         return Codegen.optional(this.entrypoint);
     }
-    /**
-     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-     * 
-     */
     @Export(name="envVariables", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> envVariables;
 
-    /**
-     * @return Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-     * 
-     */
     public Output<Optional<Map<String,String>>> envVariables() {
         return Codegen.optional(this.envVariables);
     }

@@ -910,6 +910,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.modelArmorCustomEndpoint);
     }
 
+    @Import(name="modelArmorGlobalCustomEndpoint")
+    private @Nullable Output<String> modelArmorGlobalCustomEndpoint;
+
+    public Optional<Output<String>> modelArmorGlobalCustomEndpoint() {
+        return Optional.ofNullable(this.modelArmorGlobalCustomEndpoint);
+    }
+
     @Import(name="monitoringCustomEndpoint")
     private @Nullable Output<String> monitoringCustomEndpoint;
 
@@ -1516,6 +1523,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.migrationCenterCustomEndpoint = $.migrationCenterCustomEndpoint;
         this.mlEngineCustomEndpoint = $.mlEngineCustomEndpoint;
         this.modelArmorCustomEndpoint = $.modelArmorCustomEndpoint;
+        this.modelArmorGlobalCustomEndpoint = $.modelArmorGlobalCustomEndpoint;
         this.monitoringCustomEndpoint = $.monitoringCustomEndpoint;
         this.netappCustomEndpoint = $.netappCustomEndpoint;
         this.networkConnectivityCustomEndpoint = $.networkConnectivityCustomEndpoint;
@@ -2749,6 +2757,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder modelArmorCustomEndpoint(String modelArmorCustomEndpoint) {
             return modelArmorCustomEndpoint(Output.of(modelArmorCustomEndpoint));
+        }
+
+        public Builder modelArmorGlobalCustomEndpoint(@Nullable Output<String> modelArmorGlobalCustomEndpoint) {
+            $.modelArmorGlobalCustomEndpoint = modelArmorGlobalCustomEndpoint;
+            return this;
+        }
+
+        public Builder modelArmorGlobalCustomEndpoint(String modelArmorGlobalCustomEndpoint) {
+            return modelArmorGlobalCustomEndpoint(Output.of(modelArmorGlobalCustomEndpoint));
         }
 
         public Builder monitoringCustomEndpoint(@Nullable Output<String> monitoringCustomEndpoint) {

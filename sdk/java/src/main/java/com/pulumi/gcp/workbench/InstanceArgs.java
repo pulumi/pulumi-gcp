@@ -51,6 +51,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Flag to enable managed end user credentials for the instance.
+     * 
+     */
+    @Import(name="enableManagedEuc")
+    private @Nullable Output<Boolean> enableManagedEuc;
+
+    /**
+     * @return Flag to enable managed end user credentials for the instance.
+     * 
+     */
+    public Optional<Output<Boolean>> enableManagedEuc() {
+        return Optional.ofNullable(this.enableManagedEuc);
+    }
+
+    /**
      * Flag that specifies that a notebook can be accessed with third party
      * identity provider.
      * 
@@ -197,6 +212,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs(InstanceArgs $) {
         this.desiredState = $.desiredState;
         this.disableProxyAccess = $.disableProxyAccess;
+        this.enableManagedEuc = $.enableManagedEuc;
         this.enableThirdPartyIdentity = $.enableThirdPartyIdentity;
         this.gceSetup = $.gceSetup;
         this.instanceId = $.instanceId;
@@ -265,6 +281,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableProxyAccess(Boolean disableProxyAccess) {
             return disableProxyAccess(Output.of(disableProxyAccess));
+        }
+
+        /**
+         * @param enableManagedEuc Flag to enable managed end user credentials for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableManagedEuc(@Nullable Output<Boolean> enableManagedEuc) {
+            $.enableManagedEuc = enableManagedEuc;
+            return this;
+        }
+
+        /**
+         * @param enableManagedEuc Flag to enable managed end user credentials for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableManagedEuc(Boolean enableManagedEuc) {
+            return enableManagedEuc(Output.of(enableManagedEuc));
         }
 
         /**

@@ -176,29 +176,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * (Deprecated)
-     * Output only. Endpoints clients can connect to the instance through. Currently only one
-     * discovery endpoint is supported.
+     * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      * 
      * @deprecated
-     * `discovery_endpoints` is deprecated  Use `endpoints` instead.
+     * This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      * 
      */
-    @Deprecated /* `discovery_endpoints` is deprecated  Use `endpoints` instead. */
+    @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
     @Import(name="discoveryEndpoints")
     private @Nullable Output<List<InstanceDiscoveryEndpointArgs>> discoveryEndpoints;
 
     /**
      * @return (Deprecated)
-     * Output only. Endpoints clients can connect to the instance through. Currently only one
-     * discovery endpoint is supported.
+     * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      * 
      * @deprecated
-     * `discovery_endpoints` is deprecated  Use `endpoints` instead.
+     * This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      * 
      */
-    @Deprecated /* `discovery_endpoints` is deprecated  Use `endpoints` instead. */
+    @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
     public Optional<Output<List<InstanceDiscoveryEndpointArgs>>> discoveryEndpoints() {
         return Optional.ofNullable(this.discoveryEndpoints);
     }
@@ -1019,17 +1017,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param discoveryEndpoints (Deprecated)
-         * Output only. Endpoints clients can connect to the instance through. Currently only one
-         * discovery endpoint is supported.
+         * Deprecated. Output only. Endpoints clients can connect to the instance through.
          * Structure is documented below.
          * 
          * @return builder
          * 
          * @deprecated
-         * `discovery_endpoints` is deprecated  Use `endpoints` instead.
+         * This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
          * 
          */
-        @Deprecated /* `discovery_endpoints` is deprecated  Use `endpoints` instead. */
+        @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
         public Builder discoveryEndpoints(@Nullable Output<List<InstanceDiscoveryEndpointArgs>> discoveryEndpoints) {
             $.discoveryEndpoints = discoveryEndpoints;
             return this;
@@ -1037,34 +1034,32 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param discoveryEndpoints (Deprecated)
-         * Output only. Endpoints clients can connect to the instance through. Currently only one
-         * discovery endpoint is supported.
+         * Deprecated. Output only. Endpoints clients can connect to the instance through.
          * Structure is documented below.
          * 
          * @return builder
          * 
          * @deprecated
-         * `discovery_endpoints` is deprecated  Use `endpoints` instead.
+         * This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
          * 
          */
-        @Deprecated /* `discovery_endpoints` is deprecated  Use `endpoints` instead. */
+        @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
         public Builder discoveryEndpoints(List<InstanceDiscoveryEndpointArgs> discoveryEndpoints) {
             return discoveryEndpoints(Output.of(discoveryEndpoints));
         }
 
         /**
          * @param discoveryEndpoints (Deprecated)
-         * Output only. Endpoints clients can connect to the instance through. Currently only one
-         * discovery endpoint is supported.
+         * Deprecated. Output only. Endpoints clients can connect to the instance through.
          * Structure is documented below.
          * 
          * @return builder
          * 
          * @deprecated
-         * `discovery_endpoints` is deprecated  Use `endpoints` instead.
+         * This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
          * 
          */
-        @Deprecated /* `discovery_endpoints` is deprecated  Use `endpoints` instead. */
+        @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
         public Builder discoveryEndpoints(InstanceDiscoveryEndpointArgs... discoveryEndpoints) {
             return discoveryEndpoints(List.of(discoveryEndpoints));
         }

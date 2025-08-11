@@ -52,6 +52,7 @@ public final class GetBucketObjectResult {
      */
     private String crc32c;
     private List<GetBucketObjectCustomerEncryption> customerEncryptions;
+    private String deletionPolicy;
     private String detectMd5hash;
     /**
      * @return (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -157,6 +158,9 @@ public final class GetBucketObjectResult {
     }
     public List<GetBucketObjectCustomerEncryption> customerEncryptions() {
         return this.customerEncryptions;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String detectMd5hash() {
         return this.detectMd5hash;
@@ -265,6 +269,7 @@ public final class GetBucketObjectResult {
         private String contentType;
         private String crc32c;
         private List<GetBucketObjectCustomerEncryption> customerEncryptions;
+        private String deletionPolicy;
         private String detectMd5hash;
         private Boolean eventBasedHold;
         private Boolean forceEmptyContentType;
@@ -295,6 +300,7 @@ public final class GetBucketObjectResult {
     	      this.contentType = defaults.contentType;
     	      this.crc32c = defaults.crc32c;
     	      this.customerEncryptions = defaults.customerEncryptions;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.detectMd5hash = defaults.detectMd5hash;
     	      this.eventBasedHold = defaults.eventBasedHold;
     	      this.forceEmptyContentType = defaults.forceEmptyContentType;
@@ -387,6 +393,14 @@ public final class GetBucketObjectResult {
         }
         public Builder customerEncryptions(GetBucketObjectCustomerEncryption... customerEncryptions) {
             return customerEncryptions(List.of(customerEncryptions));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder detectMd5hash(String detectMd5hash) {
@@ -544,6 +558,7 @@ public final class GetBucketObjectResult {
             _resultValue.contentType = contentType;
             _resultValue.crc32c = crc32c;
             _resultValue.customerEncryptions = customerEncryptions;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.detectMd5hash = detectMd5hash;
             _resultValue.eventBasedHold = eventBasedHold;
             _resultValue.forceEmptyContentType = forceEmptyContentType;

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRouterBgp;
 import com.pulumi.gcp.compute.outputs.GetRouterMd5AuthenticationKey;
+import com.pulumi.gcp.compute.outputs.GetRouterParam;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -28,6 +29,7 @@ public final class GetRouterResult {
     private List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys;
     private String name;
     private String network;
+    private List<GetRouterParam> params;
     private @Nullable String project;
     private @Nullable String region;
     private String selfLink;
@@ -61,6 +63,9 @@ public final class GetRouterResult {
     public String network() {
         return this.network;
     }
+    public List<GetRouterParam> params() {
+        return this.params;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -88,6 +93,7 @@ public final class GetRouterResult {
         private List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys;
         private String name;
         private String network;
+        private List<GetRouterParam> params;
         private @Nullable String project;
         private @Nullable String region;
         private String selfLink;
@@ -102,6 +108,7 @@ public final class GetRouterResult {
     	      this.md5AuthenticationKeys = defaults.md5AuthenticationKeys;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
@@ -178,6 +185,17 @@ public final class GetRouterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder params(List<GetRouterParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetRouterParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -207,6 +225,7 @@ public final class GetRouterResult {
             _resultValue.md5AuthenticationKeys = md5AuthenticationKeys;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.region = region;
             _resultValue.selfLink = selfLink;

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SessionTemplateEnvironmentConfigExecutionConfig {
+    /**
+     * @return Authentication configuration for a workload is used to set the default identity for the workload execution.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig authenticationConfig;
+    /**
+     * @return The duration to keep the session alive while it&#39;s idling.
+     * Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+     * Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+     * are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+     * been exceeded, whichever occurs first.
+     * 
+     */
+    private @Nullable String idleTtl;
     /**
      * @return The Cloud KMS key to use for encryption.
      * 
@@ -55,6 +71,25 @@ public final class SessionTemplateEnvironmentConfigExecutionConfig {
     private @Nullable String ttl;
 
     private SessionTemplateEnvironmentConfigExecutionConfig() {}
+    /**
+     * @return Authentication configuration for a workload is used to set the default identity for the workload execution.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig> authenticationConfig() {
+        return Optional.ofNullable(this.authenticationConfig);
+    }
+    /**
+     * @return The duration to keep the session alive while it&#39;s idling.
+     * Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+     * Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+     * are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+     * been exceeded, whichever occurs first.
+     * 
+     */
+    public Optional<String> idleTtl() {
+        return Optional.ofNullable(this.idleTtl);
+    }
     /**
      * @return The Cloud KMS key to use for encryption.
      * 
@@ -118,6 +153,8 @@ public final class SessionTemplateEnvironmentConfigExecutionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig authenticationConfig;
+        private @Nullable String idleTtl;
         private @Nullable String kmsKey;
         private @Nullable List<String> networkTags;
         private @Nullable String serviceAccount;
@@ -127,6 +164,8 @@ public final class SessionTemplateEnvironmentConfigExecutionConfig {
         public Builder() {}
         public Builder(SessionTemplateEnvironmentConfigExecutionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authenticationConfig = defaults.authenticationConfig;
+    	      this.idleTtl = defaults.idleTtl;
     	      this.kmsKey = defaults.kmsKey;
     	      this.networkTags = defaults.networkTags;
     	      this.serviceAccount = defaults.serviceAccount;
@@ -135,6 +174,18 @@ public final class SessionTemplateEnvironmentConfigExecutionConfig {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
+        public Builder authenticationConfig(@Nullable SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig authenticationConfig) {
+
+            this.authenticationConfig = authenticationConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder idleTtl(@Nullable String idleTtl) {
+
+            this.idleTtl = idleTtl;
+            return this;
+        }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
 
@@ -176,6 +227,8 @@ public final class SessionTemplateEnvironmentConfigExecutionConfig {
         }
         public SessionTemplateEnvironmentConfigExecutionConfig build() {
             final var _resultValue = new SessionTemplateEnvironmentConfigExecutionConfig();
+            _resultValue.authenticationConfig = authenticationConfig;
+            _resultValue.idleTtl = idleTtl;
             _resultValue.kmsKey = kmsKey;
             _resultValue.networkTags = networkTags;
             _resultValue.serviceAccount = serviceAccount;

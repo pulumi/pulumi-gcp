@@ -582,37 +582,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.selfLink);
     }
 
-    /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     * 
-     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
-    /**
-     * @return Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
-     * 
-     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -1758,43 +1730,11 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return selfLink(Output.of(selfLink));
         }
 
-        /**
-         * @param size Size of the persistent disk, specified in GB. You can specify this
-         * field when creating a persistent disk using the `image` or
-         * `snapshot` parameter, or specify it alone to create an empty
-         * persistent disk.
-         * If you specify this field along with `image` or `snapshot`,
-         * the value must not be less than the size of the image
-         * or the size of the snapshot.
-         * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-         * if upsizing is detected but recreates the disk if downsizing is requested.
-         * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-         * and recreating.
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
-        /**
-         * @param size Size of the persistent disk, specified in GB. You can specify this
-         * field when creating a persistent disk using the `image` or
-         * `snapshot` parameter, or specify it alone to create an empty
-         * persistent disk.
-         * If you specify this field along with `image` or `snapshot`,
-         * the value must not be less than the size of the image
-         * or the size of the snapshot.
-         * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-         * if upsizing is detected but recreates the disk if downsizing is requested.
-         * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-         * and recreating.
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

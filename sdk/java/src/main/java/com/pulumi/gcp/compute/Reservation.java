@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobar = new InstanceTemplate("foobar", InstanceTemplateArgs.builder()
- *             .name("tf-test-instance-template")
+ *             .name("instance-template")
  *             .machineType("n2-standard-2")
  *             .canIpForward(false)
  *             .tags(            
@@ -250,7 +250,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobar = new InstanceTemplate("foobar", InstanceTemplateArgs.builder()
- *             .name("tf-test-instance-template")
+ *             .name("instance-template")
  *             .machineType("g2-standard-4")
  *             .canIpForward(false)
  *             .tags(            

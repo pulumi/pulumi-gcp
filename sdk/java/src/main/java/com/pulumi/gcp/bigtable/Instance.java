@@ -19,20 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## subcategory: &#34;Cloud Bigtable&#34;
- * 
- * description: |-
- *   Creates a Google Bigtable instance.
- * ---
- * 
- * # gcp.bigtable.Instance
- * 
- * Creates a Google Bigtable instance. For more information see:
- * 
- * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
- * 
  * ## Example Usage
  * 
  * ### Simple Instance
@@ -181,19 +167,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<List<InstanceCluster>> clusters() {
         return this.clusters;
     }
-    /**
-     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-     * 
-     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
-    /**
-     * @return Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
-     * 
-     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -230,14 +206,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * When deleting a BigTable instance, this boolean option will delete all backups within the instance.
      * 
      */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
-     * @return Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+     * @return When deleting a BigTable instance, this boolean option will delete all backups within the instance.
      * 
      */
     public Output<Optional<Boolean>> forceDestroy() {

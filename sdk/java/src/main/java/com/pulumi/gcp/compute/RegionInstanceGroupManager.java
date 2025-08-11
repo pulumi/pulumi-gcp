@@ -710,21 +710,9 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     public Output<List<RegionInstanceGroupManagerVersion>> versions() {
         return this.versions;
     }
-    /**
-     * Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, the provider will
-     * continue trying until it times out.
-     * 
-     */
     @Export(name="waitForInstances", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForInstances;
 
-    /**
-     * @return Whether to wait for all instances to be created/updated before
-     * returning. Note that if this is set to true and the operation does not succeed, the provider will
-     * continue trying until it times out.
-     * 
-     */
     public Output<Optional<Boolean>> waitForInstances() {
         return Codegen.optional(this.waitForInstances);
     }

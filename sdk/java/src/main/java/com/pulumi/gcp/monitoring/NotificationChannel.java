@@ -18,30 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A NotificationChannel is a medium through which an alert is delivered
- * when a policy violation is detected. Examples of channels include email, SMS,
- * and third-party messaging applications. Fields containing sensitive information
- * like authentication tokens or contact info are only partially populated on retrieval.
- * 
- * Notification Channels are designed to be flexible and are made up of a supported `type`
- * and labels to configure that channel. Each `type` has specific labels that need to be
- * present for that channel to be correctly configured. The labels that are required to be
- * present for one channel `type` are often different than those required for another.
- * Due to these loose constraints it&#39;s often best to set up a channel through the UI
- * and import it to the provider when setting up a brand new channel type to determine which
- * labels are required.
- * 
- * A list of supported channels per project the `list` endpoint can be
- * accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
- * This provides the channel type and all of the required labels that must be passed.
- * 
- * To get more information about NotificationChannel, see:
- * 
- * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
- * * How-to Guides
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
- * 
  * ## Example Usage
  * 
  * ### Notification Channel Basic
@@ -201,27 +177,9 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDelete() {
         return Codegen.optional(this.forceDelete);
     }
-    /**
-     * Configuration fields that define the channel and its behavior. The
-     * permissible and required labels are specified in the
-     * NotificationChannelDescriptor corresponding to the type field.
-     * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-     * determine if there are upstream changes to these fields. They can also be configured via
-     * the sensitive_labels block, but cannot be configured in both places.
-     * 
-     */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
-    /**
-     * @return Configuration fields that define the channel and its behavior. The
-     * permissible and required labels are specified in the
-     * NotificationChannelDescriptor corresponding to the type field.
-     * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-     * determine if there are upstream changes to these fields. They can also be configured via
-     * the sensitive_labels block, but cannot be configured in both places.
-     * 
-     */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }

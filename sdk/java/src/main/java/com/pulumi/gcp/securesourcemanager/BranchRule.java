@@ -59,12 +59,14 @@ import javax.annotation.Nullable;
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .location("us-central1")
  *             .instanceId("my-basic-instance")
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var repository = new Repository("repository", RepositoryArgs.builder()
  *             .repositoryId("my-basic-repository")
  *             .location(instance.location())
  *             .instance(instance.name())
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var basic = new BranchRule("basic", BranchRuleArgs.builder()
@@ -111,12 +113,14 @@ import javax.annotation.Nullable;
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .location("us-central1")
  *             .instanceId("my-initial-instance")
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var repository = new Repository("repository", RepositoryArgs.builder()
  *             .repositoryId("my-initial-repository")
  *             .instance(instance.name())
  *             .location(instance.location())
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *         var default_ = new BranchRule("default", BranchRuleArgs.builder()

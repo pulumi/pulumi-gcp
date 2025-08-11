@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSpark = new Batch("exampleBatchSpark", BatchArgs.builder()
- *             .batchId("tf-test-batch_22375")
+ *             .batchId("tf-test-batch_79169")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
@@ -129,6 +129,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.inputs.BatchRuntimeConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigExecutionConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigPeripheralsConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchSparkBatchArgs;
@@ -224,6 +225,9 @@ import javax.annotation.Nullable;
  *                     .networkUri("default")
  *                     .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *                     .stagingBucket(bucket.name())
+ *                     .authenticationConfig(BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs.builder()
+ *                         .userWorkloadAuthenticationType("SERVICE_ACCOUNT")
+ *                         .build())
  *                     .build())
  *                 .peripheralsConfig(BatchEnvironmentConfigPeripheralsConfigArgs.builder()
  *                     .metastoreService(ms.name())
@@ -276,7 +280,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSparsql = new Batch("exampleBatchSparsql", BatchArgs.builder()
- *             .batchId("tf-test-batch_29439")
+ *             .batchId("tf-test-batch_56529")
  *             .location("us-central1")
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -331,7 +335,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchPyspark = new Batch("exampleBatchPyspark", BatchArgs.builder()
- *             .batchId("tf-test-batch_87786")
+ *             .batchId("tf-test-batch_75413")
  *             .location("us-central1")
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -392,7 +396,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSparkr = new Batch("exampleBatchSparkr", BatchArgs.builder()
- *             .batchId("tf-test-batch_2067")
+ *             .batchId("tf-test-batch_55138")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
@@ -450,7 +454,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchAutotuning = new Batch("exampleBatchAutotuning", BatchArgs.builder()
- *             .batchId("tf-test-batch_40785")
+ *             .batchId("tf-test-batch_37559")
  *             .location("us-central1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
