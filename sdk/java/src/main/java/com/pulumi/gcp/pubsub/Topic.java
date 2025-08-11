@@ -454,7 +454,53 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Topic Single Smt
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicMessageTransformJavascriptUdfArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .messageTransforms(TopicMessageTransformArgs.builder()
+ *                 .javascriptUdf(TopicMessageTransformJavascriptUdfArgs.builder()
+ *                     .functionName("isYearEven")
+ *                     .code("""
+ * function isYearEven(message, metadata) {
+ *   const data = JSON.parse(message.data);
+ *   return message.year %2 === 0;
+ * }
+ *                     """)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## Import
  * 
  * Topic can be imported using any of these accepted formats:

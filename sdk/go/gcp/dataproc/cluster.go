@@ -81,6 +81,7 @@ import (
 //				},
 //				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 //					StagingBucket: pulumi.String("dataproc-staging-bucket"),
+//					ClusterTier:   pulumi.String("CLUSTER_TIER_STANDARD"),
 //					MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
 //						NumInstances: pulumi.Int(1),
 //						MachineType:  pulumi.String("e2-medium"),

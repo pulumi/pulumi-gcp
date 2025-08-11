@@ -734,6 +734,9 @@ class Batch(pulumi.CustomResource):
                     "network_uri": "default",
                     "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                     "staging_bucket": bucket.name,
+                    "authentication_config": {
+                        "user_workload_authentication_type": "SERVICE_ACCOUNT",
+                    },
                 },
                 "peripherals_config": {
                     "metastore_service": ms.name,
@@ -1050,6 +1053,9 @@ class Batch(pulumi.CustomResource):
                     "network_uri": "default",
                     "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                     "staging_bucket": bucket.name,
+                    "authentication_config": {
+                        "user_workload_authentication_type": "SERVICE_ACCOUNT",
+                    },
                 },
                 "peripherals_config": {
                     "metastore_service": ms.name,

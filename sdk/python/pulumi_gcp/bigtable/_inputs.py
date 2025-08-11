@@ -37,6 +37,8 @@ __all__ = [
     'InstanceIamBindingConditionArgsDict',
     'InstanceIamMemberConditionArgs',
     'InstanceIamMemberConditionArgsDict',
+    'SchemaBundleProtoSchemaArgs',
+    'SchemaBundleProtoSchemaArgsDict',
     'TableAutomatedBackupPolicyArgs',
     'TableAutomatedBackupPolicyArgsDict',
     'TableColumnFamilyArgs',
@@ -860,6 +862,37 @@ class InstanceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class SchemaBundleProtoSchemaArgsDict(TypedDict):
+        proto_descriptors: pulumi.Input[_builtins.str]
+        """
+        Base64 encoded content of the file.
+        """
+elif False:
+    SchemaBundleProtoSchemaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SchemaBundleProtoSchemaArgs:
+    def __init__(__self__, *,
+                 proto_descriptors: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] proto_descriptors: Base64 encoded content of the file.
+        """
+        pulumi.set(__self__, "proto_descriptors", proto_descriptors)
+
+    @_builtins.property
+    @pulumi.getter(name="protoDescriptors")
+    def proto_descriptors(self) -> pulumi.Input[_builtins.str]:
+        """
+        Base64 encoded content of the file.
+        """
+        return pulumi.get(self, "proto_descriptors")
+
+    @proto_descriptors.setter
+    def proto_descriptors(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "proto_descriptors", value)
 
 
 if not MYPY:

@@ -809,6 +809,10 @@ if not MYPY:
         The execution environment being used to host this Task.
         Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         """
+        gpu_zonal_redundancy_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        True if GPU zonal redundancy is disabled on this execution.
+        """
         max_retries: NotRequired[pulumi.Input[_builtins.int]]
         """
         Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
@@ -846,6 +850,7 @@ class JobTemplateTemplateArgs:
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]] = None,
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_environment: Optional[pulumi.Input[_builtins.str]] = None,
+                 gpu_zonal_redundancy_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_retries: Optional[pulumi.Input[_builtins.int]] = None,
                  node_selector: Optional[pulumi.Input['JobTemplateTemplateNodeSelectorArgs']] = None,
                  service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -858,6 +863,7 @@ class JobTemplateTemplateArgs:
         :param pulumi.Input[_builtins.str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param pulumi.Input[_builtins.str] execution_environment: The execution environment being used to host this Task.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
+        :param pulumi.Input[_builtins.bool] gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this execution.
         :param pulumi.Input[_builtins.int] max_retries: Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         :param pulumi.Input['JobTemplateTemplateNodeSelectorArgs'] node_selector: Node Selector describes the hardware requirements of the resources.
                Structure is documented below.
@@ -875,6 +881,8 @@ class JobTemplateTemplateArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if execution_environment is not None:
             pulumi.set(__self__, "execution_environment", execution_environment)
+        if gpu_zonal_redundancy_disabled is not None:
+            pulumi.set(__self__, "gpu_zonal_redundancy_disabled", gpu_zonal_redundancy_disabled)
         if max_retries is not None:
             pulumi.set(__self__, "max_retries", max_retries)
         if node_selector is not None:
@@ -925,6 +933,18 @@ class JobTemplateTemplateArgs:
     @execution_environment.setter
     def execution_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "execution_environment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuZonalRedundancyDisabled")
+    def gpu_zonal_redundancy_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        True if GPU zonal redundancy is disabled on this execution.
+        """
+        return pulumi.get(self, "gpu_zonal_redundancy_disabled")
+
+    @gpu_zonal_redundancy_disabled.setter
+    def gpu_zonal_redundancy_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "gpu_zonal_redundancy_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetries")

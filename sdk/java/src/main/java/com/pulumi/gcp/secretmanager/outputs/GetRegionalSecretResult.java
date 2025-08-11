@@ -37,6 +37,7 @@ public final class GetRegionalSecretResult {
     private Map<String,String> pulumiLabels;
     private List<GetRegionalSecretRotation> rotations;
     private String secretId;
+    private Map<String,String> tags;
     private List<GetRegionalSecretTopic> topics;
     private String ttl;
     private Map<String,String> versionAliases;
@@ -92,6 +93,9 @@ public final class GetRegionalSecretResult {
     public String secretId() {
         return this.secretId;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
     public List<GetRegionalSecretTopic> topics() {
         return this.topics;
     }
@@ -129,6 +133,7 @@ public final class GetRegionalSecretResult {
         private Map<String,String> pulumiLabels;
         private List<GetRegionalSecretRotation> rotations;
         private String secretId;
+        private Map<String,String> tags;
         private List<GetRegionalSecretTopic> topics;
         private String ttl;
         private Map<String,String> versionAliases;
@@ -151,6 +156,7 @@ public final class GetRegionalSecretResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
+    	      this.tags = defaults.tags;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
     	      this.versionAliases = defaults.versionAliases;
@@ -282,6 +288,14 @@ public final class GetRegionalSecretResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetRegionalSecretResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder topics(List<GetRegionalSecretTopic> topics) {
             if (topics == null) {
               throw new MissingRequiredPropertyException("GetRegionalSecretResult", "topics");
@@ -333,6 +347,7 @@ public final class GetRegionalSecretResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.rotations = rotations;
             _resultValue.secretId = secretId;
+            _resultValue.tags = tags;
             _resultValue.topics = topics;
             _resultValue.ttl = ttl;
             _resultValue.versionAliases = versionAliases;

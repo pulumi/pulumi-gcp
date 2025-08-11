@@ -13,6 +13,1817 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type FloorsettingAiPlatformFloorSetting struct {
+	// If true, log Model Armor filter results to Cloud Logging.
+	EnableCloudLogging *bool `pulumi:"enableCloudLogging"`
+	// If true, Model Armor filters will be run in inspect and block mode.
+	// Requests that trip Model Armor filters will be blocked.
+	InspectAndBlock *bool `pulumi:"inspectAndBlock"`
+	// If true, Model Armor filters will be run in inspect only mode. No action
+	// will be taken on the request.
+	InspectOnly *bool `pulumi:"inspectOnly"`
+}
+
+// FloorsettingAiPlatformFloorSettingInput is an input type that accepts FloorsettingAiPlatformFloorSettingArgs and FloorsettingAiPlatformFloorSettingOutput values.
+// You can construct a concrete instance of `FloorsettingAiPlatformFloorSettingInput` via:
+//
+//	FloorsettingAiPlatformFloorSettingArgs{...}
+type FloorsettingAiPlatformFloorSettingInput interface {
+	pulumi.Input
+
+	ToFloorsettingAiPlatformFloorSettingOutput() FloorsettingAiPlatformFloorSettingOutput
+	ToFloorsettingAiPlatformFloorSettingOutputWithContext(context.Context) FloorsettingAiPlatformFloorSettingOutput
+}
+
+type FloorsettingAiPlatformFloorSettingArgs struct {
+	// If true, log Model Armor filter results to Cloud Logging.
+	EnableCloudLogging pulumi.BoolPtrInput `pulumi:"enableCloudLogging"`
+	// If true, Model Armor filters will be run in inspect and block mode.
+	// Requests that trip Model Armor filters will be blocked.
+	InspectAndBlock pulumi.BoolPtrInput `pulumi:"inspectAndBlock"`
+	// If true, Model Armor filters will be run in inspect only mode. No action
+	// will be taken on the request.
+	InspectOnly pulumi.BoolPtrInput `pulumi:"inspectOnly"`
+}
+
+func (FloorsettingAiPlatformFloorSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingAiPlatformFloorSetting)(nil)).Elem()
+}
+
+func (i FloorsettingAiPlatformFloorSettingArgs) ToFloorsettingAiPlatformFloorSettingOutput() FloorsettingAiPlatformFloorSettingOutput {
+	return i.ToFloorsettingAiPlatformFloorSettingOutputWithContext(context.Background())
+}
+
+func (i FloorsettingAiPlatformFloorSettingArgs) ToFloorsettingAiPlatformFloorSettingOutputWithContext(ctx context.Context) FloorsettingAiPlatformFloorSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingAiPlatformFloorSettingOutput)
+}
+
+func (i FloorsettingAiPlatformFloorSettingArgs) ToFloorsettingAiPlatformFloorSettingPtrOutput() FloorsettingAiPlatformFloorSettingPtrOutput {
+	return i.ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingAiPlatformFloorSettingArgs) ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(ctx context.Context) FloorsettingAiPlatformFloorSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingAiPlatformFloorSettingOutput).ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(ctx)
+}
+
+// FloorsettingAiPlatformFloorSettingPtrInput is an input type that accepts FloorsettingAiPlatformFloorSettingArgs, FloorsettingAiPlatformFloorSettingPtr and FloorsettingAiPlatformFloorSettingPtrOutput values.
+// You can construct a concrete instance of `FloorsettingAiPlatformFloorSettingPtrInput` via:
+//
+//	        FloorsettingAiPlatformFloorSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingAiPlatformFloorSettingPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingAiPlatformFloorSettingPtrOutput() FloorsettingAiPlatformFloorSettingPtrOutput
+	ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(context.Context) FloorsettingAiPlatformFloorSettingPtrOutput
+}
+
+type floorsettingAiPlatformFloorSettingPtrType FloorsettingAiPlatformFloorSettingArgs
+
+func FloorsettingAiPlatformFloorSettingPtr(v *FloorsettingAiPlatformFloorSettingArgs) FloorsettingAiPlatformFloorSettingPtrInput {
+	return (*floorsettingAiPlatformFloorSettingPtrType)(v)
+}
+
+func (*floorsettingAiPlatformFloorSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingAiPlatformFloorSetting)(nil)).Elem()
+}
+
+func (i *floorsettingAiPlatformFloorSettingPtrType) ToFloorsettingAiPlatformFloorSettingPtrOutput() FloorsettingAiPlatformFloorSettingPtrOutput {
+	return i.ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingAiPlatformFloorSettingPtrType) ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(ctx context.Context) FloorsettingAiPlatformFloorSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingAiPlatformFloorSettingPtrOutput)
+}
+
+type FloorsettingAiPlatformFloorSettingOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingAiPlatformFloorSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingAiPlatformFloorSetting)(nil)).Elem()
+}
+
+func (o FloorsettingAiPlatformFloorSettingOutput) ToFloorsettingAiPlatformFloorSettingOutput() FloorsettingAiPlatformFloorSettingOutput {
+	return o
+}
+
+func (o FloorsettingAiPlatformFloorSettingOutput) ToFloorsettingAiPlatformFloorSettingOutputWithContext(ctx context.Context) FloorsettingAiPlatformFloorSettingOutput {
+	return o
+}
+
+func (o FloorsettingAiPlatformFloorSettingOutput) ToFloorsettingAiPlatformFloorSettingPtrOutput() FloorsettingAiPlatformFloorSettingPtrOutput {
+	return o.ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingAiPlatformFloorSettingOutput) ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(ctx context.Context) FloorsettingAiPlatformFloorSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingAiPlatformFloorSetting) *FloorsettingAiPlatformFloorSetting {
+		return &v
+	}).(FloorsettingAiPlatformFloorSettingPtrOutput)
+}
+
+// If true, log Model Armor filter results to Cloud Logging.
+func (o FloorsettingAiPlatformFloorSettingOutput) EnableCloudLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FloorsettingAiPlatformFloorSetting) *bool { return v.EnableCloudLogging }).(pulumi.BoolPtrOutput)
+}
+
+// If true, Model Armor filters will be run in inspect and block mode.
+// Requests that trip Model Armor filters will be blocked.
+func (o FloorsettingAiPlatformFloorSettingOutput) InspectAndBlock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FloorsettingAiPlatformFloorSetting) *bool { return v.InspectAndBlock }).(pulumi.BoolPtrOutput)
+}
+
+// If true, Model Armor filters will be run in inspect only mode. No action
+// will be taken on the request.
+func (o FloorsettingAiPlatformFloorSettingOutput) InspectOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FloorsettingAiPlatformFloorSetting) *bool { return v.InspectOnly }).(pulumi.BoolPtrOutput)
+}
+
+type FloorsettingAiPlatformFloorSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingAiPlatformFloorSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingAiPlatformFloorSetting)(nil)).Elem()
+}
+
+func (o FloorsettingAiPlatformFloorSettingPtrOutput) ToFloorsettingAiPlatformFloorSettingPtrOutput() FloorsettingAiPlatformFloorSettingPtrOutput {
+	return o
+}
+
+func (o FloorsettingAiPlatformFloorSettingPtrOutput) ToFloorsettingAiPlatformFloorSettingPtrOutputWithContext(ctx context.Context) FloorsettingAiPlatformFloorSettingPtrOutput {
+	return o
+}
+
+func (o FloorsettingAiPlatformFloorSettingPtrOutput) Elem() FloorsettingAiPlatformFloorSettingOutput {
+	return o.ApplyT(func(v *FloorsettingAiPlatformFloorSetting) FloorsettingAiPlatformFloorSetting {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingAiPlatformFloorSetting
+		return ret
+	}).(FloorsettingAiPlatformFloorSettingOutput)
+}
+
+// If true, log Model Armor filter results to Cloud Logging.
+func (o FloorsettingAiPlatformFloorSettingPtrOutput) EnableCloudLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FloorsettingAiPlatformFloorSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCloudLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, Model Armor filters will be run in inspect and block mode.
+// Requests that trip Model Armor filters will be blocked.
+func (o FloorsettingAiPlatformFloorSettingPtrOutput) InspectAndBlock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FloorsettingAiPlatformFloorSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InspectAndBlock
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, Model Armor filters will be run in inspect only mode. No action
+// will be taken on the request.
+func (o FloorsettingAiPlatformFloorSettingPtrOutput) InspectOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FloorsettingAiPlatformFloorSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InspectOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FloorsettingFilterConfig struct {
+	// Malicious URI filter settings.
+	// Structure is documented below.
+	MaliciousUriFilterSettings *FloorsettingFilterConfigMaliciousUriFilterSettings `pulumi:"maliciousUriFilterSettings"`
+	// Prompt injection and Jailbreak Filter settings.
+	// Structure is documented below.
+	PiAndJailbreakFilterSettings *FloorsettingFilterConfigPiAndJailbreakFilterSettings `pulumi:"piAndJailbreakFilterSettings"`
+	// Responsible AI Filter settings.
+	// Structure is documented below.
+	RaiSettings *FloorsettingFilterConfigRaiSettings `pulumi:"raiSettings"`
+	// Sensitive Data Protection settings.
+	// Structure is documented below.
+	SdpSettings *FloorsettingFilterConfigSdpSettings `pulumi:"sdpSettings"`
+}
+
+// FloorsettingFilterConfigInput is an input type that accepts FloorsettingFilterConfigArgs and FloorsettingFilterConfigOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigInput` via:
+//
+//	FloorsettingFilterConfigArgs{...}
+type FloorsettingFilterConfigInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigOutput() FloorsettingFilterConfigOutput
+	ToFloorsettingFilterConfigOutputWithContext(context.Context) FloorsettingFilterConfigOutput
+}
+
+type FloorsettingFilterConfigArgs struct {
+	// Malicious URI filter settings.
+	// Structure is documented below.
+	MaliciousUriFilterSettings FloorsettingFilterConfigMaliciousUriFilterSettingsPtrInput `pulumi:"maliciousUriFilterSettings"`
+	// Prompt injection and Jailbreak Filter settings.
+	// Structure is documented below.
+	PiAndJailbreakFilterSettings FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrInput `pulumi:"piAndJailbreakFilterSettings"`
+	// Responsible AI Filter settings.
+	// Structure is documented below.
+	RaiSettings FloorsettingFilterConfigRaiSettingsPtrInput `pulumi:"raiSettings"`
+	// Sensitive Data Protection settings.
+	// Structure is documented below.
+	SdpSettings FloorsettingFilterConfigSdpSettingsPtrInput `pulumi:"sdpSettings"`
+}
+
+func (FloorsettingFilterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfig)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigArgs) ToFloorsettingFilterConfigOutput() FloorsettingFilterConfigOutput {
+	return i.ToFloorsettingFilterConfigOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigArgs) ToFloorsettingFilterConfigOutputWithContext(ctx context.Context) FloorsettingFilterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigOutput)
+}
+
+func (i FloorsettingFilterConfigArgs) ToFloorsettingFilterConfigPtrOutput() FloorsettingFilterConfigPtrOutput {
+	return i.ToFloorsettingFilterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigArgs) ToFloorsettingFilterConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigOutput).ToFloorsettingFilterConfigPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFilterConfigPtrInput is an input type that accepts FloorsettingFilterConfigArgs, FloorsettingFilterConfigPtr and FloorsettingFilterConfigPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigPtrInput` via:
+//
+//	        FloorsettingFilterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFilterConfigPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigPtrOutput() FloorsettingFilterConfigPtrOutput
+	ToFloorsettingFilterConfigPtrOutputWithContext(context.Context) FloorsettingFilterConfigPtrOutput
+}
+
+type floorsettingFilterConfigPtrType FloorsettingFilterConfigArgs
+
+func FloorsettingFilterConfigPtr(v *FloorsettingFilterConfigArgs) FloorsettingFilterConfigPtrInput {
+	return (*floorsettingFilterConfigPtrType)(v)
+}
+
+func (*floorsettingFilterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfig)(nil)).Elem()
+}
+
+func (i *floorsettingFilterConfigPtrType) ToFloorsettingFilterConfigPtrOutput() FloorsettingFilterConfigPtrOutput {
+	return i.ToFloorsettingFilterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFilterConfigPtrType) ToFloorsettingFilterConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigPtrOutput)
+}
+
+type FloorsettingFilterConfigOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfig)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigOutput) ToFloorsettingFilterConfigOutput() FloorsettingFilterConfigOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigOutput) ToFloorsettingFilterConfigOutputWithContext(ctx context.Context) FloorsettingFilterConfigOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigOutput) ToFloorsettingFilterConfigPtrOutput() FloorsettingFilterConfigPtrOutput {
+	return o.ToFloorsettingFilterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFilterConfigOutput) ToFloorsettingFilterConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFilterConfig) *FloorsettingFilterConfig {
+		return &v
+	}).(FloorsettingFilterConfigPtrOutput)
+}
+
+// Malicious URI filter settings.
+// Structure is documented below.
+func (o FloorsettingFilterConfigOutput) MaliciousUriFilterSettings() FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfig) *FloorsettingFilterConfigMaliciousUriFilterSettings {
+		return v.MaliciousUriFilterSettings
+	}).(FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput)
+}
+
+// Prompt injection and Jailbreak Filter settings.
+// Structure is documented below.
+func (o FloorsettingFilterConfigOutput) PiAndJailbreakFilterSettings() FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfig) *FloorsettingFilterConfigPiAndJailbreakFilterSettings {
+		return v.PiAndJailbreakFilterSettings
+	}).(FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput)
+}
+
+// Responsible AI Filter settings.
+// Structure is documented below.
+func (o FloorsettingFilterConfigOutput) RaiSettings() FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfig) *FloorsettingFilterConfigRaiSettings { return v.RaiSettings }).(FloorsettingFilterConfigRaiSettingsPtrOutput)
+}
+
+// Sensitive Data Protection settings.
+// Structure is documented below.
+func (o FloorsettingFilterConfigOutput) SdpSettings() FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfig) *FloorsettingFilterConfigSdpSettings { return v.SdpSettings }).(FloorsettingFilterConfigSdpSettingsPtrOutput)
+}
+
+type FloorsettingFilterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfig)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigPtrOutput) ToFloorsettingFilterConfigPtrOutput() FloorsettingFilterConfigPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigPtrOutput) ToFloorsettingFilterConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigPtrOutput) Elem() FloorsettingFilterConfigOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfig) FloorsettingFilterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFilterConfig
+		return ret
+	}).(FloorsettingFilterConfigOutput)
+}
+
+// Malicious URI filter settings.
+// Structure is documented below.
+func (o FloorsettingFilterConfigPtrOutput) MaliciousUriFilterSettings() FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfig) *FloorsettingFilterConfigMaliciousUriFilterSettings {
+		if v == nil {
+			return nil
+		}
+		return v.MaliciousUriFilterSettings
+	}).(FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput)
+}
+
+// Prompt injection and Jailbreak Filter settings.
+// Structure is documented below.
+func (o FloorsettingFilterConfigPtrOutput) PiAndJailbreakFilterSettings() FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfig) *FloorsettingFilterConfigPiAndJailbreakFilterSettings {
+		if v == nil {
+			return nil
+		}
+		return v.PiAndJailbreakFilterSettings
+	}).(FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput)
+}
+
+// Responsible AI Filter settings.
+// Structure is documented below.
+func (o FloorsettingFilterConfigPtrOutput) RaiSettings() FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfig) *FloorsettingFilterConfigRaiSettings {
+		if v == nil {
+			return nil
+		}
+		return v.RaiSettings
+	}).(FloorsettingFilterConfigRaiSettingsPtrOutput)
+}
+
+// Sensitive Data Protection settings.
+// Structure is documented below.
+func (o FloorsettingFilterConfigPtrOutput) SdpSettings() FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfig) *FloorsettingFilterConfigSdpSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SdpSettings
+	}).(FloorsettingFilterConfigSdpSettingsPtrOutput)
+}
+
+type FloorsettingFilterConfigMaliciousUriFilterSettings struct {
+	// Tells whether the Malicious URI filter is enabled or disabled.
+	// Possible values:
+	// ENABLED
+	// DISABLED
+	FilterEnforcement *string `pulumi:"filterEnforcement"`
+}
+
+// FloorsettingFilterConfigMaliciousUriFilterSettingsInput is an input type that accepts FloorsettingFilterConfigMaliciousUriFilterSettingsArgs and FloorsettingFilterConfigMaliciousUriFilterSettingsOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigMaliciousUriFilterSettingsInput` via:
+//
+//	FloorsettingFilterConfigMaliciousUriFilterSettingsArgs{...}
+type FloorsettingFilterConfigMaliciousUriFilterSettingsInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigMaliciousUriFilterSettingsOutput() FloorsettingFilterConfigMaliciousUriFilterSettingsOutput
+	ToFloorsettingFilterConfigMaliciousUriFilterSettingsOutputWithContext(context.Context) FloorsettingFilterConfigMaliciousUriFilterSettingsOutput
+}
+
+type FloorsettingFilterConfigMaliciousUriFilterSettingsArgs struct {
+	// Tells whether the Malicious URI filter is enabled or disabled.
+	// Possible values:
+	// ENABLED
+	// DISABLED
+	FilterEnforcement pulumi.StringPtrInput `pulumi:"filterEnforcement"`
+}
+
+func (FloorsettingFilterConfigMaliciousUriFilterSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigMaliciousUriFilterSettings)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigMaliciousUriFilterSettingsArgs) ToFloorsettingFilterConfigMaliciousUriFilterSettingsOutput() FloorsettingFilterConfigMaliciousUriFilterSettingsOutput {
+	return i.ToFloorsettingFilterConfigMaliciousUriFilterSettingsOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigMaliciousUriFilterSettingsArgs) ToFloorsettingFilterConfigMaliciousUriFilterSettingsOutputWithContext(ctx context.Context) FloorsettingFilterConfigMaliciousUriFilterSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigMaliciousUriFilterSettingsOutput)
+}
+
+func (i FloorsettingFilterConfigMaliciousUriFilterSettingsArgs) ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput() FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return i.ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigMaliciousUriFilterSettingsArgs) ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigMaliciousUriFilterSettingsOutput).ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFilterConfigMaliciousUriFilterSettingsPtrInput is an input type that accepts FloorsettingFilterConfigMaliciousUriFilterSettingsArgs, FloorsettingFilterConfigMaliciousUriFilterSettingsPtr and FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigMaliciousUriFilterSettingsPtrInput` via:
+//
+//	        FloorsettingFilterConfigMaliciousUriFilterSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFilterConfigMaliciousUriFilterSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput() FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput
+	ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(context.Context) FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput
+}
+
+type floorsettingFilterConfigMaliciousUriFilterSettingsPtrType FloorsettingFilterConfigMaliciousUriFilterSettingsArgs
+
+func FloorsettingFilterConfigMaliciousUriFilterSettingsPtr(v *FloorsettingFilterConfigMaliciousUriFilterSettingsArgs) FloorsettingFilterConfigMaliciousUriFilterSettingsPtrInput {
+	return (*floorsettingFilterConfigMaliciousUriFilterSettingsPtrType)(v)
+}
+
+func (*floorsettingFilterConfigMaliciousUriFilterSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigMaliciousUriFilterSettings)(nil)).Elem()
+}
+
+func (i *floorsettingFilterConfigMaliciousUriFilterSettingsPtrType) ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput() FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return i.ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFilterConfigMaliciousUriFilterSettingsPtrType) ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput)
+}
+
+type FloorsettingFilterConfigMaliciousUriFilterSettingsOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigMaliciousUriFilterSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigMaliciousUriFilterSettings)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsOutput) ToFloorsettingFilterConfigMaliciousUriFilterSettingsOutput() FloorsettingFilterConfigMaliciousUriFilterSettingsOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsOutput) ToFloorsettingFilterConfigMaliciousUriFilterSettingsOutputWithContext(ctx context.Context) FloorsettingFilterConfigMaliciousUriFilterSettingsOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsOutput) ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput() FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return o.ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsOutput) ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFilterConfigMaliciousUriFilterSettings) *FloorsettingFilterConfigMaliciousUriFilterSettings {
+		return &v
+	}).(FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput)
+}
+
+// Tells whether the Malicious URI filter is enabled or disabled.
+// Possible values:
+// ENABLED
+// DISABLED
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsOutput) FilterEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigMaliciousUriFilterSettings) *string { return v.FilterEnforcement }).(pulumi.StringPtrOutput)
+}
+
+type FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigMaliciousUriFilterSettings)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput) ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput() FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput) ToFloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput) Elem() FloorsettingFilterConfigMaliciousUriFilterSettingsOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigMaliciousUriFilterSettings) FloorsettingFilterConfigMaliciousUriFilterSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFilterConfigMaliciousUriFilterSettings
+		return ret
+	}).(FloorsettingFilterConfigMaliciousUriFilterSettingsOutput)
+}
+
+// Tells whether the Malicious URI filter is enabled or disabled.
+// Possible values:
+// ENABLED
+// DISABLED
+func (o FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput) FilterEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigMaliciousUriFilterSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterEnforcement
+	}).(pulumi.StringPtrOutput)
+}
+
+type FloorsettingFilterConfigPiAndJailbreakFilterSettings struct {
+	// Possible values:
+	// LOW_AND_ABOVE
+	// MEDIUM_AND_ABOVE
+	// HIGH
+	ConfidenceLevel *string `pulumi:"confidenceLevel"`
+	// Tells whether Prompt injection and Jailbreak filter is enabled or
+	// disabled.
+	// Possible values:
+	// ENABLED
+	// DISABLED
+	FilterEnforcement *string `pulumi:"filterEnforcement"`
+}
+
+// FloorsettingFilterConfigPiAndJailbreakFilterSettingsInput is an input type that accepts FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs and FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigPiAndJailbreakFilterSettingsInput` via:
+//
+//	FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs{...}
+type FloorsettingFilterConfigPiAndJailbreakFilterSettingsInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput() FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput
+	ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsOutputWithContext(context.Context) FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput
+}
+
+type FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs struct {
+	// Possible values:
+	// LOW_AND_ABOVE
+	// MEDIUM_AND_ABOVE
+	// HIGH
+	ConfidenceLevel pulumi.StringPtrInput `pulumi:"confidenceLevel"`
+	// Tells whether Prompt injection and Jailbreak filter is enabled or
+	// disabled.
+	// Possible values:
+	// ENABLED
+	// DISABLED
+	FilterEnforcement pulumi.StringPtrInput `pulumi:"filterEnforcement"`
+}
+
+func (FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigPiAndJailbreakFilterSettings)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput() FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput {
+	return i.ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsOutputWithContext(ctx context.Context) FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput)
+}
+
+func (i FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput() FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return i.ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput).ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrInput is an input type that accepts FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs, FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtr and FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrInput` via:
+//
+//	        FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput() FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput
+	ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(context.Context) FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput
+}
+
+type floorsettingFilterConfigPiAndJailbreakFilterSettingsPtrType FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs
+
+func FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtr(v *FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs) FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrInput {
+	return (*floorsettingFilterConfigPiAndJailbreakFilterSettingsPtrType)(v)
+}
+
+func (*floorsettingFilterConfigPiAndJailbreakFilterSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigPiAndJailbreakFilterSettings)(nil)).Elem()
+}
+
+func (i *floorsettingFilterConfigPiAndJailbreakFilterSettingsPtrType) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput() FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return i.ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFilterConfigPiAndJailbreakFilterSettingsPtrType) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput)
+}
+
+type FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigPiAndJailbreakFilterSettings)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput() FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsOutputWithContext(ctx context.Context) FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput() FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return o.ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFilterConfigPiAndJailbreakFilterSettings) *FloorsettingFilterConfigPiAndJailbreakFilterSettings {
+		return &v
+	}).(FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput)
+}
+
+// Possible values:
+// LOW_AND_ABOVE
+// MEDIUM_AND_ABOVE
+// HIGH
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput) ConfidenceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigPiAndJailbreakFilterSettings) *string { return v.ConfidenceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Tells whether Prompt injection and Jailbreak filter is enabled or
+// disabled.
+// Possible values:
+// ENABLED
+// DISABLED
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput) FilterEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigPiAndJailbreakFilterSettings) *string { return v.FilterEnforcement }).(pulumi.StringPtrOutput)
+}
+
+type FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigPiAndJailbreakFilterSettings)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput() FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput) ToFloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput) Elem() FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigPiAndJailbreakFilterSettings) FloorsettingFilterConfigPiAndJailbreakFilterSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFilterConfigPiAndJailbreakFilterSettings
+		return ret
+	}).(FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput)
+}
+
+// Possible values:
+// LOW_AND_ABOVE
+// MEDIUM_AND_ABOVE
+// HIGH
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput) ConfidenceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigPiAndJailbreakFilterSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidenceLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tells whether Prompt injection and Jailbreak filter is enabled or
+// disabled.
+// Possible values:
+// ENABLED
+// DISABLED
+func (o FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput) FilterEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigPiAndJailbreakFilterSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterEnforcement
+	}).(pulumi.StringPtrOutput)
+}
+
+type FloorsettingFilterConfigRaiSettings struct {
+	// List of Responsible AI filters enabled for template.
+	// Structure is documented below.
+	RaiFilters []FloorsettingFilterConfigRaiSettingsRaiFilter `pulumi:"raiFilters"`
+}
+
+// FloorsettingFilterConfigRaiSettingsInput is an input type that accepts FloorsettingFilterConfigRaiSettingsArgs and FloorsettingFilterConfigRaiSettingsOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigRaiSettingsInput` via:
+//
+//	FloorsettingFilterConfigRaiSettingsArgs{...}
+type FloorsettingFilterConfigRaiSettingsInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigRaiSettingsOutput() FloorsettingFilterConfigRaiSettingsOutput
+	ToFloorsettingFilterConfigRaiSettingsOutputWithContext(context.Context) FloorsettingFilterConfigRaiSettingsOutput
+}
+
+type FloorsettingFilterConfigRaiSettingsArgs struct {
+	// List of Responsible AI filters enabled for template.
+	// Structure is documented below.
+	RaiFilters FloorsettingFilterConfigRaiSettingsRaiFilterArrayInput `pulumi:"raiFilters"`
+}
+
+func (FloorsettingFilterConfigRaiSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigRaiSettings)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigRaiSettingsArgs) ToFloorsettingFilterConfigRaiSettingsOutput() FloorsettingFilterConfigRaiSettingsOutput {
+	return i.ToFloorsettingFilterConfigRaiSettingsOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigRaiSettingsArgs) ToFloorsettingFilterConfigRaiSettingsOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigRaiSettingsOutput)
+}
+
+func (i FloorsettingFilterConfigRaiSettingsArgs) ToFloorsettingFilterConfigRaiSettingsPtrOutput() FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return i.ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigRaiSettingsArgs) ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigRaiSettingsOutput).ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFilterConfigRaiSettingsPtrInput is an input type that accepts FloorsettingFilterConfigRaiSettingsArgs, FloorsettingFilterConfigRaiSettingsPtr and FloorsettingFilterConfigRaiSettingsPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigRaiSettingsPtrInput` via:
+//
+//	        FloorsettingFilterConfigRaiSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFilterConfigRaiSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigRaiSettingsPtrOutput() FloorsettingFilterConfigRaiSettingsPtrOutput
+	ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(context.Context) FloorsettingFilterConfigRaiSettingsPtrOutput
+}
+
+type floorsettingFilterConfigRaiSettingsPtrType FloorsettingFilterConfigRaiSettingsArgs
+
+func FloorsettingFilterConfigRaiSettingsPtr(v *FloorsettingFilterConfigRaiSettingsArgs) FloorsettingFilterConfigRaiSettingsPtrInput {
+	return (*floorsettingFilterConfigRaiSettingsPtrType)(v)
+}
+
+func (*floorsettingFilterConfigRaiSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigRaiSettings)(nil)).Elem()
+}
+
+func (i *floorsettingFilterConfigRaiSettingsPtrType) ToFloorsettingFilterConfigRaiSettingsPtrOutput() FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return i.ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFilterConfigRaiSettingsPtrType) ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigRaiSettingsPtrOutput)
+}
+
+type FloorsettingFilterConfigRaiSettingsOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigRaiSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigRaiSettings)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigRaiSettingsOutput) ToFloorsettingFilterConfigRaiSettingsOutput() FloorsettingFilterConfigRaiSettingsOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigRaiSettingsOutput) ToFloorsettingFilterConfigRaiSettingsOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigRaiSettingsOutput) ToFloorsettingFilterConfigRaiSettingsPtrOutput() FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return o.ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFilterConfigRaiSettingsOutput) ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFilterConfigRaiSettings) *FloorsettingFilterConfigRaiSettings {
+		return &v
+	}).(FloorsettingFilterConfigRaiSettingsPtrOutput)
+}
+
+// List of Responsible AI filters enabled for template.
+// Structure is documented below.
+func (o FloorsettingFilterConfigRaiSettingsOutput) RaiFilters() FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigRaiSettings) []FloorsettingFilterConfigRaiSettingsRaiFilter {
+		return v.RaiFilters
+	}).(FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput)
+}
+
+type FloorsettingFilterConfigRaiSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigRaiSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigRaiSettings)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigRaiSettingsPtrOutput) ToFloorsettingFilterConfigRaiSettingsPtrOutput() FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigRaiSettingsPtrOutput) ToFloorsettingFilterConfigRaiSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigRaiSettingsPtrOutput) Elem() FloorsettingFilterConfigRaiSettingsOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigRaiSettings) FloorsettingFilterConfigRaiSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFilterConfigRaiSettings
+		return ret
+	}).(FloorsettingFilterConfigRaiSettingsOutput)
+}
+
+// List of Responsible AI filters enabled for template.
+// Structure is documented below.
+func (o FloorsettingFilterConfigRaiSettingsPtrOutput) RaiFilters() FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigRaiSettings) []FloorsettingFilterConfigRaiSettingsRaiFilter {
+		if v == nil {
+			return nil
+		}
+		return v.RaiFilters
+	}).(FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput)
+}
+
+type FloorsettingFilterConfigRaiSettingsRaiFilter struct {
+	// Possible values:
+	// LOW_AND_ABOVE
+	// MEDIUM_AND_ABOVE
+	// HIGH
+	ConfidenceLevel *string `pulumi:"confidenceLevel"`
+	// Possible values:
+	// SEXUALLY_EXPLICIT
+	// HATE_SPEECH
+	// HARASSMENT
+	// DANGEROUS
+	FilterType string `pulumi:"filterType"`
+}
+
+// FloorsettingFilterConfigRaiSettingsRaiFilterInput is an input type that accepts FloorsettingFilterConfigRaiSettingsRaiFilterArgs and FloorsettingFilterConfigRaiSettingsRaiFilterOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigRaiSettingsRaiFilterInput` via:
+//
+//	FloorsettingFilterConfigRaiSettingsRaiFilterArgs{...}
+type FloorsettingFilterConfigRaiSettingsRaiFilterInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigRaiSettingsRaiFilterOutput() FloorsettingFilterConfigRaiSettingsRaiFilterOutput
+	ToFloorsettingFilterConfigRaiSettingsRaiFilterOutputWithContext(context.Context) FloorsettingFilterConfigRaiSettingsRaiFilterOutput
+}
+
+type FloorsettingFilterConfigRaiSettingsRaiFilterArgs struct {
+	// Possible values:
+	// LOW_AND_ABOVE
+	// MEDIUM_AND_ABOVE
+	// HIGH
+	ConfidenceLevel pulumi.StringPtrInput `pulumi:"confidenceLevel"`
+	// Possible values:
+	// SEXUALLY_EXPLICIT
+	// HATE_SPEECH
+	// HARASSMENT
+	// DANGEROUS
+	FilterType pulumi.StringInput `pulumi:"filterType"`
+}
+
+func (FloorsettingFilterConfigRaiSettingsRaiFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigRaiSettingsRaiFilter)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigRaiSettingsRaiFilterArgs) ToFloorsettingFilterConfigRaiSettingsRaiFilterOutput() FloorsettingFilterConfigRaiSettingsRaiFilterOutput {
+	return i.ToFloorsettingFilterConfigRaiSettingsRaiFilterOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigRaiSettingsRaiFilterArgs) ToFloorsettingFilterConfigRaiSettingsRaiFilterOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsRaiFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigRaiSettingsRaiFilterOutput)
+}
+
+// FloorsettingFilterConfigRaiSettingsRaiFilterArrayInput is an input type that accepts FloorsettingFilterConfigRaiSettingsRaiFilterArray and FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigRaiSettingsRaiFilterArrayInput` via:
+//
+//	FloorsettingFilterConfigRaiSettingsRaiFilterArray{ FloorsettingFilterConfigRaiSettingsRaiFilterArgs{...} }
+type FloorsettingFilterConfigRaiSettingsRaiFilterArrayInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput() FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput
+	ToFloorsettingFilterConfigRaiSettingsRaiFilterArrayOutputWithContext(context.Context) FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput
+}
+
+type FloorsettingFilterConfigRaiSettingsRaiFilterArray []FloorsettingFilterConfigRaiSettingsRaiFilterInput
+
+func (FloorsettingFilterConfigRaiSettingsRaiFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FloorsettingFilterConfigRaiSettingsRaiFilter)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigRaiSettingsRaiFilterArray) ToFloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput() FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput {
+	return i.ToFloorsettingFilterConfigRaiSettingsRaiFilterArrayOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigRaiSettingsRaiFilterArray) ToFloorsettingFilterConfigRaiSettingsRaiFilterArrayOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput)
+}
+
+type FloorsettingFilterConfigRaiSettingsRaiFilterOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigRaiSettingsRaiFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigRaiSettingsRaiFilter)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigRaiSettingsRaiFilterOutput) ToFloorsettingFilterConfigRaiSettingsRaiFilterOutput() FloorsettingFilterConfigRaiSettingsRaiFilterOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigRaiSettingsRaiFilterOutput) ToFloorsettingFilterConfigRaiSettingsRaiFilterOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsRaiFilterOutput {
+	return o
+}
+
+// Possible values:
+// LOW_AND_ABOVE
+// MEDIUM_AND_ABOVE
+// HIGH
+func (o FloorsettingFilterConfigRaiSettingsRaiFilterOutput) ConfidenceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigRaiSettingsRaiFilter) *string { return v.ConfidenceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Possible values:
+// SEXUALLY_EXPLICIT
+// HATE_SPEECH
+// HARASSMENT
+// DANGEROUS
+func (o FloorsettingFilterConfigRaiSettingsRaiFilterOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigRaiSettingsRaiFilter) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+type FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FloorsettingFilterConfigRaiSettingsRaiFilter)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput) ToFloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput() FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput) ToFloorsettingFilterConfigRaiSettingsRaiFilterArrayOutputWithContext(ctx context.Context) FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput) Index(i pulumi.IntInput) FloorsettingFilterConfigRaiSettingsRaiFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FloorsettingFilterConfigRaiSettingsRaiFilter {
+		return vs[0].([]FloorsettingFilterConfigRaiSettingsRaiFilter)[vs[1].(int)]
+	}).(FloorsettingFilterConfigRaiSettingsRaiFilterOutput)
+}
+
+type FloorsettingFilterConfigSdpSettings struct {
+	// Sensitive Data Protection Advanced configuration.
+	// Structure is documented below.
+	AdvancedConfig *FloorsettingFilterConfigSdpSettingsAdvancedConfig `pulumi:"advancedConfig"`
+	// Sensitive Data Protection basic configuration.
+	// Structure is documented below.
+	BasicConfig *FloorsettingFilterConfigSdpSettingsBasicConfig `pulumi:"basicConfig"`
+}
+
+// FloorsettingFilterConfigSdpSettingsInput is an input type that accepts FloorsettingFilterConfigSdpSettingsArgs and FloorsettingFilterConfigSdpSettingsOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigSdpSettingsInput` via:
+//
+//	FloorsettingFilterConfigSdpSettingsArgs{...}
+type FloorsettingFilterConfigSdpSettingsInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigSdpSettingsOutput() FloorsettingFilterConfigSdpSettingsOutput
+	ToFloorsettingFilterConfigSdpSettingsOutputWithContext(context.Context) FloorsettingFilterConfigSdpSettingsOutput
+}
+
+type FloorsettingFilterConfigSdpSettingsArgs struct {
+	// Sensitive Data Protection Advanced configuration.
+	// Structure is documented below.
+	AdvancedConfig FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrInput `pulumi:"advancedConfig"`
+	// Sensitive Data Protection basic configuration.
+	// Structure is documented below.
+	BasicConfig FloorsettingFilterConfigSdpSettingsBasicConfigPtrInput `pulumi:"basicConfig"`
+}
+
+func (FloorsettingFilterConfigSdpSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigSdpSettings)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigSdpSettingsArgs) ToFloorsettingFilterConfigSdpSettingsOutput() FloorsettingFilterConfigSdpSettingsOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigSdpSettingsArgs) ToFloorsettingFilterConfigSdpSettingsOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsOutput)
+}
+
+func (i FloorsettingFilterConfigSdpSettingsArgs) ToFloorsettingFilterConfigSdpSettingsPtrOutput() FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigSdpSettingsArgs) ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsOutput).ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFilterConfigSdpSettingsPtrInput is an input type that accepts FloorsettingFilterConfigSdpSettingsArgs, FloorsettingFilterConfigSdpSettingsPtr and FloorsettingFilterConfigSdpSettingsPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigSdpSettingsPtrInput` via:
+//
+//	        FloorsettingFilterConfigSdpSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFilterConfigSdpSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigSdpSettingsPtrOutput() FloorsettingFilterConfigSdpSettingsPtrOutput
+	ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(context.Context) FloorsettingFilterConfigSdpSettingsPtrOutput
+}
+
+type floorsettingFilterConfigSdpSettingsPtrType FloorsettingFilterConfigSdpSettingsArgs
+
+func FloorsettingFilterConfigSdpSettingsPtr(v *FloorsettingFilterConfigSdpSettingsArgs) FloorsettingFilterConfigSdpSettingsPtrInput {
+	return (*floorsettingFilterConfigSdpSettingsPtrType)(v)
+}
+
+func (*floorsettingFilterConfigSdpSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigSdpSettings)(nil)).Elem()
+}
+
+func (i *floorsettingFilterConfigSdpSettingsPtrType) ToFloorsettingFilterConfigSdpSettingsPtrOutput() FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFilterConfigSdpSettingsPtrType) ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsPtrOutput)
+}
+
+type FloorsettingFilterConfigSdpSettingsOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigSdpSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigSdpSettings)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigSdpSettingsOutput) ToFloorsettingFilterConfigSdpSettingsOutput() FloorsettingFilterConfigSdpSettingsOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsOutput) ToFloorsettingFilterConfigSdpSettingsOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsOutput) ToFloorsettingFilterConfigSdpSettingsPtrOutput() FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return o.ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFilterConfigSdpSettingsOutput) ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFilterConfigSdpSettings) *FloorsettingFilterConfigSdpSettings {
+		return &v
+	}).(FloorsettingFilterConfigSdpSettingsPtrOutput)
+}
+
+// Sensitive Data Protection Advanced configuration.
+// Structure is documented below.
+func (o FloorsettingFilterConfigSdpSettingsOutput) AdvancedConfig() FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigSdpSettings) *FloorsettingFilterConfigSdpSettingsAdvancedConfig {
+		return v.AdvancedConfig
+	}).(FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput)
+}
+
+// Sensitive Data Protection basic configuration.
+// Structure is documented below.
+func (o FloorsettingFilterConfigSdpSettingsOutput) BasicConfig() FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigSdpSettings) *FloorsettingFilterConfigSdpSettingsBasicConfig {
+		return v.BasicConfig
+	}).(FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput)
+}
+
+type FloorsettingFilterConfigSdpSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigSdpSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigSdpSettings)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigSdpSettingsPtrOutput) ToFloorsettingFilterConfigSdpSettingsPtrOutput() FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsPtrOutput) ToFloorsettingFilterConfigSdpSettingsPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsPtrOutput) Elem() FloorsettingFilterConfigSdpSettingsOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigSdpSettings) FloorsettingFilterConfigSdpSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFilterConfigSdpSettings
+		return ret
+	}).(FloorsettingFilterConfigSdpSettingsOutput)
+}
+
+// Sensitive Data Protection Advanced configuration.
+// Structure is documented below.
+func (o FloorsettingFilterConfigSdpSettingsPtrOutput) AdvancedConfig() FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigSdpSettings) *FloorsettingFilterConfigSdpSettingsAdvancedConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedConfig
+	}).(FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput)
+}
+
+// Sensitive Data Protection basic configuration.
+// Structure is documented below.
+func (o FloorsettingFilterConfigSdpSettingsPtrOutput) BasicConfig() FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigSdpSettings) *FloorsettingFilterConfigSdpSettingsBasicConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BasicConfig
+	}).(FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput)
+}
+
+type FloorsettingFilterConfigSdpSettingsAdvancedConfig struct {
+	// Optional Sensitive Data Protection Deidentify template resource name.
+	// If provided then DeidentifyContent action is performed during Sanitization
+	// using this template and inspect template. The De-identified data will
+	// be returned in SdpDeidentifyResult.
+	// Note that all info-types present in the deidentify template must be present
+	// in inspect template.
+	// e.g.
+	// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
+	DeidentifyTemplate *string `pulumi:"deidentifyTemplate"`
+	// Sensitive Data Protection inspect template resource name
+	// If only inspect template is provided (de-identify template not provided),
+	// then Sensitive Data Protection InspectContent action is performed during
+	// Sanitization. All Sensitive Data Protection findings identified during
+	// inspection will be returned as SdpFinding in SdpInsepctionResult.
+	// e.g:-
+	// `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
+	InspectTemplate *string `pulumi:"inspectTemplate"`
+}
+
+// FloorsettingFilterConfigSdpSettingsAdvancedConfigInput is an input type that accepts FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs and FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigSdpSettingsAdvancedConfigInput` via:
+//
+//	FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs{...}
+type FloorsettingFilterConfigSdpSettingsAdvancedConfigInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigSdpSettingsAdvancedConfigOutput() FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput
+	ToFloorsettingFilterConfigSdpSettingsAdvancedConfigOutputWithContext(context.Context) FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput
+}
+
+type FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs struct {
+	// Optional Sensitive Data Protection Deidentify template resource name.
+	// If provided then DeidentifyContent action is performed during Sanitization
+	// using this template and inspect template. The De-identified data will
+	// be returned in SdpDeidentifyResult.
+	// Note that all info-types present in the deidentify template must be present
+	// in inspect template.
+	// e.g.
+	// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
+	DeidentifyTemplate pulumi.StringPtrInput `pulumi:"deidentifyTemplate"`
+	// Sensitive Data Protection inspect template resource name
+	// If only inspect template is provided (de-identify template not provided),
+	// then Sensitive Data Protection InspectContent action is performed during
+	// Sanitization. All Sensitive Data Protection findings identified during
+	// inspection will be returned as SdpFinding in SdpInsepctionResult.
+	// e.g:-
+	// `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
+	InspectTemplate pulumi.StringPtrInput `pulumi:"inspectTemplate"`
+}
+
+func (FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsAdvancedConfig)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigOutput() FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsAdvancedConfigOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput)
+}
+
+func (i FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput() FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput).ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrInput is an input type that accepts FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs, FloorsettingFilterConfigSdpSettingsAdvancedConfigPtr and FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrInput` via:
+//
+//	        FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput() FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput
+	ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(context.Context) FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput
+}
+
+type floorsettingFilterConfigSdpSettingsAdvancedConfigPtrType FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs
+
+func FloorsettingFilterConfigSdpSettingsAdvancedConfigPtr(v *FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs) FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrInput {
+	return (*floorsettingFilterConfigSdpSettingsAdvancedConfigPtrType)(v)
+}
+
+func (*floorsettingFilterConfigSdpSettingsAdvancedConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigSdpSettingsAdvancedConfig)(nil)).Elem()
+}
+
+func (i *floorsettingFilterConfigSdpSettingsAdvancedConfigPtrType) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput() FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFilterConfigSdpSettingsAdvancedConfigPtrType) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput)
+}
+
+type FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsAdvancedConfig)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigOutput() FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput() FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return o.ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFilterConfigSdpSettingsAdvancedConfig) *FloorsettingFilterConfigSdpSettingsAdvancedConfig {
+		return &v
+	}).(FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput)
+}
+
+// Optional Sensitive Data Protection Deidentify template resource name.
+// If provided then DeidentifyContent action is performed during Sanitization
+// using this template and inspect template. The De-identified data will
+// be returned in SdpDeidentifyResult.
+// Note that all info-types present in the deidentify template must be present
+// in inspect template.
+// e.g.
+// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigSdpSettingsAdvancedConfig) *string { return v.DeidentifyTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Sensitive Data Protection inspect template resource name
+// If only inspect template is provided (de-identify template not provided),
+// then Sensitive Data Protection InspectContent action is performed during
+// Sanitization. All Sensitive Data Protection findings identified during
+// inspection will be returned as SdpFinding in SdpInsepctionResult.
+// e.g:-
+// `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput) InspectTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigSdpSettingsAdvancedConfig) *string { return v.InspectTemplate }).(pulumi.StringPtrOutput)
+}
+
+type FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigSdpSettingsAdvancedConfig)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput() FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput) ToFloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput) Elem() FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigSdpSettingsAdvancedConfig) FloorsettingFilterConfigSdpSettingsAdvancedConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFilterConfigSdpSettingsAdvancedConfig
+		return ret
+	}).(FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput)
+}
+
+// Optional Sensitive Data Protection Deidentify template resource name.
+// If provided then DeidentifyContent action is performed during Sanitization
+// using this template and inspect template. The De-identified data will
+// be returned in SdpDeidentifyResult.
+// Note that all info-types present in the deidentify template must be present
+// in inspect template.
+// e.g.
+// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigSdpSettingsAdvancedConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeidentifyTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sensitive Data Protection inspect template resource name
+// If only inspect template is provided (de-identify template not provided),
+// then Sensitive Data Protection InspectContent action is performed during
+// Sanitization. All Sensitive Data Protection findings identified during
+// inspection will be returned as SdpFinding in SdpInsepctionResult.
+// e.g:-
+// `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
+func (o FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput) InspectTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigSdpSettingsAdvancedConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InspectTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+type FloorsettingFilterConfigSdpSettingsBasicConfig struct {
+	// Tells whether the Sensitive Data Protection basic config is enabled or
+	// disabled.
+	// Possible values:
+	// ENABLED
+	// DISABLED
+	FilterEnforcement *string `pulumi:"filterEnforcement"`
+}
+
+// FloorsettingFilterConfigSdpSettingsBasicConfigInput is an input type that accepts FloorsettingFilterConfigSdpSettingsBasicConfigArgs and FloorsettingFilterConfigSdpSettingsBasicConfigOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigSdpSettingsBasicConfigInput` via:
+//
+//	FloorsettingFilterConfigSdpSettingsBasicConfigArgs{...}
+type FloorsettingFilterConfigSdpSettingsBasicConfigInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigSdpSettingsBasicConfigOutput() FloorsettingFilterConfigSdpSettingsBasicConfigOutput
+	ToFloorsettingFilterConfigSdpSettingsBasicConfigOutputWithContext(context.Context) FloorsettingFilterConfigSdpSettingsBasicConfigOutput
+}
+
+type FloorsettingFilterConfigSdpSettingsBasicConfigArgs struct {
+	// Tells whether the Sensitive Data Protection basic config is enabled or
+	// disabled.
+	// Possible values:
+	// ENABLED
+	// DISABLED
+	FilterEnforcement pulumi.StringPtrInput `pulumi:"filterEnforcement"`
+}
+
+func (FloorsettingFilterConfigSdpSettingsBasicConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsBasicConfig)(nil)).Elem()
+}
+
+func (i FloorsettingFilterConfigSdpSettingsBasicConfigArgs) ToFloorsettingFilterConfigSdpSettingsBasicConfigOutput() FloorsettingFilterConfigSdpSettingsBasicConfigOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsBasicConfigOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigSdpSettingsBasicConfigArgs) ToFloorsettingFilterConfigSdpSettingsBasicConfigOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsBasicConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsBasicConfigOutput)
+}
+
+func (i FloorsettingFilterConfigSdpSettingsBasicConfigArgs) ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput() FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFilterConfigSdpSettingsBasicConfigArgs) ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsBasicConfigOutput).ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFilterConfigSdpSettingsBasicConfigPtrInput is an input type that accepts FloorsettingFilterConfigSdpSettingsBasicConfigArgs, FloorsettingFilterConfigSdpSettingsBasicConfigPtr and FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFilterConfigSdpSettingsBasicConfigPtrInput` via:
+//
+//	        FloorsettingFilterConfigSdpSettingsBasicConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFilterConfigSdpSettingsBasicConfigPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput() FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput
+	ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(context.Context) FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput
+}
+
+type floorsettingFilterConfigSdpSettingsBasicConfigPtrType FloorsettingFilterConfigSdpSettingsBasicConfigArgs
+
+func FloorsettingFilterConfigSdpSettingsBasicConfigPtr(v *FloorsettingFilterConfigSdpSettingsBasicConfigArgs) FloorsettingFilterConfigSdpSettingsBasicConfigPtrInput {
+	return (*floorsettingFilterConfigSdpSettingsBasicConfigPtrType)(v)
+}
+
+func (*floorsettingFilterConfigSdpSettingsBasicConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigSdpSettingsBasicConfig)(nil)).Elem()
+}
+
+func (i *floorsettingFilterConfigSdpSettingsBasicConfigPtrType) ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput() FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return i.ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFilterConfigSdpSettingsBasicConfigPtrType) ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput)
+}
+
+type FloorsettingFilterConfigSdpSettingsBasicConfigOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigSdpSettingsBasicConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsBasicConfig)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigOutput) ToFloorsettingFilterConfigSdpSettingsBasicConfigOutput() FloorsettingFilterConfigSdpSettingsBasicConfigOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigOutput) ToFloorsettingFilterConfigSdpSettingsBasicConfigOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsBasicConfigOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigOutput) ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput() FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return o.ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigOutput) ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFilterConfigSdpSettingsBasicConfig) *FloorsettingFilterConfigSdpSettingsBasicConfig {
+		return &v
+	}).(FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput)
+}
+
+// Tells whether the Sensitive Data Protection basic config is enabled or
+// disabled.
+// Possible values:
+// ENABLED
+// DISABLED
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigOutput) FilterEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FloorsettingFilterConfigSdpSettingsBasicConfig) *string { return v.FilterEnforcement }).(pulumi.StringPtrOutput)
+}
+
+type FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFilterConfigSdpSettingsBasicConfig)(nil)).Elem()
+}
+
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput) ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput() FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput) ToFloorsettingFilterConfigSdpSettingsBasicConfigPtrOutputWithContext(ctx context.Context) FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput {
+	return o
+}
+
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput) Elem() FloorsettingFilterConfigSdpSettingsBasicConfigOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigSdpSettingsBasicConfig) FloorsettingFilterConfigSdpSettingsBasicConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFilterConfigSdpSettingsBasicConfig
+		return ret
+	}).(FloorsettingFilterConfigSdpSettingsBasicConfigOutput)
+}
+
+// Tells whether the Sensitive Data Protection basic config is enabled or
+// disabled.
+// Possible values:
+// ENABLED
+// DISABLED
+func (o FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput) FilterEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFilterConfigSdpSettingsBasicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterEnforcement
+	}).(pulumi.StringPtrOutput)
+}
+
+type FloorsettingFloorSettingMetadata struct {
+	// Metadata for multi language detection.
+	// Structure is documented below.
+	MultiLanguageDetection *FloorsettingFloorSettingMetadataMultiLanguageDetection `pulumi:"multiLanguageDetection"`
+}
+
+// FloorsettingFloorSettingMetadataInput is an input type that accepts FloorsettingFloorSettingMetadataArgs and FloorsettingFloorSettingMetadataOutput values.
+// You can construct a concrete instance of `FloorsettingFloorSettingMetadataInput` via:
+//
+//	FloorsettingFloorSettingMetadataArgs{...}
+type FloorsettingFloorSettingMetadataInput interface {
+	pulumi.Input
+
+	ToFloorsettingFloorSettingMetadataOutput() FloorsettingFloorSettingMetadataOutput
+	ToFloorsettingFloorSettingMetadataOutputWithContext(context.Context) FloorsettingFloorSettingMetadataOutput
+}
+
+type FloorsettingFloorSettingMetadataArgs struct {
+	// Metadata for multi language detection.
+	// Structure is documented below.
+	MultiLanguageDetection FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrInput `pulumi:"multiLanguageDetection"`
+}
+
+func (FloorsettingFloorSettingMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFloorSettingMetadata)(nil)).Elem()
+}
+
+func (i FloorsettingFloorSettingMetadataArgs) ToFloorsettingFloorSettingMetadataOutput() FloorsettingFloorSettingMetadataOutput {
+	return i.ToFloorsettingFloorSettingMetadataOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFloorSettingMetadataArgs) ToFloorsettingFloorSettingMetadataOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFloorSettingMetadataOutput)
+}
+
+func (i FloorsettingFloorSettingMetadataArgs) ToFloorsettingFloorSettingMetadataPtrOutput() FloorsettingFloorSettingMetadataPtrOutput {
+	return i.ToFloorsettingFloorSettingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFloorSettingMetadataArgs) ToFloorsettingFloorSettingMetadataPtrOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFloorSettingMetadataOutput).ToFloorsettingFloorSettingMetadataPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFloorSettingMetadataPtrInput is an input type that accepts FloorsettingFloorSettingMetadataArgs, FloorsettingFloorSettingMetadataPtr and FloorsettingFloorSettingMetadataPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFloorSettingMetadataPtrInput` via:
+//
+//	        FloorsettingFloorSettingMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFloorSettingMetadataPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFloorSettingMetadataPtrOutput() FloorsettingFloorSettingMetadataPtrOutput
+	ToFloorsettingFloorSettingMetadataPtrOutputWithContext(context.Context) FloorsettingFloorSettingMetadataPtrOutput
+}
+
+type floorsettingFloorSettingMetadataPtrType FloorsettingFloorSettingMetadataArgs
+
+func FloorsettingFloorSettingMetadataPtr(v *FloorsettingFloorSettingMetadataArgs) FloorsettingFloorSettingMetadataPtrInput {
+	return (*floorsettingFloorSettingMetadataPtrType)(v)
+}
+
+func (*floorsettingFloorSettingMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFloorSettingMetadata)(nil)).Elem()
+}
+
+func (i *floorsettingFloorSettingMetadataPtrType) ToFloorsettingFloorSettingMetadataPtrOutput() FloorsettingFloorSettingMetadataPtrOutput {
+	return i.ToFloorsettingFloorSettingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFloorSettingMetadataPtrType) ToFloorsettingFloorSettingMetadataPtrOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFloorSettingMetadataPtrOutput)
+}
+
+type FloorsettingFloorSettingMetadataOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFloorSettingMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFloorSettingMetadata)(nil)).Elem()
+}
+
+func (o FloorsettingFloorSettingMetadataOutput) ToFloorsettingFloorSettingMetadataOutput() FloorsettingFloorSettingMetadataOutput {
+	return o
+}
+
+func (o FloorsettingFloorSettingMetadataOutput) ToFloorsettingFloorSettingMetadataOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataOutput {
+	return o
+}
+
+func (o FloorsettingFloorSettingMetadataOutput) ToFloorsettingFloorSettingMetadataPtrOutput() FloorsettingFloorSettingMetadataPtrOutput {
+	return o.ToFloorsettingFloorSettingMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFloorSettingMetadataOutput) ToFloorsettingFloorSettingMetadataPtrOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFloorSettingMetadata) *FloorsettingFloorSettingMetadata {
+		return &v
+	}).(FloorsettingFloorSettingMetadataPtrOutput)
+}
+
+// Metadata for multi language detection.
+// Structure is documented below.
+func (o FloorsettingFloorSettingMetadataOutput) MultiLanguageDetection() FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return o.ApplyT(func(v FloorsettingFloorSettingMetadata) *FloorsettingFloorSettingMetadataMultiLanguageDetection {
+		return v.MultiLanguageDetection
+	}).(FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput)
+}
+
+type FloorsettingFloorSettingMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFloorSettingMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFloorSettingMetadata)(nil)).Elem()
+}
+
+func (o FloorsettingFloorSettingMetadataPtrOutput) ToFloorsettingFloorSettingMetadataPtrOutput() FloorsettingFloorSettingMetadataPtrOutput {
+	return o
+}
+
+func (o FloorsettingFloorSettingMetadataPtrOutput) ToFloorsettingFloorSettingMetadataPtrOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataPtrOutput {
+	return o
+}
+
+func (o FloorsettingFloorSettingMetadataPtrOutput) Elem() FloorsettingFloorSettingMetadataOutput {
+	return o.ApplyT(func(v *FloorsettingFloorSettingMetadata) FloorsettingFloorSettingMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFloorSettingMetadata
+		return ret
+	}).(FloorsettingFloorSettingMetadataOutput)
+}
+
+// Metadata for multi language detection.
+// Structure is documented below.
+func (o FloorsettingFloorSettingMetadataPtrOutput) MultiLanguageDetection() FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFloorSettingMetadata) *FloorsettingFloorSettingMetadataMultiLanguageDetection {
+		if v == nil {
+			return nil
+		}
+		return v.MultiLanguageDetection
+	}).(FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput)
+}
+
+type FloorsettingFloorSettingMetadataMultiLanguageDetection struct {
+	// If true, multi language detection will be enabled.
+	EnableMultiLanguageDetection bool `pulumi:"enableMultiLanguageDetection"`
+}
+
+// FloorsettingFloorSettingMetadataMultiLanguageDetectionInput is an input type that accepts FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs and FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput values.
+// You can construct a concrete instance of `FloorsettingFloorSettingMetadataMultiLanguageDetectionInput` via:
+//
+//	FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs{...}
+type FloorsettingFloorSettingMetadataMultiLanguageDetectionInput interface {
+	pulumi.Input
+
+	ToFloorsettingFloorSettingMetadataMultiLanguageDetectionOutput() FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput
+	ToFloorsettingFloorSettingMetadataMultiLanguageDetectionOutputWithContext(context.Context) FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput
+}
+
+type FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs struct {
+	// If true, multi language detection will be enabled.
+	EnableMultiLanguageDetection pulumi.BoolInput `pulumi:"enableMultiLanguageDetection"`
+}
+
+func (FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFloorSettingMetadataMultiLanguageDetection)(nil)).Elem()
+}
+
+func (i FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionOutput() FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput {
+	return i.ToFloorsettingFloorSettingMetadataMultiLanguageDetectionOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput)
+}
+
+func (i FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput() FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return i.ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput).ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(ctx)
+}
+
+// FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrInput is an input type that accepts FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs, FloorsettingFloorSettingMetadataMultiLanguageDetectionPtr and FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput values.
+// You can construct a concrete instance of `FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrInput` via:
+//
+//	        FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput() FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput
+	ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(context.Context) FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput
+}
+
+type floorsettingFloorSettingMetadataMultiLanguageDetectionPtrType FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs
+
+func FloorsettingFloorSettingMetadataMultiLanguageDetectionPtr(v *FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs) FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrInput {
+	return (*floorsettingFloorSettingMetadataMultiLanguageDetectionPtrType)(v)
+}
+
+func (*floorsettingFloorSettingMetadataMultiLanguageDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFloorSettingMetadataMultiLanguageDetection)(nil)).Elem()
+}
+
+func (i *floorsettingFloorSettingMetadataMultiLanguageDetectionPtrType) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput() FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return i.ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingFloorSettingMetadataMultiLanguageDetectionPtrType) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput)
+}
+
+type FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingFloorSettingMetadataMultiLanguageDetection)(nil)).Elem()
+}
+
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionOutput() FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput {
+	return o
+}
+
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput {
+	return o
+}
+
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput() FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return o.ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingFloorSettingMetadataMultiLanguageDetection) *FloorsettingFloorSettingMetadataMultiLanguageDetection {
+		return &v
+	}).(FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput)
+}
+
+// If true, multi language detection will be enabled.
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput) EnableMultiLanguageDetection() pulumi.BoolOutput {
+	return o.ApplyT(func(v FloorsettingFloorSettingMetadataMultiLanguageDetection) bool {
+		return v.EnableMultiLanguageDetection
+	}).(pulumi.BoolOutput)
+}
+
+type FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingFloorSettingMetadataMultiLanguageDetection)(nil)).Elem()
+}
+
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput() FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return o
+}
+
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput) ToFloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutputWithContext(ctx context.Context) FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput {
+	return o
+}
+
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput) Elem() FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput {
+	return o.ApplyT(func(v *FloorsettingFloorSettingMetadataMultiLanguageDetection) FloorsettingFloorSettingMetadataMultiLanguageDetection {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingFloorSettingMetadataMultiLanguageDetection
+		return ret
+	}).(FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput)
+}
+
+// If true, multi language detection will be enabled.
+func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput) EnableMultiLanguageDetection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FloorsettingFloorSettingMetadataMultiLanguageDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableMultiLanguageDetection
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TemplateFilterConfig struct {
 	// Malicious URI filter settings.
 	// Structure is documented below.
@@ -1816,6 +3627,28 @@ func (o TemplateTemplateMetadataMultiLanguageDetectionPtrOutput) EnableMultiLang
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingAiPlatformFloorSettingInput)(nil)).Elem(), FloorsettingAiPlatformFloorSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingAiPlatformFloorSettingPtrInput)(nil)).Elem(), FloorsettingAiPlatformFloorSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigInput)(nil)).Elem(), FloorsettingFilterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigPtrInput)(nil)).Elem(), FloorsettingFilterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigMaliciousUriFilterSettingsInput)(nil)).Elem(), FloorsettingFilterConfigMaliciousUriFilterSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigMaliciousUriFilterSettingsPtrInput)(nil)).Elem(), FloorsettingFilterConfigMaliciousUriFilterSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigPiAndJailbreakFilterSettingsInput)(nil)).Elem(), FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrInput)(nil)).Elem(), FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigRaiSettingsInput)(nil)).Elem(), FloorsettingFilterConfigRaiSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigRaiSettingsPtrInput)(nil)).Elem(), FloorsettingFilterConfigRaiSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigRaiSettingsRaiFilterInput)(nil)).Elem(), FloorsettingFilterConfigRaiSettingsRaiFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigRaiSettingsRaiFilterArrayInput)(nil)).Elem(), FloorsettingFilterConfigRaiSettingsRaiFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsInput)(nil)).Elem(), FloorsettingFilterConfigSdpSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsPtrInput)(nil)).Elem(), FloorsettingFilterConfigSdpSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsAdvancedConfigInput)(nil)).Elem(), FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrInput)(nil)).Elem(), FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsBasicConfigInput)(nil)).Elem(), FloorsettingFilterConfigSdpSettingsBasicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFilterConfigSdpSettingsBasicConfigPtrInput)(nil)).Elem(), FloorsettingFilterConfigSdpSettingsBasicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFloorSettingMetadataInput)(nil)).Elem(), FloorsettingFloorSettingMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFloorSettingMetadataPtrInput)(nil)).Elem(), FloorsettingFloorSettingMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFloorSettingMetadataMultiLanguageDetectionInput)(nil)).Elem(), FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrInput)(nil)).Elem(), FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigInput)(nil)).Elem(), TemplateFilterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigPtrInput)(nil)).Elem(), TemplateFilterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigMaliciousUriFilterSettingsInput)(nil)).Elem(), TemplateFilterConfigMaliciousUriFilterSettingsArgs{})
@@ -1836,6 +3669,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataPtrInput)(nil)).Elem(), TemplateTemplateMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataMultiLanguageDetectionInput)(nil)).Elem(), TemplateTemplateMetadataMultiLanguageDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataMultiLanguageDetectionPtrInput)(nil)).Elem(), TemplateTemplateMetadataMultiLanguageDetectionArgs{})
+	pulumi.RegisterOutputType(FloorsettingAiPlatformFloorSettingOutput{})
+	pulumi.RegisterOutputType(FloorsettingAiPlatformFloorSettingPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigMaliciousUriFilterSettingsOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigMaliciousUriFilterSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigPiAndJailbreakFilterSettingsOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigPiAndJailbreakFilterSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigRaiSettingsOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigRaiSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigRaiSettingsRaiFilterOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigRaiSettingsRaiFilterArrayOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigSdpSettingsOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigSdpSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigSdpSettingsAdvancedConfigOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigSdpSettingsAdvancedConfigPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigSdpSettingsBasicConfigOutput{})
+	pulumi.RegisterOutputType(FloorsettingFilterConfigSdpSettingsBasicConfigPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFloorSettingMetadataOutput{})
+	pulumi.RegisterOutputType(FloorsettingFloorSettingMetadataPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput{})
+	pulumi.RegisterOutputType(FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigPtrOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigMaliciousUriFilterSettingsOutput{})

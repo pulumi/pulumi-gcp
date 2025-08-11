@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     },
  *     forceUpdate: true,
  *     accessRestriction: "WITHIN_ORGANIZATION",
+ *     backupRetentionInheritance: "INHERIT_VAULT_RETENTION",
  *     ignoreInactiveDatasources: true,
  *     ignoreBackupPlanReferences: true,
  *     allowMissing: true,
@@ -113,6 +114,11 @@ export class BackupVault extends pulumi.CustomResource {
      * Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
      */
     public readonly backupMinimumEnforcedRetentionDuration!: pulumi.Output<string>;
+    /**
+     * How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+     * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+     */
+    public readonly backupRetentionInheritance!: pulumi.Output<string | undefined>;
     /**
      * Required. ID of the requesting object.
      */
@@ -239,6 +245,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["backupCount"] = state ? state.backupCount : undefined;
             resourceInputs["backupMinimumEnforcedRetentionDuration"] = state ? state.backupMinimumEnforcedRetentionDuration : undefined;
+            resourceInputs["backupRetentionInheritance"] = state ? state.backupRetentionInheritance : undefined;
             resourceInputs["backupVaultId"] = state ? state.backupVaultId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletable"] = state ? state.deletable : undefined;
@@ -276,6 +283,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["allowMissing"] = args ? args.allowMissing : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["backupMinimumEnforcedRetentionDuration"] = args ? args.backupMinimumEnforcedRetentionDuration : undefined;
+            resourceInputs["backupRetentionInheritance"] = args ? args.backupRetentionInheritance : undefined;
             resourceInputs["backupVaultId"] = args ? args.backupVaultId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
@@ -336,6 +344,11 @@ export interface BackupVaultState {
      * Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
      */
     backupMinimumEnforcedRetentionDuration?: pulumi.Input<string>;
+    /**
+     * How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+     * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+     */
+    backupRetentionInheritance?: pulumi.Input<string>;
     /**
      * Required. ID of the requesting object.
      */
@@ -470,6 +483,11 @@ export interface BackupVaultArgs {
      * Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
      */
     backupMinimumEnforcedRetentionDuration: pulumi.Input<string>;
+    /**
+     * How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+     * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+     */
+    backupRetentionInheritance?: pulumi.Input<string>;
     /**
      * Required. ID of the requesting object.
      */

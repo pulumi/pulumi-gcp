@@ -57,6 +57,12 @@ public final class ClusterNodePoolNetworkConfig {
      * 
      */
     private @Nullable String podRange;
+    /**
+     * @return The name or self_link of the Google Compute Engine
+     * subnetwork in which the cluster&#39;s instances are launched.
+     * 
+     */
+    private @Nullable String subnetwork;
 
     private ClusterNodePoolNetworkConfig() {}
     /**
@@ -115,6 +121,14 @@ public final class ClusterNodePoolNetworkConfig {
     public Optional<String> podRange() {
         return Optional.ofNullable(this.podRange);
     }
+    /**
+     * @return The name or self_link of the Google Compute Engine
+     * subnetwork in which the cluster&#39;s instances are launched.
+     * 
+     */
+    public Optional<String> subnetwork() {
+        return Optional.ofNullable(this.subnetwork);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -133,6 +147,7 @@ public final class ClusterNodePoolNetworkConfig {
         private @Nullable ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
         private @Nullable String podIpv4CidrBlock;
         private @Nullable String podRange;
+        private @Nullable String subnetwork;
         public Builder() {}
         public Builder(ClusterNodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -144,6 +159,7 @@ public final class ClusterNodePoolNetworkConfig {
     	      this.podCidrOverprovisionConfig = defaults.podCidrOverprovisionConfig;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
+    	      this.subnetwork = defaults.subnetwork;
         }
 
         @CustomType.Setter
@@ -200,6 +216,12 @@ public final class ClusterNodePoolNetworkConfig {
             this.podRange = podRange;
             return this;
         }
+        @CustomType.Setter
+        public Builder subnetwork(@Nullable String subnetwork) {
+
+            this.subnetwork = subnetwork;
+            return this;
+        }
         public ClusterNodePoolNetworkConfig build() {
             final var _resultValue = new ClusterNodePoolNetworkConfig();
             _resultValue.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
@@ -210,6 +232,7 @@ public final class ClusterNodePoolNetworkConfig {
             _resultValue.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             _resultValue.podIpv4CidrBlock = podIpv4CidrBlock;
             _resultValue.podRange = podRange;
+            _resultValue.subnetwork = subnetwork;
             return _resultValue;
         }
     }

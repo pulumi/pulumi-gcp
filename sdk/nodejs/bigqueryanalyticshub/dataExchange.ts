@@ -60,6 +60,20 @@ import * as utilities from "../utilities";
  *     logLinkedDatasetQueryUserEmail: true,
  * });
  * ```
+ * ### Bigquery Analyticshub Public Data Exchange
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("data_exchange", {
+ *     location: "US",
+ *     dataExchangeId: "public_data_exchange",
+ *     displayName: "public_data_exchange",
+ *     description: "Example for public data exchange",
+ *     discoveryType: "DISCOVERY_TYPE_PUBLIC",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -128,6 +142,11 @@ export class DataExchange extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     */
+    public readonly discoveryType!: pulumi.Output<string>;
+    /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -187,6 +206,7 @@ export class DataExchange extends pulumi.CustomResource {
             const state = argsOrState as DataExchangeState | undefined;
             resourceInputs["dataExchangeId"] = state ? state.dataExchangeId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["discoveryType"] = state ? state.discoveryType : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["documentation"] = state ? state.documentation : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
@@ -210,6 +230,7 @@ export class DataExchange extends pulumi.CustomResource {
             }
             resourceInputs["dataExchangeId"] = args ? args.dataExchangeId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["discoveryType"] = args ? args.discoveryType : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["documentation"] = args ? args.documentation : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
@@ -238,6 +259,11 @@ export interface DataExchangeState {
      * Description of the data exchange.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     */
+    discoveryType?: pulumi.Input<string>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      */
@@ -296,6 +322,11 @@ export interface DataExchangeArgs {
      * Description of the data exchange.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     */
+    discoveryType?: pulumi.Input<string>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      */

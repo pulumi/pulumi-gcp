@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CxWebhookServiceDirectoryArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,20 +18,20 @@ public final class CxWebhookServiceDirectoryArgs extends com.pulumi.resources.Re
     public static final CxWebhookServiceDirectoryArgs Empty = new CxWebhookServiceDirectoryArgs();
 
     /**
-     * The name of Service Directory service.
+     * Represents configuration for a generic web service.
      * Structure is documented below.
      * 
      */
-    @Import(name="genericWebService", required=true)
-    private Output<CxWebhookServiceDirectoryGenericWebServiceArgs> genericWebService;
+    @Import(name="genericWebService")
+    private @Nullable Output<CxWebhookServiceDirectoryGenericWebServiceArgs> genericWebService;
 
     /**
-     * @return The name of Service Directory service.
+     * @return Represents configuration for a generic web service.
      * Structure is documented below.
      * 
      */
-    public Output<CxWebhookServiceDirectoryGenericWebServiceArgs> genericWebService() {
-        return this.genericWebService;
+    public Optional<Output<CxWebhookServiceDirectoryGenericWebServiceArgs>> genericWebService() {
+        return Optional.ofNullable(this.genericWebService);
     }
 
     /**
@@ -73,19 +75,19 @@ public final class CxWebhookServiceDirectoryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param genericWebService The name of Service Directory service.
+         * @param genericWebService Represents configuration for a generic web service.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder genericWebService(Output<CxWebhookServiceDirectoryGenericWebServiceArgs> genericWebService) {
+        public Builder genericWebService(@Nullable Output<CxWebhookServiceDirectoryGenericWebServiceArgs> genericWebService) {
             $.genericWebService = genericWebService;
             return this;
         }
 
         /**
-         * @param genericWebService The name of Service Directory service.
+         * @param genericWebService Represents configuration for a generic web service.
          * Structure is documented below.
          * 
          * @return builder
@@ -117,9 +119,6 @@ public final class CxWebhookServiceDirectoryArgs extends com.pulumi.resources.Re
         }
 
         public CxWebhookServiceDirectoryArgs build() {
-            if ($.genericWebService == null) {
-                throw new MissingRequiredPropertyException("CxWebhookServiceDirectoryArgs", "genericWebService");
-            }
             if ($.service == null) {
                 throw new MissingRequiredPropertyException("CxWebhookServiceDirectoryArgs", "service");
             }

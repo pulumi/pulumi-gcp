@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.SecretManager
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetRegionalSecretRotationResult> Rotations;
         public readonly string SecretId;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly ImmutableArray<Outputs.GetRegionalSecretTopicResult> Topics;
         public readonly string Ttl;
         public readonly ImmutableDictionary<string, string> VersionAliases;
@@ -199,6 +200,8 @@ namespace Pulumi.Gcp.SecretManager
 
             string secretId,
 
+            ImmutableDictionary<string, string> tags,
+
             ImmutableArray<Outputs.GetRegionalSecretTopicResult> topics,
 
             string ttl,
@@ -222,6 +225,7 @@ namespace Pulumi.Gcp.SecretManager
             PulumiLabels = pulumiLabels;
             Rotations = rotations;
             SecretId = secretId;
+            Tags = tags;
             Topics = topics;
             Ttl = ttl;
             VersionAliases = versionAliases;

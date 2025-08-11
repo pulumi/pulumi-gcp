@@ -574,6 +574,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     Accelerator = "nvidia-l4",
     ///                 },
+    ///                 GpuZonalRedundancyDisabled = true,
     ///             },
     ///         },
     ///     });

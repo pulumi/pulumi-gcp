@@ -25,10 +25,13 @@ class ListingArgs:
                  display_name: pulumi.Input[_builtins.str],
                  listing_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 allow_only_metadata_sharing: Optional[pulumi.Input[_builtins.bool]] = None,
                  bigquery_dataset: Optional[pulumi.Input['ListingBigqueryDatasetArgs']] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_provider: Optional[pulumi.Input['ListingDataProviderArgs']] = None,
+                 delete_commercial: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
                  documentation: Optional[pulumi.Input[_builtins.str]] = None,
                  icon: Optional[pulumi.Input[_builtins.str]] = None,
                  log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -44,12 +47,16 @@ class ListingArgs:
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[_builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] location: The name of the location this data exchange listing.
+        :param pulumi.Input[_builtins.bool] allow_only_metadata_sharing: If true, the listing is only available to get the resource metadata. Listing is non subscribable.
         :param pulumi.Input['ListingBigqueryDatasetArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input['ListingDataProviderArgs'] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] delete_commercial: If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
         :param pulumi.Input[_builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        :param pulumi.Input[_builtins.str] discovery_type: Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+               Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the listing.
         :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[_builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
@@ -68,14 +75,20 @@ class ListingArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "listing_id", listing_id)
         pulumi.set(__self__, "location", location)
+        if allow_only_metadata_sharing is not None:
+            pulumi.set(__self__, "allow_only_metadata_sharing", allow_only_metadata_sharing)
         if bigquery_dataset is not None:
             pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
         if data_provider is not None:
             pulumi.set(__self__, "data_provider", data_provider)
+        if delete_commercial is not None:
+            pulumi.set(__self__, "delete_commercial", delete_commercial)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if discovery_type is not None:
+            pulumi.set(__self__, "discovery_type", discovery_type)
         if documentation is not None:
             pulumi.set(__self__, "documentation", documentation)
         if icon is not None:
@@ -144,6 +157,18 @@ class ListingArgs:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="allowOnlyMetadataSharing")
+    def allow_only_metadata_sharing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+        """
+        return pulumi.get(self, "allow_only_metadata_sharing")
+
+    @allow_only_metadata_sharing.setter
+    def allow_only_metadata_sharing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_only_metadata_sharing", value)
+
+    @_builtins.property
     @pulumi.getter(name="bigqueryDataset")
     def bigquery_dataset(self) -> Optional[pulumi.Input['ListingBigqueryDatasetArgs']]:
         """
@@ -182,6 +207,18 @@ class ListingArgs:
         pulumi.set(self, "data_provider", value)
 
     @_builtins.property
+    @pulumi.getter(name="deleteCommercial")
+    def delete_commercial(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        """
+        return pulumi.get(self, "delete_commercial")
+
+    @delete_commercial.setter
+    def delete_commercial(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_commercial", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -192,6 +229,19 @@ class ListingArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryType")
+    def discovery_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+        Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        """
+        return pulumi.get(self, "discovery_type")
+
+    @discovery_type.setter
+    def discovery_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "discovery_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -309,11 +359,15 @@ class ListingArgs:
 @pulumi.input_type
 class _ListingState:
     def __init__(__self__, *,
+                 allow_only_metadata_sharing: Optional[pulumi.Input[_builtins.bool]] = None,
                  bigquery_dataset: Optional[pulumi.Input['ListingBigqueryDatasetArgs']] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commercial_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoArgs']]]] = None,
                  data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
                  data_provider: Optional[pulumi.Input['ListingDataProviderArgs']] = None,
+                 delete_commercial: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  documentation: Optional[pulumi.Input[_builtins.str]] = None,
                  icon: Optional[pulumi.Input[_builtins.str]] = None,
@@ -326,16 +380,23 @@ class _ListingState:
                  publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
                  pubsub_topic: Optional[pulumi.Input['ListingPubsubTopicArgs']] = None,
                  request_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 restricted_export_config: Optional[pulumi.Input['ListingRestrictedExportConfigArgs']] = None):
+                 restricted_export_config: Optional[pulumi.Input['ListingRestrictedExportConfigArgs']] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Listing resources.
+        :param pulumi.Input[_builtins.bool] allow_only_metadata_sharing: If true, the listing is only available to get the resource metadata. Listing is non subscribable.
         :param pulumi.Input['ListingBigqueryDatasetArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: Categories of the listing. Up to two categories are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoArgs']]] commercial_infos: Commercial info contains the information about the commercial data products associated with the listing.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input['ListingDataProviderArgs'] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] delete_commercial: If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
         :param pulumi.Input[_builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        :param pulumi.Input[_builtins.str] discovery_type: Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+               Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the listing.
         :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the listing.
@@ -353,17 +414,26 @@ class _ListingState:
         :param pulumi.Input[_builtins.str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         :param pulumi.Input['ListingRestrictedExportConfigArgs'] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] state: Current state of the listing.
         """
+        if allow_only_metadata_sharing is not None:
+            pulumi.set(__self__, "allow_only_metadata_sharing", allow_only_metadata_sharing)
         if bigquery_dataset is not None:
             pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
+        if commercial_infos is not None:
+            pulumi.set(__self__, "commercial_infos", commercial_infos)
         if data_exchange_id is not None:
             pulumi.set(__self__, "data_exchange_id", data_exchange_id)
         if data_provider is not None:
             pulumi.set(__self__, "data_provider", data_provider)
+        if delete_commercial is not None:
+            pulumi.set(__self__, "delete_commercial", delete_commercial)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if discovery_type is not None:
+            pulumi.set(__self__, "discovery_type", discovery_type)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if documentation is not None:
@@ -390,6 +460,20 @@ class _ListingState:
             pulumi.set(__self__, "request_access", request_access)
         if restricted_export_config is not None:
             pulumi.set(__self__, "restricted_export_config", restricted_export_config)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlyMetadataSharing")
+    def allow_only_metadata_sharing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+        """
+        return pulumi.get(self, "allow_only_metadata_sharing")
+
+    @allow_only_metadata_sharing.setter
+    def allow_only_metadata_sharing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_only_metadata_sharing", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDataset")
@@ -417,6 +501,19 @@ class _ListingState:
         pulumi.set(self, "categories", value)
 
     @_builtins.property
+    @pulumi.getter(name="commercialInfos")
+    def commercial_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoArgs']]]]:
+        """
+        Commercial info contains the information about the commercial data products associated with the listing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "commercial_infos")
+
+    @commercial_infos.setter
+    def commercial_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoArgs']]]]):
+        pulumi.set(self, "commercial_infos", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataExchangeId")
     def data_exchange_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -442,6 +539,18 @@ class _ListingState:
         pulumi.set(self, "data_provider", value)
 
     @_builtins.property
+    @pulumi.getter(name="deleteCommercial")
+    def delete_commercial(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        """
+        return pulumi.get(self, "delete_commercial")
+
+    @delete_commercial.setter
+    def delete_commercial(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_commercial", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -452,6 +561,19 @@ class _ListingState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryType")
+    def discovery_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+        Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        """
+        return pulumi.get(self, "discovery_type")
+
+    @discovery_type.setter
+    def discovery_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "discovery_type", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -613,6 +735,18 @@ class _ListingState:
     def restricted_export_config(self, value: Optional[pulumi.Input['ListingRestrictedExportConfigArgs']]):
         pulumi.set(self, "restricted_export_config", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Current state of the listing.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
 
 @pulumi.type_token("gcp:bigqueryanalyticshub/listing:Listing")
 class Listing(pulumi.CustomResource):
@@ -620,11 +754,14 @@ class Listing(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_only_metadata_sharing: Optional[pulumi.Input[_builtins.bool]] = None,
                  bigquery_dataset: Optional[pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
                  data_provider: Optional[pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
+                 delete_commercial: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  documentation: Optional[pulumi.Input[_builtins.str]] = None,
                  icon: Optional[pulumi.Input[_builtins.str]] = None,
@@ -873,6 +1010,62 @@ class Listing(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
+        ### Bigquery Analyticshub Public Listing
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example public listing",
+            discovery_type="DISCOVERY_TYPE_PUBLIC")
+        listing_dataset = gcp.bigquery.Dataset("listing",
+            dataset_id="my_listing",
+            friendly_name="my_listing",
+            description="example public listing",
+            location="US")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="US",
+            data_exchange_id=listing.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example public listing",
+            discovery_type="DISCOVERY_TYPE_PUBLIC",
+            allow_only_metadata_sharing=False,
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+            })
+        ```
+        ### Bigquery Analyticshub Listing Marketplace
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example data exchange")
+        listing_dataset = gcp.bigquery.Dataset("listing",
+            dataset_id="my_listing",
+            friendly_name="my_listing",
+            description="example data exchange",
+            location="US")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="US",
+            data_exchange_id=listing.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example data exchange",
+            delete_commercial=True,
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+            })
+        ```
 
         ## Import
 
@@ -900,13 +1093,17 @@ class Listing(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_only_metadata_sharing: If true, the listing is only available to get the resource metadata. Listing is non subscribable.
         :param pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] delete_commercial: If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
         :param pulumi.Input[_builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        :param pulumi.Input[_builtins.str] discovery_type: Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+               Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the listing.
         :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the listing.
@@ -1165,6 +1362,62 @@ class Listing(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
+        ### Bigquery Analyticshub Public Listing
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example public listing",
+            discovery_type="DISCOVERY_TYPE_PUBLIC")
+        listing_dataset = gcp.bigquery.Dataset("listing",
+            dataset_id="my_listing",
+            friendly_name="my_listing",
+            description="example public listing",
+            location="US")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="US",
+            data_exchange_id=listing.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example public listing",
+            discovery_type="DISCOVERY_TYPE_PUBLIC",
+            allow_only_metadata_sharing=False,
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+            })
+        ```
+        ### Bigquery Analyticshub Listing Marketplace
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example data exchange")
+        listing_dataset = gcp.bigquery.Dataset("listing",
+            dataset_id="my_listing",
+            friendly_name="my_listing",
+            description="example data exchange",
+            location="US")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="US",
+            data_exchange_id=listing.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example data exchange",
+            delete_commercial=True,
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+            })
+        ```
 
         ## Import
 
@@ -1205,11 +1458,14 @@ class Listing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_only_metadata_sharing: Optional[pulumi.Input[_builtins.bool]] = None,
                  bigquery_dataset: Optional[pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
                  data_provider: Optional[pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
+                 delete_commercial: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  documentation: Optional[pulumi.Input[_builtins.str]] = None,
                  icon: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1231,13 +1487,16 @@ class Listing(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ListingArgs.__new__(ListingArgs)
 
+            __props__.__dict__["allow_only_metadata_sharing"] = allow_only_metadata_sharing
             __props__.__dict__["bigquery_dataset"] = bigquery_dataset
             __props__.__dict__["categories"] = categories
             if data_exchange_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_exchange_id'")
             __props__.__dict__["data_exchange_id"] = data_exchange_id
             __props__.__dict__["data_provider"] = data_provider
+            __props__.__dict__["delete_commercial"] = delete_commercial
             __props__.__dict__["description"] = description
+            __props__.__dict__["discovery_type"] = discovery_type
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -1256,7 +1515,9 @@ class Listing(pulumi.CustomResource):
             __props__.__dict__["pubsub_topic"] = pubsub_topic
             __props__.__dict__["request_access"] = request_access
             __props__.__dict__["restricted_export_config"] = restricted_export_config
+            __props__.__dict__["commercial_infos"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["state"] = None
         super(Listing, __self__).__init__(
             'gcp:bigqueryanalyticshub/listing:Listing',
             resource_name,
@@ -1267,11 +1528,15 @@ class Listing(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_only_metadata_sharing: Optional[pulumi.Input[_builtins.bool]] = None,
             bigquery_dataset: Optional[pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']]] = None,
             categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            commercial_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListingCommercialInfoArgs', 'ListingCommercialInfoArgsDict']]]]] = None,
             data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
             data_provider: Optional[pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']]] = None,
+            delete_commercial: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             documentation: Optional[pulumi.Input[_builtins.str]] = None,
             icon: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1284,7 +1549,8 @@ class Listing(pulumi.CustomResource):
             publisher: Optional[pulumi.Input[Union['ListingPublisherArgs', 'ListingPublisherArgsDict']]] = None,
             pubsub_topic: Optional[pulumi.Input[Union['ListingPubsubTopicArgs', 'ListingPubsubTopicArgsDict']]] = None,
             request_access: Optional[pulumi.Input[_builtins.str]] = None,
-            restricted_export_config: Optional[pulumi.Input[Union['ListingRestrictedExportConfigArgs', 'ListingRestrictedExportConfigArgsDict']]] = None) -> 'Listing':
+            restricted_export_config: Optional[pulumi.Input[Union['ListingRestrictedExportConfigArgs', 'ListingRestrictedExportConfigArgsDict']]] = None,
+            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'Listing':
         """
         Get an existing Listing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1292,13 +1558,19 @@ class Listing(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_only_metadata_sharing: If true, the listing is only available to get the resource metadata. Listing is non subscribable.
         :param pulumi.Input[Union['ListingBigqueryDatasetArgs', 'ListingBigqueryDatasetArgsDict']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] categories: Categories of the listing. Up to two categories are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListingCommercialInfoArgs', 'ListingCommercialInfoArgsDict']]]] commercial_infos: Commercial info contains the information about the commercial data products associated with the listing.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[Union['ListingDataProviderArgs', 'ListingDataProviderArgsDict']] data_provider: Details of the data provider who owns the source data.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] delete_commercial: If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
         :param pulumi.Input[_builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        :param pulumi.Input[_builtins.str] discovery_type: Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+               Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the listing.
         :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the listing.
@@ -1316,16 +1588,21 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         :param pulumi.Input[Union['ListingRestrictedExportConfigArgs', 'ListingRestrictedExportConfigArgsDict']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] state: Current state of the listing.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ListingState.__new__(_ListingState)
 
+        __props__.__dict__["allow_only_metadata_sharing"] = allow_only_metadata_sharing
         __props__.__dict__["bigquery_dataset"] = bigquery_dataset
         __props__.__dict__["categories"] = categories
+        __props__.__dict__["commercial_infos"] = commercial_infos
         __props__.__dict__["data_exchange_id"] = data_exchange_id
         __props__.__dict__["data_provider"] = data_provider
+        __props__.__dict__["delete_commercial"] = delete_commercial
         __props__.__dict__["description"] = description
+        __props__.__dict__["discovery_type"] = discovery_type
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["documentation"] = documentation
         __props__.__dict__["icon"] = icon
@@ -1339,7 +1616,16 @@ class Listing(pulumi.CustomResource):
         __props__.__dict__["pubsub_topic"] = pubsub_topic
         __props__.__dict__["request_access"] = request_access
         __props__.__dict__["restricted_export_config"] = restricted_export_config
+        __props__.__dict__["state"] = state
         return Listing(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlyMetadataSharing")
+    def allow_only_metadata_sharing(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+        """
+        return pulumi.get(self, "allow_only_metadata_sharing")
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDataset")
@@ -1359,6 +1645,15 @@ class Listing(pulumi.CustomResource):
         return pulumi.get(self, "categories")
 
     @_builtins.property
+    @pulumi.getter(name="commercialInfos")
+    def commercial_infos(self) -> pulumi.Output[Sequence['outputs.ListingCommercialInfo']]:
+        """
+        Commercial info contains the information about the commercial data products associated with the listing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "commercial_infos")
+
+    @_builtins.property
     @pulumi.getter(name="dataExchangeId")
     def data_exchange_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1376,12 +1671,29 @@ class Listing(pulumi.CustomResource):
         return pulumi.get(self, "data_provider")
 
     @_builtins.property
+    @pulumi.getter(name="deleteCommercial")
+    def delete_commercial(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+        """
+        return pulumi.get(self, "delete_commercial")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryType")
+    def discovery_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+        Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        """
+        return pulumi.get(self, "discovery_type")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -1490,4 +1802,12 @@ class Listing(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "restricted_export_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[_builtins.str]:
+        """
+        Current state of the listing.
+        """
+        return pulumi.get(self, "state")
 

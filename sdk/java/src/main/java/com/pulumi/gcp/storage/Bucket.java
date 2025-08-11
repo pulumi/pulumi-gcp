@@ -515,14 +515,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logging);
     }
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the bucket.
+     * @return The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      * 
      */
     public Output<String> name() {

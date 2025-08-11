@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const foobar = new gcp.compute.InstanceTemplate("foobar", {
- *     name: "tf-test-instance-template",
+ *     name: "instance-template",
  *     machineType: "n2-standard-2",
  *     canIpForward: false,
  *     tags: [
@@ -126,7 +126,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * const foobar = new gcp.compute.InstanceTemplate("foobar", {
- *     name: "tf-test-instance-template",
+ *     name: "instance-template",
  *     machineType: "g2-standard-4",
  *     canIpForward: false,
  *     tags: [

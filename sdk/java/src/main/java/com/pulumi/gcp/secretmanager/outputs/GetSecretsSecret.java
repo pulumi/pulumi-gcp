@@ -73,6 +73,13 @@ public final class GetSecretsSecret {
      */
     private String secretId;
     /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    private Map<String,String> tags;
+    /**
      * @return A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.
      * 
@@ -180,6 +187,15 @@ public final class GetSecretsSecret {
         return this.secretId;
     }
     /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
      * @return A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.
      * 
@@ -233,6 +249,7 @@ public final class GetSecretsSecret {
         private List<GetSecretsSecretReplication> replications;
         private List<GetSecretsSecretRotation> rotations;
         private String secretId;
+        private Map<String,String> tags;
         private List<GetSecretsSecretTopic> topics;
         private String ttl;
         private Map<String,String> versionAliases;
@@ -253,6 +270,7 @@ public final class GetSecretsSecret {
     	      this.replications = defaults.replications;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
+    	      this.tags = defaults.tags;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
     	      this.versionAliases = defaults.versionAliases;
@@ -370,6 +388,14 @@ public final class GetSecretsSecret {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder topics(List<GetSecretsSecretTopic> topics) {
             if (topics == null) {
               throw new MissingRequiredPropertyException("GetSecretsSecret", "topics");
@@ -419,6 +445,7 @@ public final class GetSecretsSecret {
             _resultValue.replications = replications;
             _resultValue.rotations = rotations;
             _resultValue.secretId = secretId;
+            _resultValue.tags = tags;
             _resultValue.topics = topics;
             _resultValue.ttl = ttl;
             _resultValue.versionAliases = versionAliases;

@@ -178,6 +178,7 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public readonly string Crc32c;
         public readonly ImmutableArray<Outputs.GetBucketObjectCustomerEncryptionResult> CustomerEncryptions;
+        public readonly string DeletionPolicy;
         public readonly string DetectMd5hash;
         /// <summary>
         /// (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -243,6 +244,8 @@ namespace Pulumi.Gcp.Storage
 
             ImmutableArray<Outputs.GetBucketObjectCustomerEncryptionResult> customerEncryptions,
 
+            string deletionPolicy,
+
             string detectMd5hash,
 
             bool eventBasedHold,
@@ -288,6 +291,7 @@ namespace Pulumi.Gcp.Storage
             ContentType = contentType;
             Crc32c = crc32c;
             CustomerEncryptions = customerEncryptions;
+            DeletionPolicy = deletionPolicy;
             DetectMd5hash = detectMd5hash;
             EventBasedHold = eventBasedHold;
             ForceEmptyContentType = forceEmptyContentType;

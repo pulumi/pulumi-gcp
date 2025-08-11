@@ -31,6 +31,7 @@ class SubnetworkArgs:
                  ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['SubnetworkParamsArgs']] = None,
                  private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -90,6 +91,8 @@ class SubnetworkArgs:
                means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input['SubnetworkParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -149,6 +152,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if private_ip_google_access is not None:
             pulumi.set(__self__, "private_ip_google_access", private_ip_google_access)
         if private_ipv6_google_access is not None:
@@ -329,6 +334,19 @@ class SubnetworkArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['SubnetworkParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['SubnetworkParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="privateIpGoogleAccess")
     def private_ip_google_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -494,6 +512,7 @@ class _SubnetworkState:
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['SubnetworkParamsArgs']] = None,
                  private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -567,6 +586,8 @@ class _SubnetworkState:
                except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
+        :param pulumi.Input['SubnetworkParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -648,6 +669,8 @@ class _SubnetworkState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if private_ip_google_access is not None:
             pulumi.set(__self__, "private_ip_google_access", private_ip_google_access)
         if private_ipv6_google_access is not None:
@@ -912,6 +935,19 @@ class _SubnetworkState:
         pulumi.set(self, "network", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['SubnetworkParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['SubnetworkParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="privateIpGoogleAccess")
     def private_ip_google_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -1113,6 +1149,7 @@ class Subnetwork(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
                  private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1415,6 +1452,8 @@ class Subnetwork(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
+        :param pulumi.Input[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -1725,6 +1764,7 @@ class Subnetwork(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
                  private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1756,6 +1796,7 @@ class Subnetwork(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            __props__.__dict__["params"] = params
             __props__.__dict__["private_ip_google_access"] = private_ip_google_access
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
             __props__.__dict__["project"] = project
@@ -1801,6 +1842,7 @@ class Subnetwork(pulumi.CustomResource):
             log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']]] = None,
             private_ip_google_access: Optional[pulumi.Input[_builtins.bool]] = None,
             private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1879,6 +1921,8 @@ class Subnetwork(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
+        :param pulumi.Input[Union['SubnetworkParamsArgs', 'SubnetworkParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -1942,6 +1986,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["params"] = params
         __props__.__dict__["private_ip_google_access"] = private_ip_google_access
         __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
         __props__.__dict__["project"] = project
@@ -2128,6 +2173,15 @@ class Subnetwork(pulumi.CustomResource):
         Only networks that are in the distributed mode can have subnetworks.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.SubnetworkParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter(name="privateIpGoogleAccess")

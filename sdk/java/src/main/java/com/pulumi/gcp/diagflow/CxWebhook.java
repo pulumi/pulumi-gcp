@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Dialogflowcx Webhook Full
+ * ### Dialogflowcx Webhook Standard
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.CxWebhook;
  * import com.pulumi.gcp.diagflow.CxWebhookArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceOauthConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -75,11 +76,264 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var basicWebhook = new CxWebhook("basicWebhook", CxWebhookArgs.builder()
+ *         var standardWebhook = new CxWebhook("standardWebhook", CxWebhookArgs.builder()
+ *             .parent(agent.id())
+ *             .displayName("MyFlow")
+ *             .genericWebService(CxWebhookGenericWebServiceArgs.builder()
+ *                 .allowedCaCerts("BQA=")
+ *                 .uri("https://example.com")
+ *                 .requestHeaders(Map.of("example-key", "example-value"))
+ *                 .webhookType("STANDARD")
+ *                 .oauthConfig(CxWebhookGenericWebServiceOauthConfigArgs.builder()
+ *                     .clientId("example-client-id")
+ *                     .secretVersionForClientSecret("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                     .tokenEndpoint("https://example.com")
+ *                     .scopes("example-scope")
+ *                     .build())
+ *                 .serviceAgentAuth("NONE")
+ *                 .secretVersionForUsernamePassword("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                 .secretVersionsForRequestHeaders(                
+ *                     CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs.builder()
+ *                         .key("example-key-1")
+ *                         .secretVersion("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                         .build(),
+ *                     CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs.builder()
+ *                         .key("example-key-2")
+ *                         .secretVersion("projects/example-proj/secrets/example-secret/versions/example-version-2")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dialogflowcx Webhook Flexible
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+ * import com.pulumi.gcp.diagflow.CxWebhook;
+ * import com.pulumi.gcp.diagflow.CxWebhookArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
+ *             .supportedLanguageCodes(            
+ *                 "it",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
+ *             .enableStackdriverLogging(true)
+ *             .enableSpellCorrection(true)
+ *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
+ *                 .enableSpeechAdaptation(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var flexibleWebhook = new CxWebhook("flexibleWebhook", CxWebhookArgs.builder()
  *             .parent(agent.id())
  *             .displayName("MyFlow")
  *             .genericWebService(CxWebhookGenericWebServiceArgs.builder()
  *                 .uri("https://example.com")
+ *                 .requestHeaders(Map.of("example-key", "example-value"))
+ *                 .webhookType("FLEXIBLE")
+ *                 .oauthConfig(CxWebhookGenericWebServiceOauthConfigArgs.builder()
+ *                     .clientId("example-client-id")
+ *                     .clientSecret("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                     .tokenEndpoint("https://example.com")
+ *                     .build())
+ *                 .serviceAgentAuth("NONE")
+ *                 .httpMethod("POST")
+ *                 .requestBody("{\"example-key\": \"example-value\"}")
+ *                 .parameterMapping(Map.of("example-parameter", "examplePath"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dialogflowcx Webhook Service Directory Standard
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+ * import com.pulumi.gcp.diagflow.CxWebhook;
+ * import com.pulumi.gcp.diagflow.CxWebhookArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
+ *             .displayName("dialogflowcx-agent")
+ *             .location("us-central1")
+ *             .defaultLanguageCode("en")
+ *             .supportedLanguageCodes(            
+ *                 "it",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
+ *             .enableStackdriverLogging(true)
+ *             .enableSpellCorrection(true)
+ *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
+ *                 .enableSpeechAdaptation(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var standardWebhook = new CxWebhook("standardWebhook", CxWebhookArgs.builder()
+ *             .parent(agent.id())
+ *             .displayName("MyFlow")
+ *             .serviceDirectory(CxWebhookServiceDirectoryArgs.builder()
+ *                 .service("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service")
+ *                 .genericWebService(CxWebhookServiceDirectoryGenericWebServiceArgs.builder()
+ *                     .allowedCaCerts("BQA=")
+ *                     .uri("https://example.com")
+ *                     .requestHeaders(Map.of("example-key", "example-value"))
+ *                     .webhookType("STANDARD")
+ *                     .oauthConfig(CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs.builder()
+ *                         .clientId("example-client-id")
+ *                         .secretVersionForClientSecret("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                         .tokenEndpoint("https://example.com")
+ *                         .scopes("example-scope")
+ *                         .build())
+ *                     .serviceAgentAuth("NONE")
+ *                     .secretVersionForUsernamePassword("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                     .secretVersionsForRequestHeaders(                    
+ *                         CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs.builder()
+ *                             .key("example-key-1")
+ *                             .secretVersion("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                             .build(),
+ *                         CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs.builder()
+ *                             .key("example-key-2")
+ *                             .secretVersion("projects/example-proj/secrets/example-secret/versions/example-version-2")
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dialogflowcx Webhook Service Directory Flexible
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+ * import com.pulumi.gcp.diagflow.CxWebhook;
+ * import com.pulumi.gcp.diagflow.CxWebhookArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
+ *             .displayName("dialogflowcx-agent")
+ *             .location("us-central1")
+ *             .defaultLanguageCode("en")
+ *             .supportedLanguageCodes(            
+ *                 "it",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
+ *             .enableStackdriverLogging(true)
+ *             .enableSpellCorrection(true)
+ *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
+ *                 .enableSpeechAdaptation(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var flexibleWebhook = new CxWebhook("flexibleWebhook", CxWebhookArgs.builder()
+ *             .parent(agent.id())
+ *             .displayName("MyFlow")
+ *             .serviceDirectory(CxWebhookServiceDirectoryArgs.builder()
+ *                 .service("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service")
+ *                 .genericWebService(CxWebhookServiceDirectoryGenericWebServiceArgs.builder()
+ *                     .uri("https://example.com")
+ *                     .requestHeaders(Map.of("example-key", "example-value"))
+ *                     .webhookType("FLEXIBLE")
+ *                     .oauthConfig(CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs.builder()
+ *                         .clientId("example-client-id")
+ *                         .clientSecret("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                         .tokenEndpoint("https://example.com")
+ *                         .build())
+ *                     .serviceAgentAuth("NONE")
+ *                     .httpMethod("POST")
+ *                     .requestBody("{\"example-key\": \"example-value\"}")
+ *                     .parameterMapping(Map.of("example-parameter", "examplePath"))
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -139,35 +393,35 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * Indicates if automatic spell correction is enabled in detect intent requests.
+     * Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      * 
      */
     @Export(name="enableSpellCorrection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSpellCorrection;
 
     /**
-     * @return Indicates if automatic spell correction is enabled in detect intent requests.
+     * @return Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      * 
      */
     public Output<Optional<Boolean>> enableSpellCorrection() {
         return Codegen.optional(this.enableSpellCorrection);
     }
     /**
-     * Determines whether this agent should log conversation queries.
+     * Deprecated. Determines whether this agent should log conversation queries.
      * 
      */
     @Export(name="enableStackdriverLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableStackdriverLogging;
 
     /**
-     * @return Determines whether this agent should log conversation queries.
+     * @return Deprecated. Determines whether this agent should log conversation queries.
      * 
      */
     public Output<Optional<Boolean>> enableStackdriverLogging() {
         return Codegen.optional(this.enableStackdriverLogging);
     }
     /**
-     * Configuration for a generic web service.
+     * Represents configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -175,7 +429,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ CxWebhookGenericWebService> genericWebService;
 
     /**
-     * @return Configuration for a generic web service.
+     * @return Represents configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -215,14 +469,14 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parent);
     }
     /**
-     * Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+     * Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
      * 
      */
     @Export(name="securitySettings", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securitySettings;
 
     /**
-     * @return Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+     * @return Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
      * 
      */
     public Output<Optional<String>> securitySettings() {
@@ -245,14 +499,14 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceDirectory);
     }
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
+     * Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
     @Export(name="startFlow", refs={String.class}, tree="[0]")
     private Output<String> startFlow;
 
     /**
-     * @return Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
+     * @return Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
     public Output<String> startFlow() {

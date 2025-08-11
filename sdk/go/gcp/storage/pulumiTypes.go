@@ -7394,6 +7394,1350 @@ func (o DefaultObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInpu
 	}).(DefaultObjectAccessControlProjectTeamOutput)
 }
 
+type InsightsDatasetConfigExcludeCloudStorageBuckets struct {
+	// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+	// Structure is documented below.
+	CloudStorageBuckets []InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket `pulumi:"cloudStorageBuckets"`
+}
+
+// InsightsDatasetConfigExcludeCloudStorageBucketsInput is an input type that accepts InsightsDatasetConfigExcludeCloudStorageBucketsArgs and InsightsDatasetConfigExcludeCloudStorageBucketsOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigExcludeCloudStorageBucketsInput` via:
+//
+//	InsightsDatasetConfigExcludeCloudStorageBucketsArgs{...}
+type InsightsDatasetConfigExcludeCloudStorageBucketsInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigExcludeCloudStorageBucketsOutput() InsightsDatasetConfigExcludeCloudStorageBucketsOutput
+	ToInsightsDatasetConfigExcludeCloudStorageBucketsOutputWithContext(context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsOutput
+}
+
+type InsightsDatasetConfigExcludeCloudStorageBucketsArgs struct {
+	// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+	// Structure is documented below.
+	CloudStorageBuckets InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayInput `pulumi:"cloudStorageBuckets"`
+}
+
+func (InsightsDatasetConfigExcludeCloudStorageBucketsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageBucketsArgs) ToInsightsDatasetConfigExcludeCloudStorageBucketsOutput() InsightsDatasetConfigExcludeCloudStorageBucketsOutput {
+	return i.ToInsightsDatasetConfigExcludeCloudStorageBucketsOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageBucketsArgs) ToInsightsDatasetConfigExcludeCloudStorageBucketsOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigExcludeCloudStorageBucketsOutput)
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageBucketsArgs) ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput {
+	return i.ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageBucketsArgs) ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigExcludeCloudStorageBucketsOutput).ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(ctx)
+}
+
+// InsightsDatasetConfigExcludeCloudStorageBucketsPtrInput is an input type that accepts InsightsDatasetConfigExcludeCloudStorageBucketsArgs, InsightsDatasetConfigExcludeCloudStorageBucketsPtr and InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigExcludeCloudStorageBucketsPtrInput` via:
+//
+//	        InsightsDatasetConfigExcludeCloudStorageBucketsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsDatasetConfigExcludeCloudStorageBucketsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput
+	ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput
+}
+
+type insightsDatasetConfigExcludeCloudStorageBucketsPtrType InsightsDatasetConfigExcludeCloudStorageBucketsArgs
+
+func InsightsDatasetConfigExcludeCloudStorageBucketsPtr(v *InsightsDatasetConfigExcludeCloudStorageBucketsArgs) InsightsDatasetConfigExcludeCloudStorageBucketsPtrInput {
+	return (*insightsDatasetConfigExcludeCloudStorageBucketsPtrType)(v)
+}
+
+func (*insightsDatasetConfigExcludeCloudStorageBucketsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigExcludeCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i *insightsDatasetConfigExcludeCloudStorageBucketsPtrType) ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput {
+	return i.ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsDatasetConfigExcludeCloudStorageBucketsPtrType) ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput)
+}
+
+type InsightsDatasetConfigExcludeCloudStorageBucketsOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigExcludeCloudStorageBucketsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsOutput() InsightsDatasetConfigExcludeCloudStorageBucketsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput {
+	return o.ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsDatasetConfigExcludeCloudStorageBuckets) *InsightsDatasetConfigExcludeCloudStorageBuckets {
+		return &v
+	}).(InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput)
+}
+
+// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+// Structure is documented below.
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsOutput) CloudStorageBuckets() InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigExcludeCloudStorageBuckets) []InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket {
+		return v.CloudStorageBuckets
+	}).(InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput)
+}
+
+type InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigExcludeCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput) Elem() InsightsDatasetConfigExcludeCloudStorageBucketsOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigExcludeCloudStorageBuckets) InsightsDatasetConfigExcludeCloudStorageBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsDatasetConfigExcludeCloudStorageBuckets
+		return ret
+	}).(InsightsDatasetConfigExcludeCloudStorageBucketsOutput)
+}
+
+// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+// Structure is documented below.
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput) CloudStorageBuckets() InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigExcludeCloudStorageBuckets) []InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket {
+		if v == nil {
+			return nil
+		}
+		return v.CloudStorageBuckets
+	}).(InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput)
+}
+
+type InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket struct {
+	// The list of cloud storage bucket names to exclude in the DatasetConfig.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketName *string `pulumi:"bucketName"`
+	// The list of regex patterns for bucket names matching the regex.
+	// Regex should follow the syntax specified in google/re2 on GitHub.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketPrefixRegex *string `pulumi:"bucketPrefixRegex"`
+}
+
+// InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketInput is an input type that accepts InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs and InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketInput` via:
+//
+//	InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs{...}
+type InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput() InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput
+	ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutputWithContext(context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput
+}
+
+type InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs struct {
+	// The list of cloud storage bucket names to exclude in the DatasetConfig.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The list of regex patterns for bucket names matching the regex.
+	// Regex should follow the syntax specified in google/re2 on GitHub.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketPrefixRegex pulumi.StringPtrInput `pulumi:"bucketPrefixRegex"`
+}
+
+func (InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs) ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput() InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput {
+	return i.ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs) ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput)
+}
+
+// InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayInput is an input type that accepts InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArray and InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayInput` via:
+//
+//	InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArray{ InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs{...} }
+type InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput() InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput
+	ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutputWithContext(context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput
+}
+
+type InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArray []InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketInput
+
+func (InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArray) ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput() InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return i.ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArray) ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput)
+}
+
+type InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput() InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput {
+	return o
+}
+
+// The list of cloud storage bucket names to exclude in the DatasetConfig.
+// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The list of regex patterns for bucket names matching the regex.
+// Regex should follow the syntax specified in google/re2 on GitHub.
+// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput) BucketPrefixRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket) *string {
+		return v.BucketPrefixRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput() InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput) ToInsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket {
+		return vs[0].([]InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket)[vs[1].(int)]
+	}).(InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput)
+}
+
+type InsightsDatasetConfigExcludeCloudStorageLocations struct {
+	// The list of cloud storage locations to exclude in the DatasetConfig.
+	Locations []string `pulumi:"locations"`
+}
+
+// InsightsDatasetConfigExcludeCloudStorageLocationsInput is an input type that accepts InsightsDatasetConfigExcludeCloudStorageLocationsArgs and InsightsDatasetConfigExcludeCloudStorageLocationsOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigExcludeCloudStorageLocationsInput` via:
+//
+//	InsightsDatasetConfigExcludeCloudStorageLocationsArgs{...}
+type InsightsDatasetConfigExcludeCloudStorageLocationsInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigExcludeCloudStorageLocationsOutput() InsightsDatasetConfigExcludeCloudStorageLocationsOutput
+	ToInsightsDatasetConfigExcludeCloudStorageLocationsOutputWithContext(context.Context) InsightsDatasetConfigExcludeCloudStorageLocationsOutput
+}
+
+type InsightsDatasetConfigExcludeCloudStorageLocationsArgs struct {
+	// The list of cloud storage locations to exclude in the DatasetConfig.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (InsightsDatasetConfigExcludeCloudStorageLocationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageLocations)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageLocationsArgs) ToInsightsDatasetConfigExcludeCloudStorageLocationsOutput() InsightsDatasetConfigExcludeCloudStorageLocationsOutput {
+	return i.ToInsightsDatasetConfigExcludeCloudStorageLocationsOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageLocationsArgs) ToInsightsDatasetConfigExcludeCloudStorageLocationsOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageLocationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigExcludeCloudStorageLocationsOutput)
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageLocationsArgs) ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput {
+	return i.ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigExcludeCloudStorageLocationsArgs) ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigExcludeCloudStorageLocationsOutput).ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(ctx)
+}
+
+// InsightsDatasetConfigExcludeCloudStorageLocationsPtrInput is an input type that accepts InsightsDatasetConfigExcludeCloudStorageLocationsArgs, InsightsDatasetConfigExcludeCloudStorageLocationsPtr and InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigExcludeCloudStorageLocationsPtrInput` via:
+//
+//	        InsightsDatasetConfigExcludeCloudStorageLocationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsDatasetConfigExcludeCloudStorageLocationsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput
+	ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(context.Context) InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput
+}
+
+type insightsDatasetConfigExcludeCloudStorageLocationsPtrType InsightsDatasetConfigExcludeCloudStorageLocationsArgs
+
+func InsightsDatasetConfigExcludeCloudStorageLocationsPtr(v *InsightsDatasetConfigExcludeCloudStorageLocationsArgs) InsightsDatasetConfigExcludeCloudStorageLocationsPtrInput {
+	return (*insightsDatasetConfigExcludeCloudStorageLocationsPtrType)(v)
+}
+
+func (*insightsDatasetConfigExcludeCloudStorageLocationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigExcludeCloudStorageLocations)(nil)).Elem()
+}
+
+func (i *insightsDatasetConfigExcludeCloudStorageLocationsPtrType) ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput {
+	return i.ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsDatasetConfigExcludeCloudStorageLocationsPtrType) ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput)
+}
+
+type InsightsDatasetConfigExcludeCloudStorageLocationsOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigExcludeCloudStorageLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageLocations)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsOutput) ToInsightsDatasetConfigExcludeCloudStorageLocationsOutput() InsightsDatasetConfigExcludeCloudStorageLocationsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsOutput) ToInsightsDatasetConfigExcludeCloudStorageLocationsOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageLocationsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsOutput) ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput {
+	return o.ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsOutput) ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsDatasetConfigExcludeCloudStorageLocations) *InsightsDatasetConfigExcludeCloudStorageLocations {
+		return &v
+	}).(InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput)
+}
+
+// The list of cloud storage locations to exclude in the DatasetConfig.
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigExcludeCloudStorageLocations) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+type InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigExcludeCloudStorageLocations)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput) ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput) ToInsightsDatasetConfigExcludeCloudStorageLocationsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput) Elem() InsightsDatasetConfigExcludeCloudStorageLocationsOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigExcludeCloudStorageLocations) InsightsDatasetConfigExcludeCloudStorageLocations {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsDatasetConfigExcludeCloudStorageLocations
+		return ret
+	}).(InsightsDatasetConfigExcludeCloudStorageLocationsOutput)
+}
+
+// The list of cloud storage locations to exclude in the DatasetConfig.
+func (o InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigExcludeCloudStorageLocations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type InsightsDatasetConfigIdentity struct {
+	// (Output)
+	// Name of the identity.
+	Name *string `pulumi:"name"`
+	// Type of identity to use for the DatasetConfig.
+	// Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+	Type string `pulumi:"type"`
+}
+
+// InsightsDatasetConfigIdentityInput is an input type that accepts InsightsDatasetConfigIdentityArgs and InsightsDatasetConfigIdentityOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigIdentityInput` via:
+//
+//	InsightsDatasetConfigIdentityArgs{...}
+type InsightsDatasetConfigIdentityInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigIdentityOutput() InsightsDatasetConfigIdentityOutput
+	ToInsightsDatasetConfigIdentityOutputWithContext(context.Context) InsightsDatasetConfigIdentityOutput
+}
+
+type InsightsDatasetConfigIdentityArgs struct {
+	// (Output)
+	// Name of the identity.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Type of identity to use for the DatasetConfig.
+	// Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (InsightsDatasetConfigIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigIdentity)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigIdentityArgs) ToInsightsDatasetConfigIdentityOutput() InsightsDatasetConfigIdentityOutput {
+	return i.ToInsightsDatasetConfigIdentityOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigIdentityArgs) ToInsightsDatasetConfigIdentityOutputWithContext(ctx context.Context) InsightsDatasetConfigIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIdentityOutput)
+}
+
+func (i InsightsDatasetConfigIdentityArgs) ToInsightsDatasetConfigIdentityPtrOutput() InsightsDatasetConfigIdentityPtrOutput {
+	return i.ToInsightsDatasetConfigIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigIdentityArgs) ToInsightsDatasetConfigIdentityPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIdentityOutput).ToInsightsDatasetConfigIdentityPtrOutputWithContext(ctx)
+}
+
+// InsightsDatasetConfigIdentityPtrInput is an input type that accepts InsightsDatasetConfigIdentityArgs, InsightsDatasetConfigIdentityPtr and InsightsDatasetConfigIdentityPtrOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigIdentityPtrInput` via:
+//
+//	        InsightsDatasetConfigIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsDatasetConfigIdentityPtrInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigIdentityPtrOutput() InsightsDatasetConfigIdentityPtrOutput
+	ToInsightsDatasetConfigIdentityPtrOutputWithContext(context.Context) InsightsDatasetConfigIdentityPtrOutput
+}
+
+type insightsDatasetConfigIdentityPtrType InsightsDatasetConfigIdentityArgs
+
+func InsightsDatasetConfigIdentityPtr(v *InsightsDatasetConfigIdentityArgs) InsightsDatasetConfigIdentityPtrInput {
+	return (*insightsDatasetConfigIdentityPtrType)(v)
+}
+
+func (*insightsDatasetConfigIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigIdentity)(nil)).Elem()
+}
+
+func (i *insightsDatasetConfigIdentityPtrType) ToInsightsDatasetConfigIdentityPtrOutput() InsightsDatasetConfigIdentityPtrOutput {
+	return i.ToInsightsDatasetConfigIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsDatasetConfigIdentityPtrType) ToInsightsDatasetConfigIdentityPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIdentityPtrOutput)
+}
+
+type InsightsDatasetConfigIdentityOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigIdentity)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigIdentityOutput) ToInsightsDatasetConfigIdentityOutput() InsightsDatasetConfigIdentityOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIdentityOutput) ToInsightsDatasetConfigIdentityOutputWithContext(ctx context.Context) InsightsDatasetConfigIdentityOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIdentityOutput) ToInsightsDatasetConfigIdentityPtrOutput() InsightsDatasetConfigIdentityPtrOutput {
+	return o.ToInsightsDatasetConfigIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsDatasetConfigIdentityOutput) ToInsightsDatasetConfigIdentityPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsDatasetConfigIdentity) *InsightsDatasetConfigIdentity {
+		return &v
+	}).(InsightsDatasetConfigIdentityPtrOutput)
+}
+
+// (Output)
+// Name of the identity.
+func (o InsightsDatasetConfigIdentityOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigIdentity) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Type of identity to use for the DatasetConfig.
+// Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+func (o InsightsDatasetConfigIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InsightsDatasetConfigIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigIdentity)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigIdentityPtrOutput) ToInsightsDatasetConfigIdentityPtrOutput() InsightsDatasetConfigIdentityPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIdentityPtrOutput) ToInsightsDatasetConfigIdentityPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIdentityPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIdentityPtrOutput) Elem() InsightsDatasetConfigIdentityOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigIdentity) InsightsDatasetConfigIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsDatasetConfigIdentity
+		return ret
+	}).(InsightsDatasetConfigIdentityOutput)
+}
+
+// (Output)
+// Name of the identity.
+func (o InsightsDatasetConfigIdentityPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of identity to use for the DatasetConfig.
+// Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+func (o InsightsDatasetConfigIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBuckets struct {
+	// The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+	// Structure is documented below.
+	CloudStorageBuckets []InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket `pulumi:"cloudStorageBuckets"`
+}
+
+// InsightsDatasetConfigIncludeCloudStorageBucketsInput is an input type that accepts InsightsDatasetConfigIncludeCloudStorageBucketsArgs and InsightsDatasetConfigIncludeCloudStorageBucketsOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigIncludeCloudStorageBucketsInput` via:
+//
+//	InsightsDatasetConfigIncludeCloudStorageBucketsArgs{...}
+type InsightsDatasetConfigIncludeCloudStorageBucketsInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigIncludeCloudStorageBucketsOutput() InsightsDatasetConfigIncludeCloudStorageBucketsOutput
+	ToInsightsDatasetConfigIncludeCloudStorageBucketsOutputWithContext(context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsOutput
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBucketsArgs struct {
+	// The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+	// Structure is documented below.
+	CloudStorageBuckets InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayInput `pulumi:"cloudStorageBuckets"`
+}
+
+func (InsightsDatasetConfigIncludeCloudStorageBucketsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageBucketsArgs) ToInsightsDatasetConfigIncludeCloudStorageBucketsOutput() InsightsDatasetConfigIncludeCloudStorageBucketsOutput {
+	return i.ToInsightsDatasetConfigIncludeCloudStorageBucketsOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageBucketsArgs) ToInsightsDatasetConfigIncludeCloudStorageBucketsOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIncludeCloudStorageBucketsOutput)
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageBucketsArgs) ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput {
+	return i.ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageBucketsArgs) ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIncludeCloudStorageBucketsOutput).ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(ctx)
+}
+
+// InsightsDatasetConfigIncludeCloudStorageBucketsPtrInput is an input type that accepts InsightsDatasetConfigIncludeCloudStorageBucketsArgs, InsightsDatasetConfigIncludeCloudStorageBucketsPtr and InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigIncludeCloudStorageBucketsPtrInput` via:
+//
+//	        InsightsDatasetConfigIncludeCloudStorageBucketsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsDatasetConfigIncludeCloudStorageBucketsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput
+	ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput
+}
+
+type insightsDatasetConfigIncludeCloudStorageBucketsPtrType InsightsDatasetConfigIncludeCloudStorageBucketsArgs
+
+func InsightsDatasetConfigIncludeCloudStorageBucketsPtr(v *InsightsDatasetConfigIncludeCloudStorageBucketsArgs) InsightsDatasetConfigIncludeCloudStorageBucketsPtrInput {
+	return (*insightsDatasetConfigIncludeCloudStorageBucketsPtrType)(v)
+}
+
+func (*insightsDatasetConfigIncludeCloudStorageBucketsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigIncludeCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i *insightsDatasetConfigIncludeCloudStorageBucketsPtrType) ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput {
+	return i.ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsDatasetConfigIncludeCloudStorageBucketsPtrType) ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBucketsOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigIncludeCloudStorageBucketsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsOutput() InsightsDatasetConfigIncludeCloudStorageBucketsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput {
+	return o.ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsDatasetConfigIncludeCloudStorageBuckets) *InsightsDatasetConfigIncludeCloudStorageBuckets {
+		return &v
+	}).(InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput)
+}
+
+// The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+// Structure is documented below.
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsOutput) CloudStorageBuckets() InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigIncludeCloudStorageBuckets) []InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket {
+		return v.CloudStorageBuckets
+	}).(InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigIncludeCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput() InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput) Elem() InsightsDatasetConfigIncludeCloudStorageBucketsOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigIncludeCloudStorageBuckets) InsightsDatasetConfigIncludeCloudStorageBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsDatasetConfigIncludeCloudStorageBuckets
+		return ret
+	}).(InsightsDatasetConfigIncludeCloudStorageBucketsOutput)
+}
+
+// The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+// Structure is documented below.
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput) CloudStorageBuckets() InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigIncludeCloudStorageBuckets) []InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket {
+		if v == nil {
+			return nil
+		}
+		return v.CloudStorageBuckets
+	}).(InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket struct {
+	// The list of cloud storage bucket names to exclude in the DatasetConfig.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketName *string `pulumi:"bucketName"`
+	// The list of regex patterns for bucket names matching the regex.
+	// Regex should follow the syntax specified in google/re2 on GitHub.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketPrefixRegex *string `pulumi:"bucketPrefixRegex"`
+}
+
+// InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketInput is an input type that accepts InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs and InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketInput` via:
+//
+//	InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs{...}
+type InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput() InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput
+	ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutputWithContext(context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs struct {
+	// The list of cloud storage bucket names to exclude in the DatasetConfig.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The list of regex patterns for bucket names matching the regex.
+	// Regex should follow the syntax specified in google/re2 on GitHub.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketPrefixRegex pulumi.StringPtrInput `pulumi:"bucketPrefixRegex"`
+}
+
+func (InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs) ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput() InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput {
+	return i.ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs) ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput)
+}
+
+// InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayInput is an input type that accepts InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArray and InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayInput` via:
+//
+//	InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArray{ InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs{...} }
+type InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput() InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput
+	ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutputWithContext(context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArray []InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketInput
+
+func (InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArray) ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput() InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return i.ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArray) ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput() InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput {
+	return o
+}
+
+// The list of cloud storage bucket names to exclude in the DatasetConfig.
+// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The list of regex patterns for bucket names matching the regex.
+// Regex should follow the syntax specified in google/re2 on GitHub.
+// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput) BucketPrefixRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket) *string {
+		return v.BucketPrefixRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput() InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput) ToInsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket {
+		return vs[0].([]InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket)[vs[1].(int)]
+	}).(InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageLocations struct {
+	// The list of cloud storage locations to include in the DatasetConfig.
+	Locations []string `pulumi:"locations"`
+}
+
+// InsightsDatasetConfigIncludeCloudStorageLocationsInput is an input type that accepts InsightsDatasetConfigIncludeCloudStorageLocationsArgs and InsightsDatasetConfigIncludeCloudStorageLocationsOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigIncludeCloudStorageLocationsInput` via:
+//
+//	InsightsDatasetConfigIncludeCloudStorageLocationsArgs{...}
+type InsightsDatasetConfigIncludeCloudStorageLocationsInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigIncludeCloudStorageLocationsOutput() InsightsDatasetConfigIncludeCloudStorageLocationsOutput
+	ToInsightsDatasetConfigIncludeCloudStorageLocationsOutputWithContext(context.Context) InsightsDatasetConfigIncludeCloudStorageLocationsOutput
+}
+
+type InsightsDatasetConfigIncludeCloudStorageLocationsArgs struct {
+	// The list of cloud storage locations to include in the DatasetConfig.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (InsightsDatasetConfigIncludeCloudStorageLocationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageLocations)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageLocationsArgs) ToInsightsDatasetConfigIncludeCloudStorageLocationsOutput() InsightsDatasetConfigIncludeCloudStorageLocationsOutput {
+	return i.ToInsightsDatasetConfigIncludeCloudStorageLocationsOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageLocationsArgs) ToInsightsDatasetConfigIncludeCloudStorageLocationsOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageLocationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIncludeCloudStorageLocationsOutput)
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageLocationsArgs) ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput {
+	return i.ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigIncludeCloudStorageLocationsArgs) ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIncludeCloudStorageLocationsOutput).ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(ctx)
+}
+
+// InsightsDatasetConfigIncludeCloudStorageLocationsPtrInput is an input type that accepts InsightsDatasetConfigIncludeCloudStorageLocationsArgs, InsightsDatasetConfigIncludeCloudStorageLocationsPtr and InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigIncludeCloudStorageLocationsPtrInput` via:
+//
+//	        InsightsDatasetConfigIncludeCloudStorageLocationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsDatasetConfigIncludeCloudStorageLocationsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput
+	ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(context.Context) InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput
+}
+
+type insightsDatasetConfigIncludeCloudStorageLocationsPtrType InsightsDatasetConfigIncludeCloudStorageLocationsArgs
+
+func InsightsDatasetConfigIncludeCloudStorageLocationsPtr(v *InsightsDatasetConfigIncludeCloudStorageLocationsArgs) InsightsDatasetConfigIncludeCloudStorageLocationsPtrInput {
+	return (*insightsDatasetConfigIncludeCloudStorageLocationsPtrType)(v)
+}
+
+func (*insightsDatasetConfigIncludeCloudStorageLocationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigIncludeCloudStorageLocations)(nil)).Elem()
+}
+
+func (i *insightsDatasetConfigIncludeCloudStorageLocationsPtrType) ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput {
+	return i.ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsDatasetConfigIncludeCloudStorageLocationsPtrType) ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageLocationsOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigIncludeCloudStorageLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageLocations)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsOutput) ToInsightsDatasetConfigIncludeCloudStorageLocationsOutput() InsightsDatasetConfigIncludeCloudStorageLocationsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsOutput) ToInsightsDatasetConfigIncludeCloudStorageLocationsOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageLocationsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsOutput) ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput {
+	return o.ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsOutput) ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsDatasetConfigIncludeCloudStorageLocations) *InsightsDatasetConfigIncludeCloudStorageLocations {
+		return &v
+	}).(InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput)
+}
+
+// The list of cloud storage locations to include in the DatasetConfig.
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigIncludeCloudStorageLocations) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+type InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigIncludeCloudStorageLocations)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput) ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput() InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput) ToInsightsDatasetConfigIncludeCloudStorageLocationsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput) Elem() InsightsDatasetConfigIncludeCloudStorageLocationsOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigIncludeCloudStorageLocations) InsightsDatasetConfigIncludeCloudStorageLocations {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsDatasetConfigIncludeCloudStorageLocations
+		return ret
+	}).(InsightsDatasetConfigIncludeCloudStorageLocationsOutput)
+}
+
+// The list of cloud storage locations to include in the DatasetConfig.
+func (o InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigIncludeCloudStorageLocations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type InsightsDatasetConfigLink struct {
+	// (Output)
+	// Dataset name for the linked DatasetConfig.
+	Dataset *string `pulumi:"dataset"`
+	// (Output)
+	// State of the linked DatasetConfig.
+	Linked *bool `pulumi:"linked"`
+}
+
+// InsightsDatasetConfigLinkInput is an input type that accepts InsightsDatasetConfigLinkArgs and InsightsDatasetConfigLinkOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigLinkInput` via:
+//
+//	InsightsDatasetConfigLinkArgs{...}
+type InsightsDatasetConfigLinkInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigLinkOutput() InsightsDatasetConfigLinkOutput
+	ToInsightsDatasetConfigLinkOutputWithContext(context.Context) InsightsDatasetConfigLinkOutput
+}
+
+type InsightsDatasetConfigLinkArgs struct {
+	// (Output)
+	// Dataset name for the linked DatasetConfig.
+	Dataset pulumi.StringPtrInput `pulumi:"dataset"`
+	// (Output)
+	// State of the linked DatasetConfig.
+	Linked pulumi.BoolPtrInput `pulumi:"linked"`
+}
+
+func (InsightsDatasetConfigLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigLink)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigLinkArgs) ToInsightsDatasetConfigLinkOutput() InsightsDatasetConfigLinkOutput {
+	return i.ToInsightsDatasetConfigLinkOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigLinkArgs) ToInsightsDatasetConfigLinkOutputWithContext(ctx context.Context) InsightsDatasetConfigLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigLinkOutput)
+}
+
+// InsightsDatasetConfigLinkArrayInput is an input type that accepts InsightsDatasetConfigLinkArray and InsightsDatasetConfigLinkArrayOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigLinkArrayInput` via:
+//
+//	InsightsDatasetConfigLinkArray{ InsightsDatasetConfigLinkArgs{...} }
+type InsightsDatasetConfigLinkArrayInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigLinkArrayOutput() InsightsDatasetConfigLinkArrayOutput
+	ToInsightsDatasetConfigLinkArrayOutputWithContext(context.Context) InsightsDatasetConfigLinkArrayOutput
+}
+
+type InsightsDatasetConfigLinkArray []InsightsDatasetConfigLinkInput
+
+func (InsightsDatasetConfigLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsDatasetConfigLink)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigLinkArray) ToInsightsDatasetConfigLinkArrayOutput() InsightsDatasetConfigLinkArrayOutput {
+	return i.ToInsightsDatasetConfigLinkArrayOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigLinkArray) ToInsightsDatasetConfigLinkArrayOutputWithContext(ctx context.Context) InsightsDatasetConfigLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigLinkArrayOutput)
+}
+
+type InsightsDatasetConfigLinkOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigLink)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigLinkOutput) ToInsightsDatasetConfigLinkOutput() InsightsDatasetConfigLinkOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigLinkOutput) ToInsightsDatasetConfigLinkOutputWithContext(ctx context.Context) InsightsDatasetConfigLinkOutput {
+	return o
+}
+
+// (Output)
+// Dataset name for the linked DatasetConfig.
+func (o InsightsDatasetConfigLinkOutput) Dataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigLink) *string { return v.Dataset }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the linked DatasetConfig.
+func (o InsightsDatasetConfigLinkOutput) Linked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigLink) *bool { return v.Linked }).(pulumi.BoolPtrOutput)
+}
+
+type InsightsDatasetConfigLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsDatasetConfigLink)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigLinkArrayOutput) ToInsightsDatasetConfigLinkArrayOutput() InsightsDatasetConfigLinkArrayOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigLinkArrayOutput) ToInsightsDatasetConfigLinkArrayOutputWithContext(ctx context.Context) InsightsDatasetConfigLinkArrayOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigLinkArrayOutput) Index(i pulumi.IntInput) InsightsDatasetConfigLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsDatasetConfigLink {
+		return vs[0].([]InsightsDatasetConfigLink)[vs[1].(int)]
+	}).(InsightsDatasetConfigLinkOutput)
+}
+
+type InsightsDatasetConfigSourceFolders struct {
+	// The list of folder numbers to include in the DatasetConfig.
+	FolderNumbers []string `pulumi:"folderNumbers"`
+}
+
+// InsightsDatasetConfigSourceFoldersInput is an input type that accepts InsightsDatasetConfigSourceFoldersArgs and InsightsDatasetConfigSourceFoldersOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigSourceFoldersInput` via:
+//
+//	InsightsDatasetConfigSourceFoldersArgs{...}
+type InsightsDatasetConfigSourceFoldersInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigSourceFoldersOutput() InsightsDatasetConfigSourceFoldersOutput
+	ToInsightsDatasetConfigSourceFoldersOutputWithContext(context.Context) InsightsDatasetConfigSourceFoldersOutput
+}
+
+type InsightsDatasetConfigSourceFoldersArgs struct {
+	// The list of folder numbers to include in the DatasetConfig.
+	FolderNumbers pulumi.StringArrayInput `pulumi:"folderNumbers"`
+}
+
+func (InsightsDatasetConfigSourceFoldersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigSourceFolders)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigSourceFoldersArgs) ToInsightsDatasetConfigSourceFoldersOutput() InsightsDatasetConfigSourceFoldersOutput {
+	return i.ToInsightsDatasetConfigSourceFoldersOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigSourceFoldersArgs) ToInsightsDatasetConfigSourceFoldersOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceFoldersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigSourceFoldersOutput)
+}
+
+func (i InsightsDatasetConfigSourceFoldersArgs) ToInsightsDatasetConfigSourceFoldersPtrOutput() InsightsDatasetConfigSourceFoldersPtrOutput {
+	return i.ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigSourceFoldersArgs) ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceFoldersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigSourceFoldersOutput).ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(ctx)
+}
+
+// InsightsDatasetConfigSourceFoldersPtrInput is an input type that accepts InsightsDatasetConfigSourceFoldersArgs, InsightsDatasetConfigSourceFoldersPtr and InsightsDatasetConfigSourceFoldersPtrOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigSourceFoldersPtrInput` via:
+//
+//	        InsightsDatasetConfigSourceFoldersArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsDatasetConfigSourceFoldersPtrInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigSourceFoldersPtrOutput() InsightsDatasetConfigSourceFoldersPtrOutput
+	ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(context.Context) InsightsDatasetConfigSourceFoldersPtrOutput
+}
+
+type insightsDatasetConfigSourceFoldersPtrType InsightsDatasetConfigSourceFoldersArgs
+
+func InsightsDatasetConfigSourceFoldersPtr(v *InsightsDatasetConfigSourceFoldersArgs) InsightsDatasetConfigSourceFoldersPtrInput {
+	return (*insightsDatasetConfigSourceFoldersPtrType)(v)
+}
+
+func (*insightsDatasetConfigSourceFoldersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigSourceFolders)(nil)).Elem()
+}
+
+func (i *insightsDatasetConfigSourceFoldersPtrType) ToInsightsDatasetConfigSourceFoldersPtrOutput() InsightsDatasetConfigSourceFoldersPtrOutput {
+	return i.ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsDatasetConfigSourceFoldersPtrType) ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceFoldersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigSourceFoldersPtrOutput)
+}
+
+type InsightsDatasetConfigSourceFoldersOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigSourceFoldersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigSourceFolders)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigSourceFoldersOutput) ToInsightsDatasetConfigSourceFoldersOutput() InsightsDatasetConfigSourceFoldersOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigSourceFoldersOutput) ToInsightsDatasetConfigSourceFoldersOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceFoldersOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigSourceFoldersOutput) ToInsightsDatasetConfigSourceFoldersPtrOutput() InsightsDatasetConfigSourceFoldersPtrOutput {
+	return o.ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsDatasetConfigSourceFoldersOutput) ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceFoldersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsDatasetConfigSourceFolders) *InsightsDatasetConfigSourceFolders {
+		return &v
+	}).(InsightsDatasetConfigSourceFoldersPtrOutput)
+}
+
+// The list of folder numbers to include in the DatasetConfig.
+func (o InsightsDatasetConfigSourceFoldersOutput) FolderNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigSourceFolders) []string { return v.FolderNumbers }).(pulumi.StringArrayOutput)
+}
+
+type InsightsDatasetConfigSourceFoldersPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigSourceFoldersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigSourceFolders)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigSourceFoldersPtrOutput) ToInsightsDatasetConfigSourceFoldersPtrOutput() InsightsDatasetConfigSourceFoldersPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigSourceFoldersPtrOutput) ToInsightsDatasetConfigSourceFoldersPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceFoldersPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigSourceFoldersPtrOutput) Elem() InsightsDatasetConfigSourceFoldersOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigSourceFolders) InsightsDatasetConfigSourceFolders {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsDatasetConfigSourceFolders
+		return ret
+	}).(InsightsDatasetConfigSourceFoldersOutput)
+}
+
+// The list of folder numbers to include in the DatasetConfig.
+func (o InsightsDatasetConfigSourceFoldersPtrOutput) FolderNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigSourceFolders) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FolderNumbers
+	}).(pulumi.StringArrayOutput)
+}
+
+type InsightsDatasetConfigSourceProjects struct {
+	// The list of project numbers to include in the DatasetConfig.
+	ProjectNumbers []string `pulumi:"projectNumbers"`
+}
+
+// InsightsDatasetConfigSourceProjectsInput is an input type that accepts InsightsDatasetConfigSourceProjectsArgs and InsightsDatasetConfigSourceProjectsOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigSourceProjectsInput` via:
+//
+//	InsightsDatasetConfigSourceProjectsArgs{...}
+type InsightsDatasetConfigSourceProjectsInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigSourceProjectsOutput() InsightsDatasetConfigSourceProjectsOutput
+	ToInsightsDatasetConfigSourceProjectsOutputWithContext(context.Context) InsightsDatasetConfigSourceProjectsOutput
+}
+
+type InsightsDatasetConfigSourceProjectsArgs struct {
+	// The list of project numbers to include in the DatasetConfig.
+	ProjectNumbers pulumi.StringArrayInput `pulumi:"projectNumbers"`
+}
+
+func (InsightsDatasetConfigSourceProjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigSourceProjects)(nil)).Elem()
+}
+
+func (i InsightsDatasetConfigSourceProjectsArgs) ToInsightsDatasetConfigSourceProjectsOutput() InsightsDatasetConfigSourceProjectsOutput {
+	return i.ToInsightsDatasetConfigSourceProjectsOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigSourceProjectsArgs) ToInsightsDatasetConfigSourceProjectsOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceProjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigSourceProjectsOutput)
+}
+
+func (i InsightsDatasetConfigSourceProjectsArgs) ToInsightsDatasetConfigSourceProjectsPtrOutput() InsightsDatasetConfigSourceProjectsPtrOutput {
+	return i.ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsDatasetConfigSourceProjectsArgs) ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigSourceProjectsOutput).ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(ctx)
+}
+
+// InsightsDatasetConfigSourceProjectsPtrInput is an input type that accepts InsightsDatasetConfigSourceProjectsArgs, InsightsDatasetConfigSourceProjectsPtr and InsightsDatasetConfigSourceProjectsPtrOutput values.
+// You can construct a concrete instance of `InsightsDatasetConfigSourceProjectsPtrInput` via:
+//
+//	        InsightsDatasetConfigSourceProjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsDatasetConfigSourceProjectsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsDatasetConfigSourceProjectsPtrOutput() InsightsDatasetConfigSourceProjectsPtrOutput
+	ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(context.Context) InsightsDatasetConfigSourceProjectsPtrOutput
+}
+
+type insightsDatasetConfigSourceProjectsPtrType InsightsDatasetConfigSourceProjectsArgs
+
+func InsightsDatasetConfigSourceProjectsPtr(v *InsightsDatasetConfigSourceProjectsArgs) InsightsDatasetConfigSourceProjectsPtrInput {
+	return (*insightsDatasetConfigSourceProjectsPtrType)(v)
+}
+
+func (*insightsDatasetConfigSourceProjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigSourceProjects)(nil)).Elem()
+}
+
+func (i *insightsDatasetConfigSourceProjectsPtrType) ToInsightsDatasetConfigSourceProjectsPtrOutput() InsightsDatasetConfigSourceProjectsPtrOutput {
+	return i.ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsDatasetConfigSourceProjectsPtrType) ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsDatasetConfigSourceProjectsPtrOutput)
+}
+
+type InsightsDatasetConfigSourceProjectsOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigSourceProjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsDatasetConfigSourceProjects)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigSourceProjectsOutput) ToInsightsDatasetConfigSourceProjectsOutput() InsightsDatasetConfigSourceProjectsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigSourceProjectsOutput) ToInsightsDatasetConfigSourceProjectsOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceProjectsOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigSourceProjectsOutput) ToInsightsDatasetConfigSourceProjectsPtrOutput() InsightsDatasetConfigSourceProjectsPtrOutput {
+	return o.ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsDatasetConfigSourceProjectsOutput) ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceProjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsDatasetConfigSourceProjects) *InsightsDatasetConfigSourceProjects {
+		return &v
+	}).(InsightsDatasetConfigSourceProjectsPtrOutput)
+}
+
+// The list of project numbers to include in the DatasetConfig.
+func (o InsightsDatasetConfigSourceProjectsOutput) ProjectNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InsightsDatasetConfigSourceProjects) []string { return v.ProjectNumbers }).(pulumi.StringArrayOutput)
+}
+
+type InsightsDatasetConfigSourceProjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsDatasetConfigSourceProjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsDatasetConfigSourceProjects)(nil)).Elem()
+}
+
+func (o InsightsDatasetConfigSourceProjectsPtrOutput) ToInsightsDatasetConfigSourceProjectsPtrOutput() InsightsDatasetConfigSourceProjectsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigSourceProjectsPtrOutput) ToInsightsDatasetConfigSourceProjectsPtrOutputWithContext(ctx context.Context) InsightsDatasetConfigSourceProjectsPtrOutput {
+	return o
+}
+
+func (o InsightsDatasetConfigSourceProjectsPtrOutput) Elem() InsightsDatasetConfigSourceProjectsOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigSourceProjects) InsightsDatasetConfigSourceProjects {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsDatasetConfigSourceProjects
+		return ret
+	}).(InsightsDatasetConfigSourceProjectsOutput)
+}
+
+// The list of project numbers to include in the DatasetConfig.
+func (o InsightsDatasetConfigSourceProjectsPtrOutput) ProjectNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InsightsDatasetConfigSourceProjects) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectNumbers
+	}).(pulumi.StringArrayOutput)
+}
+
 type InsightsReportConfigCsvOptions struct {
 	// The delimiter used to separate the fields in the inventory report CSV file.
 	Delimiter *string `pulumi:"delimiter"`
@@ -19210,6 +20554,1042 @@ func (o GetControlProjectIntelligenceConfigTrialConfigArrayOutput) Index(i pulum
 	}).(GetControlProjectIntelligenceConfigTrialConfigOutput)
 }
 
+type GetInsightsDatasetConfigExcludeCloudStorageBucket struct {
+	// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+	CloudStorageBuckets []GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket `pulumi:"cloudStorageBuckets"`
+}
+
+// GetInsightsDatasetConfigExcludeCloudStorageBucketInput is an input type that accepts GetInsightsDatasetConfigExcludeCloudStorageBucketArgs and GetInsightsDatasetConfigExcludeCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigExcludeCloudStorageBucketInput` via:
+//
+//	GetInsightsDatasetConfigExcludeCloudStorageBucketArgs{...}
+type GetInsightsDatasetConfigExcludeCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigExcludeCloudStorageBucketOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketOutput
+	ToGetInsightsDatasetConfigExcludeCloudStorageBucketOutputWithContext(context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketOutput
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketArgs struct {
+	// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+	CloudStorageBuckets GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayInput `pulumi:"cloudStorageBuckets"`
+}
+
+func (GetInsightsDatasetConfigExcludeCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageBucketArgs) ToGetInsightsDatasetConfigExcludeCloudStorageBucketOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketOutput {
+	return i.ToGetInsightsDatasetConfigExcludeCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageBucketArgs) ToGetInsightsDatasetConfigExcludeCloudStorageBucketOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigExcludeCloudStorageBucketOutput)
+}
+
+// GetInsightsDatasetConfigExcludeCloudStorageBucketArrayInput is an input type that accepts GetInsightsDatasetConfigExcludeCloudStorageBucketArray and GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigExcludeCloudStorageBucketArrayInput` via:
+//
+//	GetInsightsDatasetConfigExcludeCloudStorageBucketArray{ GetInsightsDatasetConfigExcludeCloudStorageBucketArgs{...} }
+type GetInsightsDatasetConfigExcludeCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput
+	ToGetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutputWithContext(context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketArray []GetInsightsDatasetConfigExcludeCloudStorageBucketInput
+
+func (GetInsightsDatasetConfigExcludeCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigExcludeCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageBucketArray) ToGetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput {
+	return i.ToGetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageBucketArray) ToGetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput)
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigExcludeCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketOutput) ToGetInsightsDatasetConfigExcludeCloudStorageBucketOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketOutput) ToGetInsightsDatasetConfigExcludeCloudStorageBucketOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketOutput {
+	return o
+}
+
+// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketOutput) CloudStorageBuckets() GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigExcludeCloudStorageBucket) []GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket {
+		return v.CloudStorageBuckets
+	}).(GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput)
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigExcludeCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput) ToGetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput) ToGetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigExcludeCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigExcludeCloudStorageBucket {
+		return vs[0].([]GetInsightsDatasetConfigExcludeCloudStorageBucket)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigExcludeCloudStorageBucketOutput)
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket struct {
+	// The list of cloud storage bucket names to exclude in the DatasetConfig.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketName string `pulumi:"bucketName"`
+	// The list of regex patterns for bucket names matching the regex.
+	// Regex should follow the syntax specified in google/re2 on GitHub.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketPrefixRegex string `pulumi:"bucketPrefixRegex"`
+}
+
+// GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketInput is an input type that accepts GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs and GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketInput` via:
+//
+//	GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs{...}
+type GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput
+	ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutputWithContext(context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs struct {
+	// The list of cloud storage bucket names to exclude in the DatasetConfig.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The list of regex patterns for bucket names matching the regex.
+	// Regex should follow the syntax specified in google/re2 on GitHub.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketPrefixRegex pulumi.StringInput `pulumi:"bucketPrefixRegex"`
+}
+
+func (GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs) ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput {
+	return i.ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs) ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput)
+}
+
+// GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayInput is an input type that accepts GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArray and GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayInput` via:
+//
+//	GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArray{ GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs{...} }
+type GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput
+	ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutputWithContext(context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArray []GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketInput
+
+func (GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArray) ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return i.ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArray) ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput)
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput) ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput) ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput {
+	return o
+}
+
+// The list of cloud storage bucket names to exclude in the DatasetConfig.
+// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket) string {
+		return v.BucketName
+	}).(pulumi.StringOutput)
+}
+
+// The list of regex patterns for bucket names matching the regex.
+// Regex should follow the syntax specified in google/re2 on GitHub.
+// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput) BucketPrefixRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket) string {
+		return v.BucketPrefixRegex
+	}).(pulumi.StringOutput)
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput) ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput) ToGetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket {
+		return vs[0].([]GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput)
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageLocation struct {
+	// The list of cloud storage locations to exclude in the DatasetConfig.
+	Locations []string `pulumi:"locations"`
+}
+
+// GetInsightsDatasetConfigExcludeCloudStorageLocationInput is an input type that accepts GetInsightsDatasetConfigExcludeCloudStorageLocationArgs and GetInsightsDatasetConfigExcludeCloudStorageLocationOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigExcludeCloudStorageLocationInput` via:
+//
+//	GetInsightsDatasetConfigExcludeCloudStorageLocationArgs{...}
+type GetInsightsDatasetConfigExcludeCloudStorageLocationInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigExcludeCloudStorageLocationOutput() GetInsightsDatasetConfigExcludeCloudStorageLocationOutput
+	ToGetInsightsDatasetConfigExcludeCloudStorageLocationOutputWithContext(context.Context) GetInsightsDatasetConfigExcludeCloudStorageLocationOutput
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageLocationArgs struct {
+	// The list of cloud storage locations to exclude in the DatasetConfig.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (GetInsightsDatasetConfigExcludeCloudStorageLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageLocationArgs) ToGetInsightsDatasetConfigExcludeCloudStorageLocationOutput() GetInsightsDatasetConfigExcludeCloudStorageLocationOutput {
+	return i.ToGetInsightsDatasetConfigExcludeCloudStorageLocationOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageLocationArgs) ToGetInsightsDatasetConfigExcludeCloudStorageLocationOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigExcludeCloudStorageLocationOutput)
+}
+
+// GetInsightsDatasetConfigExcludeCloudStorageLocationArrayInput is an input type that accepts GetInsightsDatasetConfigExcludeCloudStorageLocationArray and GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigExcludeCloudStorageLocationArrayInput` via:
+//
+//	GetInsightsDatasetConfigExcludeCloudStorageLocationArray{ GetInsightsDatasetConfigExcludeCloudStorageLocationArgs{...} }
+type GetInsightsDatasetConfigExcludeCloudStorageLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput
+	ToGetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutputWithContext(context.Context) GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageLocationArray []GetInsightsDatasetConfigExcludeCloudStorageLocationInput
+
+func (GetInsightsDatasetConfigExcludeCloudStorageLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigExcludeCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageLocationArray) ToGetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput {
+	return i.ToGetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigExcludeCloudStorageLocationArray) ToGetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput)
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageLocationOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigExcludeCloudStorageLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageLocationOutput) ToGetInsightsDatasetConfigExcludeCloudStorageLocationOutput() GetInsightsDatasetConfigExcludeCloudStorageLocationOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageLocationOutput) ToGetInsightsDatasetConfigExcludeCloudStorageLocationOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageLocationOutput {
+	return o
+}
+
+// The list of cloud storage locations to exclude in the DatasetConfig.
+func (o GetInsightsDatasetConfigExcludeCloudStorageLocationOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigExcludeCloudStorageLocation) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+type GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigExcludeCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput) ToGetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput() GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput) ToGetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigExcludeCloudStorageLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigExcludeCloudStorageLocation {
+		return vs[0].([]GetInsightsDatasetConfigExcludeCloudStorageLocation)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigExcludeCloudStorageLocationOutput)
+}
+
+type GetInsightsDatasetConfigIdentity struct {
+	// Name of the identity.
+	Name string `pulumi:"name"`
+	// Type of identity to use for the DatasetConfig. Possible values: ["IDENTITY_TYPE_PER_CONFIG", "IDENTITY_TYPE_PER_PROJECT"]
+	Type string `pulumi:"type"`
+}
+
+// GetInsightsDatasetConfigIdentityInput is an input type that accepts GetInsightsDatasetConfigIdentityArgs and GetInsightsDatasetConfigIdentityOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigIdentityInput` via:
+//
+//	GetInsightsDatasetConfigIdentityArgs{...}
+type GetInsightsDatasetConfigIdentityInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigIdentityOutput() GetInsightsDatasetConfigIdentityOutput
+	ToGetInsightsDatasetConfigIdentityOutputWithContext(context.Context) GetInsightsDatasetConfigIdentityOutput
+}
+
+type GetInsightsDatasetConfigIdentityArgs struct {
+	// Name of the identity.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type of identity to use for the DatasetConfig. Possible values: ["IDENTITY_TYPE_PER_CONFIG", "IDENTITY_TYPE_PER_PROJECT"]
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInsightsDatasetConfigIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigIdentity)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigIdentityArgs) ToGetInsightsDatasetConfigIdentityOutput() GetInsightsDatasetConfigIdentityOutput {
+	return i.ToGetInsightsDatasetConfigIdentityOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigIdentityArgs) ToGetInsightsDatasetConfigIdentityOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigIdentityOutput)
+}
+
+// GetInsightsDatasetConfigIdentityArrayInput is an input type that accepts GetInsightsDatasetConfigIdentityArray and GetInsightsDatasetConfigIdentityArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigIdentityArrayInput` via:
+//
+//	GetInsightsDatasetConfigIdentityArray{ GetInsightsDatasetConfigIdentityArgs{...} }
+type GetInsightsDatasetConfigIdentityArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigIdentityArrayOutput() GetInsightsDatasetConfigIdentityArrayOutput
+	ToGetInsightsDatasetConfigIdentityArrayOutputWithContext(context.Context) GetInsightsDatasetConfigIdentityArrayOutput
+}
+
+type GetInsightsDatasetConfigIdentityArray []GetInsightsDatasetConfigIdentityInput
+
+func (GetInsightsDatasetConfigIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigIdentity)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigIdentityArray) ToGetInsightsDatasetConfigIdentityArrayOutput() GetInsightsDatasetConfigIdentityArrayOutput {
+	return i.ToGetInsightsDatasetConfigIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigIdentityArray) ToGetInsightsDatasetConfigIdentityArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigIdentityArrayOutput)
+}
+
+type GetInsightsDatasetConfigIdentityOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigIdentity)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigIdentityOutput) ToGetInsightsDatasetConfigIdentityOutput() GetInsightsDatasetConfigIdentityOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIdentityOutput) ToGetInsightsDatasetConfigIdentityOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIdentityOutput {
+	return o
+}
+
+// Name of the identity.
+func (o GetInsightsDatasetConfigIdentityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigIdentity) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type of identity to use for the DatasetConfig. Possible values: ["IDENTITY_TYPE_PER_CONFIG", "IDENTITY_TYPE_PER_PROJECT"]
+func (o GetInsightsDatasetConfigIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInsightsDatasetConfigIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigIdentity)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigIdentityArrayOutput) ToGetInsightsDatasetConfigIdentityArrayOutput() GetInsightsDatasetConfigIdentityArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIdentityArrayOutput) ToGetInsightsDatasetConfigIdentityArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIdentityArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIdentityArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigIdentity {
+		return vs[0].([]GetInsightsDatasetConfigIdentity)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigIdentityOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucket struct {
+	// The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+	CloudStorageBuckets []GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket `pulumi:"cloudStorageBuckets"`
+}
+
+// GetInsightsDatasetConfigIncludeCloudStorageBucketInput is an input type that accepts GetInsightsDatasetConfigIncludeCloudStorageBucketArgs and GetInsightsDatasetConfigIncludeCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigIncludeCloudStorageBucketInput` via:
+//
+//	GetInsightsDatasetConfigIncludeCloudStorageBucketArgs{...}
+type GetInsightsDatasetConfigIncludeCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigIncludeCloudStorageBucketOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketOutput
+	ToGetInsightsDatasetConfigIncludeCloudStorageBucketOutputWithContext(context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketOutput
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketArgs struct {
+	// The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+	CloudStorageBuckets GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayInput `pulumi:"cloudStorageBuckets"`
+}
+
+func (GetInsightsDatasetConfigIncludeCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageBucketArgs) ToGetInsightsDatasetConfigIncludeCloudStorageBucketOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketOutput {
+	return i.ToGetInsightsDatasetConfigIncludeCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageBucketArgs) ToGetInsightsDatasetConfigIncludeCloudStorageBucketOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigIncludeCloudStorageBucketOutput)
+}
+
+// GetInsightsDatasetConfigIncludeCloudStorageBucketArrayInput is an input type that accepts GetInsightsDatasetConfigIncludeCloudStorageBucketArray and GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigIncludeCloudStorageBucketArrayInput` via:
+//
+//	GetInsightsDatasetConfigIncludeCloudStorageBucketArray{ GetInsightsDatasetConfigIncludeCloudStorageBucketArgs{...} }
+type GetInsightsDatasetConfigIncludeCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput
+	ToGetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutputWithContext(context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketArray []GetInsightsDatasetConfigIncludeCloudStorageBucketInput
+
+func (GetInsightsDatasetConfigIncludeCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigIncludeCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageBucketArray) ToGetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput {
+	return i.ToGetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageBucketArray) ToGetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigIncludeCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketOutput) ToGetInsightsDatasetConfigIncludeCloudStorageBucketOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketOutput) ToGetInsightsDatasetConfigIncludeCloudStorageBucketOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketOutput {
+	return o
+}
+
+// The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketOutput) CloudStorageBuckets() GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigIncludeCloudStorageBucket) []GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket {
+		return v.CloudStorageBuckets
+	}).(GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigIncludeCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput) ToGetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput) ToGetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigIncludeCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigIncludeCloudStorageBucket {
+		return vs[0].([]GetInsightsDatasetConfigIncludeCloudStorageBucket)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigIncludeCloudStorageBucketOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket struct {
+	// The list of cloud storage bucket names to include in the DatasetConfig.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketName string `pulumi:"bucketName"`
+	// The list of regex patterns for bucket names matching the regex.
+	// Regex should follow the syntax specified in google/re2 on GitHub.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketPrefixRegex string `pulumi:"bucketPrefixRegex"`
+}
+
+// GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketInput is an input type that accepts GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs and GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketInput` via:
+//
+//	GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs{...}
+type GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput
+	ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutputWithContext(context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs struct {
+	// The list of cloud storage bucket names to include in the DatasetConfig.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The list of regex patterns for bucket names matching the regex.
+	// Regex should follow the syntax specified in google/re2 on GitHub.
+	// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+	BucketPrefixRegex pulumi.StringInput `pulumi:"bucketPrefixRegex"`
+}
+
+func (GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs) ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput {
+	return i.ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs) ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput)
+}
+
+// GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayInput is an input type that accepts GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArray and GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayInput` via:
+//
+//	GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArray{ GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs{...} }
+type GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput
+	ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutputWithContext(context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArray []GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketInput
+
+func (GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArray) ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return i.ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArray) ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput) ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput) ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput {
+	return o
+}
+
+// The list of cloud storage bucket names to include in the DatasetConfig.
+// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket) string {
+		return v.BucketName
+	}).(pulumi.StringOutput)
+}
+
+// The list of regex patterns for bucket names matching the regex.
+// Regex should follow the syntax specified in google/re2 on GitHub.
+// Exactly one of the bucketName and bucketPrefixRegex should be specified.
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput) BucketPrefixRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket) string {
+		return v.BucketPrefixRegex
+	}).(pulumi.StringOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput) ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput) ToGetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket {
+		return vs[0].([]GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageLocation struct {
+	// The list of cloud storage locations to include in the DatasetConfig.
+	Locations []string `pulumi:"locations"`
+}
+
+// GetInsightsDatasetConfigIncludeCloudStorageLocationInput is an input type that accepts GetInsightsDatasetConfigIncludeCloudStorageLocationArgs and GetInsightsDatasetConfigIncludeCloudStorageLocationOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigIncludeCloudStorageLocationInput` via:
+//
+//	GetInsightsDatasetConfigIncludeCloudStorageLocationArgs{...}
+type GetInsightsDatasetConfigIncludeCloudStorageLocationInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigIncludeCloudStorageLocationOutput() GetInsightsDatasetConfigIncludeCloudStorageLocationOutput
+	ToGetInsightsDatasetConfigIncludeCloudStorageLocationOutputWithContext(context.Context) GetInsightsDatasetConfigIncludeCloudStorageLocationOutput
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageLocationArgs struct {
+	// The list of cloud storage locations to include in the DatasetConfig.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (GetInsightsDatasetConfigIncludeCloudStorageLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageLocationArgs) ToGetInsightsDatasetConfigIncludeCloudStorageLocationOutput() GetInsightsDatasetConfigIncludeCloudStorageLocationOutput {
+	return i.ToGetInsightsDatasetConfigIncludeCloudStorageLocationOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageLocationArgs) ToGetInsightsDatasetConfigIncludeCloudStorageLocationOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigIncludeCloudStorageLocationOutput)
+}
+
+// GetInsightsDatasetConfigIncludeCloudStorageLocationArrayInput is an input type that accepts GetInsightsDatasetConfigIncludeCloudStorageLocationArray and GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigIncludeCloudStorageLocationArrayInput` via:
+//
+//	GetInsightsDatasetConfigIncludeCloudStorageLocationArray{ GetInsightsDatasetConfigIncludeCloudStorageLocationArgs{...} }
+type GetInsightsDatasetConfigIncludeCloudStorageLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput
+	ToGetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutputWithContext(context.Context) GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageLocationArray []GetInsightsDatasetConfigIncludeCloudStorageLocationInput
+
+func (GetInsightsDatasetConfigIncludeCloudStorageLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigIncludeCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageLocationArray) ToGetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput {
+	return i.ToGetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigIncludeCloudStorageLocationArray) ToGetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageLocationOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigIncludeCloudStorageLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageLocationOutput) ToGetInsightsDatasetConfigIncludeCloudStorageLocationOutput() GetInsightsDatasetConfigIncludeCloudStorageLocationOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageLocationOutput) ToGetInsightsDatasetConfigIncludeCloudStorageLocationOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageLocationOutput {
+	return o
+}
+
+// The list of cloud storage locations to include in the DatasetConfig.
+func (o GetInsightsDatasetConfigIncludeCloudStorageLocationOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigIncludeCloudStorageLocation) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+type GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigIncludeCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput) ToGetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput() GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput) ToGetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigIncludeCloudStorageLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigIncludeCloudStorageLocation {
+		return vs[0].([]GetInsightsDatasetConfigIncludeCloudStorageLocation)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigIncludeCloudStorageLocationOutput)
+}
+
+type GetInsightsDatasetConfigLink struct {
+	// Dataset name for the linked DatasetConfig.
+	Dataset string `pulumi:"dataset"`
+	// State of the linked DatasetConfig.
+	Linked bool `pulumi:"linked"`
+}
+
+// GetInsightsDatasetConfigLinkInput is an input type that accepts GetInsightsDatasetConfigLinkArgs and GetInsightsDatasetConfigLinkOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigLinkInput` via:
+//
+//	GetInsightsDatasetConfigLinkArgs{...}
+type GetInsightsDatasetConfigLinkInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigLinkOutput() GetInsightsDatasetConfigLinkOutput
+	ToGetInsightsDatasetConfigLinkOutputWithContext(context.Context) GetInsightsDatasetConfigLinkOutput
+}
+
+type GetInsightsDatasetConfigLinkArgs struct {
+	// Dataset name for the linked DatasetConfig.
+	Dataset pulumi.StringInput `pulumi:"dataset"`
+	// State of the linked DatasetConfig.
+	Linked pulumi.BoolInput `pulumi:"linked"`
+}
+
+func (GetInsightsDatasetConfigLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigLink)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigLinkArgs) ToGetInsightsDatasetConfigLinkOutput() GetInsightsDatasetConfigLinkOutput {
+	return i.ToGetInsightsDatasetConfigLinkOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigLinkArgs) ToGetInsightsDatasetConfigLinkOutputWithContext(ctx context.Context) GetInsightsDatasetConfigLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigLinkOutput)
+}
+
+// GetInsightsDatasetConfigLinkArrayInput is an input type that accepts GetInsightsDatasetConfigLinkArray and GetInsightsDatasetConfigLinkArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigLinkArrayInput` via:
+//
+//	GetInsightsDatasetConfigLinkArray{ GetInsightsDatasetConfigLinkArgs{...} }
+type GetInsightsDatasetConfigLinkArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigLinkArrayOutput() GetInsightsDatasetConfigLinkArrayOutput
+	ToGetInsightsDatasetConfigLinkArrayOutputWithContext(context.Context) GetInsightsDatasetConfigLinkArrayOutput
+}
+
+type GetInsightsDatasetConfigLinkArray []GetInsightsDatasetConfigLinkInput
+
+func (GetInsightsDatasetConfigLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigLink)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigLinkArray) ToGetInsightsDatasetConfigLinkArrayOutput() GetInsightsDatasetConfigLinkArrayOutput {
+	return i.ToGetInsightsDatasetConfigLinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigLinkArray) ToGetInsightsDatasetConfigLinkArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigLinkArrayOutput)
+}
+
+type GetInsightsDatasetConfigLinkOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigLink)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigLinkOutput) ToGetInsightsDatasetConfigLinkOutput() GetInsightsDatasetConfigLinkOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigLinkOutput) ToGetInsightsDatasetConfigLinkOutputWithContext(ctx context.Context) GetInsightsDatasetConfigLinkOutput {
+	return o
+}
+
+// Dataset name for the linked DatasetConfig.
+func (o GetInsightsDatasetConfigLinkOutput) Dataset() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigLink) string { return v.Dataset }).(pulumi.StringOutput)
+}
+
+// State of the linked DatasetConfig.
+func (o GetInsightsDatasetConfigLinkOutput) Linked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigLink) bool { return v.Linked }).(pulumi.BoolOutput)
+}
+
+type GetInsightsDatasetConfigLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigLink)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigLinkArrayOutput) ToGetInsightsDatasetConfigLinkArrayOutput() GetInsightsDatasetConfigLinkArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigLinkArrayOutput) ToGetInsightsDatasetConfigLinkArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigLinkArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigLinkArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigLink {
+		return vs[0].([]GetInsightsDatasetConfigLink)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigLinkOutput)
+}
+
+type GetInsightsDatasetConfigSourceFolder struct {
+	// The list of folder numbers to include in the DatasetConfig.
+	FolderNumbers []string `pulumi:"folderNumbers"`
+}
+
+// GetInsightsDatasetConfigSourceFolderInput is an input type that accepts GetInsightsDatasetConfigSourceFolderArgs and GetInsightsDatasetConfigSourceFolderOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigSourceFolderInput` via:
+//
+//	GetInsightsDatasetConfigSourceFolderArgs{...}
+type GetInsightsDatasetConfigSourceFolderInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigSourceFolderOutput() GetInsightsDatasetConfigSourceFolderOutput
+	ToGetInsightsDatasetConfigSourceFolderOutputWithContext(context.Context) GetInsightsDatasetConfigSourceFolderOutput
+}
+
+type GetInsightsDatasetConfigSourceFolderArgs struct {
+	// The list of folder numbers to include in the DatasetConfig.
+	FolderNumbers pulumi.StringArrayInput `pulumi:"folderNumbers"`
+}
+
+func (GetInsightsDatasetConfigSourceFolderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigSourceFolder)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigSourceFolderArgs) ToGetInsightsDatasetConfigSourceFolderOutput() GetInsightsDatasetConfigSourceFolderOutput {
+	return i.ToGetInsightsDatasetConfigSourceFolderOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigSourceFolderArgs) ToGetInsightsDatasetConfigSourceFolderOutputWithContext(ctx context.Context) GetInsightsDatasetConfigSourceFolderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigSourceFolderOutput)
+}
+
+// GetInsightsDatasetConfigSourceFolderArrayInput is an input type that accepts GetInsightsDatasetConfigSourceFolderArray and GetInsightsDatasetConfigSourceFolderArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigSourceFolderArrayInput` via:
+//
+//	GetInsightsDatasetConfigSourceFolderArray{ GetInsightsDatasetConfigSourceFolderArgs{...} }
+type GetInsightsDatasetConfigSourceFolderArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigSourceFolderArrayOutput() GetInsightsDatasetConfigSourceFolderArrayOutput
+	ToGetInsightsDatasetConfigSourceFolderArrayOutputWithContext(context.Context) GetInsightsDatasetConfigSourceFolderArrayOutput
+}
+
+type GetInsightsDatasetConfigSourceFolderArray []GetInsightsDatasetConfigSourceFolderInput
+
+func (GetInsightsDatasetConfigSourceFolderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigSourceFolder)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigSourceFolderArray) ToGetInsightsDatasetConfigSourceFolderArrayOutput() GetInsightsDatasetConfigSourceFolderArrayOutput {
+	return i.ToGetInsightsDatasetConfigSourceFolderArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigSourceFolderArray) ToGetInsightsDatasetConfigSourceFolderArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigSourceFolderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigSourceFolderArrayOutput)
+}
+
+type GetInsightsDatasetConfigSourceFolderOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigSourceFolderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigSourceFolder)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigSourceFolderOutput) ToGetInsightsDatasetConfigSourceFolderOutput() GetInsightsDatasetConfigSourceFolderOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigSourceFolderOutput) ToGetInsightsDatasetConfigSourceFolderOutputWithContext(ctx context.Context) GetInsightsDatasetConfigSourceFolderOutput {
+	return o
+}
+
+// The list of folder numbers to include in the DatasetConfig.
+func (o GetInsightsDatasetConfigSourceFolderOutput) FolderNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigSourceFolder) []string { return v.FolderNumbers }).(pulumi.StringArrayOutput)
+}
+
+type GetInsightsDatasetConfigSourceFolderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigSourceFolderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigSourceFolder)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigSourceFolderArrayOutput) ToGetInsightsDatasetConfigSourceFolderArrayOutput() GetInsightsDatasetConfigSourceFolderArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigSourceFolderArrayOutput) ToGetInsightsDatasetConfigSourceFolderArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigSourceFolderArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigSourceFolderArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigSourceFolderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigSourceFolder {
+		return vs[0].([]GetInsightsDatasetConfigSourceFolder)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigSourceFolderOutput)
+}
+
+type GetInsightsDatasetConfigSourceProject struct {
+	// The list of project numbers to include in the DatasetConfig.
+	ProjectNumbers []string `pulumi:"projectNumbers"`
+}
+
+// GetInsightsDatasetConfigSourceProjectInput is an input type that accepts GetInsightsDatasetConfigSourceProjectArgs and GetInsightsDatasetConfigSourceProjectOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigSourceProjectInput` via:
+//
+//	GetInsightsDatasetConfigSourceProjectArgs{...}
+type GetInsightsDatasetConfigSourceProjectInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigSourceProjectOutput() GetInsightsDatasetConfigSourceProjectOutput
+	ToGetInsightsDatasetConfigSourceProjectOutputWithContext(context.Context) GetInsightsDatasetConfigSourceProjectOutput
+}
+
+type GetInsightsDatasetConfigSourceProjectArgs struct {
+	// The list of project numbers to include in the DatasetConfig.
+	ProjectNumbers pulumi.StringArrayInput `pulumi:"projectNumbers"`
+}
+
+func (GetInsightsDatasetConfigSourceProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigSourceProject)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigSourceProjectArgs) ToGetInsightsDatasetConfigSourceProjectOutput() GetInsightsDatasetConfigSourceProjectOutput {
+	return i.ToGetInsightsDatasetConfigSourceProjectOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigSourceProjectArgs) ToGetInsightsDatasetConfigSourceProjectOutputWithContext(ctx context.Context) GetInsightsDatasetConfigSourceProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigSourceProjectOutput)
+}
+
+// GetInsightsDatasetConfigSourceProjectArrayInput is an input type that accepts GetInsightsDatasetConfigSourceProjectArray and GetInsightsDatasetConfigSourceProjectArrayOutput values.
+// You can construct a concrete instance of `GetInsightsDatasetConfigSourceProjectArrayInput` via:
+//
+//	GetInsightsDatasetConfigSourceProjectArray{ GetInsightsDatasetConfigSourceProjectArgs{...} }
+type GetInsightsDatasetConfigSourceProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetInsightsDatasetConfigSourceProjectArrayOutput() GetInsightsDatasetConfigSourceProjectArrayOutput
+	ToGetInsightsDatasetConfigSourceProjectArrayOutputWithContext(context.Context) GetInsightsDatasetConfigSourceProjectArrayOutput
+}
+
+type GetInsightsDatasetConfigSourceProjectArray []GetInsightsDatasetConfigSourceProjectInput
+
+func (GetInsightsDatasetConfigSourceProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigSourceProject)(nil)).Elem()
+}
+
+func (i GetInsightsDatasetConfigSourceProjectArray) ToGetInsightsDatasetConfigSourceProjectArrayOutput() GetInsightsDatasetConfigSourceProjectArrayOutput {
+	return i.ToGetInsightsDatasetConfigSourceProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetInsightsDatasetConfigSourceProjectArray) ToGetInsightsDatasetConfigSourceProjectArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigSourceProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInsightsDatasetConfigSourceProjectArrayOutput)
+}
+
+type GetInsightsDatasetConfigSourceProjectOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigSourceProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInsightsDatasetConfigSourceProject)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigSourceProjectOutput) ToGetInsightsDatasetConfigSourceProjectOutput() GetInsightsDatasetConfigSourceProjectOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigSourceProjectOutput) ToGetInsightsDatasetConfigSourceProjectOutputWithContext(ctx context.Context) GetInsightsDatasetConfigSourceProjectOutput {
+	return o
+}
+
+// The list of project numbers to include in the DatasetConfig.
+func (o GetInsightsDatasetConfigSourceProjectOutput) ProjectNumbers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInsightsDatasetConfigSourceProject) []string { return v.ProjectNumbers }).(pulumi.StringArrayOutput)
+}
+
+type GetInsightsDatasetConfigSourceProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInsightsDatasetConfigSourceProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInsightsDatasetConfigSourceProject)(nil)).Elem()
+}
+
+func (o GetInsightsDatasetConfigSourceProjectArrayOutput) ToGetInsightsDatasetConfigSourceProjectArrayOutput() GetInsightsDatasetConfigSourceProjectArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigSourceProjectArrayOutput) ToGetInsightsDatasetConfigSourceProjectArrayOutputWithContext(ctx context.Context) GetInsightsDatasetConfigSourceProjectArrayOutput {
+	return o
+}
+
+func (o GetInsightsDatasetConfigSourceProjectArrayOutput) Index(i pulumi.IntInput) GetInsightsDatasetConfigSourceProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInsightsDatasetConfigSourceProject {
+		return vs[0].([]GetInsightsDatasetConfigSourceProject)[vs[1].(int)]
+	}).(GetInsightsDatasetConfigSourceProjectOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListInput)(nil)).Elem(), BatchOperationsJobBucketListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListPtrInput)(nil)).Elem(), BatchOperationsJobBucketListArgs{})
@@ -19309,6 +21689,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), ControlProjectIntelligenceConfigTrialConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsPtrInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageLocationsInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigExcludeCloudStorageLocationsPtrInput)(nil)).Elem(), InsightsDatasetConfigExcludeCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigIdentityInput)(nil)).Elem(), InsightsDatasetConfigIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigIdentityPtrInput)(nil)).Elem(), InsightsDatasetConfigIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageBucketsInput)(nil)).Elem(), InsightsDatasetConfigIncludeCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageBucketsPtrInput)(nil)).Elem(), InsightsDatasetConfigIncludeCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketInput)(nil)).Elem(), InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayInput)(nil)).Elem(), InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageLocationsInput)(nil)).Elem(), InsightsDatasetConfigIncludeCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigIncludeCloudStorageLocationsPtrInput)(nil)).Elem(), InsightsDatasetConfigIncludeCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigLinkInput)(nil)).Elem(), InsightsDatasetConfigLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigLinkArrayInput)(nil)).Elem(), InsightsDatasetConfigLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigSourceFoldersInput)(nil)).Elem(), InsightsDatasetConfigSourceFoldersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigSourceFoldersPtrInput)(nil)).Elem(), InsightsDatasetConfigSourceFoldersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigSourceProjectsInput)(nil)).Elem(), InsightsDatasetConfigSourceProjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsDatasetConfigSourceProjectsPtrInput)(nil)).Elem(), InsightsDatasetConfigSourceProjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigCsvOptionsInput)(nil)).Elem(), InsightsReportConfigCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigCsvOptionsPtrInput)(nil)).Elem(), InsightsReportConfigCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigFrequencyOptionsInput)(nil)).Elem(), InsightsReportConfigFrequencyOptionsArgs{})
@@ -19473,6 +21873,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigTrialConfigInput)(nil)).Elem(), GetControlProjectIntelligenceConfigTrialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigTrialConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketArrayInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageLocationInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigExcludeCloudStorageLocationArrayInput)(nil)).Elem(), GetInsightsDatasetConfigExcludeCloudStorageLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigIdentityInput)(nil)).Elem(), GetInsightsDatasetConfigIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigIdentityArrayInput)(nil)).Elem(), GetInsightsDatasetConfigIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageBucketInput)(nil)).Elem(), GetInsightsDatasetConfigIncludeCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageBucketArrayInput)(nil)).Elem(), GetInsightsDatasetConfigIncludeCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketInput)(nil)).Elem(), GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayInput)(nil)).Elem(), GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageLocationInput)(nil)).Elem(), GetInsightsDatasetConfigIncludeCloudStorageLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigIncludeCloudStorageLocationArrayInput)(nil)).Elem(), GetInsightsDatasetConfigIncludeCloudStorageLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigLinkInput)(nil)).Elem(), GetInsightsDatasetConfigLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigLinkArrayInput)(nil)).Elem(), GetInsightsDatasetConfigLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigSourceFolderInput)(nil)).Elem(), GetInsightsDatasetConfigSourceFolderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigSourceFolderArrayInput)(nil)).Elem(), GetInsightsDatasetConfigSourceFolderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigSourceProjectInput)(nil)).Elem(), GetInsightsDatasetConfigSourceProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInsightsDatasetConfigSourceProjectArrayInput)(nil)).Elem(), GetInsightsDatasetConfigSourceProjectArray{})
 	pulumi.RegisterOutputType(BatchOperationsJobBucketListOutput{})
 	pulumi.RegisterOutputType(BatchOperationsJobBucketListPtrOutput{})
 	pulumi.RegisterOutputType(BatchOperationsJobBucketListBucketsOutput{})
@@ -19571,6 +21991,26 @@ func init() {
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigTrialConfigArrayOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamArrayOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageBucketsOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageBucketsPtrOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageLocationsOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigExcludeCloudStorageLocationsPtrOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigIdentityOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigIdentityPtrOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigIncludeCloudStorageBucketsOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigIncludeCloudStorageBucketsPtrOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigIncludeCloudStorageLocationsOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigIncludeCloudStorageLocationsPtrOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigLinkOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigLinkArrayOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigSourceFoldersOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigSourceFoldersPtrOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigSourceProjectsOutput{})
+	pulumi.RegisterOutputType(InsightsDatasetConfigSourceProjectsPtrOutput{})
 	pulumi.RegisterOutputType(InsightsReportConfigCsvOptionsOutput{})
 	pulumi.RegisterOutputType(InsightsReportConfigCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InsightsReportConfigFrequencyOptionsOutput{})
@@ -19735,4 +22175,24 @@ func init() {
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigTrialConfigOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigTrialConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageLocationOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigExcludeCloudStorageLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigIdentityOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigIdentityArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigIncludeCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigIncludeCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigIncludeCloudStorageLocationOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigIncludeCloudStorageLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigLinkOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigLinkArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigSourceFolderOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigSourceFolderArrayOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigSourceProjectOutput{})
+	pulumi.RegisterOutputType(GetInsightsDatasetConfigSourceProjectArrayOutput{})
 }

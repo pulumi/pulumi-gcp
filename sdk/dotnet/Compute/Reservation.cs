@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var foobar = new Gcp.Compute.InstanceTemplate("foobar", new()
     ///     {
-    ///         Name = "tf-test-instance-template",
+    ///         Name = "instance-template",
     ///         MachineType = "n2-standard-2",
     ///         CanIpForward = false,
     ///         Tags = new[]
@@ -180,7 +180,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var foobar = new Gcp.Compute.InstanceTemplate("foobar", new()
     ///     {
-    ///         Name = "tf-test-instance-template",
+    ///         Name = "instance-template",
     ///         MachineType = "g2-standard-4",
     ///         CanIpForward = false,
     ///         Tags = new[]

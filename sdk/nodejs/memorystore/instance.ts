@@ -405,11 +405,10 @@ export class Instance extends pulumi.CustomResource {
     public readonly desiredPscAutoConnections!: pulumi.Output<outputs.memorystore.InstanceDesiredPscAutoConnection[] | undefined>;
     /**
      * (Deprecated)
-     * Output only. Endpoints clients can connect to the instance through. Currently only one
-     * discovery endpoint is supported.
+     * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      *
-     * @deprecated `discoveryEndpoints` is deprecated  Use `endpoints` instead.
+     * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      */
     public /*out*/ readonly discoveryEndpoints!: pulumi.Output<outputs.memorystore.InstanceDiscoveryEndpoint[]>;
     /**
@@ -732,11 +731,10 @@ export interface InstanceState {
     desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[]>;
     /**
      * (Deprecated)
-     * Output only. Endpoints clients can connect to the instance through. Currently only one
-     * discovery endpoint is supported.
+     * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      *
-     * @deprecated `discoveryEndpoints` is deprecated  Use `endpoints` instead.
+     * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      */
     discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDiscoveryEndpoint>[]>;
     /**

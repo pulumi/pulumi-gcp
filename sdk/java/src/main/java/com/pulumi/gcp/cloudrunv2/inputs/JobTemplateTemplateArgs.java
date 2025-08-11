@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateNodeSelectorArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVpcAccessArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -68,6 +69,21 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> executionEnvironment() {
         return Optional.ofNullable(this.executionEnvironment);
+    }
+
+    /**
+     * True if GPU zonal redundancy is disabled on this execution.
+     * 
+     */
+    @Import(name="gpuZonalRedundancyDisabled")
+    private @Nullable Output<Boolean> gpuZonalRedundancyDisabled;
+
+    /**
+     * @return True if GPU zonal redundancy is disabled on this execution.
+     * 
+     */
+    public Optional<Output<Boolean>> gpuZonalRedundancyDisabled() {
+        return Optional.ofNullable(this.gpuZonalRedundancyDisabled);
     }
 
     /**
@@ -174,6 +190,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
         this.containers = $.containers;
         this.encryptionKey = $.encryptionKey;
         this.executionEnvironment = $.executionEnvironment;
+        this.gpuZonalRedundancyDisabled = $.gpuZonalRedundancyDisabled;
         this.maxRetries = $.maxRetries;
         this.nodeSelector = $.nodeSelector;
         this.serviceAccount = $.serviceAccount;
@@ -276,6 +293,27 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
          */
         public Builder executionEnvironment(String executionEnvironment) {
             return executionEnvironment(Output.of(executionEnvironment));
+        }
+
+        /**
+         * @param gpuZonalRedundancyDisabled True if GPU zonal redundancy is disabled on this execution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuZonalRedundancyDisabled(@Nullable Output<Boolean> gpuZonalRedundancyDisabled) {
+            $.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
+            return this;
+        }
+
+        /**
+         * @param gpuZonalRedundancyDisabled True if GPU zonal redundancy is disabled on this execution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuZonalRedundancyDisabled(Boolean gpuZonalRedundancyDisabled) {
+            return gpuZonalRedundancyDisabled(Output.of(gpuZonalRedundancyDisabled));
         }
 
         /**

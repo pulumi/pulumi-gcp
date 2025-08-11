@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHorizontalPodAutoscali
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHttpLoadBalancingArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigIstioConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigKalmConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigLustreCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigNetworkPolicyConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigRayOperatorConfigArgs;
@@ -244,6 +245,39 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The status of the Lustre CSI driver addon,
+     * which allows the usage of a Lustre instances as volumes.
+     * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+     * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+     * Lustre CSI Driver Config has optional subfield
+     * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+     * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    @Import(name="lustreCsiDriverConfig")
+    private @Nullable Output<ClusterAddonsConfigLustreCsiDriverConfigArgs> lustreCsiDriverConfig;
+
+    /**
+     * @return The status of the Lustre CSI driver addon,
+     * which allows the usage of a Lustre instances as volumes.
+     * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+     * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+     * Lustre CSI Driver Config has optional subfield
+     * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+     * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+     * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigLustreCsiDriverConfigArgs>> lustreCsiDriverConfig() {
+        return Optional.ofNullable(this.lustreCsiDriverConfig);
+    }
+
+    /**
      * Whether we should enable the network policy addon
      * for the master.  This must be enabled in order to enable network policy for the nodes.
      * To enable this, you must also define a `network_policy` block,
@@ -275,8 +309,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
      * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
      * 
-     * This example `addons_config` disables two addons:
-     * 
      */
     @Import(name="parallelstoreCsiDriverConfig")
     private @Nullable Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs> parallelstoreCsiDriverConfig;
@@ -287,8 +319,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
      * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
      * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     public Optional<Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs>> parallelstoreCsiDriverConfig() {
@@ -365,6 +395,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.httpLoadBalancing = $.httpLoadBalancing;
         this.istioConfig = $.istioConfig;
         this.kalmConfig = $.kalmConfig;
+        this.lustreCsiDriverConfig = $.lustreCsiDriverConfig;
         this.networkPolicyConfig = $.networkPolicyConfig;
         this.parallelstoreCsiDriverConfig = $.parallelstoreCsiDriverConfig;
         this.rayOperatorConfigs = $.rayOperatorConfigs;
@@ -669,6 +700,45 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param lustreCsiDriverConfig The status of the Lustre CSI driver addon,
+         * which allows the usage of a Lustre instances as volumes.
+         * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+         * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+         * Lustre CSI Driver Config has optional subfield
+         * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+         * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+         * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lustreCsiDriverConfig(@Nullable Output<ClusterAddonsConfigLustreCsiDriverConfigArgs> lustreCsiDriverConfig) {
+            $.lustreCsiDriverConfig = lustreCsiDriverConfig;
+            return this;
+        }
+
+        /**
+         * @param lustreCsiDriverConfig The status of the Lustre CSI driver addon,
+         * which allows the usage of a Lustre instances as volumes.
+         * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+         * It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+         * Lustre CSI Driver Config has optional subfield
+         * `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+         * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+         * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lustreCsiDriverConfig(ClusterAddonsConfigLustreCsiDriverConfigArgs lustreCsiDriverConfig) {
+            return lustreCsiDriverConfig(Output.of(lustreCsiDriverConfig));
+        }
+
+        /**
          * @param networkPolicyConfig Whether we should enable the network policy addon
          * for the master.  This must be enabled in order to enable network policy for the nodes.
          * To enable this, you must also define a `network_policy` block,
@@ -706,8 +776,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
          * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
          * 
-         * This example `addons_config` disables two addons:
-         * 
          * @return builder
          * 
          */
@@ -722,8 +790,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * It is disabled by default for Standard clusters; set `enabled = true` to enable.
          * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
          * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-         * 
-         * This example `addons_config` disables two addons:
          * 
          * @return builder
          * 

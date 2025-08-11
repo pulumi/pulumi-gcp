@@ -66,6 +66,16 @@ __all__ = [
     'ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations',
     'ControlProjectIntelligenceConfigTrialConfig',
     'DefaultObjectAccessControlProjectTeam',
+    'InsightsDatasetConfigExcludeCloudStorageBuckets',
+    'InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket',
+    'InsightsDatasetConfigExcludeCloudStorageLocations',
+    'InsightsDatasetConfigIdentity',
+    'InsightsDatasetConfigIncludeCloudStorageBuckets',
+    'InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket',
+    'InsightsDatasetConfigIncludeCloudStorageLocations',
+    'InsightsDatasetConfigLink',
+    'InsightsDatasetConfigSourceFolders',
+    'InsightsDatasetConfigSourceProjects',
     'InsightsReportConfigCsvOptions',
     'InsightsReportConfigFrequencyOptions',
     'InsightsReportConfigFrequencyOptionsEndDate',
@@ -148,6 +158,16 @@ __all__ = [
     'GetControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketResult',
     'GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationResult',
     'GetControlProjectIntelligenceConfigTrialConfigResult',
+    'GetInsightsDatasetConfigExcludeCloudStorageBucketResult',
+    'GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketResult',
+    'GetInsightsDatasetConfigExcludeCloudStorageLocationResult',
+    'GetInsightsDatasetConfigIdentityResult',
+    'GetInsightsDatasetConfigIncludeCloudStorageBucketResult',
+    'GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketResult',
+    'GetInsightsDatasetConfigIncludeCloudStorageLocationResult',
+    'GetInsightsDatasetConfigLinkResult',
+    'GetInsightsDatasetConfigSourceFolderResult',
+    'GetInsightsDatasetConfigSourceProjectResult',
 ]
 
 @pulumi.output_type
@@ -2577,6 +2597,369 @@ class DefaultObjectAccessControlProjectTeam(dict):
         Possible values are: `editors`, `owners`, `viewers`.
         """
         return pulumi.get(self, "team")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigExcludeCloudStorageBuckets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStorageBuckets":
+            suggest = "cloud_storage_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InsightsDatasetConfigExcludeCloudStorageBuckets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InsightsDatasetConfigExcludeCloudStorageBuckets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InsightsDatasetConfigExcludeCloudStorageBuckets.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_storage_buckets: Sequence['outputs.InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket']):
+        """
+        :param Sequence['InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucketArgs'] cloud_storage_buckets: The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "cloud_storage_buckets", cloud_storage_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageBuckets")
+    def cloud_storage_buckets(self) -> Sequence['outputs.InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket']:
+        """
+        The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_buckets")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "bucketPrefixRegex":
+            suggest = "bucket_prefix_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: Optional[_builtins.str] = None,
+                 bucket_prefix_regex: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str bucket_name: The list of cloud storage bucket names to exclude in the DatasetConfig.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        :param _builtins.str bucket_prefix_regex: The list of regex patterns for bucket names matching the regex.
+               Regex should follow the syntax specified in google/re2 on GitHub.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if bucket_prefix_regex is not None:
+            pulumi.set(__self__, "bucket_prefix_regex", bucket_prefix_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[_builtins.str]:
+        """
+        The list of cloud storage bucket names to exclude in the DatasetConfig.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketPrefixRegex")
+    def bucket_prefix_regex(self) -> Optional[_builtins.str]:
+        """
+        The list of regex patterns for bucket names matching the regex.
+        Regex should follow the syntax specified in google/re2 on GitHub.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_prefix_regex")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigExcludeCloudStorageLocations(dict):
+    def __init__(__self__, *,
+                 locations: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] locations: The list of cloud storage locations to exclude in the DatasetConfig.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @_builtins.property
+    @pulumi.getter
+    def locations(self) -> Sequence[_builtins.str]:
+        """
+        The list of cloud storage locations to exclude in the DatasetConfig.
+        """
+        return pulumi.get(self, "locations")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigIdentity(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Type of identity to use for the DatasetConfig.
+               Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+        :param _builtins.str name: (Output)
+               Name of the identity.
+        """
+        pulumi.set(__self__, "type", type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of identity to use for the DatasetConfig.
+        Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Name of the identity.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigIncludeCloudStorageBuckets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStorageBuckets":
+            suggest = "cloud_storage_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InsightsDatasetConfigIncludeCloudStorageBuckets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InsightsDatasetConfigIncludeCloudStorageBuckets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InsightsDatasetConfigIncludeCloudStorageBuckets.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_storage_buckets: Sequence['outputs.InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket']):
+        """
+        :param Sequence['InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucketArgs'] cloud_storage_buckets: The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "cloud_storage_buckets", cloud_storage_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageBuckets")
+    def cloud_storage_buckets(self) -> Sequence['outputs.InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket']:
+        """
+        The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_buckets")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "bucketPrefixRegex":
+            suggest = "bucket_prefix_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: Optional[_builtins.str] = None,
+                 bucket_prefix_regex: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str bucket_name: The list of cloud storage bucket names to exclude in the DatasetConfig.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        :param _builtins.str bucket_prefix_regex: The list of regex patterns for bucket names matching the regex.
+               Regex should follow the syntax specified in google/re2 on GitHub.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if bucket_prefix_regex is not None:
+            pulumi.set(__self__, "bucket_prefix_regex", bucket_prefix_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[_builtins.str]:
+        """
+        The list of cloud storage bucket names to exclude in the DatasetConfig.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketPrefixRegex")
+    def bucket_prefix_regex(self) -> Optional[_builtins.str]:
+        """
+        The list of regex patterns for bucket names matching the regex.
+        Regex should follow the syntax specified in google/re2 on GitHub.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_prefix_regex")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigIncludeCloudStorageLocations(dict):
+    def __init__(__self__, *,
+                 locations: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] locations: The list of cloud storage locations to include in the DatasetConfig.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @_builtins.property
+    @pulumi.getter
+    def locations(self) -> Sequence[_builtins.str]:
+        """
+        The list of cloud storage locations to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "locations")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigLink(dict):
+    def __init__(__self__, *,
+                 dataset: Optional[_builtins.str] = None,
+                 linked: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str dataset: (Output)
+               Dataset name for the linked DatasetConfig.
+        :param _builtins.bool linked: (Output)
+               State of the linked DatasetConfig.
+        """
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if linked is not None:
+            pulumi.set(__self__, "linked", linked)
+
+    @_builtins.property
+    @pulumi.getter
+    def dataset(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Dataset name for the linked DatasetConfig.
+        """
+        return pulumi.get(self, "dataset")
+
+    @_builtins.property
+    @pulumi.getter
+    def linked(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        State of the linked DatasetConfig.
+        """
+        return pulumi.get(self, "linked")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigSourceFolders(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "folderNumbers":
+            suggest = "folder_numbers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InsightsDatasetConfigSourceFolders. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InsightsDatasetConfigSourceFolders.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InsightsDatasetConfigSourceFolders.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 folder_numbers: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] folder_numbers: The list of folder numbers to include in the DatasetConfig.
+        """
+        if folder_numbers is not None:
+            pulumi.set(__self__, "folder_numbers", folder_numbers)
+
+    @_builtins.property
+    @pulumi.getter(name="folderNumbers")
+    def folder_numbers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of folder numbers to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "folder_numbers")
+
+
+@pulumi.output_type
+class InsightsDatasetConfigSourceProjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectNumbers":
+            suggest = "project_numbers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InsightsDatasetConfigSourceProjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InsightsDatasetConfigSourceProjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InsightsDatasetConfigSourceProjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_numbers: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] project_numbers: The list of project numbers to include in the DatasetConfig.
+        """
+        if project_numbers is not None:
+            pulumi.set(__self__, "project_numbers", project_numbers)
+
+    @_builtins.property
+    @pulumi.getter(name="projectNumbers")
+    def project_numbers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of project numbers to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "project_numbers")
 
 
 @pulumi.output_type
@@ -6352,5 +6735,241 @@ class GetControlProjectIntelligenceConfigTrialConfigResult(dict):
         The time at which the trial expires.
         """
         return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigExcludeCloudStorageBucketResult(dict):
+    def __init__(__self__, *,
+                 cloud_storage_buckets: Sequence['outputs.GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketResult']):
+        """
+        :param Sequence['GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketArgs'] cloud_storage_buckets: The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+        """
+        pulumi.set(__self__, "cloud_storage_buckets", cloud_storage_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageBuckets")
+    def cloud_storage_buckets(self) -> Sequence['outputs.GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketResult']:
+        """
+        The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
+        """
+        return pulumi.get(self, "cloud_storage_buckets")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket_name: _builtins.str,
+                 bucket_prefix_regex: _builtins.str):
+        """
+        :param _builtins.str bucket_name: The list of cloud storage bucket names to exclude in the DatasetConfig.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        :param _builtins.str bucket_prefix_regex: The list of regex patterns for bucket names matching the regex.
+               Regex should follow the syntax specified in google/re2 on GitHub.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_prefix_regex", bucket_prefix_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> _builtins.str:
+        """
+        The list of cloud storage bucket names to exclude in the DatasetConfig.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketPrefixRegex")
+    def bucket_prefix_regex(self) -> _builtins.str:
+        """
+        The list of regex patterns for bucket names matching the regex.
+        Regex should follow the syntax specified in google/re2 on GitHub.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_prefix_regex")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigExcludeCloudStorageLocationResult(dict):
+    def __init__(__self__, *,
+                 locations: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] locations: The list of cloud storage locations to exclude in the DatasetConfig.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @_builtins.property
+    @pulumi.getter
+    def locations(self) -> Sequence[_builtins.str]:
+        """
+        The list of cloud storage locations to exclude in the DatasetConfig.
+        """
+        return pulumi.get(self, "locations")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigIdentityResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str name: Name of the identity.
+        :param _builtins.str type: Type of identity to use for the DatasetConfig. Possible values: ["IDENTITY_TYPE_PER_CONFIG", "IDENTITY_TYPE_PER_PROJECT"]
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the identity.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of identity to use for the DatasetConfig. Possible values: ["IDENTITY_TYPE_PER_CONFIG", "IDENTITY_TYPE_PER_PROJECT"]
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigIncludeCloudStorageBucketResult(dict):
+    def __init__(__self__, *,
+                 cloud_storage_buckets: Sequence['outputs.GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketResult']):
+        """
+        :param Sequence['GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketArgs'] cloud_storage_buckets: The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+        """
+        pulumi.set(__self__, "cloud_storage_buckets", cloud_storage_buckets)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageBuckets")
+    def cloud_storage_buckets(self) -> Sequence['outputs.GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketResult']:
+        """
+        The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "cloud_storage_buckets")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucketResult(dict):
+    def __init__(__self__, *,
+                 bucket_name: _builtins.str,
+                 bucket_prefix_regex: _builtins.str):
+        """
+        :param _builtins.str bucket_name: The list of cloud storage bucket names to include in the DatasetConfig.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        :param _builtins.str bucket_prefix_regex: The list of regex patterns for bucket names matching the regex.
+               Regex should follow the syntax specified in google/re2 on GitHub.
+               Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_prefix_regex", bucket_prefix_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> _builtins.str:
+        """
+        The list of cloud storage bucket names to include in the DatasetConfig.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketPrefixRegex")
+    def bucket_prefix_regex(self) -> _builtins.str:
+        """
+        The list of regex patterns for bucket names matching the regex.
+        Regex should follow the syntax specified in google/re2 on GitHub.
+        Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        """
+        return pulumi.get(self, "bucket_prefix_regex")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigIncludeCloudStorageLocationResult(dict):
+    def __init__(__self__, *,
+                 locations: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] locations: The list of cloud storage locations to include in the DatasetConfig.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @_builtins.property
+    @pulumi.getter
+    def locations(self) -> Sequence[_builtins.str]:
+        """
+        The list of cloud storage locations to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "locations")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigLinkResult(dict):
+    def __init__(__self__, *,
+                 dataset: _builtins.str,
+                 linked: _builtins.bool):
+        """
+        :param _builtins.str dataset: Dataset name for the linked DatasetConfig.
+        :param _builtins.bool linked: State of the linked DatasetConfig.
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "linked", linked)
+
+    @_builtins.property
+    @pulumi.getter
+    def dataset(self) -> _builtins.str:
+        """
+        Dataset name for the linked DatasetConfig.
+        """
+        return pulumi.get(self, "dataset")
+
+    @_builtins.property
+    @pulumi.getter
+    def linked(self) -> _builtins.bool:
+        """
+        State of the linked DatasetConfig.
+        """
+        return pulumi.get(self, "linked")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigSourceFolderResult(dict):
+    def __init__(__self__, *,
+                 folder_numbers: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] folder_numbers: The list of folder numbers to include in the DatasetConfig.
+        """
+        pulumi.set(__self__, "folder_numbers", folder_numbers)
+
+    @_builtins.property
+    @pulumi.getter(name="folderNumbers")
+    def folder_numbers(self) -> Sequence[_builtins.str]:
+        """
+        The list of folder numbers to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "folder_numbers")
+
+
+@pulumi.output_type
+class GetInsightsDatasetConfigSourceProjectResult(dict):
+    def __init__(__self__, *,
+                 project_numbers: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] project_numbers: The list of project numbers to include in the DatasetConfig.
+        """
+        pulumi.set(__self__, "project_numbers", project_numbers)
+
+    @_builtins.property
+    @pulumi.getter(name="projectNumbers")
+    def project_numbers(self) -> Sequence[_builtins.str]:
+        """
+        The list of project numbers to include in the DatasetConfig.
+        """
+        return pulumi.get(self, "project_numbers")
 
 

@@ -259,6 +259,68 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Public Listing
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const listing = new gcp.bigqueryanalyticshub.DataExchange("listing", {
+ *     location: "US",
+ *     dataExchangeId: "my_data_exchange",
+ *     displayName: "my_data_exchange",
+ *     description: "example public listing",
+ *     discoveryType: "DISCOVERY_TYPE_PUBLIC",
+ * });
+ * const listingDataset = new gcp.bigquery.Dataset("listing", {
+ *     datasetId: "my_listing",
+ *     friendlyName: "my_listing",
+ *     description: "example public listing",
+ *     location: "US",
+ * });
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listing", {
+ *     location: "US",
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: "my_listing",
+ *     displayName: "my_listing",
+ *     description: "example public listing",
+ *     discoveryType: "DISCOVERY_TYPE_PUBLIC",
+ *     allowOnlyMetadataSharing: false,
+ *     bigqueryDataset: {
+ *         dataset: listingDataset.id,
+ *     },
+ * });
+ * ```
+ * ### Bigquery Analyticshub Listing Marketplace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const listing = new gcp.bigqueryanalyticshub.DataExchange("listing", {
+ *     location: "US",
+ *     dataExchangeId: "my_data_exchange",
+ *     displayName: "my_data_exchange",
+ *     description: "example data exchange",
+ * });
+ * const listingDataset = new gcp.bigquery.Dataset("listing", {
+ *     datasetId: "my_listing",
+ *     friendlyName: "my_listing",
+ *     description: "example data exchange",
+ *     location: "US",
+ * });
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listing", {
+ *     location: "US",
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: "my_listing",
+ *     displayName: "my_listing",
+ *     description: "example data exchange",
+ *     deleteCommercial: true,
+ *     bigqueryDataset: {
+ *         dataset: listingDataset.id,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -313,6 +375,10 @@ export class Listing extends pulumi.CustomResource {
     }
 
     /**
+     * If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+     */
+    public readonly allowOnlyMetadataSharing!: pulumi.Output<boolean | undefined>;
+    /**
      * Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      */
@@ -321,6 +387,11 @@ export class Listing extends pulumi.CustomResource {
      * Categories of the listing. Up to two categories are allowed.
      */
     public readonly categories!: pulumi.Output<string[] | undefined>;
+    /**
+     * Commercial info contains the information about the commercial data products associated with the listing.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly commercialInfos!: pulumi.Output<outputs.bigqueryanalyticshub.ListingCommercialInfo[]>;
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
@@ -331,9 +402,18 @@ export class Listing extends pulumi.CustomResource {
      */
     public readonly dataProvider!: pulumi.Output<outputs.bigqueryanalyticshub.ListingDataProvider | undefined>;
     /**
+     * If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+     */
+    public readonly deleteCommercial!: pulumi.Output<boolean | undefined>;
+    /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     */
+    public readonly discoveryType!: pulumi.Output<string>;
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
      */
@@ -390,6 +470,10 @@ export class Listing extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly restrictedExportConfig!: pulumi.Output<outputs.bigqueryanalyticshub.ListingRestrictedExportConfig | undefined>;
+    /**
+     * Current state of the listing.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Listing resource with the given unique name, arguments, and options.
@@ -404,11 +488,15 @@ export class Listing extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListingState | undefined;
+            resourceInputs["allowOnlyMetadataSharing"] = state ? state.allowOnlyMetadataSharing : undefined;
             resourceInputs["bigqueryDataset"] = state ? state.bigqueryDataset : undefined;
             resourceInputs["categories"] = state ? state.categories : undefined;
+            resourceInputs["commercialInfos"] = state ? state.commercialInfos : undefined;
             resourceInputs["dataExchangeId"] = state ? state.dataExchangeId : undefined;
             resourceInputs["dataProvider"] = state ? state.dataProvider : undefined;
+            resourceInputs["deleteCommercial"] = state ? state.deleteCommercial : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["discoveryType"] = state ? state.discoveryType : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["documentation"] = state ? state.documentation : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
@@ -422,6 +510,7 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
             resourceInputs["requestAccess"] = state ? state.requestAccess : undefined;
             resourceInputs["restrictedExportConfig"] = state ? state.restrictedExportConfig : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as ListingArgs | undefined;
             if ((!args || args.dataExchangeId === undefined) && !opts.urn) {
@@ -436,11 +525,14 @@ export class Listing extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["allowOnlyMetadataSharing"] = args ? args.allowOnlyMetadataSharing : undefined;
             resourceInputs["bigqueryDataset"] = args ? args.bigqueryDataset : undefined;
             resourceInputs["categories"] = args ? args.categories : undefined;
             resourceInputs["dataExchangeId"] = args ? args.dataExchangeId : undefined;
             resourceInputs["dataProvider"] = args ? args.dataProvider : undefined;
+            resourceInputs["deleteCommercial"] = args ? args.deleteCommercial : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["discoveryType"] = args ? args.discoveryType : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["documentation"] = args ? args.documentation : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
@@ -453,7 +545,9 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
             resourceInputs["requestAccess"] = args ? args.requestAccess : undefined;
             resourceInputs["restrictedExportConfig"] = args ? args.restrictedExportConfig : undefined;
+            resourceInputs["commercialInfos"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Listing.__pulumiType, name, resourceInputs, opts);
@@ -465,6 +559,10 @@ export class Listing extends pulumi.CustomResource {
  */
 export interface ListingState {
     /**
+     * If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+     */
+    allowOnlyMetadataSharing?: pulumi.Input<boolean>;
+    /**
      * Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      */
@@ -473,6 +571,11 @@ export interface ListingState {
      * Categories of the listing. Up to two categories are allowed.
      */
     categories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Commercial info contains the information about the commercial data products associated with the listing.
+     * Structure is documented below.
+     */
+    commercialInfos?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.ListingCommercialInfo>[]>;
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
@@ -483,9 +586,18 @@ export interface ListingState {
      */
     dataProvider?: pulumi.Input<inputs.bigqueryanalyticshub.ListingDataProvider>;
     /**
+     * If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+     */
+    deleteCommercial?: pulumi.Input<boolean>;
+    /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     */
+    discoveryType?: pulumi.Input<string>;
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
      */
@@ -542,12 +654,20 @@ export interface ListingState {
      * Structure is documented below.
      */
     restrictedExportConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingRestrictedExportConfig>;
+    /**
+     * Current state of the listing.
+     */
+    state?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Listing resource.
  */
 export interface ListingArgs {
+    /**
+     * If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+     */
+    allowOnlyMetadataSharing?: pulumi.Input<boolean>;
     /**
      * Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
@@ -567,9 +687,18 @@ export interface ListingArgs {
      */
     dataProvider?: pulumi.Input<inputs.bigqueryanalyticshub.ListingDataProvider>;
     /**
+     * If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+     */
+    deleteCommercial?: pulumi.Input<boolean>;
+    /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     */
+    discoveryType?: pulumi.Input<string>;
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
      */

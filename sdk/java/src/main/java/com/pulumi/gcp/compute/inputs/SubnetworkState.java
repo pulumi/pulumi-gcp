@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SubnetworkLogConfigArgs;
+import com.pulumi.gcp.compute.inputs.SubnetworkParamsArgs;
 import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -361,6 +362,23 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<SubnetworkParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SubnetworkParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      * 
@@ -632,6 +650,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         this.logConfig = $.logConfig;
         this.name = $.name;
         this.network = $.network;
+        this.params = $.params;
         this.privateIpGoogleAccess = $.privateIpGoogleAccess;
         this.privateIpv6GoogleAccess = $.privateIpv6GoogleAccess;
         this.project = $.project;
@@ -1099,6 +1118,29 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<SubnetworkParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(SubnetworkParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

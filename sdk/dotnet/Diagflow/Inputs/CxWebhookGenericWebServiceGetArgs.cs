@@ -16,13 +16,60 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         private InputList<string>? _allowedCaCerts;
 
         /// <summary>
-        /// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        /// Specifies a list of allowed custom CA certificates (in DER format) for
+        /// HTTPS verification. This overrides the default SSL trust store. If this
+        /// is empty or unspecified, Dialogflow will use Google's default trust store
+        /// to verify certificates.
+        /// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+        /// name". For instance a certificate can be self-signed using the following
+        /// command,
+        /// openssl x509 -req -days 200 -in example.com.csr \
+        /// -signkey example.com.key \
+        /// -out example.com.crt \
+        /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
         /// </summary>
         public InputList<string> AllowedCaCerts
         {
             get => _allowedCaCerts ?? (_allowedCaCerts = new InputList<string>());
             set => _allowedCaCerts = value;
         }
+
+        /// <summary>
+        /// HTTP method for the flexible webhook calls. Standard webhook always uses
+        /// POST.
+        /// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        /// </summary>
+        [Input("httpMethod")]
+        public Input<string>? HttpMethod { get; set; }
+
+        /// <summary>
+        /// Represents configuration of OAuth client credential flow for 3rd party
+        /// API authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("oauthConfig")]
+        public Input<Inputs.CxWebhookGenericWebServiceOauthConfigGetArgs>? OauthConfig { get; set; }
+
+        [Input("parameterMapping")]
+        private InputMap<string>? _parameterMapping;
+
+        /// <summary>
+        /// Maps the values extracted from specific fields of the flexible webhook
+        /// response into session parameters.
+        /// - Key: session parameter name
+        /// - Value: field path in the webhook response
+        /// </summary>
+        public InputMap<string> ParameterMapping
+        {
+            get => _parameterMapping ?? (_parameterMapping = new InputMap<string>());
+            set => _parameterMapping = value;
+        }
+
+        /// <summary>
+        /// Defines a custom JSON object as request body to send to flexible webhook.
+        /// </summary>
+        [Input("requestBody")]
+        public Input<string>? RequestBody { get; set; }
 
         [Input("requestHeaders")]
         private InputMap<string>? _requestHeaders;
@@ -37,10 +84,51 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         }
 
         /// <summary>
-        /// Whether to use speech adaptation for speech recognition.
+        /// The SecretManager secret version resource storing the username:password
+        /// pair for HTTP Basic authentication.
+        /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        [Input("secretVersionForUsernamePassword")]
+        public Input<string>? SecretVersionForUsernamePassword { get; set; }
+
+        [Input("secretVersionsForRequestHeaders")]
+        private InputList<Inputs.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderGetArgs>? _secretVersionsForRequestHeaders;
+
+        /// <summary>
+        /// The HTTP request headers to send together with webhook requests. Header
+        /// values are stored in SecretManager secret versions.
+        /// When the same header name is specified in both `request_headers` and
+        /// `secret_versions_for_request_headers`, the value in
+        /// `secret_versions_for_request_headers` will be used.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderGetArgs> SecretVersionsForRequestHeaders
+        {
+            get => _secretVersionsForRequestHeaders ?? (_secretVersionsForRequestHeaders = new InputList<Inputs.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderGetArgs>());
+            set => _secretVersionsForRequestHeaders = value;
+        }
+
+        /// <summary>
+        /// Indicate the auth token type generated from the [Diglogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        /// The generated token is sent in the Authorization header.
+        /// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+        /// </summary>
+        [Input("serviceAgentAuth")]
+        public Input<string>? ServiceAgentAuth { get; set; }
+
+        /// <summary>
+        /// The webhook URI for receiving POST requests. It must use https protocol.
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;
+
+        /// <summary>
+        /// Type of the webhook.
+        /// Possible values are: `STANDARD`, `FLEXIBLE`.
+        /// </summary>
+        [Input("webhookType")]
+        public Input<string>? WebhookType { get; set; }
 
         public CxWebhookGenericWebServiceGetArgs()
         {

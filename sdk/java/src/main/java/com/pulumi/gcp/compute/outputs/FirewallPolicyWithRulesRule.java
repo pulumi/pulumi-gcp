@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.FirewallPolicyWithRulesRuleMatch;
+import com.pulumi.gcp.compute.outputs.FirewallPolicyWithRulesRuleTargetSecureTag;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -83,6 +84,22 @@ public final class FirewallPolicyWithRulesRule {
      * 
      */
     private @Nullable List<String> targetResources;
+    /**
+     * @return A list of secure tags that controls which instances the firewall rule
+     * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
+     * firewall rule applies only to instances in the VPC network that have one
+     * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+     * INEFFECTIVE state, then this rule will be ignored.
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
+     * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
+     * If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies
+     * to all instances on the specified network.
+     * Maximum number of target secure tags allowed is 256.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<FirewallPolicyWithRulesRuleTargetSecureTag> targetSecureTags;
     /**
      * @return A list of service accounts indicating the sets of
      * instances that are applied with this rule.
@@ -185,6 +202,24 @@ public final class FirewallPolicyWithRulesRule {
         return this.targetResources == null ? List.of() : this.targetResources;
     }
     /**
+     * @return A list of secure tags that controls which instances the firewall rule
+     * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
+     * firewall rule applies only to instances in the VPC network that have one
+     * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+     * INEFFECTIVE state, then this rule will be ignored.
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
+     * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
+     * If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies
+     * to all instances on the specified network.
+     * Maximum number of target secure tags allowed is 256.
+     * Structure is documented below.
+     * 
+     */
+    public List<FirewallPolicyWithRulesRuleTargetSecureTag> targetSecureTags() {
+        return this.targetSecureTags == null ? List.of() : this.targetSecureTags;
+    }
+    /**
      * @return A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      * 
@@ -220,6 +255,7 @@ public final class FirewallPolicyWithRulesRule {
         private @Nullable String ruleName;
         private @Nullable String securityProfileGroup;
         private @Nullable List<String> targetResources;
+        private @Nullable List<FirewallPolicyWithRulesRuleTargetSecureTag> targetSecureTags;
         private @Nullable List<String> targetServiceAccounts;
         private @Nullable Boolean tlsInspect;
         public Builder() {}
@@ -235,6 +271,7 @@ public final class FirewallPolicyWithRulesRule {
     	      this.ruleName = defaults.ruleName;
     	      this.securityProfileGroup = defaults.securityProfileGroup;
     	      this.targetResources = defaults.targetResources;
+    	      this.targetSecureTags = defaults.targetSecureTags;
     	      this.targetServiceAccounts = defaults.targetServiceAccounts;
     	      this.tlsInspect = defaults.tlsInspect;
         }
@@ -309,6 +346,15 @@ public final class FirewallPolicyWithRulesRule {
             return targetResources(List.of(targetResources));
         }
         @CustomType.Setter
+        public Builder targetSecureTags(@Nullable List<FirewallPolicyWithRulesRuleTargetSecureTag> targetSecureTags) {
+
+            this.targetSecureTags = targetSecureTags;
+            return this;
+        }
+        public Builder targetSecureTags(FirewallPolicyWithRulesRuleTargetSecureTag... targetSecureTags) {
+            return targetSecureTags(List.of(targetSecureTags));
+        }
+        @CustomType.Setter
         public Builder targetServiceAccounts(@Nullable List<String> targetServiceAccounts) {
 
             this.targetServiceAccounts = targetServiceAccounts;
@@ -335,6 +381,7 @@ public final class FirewallPolicyWithRulesRule {
             _resultValue.ruleName = ruleName;
             _resultValue.securityProfileGroup = securityProfileGroup;
             _resultValue.targetResources = targetResources;
+            _resultValue.targetSecureTags = targetSecureTags;
             _resultValue.targetServiceAccounts = targetServiceAccounts;
             _resultValue.tlsInspect = tlsInspect;
             return _resultValue;

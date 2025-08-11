@@ -8387,6 +8387,8 @@ if not MYPY:
         """
         Specifies whether to use BigQuery's legacy SQL for this view.
         The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        > **Note**: Starting in provider version `7.0.0`, no default value is
+        provided for this field unless explicitly set in the configuration.
         """
 elif False:
     TableViewArgsDict: TypeAlias = Mapping[str, Any]
@@ -8400,6 +8402,8 @@ class TableViewArgs:
         :param pulumi.Input[_builtins.str] query: A query that BigQuery executes when the view is referenced.
         :param pulumi.Input[_builtins.bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view.
                The default value is true. If set to false, the view will use BigQuery's standard SQL.
+               > **Note**: Starting in provider version `7.0.0`, no default value is
+               provided for this field unless explicitly set in the configuration.
         """
         pulumi.set(__self__, "query", query)
         if use_legacy_sql is not None:
@@ -8423,6 +8427,8 @@ class TableViewArgs:
         """
         Specifies whether to use BigQuery's legacy SQL for this view.
         The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        > **Note**: Starting in provider version `7.0.0`, no default value is
+        provided for this field unless explicitly set in the configuration.
         """
         return pulumi.get(self, "use_legacy_sql")
 

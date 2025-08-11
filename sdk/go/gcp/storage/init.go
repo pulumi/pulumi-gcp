@@ -53,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Folder{}
 	case "gcp:storage/hmacKey:HmacKey":
 		r = &HmacKey{}
+	case "gcp:storage/insightsDatasetConfig:InsightsDatasetConfig":
+		r = &InsightsDatasetConfig{}
 	case "gcp:storage/insightsReportConfig:InsightsReportConfig":
 		r = &InsightsReportConfig{}
 	case "gcp:storage/managedFolder:ManagedFolder":
@@ -164,6 +166,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/hmacKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/insightsDatasetConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

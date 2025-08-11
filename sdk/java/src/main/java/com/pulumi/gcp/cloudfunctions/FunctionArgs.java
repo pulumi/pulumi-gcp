@@ -6,7 +6,9 @@ package com.pulumi.gcp.cloudfunctions;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudfunctions.inputs.FunctionAutomaticUpdatePolicyArgs;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionEventTriggerArgs;
+import com.pulumi.gcp.cloudfunctions.inputs.FunctionOnDeployUpdatePolicyArgs;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionSecretEnvironmentVariableArgs;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionSecretVolumeArgs;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionSourceRepositoryArgs;
@@ -23,6 +25,21 @@ import javax.annotation.Nullable;
 public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FunctionArgs Empty = new FunctionArgs();
+
+    /**
+     * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+     * 
+     */
+    @Import(name="automaticUpdatePolicy")
+    private @Nullable Output<FunctionAutomaticUpdatePolicyArgs> automaticUpdatePolicy;
+
+    /**
+     * @return Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+     * 
+     */
+    public Optional<Output<FunctionAutomaticUpdatePolicyArgs>> automaticUpdatePolicy() {
+        return Optional.ofNullable(this.automaticUpdatePolicy);
+    }
 
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
@@ -309,6 +326,21 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+     * 
+     */
+    @Import(name="onDeployUpdatePolicy")
+    private @Nullable Output<FunctionOnDeployUpdatePolicyArgs> onDeployUpdatePolicy;
+
+    /**
+     * @return Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+     * 
+     */
+    public Optional<Output<FunctionOnDeployUpdatePolicyArgs>> onDeployUpdatePolicy() {
+        return Optional.ofNullable(this.onDeployUpdatePolicy);
+    }
+
+    /**
      * Project of the function. If it is not provided, the provider project is used.
      * 
      */
@@ -514,6 +546,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     private FunctionArgs() {}
 
     private FunctionArgs(FunctionArgs $) {
+        this.automaticUpdatePolicy = $.automaticUpdatePolicy;
         this.availableMemoryMb = $.availableMemoryMb;
         this.buildEnvironmentVariables = $.buildEnvironmentVariables;
         this.buildServiceAccount = $.buildServiceAccount;
@@ -532,6 +565,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         this.maxInstances = $.maxInstances;
         this.minInstances = $.minInstances;
         this.name = $.name;
+        this.onDeployUpdatePolicy = $.onDeployUpdatePolicy;
         this.project = $.project;
         this.region = $.region;
         this.runtime = $.runtime;
@@ -563,6 +597,27 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FunctionArgs defaults) {
             $ = new FunctionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param automaticUpdatePolicy Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticUpdatePolicy(@Nullable Output<FunctionAutomaticUpdatePolicyArgs> automaticUpdatePolicy) {
+            $.automaticUpdatePolicy = automaticUpdatePolicy;
+            return this;
+        }
+
+        /**
+         * @param automaticUpdatePolicy Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticUpdatePolicy(FunctionAutomaticUpdatePolicyArgs automaticUpdatePolicy) {
+            return automaticUpdatePolicy(Output.of(automaticUpdatePolicy));
         }
 
         /**
@@ -955,6 +1010,27 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param onDeployUpdatePolicy Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDeployUpdatePolicy(@Nullable Output<FunctionOnDeployUpdatePolicyArgs> onDeployUpdatePolicy) {
+            $.onDeployUpdatePolicy = onDeployUpdatePolicy;
+            return this;
+        }
+
+        /**
+         * @param onDeployUpdatePolicy Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDeployUpdatePolicy(FunctionOnDeployUpdatePolicyArgs onDeployUpdatePolicy) {
+            return onDeployUpdatePolicy(Output.of(onDeployUpdatePolicy));
         }
 
         /**

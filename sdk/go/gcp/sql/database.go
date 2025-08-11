@@ -109,8 +109,6 @@ import (
 //
 // * `{{instance}}/{{name}}`
 //
-// * `{{name}}`
-//
 // When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 //
 // ```sh
@@ -127,10 +125,6 @@ import (
 //
 // ```sh
 // $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:sql/database:Database default {{name}}
 // ```
 type Database struct {
 	pulumi.CustomResourceState

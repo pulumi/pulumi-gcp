@@ -67,6 +67,7 @@ type LookupCloudVmClusterArgs struct {
 
 // A collection of values returned by getCloudVmCluster.
 type LookupCloudVmClusterResult struct {
+	BackupOdbSubnet       string            `pulumi:"backupOdbSubnet"`
 	BackupSubnetCidr      string            `pulumi:"backupSubnetCidr"`
 	Cidr                  string            `pulumi:"cidr"`
 	CloudVmClusterId      string            `pulumi:"cloudVmClusterId"`
@@ -82,6 +83,8 @@ type LookupCloudVmClusterResult struct {
 	Location     string                      `pulumi:"location"`
 	Name         string                      `pulumi:"name"`
 	Network      string                      `pulumi:"network"`
+	OdbNetwork   string                      `pulumi:"odbNetwork"`
+	OdbSubnet    string                      `pulumi:"odbSubnet"`
 	Project      *string                     `pulumi:"project"`
 	Properties   []GetCloudVmClusterProperty `pulumi:"properties"`
 	PulumiLabels map[string]string           `pulumi:"pulumiLabels"`
@@ -126,6 +129,10 @@ func (o LookupCloudVmClusterResultOutput) ToLookupCloudVmClusterResultOutput() L
 
 func (o LookupCloudVmClusterResultOutput) ToLookupCloudVmClusterResultOutputWithContext(ctx context.Context) LookupCloudVmClusterResultOutput {
 	return o
+}
+
+func (o LookupCloudVmClusterResultOutput) BackupOdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.BackupOdbSubnet }).(pulumi.StringOutput)
 }
 
 func (o LookupCloudVmClusterResultOutput) BackupSubnetCidr() pulumi.StringOutput {
@@ -183,6 +190,14 @@ func (o LookupCloudVmClusterResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupCloudVmClusterResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudVmClusterResultOutput) OdbNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.OdbNetwork }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudVmClusterResultOutput) OdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
 func (o LookupCloudVmClusterResultOutput) Project() pulumi.StringPtrOutput {

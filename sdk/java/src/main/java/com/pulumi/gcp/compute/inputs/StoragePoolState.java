@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.StoragePoolStatusArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -74,6 +75,21 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Type of the resource.
      * 
      */
@@ -103,6 +119,27 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> labelFingerprint() {
         return Optional.ofNullable(this.labelFingerprint);
+    }
+
+    /**
+     * Labels to apply to this storage pool. These can be later modified by the setLabels method.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels to apply to this storage pool. These can be later modified by the setLabels method.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -218,6 +255,23 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Status information for the storage pool resource.
      * Structure is documented below.
      * 
@@ -294,14 +348,17 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.creationTimestamp = $.creationTimestamp;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.kind = $.kind;
         this.labelFingerprint = $.labelFingerprint;
+        this.labels = $.labels;
         this.name = $.name;
         this.performanceProvisioningType = $.performanceProvisioningType;
         this.poolProvisionedCapacityGb = $.poolProvisionedCapacityGb;
         this.poolProvisionedIops = $.poolProvisionedIops;
         this.poolProvisionedThroughput = $.poolProvisionedThroughput;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.resourceStatuses = $.resourceStatuses;
         this.statuses = $.statuses;
         this.storagePoolType = $.storagePoolType;
@@ -401,6 +458,27 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param kind Type of the resource.
          * 
          * @return builder
@@ -442,6 +520,33 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labelFingerprint(String labelFingerprint) {
             return labelFingerprint(Output.of(labelFingerprint));
+        }
+
+        /**
+         * @param labels Labels to apply to this storage pool. These can be later modified by the setLabels method.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels to apply to this storage pool. These can be later modified by the setLabels method.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**
@@ -590,6 +695,29 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

@@ -378,6 +378,7 @@ class Cluster(pulumi.CustomResource):
             },
             cluster_config={
                 "staging_bucket": "dataproc-staging-bucket",
+                "cluster_tier": "CLUSTER_TIER_STANDARD",
                 "master_config": {
                     "num_instances": 1,
                     "machine_type": "e2-medium",
@@ -511,6 +512,7 @@ class Cluster(pulumi.CustomResource):
             },
             cluster_config={
                 "staging_bucket": "dataproc-staging-bucket",
+                "cluster_tier": "CLUSTER_TIER_STANDARD",
                 "master_config": {
                     "num_instances": 1,
                     "machine_type": "e2-medium",

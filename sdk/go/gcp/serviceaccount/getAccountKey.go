@@ -66,6 +66,8 @@ type GetAccountKeyArgs struct {
 	Name string `pulumi:"name"`
 	// The ID of the project that the service account is present in.
 	// Defaults to the provider project configuration.
+	//
+	// Deprecated: `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
 	Project *string `pulumi:"project"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType *string `pulumi:"publicKeyType"`
@@ -74,10 +76,11 @@ type GetAccountKeyArgs struct {
 // A collection of values returned by getAccountKey.
 type GetAccountKeyResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string  `pulumi:"id"`
-	KeyAlgorithm string  `pulumi:"keyAlgorithm"`
-	Name         string  `pulumi:"name"`
-	Project      *string `pulumi:"project"`
+	Id           string `pulumi:"id"`
+	KeyAlgorithm string `pulumi:"keyAlgorithm"`
+	Name         string `pulumi:"name"`
+	// Deprecated: `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
+	Project *string `pulumi:"project"`
 	// The public key, base64 encoded
 	PublicKey     string  `pulumi:"publicKey"`
 	PublicKeyType *string `pulumi:"publicKeyType"`
@@ -100,6 +103,8 @@ type GetAccountKeyOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project that the service account is present in.
 	// Defaults to the provider project configuration.
+	//
+	// Deprecated: `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType pulumi.StringPtrInput `pulumi:"publicKeyType"`
@@ -137,6 +142,7 @@ func (o GetAccountKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Deprecated: `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
 func (o GetAccountKeyResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountKeyResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }

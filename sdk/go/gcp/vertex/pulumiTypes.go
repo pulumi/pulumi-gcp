@@ -1261,7 +1261,7 @@ type AiEndpointDeployedModelDedicatedResourceMachineSpec struct {
 	// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
 	AcceleratorType *string `pulumi:"acceleratorType"`
 	// (Output)
-	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO: Try to better unify the required vs optional.
 	MachineType *string `pulumi:"machineType"`
 }
 
@@ -1284,7 +1284,7 @@ type AiEndpointDeployedModelDedicatedResourceMachineSpecArgs struct {
 	// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 	// (Output)
-	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO: Try to better unify the required vs optional.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 }
 
@@ -1352,7 +1352,7 @@ func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) AcceleratorTy
 }
 
 // (Output)
-// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO: Try to better unify the required vs optional.
 func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceMachineSpec) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -2467,6 +2467,6692 @@ func (o AiEndpointPrivateServiceConnectConfigPtrOutput) ProjectAllowlists() pulu
 		}
 		return v.ProjectAllowlists
 	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfig struct {
+	// A description of resources that are dedicated to a DeployedModel or
+	// DeployedIndex, and that need a higher degree of manual configuration.
+	// Structure is documented below.
+	DedicatedResources *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources `pulumi:"dedicatedResources"`
+	// If true, enable the QMT fast tryout feature for this model if possible.
+	FastTryoutEnabled *bool `pulumi:"fastTryoutEnabled"`
+	// System labels for Model Garden deployments.
+	// These labels are managed by Google and for tracking purposes only.
+	SystemLabels map[string]string `pulumi:"systemLabels"`
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigArgs and AiEndpointWithModelGardenDeploymentDeployConfigOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentDeployConfigArgs{...}
+type AiEndpointWithModelGardenDeploymentDeployConfigInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigOutput() AiEndpointWithModelGardenDeploymentDeployConfigOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigOutput
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigArgs struct {
+	// A description of resources that are dedicated to a DeployedModel or
+	// DeployedIndex, and that need a higher degree of manual configuration.
+	// Structure is documented below.
+	DedicatedResources AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrInput `pulumi:"dedicatedResources"`
+	// If true, enable the QMT fast tryout feature for this model if possible.
+	FastTryoutEnabled pulumi.BoolPtrInput `pulumi:"fastTryoutEnabled"`
+	// System labels for Model Garden deployments.
+	// These labels are managed by Google and for tracking purposes only.
+	SystemLabels pulumi.StringMapInput `pulumi:"systemLabels"`
+}
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfig)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigOutput() AiEndpointWithModelGardenDeploymentDeployConfigOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigOutput).ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigArgs, AiEndpointWithModelGardenDeploymentDeployConfigPtr and AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentDeployConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentDeployConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentDeployConfigPtrType AiEndpointWithModelGardenDeploymentDeployConfigArgs
+
+func AiEndpointWithModelGardenDeploymentDeployConfigPtr(v *AiEndpointWithModelGardenDeploymentDeployConfigArgs) AiEndpointWithModelGardenDeploymentDeployConfigPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentDeployConfigPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentDeployConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfig)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfig)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigOutput() AiEndpointWithModelGardenDeploymentDeployConfigOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentDeployConfig) *AiEndpointWithModelGardenDeploymentDeployConfig {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput)
+}
+
+// A description of resources that are dedicated to a DeployedModel or
+// DeployedIndex, and that need a higher degree of manual configuration.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigOutput) DedicatedResources() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfig) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
+		return v.DedicatedResources
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput)
+}
+
+// If true, enable the QMT fast tryout feature for this model if possible.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigOutput) FastTryoutEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfig) *bool { return v.FastTryoutEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// System labels for Model Garden deployments.
+// These labels are managed by Google and for tracking purposes only.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigOutput) SystemLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfig) map[string]string { return v.SystemLabels }).(pulumi.StringMapOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfig)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput) Elem() AiEndpointWithModelGardenDeploymentDeployConfigOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfig) AiEndpointWithModelGardenDeploymentDeployConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentDeployConfig
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigOutput)
+}
+
+// A description of resources that are dedicated to a DeployedModel or
+// DeployedIndex, and that need a higher degree of manual configuration.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput) DedicatedResources() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfig) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
+		if v == nil {
+			return nil
+		}
+		return v.DedicatedResources
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput)
+}
+
+// If true, enable the QMT fast tryout feature for this model if possible.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput) FastTryoutEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FastTryoutEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// System labels for Model Garden deployments.
+// These labels are managed by Google and for tracking purposes only.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput) SystemLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemLabels
+	}).(pulumi.StringMapOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources struct {
+	// The metric specifications that overrides a resource
+	// utilization metric (CPU utilization, accelerator's duty cycle, and so on)
+	// target value (default to 60 if not set). At most one entry is allowed per
+	// metric.
+	// If machine_spec.accelerator_count is
+	// above 0, the autoscaling will be based on both CPU utilization and
+	// accelerator's duty cycle metrics and scale up when either metrics exceeds
+	// its target value while scale down if both metrics are under their target
+	// value. The default target value is 60 for both metrics.
+	// If machine_spec.accelerator_count is
+	// 0, the autoscaling will be based on CPU utilization metric only with
+	// default target value 60 if not explicitly set.
+	// For example, in the case of Online Prediction, if you want to override
+	// target CPU utilization to 80, you should set
+	// autoscaling_metric_specs.metric_name
+	// to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
+	// autoscaling_metric_specs.target to `80`.
+	// Structure is documented below.
+	AutoscalingMetricSpecs []AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec `pulumi:"autoscalingMetricSpecs"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec `pulumi:"machineSpec"`
+	// The maximum number of replicas that may be deployed on when the traffic
+	// against it increases. If the requested value is too large, the deployment
+	// will error, but if deployment succeeds then the ability to scale to that
+	// many replicas is guaranteed (barring service outages). If traffic increases
+	// beyond what its replicas at maximum may handle, a portion of the traffic
+	// will be dropped. If this value is not provided, will use
+	// minReplicaCount as the default value.
+	// The value of this field impacts the charge against Vertex CPU and GPU
+	// quotas. Specifically, you will be charged for (max_replica_count *
+	// number of cores in the selected machine type) and (max_replica_count *
+	// number of GPUs per replica in the selected machine type).
+	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
+	// The minimum number of machine replicas that will be always deployed on.
+	// This value must be greater than or equal to 1.
+	// If traffic increases, it may dynamically be deployed onto more replicas,
+	// and as traffic decreases, some of these extra replicas may be freed.
+	MinReplicaCount int `pulumi:"minReplicaCount"`
+	// Number of required available replicas for the deployment to succeed.
+	// This field is only needed when partial deployment/mutation is
+	// desired. If set, the deploy/mutate operation will succeed once
+	// availableReplicaCount reaches required_replica_count, and the rest of
+	// the replicas will be retried. If not set, the default
+	// requiredReplicaCount will be min_replica_count.
+	RequiredReplicaCount *int `pulumi:"requiredReplicaCount"`
+	// If true, schedule the deployment workload on [spot
+	// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+	Spot *bool `pulumi:"spot"`
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs{...}
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs struct {
+	// The metric specifications that overrides a resource
+	// utilization metric (CPU utilization, accelerator's duty cycle, and so on)
+	// target value (default to 60 if not set). At most one entry is allowed per
+	// metric.
+	// If machine_spec.accelerator_count is
+	// above 0, the autoscaling will be based on both CPU utilization and
+	// accelerator's duty cycle metrics and scale up when either metrics exceeds
+	// its target value while scale down if both metrics are under their target
+	// value. The default target value is 60 for both metrics.
+	// If machine_spec.accelerator_count is
+	// 0, the autoscaling will be based on CPU utilization metric only with
+	// default target value 60 if not explicitly set.
+	// For example, in the case of Online Prediction, if you want to override
+	// target CPU utilization to 80, you should set
+	// autoscaling_metric_specs.metric_name
+	// to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
+	// autoscaling_metric_specs.target to `80`.
+	// Structure is documented below.
+	AutoscalingMetricSpecs AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayInput `pulumi:"autoscalingMetricSpecs"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecInput `pulumi:"machineSpec"`
+	// The maximum number of replicas that may be deployed on when the traffic
+	// against it increases. If the requested value is too large, the deployment
+	// will error, but if deployment succeeds then the ability to scale to that
+	// many replicas is guaranteed (barring service outages). If traffic increases
+	// beyond what its replicas at maximum may handle, a portion of the traffic
+	// will be dropped. If this value is not provided, will use
+	// minReplicaCount as the default value.
+	// The value of this field impacts the charge against Vertex CPU and GPU
+	// quotas. Specifically, you will be charged for (max_replica_count *
+	// number of cores in the selected machine type) and (max_replica_count *
+	// number of GPUs per replica in the selected machine type).
+	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
+	// The minimum number of machine replicas that will be always deployed on.
+	// This value must be greater than or equal to 1.
+	// If traffic increases, it may dynamically be deployed onto more replicas,
+	// and as traffic decreases, some of these extra replicas may be freed.
+	MinReplicaCount pulumi.IntInput `pulumi:"minReplicaCount"`
+	// Number of required available replicas for the deployment to succeed.
+	// This field is only needed when partial deployment/mutation is
+	// desired. If set, the deploy/mutate operation will succeed once
+	// availableReplicaCount reaches required_replica_count, and the rest of
+	// the replicas will be retried. If not set, the default
+	// requiredReplicaCount will be min_replica_count.
+	RequiredReplicaCount pulumi.IntPtrInput `pulumi:"requiredReplicaCount"`
+	// If true, schedule the deployment workload on [spot
+	// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
+}
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput).ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs, AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtr and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrType AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs
+
+func AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtr(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput)
+}
+
+// The metric specifications that overrides a resource
+// utilization metric (CPU utilization, accelerator's duty cycle, and so on)
+// target value (default to 60 if not set). At most one entry is allowed per
+// metric.
+// If machine_spec.accelerator_count is
+// above 0, the autoscaling will be based on both CPU utilization and
+// accelerator's duty cycle metrics and scale up when either metrics exceeds
+// its target value while scale down if both metrics are under their target
+// value. The default target value is 60 for both metrics.
+// If machine_spec.accelerator_count is
+// 0, the autoscaling will be based on CPU utilization metric only with
+// default target value 60 if not explicitly set.
+// For example, in the case of Online Prediction, if you want to override
+// target CPU utilization to 80, you should set
+// autoscaling_metric_specs.metric_name
+// to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
+// autoscaling_metric_specs.target to `80`.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) AutoscalingMetricSpecs() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) []AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec {
+		return v.AutoscalingMetricSpecs
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput)
+}
+
+// Specification of a single machine.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) MachineSpec() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec {
+		return v.MachineSpec
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput)
+}
+
+// The maximum number of replicas that may be deployed on when the traffic
+// against it increases. If the requested value is too large, the deployment
+// will error, but if deployment succeeds then the ability to scale to that
+// many replicas is guaranteed (barring service outages). If traffic increases
+// beyond what its replicas at maximum may handle, a portion of the traffic
+// will be dropped. If this value is not provided, will use
+// minReplicaCount as the default value.
+// The value of this field impacts the charge against Vertex CPU and GPU
+// quotas. Specifically, you will be charged for (max_replica_count *
+// number of cores in the selected machine type) and (max_replica_count *
+// number of GPUs per replica in the selected machine type).
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *int {
+		return v.MaxReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of machine replicas that will be always deployed on.
+// This value must be greater than or equal to 1.
+// If traffic increases, it may dynamically be deployed onto more replicas,
+// and as traffic decreases, some of these extra replicas may be freed.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) MinReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) int {
+		return v.MinReplicaCount
+	}).(pulumi.IntOutput)
+}
+
+// Number of required available replicas for the deployment to succeed.
+// This field is only needed when partial deployment/mutation is
+// desired. If set, the deploy/mutate operation will succeed once
+// availableReplicaCount reaches required_replica_count, and the rest of
+// the replicas will be retried. If not set, the default
+// requiredReplicaCount will be min_replica_count.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) RequiredReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *int {
+		return v.RequiredReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// If true, schedule the deployment workload on [spot
+// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) Elem() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput)
+}
+
+// The metric specifications that overrides a resource
+// utilization metric (CPU utilization, accelerator's duty cycle, and so on)
+// target value (default to 60 if not set). At most one entry is allowed per
+// metric.
+// If machine_spec.accelerator_count is
+// above 0, the autoscaling will be based on both CPU utilization and
+// accelerator's duty cycle metrics and scale up when either metrics exceeds
+// its target value while scale down if both metrics are under their target
+// value. The default target value is 60 for both metrics.
+// If machine_spec.accelerator_count is
+// 0, the autoscaling will be based on CPU utilization metric only with
+// default target value 60 if not explicitly set.
+// For example, in the case of Online Prediction, if you want to override
+// target CPU utilization to 80, you should set
+// autoscaling_metric_specs.metric_name
+// to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
+// autoscaling_metric_specs.target to `80`.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) AutoscalingMetricSpecs() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) []AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingMetricSpecs
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput)
+}
+
+// Specification of a single machine.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) MachineSpec() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineSpec
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput)
+}
+
+// The maximum number of replicas that may be deployed on when the traffic
+// against it increases. If the requested value is too large, the deployment
+// will error, but if deployment succeeds then the ability to scale to that
+// many replicas is guaranteed (barring service outages). If traffic increases
+// beyond what its replicas at maximum may handle, a portion of the traffic
+// will be dropped. If this value is not provided, will use
+// minReplicaCount as the default value.
+// The value of this field impacts the charge against Vertex CPU and GPU
+// quotas. Specifically, you will be charged for (max_replica_count *
+// number of cores in the selected machine type) and (max_replica_count *
+// number of GPUs per replica in the selected machine type).
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of machine replicas that will be always deployed on.
+// This value must be greater than or equal to 1.
+// If traffic increases, it may dynamically be deployed onto more replicas,
+// and as traffic decreases, some of these extra replicas may be freed.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of required available replicas for the deployment to succeed.
+// This field is only needed when partial deployment/mutation is
+// desired. If set, the deploy/mutate operation will succeed once
+// availableReplicaCount reaches required_replica_count, and the rest of
+// the replicas will be retried. If not set, the default
+// requiredReplicaCount will be min_replica_count.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) RequiredReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// If true, schedule the deployment workload on [spot
+// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec struct {
+	// The resource metric name.
+	// Supported metrics:
+	// * For Online Prediction:
+	// * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
+	// * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+	MetricName string `pulumi:"metricName"`
+	// The target resource utilization in percentage (1% - 100%) for the given
+	// metric; once the real usage deviates from the target by a certain
+	// percentage, the machine replicas change. The default value is 60
+	// (representing 60%) if not provided.
+	Target *int `pulumi:"target"`
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs{...}
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs struct {
+	// The resource metric name.
+	// Supported metrics:
+	// * For Online Prediction:
+	// * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
+	// * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The target resource utilization in percentage (1% - 100%) for the given
+	// metric; once the real usage deviates from the target by a certain
+	// percentage, the machine replicas change. The default value is 60
+	// (representing 60%) if not provided.
+	Target pulumi.IntPtrInput `pulumi:"target"`
+}
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput)
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArray and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArray{ AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs{...} }
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArray []AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecInput
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArray) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArray) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput {
+	return o
+}
+
+// The resource metric name.
+// Supported metrics:
+// * For Online Prediction:
+// * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
+// * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec) string {
+		return v.MetricName
+	}).(pulumi.StringOutput)
+}
+
+// The target resource utilization in percentage (1% - 100%) for the given
+// metric; once the real usage deviates from the target by a certain
+// percentage, the machine replicas change. The default value is 60
+// (representing 60%) if not provided.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput) Target() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec) *int {
+		return v.Target
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput) Index(i pulumi.IntInput) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec {
+		return vs[0].([]AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec)[vs[1].(int)]
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec struct {
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// Possible values:
+	// ACCELERATOR_TYPE_UNSPECIFIED
+	// NVIDIA_TESLA_K80
+	// NVIDIA_TESLA_P100
+	// NVIDIA_TESLA_V100
+	// NVIDIA_TESLA_P4
+	// NVIDIA_TESLA_T4
+	// NVIDIA_TESLA_A100
+	// NVIDIA_A100_80GB
+	// NVIDIA_L4
+	// NVIDIA_H100_80GB
+	// NVIDIA_H100_MEGA_80GB
+	// NVIDIA_H200_141GB
+	// NVIDIA_B200
+	// TPU_V2
+	// TPU_V3
+	// TPU_V4_POD
+	// TPU_V5_LITEPOD
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The type of the machine.
+	// See the [list of machine types supported for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	// See the [list of machine types supported for custom
+	// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	// For DeployedModel this field is optional, and the default
+	// value is `n1-standard-2`. For BatchPredictionJob or as part of
+	// WorkerPoolSpec this field is required.
+	MachineType *string `pulumi:"machineType"`
+	// The number of nodes per replica for multihost GPU deployments.
+	MultihostGpuNodeCount *int `pulumi:"multihostGpuNodeCount"`
+	// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+	// DeployedModel) to draw its Compute Engine resources from a Shared
+	// Reservation, or exclusively from on-demand capacity.
+	// Structure is documented below.
+	ReservationAffinity *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity `pulumi:"reservationAffinity"`
+	// The topology of the TPUs. Corresponds to the TPU topologies available from
+	// GKE. (Example: tpu_topology: "2x2x1").
+	TpuTopology *string `pulumi:"tpuTopology"`
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs{...}
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs struct {
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// Possible values:
+	// ACCELERATOR_TYPE_UNSPECIFIED
+	// NVIDIA_TESLA_K80
+	// NVIDIA_TESLA_P100
+	// NVIDIA_TESLA_V100
+	// NVIDIA_TESLA_P4
+	// NVIDIA_TESLA_T4
+	// NVIDIA_TESLA_A100
+	// NVIDIA_A100_80GB
+	// NVIDIA_L4
+	// NVIDIA_H100_80GB
+	// NVIDIA_H100_MEGA_80GB
+	// NVIDIA_H200_141GB
+	// NVIDIA_B200
+	// TPU_V2
+	// TPU_V3
+	// TPU_V4_POD
+	// TPU_V5_LITEPOD
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The type of the machine.
+	// See the [list of machine types supported for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	// See the [list of machine types supported for custom
+	// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	// For DeployedModel this field is optional, and the default
+	// value is `n1-standard-2`. For BatchPredictionJob or as part of
+	// WorkerPoolSpec this field is required.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The number of nodes per replica for multihost GPU deployments.
+	MultihostGpuNodeCount pulumi.IntPtrInput `pulumi:"multihostGpuNodeCount"`
+	// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+	// DeployedModel) to draw its Compute Engine resources from a Shared
+	// Reservation, or exclusively from on-demand capacity.
+	// Structure is documented below.
+	ReservationAffinity AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// The topology of the TPUs. Corresponds to the TPU topologies available from
+	// GKE. (Example: tpu_topology: "2x2x1").
+	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
+}
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput).ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs, AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtr and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrType AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs
+
+func AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtr(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput)
+}
+
+// The number of accelerators to attach to the machine.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *int {
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Possible values:
+// ACCELERATOR_TYPE_UNSPECIFIED
+// NVIDIA_TESLA_K80
+// NVIDIA_TESLA_P100
+// NVIDIA_TESLA_V100
+// NVIDIA_TESLA_P4
+// NVIDIA_TESLA_T4
+// NVIDIA_TESLA_A100
+// NVIDIA_A100_80GB
+// NVIDIA_L4
+// NVIDIA_H100_80GB
+// NVIDIA_H100_MEGA_80GB
+// NVIDIA_H200_141GB
+// NVIDIA_B200
+// TPU_V2
+// TPU_V3
+// TPU_V4_POD
+// TPU_V5_LITEPOD
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *string {
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine.
+// See the [list of machine types supported for
+// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+// See the [list of machine types supported for custom
+// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+// For DeployedModel this field is optional, and the default
+// value is `n1-standard-2`. For BatchPredictionJob or as part of
+// WorkerPoolSpec this field is required.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of nodes per replica for multihost GPU deployments.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) MultihostGpuNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *int {
+		return v.MultihostGpuNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+// DeployedModel) to draw its Compute Engine resources from a Shared
+// Reservation, or exclusively from on-demand capacity.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) ReservationAffinity() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity {
+		return v.ReservationAffinity
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput)
+}
+
+// The topology of the TPUs. Corresponds to the TPU topologies available from
+// GKE. (Example: tpu_topology: "2x2x1").
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *string {
+		return v.TpuTopology
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) Elem() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput)
+}
+
+// The number of accelerators to attach to the machine.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Possible values:
+// ACCELERATOR_TYPE_UNSPECIFIED
+// NVIDIA_TESLA_K80
+// NVIDIA_TESLA_P100
+// NVIDIA_TESLA_V100
+// NVIDIA_TESLA_P4
+// NVIDIA_TESLA_T4
+// NVIDIA_TESLA_A100
+// NVIDIA_A100_80GB
+// NVIDIA_L4
+// NVIDIA_H100_80GB
+// NVIDIA_H100_MEGA_80GB
+// NVIDIA_H200_141GB
+// NVIDIA_B200
+// TPU_V2
+// TPU_V3
+// TPU_V4_POD
+// TPU_V5_LITEPOD
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine.
+// See the [list of machine types supported for
+// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+// See the [list of machine types supported for custom
+// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+// For DeployedModel this field is optional, and the default
+// value is `n1-standard-2`. For BatchPredictionJob or as part of
+// WorkerPoolSpec this field is required.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of nodes per replica for multihost GPU deployments.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) MultihostGpuNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MultihostGpuNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+// DeployedModel) to draw its Compute Engine resources from a Shared
+// Reservation, or exclusively from on-demand capacity.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) ReservationAffinity() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput)
+}
+
+// The topology of the TPUs. Corresponds to the TPU topologies available from
+// GKE. (Example: tpu_topology: "2x2x1").
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TpuTopology
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity struct {
+	// Corresponds to the label key of a reservation resource. To target a
+	// SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
+	// as the key and specify the name of your reservation as its value.
+	Key *string `pulumi:"key"`
+	// Specifies the reservation affinity type.
+	// Possible values:
+	// TYPE_UNSPECIFIED
+	// NO_RESERVATION
+	// ANY_RESERVATION
+	// SPECIFIC_RESERVATION
+	ReservationAffinityType string `pulumi:"reservationAffinityType"`
+	// Corresponds to the label values of a reservation resource. This must be the
+	// full resource name of the reservation or reservation block.
+	Values []string `pulumi:"values"`
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs{...}
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs struct {
+	// Corresponds to the label key of a reservation resource. To target a
+	// SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
+	// as the key and specify the name of your reservation as its value.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Specifies the reservation affinity type.
+	// Possible values:
+	// TYPE_UNSPECIFIED
+	// NO_RESERVATION
+	// ANY_RESERVATION
+	// SPECIFIC_RESERVATION
+	ReservationAffinityType pulumi.StringInput `pulumi:"reservationAffinityType"`
+	// Corresponds to the label values of a reservation resource. This must be the
+	// full resource name of the reservation or reservation block.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput).ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs, AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtr and AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput
+	ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrType AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs
+
+func AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtr(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrType) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity) *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput)
+}
+
+// Corresponds to the label key of a reservation resource. To target a
+// SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
+// as the key and specify the name of your reservation as its value.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the reservation affinity type.
+// Possible values:
+// TYPE_UNSPECIFIED
+// NO_RESERVATION
+// ANY_RESERVATION
+// SPECIFIC_RESERVATION
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput) ReservationAffinityType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity) string {
+		return v.ReservationAffinityType
+	}).(pulumi.StringOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This must be the
+// full resource name of the reservation or reservation block.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput) ToAiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput) Elem() AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity) AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput)
+}
+
+// Corresponds to the label key of a reservation resource. To target a
+// SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
+// as the key and specify the name of your reservation as its value.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the reservation affinity type.
+// Possible values:
+// TYPE_UNSPECIFIED
+// NO_RESERVATION
+// ANY_RESERVATION
+// SPECIFIC_RESERVATION
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput) ReservationAffinityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReservationAffinityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This must be the
+// full resource name of the reservation or reservation block.
+func (o AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfig struct {
+	// If true, the endpoint will be exposed through a dedicated
+	// DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
+	// will be isolated from other users' traffic and will have better
+	// performance and reliability. Note: Once you enabled dedicated endpoint,
+	// you won't be able to send request to the shared DNS
+	// {region}-aiplatform.googleapis.com. The limitations will be removed soon.
+	DedicatedEndpointEnabled *bool `pulumi:"dedicatedEndpointEnabled"`
+	// The user-specified display name of the endpoint. If not set, a
+	// default name will be used.
+	EndpointDisplayName *string `pulumi:"endpointDisplayName"`
+}
+
+// AiEndpointWithModelGardenDeploymentEndpointConfigInput is an input type that accepts AiEndpointWithModelGardenDeploymentEndpointConfigArgs and AiEndpointWithModelGardenDeploymentEndpointConfigOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentEndpointConfigInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentEndpointConfigArgs{...}
+type AiEndpointWithModelGardenDeploymentEndpointConfigInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigOutput() AiEndpointWithModelGardenDeploymentEndpointConfigOutput
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigOutput
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigArgs struct {
+	// If true, the endpoint will be exposed through a dedicated
+	// DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
+	// will be isolated from other users' traffic and will have better
+	// performance and reliability. Note: Once you enabled dedicated endpoint,
+	// you won't be able to send request to the shared DNS
+	// {region}-aiplatform.googleapis.com. The limitations will be removed soon.
+	DedicatedEndpointEnabled pulumi.BoolPtrInput `pulumi:"dedicatedEndpointEnabled"`
+	// The user-specified display name of the endpoint. If not set, a
+	// default name will be used.
+	EndpointDisplayName pulumi.StringPtrInput `pulumi:"endpointDisplayName"`
+}
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfig)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigOutput() AiEndpointWithModelGardenDeploymentEndpointConfigOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigOutput).ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentEndpointConfigPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentEndpointConfigArgs, AiEndpointWithModelGardenDeploymentEndpointConfigPtr and AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentEndpointConfigPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentEndpointConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentEndpointConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentEndpointConfigPtrType AiEndpointWithModelGardenDeploymentEndpointConfigArgs
+
+func AiEndpointWithModelGardenDeploymentEndpointConfigPtr(v *AiEndpointWithModelGardenDeploymentEndpointConfigArgs) AiEndpointWithModelGardenDeploymentEndpointConfigPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentEndpointConfigPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentEndpointConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentEndpointConfig)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentEndpointConfigPtrType) ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentEndpointConfigPtrType) ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfig)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigOutput() AiEndpointWithModelGardenDeploymentEndpointConfigOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentEndpointConfig) *AiEndpointWithModelGardenDeploymentEndpointConfig {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput)
+}
+
+// If true, the endpoint will be exposed through a dedicated
+// DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
+// will be isolated from other users' traffic and will have better
+// performance and reliability. Note: Once you enabled dedicated endpoint,
+// you won't be able to send request to the shared DNS
+// {region}-aiplatform.googleapis.com. The limitations will be removed soon.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigOutput) DedicatedEndpointEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfig) *bool { return v.DedicatedEndpointEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The user-specified display name of the endpoint. If not set, a
+// default name will be used.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigOutput) EndpointDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfig) *string { return v.EndpointDisplayName }).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentEndpointConfig)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) Elem() AiEndpointWithModelGardenDeploymentEndpointConfigOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfig) AiEndpointWithModelGardenDeploymentEndpointConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentEndpointConfig
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigOutput)
+}
+
+// If true, the endpoint will be exposed through a dedicated
+// DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
+// will be isolated from other users' traffic and will have better
+// performance and reliability. Note: Once you enabled dedicated endpoint,
+// you won't be able to send request to the shared DNS
+// {region}-aiplatform.googleapis.com. The limitations will be removed soon.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) DedicatedEndpointEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DedicatedEndpointEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The user-specified display name of the endpoint. If not set, a
+// default name will be used.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) EndpointDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfig struct {
+	// Whether the user accepts the End User License Agreement (EULA)
+	// for the model.
+	AcceptEula *bool `pulumi:"acceptEula"`
+	// Specification of a container for serving predictions. Some fields in this
+	// message correspond to fields in the [Kubernetes Container v1 core
+	// specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	// Structure is documented below.
+	ContainerSpec *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec `pulumi:"containerSpec"`
+	// The Hugging Face read access token used to access the model
+	// artifacts of gated models.
+	HuggingFaceAccessToken *string `pulumi:"huggingFaceAccessToken"`
+	// If true, the model will deploy with a cached version instead of directly
+	// downloading the model artifacts from Hugging Face. This is suitable for
+	// VPC-SC users with limited internet access.
+	HuggingFaceCacheEnabled *bool `pulumi:"huggingFaceCacheEnabled"`
+	// The user-specified display name of the uploaded model. If not
+	// set, a default name will be used.
+	ModelDisplayName *string `pulumi:"modelDisplayName"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigArgs and AiEndpointWithModelGardenDeploymentModelConfigOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigOutput() AiEndpointWithModelGardenDeploymentModelConfigOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigArgs struct {
+	// Whether the user accepts the End User License Agreement (EULA)
+	// for the model.
+	AcceptEula pulumi.BoolPtrInput `pulumi:"acceptEula"`
+	// Specification of a container for serving predictions. Some fields in this
+	// message correspond to fields in the [Kubernetes Container v1 core
+	// specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	// Structure is documented below.
+	ContainerSpec AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrInput `pulumi:"containerSpec"`
+	// The Hugging Face read access token used to access the model
+	// artifacts of gated models.
+	HuggingFaceAccessToken pulumi.StringPtrInput `pulumi:"huggingFaceAccessToken"`
+	// If true, the model will deploy with a cached version instead of directly
+	// downloading the model artifacts from Hugging Face. This is suitable for
+	// VPC-SC users with limited internet access.
+	HuggingFaceCacheEnabled pulumi.BoolPtrInput `pulumi:"huggingFaceCacheEnabled"`
+	// The user-specified display name of the uploaded model. If not
+	// set, a default name will be used.
+	ModelDisplayName pulumi.StringPtrInput `pulumi:"modelDisplayName"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfig)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigArgs) ToAiEndpointWithModelGardenDeploymentModelConfigOutput() AiEndpointWithModelGardenDeploymentModelConfigOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigArgs) ToAiEndpointWithModelGardenDeploymentModelConfigOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigArgs) ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigArgs) ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigOutput).ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigArgs, AiEndpointWithModelGardenDeploymentModelConfigPtr and AiEndpointWithModelGardenDeploymentModelConfigPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigPtrType AiEndpointWithModelGardenDeploymentModelConfigArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigPtr(v *AiEndpointWithModelGardenDeploymentModelConfigArgs) AiEndpointWithModelGardenDeploymentModelConfigPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfig)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfig)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) ToAiEndpointWithModelGardenDeploymentModelConfigOutput() AiEndpointWithModelGardenDeploymentModelConfigOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) ToAiEndpointWithModelGardenDeploymentModelConfigOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfig) *AiEndpointWithModelGardenDeploymentModelConfig {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigPtrOutput)
+}
+
+// Whether the user accepts the End User License Agreement (EULA)
+// for the model.
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) AcceptEula() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfig) *bool { return v.AcceptEula }).(pulumi.BoolPtrOutput)
+}
+
+// Specification of a container for serving predictions. Some fields in this
+// message correspond to fields in the [Kubernetes Container v1 core
+// specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) ContainerSpec() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfig) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
+		return v.ContainerSpec
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput)
+}
+
+// The Hugging Face read access token used to access the model
+// artifacts of gated models.
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) HuggingFaceAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfig) *string { return v.HuggingFaceAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// If true, the model will deploy with a cached version instead of directly
+// downloading the model artifacts from Hugging Face. This is suitable for
+// VPC-SC users with limited internet access.
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) HuggingFaceCacheEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfig) *bool { return v.HuggingFaceCacheEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The user-specified display name of the uploaded model. If not
+// set, a default name will be used.
+func (o AiEndpointWithModelGardenDeploymentModelConfigOutput) ModelDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfig) *string { return v.ModelDisplayName }).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfig)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfig) AiEndpointWithModelGardenDeploymentModelConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfig
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigOutput)
+}
+
+// Whether the user accepts the End User License Agreement (EULA)
+// for the model.
+func (o AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) AcceptEula() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptEula
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specification of a container for serving predictions. Some fields in this
+// message correspond to fields in the [Kubernetes Container v1 core
+// specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) ContainerSpec() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfig) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerSpec
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput)
+}
+
+// The Hugging Face read access token used to access the model
+// artifacts of gated models.
+func (o AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) HuggingFaceAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HuggingFaceAccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, the model will deploy with a cached version instead of directly
+// downloading the model artifacts from Hugging Face. This is suitable for
+// VPC-SC users with limited internet access.
+func (o AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) HuggingFaceCacheEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HuggingFaceCacheEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The user-specified display name of the uploaded model. If not
+// set, a default name will be used.
+func (o AiEndpointWithModelGardenDeploymentModelConfigPtrOutput) ModelDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpec struct {
+	// Specifies arguments for the command that runs when the container starts.
+	// This overrides the container's
+	// [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+	// this field as an array of executable and arguments, similar to a Docker
+	// `CMD`'s "default parameters" form.
+	// If you don't specify this field but do specify the
+	// command field, then the command from the
+	// `command` field runs without any additional arguments. See the
+	// [Kubernetes documentation about how the
+	// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+	// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+	// If you don't specify this field and don't specify the `command` field,
+	// then the container's
+	// [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
+	// `CMD` determine what runs based on their default behavior. See the Docker
+	// documentation about [how `CMD` and `ENTRYPOINT`
+	// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+	// In this field, you can reference [environment variables
+	// set by Vertex
+	// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+	// and environment variables set in the env field.
+	// You cannot reference environment variables set in the Docker image. In
+	// order for environment variables to be expanded, reference them by using the
+	// following syntax:$(VARIABLE_NAME)
+	// Note that this differs from Bash variable expansion, which does not use
+	// parentheses. If a variable cannot be resolved, the reference in the input
+	// string is used unchanged. To avoid variable expansion, you can escape this
+	// syntax with `$$`; for example:$$(VARIABLE_NAME)
+	// This field corresponds to the `args` field of the Kubernetes Containers
+	// [v1 core
+	// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	Args []string `pulumi:"args"`
+	// Specifies the command that runs when the container starts. This overrides
+	// the container's
+	// [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
+	// Specify this field as an array of executable and arguments, similar to a
+	// Docker `ENTRYPOINT`'s "exec" form, not its "shell" form.
+	// If you do not specify this field, then the container's `ENTRYPOINT` runs,
+	// in conjunction with the args field or the
+	// container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd),
+	// if either exists. If this field is not specified and the container does not
+	// have an `ENTRYPOINT`, then refer to the Docker documentation about [how
+	// `CMD` and `ENTRYPOINT`
+	// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+	// If you specify this field, then you can also specify the `args` field to
+	// provide additional arguments for this command. However, if you specify this
+	// field, then the container's `CMD` is ignored. See the
+	// [Kubernetes documentation about how the
+	// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+	// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+	// In this field, you can reference [environment variables set by Vertex
+	// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+	// and environment variables set in the env field.
+	// You cannot reference environment variables set in the Docker image. In
+	// order for environment variables to be expanded, reference them by using the
+	// following syntax:$(VARIABLE_NAME)
+	// Note that this differs from Bash variable expansion, which does not use
+	// parentheses. If a variable cannot be resolved, the reference in the input
+	// string is used unchanged. To avoid variable expansion, you can escape this
+	// syntax with `$$`; for example:$$(VARIABLE_NAME)
+	// This field corresponds to the `command` field of the Kubernetes Containers
+	// [v1 core
+	// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	Commands []string `pulumi:"commands"`
+	// Deployment timeout.
+	// Limit for deployment timeout is 2 hours.
+	DeploymentTimeout *string `pulumi:"deploymentTimeout"`
+	// List of environment variables to set in the container. After the container
+	// starts running, code running in the container can read these environment
+	// variables.
+	// Additionally, the command and
+	// args fields can reference these variables. Later
+	// entries in this list can also reference earlier entries. For example, the
+	// following example sets the variable `VAR_2` to have the value `foo bar`:
+	//
+	// If you switch the order of the variables in the example, then the expansion
+	// does not occur.
+	// This field corresponds to the `env` field of the Kubernetes Containers
+	// [v1 core
+	// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	// Structure is documented below.
+	Envs []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv `pulumi:"envs"`
+	// List of ports to expose from the container. Vertex AI sends gRPC
+	// prediction requests that it receives to the first port on this list. Vertex
+	// AI also sends liveness and health checks to this port.
+	// If you do not specify this field, gRPC requests to the container will be
+	// disabled.
+	// Vertex AI does not use ports other than the first one listed. This field
+	// corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+	// Structure is documented below.
+	GrpcPorts []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort `pulumi:"grpcPorts"`
+	// Probe describes a health check to be performed against a container to
+	// determine whether it is alive or ready to receive traffic.
+	// Structure is documented below.
+	HealthProbe *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe `pulumi:"healthProbe"`
+	// HTTP path on the container to send health checks to. Vertex AI
+	// intermittently sends GET requests to this path on the container's IP
+	// address and port to check that the container is healthy. Read more about
+	// [health
+	// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
+	// For example, if you set this field to `/bar`, then Vertex AI
+	// intermittently sends a GET request to the `/bar` path on the port of your
+	// container specified by the first value of this `ModelContainerSpec`'s
+	// ports field.
+	// If you don't specify this field, it defaults to the following value when
+	// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+	// The placeholders in this value are replaced as follows:
+	// * ENDPOINT: The last segment (following `endpoints/`)of the
+	//   Endpoint.name][] field of the Endpoint where this Model has been
+	//   deployed. (Vertex AI makes this value available to your container code
+	//   as the [`AIP_ENDPOINT_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+	// * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+	//   (Vertex AI makes this value available to your container code as the
+	//   [`AIP_DEPLOYED_MODEL_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+	HealthRoute *string `pulumi:"healthRoute"`
+	// URI of the Docker image to be used as the custom container for serving
+	// predictions. This URI must identify an image in Artifact Registry or
+	// Container Registry. Learn more about the [container publishing
+	// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
+	// including permissions requirements for the Vertex AI Service Agent.
+	// The container image is ingested upon ModelService.UploadModel, stored
+	// internally, and this original path is afterwards not used.
+	// To learn about the requirements for the Docker image itself, see
+	// [Custom container
+	// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
+	// You can use the URI to one of Vertex AI's [pre-built container images for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
+	// in this field.
+	ImageUri string `pulumi:"imageUri"`
+	// Probe describes a health check to be performed against a container to
+	// determine whether it is alive or ready to receive traffic.
+	// Structure is documented below.
+	LivenessProbe *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe `pulumi:"livenessProbe"`
+	// List of ports to expose from the container. Vertex AI sends any
+	// prediction requests that it receives to the first port on this list. Vertex
+	// AI also sends
+	// [liveness and health
+	// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
+	// to this port.
+	// If you do not specify this field, it defaults to following value:
+	//
+	// Vertex AI does not use ports other than the first one listed. This field
+	// corresponds to the `ports` field of the Kubernetes Containers
+	// [v1 core
+	// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	// Structure is documented below.
+	Ports []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort `pulumi:"ports"`
+	// HTTP path on the container to send prediction requests to. Vertex AI
+	// forwards requests sent using
+	// projects.locations.endpoints.predict to this
+	// path on the container's IP address and port. Vertex AI then returns the
+	// container's response in the API response.
+	// For example, if you set this field to `/foo`, then when Vertex AI
+	// receives a prediction request, it forwards the request body in a POST
+	// request to the `/foo` path on the port of your container specified by the
+	// first value of this `ModelContainerSpec`'s
+	// ports field.
+	// If you don't specify this field, it defaults to the following value when
+	// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+	// The placeholders in this value are replaced as follows:
+	// * ENDPOINT: The last segment (following `endpoints/`)of the
+	//   Endpoint.name][] field of the Endpoint where this Model has been
+	//   deployed. (Vertex AI makes this value available to your container code
+	//   as the [`AIP_ENDPOINT_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+	// * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+	//   (Vertex AI makes this value available to your container code
+	//   as the [`AIP_DEPLOYED_MODEL_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+	PredictRoute *string `pulumi:"predictRoute"`
+	// The amount of the VM memory to reserve as the shared memory for the model
+	// in megabytes.
+	SharedMemorySizeMb *string `pulumi:"sharedMemorySizeMb"`
+	// Probe describes a health check to be performed against a container to
+	// determine whether it is alive or ready to receive traffic.
+	// Structure is documented below.
+	StartupProbe *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe `pulumi:"startupProbe"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs struct {
+	// Specifies arguments for the command that runs when the container starts.
+	// This overrides the container's
+	// [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+	// this field as an array of executable and arguments, similar to a Docker
+	// `CMD`'s "default parameters" form.
+	// If you don't specify this field but do specify the
+	// command field, then the command from the
+	// `command` field runs without any additional arguments. See the
+	// [Kubernetes documentation about how the
+	// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+	// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+	// If you don't specify this field and don't specify the `command` field,
+	// then the container's
+	// [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
+	// `CMD` determine what runs based on their default behavior. See the Docker
+	// documentation about [how `CMD` and `ENTRYPOINT`
+	// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+	// In this field, you can reference [environment variables
+	// set by Vertex
+	// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+	// and environment variables set in the env field.
+	// You cannot reference environment variables set in the Docker image. In
+	// order for environment variables to be expanded, reference them by using the
+	// following syntax:$(VARIABLE_NAME)
+	// Note that this differs from Bash variable expansion, which does not use
+	// parentheses. If a variable cannot be resolved, the reference in the input
+	// string is used unchanged. To avoid variable expansion, you can escape this
+	// syntax with `$$`; for example:$$(VARIABLE_NAME)
+	// This field corresponds to the `args` field of the Kubernetes Containers
+	// [v1 core
+	// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Specifies the command that runs when the container starts. This overrides
+	// the container's
+	// [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
+	// Specify this field as an array of executable and arguments, similar to a
+	// Docker `ENTRYPOINT`'s "exec" form, not its "shell" form.
+	// If you do not specify this field, then the container's `ENTRYPOINT` runs,
+	// in conjunction with the args field or the
+	// container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd),
+	// if either exists. If this field is not specified and the container does not
+	// have an `ENTRYPOINT`, then refer to the Docker documentation about [how
+	// `CMD` and `ENTRYPOINT`
+	// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+	// If you specify this field, then you can also specify the `args` field to
+	// provide additional arguments for this command. However, if you specify this
+	// field, then the container's `CMD` is ignored. See the
+	// [Kubernetes documentation about how the
+	// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+	// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+	// In this field, you can reference [environment variables set by Vertex
+	// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+	// and environment variables set in the env field.
+	// You cannot reference environment variables set in the Docker image. In
+	// order for environment variables to be expanded, reference them by using the
+	// following syntax:$(VARIABLE_NAME)
+	// Note that this differs from Bash variable expansion, which does not use
+	// parentheses. If a variable cannot be resolved, the reference in the input
+	// string is used unchanged. To avoid variable expansion, you can escape this
+	// syntax with `$$`; for example:$$(VARIABLE_NAME)
+	// This field corresponds to the `command` field of the Kubernetes Containers
+	// [v1 core
+	// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Deployment timeout.
+	// Limit for deployment timeout is 2 hours.
+	DeploymentTimeout pulumi.StringPtrInput `pulumi:"deploymentTimeout"`
+	// List of environment variables to set in the container. After the container
+	// starts running, code running in the container can read these environment
+	// variables.
+	// Additionally, the command and
+	// args fields can reference these variables. Later
+	// entries in this list can also reference earlier entries. For example, the
+	// following example sets the variable `VAR_2` to have the value `foo bar`:
+	//
+	// If you switch the order of the variables in the example, then the expansion
+	// does not occur.
+	// This field corresponds to the `env` field of the Kubernetes Containers
+	// [v1 core
+	// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	// Structure is documented below.
+	Envs AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayInput `pulumi:"envs"`
+	// List of ports to expose from the container. Vertex AI sends gRPC
+	// prediction requests that it receives to the first port on this list. Vertex
+	// AI also sends liveness and health checks to this port.
+	// If you do not specify this field, gRPC requests to the container will be
+	// disabled.
+	// Vertex AI does not use ports other than the first one listed. This field
+	// corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+	// Structure is documented below.
+	GrpcPorts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayInput `pulumi:"grpcPorts"`
+	// Probe describes a health check to be performed against a container to
+	// determine whether it is alive or ready to receive traffic.
+	// Structure is documented below.
+	HealthProbe AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrInput `pulumi:"healthProbe"`
+	// HTTP path on the container to send health checks to. Vertex AI
+	// intermittently sends GET requests to this path on the container's IP
+	// address and port to check that the container is healthy. Read more about
+	// [health
+	// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
+	// For example, if you set this field to `/bar`, then Vertex AI
+	// intermittently sends a GET request to the `/bar` path on the port of your
+	// container specified by the first value of this `ModelContainerSpec`'s
+	// ports field.
+	// If you don't specify this field, it defaults to the following value when
+	// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+	// The placeholders in this value are replaced as follows:
+	// * ENDPOINT: The last segment (following `endpoints/`)of the
+	//   Endpoint.name][] field of the Endpoint where this Model has been
+	//   deployed. (Vertex AI makes this value available to your container code
+	//   as the [`AIP_ENDPOINT_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+	// * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+	//   (Vertex AI makes this value available to your container code as the
+	//   [`AIP_DEPLOYED_MODEL_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+	HealthRoute pulumi.StringPtrInput `pulumi:"healthRoute"`
+	// URI of the Docker image to be used as the custom container for serving
+	// predictions. This URI must identify an image in Artifact Registry or
+	// Container Registry. Learn more about the [container publishing
+	// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
+	// including permissions requirements for the Vertex AI Service Agent.
+	// The container image is ingested upon ModelService.UploadModel, stored
+	// internally, and this original path is afterwards not used.
+	// To learn about the requirements for the Docker image itself, see
+	// [Custom container
+	// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
+	// You can use the URI to one of Vertex AI's [pre-built container images for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
+	// in this field.
+	ImageUri pulumi.StringInput `pulumi:"imageUri"`
+	// Probe describes a health check to be performed against a container to
+	// determine whether it is alive or ready to receive traffic.
+	// Structure is documented below.
+	LivenessProbe AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrInput `pulumi:"livenessProbe"`
+	// List of ports to expose from the container. Vertex AI sends any
+	// prediction requests that it receives to the first port on this list. Vertex
+	// AI also sends
+	// [liveness and health
+	// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
+	// to this port.
+	// If you do not specify this field, it defaults to following value:
+	//
+	// Vertex AI does not use ports other than the first one listed. This field
+	// corresponds to the `ports` field of the Kubernetes Containers
+	// [v1 core
+	// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+	// Structure is documented below.
+	Ports AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayInput `pulumi:"ports"`
+	// HTTP path on the container to send prediction requests to. Vertex AI
+	// forwards requests sent using
+	// projects.locations.endpoints.predict to this
+	// path on the container's IP address and port. Vertex AI then returns the
+	// container's response in the API response.
+	// For example, if you set this field to `/foo`, then when Vertex AI
+	// receives a prediction request, it forwards the request body in a POST
+	// request to the `/foo` path on the port of your container specified by the
+	// first value of this `ModelContainerSpec`'s
+	// ports field.
+	// If you don't specify this field, it defaults to the following value when
+	// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+	// The placeholders in this value are replaced as follows:
+	// * ENDPOINT: The last segment (following `endpoints/`)of the
+	//   Endpoint.name][] field of the Endpoint where this Model has been
+	//   deployed. (Vertex AI makes this value available to your container code
+	//   as the [`AIP_ENDPOINT_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+	// * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+	//   (Vertex AI makes this value available to your container code
+	//   as the [`AIP_DEPLOYED_MODEL_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+	PredictRoute pulumi.StringPtrInput `pulumi:"predictRoute"`
+	// The amount of the VM memory to reserve as the shared memory for the model
+	// in megabytes.
+	SharedMemorySizeMb pulumi.StringPtrInput `pulumi:"sharedMemorySizeMb"`
+	// Probe describes a health check to be performed against a container to
+	// determine whether it is alive or ready to receive traffic.
+	// Structure is documented below.
+	StartupProbe AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrInput `pulumi:"startupProbe"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpec)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpec)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput)
+}
+
+// Specifies arguments for the command that runs when the container starts.
+// This overrides the container's
+// [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+// this field as an array of executable and arguments, similar to a Docker
+// `CMD`'s "default parameters" form.
+// If you don't specify this field but do specify the
+// command field, then the command from the
+// `command` field runs without any additional arguments. See the
+// [Kubernetes documentation about how the
+// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+// If you don't specify this field and don't specify the `command` field,
+// then the container's
+// [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
+// `CMD` determine what runs based on their default behavior. See the Docker
+// documentation about [how `CMD` and `ENTRYPOINT`
+// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+// In this field, you can reference [environment variables
+// set by Vertex
+// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+// and environment variables set in the env field.
+// You cannot reference environment variables set in the Docker image. In
+// order for environment variables to be expanded, reference them by using the
+// following syntax:$(VARIABLE_NAME)
+// Note that this differs from Bash variable expansion, which does not use
+// parentheses. If a variable cannot be resolved, the reference in the input
+// string is used unchanged. To avoid variable expansion, you can escape this
+// syntax with `$$`; for example:$$(VARIABLE_NAME)
+// This field corresponds to the `args` field of the Kubernetes Containers
+// [v1 core
+// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the command that runs when the container starts. This overrides
+// the container's
+// [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
+// Specify this field as an array of executable and arguments, similar to a
+// Docker `ENTRYPOINT`'s "exec" form, not its "shell" form.
+// If you do not specify this field, then the container's `ENTRYPOINT` runs,
+// in conjunction with the args field or the
+// container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd),
+// if either exists. If this field is not specified and the container does not
+// have an `ENTRYPOINT`, then refer to the Docker documentation about [how
+// `CMD` and `ENTRYPOINT`
+// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+// If you specify this field, then you can also specify the `args` field to
+// provide additional arguments for this command. However, if you specify this
+// field, then the container's `CMD` is ignored. See the
+// [Kubernetes documentation about how the
+// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+// In this field, you can reference [environment variables set by Vertex
+// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+// and environment variables set in the env field.
+// You cannot reference environment variables set in the Docker image. In
+// order for environment variables to be expanded, reference them by using the
+// following syntax:$(VARIABLE_NAME)
+// Note that this differs from Bash variable expansion, which does not use
+// parentheses. If a variable cannot be resolved, the reference in the input
+// string is used unchanged. To avoid variable expansion, you can escape this
+// syntax with `$$`; for example:$$(VARIABLE_NAME)
+// This field corresponds to the `command` field of the Kubernetes Containers
+// [v1 core
+// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Deployment timeout.
+// Limit for deployment timeout is 2 hours.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) DeploymentTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string {
+		return v.DeploymentTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of environment variables to set in the container. After the container
+// starts running, code running in the container can read these environment
+// variables.
+// Additionally, the command and
+// args fields can reference these variables. Later
+// entries in this list can also reference earlier entries. For example, the
+// following example sets the variable `VAR_2` to have the value `foo bar`:
+//
+// If you switch the order of the variables in the example, then the expansion
+// does not occur.
+// This field corresponds to the `env` field of the Kubernetes Containers
+// [v1 core
+// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) Envs() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv {
+		return v.Envs
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput)
+}
+
+// List of ports to expose from the container. Vertex AI sends gRPC
+// prediction requests that it receives to the first port on this list. Vertex
+// AI also sends liveness and health checks to this port.
+// If you do not specify this field, gRPC requests to the container will be
+// disabled.
+// Vertex AI does not use ports other than the first one listed. This field
+// corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) GrpcPorts() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort {
+		return v.GrpcPorts
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput)
+}
+
+// Probe describes a health check to be performed against a container to
+// determine whether it is alive or ready to receive traffic.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) HealthProbe() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe {
+		return v.HealthProbe
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput)
+}
+
+// HTTP path on the container to send health checks to. Vertex AI
+// intermittently sends GET requests to this path on the container's IP
+// address and port to check that the container is healthy. Read more about
+// [health
+// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
+// For example, if you set this field to `/bar`, then Vertex AI
+// intermittently sends a GET request to the `/bar` path on the port of your
+// container specified by the first value of this `ModelContainerSpec`'s
+// ports field.
+// If you don't specify this field, it defaults to the following value when
+// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+// The placeholders in this value are replaced as follows:
+//   - ENDPOINT: The last segment (following `endpoints/`)of the
+//     Endpoint.name][] field of the Endpoint where this Model has been
+//     deployed. (Vertex AI makes this value available to your container code
+//     as the [`AIP_ENDPOINT_ID` environment
+//     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+//   - DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+//     (Vertex AI makes this value available to your container code as the
+//     [`AIP_DEPLOYED_MODEL_ID` environment
+//     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) HealthRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string { return v.HealthRoute }).(pulumi.StringPtrOutput)
+}
+
+// URI of the Docker image to be used as the custom container for serving
+// predictions. This URI must identify an image in Artifact Registry or
+// Container Registry. Learn more about the [container publishing
+// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
+// including permissions requirements for the Vertex AI Service Agent.
+// The container image is ingested upon ModelService.UploadModel, stored
+// internally, and this original path is afterwards not used.
+// To learn about the requirements for the Docker image itself, see
+// [Custom container
+// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
+// You can use the URI to one of Vertex AI's [pre-built container images for
+// prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
+// in this field.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) ImageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) string { return v.ImageUri }).(pulumi.StringOutput)
+}
+
+// Probe describes a health check to be performed against a container to
+// determine whether it is alive or ready to receive traffic.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) LivenessProbe() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe {
+		return v.LivenessProbe
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput)
+}
+
+// List of ports to expose from the container. Vertex AI sends any
+// prediction requests that it receives to the first port on this list. Vertex
+// AI also sends
+// [liveness and health
+// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
+// to this port.
+// If you do not specify this field, it defaults to following value:
+//
+// Vertex AI does not use ports other than the first one listed. This field
+// corresponds to the `ports` field of the Kubernetes Containers
+// [v1 core
+// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) Ports() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort {
+		return v.Ports
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput)
+}
+
+// HTTP path on the container to send prediction requests to. Vertex AI
+// forwards requests sent using
+// projects.locations.endpoints.predict to this
+// path on the container's IP address and port. Vertex AI then returns the
+// container's response in the API response.
+// For example, if you set this field to `/foo`, then when Vertex AI
+// receives a prediction request, it forwards the request body in a POST
+// request to the `/foo` path on the port of your container specified by the
+// first value of this `ModelContainerSpec`'s
+// ports field.
+// If you don't specify this field, it defaults to the following value when
+// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+// The placeholders in this value are replaced as follows:
+//   - ENDPOINT: The last segment (following `endpoints/`)of the
+//     Endpoint.name][] field of the Endpoint where this Model has been
+//     deployed. (Vertex AI makes this value available to your container code
+//     as the [`AIP_ENDPOINT_ID` environment
+//     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+//   - DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+//     (Vertex AI makes this value available to your container code
+//     as the [`AIP_DEPLOYED_MODEL_ID` environment
+//     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) PredictRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string { return v.PredictRoute }).(pulumi.StringPtrOutput)
+}
+
+// The amount of the VM memory to reserve as the shared memory for the model
+// in megabytes.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) SharedMemorySizeMb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string {
+		return v.SharedMemorySizeMb
+	}).(pulumi.StringPtrOutput)
+}
+
+// Probe describes a health check to be performed against a container to
+// determine whether it is alive or ready to receive traffic.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput) StartupProbe() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe {
+		return v.StartupProbe
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpec
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput)
+}
+
+// Specifies arguments for the command that runs when the container starts.
+// This overrides the container's
+// [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+// this field as an array of executable and arguments, similar to a Docker
+// `CMD`'s "default parameters" form.
+// If you don't specify this field but do specify the
+// command field, then the command from the
+// `command` field runs without any additional arguments. See the
+// [Kubernetes documentation about how the
+// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+// If you don't specify this field and don't specify the `command` field,
+// then the container's
+// [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
+// `CMD` determine what runs based on their default behavior. See the Docker
+// documentation about [how `CMD` and `ENTRYPOINT`
+// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+// In this field, you can reference [environment variables
+// set by Vertex
+// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+// and environment variables set in the env field.
+// You cannot reference environment variables set in the Docker image. In
+// order for environment variables to be expanded, reference them by using the
+// following syntax:$(VARIABLE_NAME)
+// Note that this differs from Bash variable expansion, which does not use
+// parentheses. If a variable cannot be resolved, the reference in the input
+// string is used unchanged. To avoid variable expansion, you can escape this
+// syntax with `$$`; for example:$$(VARIABLE_NAME)
+// This field corresponds to the `args` field of the Kubernetes Containers
+// [v1 core
+// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the command that runs when the container starts. This overrides
+// the container's
+// [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
+// Specify this field as an array of executable and arguments, similar to a
+// Docker `ENTRYPOINT`'s "exec" form, not its "shell" form.
+// If you do not specify this field, then the container's `ENTRYPOINT` runs,
+// in conjunction with the args field or the
+// container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd),
+// if either exists. If this field is not specified and the container does not
+// have an `ENTRYPOINT`, then refer to the Docker documentation about [how
+// `CMD` and `ENTRYPOINT`
+// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+// If you specify this field, then you can also specify the `args` field to
+// provide additional arguments for this command. However, if you specify this
+// field, then the container's `CMD` is ignored. See the
+// [Kubernetes documentation about how the
+// `command` and `args` fields interact with a container's `ENTRYPOINT` and
+// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+// In this field, you can reference [environment variables set by Vertex
+// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+// and environment variables set in the env field.
+// You cannot reference environment variables set in the Docker image. In
+// order for environment variables to be expanded, reference them by using the
+// following syntax:$(VARIABLE_NAME)
+// Note that this differs from Bash variable expansion, which does not use
+// parentheses. If a variable cannot be resolved, the reference in the input
+// string is used unchanged. To avoid variable expansion, you can escape this
+// syntax with `$$`; for example:$$(VARIABLE_NAME)
+// This field corresponds to the `command` field of the Kubernetes Containers
+// [v1 core
+// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Deployment timeout.
+// Limit for deployment timeout is 2 hours.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) DeploymentTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of environment variables to set in the container. After the container
+// starts running, code running in the container can read these environment
+// variables.
+// Additionally, the command and
+// args fields can reference these variables. Later
+// entries in this list can also reference earlier entries. For example, the
+// following example sets the variable `VAR_2` to have the value `foo bar`:
+//
+// If you switch the order of the variables in the example, then the expansion
+// does not occur.
+// This field corresponds to the `env` field of the Kubernetes Containers
+// [v1 core
+// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) Envs() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput)
+}
+
+// List of ports to expose from the container. Vertex AI sends gRPC
+// prediction requests that it receives to the first port on this list. Vertex
+// AI also sends liveness and health checks to this port.
+// If you do not specify this field, gRPC requests to the container will be
+// disabled.
+// Vertex AI does not use ports other than the first one listed. This field
+// corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) GrpcPorts() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcPorts
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput)
+}
+
+// Probe describes a health check to be performed against a container to
+// determine whether it is alive or ready to receive traffic.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) HealthProbe() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe {
+		if v == nil {
+			return nil
+		}
+		return v.HealthProbe
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput)
+}
+
+// HTTP path on the container to send health checks to. Vertex AI
+// intermittently sends GET requests to this path on the container's IP
+// address and port to check that the container is healthy. Read more about
+// [health
+// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
+// For example, if you set this field to `/bar`, then Vertex AI
+// intermittently sends a GET request to the `/bar` path on the port of your
+// container specified by the first value of this `ModelContainerSpec`'s
+// ports field.
+// If you don't specify this field, it defaults to the following value when
+// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+// The placeholders in this value are replaced as follows:
+//   - ENDPOINT: The last segment (following `endpoints/`)of the
+//     Endpoint.name][] field of the Endpoint where this Model has been
+//     deployed. (Vertex AI makes this value available to your container code
+//     as the [`AIP_ENDPOINT_ID` environment
+//     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+//   - DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+//     (Vertex AI makes this value available to your container code as the
+//     [`AIP_DEPLOYED_MODEL_ID` environment
+//     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) HealthRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthRoute
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of the Docker image to be used as the custom container for serving
+// predictions. This URI must identify an image in Artifact Registry or
+// Container Registry. Learn more about the [container publishing
+// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
+// including permissions requirements for the Vertex AI Service Agent.
+// The container image is ingested upon ModelService.UploadModel, stored
+// internally, and this original path is afterwards not used.
+// To learn about the requirements for the Docker image itself, see
+// [Custom container
+// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
+// You can use the URI to one of Vertex AI's [pre-built container images for
+// prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
+// in this field.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Probe describes a health check to be performed against a container to
+// determine whether it is alive or ready to receive traffic.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) LivenessProbe() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe {
+		if v == nil {
+			return nil
+		}
+		return v.LivenessProbe
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput)
+}
+
+// List of ports to expose from the container. Vertex AI sends any
+// prediction requests that it receives to the first port on this list. Vertex
+// AI also sends
+// [liveness and health
+// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
+// to this port.
+// If you do not specify this field, it defaults to following value:
+//
+// Vertex AI does not use ports other than the first one listed. This field
+// corresponds to the `ports` field of the Kubernetes Containers
+// [v1 core
+// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) Ports() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput)
+}
+
+// HTTP path on the container to send prediction requests to. Vertex AI
+// forwards requests sent using
+// projects.locations.endpoints.predict to this
+// path on the container's IP address and port. Vertex AI then returns the
+// container's response in the API response.
+// For example, if you set this field to `/foo`, then when Vertex AI
+// receives a prediction request, it forwards the request body in a POST
+// request to the `/foo` path on the port of your container specified by the
+// first value of this `ModelContainerSpec`'s
+// ports field.
+// If you don't specify this field, it defaults to the following value when
+// you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+// The placeholders in this value are replaced as follows:
+//   - ENDPOINT: The last segment (following `endpoints/`)of the
+//     Endpoint.name][] field of the Endpoint where this Model has been
+//     deployed. (Vertex AI makes this value available to your container code
+//     as the [`AIP_ENDPOINT_ID` environment
+//     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+//   - DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+//     (Vertex AI makes this value available to your container code
+//     as the [`AIP_DEPLOYED_MODEL_ID` environment
+//     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) PredictRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredictRoute
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of the VM memory to reserve as the shared memory for the model
+// in megabytes.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) SharedMemorySizeMb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharedMemorySizeMb
+	}).(pulumi.StringPtrOutput)
+}
+
+// Probe describes a health check to be performed against a container to
+// determine whether it is alive or ready to receive traffic.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput) StartupProbe() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe {
+		if v == nil {
+			return nil
+		}
+		return v.StartupProbe
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv struct {
+	// Name of the environment variable. Must be a valid C identifier.
+	Name string `pulumi:"name"`
+	// Variables that reference a $(VAR_NAME) are expanded
+	// using the previous defined environment variables in the container and
+	// any service environment variables. If a variable cannot be resolved,
+	// the reference in the input string will be unchanged. The $(VAR_NAME)
+	// syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+	// references will never be expanded, regardless of whether the variable
+	// exists or not.
+	Value string `pulumi:"value"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs struct {
+	// Name of the environment variable. Must be a valid C identifier.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variables that reference a $(VAR_NAME) are expanded
+	// using the previous defined environment variables in the container and
+	// any service environment variables. If a variable cannot be resolved,
+	// the reference in the input string will be unchanged. The $(VAR_NAME)
+	// syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+	// references will never be expanded, regardless of whether the variable
+	// exists or not.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArray and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArray{ AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs{...} }
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArray []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvInput
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a valid C identifier.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Variables that reference a $(VAR_NAME) are expanded
+// using the previous defined environment variables in the container and
+// any service environment variables. If a variable cannot be resolved,
+// the reference in the input string will be unchanged. The $(VAR_NAME)
+// syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+// references will never be expanded, regardless of whether the variable
+// exists or not.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput) Index(i pulumi.IntInput) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv {
+		return vs[0].([]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv)[vs[1].(int)]
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort struct {
+	// The number of the port to expose on the pod's IP address.
+	// Must be a valid port number, between 1 and 65535 inclusive.
+	ContainerPort *int `pulumi:"containerPort"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs struct {
+	// The number of the port to expose on the pod's IP address.
+	// Must be a valid port number, between 1 and 65535 inclusive.
+	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArray and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArray{ AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs{...} }
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArray []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortInput
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput {
+	return o
+}
+
+// The number of the port to expose on the pod's IP address.
+// Must be a valid port number, between 1 and 65535 inclusive.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort) *int {
+		return v.ContainerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput) Index(i pulumi.IntInput) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort {
+		return vs[0].([]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort)[vs[1].(int)]
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec `pulumi:"exec"`
+	// Number of consecutive failures before the probe is considered failed.
+	// Defaults to 3. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'failureThreshold'.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GrpcAction checks the health of a container using a gRPC service.
+	// Structure is documented below.
+	Grpc *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc `pulumi:"grpc"`
+	// HttpGetAction describes an action based on HTTP Get requests.
+	// Structure is documented below.
+	HttpGet *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet `pulumi:"httpGet"`
+	// Number of seconds to wait before starting the probe. Defaults to 0.
+	// Minimum value is 0.
+	// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds.
+	// Minimum value is 1. Must be less than timeout_seconds.
+	// Maps to Kubernetes probe argument 'periodSeconds'.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Number of consecutive successes before the probe is considered successful.
+	// Defaults to 1. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'successThreshold'.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// TcpSocketAction probes the health of a container by opening a TCP socket
+	// connection.
+	// Structure is documented below.
+	TcpSocket *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out. Defaults to 1 second.
+	// Minimum value is 1. Must be greater or equal to period_seconds.
+	// Maps to Kubernetes probe argument 'timeoutSeconds'.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrInput `pulumi:"exec"`
+	// Number of consecutive failures before the probe is considered failed.
+	// Defaults to 3. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'failureThreshold'.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GrpcAction checks the health of a container using a gRPC service.
+	// Structure is documented below.
+	Grpc AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrInput `pulumi:"grpc"`
+	// HttpGetAction describes an action based on HTTP Get requests.
+	// Structure is documented below.
+	HttpGet AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Number of seconds to wait before starting the probe. Defaults to 0.
+	// Minimum value is 0.
+	// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds.
+	// Minimum value is 1. Must be less than timeout_seconds.
+	// Maps to Kubernetes probe argument 'periodSeconds'.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Number of consecutive successes before the probe is considered successful.
+	// Defaults to 1. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'successThreshold'.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// TcpSocketAction probes the health of a container by opening a TCP socket
+	// connection.
+	// Structure is documented below.
+	TcpSocket AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out. Defaults to 1 second.
+	// Minimum value is 1. Must be greater or equal to period_seconds.
+	// Maps to Kubernetes probe argument 'timeoutSeconds'.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) Exec() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec {
+		return v.Exec
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput)
+}
+
+// Number of consecutive failures before the probe is considered failed.
+// Defaults to 3. Minimum value is 1.
+// Maps to Kubernetes probe argument 'failureThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GrpcAction checks the health of a container using a gRPC service.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) Grpc() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc {
+		return v.Grpc
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput)
+}
+
+// HttpGetAction describes an action based on HTTP Get requests.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) HttpGet() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet {
+		return v.HttpGet
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput)
+}
+
+// Number of seconds to wait before starting the probe. Defaults to 0.
+// Minimum value is 0.
+// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe. Default to 10 seconds.
+// Minimum value is 1. Must be less than timeout_seconds.
+// Maps to Kubernetes probe argument 'periodSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successes before the probe is considered successful.
+// Defaults to 1. Minimum value is 1.
+// Maps to Kubernetes probe argument 'successThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TcpSocketAction probes the health of a container by opening a TCP socket
+// connection.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) TcpSocket() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket {
+		return v.TcpSocket
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out. Defaults to 1 second.
+// Minimum value is 1. Must be greater or equal to period_seconds.
+// Maps to Kubernetes probe argument 'timeoutSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) Exec() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput)
+}
+
+// Number of consecutive failures before the probe is considered failed.
+// Defaults to 3. Minimum value is 1.
+// Maps to Kubernetes probe argument 'failureThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GrpcAction checks the health of a container using a gRPC service.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) Grpc() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput)
+}
+
+// HttpGetAction describes an action based on HTTP Get requests.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) HttpGet() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput)
+}
+
+// Number of seconds to wait before starting the probe. Defaults to 0.
+// Minimum value is 0.
+// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe. Default to 10 seconds.
+// Minimum value is 1. Must be less than timeout_seconds.
+// Maps to Kubernetes probe argument 'periodSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successes before the probe is considered successful.
+// Defaults to 1. Minimum value is 1.
+// Maps to Kubernetes probe argument 'successThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TcpSocketAction probes the health of a container by opening a TCP socket
+// connection.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) TcpSocket() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out. Defaults to 1 second.
+// Minimum value is 1. Must be greater or equal to period_seconds.
+// Maps to Kubernetes probe argument 'timeoutSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec struct {
+	// Command is the command line to execute inside the container, the working
+	// directory for the command is root ('/') in the container's filesystem.
+	// The command is simply exec'd, it is not run inside a shell, so
+	// traditional shell instructions ('|', etc) won't work. To use a shell, you
+	// need to explicitly call out to that shell. Exit status of 0 is treated as
+	// live/healthy and non-zero is unhealthy.
+	Commands []string `pulumi:"commands"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs struct {
+	// Command is the command line to execute inside the container, the working
+	// directory for the command is root ('/') in the container's filesystem.
+	// The command is simply exec'd, it is not run inside a shell, so
+	// traditional shell instructions ('|', etc) won't work. To use a shell, you
+	// need to explicitly call out to that shell. Exit status of 0 is treated as
+	// live/healthy and non-zero is unhealthy.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working
+// directory for the command is root ('/') in the container's filesystem.
+// The command is simply exec'd, it is not run inside a shell, so
+// traditional shell instructions ('|', etc) won't work. To use a shell, you
+// need to explicitly call out to that shell. Exit status of 0 is treated as
+// live/healthy and non-zero is unhealthy.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput)
+}
+
+// Command is the command line to execute inside the container, the working
+// directory for the command is root ('/') in the container's filesystem.
+// The command is simply exec'd, it is not run inside a shell, so
+// traditional shell instructions ('|', etc) won't work. To use a shell, you
+// need to explicitly call out to that shell. Exit status of 0 is treated as
+// live/healthy and non-zero is unhealthy.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC
+	// HealthCheckRequest. See
+	// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC
+	// HealthCheckRequest. See
+	// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC
+// HealthCheckRequest. See
+// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+// If this is not specified, the default behavior is defined by gRPC.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc) *string {
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC
+// HealthCheckRequest. See
+// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+// If this is not specified, the default behavior is defined by gRPC.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet struct {
+	// Host name to connect to, defaults to the model serving container's IP.
+	// You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+	Scheme *string `pulumi:"scheme"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs struct {
+	// Host name to connect to, defaults to the model serving container's IP.
+	// You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the model serving container's IP.
+// You probably want to set "Host" in httpHeaders instead.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *string {
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) HttpHeaders() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *string {
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *int {
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *string {
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the model serving container's IP.
+// You probably want to set "Host" in httpHeaders instead.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) HttpHeaders() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader struct {
+	// The header field name.
+	// This will be canonicalized upon output, so case-variant names will be
+	// understood as the same header.
+	Name *string `pulumi:"name"`
+	// The header field value
+	Value *string `pulumi:"value"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs struct {
+	// The header field name.
+	// This will be canonicalized upon output, so case-variant names will be
+	// understood as the same header.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArray and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArray{ AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs{...} }
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArray []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderInput
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name.
+// This will be canonicalized upon output, so case-variant names will be
+// understood as the same header.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The header field value
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader {
+		return vs[0].([]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket struct {
+	// Optional: Host name to connect to, defaults to the model serving
+	// container's IP.
+	Host *string `pulumi:"host"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs struct {
+	// Optional: Host name to connect to, defaults to the model serving
+	// container's IP.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput)
+}
+
+// Optional: Host name to connect to, defaults to the model serving
+// container's IP.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket) *string {
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket) *int {
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput)
+}
+
+// Optional: Host name to connect to, defaults to the model serving
+// container's IP.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec `pulumi:"exec"`
+	// Number of consecutive failures before the probe is considered failed.
+	// Defaults to 3. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'failureThreshold'.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GrpcAction checks the health of a container using a gRPC service.
+	// Structure is documented below.
+	Grpc *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc `pulumi:"grpc"`
+	// HttpGetAction describes an action based on HTTP Get requests.
+	// Structure is documented below.
+	HttpGet *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet `pulumi:"httpGet"`
+	// Number of seconds to wait before starting the probe. Defaults to 0.
+	// Minimum value is 0.
+	// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds.
+	// Minimum value is 1. Must be less than timeout_seconds.
+	// Maps to Kubernetes probe argument 'periodSeconds'.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Number of consecutive successes before the probe is considered successful.
+	// Defaults to 1. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'successThreshold'.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// TcpSocketAction probes the health of a container by opening a TCP socket
+	// connection.
+	// Structure is documented below.
+	TcpSocket *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out. Defaults to 1 second.
+	// Minimum value is 1. Must be greater or equal to period_seconds.
+	// Maps to Kubernetes probe argument 'timeoutSeconds'.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrInput `pulumi:"exec"`
+	// Number of consecutive failures before the probe is considered failed.
+	// Defaults to 3. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'failureThreshold'.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GrpcAction checks the health of a container using a gRPC service.
+	// Structure is documented below.
+	Grpc AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrInput `pulumi:"grpc"`
+	// HttpGetAction describes an action based on HTTP Get requests.
+	// Structure is documented below.
+	HttpGet AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Number of seconds to wait before starting the probe. Defaults to 0.
+	// Minimum value is 0.
+	// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds.
+	// Minimum value is 1. Must be less than timeout_seconds.
+	// Maps to Kubernetes probe argument 'periodSeconds'.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Number of consecutive successes before the probe is considered successful.
+	// Defaults to 1. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'successThreshold'.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// TcpSocketAction probes the health of a container by opening a TCP socket
+	// connection.
+	// Structure is documented below.
+	TcpSocket AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out. Defaults to 1 second.
+	// Minimum value is 1. Must be greater or equal to period_seconds.
+	// Maps to Kubernetes probe argument 'timeoutSeconds'.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) Exec() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec {
+		return v.Exec
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput)
+}
+
+// Number of consecutive failures before the probe is considered failed.
+// Defaults to 3. Minimum value is 1.
+// Maps to Kubernetes probe argument 'failureThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GrpcAction checks the health of a container using a gRPC service.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) Grpc() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc {
+		return v.Grpc
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput)
+}
+
+// HttpGetAction describes an action based on HTTP Get requests.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) HttpGet() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet {
+		return v.HttpGet
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput)
+}
+
+// Number of seconds to wait before starting the probe. Defaults to 0.
+// Minimum value is 0.
+// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe. Default to 10 seconds.
+// Minimum value is 1. Must be less than timeout_seconds.
+// Maps to Kubernetes probe argument 'periodSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successes before the probe is considered successful.
+// Defaults to 1. Minimum value is 1.
+// Maps to Kubernetes probe argument 'successThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TcpSocketAction probes the health of a container by opening a TCP socket
+// connection.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) TcpSocket() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket {
+		return v.TcpSocket
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out. Defaults to 1 second.
+// Minimum value is 1. Must be greater or equal to period_seconds.
+// Maps to Kubernetes probe argument 'timeoutSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) Exec() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput)
+}
+
+// Number of consecutive failures before the probe is considered failed.
+// Defaults to 3. Minimum value is 1.
+// Maps to Kubernetes probe argument 'failureThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GrpcAction checks the health of a container using a gRPC service.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) Grpc() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput)
+}
+
+// HttpGetAction describes an action based on HTTP Get requests.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) HttpGet() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput)
+}
+
+// Number of seconds to wait before starting the probe. Defaults to 0.
+// Minimum value is 0.
+// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe. Default to 10 seconds.
+// Minimum value is 1. Must be less than timeout_seconds.
+// Maps to Kubernetes probe argument 'periodSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successes before the probe is considered successful.
+// Defaults to 1. Minimum value is 1.
+// Maps to Kubernetes probe argument 'successThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TcpSocketAction probes the health of a container by opening a TCP socket
+// connection.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) TcpSocket() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out. Defaults to 1 second.
+// Minimum value is 1. Must be greater or equal to period_seconds.
+// Maps to Kubernetes probe argument 'timeoutSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec struct {
+	// Command is the command line to execute inside the container, the working
+	// directory for the command is root ('/') in the container's filesystem.
+	// The command is simply exec'd, it is not run inside a shell, so
+	// traditional shell instructions ('|', etc) won't work. To use a shell, you
+	// need to explicitly call out to that shell. Exit status of 0 is treated as
+	// live/healthy and non-zero is unhealthy.
+	Commands []string `pulumi:"commands"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs struct {
+	// Command is the command line to execute inside the container, the working
+	// directory for the command is root ('/') in the container's filesystem.
+	// The command is simply exec'd, it is not run inside a shell, so
+	// traditional shell instructions ('|', etc) won't work. To use a shell, you
+	// need to explicitly call out to that shell. Exit status of 0 is treated as
+	// live/healthy and non-zero is unhealthy.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working
+// directory for the command is root ('/') in the container's filesystem.
+// The command is simply exec'd, it is not run inside a shell, so
+// traditional shell instructions ('|', etc) won't work. To use a shell, you
+// need to explicitly call out to that shell. Exit status of 0 is treated as
+// live/healthy and non-zero is unhealthy.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput)
+}
+
+// Command is the command line to execute inside the container, the working
+// directory for the command is root ('/') in the container's filesystem.
+// The command is simply exec'd, it is not run inside a shell, so
+// traditional shell instructions ('|', etc) won't work. To use a shell, you
+// need to explicitly call out to that shell. Exit status of 0 is treated as
+// live/healthy and non-zero is unhealthy.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC
+	// HealthCheckRequest. See
+	// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC
+	// HealthCheckRequest. See
+	// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc) *int {
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC
+// HealthCheckRequest. See
+// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+// If this is not specified, the default behavior is defined by gRPC.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc) *string {
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC
+// HealthCheckRequest. See
+// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+// If this is not specified, the default behavior is defined by gRPC.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet struct {
+	// Host name to connect to, defaults to the model serving container's IP.
+	// You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+	Scheme *string `pulumi:"scheme"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs struct {
+	// Host name to connect to, defaults to the model serving container's IP.
+	// You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the model serving container's IP.
+// You probably want to set "Host" in httpHeaders instead.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *string {
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) HttpHeaders() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *string {
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *int {
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *string {
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the model serving container's IP.
+// You probably want to set "Host" in httpHeaders instead.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) HttpHeaders() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader struct {
+	// The header field name.
+	// This will be canonicalized upon output, so case-variant names will be
+	// understood as the same header.
+	Name *string `pulumi:"name"`
+	// The header field value
+	Value *string `pulumi:"value"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs struct {
+	// The header field name.
+	// This will be canonicalized upon output, so case-variant names will be
+	// understood as the same header.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArray and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArray{ AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs{...} }
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArray []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderInput
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name.
+// This will be canonicalized upon output, so case-variant names will be
+// understood as the same header.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The header field value
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader {
+		return vs[0].([]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket struct {
+	// Optional: Host name to connect to, defaults to the model serving
+	// container's IP.
+	Host *string `pulumi:"host"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs struct {
+	// Optional: Host name to connect to, defaults to the model serving
+	// container's IP.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput)
+}
+
+// Optional: Host name to connect to, defaults to the model serving
+// container's IP.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket) *string {
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket) *int {
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput)
+}
+
+// Optional: Host name to connect to, defaults to the model serving
+// container's IP.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort struct {
+	// The number of the port to expose on the pod's IP address.
+	// Must be a valid port number, between 1 and 65535 inclusive.
+	ContainerPort *int `pulumi:"containerPort"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs struct {
+	// The number of the port to expose on the pod's IP address.
+	// Must be a valid port number, between 1 and 65535 inclusive.
+	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArray and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArray{ AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs{...} }
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArray []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortInput
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput {
+	return o
+}
+
+// The number of the port to expose on the pod's IP address.
+// Must be a valid port number, between 1 and 65535 inclusive.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput) Index(i pulumi.IntInput) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort {
+		return vs[0].([]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort)[vs[1].(int)]
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec `pulumi:"exec"`
+	// Number of consecutive failures before the probe is considered failed.
+	// Defaults to 3. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'failureThreshold'.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GrpcAction checks the health of a container using a gRPC service.
+	// Structure is documented below.
+	Grpc *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc `pulumi:"grpc"`
+	// HttpGetAction describes an action based on HTTP Get requests.
+	// Structure is documented below.
+	HttpGet *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet `pulumi:"httpGet"`
+	// Number of seconds to wait before starting the probe. Defaults to 0.
+	// Minimum value is 0.
+	// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds.
+	// Minimum value is 1. Must be less than timeout_seconds.
+	// Maps to Kubernetes probe argument 'periodSeconds'.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Number of consecutive successes before the probe is considered successful.
+	// Defaults to 1. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'successThreshold'.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// TcpSocketAction probes the health of a container by opening a TCP socket
+	// connection.
+	// Structure is documented below.
+	TcpSocket *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out. Defaults to 1 second.
+	// Minimum value is 1. Must be greater or equal to period_seconds.
+	// Maps to Kubernetes probe argument 'timeoutSeconds'.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs struct {
+	// ExecAction specifies a command to execute.
+	// Structure is documented below.
+	Exec AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrInput `pulumi:"exec"`
+	// Number of consecutive failures before the probe is considered failed.
+	// Defaults to 3. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'failureThreshold'.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GrpcAction checks the health of a container using a gRPC service.
+	// Structure is documented below.
+	Grpc AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrInput `pulumi:"grpc"`
+	// HttpGetAction describes an action based on HTTP Get requests.
+	// Structure is documented below.
+	HttpGet AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Number of seconds to wait before starting the probe. Defaults to 0.
+	// Minimum value is 0.
+	// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds.
+	// Minimum value is 1. Must be less than timeout_seconds.
+	// Maps to Kubernetes probe argument 'periodSeconds'.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Number of consecutive successes before the probe is considered successful.
+	// Defaults to 1. Minimum value is 1.
+	// Maps to Kubernetes probe argument 'successThreshold'.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// TcpSocketAction probes the health of a container by opening a TCP socket
+	// connection.
+	// Structure is documented below.
+	TcpSocket AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out. Defaults to 1 second.
+	// Minimum value is 1. Must be greater or equal to period_seconds.
+	// Maps to Kubernetes probe argument 'timeoutSeconds'.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) Exec() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec {
+		return v.Exec
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput)
+}
+
+// Number of consecutive failures before the probe is considered failed.
+// Defaults to 3. Minimum value is 1.
+// Maps to Kubernetes probe argument 'failureThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GrpcAction checks the health of a container using a gRPC service.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) Grpc() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc {
+		return v.Grpc
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput)
+}
+
+// HttpGetAction describes an action based on HTTP Get requests.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) HttpGet() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet {
+		return v.HttpGet
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput)
+}
+
+// Number of seconds to wait before starting the probe. Defaults to 0.
+// Minimum value is 0.
+// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe. Default to 10 seconds.
+// Minimum value is 1. Must be less than timeout_seconds.
+// Maps to Kubernetes probe argument 'periodSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successes before the probe is considered successful.
+// Defaults to 1. Minimum value is 1.
+// Maps to Kubernetes probe argument 'successThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TcpSocketAction probes the health of a container by opening a TCP socket
+// connection.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) TcpSocket() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket {
+		return v.TcpSocket
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out. Defaults to 1 second.
+// Minimum value is 1. Must be greater or equal to period_seconds.
+// Maps to Kubernetes probe argument 'timeoutSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput)
+}
+
+// ExecAction specifies a command to execute.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) Exec() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput)
+}
+
+// Number of consecutive failures before the probe is considered failed.
+// Defaults to 3. Minimum value is 1.
+// Maps to Kubernetes probe argument 'failureThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// GrpcAction checks the health of a container using a gRPC service.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) Grpc() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput)
+}
+
+// HttpGetAction describes an action based on HTTP Get requests.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) HttpGet() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput)
+}
+
+// Number of seconds to wait before starting the probe. Defaults to 0.
+// Minimum value is 0.
+// Maps to Kubernetes probe argument 'initialDelaySeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe. Default to 10 seconds.
+// Minimum value is 1. Must be less than timeout_seconds.
+// Maps to Kubernetes probe argument 'periodSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive successes before the probe is considered successful.
+// Defaults to 1. Minimum value is 1.
+// Maps to Kubernetes probe argument 'successThreshold'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// TcpSocketAction probes the health of a container by opening a TCP socket
+// connection.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) TcpSocket() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out. Defaults to 1 second.
+// Minimum value is 1. Must be greater or equal to period_seconds.
+// Maps to Kubernetes probe argument 'timeoutSeconds'.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec struct {
+	// Command is the command line to execute inside the container, the working
+	// directory for the command is root ('/') in the container's filesystem.
+	// The command is simply exec'd, it is not run inside a shell, so
+	// traditional shell instructions ('|', etc) won't work. To use a shell, you
+	// need to explicitly call out to that shell. Exit status of 0 is treated as
+	// live/healthy and non-zero is unhealthy.
+	Commands []string `pulumi:"commands"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs struct {
+	// Command is the command line to execute inside the container, the working
+	// directory for the command is root ('/') in the container's filesystem.
+	// The command is simply exec'd, it is not run inside a shell, so
+	// traditional shell instructions ('|', etc) won't work. To use a shell, you
+	// need to explicitly call out to that shell. Exit status of 0 is treated as
+	// live/healthy and non-zero is unhealthy.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working
+// directory for the command is root ('/') in the container's filesystem.
+// The command is simply exec'd, it is not run inside a shell, so
+// traditional shell instructions ('|', etc) won't work. To use a shell, you
+// need to explicitly call out to that shell. Exit status of 0 is treated as
+// live/healthy and non-zero is unhealthy.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec) []string {
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput)
+}
+
+// Command is the command line to execute inside the container, the working
+// directory for the command is root ('/') in the container's filesystem.
+// The command is simply exec'd, it is not run inside a shell, so
+// traditional shell instructions ('|', etc) won't work. To use a shell, you
+// need to explicitly call out to that shell. Exit status of 0 is treated as
+// live/healthy and non-zero is unhealthy.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC
+	// HealthCheckRequest. See
+	// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC
+	// HealthCheckRequest. See
+	// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc) *int {
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC
+// HealthCheckRequest. See
+// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+// If this is not specified, the default behavior is defined by gRPC.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc) *string {
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC
+// HealthCheckRequest. See
+// https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+// If this is not specified, the default behavior is defined by gRPC.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet struct {
+	// Host name to connect to, defaults to the model serving container's IP.
+	// You probably want to set "Host" in httpHeaders instead.
+	Host *string `pulumi:"host"`
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path *string `pulumi:"path"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+	Scheme *string `pulumi:"scheme"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs struct {
+	// Host name to connect to, defaults to the model serving container's IP.
+	// You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Scheme to use for connecting to the host.
+	// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput)
+}
+
+// Host name to connect to, defaults to the model serving container's IP.
+// You probably want to set "Host" in httpHeaders instead.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *string {
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) HttpHeaders() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *string {
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *int {
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *string {
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput)
+}
+
+// Host name to connect to, defaults to the model serving container's IP.
+// You probably want to set "Host" in httpHeaders instead.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) HttpHeaders() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Path to access on the HTTP server.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheme to use for connecting to the host.
+// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader struct {
+	// The header field name.
+	// This will be canonicalized upon output, so case-variant names will be
+	// understood as the same header.
+	Name *string `pulumi:"name"`
+	// The header field value
+	Value *string `pulumi:"value"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs struct {
+	// The header field name.
+	// This will be canonicalized upon output, so case-variant names will be
+	// understood as the same header.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray{ AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs{...} }
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray []AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderInput
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The header field name.
+// This will be canonicalized upon output, so case-variant names will be
+// understood as the same header.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The header field value
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader {
+		return vs[0].([]AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket struct {
+	// Optional: Host name to connect to, defaults to the model serving
+	// container's IP.
+	Host *string `pulumi:"host"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs{...}
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs struct {
+	// Optional: Host name to connect to, defaults to the model serving
+	// container's IP.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Number of the port to access on the container.
+	// Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput).ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs, AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtr and AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput
+	ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrType AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs
+
+func AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtr(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrType) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket) *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput)
+}
+
+// Optional: Host name to connect to, defaults to the model serving
+// container's IP.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket) *string {
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket) *int {
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput) ToAiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput) Elem() AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket) AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput)
+}
+
+// Optional: Host name to connect to, defaults to the model serving
+// container's IP.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of the port to access on the container.
+// Number must be in the range 1 to 65535.
+func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type AiFeatureGroupBigQuery struct {
@@ -11375,6 +18061,64 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrInput)(nil)).Elem(), AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigInput)(nil)).Elem(), AiEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiEndpointPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryPtrInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySourceInput)(nil)).Elem(), AiFeatureGroupBigQueryBigQuerySourceArgs{})
@@ -11523,6 +18267,64 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointPrivateServiceConnectConfigOutput{})
 	pulumi.RegisterOutputType(AiEndpointPrivateServiceConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbePtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbePtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbePtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryBigQuerySourceOutput{})

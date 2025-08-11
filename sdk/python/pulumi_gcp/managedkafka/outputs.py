@@ -22,6 +22,9 @@ __all__ = [
     'ClusterGcpConfigAccessConfig',
     'ClusterGcpConfigAccessConfigNetworkConfig',
     'ClusterRebalanceConfig',
+    'ClusterTlsConfig',
+    'ClusterTlsConfigTrustConfig',
+    'ClusterTlsConfigTrustConfigCasConfig',
     'ConnectClusterCapacityConfig',
     'ConnectClusterGcpConfig',
     'ConnectClusterGcpConfigAccessConfig',
@@ -276,6 +279,131 @@ class ClusterRebalanceConfig(dict):
         The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
         """
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class ClusterTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sslPrincipalMappingRules":
+            suggest = "ssl_principal_mapping_rules"
+        elif key == "trustConfig":
+            suggest = "trust_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ssl_principal_mapping_rules: Optional[_builtins.str] = None,
+                 trust_config: Optional['outputs.ClusterTlsConfigTrustConfig'] = None):
+        """
+        :param _builtins.str ssl_principal_mapping_rules: The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
+        :param 'ClusterTlsConfigTrustConfigArgs' trust_config: The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
+               Structure is documented below.
+        """
+        if ssl_principal_mapping_rules is not None:
+            pulumi.set(__self__, "ssl_principal_mapping_rules", ssl_principal_mapping_rules)
+        if trust_config is not None:
+            pulumi.set(__self__, "trust_config", trust_config)
+
+    @_builtins.property
+    @pulumi.getter(name="sslPrincipalMappingRules")
+    def ssl_principal_mapping_rules(self) -> Optional[_builtins.str]:
+        """
+        The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
+        """
+        return pulumi.get(self, "ssl_principal_mapping_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="trustConfig")
+    def trust_config(self) -> Optional['outputs.ClusterTlsConfigTrustConfig']:
+        """
+        The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trust_config")
+
+
+@pulumi.output_type
+class ClusterTlsConfigTrustConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "casConfigs":
+            suggest = "cas_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTlsConfigTrustConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTlsConfigTrustConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTlsConfigTrustConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cas_configs: Optional[Sequence['outputs.ClusterTlsConfigTrustConfigCasConfig']] = None):
+        """
+        :param Sequence['ClusterTlsConfigTrustConfigCasConfigArgs'] cas_configs: Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+               Structure is documented below.
+        """
+        if cas_configs is not None:
+            pulumi.set(__self__, "cas_configs", cas_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="casConfigs")
+    def cas_configs(self) -> Optional[Sequence['outputs.ClusterTlsConfigTrustConfigCasConfig']]:
+        """
+        Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cas_configs")
+
+
+@pulumi.output_type
+class ClusterTlsConfigTrustConfigCasConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caPool":
+            suggest = "ca_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTlsConfigTrustConfigCasConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTlsConfigTrustConfigCasConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTlsConfigTrustConfigCasConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_pool: _builtins.str):
+        """
+        :param _builtins.str ca_pool: The name of the CA pool to pull CA certificates from. The CA pool does not need to be in the same project or location as the Kafka cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/caPools/CA_POOL_ID.
+        """
+        pulumi.set(__self__, "ca_pool", ca_pool)
+
+    @_builtins.property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> _builtins.str:
+        """
+        The name of the CA pool to pull CA certificates from. The CA pool does not need to be in the same project or location as the Kafka cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/caPools/CA_POOL_ID.
+        """
+        return pulumi.get(self, "ca_pool")
 
 
 @pulumi.output_type

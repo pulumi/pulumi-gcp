@@ -85,6 +85,27 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Public Data Exchange
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("data_exchange", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "public_data_exchange",
+    ///         DisplayName = "public_data_exchange",
+    ///         Description = "Example for public data exchange",
+    ///         DiscoveryType = "DISCOVERY_TYPE_PUBLIC",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -130,6 +151,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+        /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        /// </summary>
+        [Output("discoveryType")]
+        public Output<string> DiscoveryType { get; private set; } = null!;
 
         /// <summary>
         /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
@@ -254,6 +282,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+        /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        /// </summary>
+        [Input("discoveryType")]
+        public Input<string>? DiscoveryType { get; set; }
+
+        /// <summary>
         /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
         /// </summary>
         [Input("displayName", required: true)]
@@ -323,6 +358,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+        /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        /// </summary>
+        [Input("discoveryType")]
+        public Input<string>? DiscoveryType { get; set; }
 
         /// <summary>
         /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.

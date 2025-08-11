@@ -13,6 +13,8 @@ import com.pulumi.gcp.iam.inputs.GetRuleArgs;
 import com.pulumi.gcp.iam.inputs.GetRulePlainArgs;
 import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
 import com.pulumi.gcp.iam.inputs.GetTestablePermissionsPlainArgs;
+import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
+import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyPlainArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyPlainArgs;
@@ -21,6 +23,7 @@ import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderPlainArgs;
 import com.pulumi.gcp.iam.outputs.GetRuleResult;
 import com.pulumi.gcp.iam.outputs.GetTestablePermissionsResult;
+import com.pulumi.gcp.iam.outputs.GetWorkforcePoolIamPolicyResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolIamPolicyResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolResult;
@@ -466,6 +469,221 @@ public final class IamFunctions {
      */
     public static CompletableFuture<GetTestablePermissionsResult> getTestablePermissionsPlain(GetTestablePermissionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iam/getTestablePermissions:getTestablePermissions", TypeShape.of(GetTestablePermissionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for workforcepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
+     *             .location(example.location())
+     *             .workforcePoolId(example.workforcePoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs args) {
+        return getWorkforcePoolIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for workforcepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
+     *             .location(example.location())
+     *             .workforcePoolId(example.workforcePoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicyPlain(GetWorkforcePoolIamPolicyPlainArgs args) {
+        return getWorkforcePoolIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for workforcepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
+     *             .location(example.location())
+     *             .workforcePoolId(example.workforcePoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getWorkforcePoolIamPolicy:getWorkforcePoolIamPolicy", TypeShape.of(GetWorkforcePoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for workforcepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
+     *             .location(example.location())
+     *             .workforcePoolId(example.workforcePoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getWorkforcePoolIamPolicy:getWorkforcePoolIamPolicy", TypeShape.of(GetWorkforcePoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for workforcepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
+     *             .location(example.location())
+     *             .workforcePoolId(example.workforcePoolId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicyPlain(GetWorkforcePoolIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iam/getWorkforcePoolIamPolicy:getWorkforcePoolIamPolicy", TypeShape.of(GetWorkforcePoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a IAM workload identity pool from Google Cloud by its id.

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ## Example Usage
     /// 
-    /// ### Dialogflowcx Webhook Full
+    /// ### Dialogflowcx Webhook Standard
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -52,13 +52,257 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
-    ///     var basicWebhook = new Gcp.Diagflow.CxWebhook("basic_webhook", new()
+    ///     var standardWebhook = new Gcp.Diagflow.CxWebhook("standard_webhook", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyFlow",
+    ///         GenericWebService = new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceArgs
+    ///         {
+    ///             AllowedCaCerts = new[]
+    ///             {
+    ///                 "BQA=",
+    ///             },
+    ///             Uri = "https://example.com",
+    ///             RequestHeaders = 
+    ///             {
+    ///                 { "example-key", "example-value" },
+    ///             },
+    ///             WebhookType = "STANDARD",
+    ///             OauthConfig = new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceOauthConfigArgs
+    ///             {
+    ///                 ClientId = "example-client-id",
+    ///                 SecretVersionForClientSecret = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///                 TokenEndpoint = "https://example.com",
+    ///                 Scopes = new[]
+    ///                 {
+    ///                     "example-scope",
+    ///                 },
+    ///             },
+    ///             ServiceAgentAuth = "NONE",
+    ///             SecretVersionForUsernamePassword = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///             SecretVersionsForRequestHeaders = new[]
+    ///             {
+    ///                 new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs
+    ///                 {
+    ///                     Key = "example-key-1",
+    ///                     SecretVersion = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs
+    ///                 {
+    ///                     Key = "example-key-2",
+    ///                     SecretVersion = "projects/example-proj/secrets/example-secret/versions/example-version-2",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dialogflowcx Webhook Flexible
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "it",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var flexibleWebhook = new Gcp.Diagflow.CxWebhook("flexible_webhook", new()
     ///     {
     ///         Parent = agent.Id,
     ///         DisplayName = "MyFlow",
     ///         GenericWebService = new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceArgs
     ///         {
     ///             Uri = "https://example.com",
+    ///             RequestHeaders = 
+    ///             {
+    ///                 { "example-key", "example-value" },
+    ///             },
+    ///             WebhookType = "FLEXIBLE",
+    ///             OauthConfig = new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceOauthConfigArgs
+    ///             {
+    ///                 ClientId = "example-client-id",
+    ///                 ClientSecret = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///                 TokenEndpoint = "https://example.com",
+    ///             },
+    ///             ServiceAgentAuth = "NONE",
+    ///             HttpMethod = "POST",
+    ///             RequestBody = "{\"example-key\": \"example-value\"}",
+    ///             ParameterMapping = 
+    ///             {
+    ///                 { "example-parameter", "examplePath" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dialogflowcx Webhook Service Directory Standard
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "us-central1",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "it",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var standardWebhook = new Gcp.Diagflow.CxWebhook("standard_webhook", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyFlow",
+    ///         ServiceDirectory = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryArgs
+    ///         {
+    ///             Service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+    ///             GenericWebService = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryGenericWebServiceArgs
+    ///             {
+    ///                 AllowedCaCerts = new[]
+    ///                 {
+    ///                     "BQA=",
+    ///                 },
+    ///                 Uri = "https://example.com",
+    ///                 RequestHeaders = 
+    ///                 {
+    ///                     { "example-key", "example-value" },
+    ///                 },
+    ///                 WebhookType = "STANDARD",
+    ///                 OauthConfig = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs
+    ///                 {
+    ///                     ClientId = "example-client-id",
+    ///                     SecretVersionForClientSecret = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///                     TokenEndpoint = "https://example.com",
+    ///                     Scopes = new[]
+    ///                     {
+    ///                         "example-scope",
+    ///                     },
+    ///                 },
+    ///                 ServiceAgentAuth = "NONE",
+    ///                 SecretVersionForUsernamePassword = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///                 SecretVersionsForRequestHeaders = new[]
+    ///                 {
+    ///                     new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs
+    ///                     {
+    ///                         Key = "example-key-1",
+    ///                         SecretVersion = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs
+    ///                     {
+    ///                         Key = "example-key-2",
+    ///                         SecretVersion = "projects/example-proj/secrets/example-secret/versions/example-version-2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dialogflowcx Webhook Service Directory Flexible
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "us-central1",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "it",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var flexibleWebhook = new Gcp.Diagflow.CxWebhook("flexible_webhook", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyFlow",
+    ///         ServiceDirectory = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryArgs
+    ///         {
+    ///             Service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+    ///             GenericWebService = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryGenericWebServiceArgs
+    ///             {
+    ///                 Uri = "https://example.com",
+    ///                 RequestHeaders = 
+    ///                 {
+    ///                     { "example-key", "example-value" },
+    ///                 },
+    ///                 WebhookType = "FLEXIBLE",
+    ///                 OauthConfig = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs
+    ///                 {
+    ///                     ClientId = "example-client-id",
+    ///                     ClientSecret = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///                     TokenEndpoint = "https://example.com",
+    ///                 },
+    ///                 ServiceAgentAuth = "NONE",
+    ///                 HttpMethod = "POST",
+    ///                 RequestBody = "{\"example-key\": \"example-value\"}",
+    ///                 ParameterMapping = 
+    ///                 {
+    ///                     { "example-parameter", "examplePath" },
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -99,19 +343,19 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if automatic spell correction is enabled in detect intent requests.
+        /// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         /// </summary>
         [Output("enableSpellCorrection")]
         public Output<bool?> EnableSpellCorrection { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether this agent should log conversation queries.
+        /// Deprecated. Determines whether this agent should log conversation queries.
         /// </summary>
         [Output("enableStackdriverLogging")]
         public Output<bool?> EnableStackdriverLogging { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for a generic web service.
+        /// Represents configuration for a generic web service.
         /// Structure is documented below.
         /// </summary>
         [Output("genericWebService")]
@@ -132,7 +376,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string?> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+        /// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
         /// </summary>
         [Output("securitySettings")]
         public Output<string?> SecuritySettings { get; private set; } = null!;
@@ -145,7 +389,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<Outputs.CxWebhookServiceDirectory?> ServiceDirectory { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
+        /// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
         /// </summary>
         [Output("startFlow")]
         public Output<string> StartFlow { get; private set; } = null!;
@@ -215,19 +459,19 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if automatic spell correction is enabled in detect intent requests.
+        /// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         /// </summary>
         [Input("enableSpellCorrection")]
         public Input<bool>? EnableSpellCorrection { get; set; }
 
         /// <summary>
-        /// Determines whether this agent should log conversation queries.
+        /// Deprecated. Determines whether this agent should log conversation queries.
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
         /// <summary>
-        /// Configuration for a generic web service.
+        /// Represents configuration for a generic web service.
         /// Structure is documented below.
         /// </summary>
         [Input("genericWebService")]
@@ -241,7 +485,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+        /// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
         /// </summary>
         [Input("securitySettings")]
         public Input<string>? SecuritySettings { get; set; }
@@ -280,19 +524,19 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Indicates if automatic spell correction is enabled in detect intent requests.
+        /// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         /// </summary>
         [Input("enableSpellCorrection")]
         public Input<bool>? EnableSpellCorrection { get; set; }
 
         /// <summary>
-        /// Determines whether this agent should log conversation queries.
+        /// Deprecated. Determines whether this agent should log conversation queries.
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
         /// <summary>
-        /// Configuration for a generic web service.
+        /// Represents configuration for a generic web service.
         /// Structure is documented below.
         /// </summary>
         [Input("genericWebService")]
@@ -313,7 +557,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+        /// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
         /// </summary>
         [Input("securitySettings")]
         public Input<string>? SecuritySettings { get; set; }
@@ -326,7 +570,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.CxWebhookServiceDirectoryGetArgs>? ServiceDirectory { get; set; }
 
         /// <summary>
-        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
+        /// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
         /// </summary>
         [Input("startFlow")]
         public Input<string>? StartFlow { get; set; }

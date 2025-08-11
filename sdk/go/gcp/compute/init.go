@@ -201,6 +201,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PacketMirroring{}
 	case "gcp:compute/perInstanceConfig:PerInstanceConfig":
 		r = &PerInstanceConfig{}
+	case "gcp:compute/previewFeature:PreviewFeature":
+		r = &PreviewFeature{}
 	case "gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier":
 		r = &ProjectCloudArmorTier{}
 	case "gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier":
@@ -820,6 +822,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/perInstanceConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/previewFeature",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingState;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingBigqueryDataset;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingCommercialInfo;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingDataProvider;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingPublisher;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingPubsubTopic;
@@ -483,6 +484,130 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Analyticshub Public Listing
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var listing = new DataExchange("listing", DataExchangeArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId("my_data_exchange")
+ *             .displayName("my_data_exchange")
+ *             .description("example public listing")
+ *             .discoveryType("DISCOVERY_TYPE_PUBLIC")
+ *             .build());
+ * 
+ *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()
+ *             .datasetId("my_listing")
+ *             .friendlyName("my_listing")
+ *             .description("example public listing")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId(listing.dataExchangeId())
+ *             .listingId("my_listing")
+ *             .displayName("my_listing")
+ *             .description("example public listing")
+ *             .discoveryType("DISCOVERY_TYPE_PUBLIC")
+ *             .allowOnlyMetadataSharing(false)
+ *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
+ *                 .dataset(listingDataset.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Analyticshub Listing Marketplace
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var listing = new DataExchange("listing", DataExchangeArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId("my_data_exchange")
+ *             .displayName("my_data_exchange")
+ *             .description("example data exchange")
+ *             .build());
+ * 
+ *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()
+ *             .datasetId("my_listing")
+ *             .friendlyName("my_listing")
+ *             .description("example data exchange")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId(listing.dataExchangeId())
+ *             .listingId("my_listing")
+ *             .displayName("my_listing")
+ *             .description("example data exchange")
+ *             .deleteCommercial(true)
+ *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
+ *                 .dataset(listingDataset.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -512,6 +637,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigqueryanalyticshub/listing:Listing")
 public class Listing extends com.pulumi.resources.CustomResource {
     /**
+     * If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+     * 
+     */
+    @Export(name="allowOnlyMetadataSharing", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowOnlyMetadataSharing;
+
+    /**
+     * @return If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+     * 
+     */
+    public Output<Optional<Boolean>> allowOnlyMetadataSharing() {
+        return Codegen.optional(this.allowOnlyMetadataSharing);
+    }
+    /**
      * Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      * 
@@ -540,6 +679,22 @@ public class Listing extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> categories() {
         return Codegen.optional(this.categories);
+    }
+    /**
+     * Commercial info contains the information about the commercial data products associated with the listing.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="commercialInfos", refs={List.class,ListingCommercialInfo.class}, tree="[0,1]")
+    private Output<List<ListingCommercialInfo>> commercialInfos;
+
+    /**
+     * @return Commercial info contains the information about the commercial data products associated with the listing.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ListingCommercialInfo>> commercialInfos() {
+        return this.commercialInfos;
     }
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -572,6 +727,20 @@ public class Listing extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataProvider);
     }
     /**
+     * If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+     * 
+     */
+    @Export(name="deleteCommercial", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deleteCommercial;
+
+    /**
+     * @return If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+     * 
+     */
+    public Output<Optional<Boolean>> deleteCommercial() {
+        return Codegen.optional(this.deleteCommercial);
+    }
+    /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
@@ -584,6 +753,22 @@ public class Listing extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     * 
+     */
+    @Export(name="discoveryType", refs={String.class}, tree="[0]")
+    private Output<String> discoveryType;
+
+    /**
+     * @return Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     * 
+     */
+    public Output<String> discoveryType() {
+        return this.discoveryType;
     }
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can&#39;t start or end with spaces.
@@ -774,6 +959,20 @@ public class Listing extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ListingRestrictedExportConfig>> restrictedExportConfig() {
         return Codegen.optional(this.restrictedExportConfig);
+    }
+    /**
+     * Current state of the listing.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return Current state of the listing.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
 
     /**

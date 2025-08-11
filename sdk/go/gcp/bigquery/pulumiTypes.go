@@ -16652,6 +16652,8 @@ type TableView struct {
 	Query string `pulumi:"query"`
 	// Specifies whether to use BigQuery's legacy SQL for this view.
 	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+	// > **Note**: Starting in provider version `7.0.0`, no default value is
+	// provided for this field unless explicitly set in the configuration.
 	UseLegacySql *bool `pulumi:"useLegacySql"`
 }
 
@@ -16671,6 +16673,8 @@ type TableViewArgs struct {
 	Query pulumi.StringInput `pulumi:"query"`
 	// Specifies whether to use BigQuery's legacy SQL for this view.
 	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+	// > **Note**: Starting in provider version `7.0.0`, no default value is
+	// provided for this field unless explicitly set in the configuration.
 	UseLegacySql pulumi.BoolPtrInput `pulumi:"useLegacySql"`
 }
 
@@ -16758,6 +16762,8 @@ func (o TableViewOutput) Query() pulumi.StringOutput {
 
 // Specifies whether to use BigQuery's legacy SQL for this view.
 // The default value is true. If set to false, the view will use BigQuery's standard SQL.
+// > **Note**: Starting in provider version `7.0.0`, no default value is
+// provided for this field unless explicitly set in the configuration.
 func (o TableViewOutput) UseLegacySql() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
 }
@@ -16798,6 +16804,8 @@ func (o TableViewPtrOutput) Query() pulumi.StringPtrOutput {
 
 // Specifies whether to use BigQuery's legacy SQL for this view.
 // The default value is true. If set to false, the view will use BigQuery's standard SQL.
+// > **Note**: Starting in provider version `7.0.0`, no default value is
+// provided for this field unless explicitly set in the configuration.
 func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TableView) *bool {
 		if v == nil {

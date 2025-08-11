@@ -60,6 +60,70 @@ namespace Pulumi.Gcp.ManagedKafka
     /// 
     /// });
     /// ```
+    /// ### Managedkafka Cluster Mtls
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var caPool = new Gcp.CertificateAuthority.CaPool("ca_pool", new()
+    ///     {
+    ///         Name = "my-ca-pool",
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = true,
+    ///             PublishCrl = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example = new Gcp.ManagedKafka.Cluster("example", new()
+    ///     {
+    ///         ClusterId = "my-cluster",
+    ///         Location = "us-central1",
+    ///         CapacityConfig = new Gcp.ManagedKafka.Inputs.ClusterCapacityConfigArgs
+    ///         {
+    ///             VcpuCount = "3",
+    ///             MemoryBytes = "3221225472",
+    ///         },
+    ///         GcpConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigArgs
+    ///         {
+    ///             AccessConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigArgs
+    ///             {
+    ///                 NetworkConfigs = new[]
+    ///                 {
+    ///                     new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs
+    ///                     {
+    ///                         Subnet = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/regions/us-central1/subnetworks/default",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         TlsConfig = new Gcp.ManagedKafka.Inputs.ClusterTlsConfigArgs
+    ///         {
+    ///             TrustConfig = new Gcp.ManagedKafka.Inputs.ClusterTlsConfigTrustConfigArgs
+    ///             {
+    ///                 CasConfigs = new[]
+    ///                 {
+    ///                     new Gcp.ManagedKafka.Inputs.ClusterTlsConfigTrustConfigCasConfigArgs
+    ///                     {
+    ///                         CaPool = caPool.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SslPrincipalMappingRules = "RULE:pattern/replacement/L,DEFAULT",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Managedkafka Cluster Cmek
     /// 
     /// ```csharp
@@ -235,6 +299,13 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("tlsConfig")]
+        public Output<Outputs.ClusterTlsConfig> TlsConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the cluster was last updated.
         /// </summary>
         [Output("updateTime")]
@@ -344,6 +415,13 @@ namespace Pulumi.Gcp.ManagedKafka
         /// </summary>
         [Input("rebalanceConfig")]
         public Input<Inputs.ClusterRebalanceConfigArgs>? RebalanceConfig { get; set; }
+
+        /// <summary>
+        /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tlsConfig")]
+        public Input<Inputs.ClusterTlsConfigArgs>? TlsConfig { get; set; }
 
         public ClusterArgs()
         {
@@ -457,6 +535,13 @@ namespace Pulumi.Gcp.ManagedKafka
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tlsConfig")]
+        public Input<Inputs.ClusterTlsConfigGetArgs>? TlsConfig { get; set; }
 
         /// <summary>
         /// The time when the cluster was last updated.

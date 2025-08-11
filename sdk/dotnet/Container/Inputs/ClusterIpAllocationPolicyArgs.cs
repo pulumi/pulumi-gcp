@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterIpAllocationPolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalIpRangesConfigs")]
+        private InputList<Inputs.ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs>? _additionalIpRangesConfigs;
+
+        /// <summary>
+        /// The configuration for individual additional subnetworks attached to the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs> AdditionalIpRangesConfigs
+        {
+            get => _additionalIpRangesConfigs ?? (_additionalIpRangesConfigs = new InputList<Inputs.ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs>());
+            set => _additionalIpRangesConfigs = value;
+        }
+
         /// <summary>
         /// The configuration for additional pod secondary ranges at
         /// the cluster level. Used for Autopilot clusters and Standard clusters with which control of the

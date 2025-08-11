@@ -31,6 +31,8 @@ __all__ = [
     'InstanceGceSetupNetworkInterfaceArgsDict',
     'InstanceGceSetupNetworkInterfaceAccessConfigArgs',
     'InstanceGceSetupNetworkInterfaceAccessConfigArgsDict',
+    'InstanceGceSetupReservationAffinityArgs',
+    'InstanceGceSetupReservationAffinityArgsDict',
     'InstanceGceSetupServiceAccountArgs',
     'InstanceGceSetupServiceAccountArgsDict',
     'InstanceGceSetupShieldedInstanceConfigArgs',
@@ -100,6 +102,11 @@ if not MYPY:
         The network interfaces for the VM. Supports only one interface.
         Structure is documented below.
         """
+        reservation_affinity: NotRequired[pulumi.Input['InstanceGceSetupReservationAffinityArgsDict']]
+        """
+        Reservations that this instance can consume from.
+        Structure is documented below.
+        """
         service_accounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgsDict']]]]
         """
         The service account that serves as an identity for the VM instance. Currently supports only one service account.
@@ -139,6 +146,7 @@ class InstanceGceSetupArgs:
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgs']]]] = None,
+                 reservation_affinity: Optional[pulumi.Input['InstanceGceSetupReservationAffinityArgs']] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgs']]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['InstanceGceSetupShieldedInstanceConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -162,6 +170,8 @@ class InstanceGceSetupArgs:
         :param pulumi.Input[_builtins.str] machine_type: Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Optional. Custom metadata to apply to this instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgs']]] network_interfaces: The network interfaces for the VM. Supports only one interface.
+               Structure is documented below.
+        :param pulumi.Input['InstanceGceSetupReservationAffinityArgs'] reservation_affinity: Reservations that this instance can consume from.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgs']]] service_accounts: The service account that serves as an identity for the VM instance. Currently supports only one service account.
                Structure is documented below.
@@ -195,6 +205,8 @@ class InstanceGceSetupArgs:
             pulumi.set(__self__, "metadata", metadata)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_accounts is not None:
             pulumi.set(__self__, "service_accounts", service_accounts)
         if shielded_instance_config is not None:
@@ -332,6 +344,19 @@ class InstanceGceSetupArgs:
     @network_interfaces.setter
     def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceGceSetupReservationAffinityArgs']]:
+        """
+        Reservations that this instance can consume from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceGceSetupReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccounts")
@@ -910,6 +935,99 @@ class InstanceGceSetupNetworkInterfaceAccessConfigArgs:
     @external_ip.setter
     def external_ip(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "external_ip", value)
+
+
+if not MYPY:
+    class InstanceGceSetupReservationAffinityArgsDict(TypedDict):
+        consume_reservation_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Specifies the type of reservation from which this instance can consume resources:
+        RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE.
+        Possible values are: `RESERVATION_NONE`, `RESERVATION_ANY`, `RESERVATION_SPECIFIC`.
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Corresponds to the label key of a reservation resource. To target a
+        RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name
+        as the key and specify the name of your reservation as its value.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Corresponds to the label values of a reservation resource. This can be
+        either a name to a reservation in the same project or
+        "projects/different-project/reservations/some-reservation-name"
+        to target a shared reservation in the same zone but in a different project.
+        """
+elif False:
+    InstanceGceSetupReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceGceSetupReservationAffinityArgs:
+    def __init__(__self__, *,
+                 consume_reservation_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] consume_reservation_type: Specifies the type of reservation from which this instance can consume resources:
+               RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE.
+               Possible values are: `RESERVATION_NONE`, `RESERVATION_ANY`, `RESERVATION_SPECIFIC`.
+        :param pulumi.Input[_builtins.str] key: Corresponds to the label key of a reservation resource. To target a
+               RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name
+               as the key and specify the name of your reservation as its value.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Corresponds to the label values of a reservation resource. This can be
+               either a name to a reservation in the same project or
+               "projects/different-project/reservations/some-reservation-name"
+               to target a shared reservation in the same zone but in a different project.
+        """
+        if consume_reservation_type is not None:
+            pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the type of reservation from which this instance can consume resources:
+        RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE.
+        Possible values are: `RESERVATION_NONE`, `RESERVATION_ANY`, `RESERVATION_SPECIFIC`.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @consume_reservation_type.setter
+    def consume_reservation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "consume_reservation_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Corresponds to the label key of a reservation resource. To target a
+        RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name
+        as the key and specify the name of your reservation as its value.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Corresponds to the label values of a reservation resource. This can be
+        either a name to a reservation in the same project or
+        "projects/different-project/reservations/some-reservation-name"
+        to target a shared reservation in the same zone but in a different project.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:

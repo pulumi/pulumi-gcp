@@ -29,6 +29,36 @@ __all__ = [
     'AddonsConfigAddonsConfigMonetizationConfigArgsDict',
     'ApiMetaDataArgs',
     'ApiMetaDataArgsDict',
+    'ApiProductAttributeArgs',
+    'ApiProductAttributeArgsDict',
+    'ApiProductGraphqlOperationGroupArgs',
+    'ApiProductGraphqlOperationGroupArgsDict',
+    'ApiProductGraphqlOperationGroupOperationConfigArgs',
+    'ApiProductGraphqlOperationGroupOperationConfigArgsDict',
+    'ApiProductGraphqlOperationGroupOperationConfigAttributeArgs',
+    'ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict',
+    'ApiProductGraphqlOperationGroupOperationConfigOperationArgs',
+    'ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict',
+    'ApiProductGraphqlOperationGroupOperationConfigQuotaArgs',
+    'ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict',
+    'ApiProductGrpcOperationGroupArgs',
+    'ApiProductGrpcOperationGroupArgsDict',
+    'ApiProductGrpcOperationGroupOperationConfigArgs',
+    'ApiProductGrpcOperationGroupOperationConfigArgsDict',
+    'ApiProductGrpcOperationGroupOperationConfigAttributeArgs',
+    'ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict',
+    'ApiProductGrpcOperationGroupOperationConfigQuotaArgs',
+    'ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict',
+    'ApiProductOperationGroupArgs',
+    'ApiProductOperationGroupArgsDict',
+    'ApiProductOperationGroupOperationConfigArgs',
+    'ApiProductOperationGroupOperationConfigArgsDict',
+    'ApiProductOperationGroupOperationConfigAttributeArgs',
+    'ApiProductOperationGroupOperationConfigAttributeArgsDict',
+    'ApiProductOperationGroupOperationConfigOperationArgs',
+    'ApiProductOperationGroupOperationConfigOperationArgsDict',
+    'ApiProductOperationGroupOperationConfigQuotaArgs',
+    'ApiProductOperationGroupOperationConfigQuotaArgsDict',
     'AppGroupAttributeArgs',
     'AppGroupAttributeArgsDict',
     'DeveloperAttributeArgs',
@@ -71,6 +101,16 @@ __all__ = [
     'OrganizationPropertiesArgsDict',
     'OrganizationPropertiesPropertyArgs',
     'OrganizationPropertiesPropertyArgsDict',
+    'SecurityActionAllowArgs',
+    'SecurityActionAllowArgsDict',
+    'SecurityActionConditionConfigArgs',
+    'SecurityActionConditionConfigArgsDict',
+    'SecurityActionDenyArgs',
+    'SecurityActionDenyArgsDict',
+    'SecurityActionFlagArgs',
+    'SecurityActionFlagArgsDict',
+    'SecurityActionFlagHeaderArgs',
+    'SecurityActionFlagHeaderArgsDict',
     'SecurityMonitoringConditionIncludeAllResourcesArgs',
     'SecurityMonitoringConditionIncludeAllResourcesArgsDict',
     'SecurityProfileV2ProfileAssessmentConfigArgs',
@@ -488,6 +528,1020 @@ class ApiMetaDataArgs:
     @sub_type.setter
     def sub_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sub_type", value)
+
+
+if not MYPY:
+    class ApiProductAttributeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Key of the attribute.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Value of the attribute.
+        """
+elif False:
+    ApiProductAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductAttributeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Key of the attribute.
+        :param pulumi.Input[_builtins.str] value: Value of the attribute.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Value of the attribute.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ApiProductGraphqlOperationGroupArgsDict(TypedDict):
+        operation_config_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        Possible values are: `proxy`, `remoteservice`.
+        """
+        operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgsDict']]]]
+        """
+        List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+        Structure is documented below.
+        """
+elif False:
+    ApiProductGraphqlOperationGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGraphqlOperationGroupArgs:
+    def __init__(__self__, *,
+                 operation_config_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 operation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] operation_config_type: Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+               Possible values are: `proxy`, `remoteservice`.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgs']]] operation_configs: List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+               Structure is documented below.
+        """
+        if operation_config_type is not None:
+            pulumi.set(__self__, "operation_config_type", operation_config_type)
+        if operation_configs is not None:
+            pulumi.set(__self__, "operation_configs", operation_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="operationConfigType")
+    def operation_config_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        Possible values are: `proxy`, `remoteservice`.
+        """
+        return pulumi.get(self, "operation_config_type")
+
+    @operation_config_type.setter
+    def operation_config_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operation_config_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operationConfigs")
+    def operation_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgs']]]]:
+        """
+        List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operation_configs")
+
+    @operation_configs.setter
+    def operation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgs']]]]):
+        pulumi.set(self, "operation_configs", value)
+
+
+if not MYPY:
+    class ApiProductGraphqlOperationGroupOperationConfigArgsDict(TypedDict):
+        api_source: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        """
+        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict']]]]
+        """
+        Custom attributes associated with the operation.
+        Structure is documented below.
+        """
+        operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict']]]]
+        """
+        Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+        Structure is documented below.
+        """
+        quota: NotRequired[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict']]
+        """
+        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+        Structure is documented below.
+        """
+elif False:
+    ApiProductGraphqlOperationGroupOperationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGraphqlOperationGroupOperationConfigArgs:
+    def __init__(__self__, *,
+                 api_source: Optional[pulumi.Input[_builtins.str]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgs']]]] = None,
+                 quota: Optional[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigQuotaArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_source: Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgs']]] attributes: Custom attributes associated with the operation.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgs']]] operations: Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+               Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+               Structure is documented below.
+        :param pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigQuotaArgs'] quota: Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+               Structure is documented below.
+        """
+        if api_source is not None:
+            pulumi.set(__self__, "api_source", api_source)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+
+    @_builtins.property
+    @pulumi.getter(name="apiSource")
+    def api_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        """
+        return pulumi.get(self, "api_source")
+
+    @api_source.setter
+    def api_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_source", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgs']]]]:
+        """
+        Custom attributes associated with the operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgs']]]]):
+        pulumi.set(self, "attributes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgs']]]]:
+        """
+        Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operations")
+
+    @operations.setter
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgs']]]]):
+        pulumi.set(self, "operations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigQuotaArgs']]:
+        """
+        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigQuotaArgs']]):
+        pulumi.set(self, "quota", value)
+
+
+if not MYPY:
+    class ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Key of the attribute.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Value of the attribute.
+        """
+elif False:
+    ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGraphqlOperationGroupOperationConfigAttributeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Key of the attribute.
+        :param pulumi.Input[_builtins.str] value: Value of the attribute.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Value of the attribute.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict(TypedDict):
+        operation: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
+        """
+        operation_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Required. GraphQL operation types. Valid values include query or mutation.
+        Note: Apigee does not currently support subscription types.
+        """
+elif False:
+    ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGraphqlOperationGroupOperationConfigOperationArgs:
+    def __init__(__self__, *,
+                 operation: Optional[pulumi.Input[_builtins.str]] = None,
+                 operation_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] operation: GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] operation_types: Required. GraphQL operation types. Valid values include query or mutation.
+               Note: Apigee does not currently support subscription types.
+        """
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if operation_types is not None:
+            pulumi.set(__self__, "operation_types", operation_types)
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operationTypes")
+    def operation_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Required. GraphQL operation types. Valid values include query or mutation.
+        Note: Apigee does not currently support subscription types.
+        """
+        return pulumi.get(self, "operation_types")
+
+    @operation_types.setter
+    def operation_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "operation_types", value)
+
+
+if not MYPY:
+    class ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict(TypedDict):
+        interval: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Time interval over which the number of request messages is calculated.
+        """
+        limit: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        """
+        time_unit: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+elif False:
+    ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGraphqlOperationGroupOperationConfigQuotaArgs:
+    def __init__(__self__, *,
+                 interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 limit: Optional[pulumi.Input[_builtins.str]] = None,
+                 time_unit: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] interval: Required. Time interval over which the number of request messages is calculated.
+        :param pulumi.Input[_builtins.str] limit: Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        :param pulumi.Input[_builtins.str] time_unit: Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if time_unit is not None:
+            pulumi.set(__self__, "time_unit", time_unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Time interval over which the number of request messages is calculated.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeUnit")
+    def time_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+        return pulumi.get(self, "time_unit")
+
+    @time_unit.setter
+    def time_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "time_unit", value)
+
+
+if not MYPY:
+    class ApiProductGrpcOperationGroupArgsDict(TypedDict):
+        operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgsDict']]]]
+        """
+        Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
+        Structure is documented below.
+        """
+elif False:
+    ApiProductGrpcOperationGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGrpcOperationGroupArgs:
+    def __init__(__self__, *,
+                 operation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgs']]] operation_configs: Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
+               Structure is documented below.
+        """
+        if operation_configs is not None:
+            pulumi.set(__self__, "operation_configs", operation_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="operationConfigs")
+    def operation_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgs']]]]:
+        """
+        Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operation_configs")
+
+    @operation_configs.setter
+    def operation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgs']]]]):
+        pulumi.set(self, "operation_configs", value)
+
+
+if not MYPY:
+    class ApiProductGrpcOperationGroupOperationConfigArgsDict(TypedDict):
+        api_source: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        """
+        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict']]]]
+        """
+        Custom attributes associated with the operation.
+        Structure is documented below.
+        """
+        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
+        Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+        """
+        quota: NotRequired[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict']]
+        """
+        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+        Structure is documented below.
+        """
+        service: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+        """
+elif False:
+    ApiProductGrpcOperationGroupOperationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGrpcOperationGroupOperationConfigArgs:
+    def __init__(__self__, *,
+                 api_source: Optional[pulumi.Input[_builtins.str]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgs']]]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 quota: Optional[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigQuotaArgs']] = None,
+                 service: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_source: Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgs']]] attributes: Custom attributes associated with the operation.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] methods: List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
+               Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+               Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+        :param pulumi.Input['ApiProductGrpcOperationGroupOperationConfigQuotaArgs'] quota: Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] service: Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+        """
+        if api_source is not None:
+            pulumi.set(__self__, "api_source", api_source)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter(name="apiSource")
+    def api_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        """
+        return pulumi.get(self, "api_source")
+
+    @api_source.setter
+    def api_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_source", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgs']]]]:
+        """
+        Custom attributes associated with the operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgs']]]]):
+        pulumi.set(self, "attributes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
+        Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
+        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+        """
+        return pulumi.get(self, "methods")
+
+    @methods.setter
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "methods", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigQuotaArgs']]:
+        """
+        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigQuotaArgs']]):
+        pulumi.set(self, "quota", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Key of the attribute.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Value of the attribute.
+        """
+elif False:
+    ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGrpcOperationGroupOperationConfigAttributeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Key of the attribute.
+        :param pulumi.Input[_builtins.str] value: Value of the attribute.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Value of the attribute.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict(TypedDict):
+        interval: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Time interval over which the number of request messages is calculated.
+        """
+        limit: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        """
+        time_unit: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+elif False:
+    ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductGrpcOperationGroupOperationConfigQuotaArgs:
+    def __init__(__self__, *,
+                 interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 limit: Optional[pulumi.Input[_builtins.str]] = None,
+                 time_unit: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] interval: Required. Time interval over which the number of request messages is calculated.
+        :param pulumi.Input[_builtins.str] limit: Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        :param pulumi.Input[_builtins.str] time_unit: Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if time_unit is not None:
+            pulumi.set(__self__, "time_unit", time_unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Time interval over which the number of request messages is calculated.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeUnit")
+    def time_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+        return pulumi.get(self, "time_unit")
+
+    @time_unit.setter
+    def time_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "time_unit", value)
+
+
+if not MYPY:
+    class ApiProductOperationGroupArgsDict(TypedDict):
+        operation_config_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        Possible values are: `proxy`, `remoteservice`.
+        """
+        operation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgsDict']]]]
+        """
+        Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        Structure is documented below.
+        """
+elif False:
+    ApiProductOperationGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductOperationGroupArgs:
+    def __init__(__self__, *,
+                 operation_config_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 operation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] operation_config_type: Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+               Possible values are: `proxy`, `remoteservice`.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgs']]] operation_configs: Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+               Structure is documented below.
+        """
+        if operation_config_type is not None:
+            pulumi.set(__self__, "operation_config_type", operation_config_type)
+        if operation_configs is not None:
+            pulumi.set(__self__, "operation_configs", operation_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="operationConfigType")
+    def operation_config_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        Possible values are: `proxy`, `remoteservice`.
+        """
+        return pulumi.get(self, "operation_config_type")
+
+    @operation_config_type.setter
+    def operation_config_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operation_config_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operationConfigs")
+    def operation_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgs']]]]:
+        """
+        Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operation_configs")
+
+    @operation_configs.setter
+    def operation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgs']]]]):
+        pulumi.set(self, "operation_configs", value)
+
+
+if not MYPY:
+    class ApiProductOperationGroupOperationConfigArgsDict(TypedDict):
+        api_source: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        """
+        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgsDict']]]]
+        """
+        Custom attributes associated with the operation.
+        Structure is documented below.
+        """
+        operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgsDict']]]]
+        """
+        Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+        Structure is documented below.
+        """
+        quota: NotRequired[pulumi.Input['ApiProductOperationGroupOperationConfigQuotaArgsDict']]
+        """
+        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+        Structure is documented below.
+        """
+elif False:
+    ApiProductOperationGroupOperationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductOperationGroupOperationConfigArgs:
+    def __init__(__self__, *,
+                 api_source: Optional[pulumi.Input[_builtins.str]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgs']]]] = None,
+                 quota: Optional[pulumi.Input['ApiProductOperationGroupOperationConfigQuotaArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_source: Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgs']]] attributes: Custom attributes associated with the operation.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgs']]] operations: Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+               Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+               Structure is documented below.
+        :param pulumi.Input['ApiProductOperationGroupOperationConfigQuotaArgs'] quota: Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+               Structure is documented below.
+        """
+        if api_source is not None:
+            pulumi.set(__self__, "api_source", api_source)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+
+    @_builtins.property
+    @pulumi.getter(name="apiSource")
+    def api_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Name of the API proxy with which the gRPC operation and quota are associated.
+        """
+        return pulumi.get(self, "api_source")
+
+    @api_source.setter
+    def api_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_source", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgs']]]]:
+        """
+        Custom attributes associated with the operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgs']]]]):
+        pulumi.set(self, "attributes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgs']]]]:
+        """
+        Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
+        Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operations")
+
+    @operations.setter
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgs']]]]):
+        pulumi.set(self, "operations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input['ApiProductOperationGroupOperationConfigQuotaArgs']]:
+        """
+        Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input['ApiProductOperationGroupOperationConfigQuotaArgs']]):
+        pulumi.set(self, "quota", value)
+
+
+if not MYPY:
+    class ApiProductOperationGroupOperationConfigAttributeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Key of the attribute.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Value of the attribute.
+        """
+elif False:
+    ApiProductOperationGroupOperationConfigAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductOperationGroupOperationConfigAttributeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Key of the attribute.
+        :param pulumi.Input[_builtins.str] value: Value of the attribute.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Value of the attribute.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ApiProductOperationGroupOperationConfigOperationArgsDict(TypedDict):
+        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Methods refers to the REST verbs, when none specified, all verb types are allowed.
+        """
+        resource: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. REST resource path associated with the API proxy or remote service.
+        """
+elif False:
+    ApiProductOperationGroupOperationConfigOperationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductOperationGroupOperationConfigOperationArgs:
+    def __init__(__self__, *,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] methods: Methods refers to the REST verbs, when none specified, all verb types are allowed.
+        :param pulumi.Input[_builtins.str] resource: Required. REST resource path associated with the API proxy or remote service.
+        """
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Methods refers to the REST verbs, when none specified, all verb types are allowed.
+        """
+        return pulumi.get(self, "methods")
+
+    @methods.setter
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "methods", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. REST resource path associated with the API proxy or remote service.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource", value)
+
+
+if not MYPY:
+    class ApiProductOperationGroupOperationConfigQuotaArgsDict(TypedDict):
+        interval: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Time interval over which the number of request messages is calculated.
+        """
+        limit: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        """
+        time_unit: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+elif False:
+    ApiProductOperationGroupOperationConfigQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiProductOperationGroupOperationConfigQuotaArgs:
+    def __init__(__self__, *,
+                 interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 limit: Optional[pulumi.Input[_builtins.str]] = None,
+                 time_unit: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] interval: Required. Time interval over which the number of request messages is calculated.
+        :param pulumi.Input[_builtins.str] limit: Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        :param pulumi.Input[_builtins.str] time_unit: Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if time_unit is not None:
+            pulumi.set(__self__, "time_unit", time_unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Time interval over which the number of request messages is calculated.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeUnit")
+    def time_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
+        """
+        return pulumi.get(self, "time_unit")
+
+    @time_unit.setter
+    def time_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "time_unit", value)
 
 
 if not MYPY:
@@ -2241,6 +3295,387 @@ class OrganizationPropertiesPropertyArgs:
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Value of the property.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class SecurityActionAllowArgsDict(TypedDict):
+        pass
+elif False:
+    SecurityActionAllowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityActionAllowArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class SecurityActionConditionConfigArgsDict(TypedDict):
+        access_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of accessTokens. Limit 1000 per action.
+        """
+        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of API keys. Limit 1000 per action.
+        """
+        api_products: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of API Products. Limit 1000 per action.
+        """
+        asns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+        This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+        """
+        bot_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
+        OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
+        Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+        """
+        developer_apps: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of developer apps. Limit 1000 per action.
+        """
+        developers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of developers. Limit 1000 per action.
+        """
+        http_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
+        Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+        """
+        ip_address_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+        """
+        region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+        """
+        user_agents: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of user agents to deny. We look for exact matches. Limit 50 per action.
+        """
+elif False:
+    SecurityActionConditionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityActionConditionConfigArgs:
+    def __init__(__self__, *,
+                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 api_products: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bot_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 developer_apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 developers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_agents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_tokens: A list of accessTokens. Limit 1000 per action.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_keys: A list of API keys. Limit 1000 per action.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_products: A list of API Products. Limit 1000 per action.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] asns: A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+               This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bot_reasons: A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
+               OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
+               Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] developer_apps: A list of developer apps. Limit 1000 per action.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] developers: A list of developers. Limit 1000 per action.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http_methods: Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
+               Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_address_ranges: A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] region_codes: A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_agents: A list of user agents to deny. We look for exact matches. Limit 50 per action.
+        """
+        if access_tokens is not None:
+            pulumi.set(__self__, "access_tokens", access_tokens)
+        if api_keys is not None:
+            pulumi.set(__self__, "api_keys", api_keys)
+        if api_products is not None:
+            pulumi.set(__self__, "api_products", api_products)
+        if asns is not None:
+            pulumi.set(__self__, "asns", asns)
+        if bot_reasons is not None:
+            pulumi.set(__self__, "bot_reasons", bot_reasons)
+        if developer_apps is not None:
+            pulumi.set(__self__, "developer_apps", developer_apps)
+        if developers is not None:
+            pulumi.set(__self__, "developers", developers)
+        if http_methods is not None:
+            pulumi.set(__self__, "http_methods", http_methods)
+        if ip_address_ranges is not None:
+            pulumi.set(__self__, "ip_address_ranges", ip_address_ranges)
+        if region_codes is not None:
+            pulumi.set(__self__, "region_codes", region_codes)
+        if user_agents is not None:
+            pulumi.set(__self__, "user_agents", user_agents)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokens")
+    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of accessTokens. Limit 1000 per action.
+        """
+        return pulumi.get(self, "access_tokens")
+
+    @access_tokens.setter
+    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "access_tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeys")
+    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of API keys. Limit 1000 per action.
+        """
+        return pulumi.get(self, "api_keys")
+
+    @api_keys.setter
+    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "api_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiProducts")
+    def api_products(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of API Products. Limit 1000 per action.
+        """
+        return pulumi.get(self, "api_products")
+
+    @api_products.setter
+    def api_products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "api_products", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def asns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+        This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
+        """
+        return pulumi.get(self, "asns")
+
+    @asns.setter
+    def asns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "asns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="botReasons")
+    def bot_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
+        OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
+        Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+        """
+        return pulumi.get(self, "bot_reasons")
+
+    @bot_reasons.setter
+    def bot_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "bot_reasons", value)
+
+    @_builtins.property
+    @pulumi.getter(name="developerApps")
+    def developer_apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of developer apps. Limit 1000 per action.
+        """
+        return pulumi.get(self, "developer_apps")
+
+    @developer_apps.setter
+    def developer_apps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "developer_apps", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def developers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of developers. Limit 1000 per action.
+        """
+        return pulumi.get(self, "developers")
+
+    @developers.setter
+    def developers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "developers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethods")
+    def http_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
+        Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
+        """
+        return pulumi.get(self, "http_methods")
+
+    @http_methods.setter
+    def http_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "http_methods", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddressRanges")
+    def ip_address_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+        """
+        return pulumi.get(self, "ip_address_ranges")
+
+    @ip_address_ranges.setter
+    def ip_address_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ip_address_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionCodes")
+    def region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
+        """
+        return pulumi.get(self, "region_codes")
+
+    @region_codes.setter
+    def region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "region_codes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userAgents")
+    def user_agents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of user agents to deny. We look for exact matches. Limit 50 per action.
+        """
+        return pulumi.get(self, "user_agents")
+
+    @user_agents.setter
+    def user_agents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "user_agents", value)
+
+
+if not MYPY:
+    class SecurityActionDenyArgsDict(TypedDict):
+        response_code: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The HTTP response code if the Action = DENY.
+        """
+elif False:
+    SecurityActionDenyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityActionDenyArgs:
+    def __init__(__self__, *,
+                 response_code: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] response_code: The HTTP response code if the Action = DENY.
+        """
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
+
+    @_builtins.property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The HTTP response code if the Action = DENY.
+        """
+        return pulumi.get(self, "response_code")
+
+    @response_code.setter
+    def response_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "response_code", value)
+
+
+if not MYPY:
+    class SecurityActionFlagArgsDict(TypedDict):
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityActionFlagHeaderArgsDict']]]]
+        """
+        A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
+        Limit 5 headers per SecurityAction.
+        At least one is mandatory.
+        Structure is documented below.
+        """
+elif False:
+    SecurityActionFlagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityActionFlagArgs:
+    def __init__(__self__, *,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityActionFlagHeaderArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityActionFlagHeaderArgs']]] headers: A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
+               Limit 5 headers per SecurityAction.
+               At least one is mandatory.
+               Structure is documented below.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityActionFlagHeaderArgs']]]]:
+        """
+        A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
+        Limit 5 headers per SecurityAction.
+        At least one is mandatory.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityActionFlagHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+
+if not MYPY:
+    class SecurityActionFlagHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The header name to be sent to the target.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The header value to be sent to the target.
+        """
+elif False:
+    SecurityActionFlagHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityActionFlagHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The header name to be sent to the target.
+        :param pulumi.Input[_builtins.str] value: The header value to be sent to the target.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The header name to be sent to the target.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The header value to be sent to the target.
         """
         return pulumi.get(self, "value")
 

@@ -74,6 +74,20 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// The name of the OdbNetwork associated with the Autonomous Database.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        /// It is optional but if specified, this should match the parent ODBNetwork of
+        /// the odb_subnet and backup_odb_subnet.
+        /// </summary>
+        public readonly string OdbNetwork;
+        /// <summary>
+        /// The name of the OdbSubnet associated with the Autonomous Database for
+        /// IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        public readonly string OdbSubnet;
+        /// <summary>
         /// The project to which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -116,6 +130,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string network,
 
+            string odbNetwork,
+
+            string odbSubnet,
+
             string project,
 
             ImmutableArray<Outputs.GetAutonomousDatabasesAutonomousDatabasePropertyResult> properties,
@@ -135,6 +153,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             Location = location;
             Name = name;
             Network = network;
+            OdbNetwork = odbNetwork;
+            OdbSubnet = odbSubnet;
             Project = project;
             Properties = properties;
             PulumiLabels = pulumiLabels;

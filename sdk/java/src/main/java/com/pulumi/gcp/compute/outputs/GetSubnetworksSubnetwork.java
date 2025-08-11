@@ -31,6 +31,19 @@ public final class GetSubnetworksSubnetwork {
      * 
      */
     private String network;
+    /**
+     * @return The name of the parent network computed from `network` attribute.
+     * 
+     */
+    private String networkName;
+    /**
+     * @return (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
+     * 
+     * @deprecated
+     * Use `network_name` instead. This field will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* Use `network_name` instead. This field will be removed in a future major release. */
     private String networkSelfLink;
     /**
      * @return Whether the VMs in the subnet can access Google services without assigned external IP addresses.
@@ -72,6 +85,21 @@ public final class GetSubnetworksSubnetwork {
     public String network() {
         return this.network;
     }
+    /**
+     * @return The name of the parent network computed from `network` attribute.
+     * 
+     */
+    public String networkName() {
+        return this.networkName;
+    }
+    /**
+     * @return (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
+     * 
+     * @deprecated
+     * Use `network_name` instead. This field will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* Use `network_name` instead. This field will be removed in a future major release. */
     public String networkSelfLink() {
         return this.networkSelfLink;
     }
@@ -103,6 +131,7 @@ public final class GetSubnetworksSubnetwork {
         private String ipCidrRange;
         private String name;
         private String network;
+        private String networkName;
         private String networkSelfLink;
         private Boolean privateIpGoogleAccess;
         private String selfLink;
@@ -113,6 +142,7 @@ public final class GetSubnetworksSubnetwork {
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkName = defaults.networkName;
     	      this.networkSelfLink = defaults.networkSelfLink;
     	      this.privateIpGoogleAccess = defaults.privateIpGoogleAccess;
     	      this.selfLink = defaults.selfLink;
@@ -151,6 +181,14 @@ public final class GetSubnetworksSubnetwork {
             return this;
         }
         @CustomType.Setter
+        public Builder networkName(String networkName) {
+            if (networkName == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworksSubnetwork", "networkName");
+            }
+            this.networkName = networkName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkSelfLink(String networkSelfLink) {
             if (networkSelfLink == null) {
               throw new MissingRequiredPropertyException("GetSubnetworksSubnetwork", "networkSelfLink");
@@ -180,6 +218,7 @@ public final class GetSubnetworksSubnetwork {
             _resultValue.ipCidrRange = ipCidrRange;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.networkName = networkName;
             _resultValue.networkSelfLink = networkSelfLink;
             _resultValue.privateIpGoogleAccess = privateIpGoogleAccess;
             _resultValue.selfLink = selfLink;

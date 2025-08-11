@@ -128,6 +128,9 @@ import * as utilities from "../utilities";
  *             networkUri: "default",
  *             serviceAccount: project.then(project => `${project.number}-compute@developer.gserviceaccount.com`),
  *             stagingBucket: bucket.name,
+ *             authenticationConfig: {
+ *                 userWorkloadAuthenticationType: "SERVICE_ACCOUNT",
+ *             },
  *         },
  *         peripheralsConfig: {
  *             metastoreService: ms.name,

@@ -5,9 +5,11 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +18,23 @@ import javax.annotation.Nullable;
 public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterIpAllocationPolicyArgs Empty = new ClusterIpAllocationPolicyArgs();
+
+    /**
+     * The configuration for individual additional subnetworks attached to the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="additionalIpRangesConfigs")
+    private @Nullable Output<List<ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs>> additionalIpRangesConfigs;
+
+    /**
+     * @return The configuration for individual additional subnetworks attached to the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs>>> additionalIpRangesConfigs() {
+        return Optional.ofNullable(this.additionalIpRangesConfigs);
+    }
 
     /**
      * The configuration for additional pod secondary ranges at
@@ -159,6 +178,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     private ClusterIpAllocationPolicyArgs() {}
 
     private ClusterIpAllocationPolicyArgs(ClusterIpAllocationPolicyArgs $) {
+        this.additionalIpRangesConfigs = $.additionalIpRangesConfigs;
         this.additionalPodRangesConfig = $.additionalPodRangesConfig;
         this.clusterIpv4CidrBlock = $.clusterIpv4CidrBlock;
         this.clusterSecondaryRangeName = $.clusterSecondaryRangeName;
@@ -184,6 +204,40 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
 
         public Builder(ClusterIpAllocationPolicyArgs defaults) {
             $ = new ClusterIpAllocationPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalIpRangesConfigs The configuration for individual additional subnetworks attached to the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalIpRangesConfigs(@Nullable Output<List<ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs>> additionalIpRangesConfigs) {
+            $.additionalIpRangesConfigs = additionalIpRangesConfigs;
+            return this;
+        }
+
+        /**
+         * @param additionalIpRangesConfigs The configuration for individual additional subnetworks attached to the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalIpRangesConfigs(List<ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs> additionalIpRangesConfigs) {
+            return additionalIpRangesConfigs(Output.of(additionalIpRangesConfigs));
+        }
+
+        /**
+         * @param additionalIpRangesConfigs The configuration for individual additional subnetworks attached to the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalIpRangesConfigs(ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs... additionalIpRangesConfigs) {
+            return additionalIpRangesConfigs(List.of(additionalIpRangesConfigs));
         }
 
         /**

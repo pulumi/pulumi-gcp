@@ -147,6 +147,7 @@ class ProviderArgs:
                  migration_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  model_armor_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 model_armor_global_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  netapp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -472,6 +473,8 @@ class ProviderArgs:
             pulumi.set(__self__, "ml_engine_custom_endpoint", ml_engine_custom_endpoint)
         if model_armor_custom_endpoint is not None:
             pulumi.set(__self__, "model_armor_custom_endpoint", model_armor_custom_endpoint)
+        if model_armor_global_custom_endpoint is not None:
+            pulumi.set(__self__, "model_armor_global_custom_endpoint", model_armor_global_custom_endpoint)
         if monitoring_custom_endpoint is not None:
             pulumi.set(__self__, "monitoring_custom_endpoint", monitoring_custom_endpoint)
         if netapp_custom_endpoint is not None:
@@ -1759,6 +1762,15 @@ class ProviderArgs:
         pulumi.set(self, "model_armor_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="modelArmorGlobalCustomEndpoint")
+    def model_armor_global_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "model_armor_global_custom_endpoint")
+
+    @model_armor_global_custom_endpoint.setter
+    def model_armor_global_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model_armor_global_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="monitoringCustomEndpoint")
     def monitoring_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "monitoring_custom_endpoint")
@@ -2504,6 +2516,7 @@ class Provider(pulumi.ProviderResource):
                  migration_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  model_armor_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 model_armor_global_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  netapp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2736,6 +2749,7 @@ class Provider(pulumi.ProviderResource):
                  migration_center_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  model_armor_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 model_armor_global_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  netapp_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2940,6 +2954,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["migration_center_custom_endpoint"] = migration_center_custom_endpoint
             __props__.__dict__["ml_engine_custom_endpoint"] = ml_engine_custom_endpoint
             __props__.__dict__["model_armor_custom_endpoint"] = model_armor_custom_endpoint
+            __props__.__dict__["model_armor_global_custom_endpoint"] = model_armor_global_custom_endpoint
             __props__.__dict__["monitoring_custom_endpoint"] = monitoring_custom_endpoint
             __props__.__dict__["netapp_custom_endpoint"] = netapp_custom_endpoint
             __props__.__dict__["network_connectivity_custom_endpoint"] = network_connectivity_custom_endpoint
@@ -3626,6 +3641,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="modelArmorCustomEndpoint")
     def model_armor_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "model_armor_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="modelArmorGlobalCustomEndpoint")
+    def model_armor_global_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "model_armor_global_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="monitoringCustomEndpoint")

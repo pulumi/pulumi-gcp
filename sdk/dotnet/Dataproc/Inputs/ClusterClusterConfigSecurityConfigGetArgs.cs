@@ -13,10 +13,18 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterClusterConfigSecurityConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kerberos Configuration
+        /// Identity Configuration. At least one of `identity_config`
+        /// or `kerberos_config` is required.
         /// </summary>
-        [Input("kerberosConfig", required: true)]
-        public Input<Inputs.ClusterClusterConfigSecurityConfigKerberosConfigGetArgs> KerberosConfig { get; set; } = null!;
+        [Input("identityConfig")]
+        public Input<Inputs.ClusterClusterConfigSecurityConfigIdentityConfigGetArgs>? IdentityConfig { get; set; }
+
+        /// <summary>
+        /// Kerberos Configuration. At least one of `identity_config`
+        /// or `kerberos_config` is required.
+        /// </summary>
+        [Input("kerberosConfig")]
+        public Input<Inputs.ClusterClusterConfigSecurityConfigKerberosConfigGetArgs>? KerberosConfig { get; set; }
 
         public ClusterClusterConfigSecurityConfigGetArgs()
         {

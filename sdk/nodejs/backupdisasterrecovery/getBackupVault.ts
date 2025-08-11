@@ -58,6 +58,7 @@ export interface GetBackupVaultResult {
     readonly annotations: {[key: string]: string};
     readonly backupCount: string;
     readonly backupMinimumEnforcedRetentionDuration: string;
+    readonly backupRetentionInheritance: string;
     readonly backupVaultId: string;
     readonly createTime: string;
     readonly deletable: boolean;

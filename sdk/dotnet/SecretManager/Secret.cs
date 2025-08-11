@@ -287,6 +287,14 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> SecretId { get; private set; } = null!;
 
         /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
         /// Structure is documented below.
         /// </summary>
@@ -458,6 +466,20 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         [Input("topics")]
         private InputList<Inputs.SecretTopicArgs>? _topics;
@@ -654,6 +676,20 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         [Input("topics")]
         private InputList<Inputs.SecretTopicGetArgs>? _topics;

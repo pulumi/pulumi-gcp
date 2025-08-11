@@ -1143,7 +1143,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_26032",
+                "filename_suffix": "-_50610",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1176,7 +1176,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_8647",
+                "filename_suffix": "-_77124",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1215,7 +1215,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_50610",
+                "filename_suffix": "-_15335",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1228,7 +1228,27 @@ class Subscription(pulumi.CustomResource):
                 ]))
         project = gcp.organizations.get_project()
         ```
+        ### Pubsub Subscription Single Smt
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            message_transforms=[{
+                "javascript_udf": {
+                    "function_name": "isYearEven",
+                    "code": \"\"\"function isYearEven(message, metadata) {
+          const data = JSON.parse(message.data);
+          return message.year %2 === 0;
+        }
+        \"\"\",
+                },
+            }])
+        ```
         ## Import
 
         Subscription can be imported using any of these accepted formats:
@@ -1583,7 +1603,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_26032",
+                "filename_suffix": "-_50610",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1616,7 +1636,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_8647",
+                "filename_suffix": "-_77124",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1655,7 +1675,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_50610",
+                "filename_suffix": "-_15335",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1668,7 +1688,27 @@ class Subscription(pulumi.CustomResource):
                 ]))
         project = gcp.organizations.get_project()
         ```
+        ### Pubsub Subscription Single Smt
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            message_transforms=[{
+                "javascript_udf": {
+                    "function_name": "isYearEven",
+                    "code": \"\"\"function isYearEven(message, metadata) {
+          const data = JSON.parse(message.data);
+          return message.year %2 === 0;
+        }
+        \"\"\",
+                },
+            }])
+        ```
         ## Import
 
         Subscription can be imported using any of these accepted formats:

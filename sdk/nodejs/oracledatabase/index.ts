@@ -60,6 +60,16 @@ export const getDbServers: typeof import("./getDbServers").getDbServers = null a
 export const getDbServersOutput: typeof import("./getDbServers").getDbServersOutput = null as any;
 utilities.lazyLoad(exports, ["getDbServers","getDbServersOutput"], () => require("./getDbServers"));
 
+export { OdbNetworkArgs, OdbNetworkState } from "./odbNetwork";
+export type OdbNetwork = import("./odbNetwork").OdbNetwork;
+export const OdbNetwork: typeof import("./odbNetwork").OdbNetwork = null as any;
+utilities.lazyLoad(exports, ["OdbNetwork"], () => require("./odbNetwork"));
+
+export { OdbSubnetArgs, OdbSubnetState } from "./odbSubnet";
+export type OdbSubnet = import("./odbSubnet").OdbSubnet;
+export const OdbSubnet: typeof import("./odbSubnet").OdbSubnet = null as any;
+utilities.lazyLoad(exports, ["OdbSubnet"], () => require("./odbSubnet"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -71,6 +81,10 @@ const _module = {
                 return new CloudExadataInfrastructure(name, <any>undefined, { urn })
             case "gcp:oracledatabase/cloudVmCluster:CloudVmCluster":
                 return new CloudVmCluster(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/odbNetwork:OdbNetwork":
+                return new OdbNetwork(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/odbSubnet:OdbSubnet":
+                return new OdbSubnet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -79,3 +93,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/autonomousDatabase", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudExadataInfrastructure", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudVmCluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbNetwork", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbSubnet", _module)

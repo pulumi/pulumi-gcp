@@ -47,6 +47,64 @@ __all__ = [
     'AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict',
     'AiEndpointPrivateServiceConnectConfigArgs',
     'AiEndpointPrivateServiceConnectConfigArgsDict',
+    'AiEndpointWithModelGardenDeploymentDeployConfigArgs',
+    'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgsDict',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgsDict',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs',
+    'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgsDict',
+    'AiEndpointWithModelGardenDeploymentEndpointConfigArgs',
+    'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs',
+    'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict',
     'AiFeatureGroupBigQueryArgs',
     'AiFeatureGroupBigQueryArgsDict',
     'AiFeatureGroupBigQueryBigQuerySourceArgs',
@@ -942,7 +1000,7 @@ if not MYPY:
         machine_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         (Output)
-        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO: Try to better unify the required vs optional.
         """
 elif False:
     AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -959,7 +1017,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
         :param pulumi.Input[_builtins.str] accelerator_type: (Output)
                The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
         :param pulumi.Input[_builtins.str] machine_type: (Output)
-               The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+               The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO: Try to better unify the required vs optional.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -999,7 +1057,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
     def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         (Output)
-        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO: Try to better unify the required vs optional.
         """
         return pulumi.get(self, "machine_type")
 
@@ -1413,6 +1471,3591 @@ class AiEndpointPrivateServiceConnectConfigArgs:
     @project_allowlists.setter
     def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_allowlists", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentDeployConfigArgsDict(TypedDict):
+        dedicated_resources: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict']]
+        """
+        A description of resources that are dedicated to a DeployedModel or
+        DeployedIndex, and that need a higher degree of manual configuration.
+        Structure is documented below.
+        """
+        fast_tryout_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, enable the QMT fast tryout feature for this model if possible.
+        """
+        system_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        System labels for Model Garden deployments.
+        These labels are managed by Google and for tracking purposes only.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentDeployConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentDeployConfigArgs:
+    def __init__(__self__, *,
+                 dedicated_resources: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']] = None,
+                 fast_tryout_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 system_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs'] dedicated_resources: A description of resources that are dedicated to a DeployedModel or
+               DeployedIndex, and that need a higher degree of manual configuration.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] fast_tryout_enabled: If true, enable the QMT fast tryout feature for this model if possible.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] system_labels: System labels for Model Garden deployments.
+               These labels are managed by Google and for tracking purposes only.
+        """
+        if dedicated_resources is not None:
+            pulumi.set(__self__, "dedicated_resources", dedicated_resources)
+        if fast_tryout_enabled is not None:
+            pulumi.set(__self__, "fast_tryout_enabled", fast_tryout_enabled)
+        if system_labels is not None:
+            pulumi.set(__self__, "system_labels", system_labels)
+
+    @_builtins.property
+    @pulumi.getter(name="dedicatedResources")
+    def dedicated_resources(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']]:
+        """
+        A description of resources that are dedicated to a DeployedModel or
+        DeployedIndex, and that need a higher degree of manual configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dedicated_resources")
+
+    @dedicated_resources.setter
+    def dedicated_resources(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']]):
+        pulumi.set(self, "dedicated_resources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fastTryoutEnabled")
+    def fast_tryout_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, enable the QMT fast tryout feature for this model if possible.
+        """
+        return pulumi.get(self, "fast_tryout_enabled")
+
+    @fast_tryout_enabled.setter
+    def fast_tryout_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "fast_tryout_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="systemLabels")
+    def system_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        System labels for Model Garden deployments.
+        These labels are managed by Google and for tracking purposes only.
+        """
+        return pulumi.get(self, "system_labels")
+
+    @system_labels.setter
+    def system_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "system_labels", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict(TypedDict):
+        machine_spec: pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgsDict']
+        """
+        Specification of a single machine.
+        Structure is documented below.
+        """
+        min_replica_count: pulumi.Input[_builtins.int]
+        """
+        The minimum number of machine replicas that will be always deployed on.
+        This value must be greater than or equal to 1.
+        If traffic increases, it may dynamically be deployed onto more replicas,
+        and as traffic decreases, some of these extra replicas may be freed.
+        """
+        autoscaling_metric_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgsDict']]]]
+        """
+        The metric specifications that overrides a resource
+        utilization metric (CPU utilization, accelerator's duty cycle, and so on)
+        target value (default to 60 if not set). At most one entry is allowed per
+        metric.
+        If machine_spec.accelerator_count is
+        above 0, the autoscaling will be based on both CPU utilization and
+        accelerator's duty cycle metrics and scale up when either metrics exceeds
+        its target value while scale down if both metrics are under their target
+        value. The default target value is 60 for both metrics.
+        If machine_spec.accelerator_count is
+        0, the autoscaling will be based on CPU utilization metric only with
+        default target value 60 if not explicitly set.
+        For example, in the case of Online Prediction, if you want to override
+        target CPU utilization to 80, you should set
+        autoscaling_metric_specs.metric_name
+        to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
+        autoscaling_metric_specs.target to `80`.
+        Structure is documented below.
+        """
+        max_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of replicas that may be deployed on when the traffic
+        against it increases. If the requested value is too large, the deployment
+        will error, but if deployment succeeds then the ability to scale to that
+        many replicas is guaranteed (barring service outages). If traffic increases
+        beyond what its replicas at maximum may handle, a portion of the traffic
+        will be dropped. If this value is not provided, will use
+        min_replica_count as the default value.
+        The value of this field impacts the charge against Vertex CPU and GPU
+        quotas. Specifically, you will be charged for (max_replica_count *
+        number of cores in the selected machine type) and (max_replica_count *
+        number of GPUs per replica in the selected machine type).
+        """
+        required_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of required available replicas for the deployment to succeed.
+        This field is only needed when partial deployment/mutation is
+        desired. If set, the deploy/mutate operation will succeed once
+        available_replica_count reaches required_replica_count, and the rest of
+        the replicas will be retried. If not set, the default
+        required_replica_count will be min_replica_count.
+        """
+        spot: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, schedule the deployment workload on [spot
+        VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs:
+    def __init__(__self__, *,
+                 machine_spec: pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs'],
+                 min_replica_count: pulumi.Input[_builtins.int],
+                 autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]] = None,
+                 max_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 required_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 spot: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs'] machine_spec: Specification of a single machine.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] min_replica_count: The minimum number of machine replicas that will be always deployed on.
+               This value must be greater than or equal to 1.
+               If traffic increases, it may dynamically be deployed onto more replicas,
+               and as traffic decreases, some of these extra replicas may be freed.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]] autoscaling_metric_specs: The metric specifications that overrides a resource
+               utilization metric (CPU utilization, accelerator's duty cycle, and so on)
+               target value (default to 60 if not set). At most one entry is allowed per
+               metric.
+               If machine_spec.accelerator_count is
+               above 0, the autoscaling will be based on both CPU utilization and
+               accelerator's duty cycle metrics and scale up when either metrics exceeds
+               its target value while scale down if both metrics are under their target
+               value. The default target value is 60 for both metrics.
+               If machine_spec.accelerator_count is
+               0, the autoscaling will be based on CPU utilization metric only with
+               default target value 60 if not explicitly set.
+               For example, in the case of Online Prediction, if you want to override
+               target CPU utilization to 80, you should set
+               autoscaling_metric_specs.metric_name
+               to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
+               autoscaling_metric_specs.target to `80`.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] max_replica_count: The maximum number of replicas that may be deployed on when the traffic
+               against it increases. If the requested value is too large, the deployment
+               will error, but if deployment succeeds then the ability to scale to that
+               many replicas is guaranteed (barring service outages). If traffic increases
+               beyond what its replicas at maximum may handle, a portion of the traffic
+               will be dropped. If this value is not provided, will use
+               min_replica_count as the default value.
+               The value of this field impacts the charge against Vertex CPU and GPU
+               quotas. Specifically, you will be charged for (max_replica_count *
+               number of cores in the selected machine type) and (max_replica_count *
+               number of GPUs per replica in the selected machine type).
+        :param pulumi.Input[_builtins.int] required_replica_count: Number of required available replicas for the deployment to succeed.
+               This field is only needed when partial deployment/mutation is
+               desired. If set, the deploy/mutate operation will succeed once
+               available_replica_count reaches required_replica_count, and the rest of
+               the replicas will be retried. If not set, the default
+               required_replica_count will be min_replica_count.
+        :param pulumi.Input[_builtins.bool] spot: If true, schedule the deployment workload on [spot
+               VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+        """
+        pulumi.set(__self__, "machine_spec", machine_spec)
+        pulumi.set(__self__, "min_replica_count", min_replica_count)
+        if autoscaling_metric_specs is not None:
+            pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if required_replica_count is not None:
+            pulumi.set(__self__, "required_replica_count", required_replica_count)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
+
+    @_builtins.property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs']:
+        """
+        Specification of a single machine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @machine_spec.setter
+    def machine_spec(self, value: pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs']):
+        pulumi.set(self, "machine_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> pulumi.Input[_builtins.int]:
+        """
+        The minimum number of machine replicas that will be always deployed on.
+        This value must be greater than or equal to 1.
+        If traffic increases, it may dynamically be deployed onto more replicas,
+        and as traffic decreases, some of these extra replicas may be freed.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+    @min_replica_count.setter
+    def min_replica_count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "min_replica_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingMetricSpecs")
+    def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]]:
+        """
+        The metric specifications that overrides a resource
+        utilization metric (CPU utilization, accelerator's duty cycle, and so on)
+        target value (default to 60 if not set). At most one entry is allowed per
+        metric.
+        If machine_spec.accelerator_count is
+        above 0, the autoscaling will be based on both CPU utilization and
+        accelerator's duty cycle metrics and scale up when either metrics exceeds
+        its target value while scale down if both metrics are under their target
+        value. The default target value is 60 for both metrics.
+        If machine_spec.accelerator_count is
+        0, the autoscaling will be based on CPU utilization metric only with
+        default target value 60 if not explicitly set.
+        For example, in the case of Online Prediction, if you want to override
+        target CPU utilization to 80, you should set
+        autoscaling_metric_specs.metric_name
+        to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
+        autoscaling_metric_specs.target to `80`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_metric_specs")
+
+    @autoscaling_metric_specs.setter
+    def autoscaling_metric_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]]):
+        pulumi.set(self, "autoscaling_metric_specs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of replicas that may be deployed on when the traffic
+        against it increases. If the requested value is too large, the deployment
+        will error, but if deployment succeeds then the ability to scale to that
+        many replicas is guaranteed (barring service outages). If traffic increases
+        beyond what its replicas at maximum may handle, a portion of the traffic
+        will be dropped. If this value is not provided, will use
+        min_replica_count as the default value.
+        The value of this field impacts the charge against Vertex CPU and GPU
+        quotas. Specifically, you will be charged for (max_replica_count *
+        number of cores in the selected machine type) and (max_replica_count *
+        number of GPUs per replica in the selected machine type).
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @max_replica_count.setter
+    def max_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_replica_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requiredReplicaCount")
+    def required_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of required available replicas for the deployment to succeed.
+        This field is only needed when partial deployment/mutation is
+        desired. If set, the deploy/mutate operation will succeed once
+        available_replica_count reaches required_replica_count, and the rest of
+        the replicas will be retried. If not set, the default
+        required_replica_count will be min_replica_count.
+        """
+        return pulumi.get(self, "required_replica_count")
+
+    @required_replica_count.setter
+    def required_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "required_replica_count", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def spot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, schedule the deployment workload on [spot
+        VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
+        """
+        return pulumi.get(self, "spot")
+
+    @spot.setter
+    def spot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "spot", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgsDict(TypedDict):
+        metric_name: pulumi.Input[_builtins.str]
+        """
+        The resource metric name.
+        Supported metrics:
+        * For Online Prediction:
+        * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
+        * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        """
+        target: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The target resource utilization in percentage (1% - 100%) for the given
+        metric; once the real usage deviates from the target by a certain
+        percentage, the machine replicas change. The default value is 60
+        (representing 60%) if not provided.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs:
+    def __init__(__self__, *,
+                 metric_name: pulumi.Input[_builtins.str],
+                 target: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] metric_name: The resource metric name.
+               Supported metrics:
+               * For Online Prediction:
+               * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
+               * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        :param pulumi.Input[_builtins.int] target: The target resource utilization in percentage (1% - 100%) for the given
+               metric; once the real usage deviates from the target by a certain
+               percentage, the machine replicas change. The default value is 60
+               (representing 60%) if not provided.
+        """
+        pulumi.set(__self__, "metric_name", metric_name)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @_builtins.property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource metric name.
+        Supported metrics:
+        * For Online Prediction:
+        * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
+        * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "metric_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The target resource utilization in percentage (1% - 100%) for the given
+        metric; once the real usage deviates from the target by a certain
+        percentage, the machine replicas change. The default value is 60
+        (representing 60%) if not provided.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "target", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgsDict(TypedDict):
+        accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of accelerators to attach to the machine.
+        """
+        accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Possible values:
+        ACCELERATOR_TYPE_UNSPECIFIED
+        NVIDIA_TESLA_K80
+        NVIDIA_TESLA_P100
+        NVIDIA_TESLA_V100
+        NVIDIA_TESLA_P4
+        NVIDIA_TESLA_T4
+        NVIDIA_TESLA_A100
+        NVIDIA_A100_80GB
+        NVIDIA_L4
+        NVIDIA_H100_80GB
+        NVIDIA_H100_MEGA_80GB
+        NVIDIA_H200_141GB
+        NVIDIA_B200
+        TPU_V2
+        TPU_V3
+        TPU_V4_POD
+        TPU_V5_LITEPOD
+        """
+        machine_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The type of the machine.
+        See the [list of machine types supported for
+        prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+        See the [list of machine types supported for custom
+        training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+        For DeployedModel this field is optional, and the default
+        value is `n1-standard-2`. For BatchPredictionJob or as part of
+        WorkerPoolSpec this field is required.
+        """
+        multihost_gpu_node_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of nodes per replica for multihost GPU deployments.
+        """
+        reservation_affinity: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgsDict']]
+        """
+        A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+        DeployedModel) to draw its Compute Engine resources from a Shared
+        Reservation, or exclusively from on-demand capacity.
+        Structure is documented below.
+        """
+        tpu_topology: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The topology of the TPUs. Corresponds to the TPU topologies available from
+        GKE. (Example: tpu_topology: "2x2x1").
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs:
+    def __init__(__self__, *,
+                 accelerator_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 multihost_gpu_node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 reservation_affinity: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']] = None,
+                 tpu_topology: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] accelerator_count: The number of accelerators to attach to the machine.
+        :param pulumi.Input[_builtins.str] accelerator_type: Possible values:
+               ACCELERATOR_TYPE_UNSPECIFIED
+               NVIDIA_TESLA_K80
+               NVIDIA_TESLA_P100
+               NVIDIA_TESLA_V100
+               NVIDIA_TESLA_P4
+               NVIDIA_TESLA_T4
+               NVIDIA_TESLA_A100
+               NVIDIA_A100_80GB
+               NVIDIA_L4
+               NVIDIA_H100_80GB
+               NVIDIA_H100_MEGA_80GB
+               NVIDIA_H200_141GB
+               NVIDIA_B200
+               TPU_V2
+               TPU_V3
+               TPU_V4_POD
+               TPU_V5_LITEPOD
+        :param pulumi.Input[_builtins.str] machine_type: The type of the machine.
+               See the [list of machine types supported for
+               prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+               See the [list of machine types supported for custom
+               training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+               For DeployedModel this field is optional, and the default
+               value is `n1-standard-2`. For BatchPredictionJob or as part of
+               WorkerPoolSpec this field is required.
+        :param pulumi.Input[_builtins.int] multihost_gpu_node_count: The number of nodes per replica for multihost GPU deployments.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs'] reservation_affinity: A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+               DeployedModel) to draw its Compute Engine resources from a Shared
+               Reservation, or exclusively from on-demand capacity.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] tpu_topology: The topology of the TPUs. Corresponds to the TPU topologies available from
+               GKE. (Example: tpu_topology: "2x2x1").
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if multihost_gpu_node_count is not None:
+            pulumi.set(__self__, "multihost_gpu_node_count", multihost_gpu_node_count)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if tpu_topology is not None:
+            pulumi.set(__self__, "tpu_topology", tpu_topology)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of accelerators to attach to the machine.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Possible values:
+        ACCELERATOR_TYPE_UNSPECIFIED
+        NVIDIA_TESLA_K80
+        NVIDIA_TESLA_P100
+        NVIDIA_TESLA_V100
+        NVIDIA_TESLA_P4
+        NVIDIA_TESLA_T4
+        NVIDIA_TESLA_A100
+        NVIDIA_A100_80GB
+        NVIDIA_L4
+        NVIDIA_H100_80GB
+        NVIDIA_H100_MEGA_80GB
+        NVIDIA_H200_141GB
+        NVIDIA_B200
+        TPU_V2
+        TPU_V3
+        TPU_V4_POD
+        TPU_V5_LITEPOD
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the machine.
+        See the [list of machine types supported for
+        prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+        See the [list of machine types supported for custom
+        training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+        For DeployedModel this field is optional, and the default
+        value is `n1-standard-2`. For BatchPredictionJob or as part of
+        WorkerPoolSpec this field is required.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multihostGpuNodeCount")
+    def multihost_gpu_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of nodes per replica for multihost GPU deployments.
+        """
+        return pulumi.get(self, "multihost_gpu_node_count")
+
+    @multihost_gpu_node_count.setter
+    def multihost_gpu_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "multihost_gpu_node_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']]:
+        """
+        A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
+        DeployedModel) to draw its Compute Engine resources from a Shared
+        Reservation, or exclusively from on-demand capacity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The topology of the TPUs. Corresponds to the TPU topologies available from
+        GKE. (Example: tpu_topology: "2x2x1").
+        """
+        return pulumi.get(self, "tpu_topology")
+
+    @tpu_topology.setter
+    def tpu_topology(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tpu_topology", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgsDict(TypedDict):
+        reservation_affinity_type: pulumi.Input[_builtins.str]
+        """
+        Specifies the reservation affinity type.
+        Possible values:
+        TYPE_UNSPECIFIED
+        NO_RESERVATION
+        ANY_RESERVATION
+        SPECIFIC_RESERVATION
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Corresponds to the label key of a reservation resource. To target a
+        SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
+        as the key and specify the name of your reservation as its value.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Corresponds to the label values of a reservation resource. This must be the
+        full resource name of the reservation or reservation block.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs:
+    def __init__(__self__, *,
+                 reservation_affinity_type: pulumi.Input[_builtins.str],
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] reservation_affinity_type: Specifies the reservation affinity type.
+               Possible values:
+               TYPE_UNSPECIFIED
+               NO_RESERVATION
+               ANY_RESERVATION
+               SPECIFIC_RESERVATION
+        :param pulumi.Input[_builtins.str] key: Corresponds to the label key of a reservation resource. To target a
+               SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
+               as the key and specify the name of your reservation as its value.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Corresponds to the label values of a reservation resource. This must be the
+               full resource name of the reservation or reservation block.
+        """
+        pulumi.set(__self__, "reservation_affinity_type", reservation_affinity_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="reservationAffinityType")
+    def reservation_affinity_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies the reservation affinity type.
+        Possible values:
+        TYPE_UNSPECIFIED
+        NO_RESERVATION
+        ANY_RESERVATION
+        SPECIFIC_RESERVATION
+        """
+        return pulumi.get(self, "reservation_affinity_type")
+
+    @reservation_affinity_type.setter
+    def reservation_affinity_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "reservation_affinity_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Corresponds to the label key of a reservation resource. To target a
+        SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
+        as the key and specify the name of your reservation as its value.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Corresponds to the label values of a reservation resource. This must be the
+        full resource name of the reservation or reservation block.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict(TypedDict):
+        dedicated_endpoint_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, the endpoint will be exposed through a dedicated
+        DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
+        will be isolated from other users' traffic and will have better
+        performance and reliability. Note: Once you enabled dedicated endpoint,
+        you won't be able to send request to the shared DNS
+        {region}-aiplatform.googleapis.com. The limitations will be removed soon.
+        """
+        endpoint_display_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The user-specified display name of the endpoint. If not set, a
+        default name will be used.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
+    def __init__(__self__, *,
+                 dedicated_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 endpoint_display_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated
+               DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
+               will be isolated from other users' traffic and will have better
+               performance and reliability. Note: Once you enabled dedicated endpoint,
+               you won't be able to send request to the shared DNS
+               {region}-aiplatform.googleapis.com. The limitations will be removed soon.
+        :param pulumi.Input[_builtins.str] endpoint_display_name: The user-specified display name of the endpoint. If not set, a
+               default name will be used.
+        """
+        if dedicated_endpoint_enabled is not None:
+            pulumi.set(__self__, "dedicated_endpoint_enabled", dedicated_endpoint_enabled)
+        if endpoint_display_name is not None:
+            pulumi.set(__self__, "endpoint_display_name", endpoint_display_name)
+
+    @_builtins.property
+    @pulumi.getter(name="dedicatedEndpointEnabled")
+    def dedicated_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, the endpoint will be exposed through a dedicated
+        DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
+        will be isolated from other users' traffic and will have better
+        performance and reliability. Note: Once you enabled dedicated endpoint,
+        you won't be able to send request to the shared DNS
+        {region}-aiplatform.googleapis.com. The limitations will be removed soon.
+        """
+        return pulumi.get(self, "dedicated_endpoint_enabled")
+
+    @dedicated_endpoint_enabled.setter
+    def dedicated_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "dedicated_endpoint_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointDisplayName")
+    def endpoint_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The user-specified display name of the endpoint. If not set, a
+        default name will be used.
+        """
+        return pulumi.get(self, "endpoint_display_name")
+
+    @endpoint_display_name.setter
+    def endpoint_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "endpoint_display_name", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigArgsDict(TypedDict):
+        accept_eula: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the user accepts the End User License Agreement (EULA)
+        for the model.
+        """
+        container_spec: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict']]
+        """
+        Specification of a container for serving predictions. Some fields in this
+        message correspond to fields in the [Kubernetes Container v1 core
+        specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        Structure is documented below.
+        """
+        hugging_face_access_token: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Hugging Face read access token used to access the model
+        artifacts of gated models.
+        """
+        hugging_face_cache_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, the model will deploy with a cached version instead of directly
+        downloading the model artifacts from Hugging Face. This is suitable for
+        VPC-SC users with limited internet access.
+        """
+        model_display_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The user-specified display name of the uploaded model. If not
+        set, a default name will be used.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigArgs:
+    def __init__(__self__, *,
+                 accept_eula: Optional[pulumi.Input[_builtins.bool]] = None,
+                 container_spec: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']] = None,
+                 hugging_face_access_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 hugging_face_cache_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 model_display_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] accept_eula: Whether the user accepts the End User License Agreement (EULA)
+               for the model.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs'] container_spec: Specification of a container for serving predictions. Some fields in this
+               message correspond to fields in the [Kubernetes Container v1 core
+               specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] hugging_face_access_token: The Hugging Face read access token used to access the model
+               artifacts of gated models.
+        :param pulumi.Input[_builtins.bool] hugging_face_cache_enabled: If true, the model will deploy with a cached version instead of directly
+               downloading the model artifacts from Hugging Face. This is suitable for
+               VPC-SC users with limited internet access.
+        :param pulumi.Input[_builtins.str] model_display_name: The user-specified display name of the uploaded model. If not
+               set, a default name will be used.
+        """
+        if accept_eula is not None:
+            pulumi.set(__self__, "accept_eula", accept_eula)
+        if container_spec is not None:
+            pulumi.set(__self__, "container_spec", container_spec)
+        if hugging_face_access_token is not None:
+            pulumi.set(__self__, "hugging_face_access_token", hugging_face_access_token)
+        if hugging_face_cache_enabled is not None:
+            pulumi.set(__self__, "hugging_face_cache_enabled", hugging_face_cache_enabled)
+        if model_display_name is not None:
+            pulumi.set(__self__, "model_display_name", model_display_name)
+
+    @_builtins.property
+    @pulumi.getter(name="acceptEula")
+    def accept_eula(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the user accepts the End User License Agreement (EULA)
+        for the model.
+        """
+        return pulumi.get(self, "accept_eula")
+
+    @accept_eula.setter
+    def accept_eula(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "accept_eula", value)
+
+    @_builtins.property
+    @pulumi.getter(name="containerSpec")
+    def container_spec(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']]:
+        """
+        Specification of a container for serving predictions. Some fields in this
+        message correspond to fields in the [Kubernetes Container v1 core
+        specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_spec")
+
+    @container_spec.setter
+    def container_spec(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']]):
+        pulumi.set(self, "container_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="huggingFaceAccessToken")
+    def hugging_face_access_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Hugging Face read access token used to access the model
+        artifacts of gated models.
+        """
+        return pulumi.get(self, "hugging_face_access_token")
+
+    @hugging_face_access_token.setter
+    def hugging_face_access_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hugging_face_access_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="huggingFaceCacheEnabled")
+    def hugging_face_cache_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, the model will deploy with a cached version instead of directly
+        downloading the model artifacts from Hugging Face. This is suitable for
+        VPC-SC users with limited internet access.
+        """
+        return pulumi.get(self, "hugging_face_cache_enabled")
+
+    @hugging_face_cache_enabled.setter
+    def hugging_face_cache_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "hugging_face_cache_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelDisplayName")
+    def model_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The user-specified display name of the uploaded model. If not
+        set, a default name will be used.
+        """
+        return pulumi.get(self, "model_display_name")
+
+    @model_display_name.setter
+    def model_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model_display_name", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedDict):
+        image_uri: pulumi.Input[_builtins.str]
+        """
+        URI of the Docker image to be used as the custom container for serving
+        predictions. This URI must identify an image in Artifact Registry or
+        Container Registry. Learn more about the [container publishing
+        requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
+        including permissions requirements for the Vertex AI Service Agent.
+        The container image is ingested upon ModelService.UploadModel, stored
+        internally, and this original path is afterwards not used.
+        To learn about the requirements for the Docker image itself, see
+        [Custom container
+        requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
+        You can use the URI to one of Vertex AI's [pre-built container images for
+        prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
+        in this field.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Specifies arguments for the command that runs when the container starts.
+        This overrides the container's
+        [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+        this field as an array of executable and arguments, similar to a Docker
+        `CMD`'s "default parameters" form.
+        If you don't specify this field but do specify the
+        command field, then the command from the
+        `command` field runs without any additional arguments. See the
+        [Kubernetes documentation about how the
+        `command` and `args` fields interact with a container's `ENTRYPOINT` and
+        `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+        If you don't specify this field and don't specify the `command` field,
+        then the container's
+        [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
+        `CMD` determine what runs based on their default behavior. See the Docker
+        documentation about [how `CMD` and `ENTRYPOINT`
+        interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+        In this field, you can reference [environment variables
+        set by Vertex
+        AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+        and environment variables set in the env field.
+        You cannot reference environment variables set in the Docker image. In
+        order for environment variables to be expanded, reference them by using the
+        following syntax:$(VARIABLE_NAME)
+        Note that this differs from Bash variable expansion, which does not use
+        parentheses. If a variable cannot be resolved, the reference in the input
+        string is used unchanged. To avoid variable expansion, you can escape this
+        syntax with `$$`; for example:$$(VARIABLE_NAME)
+        This field corresponds to the `args` field of the Kubernetes Containers
+        [v1 core
+        API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Specifies the command that runs when the container starts. This overrides
+        the container's
+        [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
+        Specify this field as an array of executable and arguments, similar to a
+        Docker `ENTRYPOINT`'s "exec" form, not its "shell" form.
+        If you do not specify this field, then the container's `ENTRYPOINT` runs,
+        in conjunction with the args field or the
+        container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd),
+        if either exists. If this field is not specified and the container does not
+        have an `ENTRYPOINT`, then refer to the Docker documentation about [how
+        `CMD` and `ENTRYPOINT`
+        interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+        If you specify this field, then you can also specify the `args` field to
+        provide additional arguments for this command. However, if you specify this
+        field, then the container's `CMD` is ignored. See the
+        [Kubernetes documentation about how the
+        `command` and `args` fields interact with a container's `ENTRYPOINT` and
+        `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+        In this field, you can reference [environment variables set by Vertex
+        AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+        and environment variables set in the env field.
+        You cannot reference environment variables set in the Docker image. In
+        order for environment variables to be expanded, reference them by using the
+        following syntax:$(VARIABLE_NAME)
+        Note that this differs from Bash variable expansion, which does not use
+        parentheses. If a variable cannot be resolved, the reference in the input
+        string is used unchanged. To avoid variable expansion, you can escape this
+        syntax with `$$`; for example:$$(VARIABLE_NAME)
+        This field corresponds to the `command` field of the Kubernetes Containers
+        [v1 core
+        API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        """
+        deployment_timeout: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Deployment timeout.
+        Limit for deployment timeout is 2 hours.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgsDict']]]]
+        """
+        List of environment variables to set in the container. After the container
+        starts running, code running in the container can read these environment
+        variables.
+        Additionally, the command and
+        args fields can reference these variables. Later
+        entries in this list can also reference earlier entries. For example, the
+        following example sets the variable `VAR_2` to have the value `foo bar`:
+        ```json
+        [
+        {
+        "name": "VAR_1",
+        "value": "foo"
+        },
+        {
+        "name": "VAR_2",
+        "value": "$(VAR_1) bar"
+        }
+        ]
+        ```
+        If you switch the order of the variables in the example, then the expansion
+        does not occur.
+        This field corresponds to the `env` field of the Kubernetes Containers
+        [v1 core
+        API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        Structure is documented below.
+        """
+        grpc_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgsDict']]]]
+        """
+        List of ports to expose from the container. Vertex AI sends gRPC
+        prediction requests that it receives to the first port on this list. Vertex
+        AI also sends liveness and health checks to this port.
+        If you do not specify this field, gRPC requests to the container will be
+        disabled.
+        Vertex AI does not use ports other than the first one listed. This field
+        corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        Structure is documented below.
+        """
+        health_probe: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgsDict']]
+        """
+        Probe describes a health check to be performed against a container to
+        determine whether it is alive or ready to receive traffic.
+        Structure is documented below.
+        """
+        health_route: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP path on the container to send health checks to. Vertex AI
+        intermittently sends GET requests to this path on the container's IP
+        address and port to check that the container is healthy. Read more about
+        [health
+        checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
+        For example, if you set this field to `/bar`, then Vertex AI
+        intermittently sends a GET request to the `/bar` path on the port of your
+        container specified by the first value of this `ModelContainerSpec`'s
+        ports field.
+        If you don't specify this field, it defaults to the following value when
+        you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+        The placeholders in this value are replaced as follows:
+        * ENDPOINT: The last segment (following `endpoints/`)of the
+        Endpoint.name][] field of the Endpoint where this Model has been
+        deployed. (Vertex AI makes this value available to your container code
+        as the [`AIP_ENDPOINT_ID` environment
+        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+        (Vertex AI makes this value available to your container code as the
+        [`AIP_DEPLOYED_MODEL_ID` environment
+        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        """
+        liveness_probe: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict']]
+        """
+        Probe describes a health check to be performed against a container to
+        determine whether it is alive or ready to receive traffic.
+        Structure is documented below.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgsDict']]]]
+        """
+        List of ports to expose from the container. Vertex AI sends any
+        prediction requests that it receives to the first port on this list. Vertex
+        AI also sends
+        [liveness and health
+        checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
+        to this port.
+        If you do not specify this field, it defaults to following value:
+        ```json
+        [
+        {
+        "containerPort": 8080
+        }
+        ]
+        ```
+        Vertex AI does not use ports other than the first one listed. This field
+        corresponds to the `ports` field of the Kubernetes Containers
+        [v1 core
+        API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        Structure is documented below.
+        """
+        predict_route: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP path on the container to send prediction requests to. Vertex AI
+        forwards requests sent using
+        projects.locations.endpoints.predict to this
+        path on the container's IP address and port. Vertex AI then returns the
+        container's response in the API response.
+        For example, if you set this field to `/foo`, then when Vertex AI
+        receives a prediction request, it forwards the request body in a POST
+        request to the `/foo` path on the port of your container specified by the
+        first value of this `ModelContainerSpec`'s
+        ports field.
+        If you don't specify this field, it defaults to the following value when
+        you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+        The placeholders in this value are replaced as follows:
+        * ENDPOINT: The last segment (following `endpoints/`)of the
+        Endpoint.name][] field of the Endpoint where this Model has been
+        deployed. (Vertex AI makes this value available to your container code
+        as the [`AIP_ENDPOINT_ID` environment
+        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+        (Vertex AI makes this value available to your container code
+        as the [`AIP_DEPLOYED_MODEL_ID` environment
+        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        """
+        shared_memory_size_mb: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The amount of the VM memory to reserve as the shared memory for the model
+        in megabytes.
+        """
+        startup_probe: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgsDict']]
+        """
+        Probe describes a health check to be performed against a container to
+        determine whether it is alive or ready to receive traffic.
+        Structure is documented below.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
+    def __init__(__self__, *,
+                 image_uri: pulumi.Input[_builtins.str],
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deployment_timeout: Optional[pulumi.Input[_builtins.str]] = None,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]] = None,
+                 grpc_ports: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]] = None,
+                 health_probe: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']] = None,
+                 health_route: Optional[pulumi.Input[_builtins.str]] = None,
+                 liveness_probe: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]] = None,
+                 predict_route: Optional[pulumi.Input[_builtins.str]] = None,
+                 shared_memory_size_mb: Optional[pulumi.Input[_builtins.str]] = None,
+                 startup_probe: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] image_uri: URI of the Docker image to be used as the custom container for serving
+               predictions. This URI must identify an image in Artifact Registry or
+               Container Registry. Learn more about the [container publishing
+               requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
+               including permissions requirements for the Vertex AI Service Agent.
+               The container image is ingested upon ModelService.UploadModel, stored
+               internally, and this original path is afterwards not used.
+               To learn about the requirements for the Docker image itself, see
+               [Custom container
+               requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
+               You can use the URI to one of Vertex AI's [pre-built container images for
+               prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
+               in this field.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Specifies arguments for the command that runs when the container starts.
+               This overrides the container's
+               [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+               this field as an array of executable and arguments, similar to a Docker
+               `CMD`'s "default parameters" form.
+               If you don't specify this field but do specify the
+               command field, then the command from the
+               `command` field runs without any additional arguments. See the
+               [Kubernetes documentation about how the
+               `command` and `args` fields interact with a container's `ENTRYPOINT` and
+               `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+               If you don't specify this field and don't specify the `command` field,
+               then the container's
+               [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
+               `CMD` determine what runs based on their default behavior. See the Docker
+               documentation about [how `CMD` and `ENTRYPOINT`
+               interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+               In this field, you can reference [environment variables
+               set by Vertex
+               AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+               and environment variables set in the env field.
+               You cannot reference environment variables set in the Docker image. In
+               order for environment variables to be expanded, reference them by using the
+               following syntax:$(VARIABLE_NAME)
+               Note that this differs from Bash variable expansion, which does not use
+               parentheses. If a variable cannot be resolved, the reference in the input
+               string is used unchanged. To avoid variable expansion, you can escape this
+               syntax with `$$`; for example:$$(VARIABLE_NAME)
+               This field corresponds to the `args` field of the Kubernetes Containers
+               [v1 core
+               API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Specifies the command that runs when the container starts. This overrides
+               the container's
+               [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
+               Specify this field as an array of executable and arguments, similar to a
+               Docker `ENTRYPOINT`'s "exec" form, not its "shell" form.
+               If you do not specify this field, then the container's `ENTRYPOINT` runs,
+               in conjunction with the args field or the
+               container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd),
+               if either exists. If this field is not specified and the container does not
+               have an `ENTRYPOINT`, then refer to the Docker documentation about [how
+               `CMD` and `ENTRYPOINT`
+               interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+               If you specify this field, then you can also specify the `args` field to
+               provide additional arguments for this command. However, if you specify this
+               field, then the container's `CMD` is ignored. See the
+               [Kubernetes documentation about how the
+               `command` and `args` fields interact with a container's `ENTRYPOINT` and
+               `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+               In this field, you can reference [environment variables set by Vertex
+               AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+               and environment variables set in the env field.
+               You cannot reference environment variables set in the Docker image. In
+               order for environment variables to be expanded, reference them by using the
+               following syntax:$(VARIABLE_NAME)
+               Note that this differs from Bash variable expansion, which does not use
+               parentheses. If a variable cannot be resolved, the reference in the input
+               string is used unchanged. To avoid variable expansion, you can escape this
+               syntax with `$$`; for example:$$(VARIABLE_NAME)
+               This field corresponds to the `command` field of the Kubernetes Containers
+               [v1 core
+               API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        :param pulumi.Input[_builtins.str] deployment_timeout: Deployment timeout.
+               Limit for deployment timeout is 2 hours.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]] envs: List of environment variables to set in the container. After the container
+               starts running, code running in the container can read these environment
+               variables.
+               Additionally, the command and
+               args fields can reference these variables. Later
+               entries in this list can also reference earlier entries. For example, the
+               following example sets the variable `VAR_2` to have the value `foo bar`:
+               ```json
+               [
+               {
+               "name": "VAR_1",
+               "value": "foo"
+               },
+               {
+               "name": "VAR_2",
+               "value": "$(VAR_1) bar"
+               }
+               ]
+               ```
+               If you switch the order of the variables in the example, then the expansion
+               does not occur.
+               This field corresponds to the `env` field of the Kubernetes Containers
+               [v1 core
+               API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]] grpc_ports: List of ports to expose from the container. Vertex AI sends gRPC
+               prediction requests that it receives to the first port on this list. Vertex
+               AI also sends liveness and health checks to this port.
+               If you do not specify this field, gRPC requests to the container will be
+               disabled.
+               Vertex AI does not use ports other than the first one listed. This field
+               corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+               Structure is documented below.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs'] health_probe: Probe describes a health check to be performed against a container to
+               determine whether it is alive or ready to receive traffic.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] health_route: HTTP path on the container to send health checks to. Vertex AI
+               intermittently sends GET requests to this path on the container's IP
+               address and port to check that the container is healthy. Read more about
+               [health
+               checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
+               For example, if you set this field to `/bar`, then Vertex AI
+               intermittently sends a GET request to the `/bar` path on the port of your
+               container specified by the first value of this `ModelContainerSpec`'s
+               ports field.
+               If you don't specify this field, it defaults to the following value when
+               you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+               The placeholders in this value are replaced as follows:
+               * ENDPOINT: The last segment (following `endpoints/`)of the
+               Endpoint.name][] field of the Endpoint where this Model has been
+               deployed. (Vertex AI makes this value available to your container code
+               as the [`AIP_ENDPOINT_ID` environment
+               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+               * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+               (Vertex AI makes this value available to your container code as the
+               [`AIP_DEPLOYED_MODEL_ID` environment
+               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs'] liveness_probe: Probe describes a health check to be performed against a container to
+               determine whether it is alive or ready to receive traffic.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]] ports: List of ports to expose from the container. Vertex AI sends any
+               prediction requests that it receives to the first port on this list. Vertex
+               AI also sends
+               [liveness and health
+               checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
+               to this port.
+               If you do not specify this field, it defaults to following value:
+               ```json
+               [
+               {
+               "containerPort": 8080
+               }
+               ]
+               ```
+               Vertex AI does not use ports other than the first one listed. This field
+               corresponds to the `ports` field of the Kubernetes Containers
+               [v1 core
+               API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] predict_route: HTTP path on the container to send prediction requests to. Vertex AI
+               forwards requests sent using
+               projects.locations.endpoints.predict to this
+               path on the container's IP address and port. Vertex AI then returns the
+               container's response in the API response.
+               For example, if you set this field to `/foo`, then when Vertex AI
+               receives a prediction request, it forwards the request body in a POST
+               request to the `/foo` path on the port of your container specified by the
+               first value of this `ModelContainerSpec`'s
+               ports field.
+               If you don't specify this field, it defaults to the following value when
+               you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+               The placeholders in this value are replaced as follows:
+               * ENDPOINT: The last segment (following `endpoints/`)of the
+               Endpoint.name][] field of the Endpoint where this Model has been
+               deployed. (Vertex AI makes this value available to your container code
+               as the [`AIP_ENDPOINT_ID` environment
+               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+               * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+               (Vertex AI makes this value available to your container code
+               as the [`AIP_DEPLOYED_MODEL_ID` environment
+               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        :param pulumi.Input[_builtins.str] shared_memory_size_mb: The amount of the VM memory to reserve as the shared memory for the model
+               in megabytes.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs'] startup_probe: Probe describes a health check to be performed against a container to
+               determine whether it is alive or ready to receive traffic.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "image_uri", image_uri)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if deployment_timeout is not None:
+            pulumi.set(__self__, "deployment_timeout", deployment_timeout)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if grpc_ports is not None:
+            pulumi.set(__self__, "grpc_ports", grpc_ports)
+        if health_probe is not None:
+            pulumi.set(__self__, "health_probe", health_probe)
+        if health_route is not None:
+            pulumi.set(__self__, "health_route", health_route)
+        if liveness_probe is not None:
+            pulumi.set(__self__, "liveness_probe", liveness_probe)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if predict_route is not None:
+            pulumi.set(__self__, "predict_route", predict_route)
+        if shared_memory_size_mb is not None:
+            pulumi.set(__self__, "shared_memory_size_mb", shared_memory_size_mb)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        URI of the Docker image to be used as the custom container for serving
+        predictions. This URI must identify an image in Artifact Registry or
+        Container Registry. Learn more about the [container publishing
+        requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
+        including permissions requirements for the Vertex AI Service Agent.
+        The container image is ingested upon ModelService.UploadModel, stored
+        internally, and this original path is afterwards not used.
+        To learn about the requirements for the Docker image itself, see
+        [Custom container
+        requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
+        You can use the URI to one of Vertex AI's [pre-built container images for
+        prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
+        in this field.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image_uri", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specifies arguments for the command that runs when the container starts.
+        This overrides the container's
+        [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+        this field as an array of executable and arguments, similar to a Docker
+        `CMD`'s "default parameters" form.
+        If you don't specify this field but do specify the
+        command field, then the command from the
+        `command` field runs without any additional arguments. See the
+        [Kubernetes documentation about how the
+        `command` and `args` fields interact with a container's `ENTRYPOINT` and
+        `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+        If you don't specify this field and don't specify the `command` field,
+        then the container's
+        [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
+        `CMD` determine what runs based on their default behavior. See the Docker
+        documentation about [how `CMD` and `ENTRYPOINT`
+        interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+        In this field, you can reference [environment variables
+        set by Vertex
+        AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+        and environment variables set in the env field.
+        You cannot reference environment variables set in the Docker image. In
+        order for environment variables to be expanded, reference them by using the
+        following syntax:$(VARIABLE_NAME)
+        Note that this differs from Bash variable expansion, which does not use
+        parentheses. If a variable cannot be resolved, the reference in the input
+        string is used unchanged. To avoid variable expansion, you can escape this
+        syntax with `$$`; for example:$$(VARIABLE_NAME)
+        This field corresponds to the `args` field of the Kubernetes Containers
+        [v1 core
+        API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specifies the command that runs when the container starts. This overrides
+        the container's
+        [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
+        Specify this field as an array of executable and arguments, similar to a
+        Docker `ENTRYPOINT`'s "exec" form, not its "shell" form.
+        If you do not specify this field, then the container's `ENTRYPOINT` runs,
+        in conjunction with the args field or the
+        container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd),
+        if either exists. If this field is not specified and the container does not
+        have an `ENTRYPOINT`, then refer to the Docker documentation about [how
+        `CMD` and `ENTRYPOINT`
+        interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+        If you specify this field, then you can also specify the `args` field to
+        provide additional arguments for this command. However, if you specify this
+        field, then the container's `CMD` is ignored. See the
+        [Kubernetes documentation about how the
+        `command` and `args` fields interact with a container's `ENTRYPOINT` and
+        `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+        In this field, you can reference [environment variables set by Vertex
+        AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
+        and environment variables set in the env field.
+        You cannot reference environment variables set in the Docker image. In
+        order for environment variables to be expanded, reference them by using the
+        following syntax:$(VARIABLE_NAME)
+        Note that this differs from Bash variable expansion, which does not use
+        parentheses. If a variable cannot be resolved, the reference in the input
+        string is used unchanged. To avoid variable expansion, you can escape this
+        syntax with `$$`; for example:$$(VARIABLE_NAME)
+        This field corresponds to the `command` field of the Kubernetes Containers
+        [v1 core
+        API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentTimeout")
+    def deployment_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deployment timeout.
+        Limit for deployment timeout is 2 hours.
+        """
+        return pulumi.get(self, "deployment_timeout")
+
+    @deployment_timeout.setter
+    def deployment_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deployment_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]]:
+        """
+        List of environment variables to set in the container. After the container
+        starts running, code running in the container can read these environment
+        variables.
+        Additionally, the command and
+        args fields can reference these variables. Later
+        entries in this list can also reference earlier entries. For example, the
+        following example sets the variable `VAR_2` to have the value `foo bar`:
+        ```json
+        [
+        {
+        "name": "VAR_1",
+        "value": "foo"
+        },
+        {
+        "name": "VAR_2",
+        "value": "$(VAR_1) bar"
+        }
+        ]
+        ```
+        If you switch the order of the variables in the example, then the expansion
+        does not occur.
+        This field corresponds to the `env` field of the Kubernetes Containers
+        [v1 core
+        API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grpcPorts")
+    def grpc_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]]:
+        """
+        List of ports to expose from the container. Vertex AI sends gRPC
+        prediction requests that it receives to the first port on this list. Vertex
+        AI also sends liveness and health checks to this port.
+        If you do not specify this field, gRPC requests to the container will be
+        disabled.
+        Vertex AI does not use ports other than the first one listed. This field
+        corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_ports")
+
+    @grpc_ports.setter
+    def grpc_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]]):
+        pulumi.set(self, "grpc_ports", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthProbe")
+    def health_probe(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']]:
+        """
+        Probe describes a health check to be performed against a container to
+        determine whether it is alive or ready to receive traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "health_probe")
+
+    @health_probe.setter
+    def health_probe(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']]):
+        pulumi.set(self, "health_probe", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthRoute")
+    def health_route(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP path on the container to send health checks to. Vertex AI
+        intermittently sends GET requests to this path on the container's IP
+        address and port to check that the container is healthy. Read more about
+        [health
+        checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
+        For example, if you set this field to `/bar`, then Vertex AI
+        intermittently sends a GET request to the `/bar` path on the port of your
+        container specified by the first value of this `ModelContainerSpec`'s
+        ports field.
+        If you don't specify this field, it defaults to the following value when
+        you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+        The placeholders in this value are replaced as follows:
+        * ENDPOINT: The last segment (following `endpoints/`)of the
+        Endpoint.name][] field of the Endpoint where this Model has been
+        deployed. (Vertex AI makes this value available to your container code
+        as the [`AIP_ENDPOINT_ID` environment
+        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+        (Vertex AI makes this value available to your container code as the
+        [`AIP_DEPLOYED_MODEL_ID` environment
+        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        """
+        return pulumi.get(self, "health_route")
+
+    @health_route.setter
+    def health_route(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "health_route", value)
+
+    @_builtins.property
+    @pulumi.getter(name="livenessProbe")
+    def liveness_probe(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']]:
+        """
+        Probe describes a health check to be performed against a container to
+        determine whether it is alive or ready to receive traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "liveness_probe")
+
+    @liveness_probe.setter
+    def liveness_probe(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']]):
+        pulumi.set(self, "liveness_probe", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]]:
+        """
+        List of ports to expose from the container. Vertex AI sends any
+        prediction requests that it receives to the first port on this list. Vertex
+        AI also sends
+        [liveness and health
+        checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
+        to this port.
+        If you do not specify this field, it defaults to following value:
+        ```json
+        [
+        {
+        "containerPort": 8080
+        }
+        ]
+        ```
+        Vertex AI does not use ports other than the first one listed. This field
+        corresponds to the `ports` field of the Kubernetes Containers
+        [v1 core
+        API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]]):
+        pulumi.set(self, "ports", value)
+
+    @_builtins.property
+    @pulumi.getter(name="predictRoute")
+    def predict_route(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP path on the container to send prediction requests to. Vertex AI
+        forwards requests sent using
+        projects.locations.endpoints.predict to this
+        path on the container's IP address and port. Vertex AI then returns the
+        container's response in the API response.
+        For example, if you set this field to `/foo`, then when Vertex AI
+        receives a prediction request, it forwards the request body in a POST
+        request to the `/foo` path on the port of your container specified by the
+        first value of this `ModelContainerSpec`'s
+        ports field.
+        If you don't specify this field, it defaults to the following value when
+        you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
+        The placeholders in this value are replaced as follows:
+        * ENDPOINT: The last segment (following `endpoints/`)of the
+        Endpoint.name][] field of the Endpoint where this Model has been
+        deployed. (Vertex AI makes this value available to your container code
+        as the [`AIP_ENDPOINT_ID` environment
+        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
+        (Vertex AI makes this value available to your container code
+        as the [`AIP_DEPLOYED_MODEL_ID` environment
+        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+        """
+        return pulumi.get(self, "predict_route")
+
+    @predict_route.setter
+    def predict_route(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "predict_route", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sharedMemorySizeMb")
+    def shared_memory_size_mb(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The amount of the VM memory to reserve as the shared memory for the model
+        in megabytes.
+        """
+        return pulumi.get(self, "shared_memory_size_mb")
+
+    @shared_memory_size_mb.setter
+    def shared_memory_size_mb(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "shared_memory_size_mb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']]:
+        """
+        Probe describes a health check to be performed against a container to
+        determine whether it is alive or ready to receive traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "startup_probe")
+
+    @startup_probe.setter
+    def startup_probe(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']]):
+        pulumi.set(self, "startup_probe", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        Name of the environment variable. Must be a valid C identifier.
+        """
+        value: pulumi.Input[_builtins.str]
+        """
+        Variables that reference a $(VAR_NAME) are expanded
+        using the previous defined environment variables in the container and
+        any service environment variables. If a variable cannot be resolved,
+        the reference in the input string will be unchanged. The $(VAR_NAME)
+        syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+        references will never be expanded, regardless of whether the variable
+        exists or not.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a valid C identifier.
+        :param pulumi.Input[_builtins.str] value: Variables that reference a $(VAR_NAME) are expanded
+               using the previous defined environment variables in the container and
+               any service environment variables. If a variable cannot be resolved,
+               the reference in the input string will be unchanged. The $(VAR_NAME)
+               syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+               references will never be expanded, regardless of whether the variable
+               exists or not.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the environment variable. Must be a valid C identifier.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        Variables that reference a $(VAR_NAME) are expanded
+        using the previous defined environment variables in the container and
+        any service environment variables. If a variable cannot be resolved,
+        the reference in the input string will be unchanged. The $(VAR_NAME)
+        syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+        references will never be expanded, regardless of whether the variable
+        exists or not.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgsDict(TypedDict):
+        container_port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of the port to expose on the pod's IP address.
+        Must be a valid port number, between 1 and 65535 inclusive.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs:
+    def __init__(__self__, *,
+                 container_port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] container_port: The number of the port to expose on the pod's IP address.
+               Must be a valid port number, between 1 and 65535 inclusive.
+        """
+        if container_port is not None:
+            pulumi.set(__self__, "container_port", container_port)
+
+    @_builtins.property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of the port to expose on the pod's IP address.
+        Must be a valid port number, between 1 and 65535 inclusive.
+        """
+        return pulumi.get(self, "container_port")
+
+    @container_port.setter
+    def container_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "container_port", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgsDict']]
+        """
+        ExecAction specifies a command to execute.
+        Structure is documented below.
+        """
+        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive failures before the probe is considered failed.
+        Defaults to 3. Minimum value is 1.
+        Maps to Kubernetes probe argument 'failureThreshold'.
+        """
+        grpc: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgsDict']]
+        """
+        GrpcAction checks the health of a container using a gRPC service.
+        Structure is documented below.
+        """
+        http_get: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgsDict']]
+        """
+        HttpGetAction describes an action based on HTTP Get requests.
+        Structure is documented below.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of seconds to wait before starting the probe. Defaults to 0.
+        Minimum value is 0.
+        Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        """
+        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds.
+        Minimum value is 1. Must be less than timeout_seconds.
+        Maps to Kubernetes probe argument 'periodSeconds'.
+        """
+        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive successes before the probe is considered successful.
+        Defaults to 1. Minimum value is 1.
+        Maps to Kubernetes probe argument 'successThreshold'.
+        """
+        tcp_socket: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgsDict']]
+        """
+        TcpSocketAction probes the health of a container by opening a TCP socket
+        connection.
+        Structure is documented below.
+        """
+        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second.
+        Minimum value is 1. Must be greater or equal to period_seconds.
+        Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 grpc: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']] = None,
+                 http_get: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 tcp_socket: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']] = None,
+                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs'] exec_: ExecAction specifies a command to execute.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] failure_threshold: Number of consecutive failures before the probe is considered failed.
+               Defaults to 3. Minimum value is 1.
+               Maps to Kubernetes probe argument 'failureThreshold'.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs'] grpc: GrpcAction checks the health of a container using a gRPC service.
+               Structure is documented below.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs'] http_get: HttpGetAction describes an action based on HTTP Get requests.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] initial_delay_seconds: Number of seconds to wait before starting the probe. Defaults to 0.
+               Minimum value is 0.
+               Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        :param pulumi.Input[_builtins.int] period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds.
+               Minimum value is 1. Must be less than timeout_seconds.
+               Maps to Kubernetes probe argument 'periodSeconds'.
+        :param pulumi.Input[_builtins.int] success_threshold: Number of consecutive successes before the probe is considered successful.
+               Defaults to 1. Minimum value is 1.
+               Maps to Kubernetes probe argument 'successThreshold'.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs'] tcp_socket: TcpSocketAction probes the health of a container by opening a TCP socket
+               connection.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second.
+               Minimum value is 1. Must be greater or equal to period_seconds.
+               Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']]:
+        """
+        ExecAction specifies a command to execute.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive failures before the probe is considered failed.
+        Defaults to 3. Minimum value is 1.
+        Maps to Kubernetes probe argument 'failureThreshold'.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']]:
+        """
+        GrpcAction checks the health of a container using a gRPC service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']]):
+        pulumi.set(self, "grpc", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']]:
+        """
+        HttpGetAction describes an action based on HTTP Get requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of seconds to wait before starting the probe. Defaults to 0.
+        Minimum value is 0.
+        Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds.
+        Minimum value is 1. Must be less than timeout_seconds.
+        Maps to Kubernetes probe argument 'periodSeconds'.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive successes before the probe is considered successful.
+        Defaults to 1. Minimum value is 1.
+        Maps to Kubernetes probe argument 'successThreshold'.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']]:
+        """
+        TcpSocketAction probes the health of a container by opening a TCP socket
+        connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @tcp_socket.setter
+    def tcp_socket(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']]):
+        pulumi.set(self, "tcp_socket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second.
+        Minimum value is 1. Must be greater or equal to period_seconds.
+        Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Command is the command line to execute inside the container, the working
+        directory for the command is root ('/') in the container's filesystem.
+        The command is simply exec'd, it is not run inside a shell, so
+        traditional shell instructions ('|', etc) won't work. To use a shell, you
+        need to explicitly call out to that shell. Exit status of 0 is treated as
+        live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Command is the command line to execute inside the container, the working
+               directory for the command is root ('/') in the container's filesystem.
+               The command is simply exec'd, it is not run inside a shell, so
+               traditional shell instructions ('|', etc) won't work. To use a shell, you
+               need to explicitly call out to that shell. Exit status of 0 is treated as
+               live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Command is the command line to execute inside the container, the working
+        directory for the command is root ('/') in the container's filesystem.
+        The command is simply exec'd, it is not run inside a shell, so
+        traditional shell instructions ('|', etc) won't work. To use a shell, you
+        need to explicitly call out to that shell. Exit status of 0 is treated as
+        live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Service is the name of the service to place in the gRPC
+        HealthCheckRequest. See
+        https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[_builtins.int]] = None,
+                 service: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
+        :param pulumi.Input[_builtins.str] service: Service is the name of the service to place in the gRPC
+               HealthCheckRequest. See
+               https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service is the name of the service to place in the gRPC
+        HealthCheckRequest. See
+        https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Host name to connect to, defaults to the model serving container's IP.
+        You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        scheme: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Scheme to use for connecting to the host.
+        Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None,
+                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Host name to connect to, defaults to the model serving container's IP.
+               You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] path: Path to access on the HTTP server.
+        :param pulumi.Input[_builtins.int] port: Number of the port to access on the container.
+               Number must be in the range 1 to 65535.
+        :param pulumi.Input[_builtins.str] scheme: Scheme to use for connecting to the host.
+               Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Host name to connect to, defaults to the model serving container's IP.
+        You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Scheme to use for connecting to the host.
+        Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The header field name.
+        This will be canonicalized upon output, so case-variant names will be
+        understood as the same header.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The header field value
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The header field name.
+               This will be canonicalized upon output, so case-variant names will be
+               understood as the same header.
+        :param pulumi.Input[_builtins.str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The header field name.
+        This will be canonicalized upon output, so case-variant names will be
+        understood as the same header.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional: Host name to connect to, defaults to the model serving
+        container's IP.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Optional: Host name to connect to, defaults to the model serving
+               container's IP.
+        :param pulumi.Input[_builtins.int] port: Number of the port to access on the container.
+               Number must be in the range 1 to 65535.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional: Host name to connect to, defaults to the model serving
+        container's IP.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgsDict']]
+        """
+        ExecAction specifies a command to execute.
+        Structure is documented below.
+        """
+        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive failures before the probe is considered failed.
+        Defaults to 3. Minimum value is 1.
+        Maps to Kubernetes probe argument 'failureThreshold'.
+        """
+        grpc: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgsDict']]
+        """
+        GrpcAction checks the health of a container using a gRPC service.
+        Structure is documented below.
+        """
+        http_get: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgsDict']]
+        """
+        HttpGetAction describes an action based on HTTP Get requests.
+        Structure is documented below.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of seconds to wait before starting the probe. Defaults to 0.
+        Minimum value is 0.
+        Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        """
+        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds.
+        Minimum value is 1. Must be less than timeout_seconds.
+        Maps to Kubernetes probe argument 'periodSeconds'.
+        """
+        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive successes before the probe is considered successful.
+        Defaults to 1. Minimum value is 1.
+        Maps to Kubernetes probe argument 'successThreshold'.
+        """
+        tcp_socket: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgsDict']]
+        """
+        TcpSocketAction probes the health of a container by opening a TCP socket
+        connection.
+        Structure is documented below.
+        """
+        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second.
+        Minimum value is 1. Must be greater or equal to period_seconds.
+        Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 grpc: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']] = None,
+                 http_get: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 tcp_socket: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']] = None,
+                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs'] exec_: ExecAction specifies a command to execute.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] failure_threshold: Number of consecutive failures before the probe is considered failed.
+               Defaults to 3. Minimum value is 1.
+               Maps to Kubernetes probe argument 'failureThreshold'.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs'] grpc: GrpcAction checks the health of a container using a gRPC service.
+               Structure is documented below.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs'] http_get: HttpGetAction describes an action based on HTTP Get requests.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] initial_delay_seconds: Number of seconds to wait before starting the probe. Defaults to 0.
+               Minimum value is 0.
+               Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        :param pulumi.Input[_builtins.int] period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds.
+               Minimum value is 1. Must be less than timeout_seconds.
+               Maps to Kubernetes probe argument 'periodSeconds'.
+        :param pulumi.Input[_builtins.int] success_threshold: Number of consecutive successes before the probe is considered successful.
+               Defaults to 1. Minimum value is 1.
+               Maps to Kubernetes probe argument 'successThreshold'.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs'] tcp_socket: TcpSocketAction probes the health of a container by opening a TCP socket
+               connection.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second.
+               Minimum value is 1. Must be greater or equal to period_seconds.
+               Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']]:
+        """
+        ExecAction specifies a command to execute.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive failures before the probe is considered failed.
+        Defaults to 3. Minimum value is 1.
+        Maps to Kubernetes probe argument 'failureThreshold'.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']]:
+        """
+        GrpcAction checks the health of a container using a gRPC service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']]):
+        pulumi.set(self, "grpc", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']]:
+        """
+        HttpGetAction describes an action based on HTTP Get requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of seconds to wait before starting the probe. Defaults to 0.
+        Minimum value is 0.
+        Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds.
+        Minimum value is 1. Must be less than timeout_seconds.
+        Maps to Kubernetes probe argument 'periodSeconds'.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive successes before the probe is considered successful.
+        Defaults to 1. Minimum value is 1.
+        Maps to Kubernetes probe argument 'successThreshold'.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']]:
+        """
+        TcpSocketAction probes the health of a container by opening a TCP socket
+        connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @tcp_socket.setter
+    def tcp_socket(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']]):
+        pulumi.set(self, "tcp_socket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second.
+        Minimum value is 1. Must be greater or equal to period_seconds.
+        Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Command is the command line to execute inside the container, the working
+        directory for the command is root ('/') in the container's filesystem.
+        The command is simply exec'd, it is not run inside a shell, so
+        traditional shell instructions ('|', etc) won't work. To use a shell, you
+        need to explicitly call out to that shell. Exit status of 0 is treated as
+        live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Command is the command line to execute inside the container, the working
+               directory for the command is root ('/') in the container's filesystem.
+               The command is simply exec'd, it is not run inside a shell, so
+               traditional shell instructions ('|', etc) won't work. To use a shell, you
+               need to explicitly call out to that shell. Exit status of 0 is treated as
+               live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Command is the command line to execute inside the container, the working
+        directory for the command is root ('/') in the container's filesystem.
+        The command is simply exec'd, it is not run inside a shell, so
+        traditional shell instructions ('|', etc) won't work. To use a shell, you
+        need to explicitly call out to that shell. Exit status of 0 is treated as
+        live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Service is the name of the service to place in the gRPC
+        HealthCheckRequest. See
+        https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[_builtins.int]] = None,
+                 service: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
+        :param pulumi.Input[_builtins.str] service: Service is the name of the service to place in the gRPC
+               HealthCheckRequest. See
+               https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service is the name of the service to place in the gRPC
+        HealthCheckRequest. See
+        https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Host name to connect to, defaults to the model serving container's IP.
+        You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        scheme: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Scheme to use for connecting to the host.
+        Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None,
+                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Host name to connect to, defaults to the model serving container's IP.
+               You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] path: Path to access on the HTTP server.
+        :param pulumi.Input[_builtins.int] port: Number of the port to access on the container.
+               Number must be in the range 1 to 65535.
+        :param pulumi.Input[_builtins.str] scheme: Scheme to use for connecting to the host.
+               Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Host name to connect to, defaults to the model serving container's IP.
+        You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Scheme to use for connecting to the host.
+        Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The header field name.
+        This will be canonicalized upon output, so case-variant names will be
+        understood as the same header.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The header field value
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The header field name.
+               This will be canonicalized upon output, so case-variant names will be
+               understood as the same header.
+        :param pulumi.Input[_builtins.str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The header field name.
+        This will be canonicalized upon output, so case-variant names will be
+        understood as the same header.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional: Host name to connect to, defaults to the model serving
+        container's IP.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Optional: Host name to connect to, defaults to the model serving
+               container's IP.
+        :param pulumi.Input[_builtins.int] port: Number of the port to access on the container.
+               Number must be in the range 1 to 65535.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional: Host name to connect to, defaults to the model serving
+        container's IP.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgsDict(TypedDict):
+        container_port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of the port to expose on the pod's IP address.
+        Must be a valid port number, between 1 and 65535 inclusive.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs:
+    def __init__(__self__, *,
+                 container_port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] container_port: The number of the port to expose on the pod's IP address.
+               Must be a valid port number, between 1 and 65535 inclusive.
+        """
+        if container_port is not None:
+            pulumi.set(__self__, "container_port", container_port)
+
+    @_builtins.property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of the port to expose on the pod's IP address.
+        Must be a valid port number, between 1 and 65535 inclusive.
+        """
+        return pulumi.get(self, "container_port")
+
+    @container_port.setter
+    def container_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "container_port", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgsDict(TypedDict):
+        exec_: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgsDict']]
+        """
+        ExecAction specifies a command to execute.
+        Structure is documented below.
+        """
+        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive failures before the probe is considered failed.
+        Defaults to 3. Minimum value is 1.
+        Maps to Kubernetes probe argument 'failureThreshold'.
+        """
+        grpc: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgsDict']]
+        """
+        GrpcAction checks the health of a container using a gRPC service.
+        Structure is documented below.
+        """
+        http_get: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgsDict']]
+        """
+        HttpGetAction describes an action based on HTTP Get requests.
+        Structure is documented below.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of seconds to wait before starting the probe. Defaults to 0.
+        Minimum value is 0.
+        Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        """
+        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds.
+        Minimum value is 1. Must be less than timeout_seconds.
+        Maps to Kubernetes probe argument 'periodSeconds'.
+        """
+        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive successes before the probe is considered successful.
+        Defaults to 1. Minimum value is 1.
+        Maps to Kubernetes probe argument 'successThreshold'.
+        """
+        tcp_socket: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict']]
+        """
+        TcpSocketAction probes the health of a container by opening a TCP socket
+        connection.
+        Structure is documented below.
+        """
+        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second.
+        Minimum value is 1. Must be greater or equal to period_seconds.
+        Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs:
+    def __init__(__self__, *,
+                 exec_: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']] = None,
+                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 grpc: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']] = None,
+                 http_get: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 tcp_socket: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']] = None,
+                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs'] exec_: ExecAction specifies a command to execute.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] failure_threshold: Number of consecutive failures before the probe is considered failed.
+               Defaults to 3. Minimum value is 1.
+               Maps to Kubernetes probe argument 'failureThreshold'.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs'] grpc: GrpcAction checks the health of a container using a gRPC service.
+               Structure is documented below.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs'] http_get: HttpGetAction describes an action based on HTTP Get requests.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] initial_delay_seconds: Number of seconds to wait before starting the probe. Defaults to 0.
+               Minimum value is 0.
+               Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        :param pulumi.Input[_builtins.int] period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds.
+               Minimum value is 1. Must be less than timeout_seconds.
+               Maps to Kubernetes probe argument 'periodSeconds'.
+        :param pulumi.Input[_builtins.int] success_threshold: Number of consecutive successes before the probe is considered successful.
+               Defaults to 1. Minimum value is 1.
+               Maps to Kubernetes probe argument 'successThreshold'.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs'] tcp_socket: TcpSocketAction probes the health of a container by opening a TCP socket
+               connection.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second.
+               Minimum value is 1. Must be greater or equal to period_seconds.
+               Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']]:
+        """
+        ExecAction specifies a command to execute.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive failures before the probe is considered failed.
+        Defaults to 3. Minimum value is 1.
+        Maps to Kubernetes probe argument 'failureThreshold'.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']]:
+        """
+        GrpcAction checks the health of a container using a gRPC service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']]):
+        pulumi.set(self, "grpc", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']]:
+        """
+        HttpGetAction describes an action based on HTTP Get requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of seconds to wait before starting the probe. Defaults to 0.
+        Minimum value is 0.
+        Maps to Kubernetes probe argument 'initialDelaySeconds'.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds.
+        Minimum value is 1. Must be less than timeout_seconds.
+        Maps to Kubernetes probe argument 'periodSeconds'.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive successes before the probe is considered successful.
+        Defaults to 1. Minimum value is 1.
+        Maps to Kubernetes probe argument 'successThreshold'.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']]:
+        """
+        TcpSocketAction probes the health of a container by opening a TCP socket
+        connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @tcp_socket.setter
+    def tcp_socket(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']]):
+        pulumi.set(self, "tcp_socket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second.
+        Minimum value is 1. Must be greater or equal to period_seconds.
+        Maps to Kubernetes probe argument 'timeoutSeconds'.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Command is the command line to execute inside the container, the working
+        directory for the command is root ('/') in the container's filesystem.
+        The command is simply exec'd, it is not run inside a shell, so
+        traditional shell instructions ('|', etc) won't work. To use a shell, you
+        need to explicitly call out to that shell. Exit status of 0 is treated as
+        live/healthy and non-zero is unhealthy.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs:
+    def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Command is the command line to execute inside the container, the working
+               directory for the command is root ('/') in the container's filesystem.
+               The command is simply exec'd, it is not run inside a shell, so
+               traditional shell instructions ('|', etc) won't work. To use a shell, you
+               need to explicitly call out to that shell. Exit status of 0 is treated as
+               live/healthy and non-zero is unhealthy.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Command is the command line to execute inside the container, the working
+        directory for the command is root ('/') in the container's filesystem.
+        The command is simply exec'd, it is not run inside a shell, so
+        traditional shell instructions ('|', etc) won't work. To use a shell, you
+        need to explicitly call out to that shell. Exit status of 0 is treated as
+        live/healthy and non-zero is unhealthy.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        service: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Service is the name of the service to place in the gRPC
+        HealthCheckRequest. See
+        https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[_builtins.int]] = None,
+                 service: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
+        :param pulumi.Input[_builtins.str] service: Service is the name of the service to place in the gRPC
+               HealthCheckRequest. See
+               https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service is the name of the service to place in the gRPC
+        HealthCheckRequest. See
+        https://github.com/grpc/grpc/blob/master/doc/health-checking.md.
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Host name to connect to, defaults to the model serving container's IP.
+        You probably want to set "Host" in httpHeaders instead.
+        """
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path to access on the HTTP server.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        scheme: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Scheme to use for connecting to the host.
+        Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None,
+                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Host name to connect to, defaults to the model serving container's IP.
+               You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] path: Path to access on the HTTP server.
+        :param pulumi.Input[_builtins.int] port: Number of the port to access on the container.
+               Number must be in the range 1 to 65535.
+        :param pulumi.Input[_builtins.str] scheme: Scheme to use for connecting to the host.
+               Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Host name to connect to, defaults to the model serving container's IP.
+        You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to access on the HTTP server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Scheme to use for connecting to the host.
+        Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scheme", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The header field name.
+        This will be canonicalized upon output, so case-variant names will be
+        understood as the same header.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The header field value
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The header field name.
+               This will be canonicalized upon output, so case-variant names will be
+               understood as the same header.
+        :param pulumi.Input[_builtins.str] value: The header field value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The header field name.
+        This will be canonicalized upon output, so case-variant names will be
+        understood as the same header.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional: Host name to connect to, defaults to the model serving
+        container's IP.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Optional: Host name to connect to, defaults to the model serving
+               container's IP.
+        :param pulumi.Input[_builtins.int] port: Number of the port to access on the container.
+               Number must be in the range 1 to 65535.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional: Host name to connect to, defaults to the model serving
+        container's IP.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of the port to access on the container.
+        Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
 
 
 if not MYPY:

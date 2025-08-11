@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { FloorsettingArgs, FloorsettingState } from "./floorsetting";
+export type Floorsetting = import("./floorsetting").Floorsetting;
+export const Floorsetting: typeof import("./floorsetting").Floorsetting = null as any;
+utilities.lazyLoad(exports, ["Floorsetting"], () => require("./floorsetting"));
+
 export { TemplateArgs, TemplateState } from "./template";
 export type Template = import("./template").Template;
 export const Template: typeof import("./template").Template = null as any;
@@ -15,6 +20,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:modelarmor/floorsetting:Floorsetting":
+                return new Floorsetting(name, <any>undefined, { urn })
             case "gcp:modelarmor/template:Template":
                 return new Template(name, <any>undefined, { urn })
             default:
@@ -22,4 +29,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "modelarmor/floorsetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "modelarmor/template", _module)

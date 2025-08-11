@@ -196,9 +196,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Output("anonymousAuthenticationConfig")]
         public Output<Outputs.ClusterAnonymousAuthenticationConfig> AnonymousAuthenticationConfig { get; private set; } = null!;
@@ -728,6 +725,14 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Output("rbacBindingConfig")]
+        public Output<Outputs.ClusterRbacBindingConfig> RbacBindingConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         /// feature, which provide more control over automatic upgrades of your GKE clusters.
         /// When updating this field, GKE imposes specific version requirements. See
@@ -918,9 +923,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Input("anonymousAuthenticationConfig")]
         public Input<Inputs.ClusterAnonymousAuthenticationConfigArgs>? AnonymousAuthenticationConfig { get; set; }
@@ -1427,6 +1429,14 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterProtectConfigArgs>? ProtectConfig { get; set; }
 
         /// <summary>
+        /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Input("rbacBindingConfig")]
+        public Input<Inputs.ClusterRbacBindingConfigArgs>? RbacBindingConfig { get; set; }
+
+        /// <summary>
         /// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         /// feature, which provide more control over automatic upgrades of your GKE clusters.
         /// When updating this field, GKE imposes specific version requirements. See
@@ -1557,9 +1567,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Input("anonymousAuthenticationConfig")]
         public Input<Inputs.ClusterAnonymousAuthenticationConfigGetArgs>? AnonymousAuthenticationConfig { get; set; }
@@ -2119,6 +2126,14 @@ namespace Pulumi.Gcp.Container
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Input("rbacBindingConfig")]
+        public Input<Inputs.ClusterRbacBindingConfigGetArgs>? RbacBindingConfig { get; set; }
 
         /// <summary>
         /// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)

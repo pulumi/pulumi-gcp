@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        /// <summary>
+        /// The name of the application. Example: "Cloud Console"
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         public GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs()
         {
         }

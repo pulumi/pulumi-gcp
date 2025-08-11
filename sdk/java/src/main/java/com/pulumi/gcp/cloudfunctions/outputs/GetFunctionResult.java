@@ -5,7 +5,9 @@ package com.pulumi.gcp.cloudfunctions.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionAutomaticUpdatePolicy;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionEventTrigger;
+import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionOnDeployUpdatePolicy;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionSecretEnvironmentVariable;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionSecretVolume;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionSourceRepository;
@@ -20,6 +22,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFunctionResult {
+    private List<GetFunctionAutomaticUpdatePolicy> automaticUpdatePolicies;
     /**
      * @return Available memory (in MB) to the function.
      * 
@@ -80,6 +83,7 @@ public final class GetFunctionResult {
      * 
      */
     private String name;
+    private List<GetFunctionOnDeployUpdatePolicy> onDeployUpdatePolicies;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private @Nullable String region;
@@ -134,6 +138,9 @@ public final class GetFunctionResult {
     private String vpcConnectorEgressSettings;
 
     private GetFunctionResult() {}
+    public List<GetFunctionAutomaticUpdatePolicy> automaticUpdatePolicies() {
+        return this.automaticUpdatePolicies;
+    }
     /**
      * @return Available memory (in MB) to the function.
      * 
@@ -234,6 +241,9 @@ public final class GetFunctionResult {
     public String name() {
         return this.name;
     }
+    public List<GetFunctionOnDeployUpdatePolicy> onDeployUpdatePolicies() {
+        return this.onDeployUpdatePolicies;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -328,6 +338,7 @@ public final class GetFunctionResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetFunctionAutomaticUpdatePolicy> automaticUpdatePolicies;
         private Integer availableMemoryMb;
         private Map<String,String> buildEnvironmentVariables;
         private String buildServiceAccount;
@@ -348,6 +359,7 @@ public final class GetFunctionResult {
         private Integer maxInstances;
         private Integer minInstances;
         private String name;
+        private List<GetFunctionOnDeployUpdatePolicy> onDeployUpdatePolicies;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private @Nullable String region;
@@ -367,6 +379,7 @@ public final class GetFunctionResult {
         public Builder() {}
         public Builder(GetFunctionResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.automaticUpdatePolicies = defaults.automaticUpdatePolicies;
     	      this.availableMemoryMb = defaults.availableMemoryMb;
     	      this.buildEnvironmentVariables = defaults.buildEnvironmentVariables;
     	      this.buildServiceAccount = defaults.buildServiceAccount;
@@ -387,6 +400,7 @@ public final class GetFunctionResult {
     	      this.maxInstances = defaults.maxInstances;
     	      this.minInstances = defaults.minInstances;
     	      this.name = defaults.name;
+    	      this.onDeployUpdatePolicies = defaults.onDeployUpdatePolicies;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
@@ -405,6 +419,17 @@ public final class GetFunctionResult {
     	      this.vpcConnectorEgressSettings = defaults.vpcConnectorEgressSettings;
         }
 
+        @CustomType.Setter
+        public Builder automaticUpdatePolicies(List<GetFunctionAutomaticUpdatePolicy> automaticUpdatePolicies) {
+            if (automaticUpdatePolicies == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "automaticUpdatePolicies");
+            }
+            this.automaticUpdatePolicies = automaticUpdatePolicies;
+            return this;
+        }
+        public Builder automaticUpdatePolicies(GetFunctionAutomaticUpdatePolicy... automaticUpdatePolicies) {
+            return automaticUpdatePolicies(List.of(automaticUpdatePolicies));
+        }
         @CustomType.Setter
         public Builder availableMemoryMb(Integer availableMemoryMb) {
             if (availableMemoryMb == null) {
@@ -569,6 +594,17 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder onDeployUpdatePolicies(List<GetFunctionOnDeployUpdatePolicy> onDeployUpdatePolicies) {
+            if (onDeployUpdatePolicies == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "onDeployUpdatePolicies");
+            }
+            this.onDeployUpdatePolicies = onDeployUpdatePolicies;
+            return this;
+        }
+        public Builder onDeployUpdatePolicies(GetFunctionOnDeployUpdatePolicy... onDeployUpdatePolicies) {
+            return onDeployUpdatePolicies(List.of(onDeployUpdatePolicies));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -703,6 +739,7 @@ public final class GetFunctionResult {
         }
         public GetFunctionResult build() {
             final var _resultValue = new GetFunctionResult();
+            _resultValue.automaticUpdatePolicies = automaticUpdatePolicies;
             _resultValue.availableMemoryMb = availableMemoryMb;
             _resultValue.buildEnvironmentVariables = buildEnvironmentVariables;
             _resultValue.buildServiceAccount = buildServiceAccount;
@@ -723,6 +760,7 @@ public final class GetFunctionResult {
             _resultValue.maxInstances = maxInstances;
             _resultValue.minInstances = minInstances;
             _resultValue.name = name;
+            _resultValue.onDeployUpdatePolicies = onDeployUpdatePolicies;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.region = region;

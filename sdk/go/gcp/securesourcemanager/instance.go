@@ -42,6 +42,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
@@ -82,9 +83,10 @@ import (
 //				return err
 //			}
 //			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
-//				Location:   pulumi.String("us-central1"),
-//				InstanceId: pulumi.String("my-instance"),
-//				KmsKey:     pulumi.String("my-key"),
+//				Location:       pulumi.String("us-central1"),
+//				InstanceId:     pulumi.String("my-instance"),
+//				KmsKey:         pulumi.String("my-key"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKeyBinding,
 //			}))
@@ -193,6 +195,7 @@ import (
 //					IsPrivate: pulumi.Bool(true),
 //					CaPool:    caPool.ID(),
 //				},
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				rootCa,
 //				wait120Seconds,
@@ -305,6 +308,7 @@ import (
 //					IsPrivate: pulumi.Bool(true),
 //					CaPool:    caPool.ID(),
 //				},
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				rootCa,
 //				wait120Seconds,
@@ -556,6 +560,7 @@ import (
 //					IsPrivate: pulumi.Bool(true),
 //					CaPool:    caPool.ID(),
 //				},
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				rootCa,
 //				wait120Seconds,
@@ -686,6 +691,7 @@ import (
 //				WorkforceIdentityFederationConfig: &securesourcemanager.InstanceWorkforceIdentityFederationConfigArgs{
 //					Enabled: pulumi.Bool(true),
 //				},
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
@@ -730,6 +736,15 @@ type Instance struct {
 
 	// Time the Instance was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The deletion policy for the instance. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental
+	// deletion by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A list of hostnames for this instance.
@@ -812,6 +827,15 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Time the Instance was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// The deletion policy for the instance. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental
+	// deletion by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A list of hostnames for this instance.
@@ -854,6 +878,15 @@ type instanceState struct {
 type InstanceState struct {
 	// Time the Instance was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// The deletion policy for the instance. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental
+	// deletion by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// A list of hostnames for this instance.
@@ -898,6 +931,15 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The deletion policy for the instance. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental
+	// deletion by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name for the Instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -923,6 +965,15 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The deletion policy for the instance. Setting `ABANDON` allows the resource
+	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+	// and all its contents. Setting `PREVENT` prevents the resource from accidental
+	// deletion by erroring out during plan.
+	// Default is `DELETE`.  Possible values are:
+	// * DELETE
+	// * PREVENT
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrInput
 	// The name for the Instance.
 	InstanceId pulumi.StringInput
 	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -1036,6 +1087,18 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 // Time the Instance was created in UTC.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The deletion policy for the instance. Setting `ABANDON` allows the resource
+// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+// and all its contents. Setting `PREVENT` prevents the resource from accidental
+// deletion by erroring out during plan.
+// Default is `DELETE`.  Possible values are:
+// * DELETE
+// * PREVENT
+// * ABANDON
+func (o InstanceOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

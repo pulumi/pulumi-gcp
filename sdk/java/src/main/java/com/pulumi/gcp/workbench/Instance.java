@@ -119,10 +119,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Reservation;
+ * import com.pulumi.gcp.compute.ReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupVmImageArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -136,6 +142,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var gpuReservation = new Reservation("gpuReservation", ReservationArgs.builder()
+ *             .name("wbi-reservation")
+ *             .zone("us-central1-a")
+ *             .specificReservation(ReservationSpecificReservationArgs.builder()
+ *                 .count(1)
+ *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
+ *                     .machineType("n1-standard-1")
+ *                     .guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs.builder()
+ *                         .acceleratorType("nvidia-tesla-t4")
+ *                         .acceleratorCount(1)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .specificReservationRequired(false)
+ *             .build());
+ * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
  *             .location("us-central1-a")
@@ -149,8 +171,13 @@ import javax.annotation.Nullable;
  *                     .project("cloud-notebooks-managed")
  *                     .family("workbench-instances")
  *                     .build())
+ *                 .reservationAffinity(InstanceGceSetupReservationAffinityArgs.builder()
+ *                     .consumeReservationType("RESERVATION_ANY")
+ *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gpuReservation)
+ *                 .build());
  * 
  *     }
  * }
@@ -226,12 +253,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.AddressArgs;
  * import com.pulumi.gcp.serviceaccount.IAMBinding;
  * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
+ * import com.pulumi.gcp.compute.Reservation;
+ * import com.pulumi.gcp.compute.ReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -266,6 +298,22 @@ import javax.annotation.Nullable;
  *             .serviceAccountId("projects/my-project-name/serviceAccounts/my}{@literal @}{@code service-account.com")
  *             .role("roles/iam.serviceAccountUser")
  *             .members("user:example}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var gpuReservation = new Reservation("gpuReservation", ReservationArgs.builder()
+ *             .name("wbi-reservation")
+ *             .zone("us-central1-a")
+ *             .specificReservation(ReservationSpecificReservationArgs.builder()
+ *                 .count(1)
+ *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
+ *                     .machineType("n1-standard-4")
+ *                     .guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs.builder()
+ *                         .acceleratorType("nvidia-tesla-t4")
+ *                         .acceleratorCount(1)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .specificReservationRequired(true)
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
@@ -310,6 +358,11 @@ import javax.annotation.Nullable;
  *                     Map.entry("terraform", "true"),
  *                     Map.entry("serial-port-logging-enable", "false")
  *                 ))
+ *                 .reservationAffinity(InstanceGceSetupReservationAffinityArgs.builder()
+ *                     .consumeReservationType("RESERVATION_SPECIFIC")
+ *                     .key("compute.googleapis.com/reservation-name")
+ *                     .values(gpuReservation.name())
+ *                     .build())
  *                 .enableIpForwarding(true)
  *                 .tags(                
  *                     "abc",
@@ -325,7 +378,8 @@ import javax.annotation.Nullable;
  *                     myNetwork,
  *                     mySubnetwork,
  *                     static_,
- *                     actAsPermission)
+ *                     actAsPermission,
+ *                     gpuReservation)
  *                 .build());
  * 
  *     }}{@code
@@ -380,6 +434,59 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Workbench Instance Euc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.IAMBinding;
+ * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
+ * import com.pulumi.gcp.workbench.Instance;
+ * import com.pulumi.gcp.workbench.InstanceArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var actAsPermission = new IAMBinding("actAsPermission", IAMBindingArgs.builder()
+ *             .serviceAccountId("projects/my-project-name/serviceAccounts/1111111111111-compute}{@literal @}{@code developer.gserviceaccount.com")
+ *             .role("roles/iam.serviceAccountUser")
+ *             .members("user:example}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .name("workbench-instance")
+ *             .location("us-central1-a")
+ *             .gceSetup(InstanceGceSetupArgs.builder()
+ *                 .machineType("e2-standard-4")
+ *                 .metadata(Map.of("terraform", "true"))
+ *                 .build())
+ *             .instanceOwners("example}{@literal @}{@code example.com")
+ *             .enableManagedEuc(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(actAsPermission)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -482,6 +589,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Flag to enable managed end user credentials for the instance.
+     * 
+     */
+    @Export(name="enableManagedEuc", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableManagedEuc;
+
+    /**
+     * @return Flag to enable managed end user credentials for the instance.
+     * 
+     */
+    public Output<Optional<Boolean>> enableManagedEuc() {
+        return Codegen.optional(this.enableManagedEuc);
     }
     /**
      * Flag that specifies that a notebook can be accessed with third party

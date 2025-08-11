@@ -135,6 +135,7 @@ export interface GetClusterResult {
     readonly project?: string;
     readonly protectConfigs: outputs.container.GetClusterProtectConfig[];
     readonly pulumiLabels: {[key: string]: string};
+    readonly rbacBindingConfigs: outputs.container.GetClusterRbacBindingConfig[];
     readonly releaseChannels: outputs.container.GetClusterReleaseChannel[];
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};

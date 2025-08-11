@@ -1033,6 +1033,14 @@ Object.defineProperty(exports, "modelArmorCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const modelArmorGlobalCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "modelArmorGlobalCustomEndpoint", {
+    get() {
+        return __config.get("modelArmorGlobalCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const monitoringCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "monitoringCustomEndpoint", {
     get() {

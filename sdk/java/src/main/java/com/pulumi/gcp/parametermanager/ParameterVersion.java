@@ -163,6 +163,101 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Parameter Version With Json Format With File
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.parametermanager.Parameter;
+ * import com.pulumi.gcp.parametermanager.ParameterArgs;
+ * import com.pulumi.gcp.parametermanager.ParameterVersion;
+ * import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var parameter_basic = new Parameter("parameter-basic", ParameterArgs.builder()
+ *             .parameterId("parameter")
+ *             .format("JSON")
+ *             .build());
+ * 
+ *         var parameter_version_with_json_format_with_file = new ParameterVersion("parameter-version-with-json-format-with-file", ParameterVersionArgs.builder()
+ *             .parameter(parameter_basic.id())
+ *             .parameterVersionId("parameter_version")
+ *             .parameterData(StdFunctions.file(FileArgs.builder()
+ *                 .input("parameter-json-data.json")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Parameter Version With Yaml Format With File
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.parametermanager.Parameter;
+ * import com.pulumi.gcp.parametermanager.ParameterArgs;
+ * import com.pulumi.gcp.parametermanager.ParameterVersion;
+ * import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var parameter_basic = new Parameter("parameter-basic", ParameterArgs.builder()
+ *             .parameterId("parameter")
+ *             .format("YAML")
+ *             .build());
+ * 
+ *         var parameter_version_with_yaml_format_with_file = new ParameterVersion("parameter-version-with-yaml-format-with-file", ParameterVersionArgs.builder()
+ *             .parameter(parameter_basic.id())
+ *             .parameterVersionId("parameter_version")
+ *             .parameterData(StdFunctions.file(FileArgs.builder()
+ *                 .input("parameter-yaml-data.yaml")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ParameterVersion can be imported using any of these accepted formats:

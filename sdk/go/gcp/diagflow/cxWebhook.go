@@ -22,7 +22,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Dialogflowcx Webhook Full
+// ### Dialogflowcx Webhook Standard
 //
 // ```go
 // package main
@@ -57,11 +57,251 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = diagflow.NewCxWebhook(ctx, "basic_webhook", &diagflow.CxWebhookArgs{
+//			_, err = diagflow.NewCxWebhook(ctx, "standard_webhook", &diagflow.CxWebhookArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("MyFlow"),
+//				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
+//					AllowedCaCerts: pulumi.StringArray{
+//						pulumi.String("BQA="),
+//					},
+//					Uri: pulumi.String("https://example.com"),
+//					RequestHeaders: pulumi.StringMap{
+//						"example-key": pulumi.String("example-value"),
+//					},
+//					WebhookType: pulumi.String("STANDARD"),
+//					OauthConfig: &diagflow.CxWebhookGenericWebServiceOauthConfigArgs{
+//						ClientId:                     pulumi.String("example-client-id"),
+//						SecretVersionForClientSecret: pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version"),
+//						TokenEndpoint:                pulumi.String("https://example.com"),
+//						Scopes: pulumi.StringArray{
+//							pulumi.String("example-scope"),
+//						},
+//					},
+//					ServiceAgentAuth:                 pulumi.String("NONE"),
+//					SecretVersionForUsernamePassword: pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version"),
+//					SecretVersionsForRequestHeaders: diagflow.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArray{
+//						&diagflow.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs{
+//							Key:           pulumi.String("example-key-1"),
+//							SecretVersion: pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version"),
+//						},
+//						&diagflow.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs{
+//							Key:           pulumi.String("example-key-2"),
+//							SecretVersion: pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version-2"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dialogflowcx Webhook Flexible
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("it"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxWebhook(ctx, "flexible_webhook", &diagflow.CxWebhookArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri: pulumi.String("https://example.com"),
+//					RequestHeaders: pulumi.StringMap{
+//						"example-key": pulumi.String("example-value"),
+//					},
+//					WebhookType: pulumi.String("FLEXIBLE"),
+//					OauthConfig: &diagflow.CxWebhookGenericWebServiceOauthConfigArgs{
+//						ClientId:      pulumi.String("example-client-id"),
+//						ClientSecret:  pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version"),
+//						TokenEndpoint: pulumi.String("https://example.com"),
+//					},
+//					ServiceAgentAuth: pulumi.String("NONE"),
+//					HttpMethod:       pulumi.String("POST"),
+//					RequestBody:      pulumi.String("{\"example-key\": \"example-value\"}"),
+//					ParameterMapping: pulumi.StringMap{
+//						"example-parameter": pulumi.String("examplePath"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dialogflowcx Webhook Service Directory Standard
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("us-central1"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("it"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxWebhook(ctx, "standard_webhook", &diagflow.CxWebhookArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("MyFlow"),
+//				ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
+//					Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
+//					GenericWebService: &diagflow.CxWebhookServiceDirectoryGenericWebServiceArgs{
+//						AllowedCaCerts: pulumi.StringArray{
+//							pulumi.String("BQA="),
+//						},
+//						Uri: pulumi.String("https://example.com"),
+//						RequestHeaders: pulumi.StringMap{
+//							"example-key": pulumi.String("example-value"),
+//						},
+//						WebhookType: pulumi.String("STANDARD"),
+//						OauthConfig: &diagflow.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs{
+//							ClientId:                     pulumi.String("example-client-id"),
+//							SecretVersionForClientSecret: pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version"),
+//							TokenEndpoint:                pulumi.String("https://example.com"),
+//							Scopes: pulumi.StringArray{
+//								pulumi.String("example-scope"),
+//							},
+//						},
+//						ServiceAgentAuth:                 pulumi.String("NONE"),
+//						SecretVersionForUsernamePassword: pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version"),
+//						SecretVersionsForRequestHeaders: diagflow.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArray{
+//							&diagflow.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs{
+//								Key:           pulumi.String("example-key-1"),
+//								SecretVersion: pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version"),
+//							},
+//							&diagflow.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs{
+//								Key:           pulumi.String("example-key-2"),
+//								SecretVersion: pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version-2"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dialogflowcx Webhook Service Directory Flexible
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("us-central1"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("it"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxWebhook(ctx, "flexible_webhook", &diagflow.CxWebhookArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("MyFlow"),
+//				ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
+//					Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
+//					GenericWebService: &diagflow.CxWebhookServiceDirectoryGenericWebServiceArgs{
+//						Uri: pulumi.String("https://example.com"),
+//						RequestHeaders: pulumi.StringMap{
+//							"example-key": pulumi.String("example-value"),
+//						},
+//						WebhookType: pulumi.String("FLEXIBLE"),
+//						OauthConfig: &diagflow.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs{
+//							ClientId:      pulumi.String("example-client-id"),
+//							ClientSecret:  pulumi.String("projects/example-proj/secrets/example-secret/versions/example-version"),
+//							TokenEndpoint: pulumi.String("https://example.com"),
+//						},
+//						ServiceAgentAuth: pulumi.String("NONE"),
+//						HttpMethod:       pulumi.String("POST"),
+//						RequestBody:      pulumi.String("{\"example-key\": \"example-value\"}"),
+//						ParameterMapping: pulumi.StringMap{
+//							"example-parameter": pulumi.String("examplePath"),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -97,11 +337,11 @@ type CxWebhook struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Indicates if automatic spell correction is enabled in detect intent requests.
+	// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrOutput `pulumi:"enableSpellCorrection"`
-	// Determines whether this agent should log conversation queries.
+	// Deprecated. Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrOutput `pulumi:"enableStackdriverLogging"`
-	// Configuration for a generic web service.
+	// Represents configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService CxWebhookGenericWebServicePtrOutput `pulumi:"genericWebService"`
 	// The unique identifier of the webhook.
@@ -110,12 +350,12 @@ type CxWebhook struct {
 	// The agent to create a webhook for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
-	// Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+	// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
 	SecuritySettings pulumi.StringPtrOutput `pulumi:"securitySettings"`
 	// Configuration for a Service Directory service.
 	// Structure is documented below.
 	ServiceDirectory CxWebhookServiceDirectoryPtrOutput `pulumi:"serviceDirectory"`
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow pulumi.StringOutput `pulumi:"startFlow"`
 	// Webhook execution timeout.
 	Timeout pulumi.StringPtrOutput `pulumi:"timeout"`
@@ -158,11 +398,11 @@ type cxWebhookState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
-	// Indicates if automatic spell correction is enabled in detect intent requests.
+	// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
-	// Determines whether this agent should log conversation queries.
+	// Deprecated. Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
-	// Configuration for a generic web service.
+	// Represents configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService *CxWebhookGenericWebService `pulumi:"genericWebService"`
 	// The unique identifier of the webhook.
@@ -171,12 +411,12 @@ type cxWebhookState struct {
 	// The agent to create a webhook for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent *string `pulumi:"parent"`
-	// Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+	// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
 	SecuritySettings *string `pulumi:"securitySettings"`
 	// Configuration for a Service Directory service.
 	// Structure is documented below.
 	ServiceDirectory *CxWebhookServiceDirectory `pulumi:"serviceDirectory"`
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow *string `pulumi:"startFlow"`
 	// Webhook execution timeout.
 	Timeout *string `pulumi:"timeout"`
@@ -187,11 +427,11 @@ type CxWebhookState struct {
 	Disabled pulumi.BoolPtrInput
 	// The human-readable name of the webhook, unique within the agent.
 	DisplayName pulumi.StringPtrInput
-	// Indicates if automatic spell correction is enabled in detect intent requests.
+	// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
-	// Determines whether this agent should log conversation queries.
+	// Deprecated. Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrInput
-	// Configuration for a generic web service.
+	// Represents configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService CxWebhookGenericWebServicePtrInput
 	// The unique identifier of the webhook.
@@ -200,12 +440,12 @@ type CxWebhookState struct {
 	// The agent to create a webhook for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent pulumi.StringPtrInput
-	// Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+	// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
 	SecuritySettings pulumi.StringPtrInput
 	// Configuration for a Service Directory service.
 	// Structure is documented below.
 	ServiceDirectory CxWebhookServiceDirectoryPtrInput
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow pulumi.StringPtrInput
 	// Webhook execution timeout.
 	Timeout pulumi.StringPtrInput
@@ -220,17 +460,17 @@ type cxWebhookArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
-	// Indicates if automatic spell correction is enabled in detect intent requests.
+	// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
-	// Determines whether this agent should log conversation queries.
+	// Deprecated. Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
-	// Configuration for a generic web service.
+	// Represents configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService *CxWebhookGenericWebService `pulumi:"genericWebService"`
 	// The agent to create a webhook for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent *string `pulumi:"parent"`
-	// Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+	// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
 	SecuritySettings *string `pulumi:"securitySettings"`
 	// Configuration for a Service Directory service.
 	// Structure is documented below.
@@ -245,17 +485,17 @@ type CxWebhookArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// The human-readable name of the webhook, unique within the agent.
 	DisplayName pulumi.StringInput
-	// Indicates if automatic spell correction is enabled in detect intent requests.
+	// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
-	// Determines whether this agent should log conversation queries.
+	// Deprecated. Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrInput
-	// Configuration for a generic web service.
+	// Represents configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService CxWebhookGenericWebServicePtrInput
 	// The agent to create a webhook for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent pulumi.StringPtrInput
-	// Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+	// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
 	SecuritySettings pulumi.StringPtrInput
 	// Configuration for a Service Directory service.
 	// Structure is documented below.
@@ -361,17 +601,17 @@ func (o CxWebhookOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Indicates if automatic spell correction is enabled in detect intent requests.
+// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
 func (o CxWebhookOutput) EnableSpellCorrection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.BoolPtrOutput { return v.EnableSpellCorrection }).(pulumi.BoolPtrOutput)
 }
 
-// Determines whether this agent should log conversation queries.
+// Deprecated. Determines whether this agent should log conversation queries.
 func (o CxWebhookOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.BoolPtrOutput { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for a generic web service.
+// Represents configuration for a generic web service.
 // Structure is documented below.
 func (o CxWebhookOutput) GenericWebService() CxWebhookGenericWebServicePtrOutput {
 	return o.ApplyT(func(v *CxWebhook) CxWebhookGenericWebServicePtrOutput { return v.GenericWebService }).(CxWebhookGenericWebServicePtrOutput)
@@ -389,7 +629,7 @@ func (o CxWebhookOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
-// Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
 func (o CxWebhookOutput) SecuritySettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.StringPtrOutput { return v.SecuritySettings }).(pulumi.StringPtrOutput)
 }
@@ -400,7 +640,7 @@ func (o CxWebhookOutput) ServiceDirectory() CxWebhookServiceDirectoryPtrOutput {
 	return o.ApplyT(func(v *CxWebhook) CxWebhookServiceDirectoryPtrOutput { return v.ServiceDirectory }).(CxWebhookServiceDirectoryPtrOutput)
 }
 
-// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 func (o CxWebhookOutput) StartFlow() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.StringOutput { return v.StartFlow }).(pulumi.StringOutput)
 }

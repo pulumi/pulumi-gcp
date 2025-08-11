@@ -17,6 +17,7 @@ from .instance_iam_member import *
 from .instance_iam_policy import *
 from .logical_view import *
 from .materialized_view import *
+from .schema_bundle import *
 from .table import *
 from .table_iam_binding import *
 from .table_iam_member import *

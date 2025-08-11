@@ -80,6 +80,7 @@ type LookupBucketObjectResult struct {
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c              string                              `pulumi:"crc32c"`
 	CustomerEncryptions []GetBucketObjectCustomerEncryption `pulumi:"customerEncryptions"`
+	DeletionPolicy      string                              `pulumi:"deletionPolicy"`
 	DetectMd5hash       string                              `pulumi:"detectMd5hash"`
 	// (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold        bool `pulumi:"eventBasedHold"`
@@ -187,6 +188,10 @@ func (o LookupBucketObjectResultOutput) Crc32c() pulumi.StringOutput {
 
 func (o LookupBucketObjectResultOutput) CustomerEncryptions() GetBucketObjectCustomerEncryptionArrayOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) []GetBucketObjectCustomerEncryption { return v.CustomerEncryptions }).(GetBucketObjectCustomerEncryptionArrayOutput)
+}
+
+func (o LookupBucketObjectResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupBucketObjectResultOutput) DetectMd5hash() pulumi.StringOutput {

@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .instanceId("my-instance")
  *             .labels(Map.of("foo", "bar"))
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *     }
@@ -109,6 +110,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .instanceId("my-instance")
  *             .kmsKey("my-key")
+ *             .deletionPolicy("PREVENT")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(cryptoKeyBinding)
  *                 .build());
@@ -232,6 +234,7 @@ import javax.annotation.Nullable;
  *                 .isPrivate(true)
  *                 .caPool(caPool.id())
  *                 .build())
+ *             .deletionPolicy("PREVENT")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
  *                     rootCa,
@@ -376,6 +379,7 @@ import javax.annotation.Nullable;
  *                 .isPrivate(true)
  *                 .caPool(caPool.id())
  *                 .build())
+ *             .deletionPolicy("PREVENT")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
  *                     rootCa,
@@ -614,6 +618,7 @@ import javax.annotation.Nullable;
  *                 .isPrivate(true)
  *                 .caPool(caPool.id())
  *                 .build())
+ *             .deletionPolicy("PREVENT")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
  *                     rootCa,
@@ -723,6 +728,7 @@ import javax.annotation.Nullable;
  *             .workforceIdentityFederationConfig(InstanceWorkforceIdentityFederationConfigArgs.builder()
  *                 .enabled(true)
  *                 .build())
+ *             .deletionPolicy("PREVENT")
  *             .build());
  * 
  *     }
@@ -777,6 +783,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The deletion policy for the instance. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental
+     * deletion by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the instance. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental
+     * deletion by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

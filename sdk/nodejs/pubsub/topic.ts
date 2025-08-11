@@ -201,7 +201,26 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Pubsub Topic Single Smt
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     messageTransforms: [{
+ *         javascriptUdf: {
+ *             functionName: "isYearEven",
+ *             code: `function isYearEven(message, metadata) {
+ *   const data = JSON.parse(message.data);
+ *   return message.year %2 === 0;
+ * }
+ * `,
+ *         },
+ *     }],
+ * });
+ * ```
  * ## Import
  *
  * Topic can be imported using any of these accepted formats:

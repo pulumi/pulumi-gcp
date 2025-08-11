@@ -151,7 +151,7 @@ export class NetworkPeering extends pulumi.CustomResource {
     public readonly peerNetwork!: pulumi.Output<string>;
     /**
      * The type of the network to peer with the VMware Engine network.
-     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
      */
     public readonly peerNetworkType!: pulumi.Output<string>;
     /**
@@ -294,7 +294,7 @@ export interface NetworkPeeringState {
     peerNetwork?: pulumi.Input<string>;
     /**
      * The type of the network to peer with the VMware Engine network.
-     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
      */
     peerNetworkType?: pulumi.Input<string>;
     /**
@@ -370,7 +370,7 @@ export interface NetworkPeeringArgs {
     peerNetwork: pulumi.Input<string>;
     /**
      * The type of the network to peer with the VMware Engine network.
-     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
      */
     peerNetworkType: pulumi.Input<string>;
     /**

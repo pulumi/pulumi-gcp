@@ -185,6 +185,10 @@ namespace Pulumi.Gcp.Dataproc
     ///                 NetworkUri = "default",
     ///                 ServiceAccount = $"{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
     ///                 StagingBucket = bucket.Name,
+    ///                 AuthenticationConfig = new Gcp.Dataproc.Inputs.BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs
+    ///                 {
+    ///                     UserWorkloadAuthenticationType = "SERVICE_ACCOUNT",
+    ///                 },
     ///             },
     ///             PeripheralsConfig = new Gcp.Dataproc.Inputs.BatchEnvironmentConfigPeripheralsConfigArgs
     ///             {

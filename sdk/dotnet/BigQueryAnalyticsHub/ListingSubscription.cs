@@ -114,6 +114,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     public partial class ListingSubscription : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("commercialInfos")]
+        public Output<ImmutableArray<Outputs.ListingSubscriptionCommercialInfo>> CommercialInfos { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp when the subscription was created.
         /// </summary>
         [Output("creationTime")]
@@ -306,6 +313,19 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
     public sealed class ListingSubscriptionState : global::Pulumi.ResourceArgs
     {
+        [Input("commercialInfos")]
+        private InputList<Inputs.ListingSubscriptionCommercialInfoGetArgs>? _commercialInfos;
+
+        /// <summary>
+        /// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ListingSubscriptionCommercialInfoGetArgs> CommercialInfos
+        {
+            get => _commercialInfos ?? (_commercialInfos = new InputList<Inputs.ListingSubscriptionCommercialInfoGetArgs>());
+            set => _commercialInfos = value;
+        }
+
         /// <summary>
         /// Timestamp when the subscription was created.
         /// </summary>

@@ -144,7 +144,7 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The type of the network to peer with the VMware Engine network.
-     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
      * 
      */
     @Import(name="peerNetworkType")
@@ -152,7 +152,7 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The type of the network to peer with the VMware Engine network.
-     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+     * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
      * 
      */
     public Optional<Output<String>> peerNetworkType() {
@@ -495,7 +495,7 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param peerNetworkType The type of the network to peer with the VMware Engine network.
-         * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+         * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param peerNetworkType The type of the network to peer with the VMware Engine network.
-         * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`.
+         * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
          * 
          * @return builder
          * 

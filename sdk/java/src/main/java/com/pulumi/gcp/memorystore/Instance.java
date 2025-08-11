@@ -660,22 +660,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * (Deprecated)
-     * Output only. Endpoints clients can connect to the instance through. Currently only one
-     * discovery endpoint is supported.
+     * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      * 
      * @deprecated
-     * `discovery_endpoints` is deprecated  Use `endpoints` instead.
+     * This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      * 
      */
-    @Deprecated /* `discovery_endpoints` is deprecated  Use `endpoints` instead. */
+    @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
     @Export(name="discoveryEndpoints", refs={List.class,InstanceDiscoveryEndpoint.class}, tree="[0,1]")
     private Output<List<InstanceDiscoveryEndpoint>> discoveryEndpoints;
 
     /**
      * @return (Deprecated)
-     * Output only. Endpoints clients can connect to the instance through. Currently only one
-     * discovery endpoint is supported.
+     * Deprecated. Output only. Endpoints clients can connect to the instance through.
      * Structure is documented below.
      * 
      */

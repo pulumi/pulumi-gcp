@@ -12,6 +12,7 @@ from .ai_endpoint import *
 from .ai_endpoint_iam_binding import *
 from .ai_endpoint_iam_member import *
 from .ai_endpoint_iam_policy import *
+from .ai_endpoint_with_model_garden_deployment import *
 from .ai_feature_group import *
 from .ai_feature_group_feature import *
 from .ai_feature_group_iam_binding import *

@@ -51,9 +51,12 @@ import (
 //				EnvironmentConfig: &dataproc.SessionTemplateEnvironmentConfigArgs{
 //					ExecutionConfig: &dataproc.SessionTemplateEnvironmentConfigExecutionConfigArgs{
 //						SubnetworkUri: pulumi.String("default"),
-//						Ttl:           pulumi.String("3600s"),
+//						IdleTtl:       pulumi.String("3600s"),
 //						NetworkTags: pulumi.StringArray{
 //							pulumi.String("tag1"),
+//						},
+//						AuthenticationConfig: &dataproc.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs{
+//							UserWorkloadAuthenticationType: pulumi.String("END_USER_CREDENTIALS"),
 //						},
 //					},
 //				},
@@ -194,6 +197,9 @@ import (
 //						SubnetworkUri:  pulumi.String("default"),
 //						ServiceAccount: pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number),
 //						StagingBucket:  bucket.Name,
+//						AuthenticationConfig: &dataproc.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs{
+//							UserWorkloadAuthenticationType: pulumi.String("SERVICE_ACCOUNT"),
+//						},
 //					},
 //					PeripheralsConfig: &dataproc.SessionTemplateEnvironmentConfigPeripheralsConfigArgs{
 //						MetastoreService: ms.Name,

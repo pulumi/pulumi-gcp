@@ -27,7 +27,8 @@ class ClusterArgs:
                  location: pulumi.Input[_builtins.str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rebalance_config: Optional[pulumi.Input['ClusterRebalanceConfigArgs']] = None):
+                 rebalance_config: Optional[pulumi.Input['ClusterRebalanceConfigArgs']] = None,
+                 tls_config: Optional[pulumi.Input['ClusterTlsConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input['ClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
@@ -43,6 +44,8 @@ class ClusterArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['ClusterRebalanceConfigArgs'] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
                Structure is documented below.
+        :param pulumi.Input['ClusterTlsConfigArgs'] tls_config: TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+               Structure is documented below.
         """
         pulumi.set(__self__, "capacity_config", capacity_config)
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -54,6 +57,8 @@ class ClusterArgs:
             pulumi.set(__self__, "project", project)
         if rebalance_config is not None:
             pulumi.set(__self__, "rebalance_config", rebalance_config)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
 
     @_builtins.property
     @pulumi.getter(name="capacityConfig")
@@ -145,6 +150,19 @@ class ClusterArgs:
     def rebalance_config(self, value: Optional[pulumi.Input['ClusterRebalanceConfigArgs']]):
         pulumi.set(self, "rebalance_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional[pulumi.Input['ClusterTlsConfigArgs']]:
+        """
+        TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_config")
+
+    @tls_config.setter
+    def tls_config(self, value: Optional[pulumi.Input['ClusterTlsConfigArgs']]):
+        pulumi.set(self, "tls_config", value)
+
 
 @pulumi.input_type
 class _ClusterState:
@@ -161,6 +179,7 @@ class _ClusterState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  rebalance_config: Optional[pulumi.Input['ClusterRebalanceConfigArgs']] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tls_config: Optional[pulumi.Input['ClusterTlsConfigArgs']] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
@@ -183,6 +202,8 @@ class _ClusterState:
         :param pulumi.Input['ClusterRebalanceConfigArgs'] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
+        :param pulumi.Input['ClusterTlsConfigArgs'] tls_config: TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the cluster was last updated.
         """
         if capacity_config is not None:
@@ -209,6 +230,8 @@ class _ClusterState:
             pulumi.set(__self__, "rebalance_config", rebalance_config)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -364,6 +387,19 @@ class _ClusterState:
         pulumi.set(self, "state", value)
 
     @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional[pulumi.Input['ClusterTlsConfigArgs']]:
+        """
+        TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_config")
+
+    @tls_config.setter
+    def tls_config(self, value: Optional[pulumi.Input['ClusterTlsConfigArgs']]):
+        pulumi.set(self, "tls_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -389,6 +425,7 @@ class Cluster(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rebalance_config: Optional[pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
+                 tls_config: Optional[pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Managed Service for Apache Kafka cluster. Apache Kafka is a trademark owned by the Apache Software Foundation.
@@ -421,6 +458,44 @@ class Cluster(pulumi.CustomResource):
             },
             labels={
                 "key": "value",
+            })
+        ```
+        ### Managedkafka Cluster Mtls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+            name="my-ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options={
+                "publish_ca_cert": True,
+                "publish_crl": True,
+            })
+        project = gcp.organizations.get_project()
+        example = gcp.managedkafka.Cluster("example",
+            cluster_id="my-cluster",
+            location="us-central1",
+            capacity_config={
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
+            },
+            gcp_config={
+                "access_config": {
+                    "network_configs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                },
+            },
+            tls_config={
+                "trust_config": {
+                    "cas_configs": [{
+                        "ca_pool": ca_pool.id,
+                    }],
+                },
+                "ssl_principal_mapping_rules": "RULE:pattern/replacement/L,DEFAULT",
             })
         ```
         ### Managedkafka Cluster Cmek
@@ -499,6 +574,8 @@ class Cluster(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
                Structure is documented below.
+        :param pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']] tls_config: TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+               Structure is documented below.
         """
         ...
     @overload
@@ -537,6 +614,44 @@ class Cluster(pulumi.CustomResource):
             },
             labels={
                 "key": "value",
+            })
+        ```
+        ### Managedkafka Cluster Mtls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ca_pool = gcp.certificateauthority.CaPool("ca_pool",
+            name="my-ca-pool",
+            location="us-central1",
+            tier="ENTERPRISE",
+            publishing_options={
+                "publish_ca_cert": True,
+                "publish_crl": True,
+            })
+        project = gcp.organizations.get_project()
+        example = gcp.managedkafka.Cluster("example",
+            cluster_id="my-cluster",
+            location="us-central1",
+            capacity_config={
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
+            },
+            gcp_config={
+                "access_config": {
+                    "network_configs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                },
+            },
+            tls_config={
+                "trust_config": {
+                    "cas_configs": [{
+                        "ca_pool": ca_pool.id,
+                    }],
+                },
+                "ssl_principal_mapping_rules": "RULE:pattern/replacement/L,DEFAULT",
             })
         ```
         ### Managedkafka Cluster Cmek
@@ -622,6 +737,7 @@ class Cluster(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rebalance_config: Optional[pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
+                 tls_config: Optional[pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -646,6 +762,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["rebalance_config"] = rebalance_config
+            __props__.__dict__["tls_config"] = tls_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
@@ -676,6 +793,7 @@ class Cluster(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             rebalance_config: Optional[pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            tls_config: Optional[pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -703,6 +821,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
+        :param pulumi.Input[Union['ClusterTlsConfigArgs', 'ClusterTlsConfigArgsDict']] tls_config: TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the cluster was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -721,6 +841,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["rebalance_config"] = rebalance_config
         __props__.__dict__["state"] = state
+        __props__.__dict__["tls_config"] = tls_config
         __props__.__dict__["update_time"] = update_time
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
@@ -826,6 +947,15 @@ class Cluster(pulumi.CustomResource):
         The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> pulumi.Output['outputs.ClusterTlsConfig']:
+        """
+        TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_config")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

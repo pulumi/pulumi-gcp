@@ -20,6 +20,11 @@ export type GitRepositoryLink = import("./gitRepositoryLink").GitRepositoryLink;
 export const GitRepositoryLink: typeof import("./gitRepositoryLink").GitRepositoryLink = null as any;
 utilities.lazyLoad(exports, ["GitRepositoryLink"], () => require("./gitRepositoryLink"));
 
+export { InsightsConfigArgs, InsightsConfigState } from "./insightsConfig";
+export type InsightsConfig = import("./insightsConfig").InsightsConfig;
+export const InsightsConfig: typeof import("./insightsConfig").InsightsConfig = null as any;
+utilities.lazyLoad(exports, ["InsightsConfig"], () => require("./insightsConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -31,6 +36,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "gcp:developerconnect/gitRepositoryLink:GitRepositoryLink":
                 return new GitRepositoryLink(name, <any>undefined, { urn })
+            case "gcp:developerconnect/insightsConfig:InsightsConfig":
+                return new InsightsConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -39,3 +46,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "developerconnect/accountConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "developerconnect/connection", _module)
 pulumi.runtime.registerResourceModule("gcp", "developerconnect/gitRepositoryLink", _module)
+pulumi.runtime.registerResourceModule("gcp", "developerconnect/insightsConfig", _module)

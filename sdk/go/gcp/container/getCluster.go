@@ -142,6 +142,7 @@ type LookupClusterResult struct {
 	Project                         *string                                    `pulumi:"project"`
 	ProtectConfigs                  []GetClusterProtectConfig                  `pulumi:"protectConfigs"`
 	PulumiLabels                    map[string]string                          `pulumi:"pulumiLabels"`
+	RbacBindingConfigs              []GetClusterRbacBindingConfig              `pulumi:"rbacBindingConfigs"`
 	ReleaseChannels                 []GetClusterReleaseChannel                 `pulumi:"releaseChannels"`
 	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
@@ -498,6 +499,10 @@ func (o LookupClusterResultOutput) ProtectConfigs() GetClusterProtectConfigArray
 
 func (o LookupClusterResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupClusterResultOutput) RbacBindingConfigs() GetClusterRbacBindingConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterRbacBindingConfig { return v.RbacBindingConfigs }).(GetClusterRbacBindingConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) ReleaseChannels() GetClusterReleaseChannelArrayOutput {

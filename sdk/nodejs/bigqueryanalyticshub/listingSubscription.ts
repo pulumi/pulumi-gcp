@@ -119,6 +119,11 @@ export class ListingSubscription extends pulumi.CustomResource {
     }
 
     /**
+     * Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly commercialInfos!: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionCommercialInfo[]>;
+    /**
      * Timestamp when the subscription was created.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
@@ -205,6 +210,7 @@ export class ListingSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListingSubscriptionState | undefined;
+            resourceInputs["commercialInfos"] = state ? state.commercialInfos : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["dataExchangeId"] = state ? state.dataExchangeId : undefined;
             resourceInputs["destinationDataset"] = state ? state.destinationDataset : undefined;
@@ -241,6 +247,7 @@ export class ListingSubscription extends pulumi.CustomResource {
             resourceInputs["listingId"] = args ? args.listingId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["commercialInfos"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["lastModifyTime"] = undefined /*out*/;
             resourceInputs["linkedDatasetMaps"] = undefined /*out*/;
@@ -263,6 +270,11 @@ export class ListingSubscription extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ListingSubscription resources.
  */
 export interface ListingSubscriptionState {
+    /**
+     * Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+     * Structure is documented below.
+     */
+    commercialInfos?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionCommercialInfo>[]>;
     /**
      * Timestamp when the subscription was created.
      */

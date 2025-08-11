@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .forceUpdate(true)
  *             .accessRestriction("WITHIN_ORGANIZATION")
+ *             .backupRetentionInheritance("INHERIT_VAULT_RETENTION")
  *             .ignoreInactiveDatasources(true)
  *             .ignoreBackupPlanReferences(true)
  *             .allowMissing(true)
@@ -179,6 +180,22 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      */
     public Output<String> backupMinimumEnforcedRetentionDuration() {
         return this.backupMinimumEnforcedRetentionDuration;
+    }
+    /**
+     * How a backup&#39;s enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+     * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+     * 
+     */
+    @Export(name="backupRetentionInheritance", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> backupRetentionInheritance;
+
+    /**
+     * @return How a backup&#39;s enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+     * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+     * 
+     */
+    public Output<Optional<String>> backupRetentionInheritance() {
+        return Codegen.optional(this.backupRetentionInheritance);
     }
     /**
      * Required. ID of the requesting object.

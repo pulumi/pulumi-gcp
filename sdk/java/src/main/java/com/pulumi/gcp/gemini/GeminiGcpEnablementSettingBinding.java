@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .location("global")
  *             .labels(Map.of("my_key", "my_value"))
  *             .enableCustomerDataSharing(true)
- *             .disableWebGrounding(true)
+ *             .webGroundingType("WEB_GROUNDING_FOR_ENTERPRISE")
  *             .build());
  * 
  *         var example = new GeminiGcpEnablementSettingBinding("example", GeminiGcpEnablementSettingBindingArgs.builder()

@@ -326,6 +326,18 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
         network = gcp.compute.Network("network",
             name="network",
             auto_create_subnetworks=False)
+        basic_key = gcp.tags.TagKey("basic_key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            purpose="GCE_FIREWALL",
+            short_name="tag-key",
+            purpose_data={
+                "organization": "auto",
+            })
+        basic_value = gcp.tags.TagValue("basic_value",
+            description="For valuename resources.",
+            parent=basic_key.id,
+            short_name="tag-value")
         primary = gcp.compute.FirewallPolicyWithRules("primary",
             short_name="fw-policy",
             description="Terraform test",
@@ -403,6 +415,27 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "layer4_configs": [{
                             "ip_protocol": "tcp",
+                        }],
+                    },
+                },
+                {
+                    "description": "secure tags",
+                    "rule_name": "secure tags rule",
+                    "priority": 4000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "INGRESS",
+                    "target_secure_tags": [{
+                        "name": basic_value.id,
+                    }],
+                    "match": {
+                        "src_ip_ranges": ["11.100.0.1/32"],
+                        "src_secure_tags": [{
+                            "name": basic_value.id,
+                        }],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
                         }],
                     },
                 },
@@ -476,6 +509,18 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
         network = gcp.compute.Network("network",
             name="network",
             auto_create_subnetworks=False)
+        basic_key = gcp.tags.TagKey("basic_key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            purpose="GCE_FIREWALL",
+            short_name="tag-key",
+            purpose_data={
+                "organization": "auto",
+            })
+        basic_value = gcp.tags.TagValue("basic_value",
+            description="For valuename resources.",
+            parent=basic_key.id,
+            short_name="tag-value")
         primary = gcp.compute.FirewallPolicyWithRules("primary",
             short_name="fw-policy",
             description="Terraform test",
@@ -553,6 +598,27 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "layer4_configs": [{
                             "ip_protocol": "tcp",
+                        }],
+                    },
+                },
+                {
+                    "description": "secure tags",
+                    "rule_name": "secure tags rule",
+                    "priority": 4000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "INGRESS",
+                    "target_secure_tags": [{
+                        "name": basic_value.id,
+                    }],
+                    "match": {
+                        "src_ip_ranges": ["11.100.0.1/32"],
+                        "src_secure_tags": [{
+                            "name": basic_value.id,
+                        }],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
                         }],
                     },
                 },

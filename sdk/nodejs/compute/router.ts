@@ -160,6 +160,11 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.RouterParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -193,6 +198,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["md5AuthenticationKeys"] = state ? state.md5AuthenticationKeys : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -207,6 +213,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["md5AuthenticationKeys"] = args ? args.md5AuthenticationKeys : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -258,6 +265,11 @@ export interface RouterState {
      */
     network?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.RouterParams>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -308,6 +320,11 @@ export interface RouterArgs {
      * A reference to the network to which this router belongs.
      */
     network: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.RouterParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

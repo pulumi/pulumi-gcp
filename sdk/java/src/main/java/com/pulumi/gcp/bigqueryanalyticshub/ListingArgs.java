@@ -24,6 +24,21 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListingArgs Empty = new ListingArgs();
 
     /**
+     * If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+     * 
+     */
+    @Import(name="allowOnlyMetadataSharing")
+    private @Nullable Output<Boolean> allowOnlyMetadataSharing;
+
+    /**
+     * @return If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+     * 
+     */
+    public Optional<Output<Boolean>> allowOnlyMetadataSharing() {
+        return Optional.ofNullable(this.allowOnlyMetadataSharing);
+    }
+
+    /**
      * Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      * 
@@ -88,6 +103,21 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+     * 
+     */
+    @Import(name="deleteCommercial")
+    private @Nullable Output<Boolean> deleteCommercial;
+
+    /**
+     * @return If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteCommercial() {
+        return Optional.ofNullable(this.deleteCommercial);
+    }
+
+    /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
@@ -100,6 +130,23 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     * 
+     */
+    @Import(name="discoveryType")
+    private @Nullable Output<String> discoveryType;
+
+    /**
+     * @return Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     * 
+     */
+    public Optional<Output<String>> discoveryType() {
+        return Optional.ofNullable(this.discoveryType);
     }
 
     /**
@@ -293,11 +340,14 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     private ListingArgs() {}
 
     private ListingArgs(ListingArgs $) {
+        this.allowOnlyMetadataSharing = $.allowOnlyMetadataSharing;
         this.bigqueryDataset = $.bigqueryDataset;
         this.categories = $.categories;
         this.dataExchangeId = $.dataExchangeId;
         this.dataProvider = $.dataProvider;
+        this.deleteCommercial = $.deleteCommercial;
         this.description = $.description;
+        this.discoveryType = $.discoveryType;
         this.displayName = $.displayName;
         this.documentation = $.documentation;
         this.icon = $.icon;
@@ -328,6 +378,27 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ListingArgs defaults) {
             $ = new ListingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowOnlyMetadataSharing If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowOnlyMetadataSharing(@Nullable Output<Boolean> allowOnlyMetadataSharing) {
+            $.allowOnlyMetadataSharing = allowOnlyMetadataSharing;
+            return this;
+        }
+
+        /**
+         * @param allowOnlyMetadataSharing If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowOnlyMetadataSharing(Boolean allowOnlyMetadataSharing) {
+            return allowOnlyMetadataSharing(Output.of(allowOnlyMetadataSharing));
         }
 
         /**
@@ -429,6 +500,27 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param deleteCommercial If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteCommercial(@Nullable Output<Boolean> deleteCommercial) {
+            $.deleteCommercial = deleteCommercial;
+            return this;
+        }
+
+        /**
+         * @param deleteCommercial If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteCommercial(Boolean deleteCommercial) {
+            return deleteCommercial(Output.of(deleteCommercial));
+        }
+
+        /**
          * @param description Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
          * 
          * @return builder
@@ -447,6 +539,29 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param discoveryType Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+         * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder discoveryType(@Nullable Output<String> discoveryType) {
+            $.discoveryType = discoveryType;
+            return this;
+        }
+
+        /**
+         * @param discoveryType Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+         * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder discoveryType(String discoveryType) {
+            return discoveryType(Output.of(discoveryType));
         }
 
         /**

@@ -2765,6 +2765,10 @@ type GetRegionalSecretsSecret struct {
 	Rotations []GetRegionalSecretsSecretRotation `pulumi:"rotations"`
 	// The unique name of the resource.
 	SecretId string `pulumi:"secretId"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
 	// Structure is documented below.
 	Topics []GetRegionalSecretsSecretTopic `pulumi:"topics"`
@@ -2817,6 +2821,10 @@ type GetRegionalSecretsSecretArgs struct {
 	Rotations GetRegionalSecretsSecretRotationArrayInput `pulumi:"rotations"`
 	// The unique name of the resource.
 	SecretId pulumi.StringInput `pulumi:"secretId"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
 	// Structure is documented below.
 	Topics GetRegionalSecretsSecretTopicArrayInput `pulumi:"topics"`
@@ -2951,6 +2959,13 @@ func (o GetRegionalSecretsSecretOutput) Rotations() GetRegionalSecretsSecretRota
 // The unique name of the resource.
 func (o GetRegionalSecretsSecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o GetRegionalSecretsSecretOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
@@ -4144,6 +4159,10 @@ type GetSecretsSecret struct {
 	Rotations []GetSecretsSecretRotation `pulumi:"rotations"`
 	// This must be unique within the project.
 	SecretId string `pulumi:"secretId"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	// Structure is documented below.
 	Topics []GetSecretsSecretTopic `pulumi:"topics"`
@@ -4195,6 +4214,10 @@ type GetSecretsSecretArgs struct {
 	Rotations GetSecretsSecretRotationArrayInput `pulumi:"rotations"`
 	// This must be unique within the project.
 	SecretId pulumi.StringInput `pulumi:"secretId"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	// Structure is documented below.
 	Topics GetSecretsSecretTopicArrayInput `pulumi:"topics"`
@@ -4323,6 +4346,13 @@ func (o GetSecretsSecretOutput) Rotations() GetSecretsSecretRotationArrayOutput 
 // This must be unique within the project.
 func (o GetSecretsSecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o GetSecretsSecretOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.

@@ -353,6 +353,10 @@ type RegionalSecret struct {
 	Rotation RegionalSecretRotationPtrOutput `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
 	// Structure is documented below.
@@ -475,6 +479,10 @@ type regionalSecretState struct {
 	Rotation *RegionalSecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId *string `pulumi:"secretId"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
 	// Structure is documented below.
@@ -557,6 +565,10 @@ type RegionalSecretState struct {
 	Rotation RegionalSecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
 	// Structure is documented below.
@@ -632,6 +644,10 @@ type regionalSecretArgs struct {
 	Rotation *RegionalSecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId string `pulumi:"secretId"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
 	// Structure is documented below.
@@ -704,6 +720,10 @@ type RegionalSecretArgs struct {
 	Rotation RegionalSecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
 	// Structure is documented below.
@@ -914,6 +934,13 @@ func (o RegionalSecretOutput) Rotation() RegionalSecretRotationPtrOutput {
 // This must be unique within the project.
 func (o RegionalSecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalSecret) pulumi.StringOutput { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o RegionalSecretOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionalSecret) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A list of up to 10 Pub/Sub topics to which messages are published when control plane

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Dialogflowcx Webhook Full
+ * ### Dialogflowcx Webhook Standard
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,11 +41,189 @@ import * as utilities from "../utilities";
  *         enableSpeechAdaptation: true,
  *     },
  * });
- * const basicWebhook = new gcp.diagflow.CxWebhook("basic_webhook", {
+ * const standardWebhook = new gcp.diagflow.CxWebhook("standard_webhook", {
+ *     parent: agent.id,
+ *     displayName: "MyFlow",
+ *     genericWebService: {
+ *         allowedCaCerts: ["BQA="],
+ *         uri: "https://example.com",
+ *         requestHeaders: {
+ *             "example-key": "example-value",
+ *         },
+ *         webhookType: "STANDARD",
+ *         oauthConfig: {
+ *             clientId: "example-client-id",
+ *             secretVersionForClientSecret: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *             tokenEndpoint: "https://example.com",
+ *             scopes: ["example-scope"],
+ *         },
+ *         serviceAgentAuth: "NONE",
+ *         secretVersionForUsernamePassword: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *         secretVersionsForRequestHeaders: [
+ *             {
+ *                 key: "example-key-1",
+ *                 secretVersion: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *             },
+ *             {
+ *                 key: "example-key-2",
+ *                 secretVersion: "projects/example-proj/secrets/example-secret/versions/example-version-2",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ * ### Dialogflowcx Webhook Flexible
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "global",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "it",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const flexibleWebhook = new gcp.diagflow.CxWebhook("flexible_webhook", {
  *     parent: agent.id,
  *     displayName: "MyFlow",
  *     genericWebService: {
  *         uri: "https://example.com",
+ *         requestHeaders: {
+ *             "example-key": "example-value",
+ *         },
+ *         webhookType: "FLEXIBLE",
+ *         oauthConfig: {
+ *             clientId: "example-client-id",
+ *             clientSecret: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *             tokenEndpoint: "https://example.com",
+ *         },
+ *         serviceAgentAuth: "NONE",
+ *         httpMethod: "POST",
+ *         requestBody: "{\"example-key\": \"example-value\"}",
+ *         parameterMapping: {
+ *             "example-parameter": "examplePath",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Dialogflowcx Webhook Service Directory Standard
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "us-central1",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "it",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const standardWebhook = new gcp.diagflow.CxWebhook("standard_webhook", {
+ *     parent: agent.id,
+ *     displayName: "MyFlow",
+ *     serviceDirectory: {
+ *         service: "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+ *         genericWebService: {
+ *             allowedCaCerts: ["BQA="],
+ *             uri: "https://example.com",
+ *             requestHeaders: {
+ *                 "example-key": "example-value",
+ *             },
+ *             webhookType: "STANDARD",
+ *             oauthConfig: {
+ *                 clientId: "example-client-id",
+ *                 secretVersionForClientSecret: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *                 tokenEndpoint: "https://example.com",
+ *                 scopes: ["example-scope"],
+ *             },
+ *             serviceAgentAuth: "NONE",
+ *             secretVersionForUsernamePassword: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *             secretVersionsForRequestHeaders: [
+ *                 {
+ *                     key: "example-key-1",
+ *                     secretVersion: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *                 },
+ *                 {
+ *                     key: "example-key-2",
+ *                     secretVersion: "projects/example-proj/secrets/example-secret/versions/example-version-2",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Dialogflowcx Webhook Service Directory Flexible
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "us-central1",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "it",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const flexibleWebhook = new gcp.diagflow.CxWebhook("flexible_webhook", {
+ *     parent: agent.id,
+ *     displayName: "MyFlow",
+ *     serviceDirectory: {
+ *         service: "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+ *         genericWebService: {
+ *             uri: "https://example.com",
+ *             requestHeaders: {
+ *                 "example-key": "example-value",
+ *             },
+ *             webhookType: "FLEXIBLE",
+ *             oauthConfig: {
+ *                 clientId: "example-client-id",
+ *                 clientSecret: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *                 tokenEndpoint: "https://example.com",
+ *             },
+ *             serviceAgentAuth: "NONE",
+ *             httpMethod: "POST",
+ *             requestBody: "{\"example-key\": \"example-value\"}",
+ *             parameterMapping: {
+ *                 "example-parameter": "examplePath",
+ *             },
+ *         },
  *     },
  * });
  * ```
@@ -105,15 +283,15 @@ export class CxWebhook extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Indicates if automatic spell correction is enabled in detect intent requests.
+     * Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      */
     public readonly enableSpellCorrection!: pulumi.Output<boolean | undefined>;
     /**
-     * Determines whether this agent should log conversation queries.
+     * Deprecated. Determines whether this agent should log conversation queries.
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean | undefined>;
     /**
-     * Configuration for a generic web service.
+     * Represents configuration for a generic web service.
      * Structure is documented below.
      */
     public readonly genericWebService!: pulumi.Output<outputs.diagflow.CxWebhookGenericWebService | undefined>;
@@ -128,7 +306,7 @@ export class CxWebhook extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string | undefined>;
     /**
-     * Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+     * Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
     public readonly securitySettings!: pulumi.Output<string | undefined>;
     /**
@@ -137,7 +315,7 @@ export class CxWebhook extends pulumi.CustomResource {
      */
     public readonly serviceDirectory!: pulumi.Output<outputs.diagflow.CxWebhookServiceDirectory | undefined>;
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+     * Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     public /*out*/ readonly startFlow!: pulumi.Output<string>;
     /**
@@ -204,15 +382,15 @@ export interface CxWebhookState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Indicates if automatic spell correction is enabled in detect intent requests.
+     * Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      */
     enableSpellCorrection?: pulumi.Input<boolean>;
     /**
-     * Determines whether this agent should log conversation queries.
+     * Deprecated. Determines whether this agent should log conversation queries.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
-     * Configuration for a generic web service.
+     * Represents configuration for a generic web service.
      * Structure is documented below.
      */
     genericWebService?: pulumi.Input<inputs.diagflow.CxWebhookGenericWebService>;
@@ -227,7 +405,7 @@ export interface CxWebhookState {
      */
     parent?: pulumi.Input<string>;
     /**
-     * Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+     * Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
     securitySettings?: pulumi.Input<string>;
     /**
@@ -236,7 +414,7 @@ export interface CxWebhookState {
      */
     serviceDirectory?: pulumi.Input<inputs.diagflow.CxWebhookServiceDirectory>;
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+     * Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     startFlow?: pulumi.Input<string>;
     /**
@@ -258,15 +436,15 @@ export interface CxWebhookArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Indicates if automatic spell correction is enabled in detect intent requests.
+     * Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      */
     enableSpellCorrection?: pulumi.Input<boolean>;
     /**
-     * Determines whether this agent should log conversation queries.
+     * Deprecated. Determines whether this agent should log conversation queries.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
-     * Configuration for a generic web service.
+     * Represents configuration for a generic web service.
      * Structure is documented below.
      */
     genericWebService?: pulumi.Input<inputs.diagflow.CxWebhookGenericWebService>;
@@ -276,7 +454,7 @@ export interface CxWebhookArgs {
      */
     parent?: pulumi.Input<string>;
     /**
-     * Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+     * Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
     securitySettings?: pulumi.Input<string>;
     /**

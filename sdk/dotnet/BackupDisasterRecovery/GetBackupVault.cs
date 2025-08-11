@@ -155,6 +155,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string BackupCount;
         public readonly string BackupMinimumEnforcedRetentionDuration;
+        public readonly string BackupRetentionInheritance;
         public readonly string BackupVaultId;
         public readonly string CreateTime;
         public readonly bool Deletable;
@@ -193,6 +194,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             string backupCount,
 
             string backupMinimumEnforcedRetentionDuration,
+
+            string backupRetentionInheritance,
 
             string backupVaultId,
 
@@ -245,6 +248,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             Annotations = annotations;
             BackupCount = backupCount;
             BackupMinimumEnforcedRetentionDuration = backupMinimumEnforcedRetentionDuration;
+            BackupRetentionInheritance = backupRetentionInheritance;
             BackupVaultId = backupVaultId;
             CreateTime = createTime;
             Deletable = deletable;

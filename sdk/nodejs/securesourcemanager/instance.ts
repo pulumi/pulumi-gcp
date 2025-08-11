@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar",
  *     },
+ *     deletionPolicy: "PREVENT",
  * });
  * ```
  * ### Secure Source Manager Instance Cmek
@@ -47,6 +48,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     instanceId: "my-instance",
  *     kmsKey: "my-key",
+ *     deletionPolicy: "PREVENT",
  * }, {
  *     dependsOn: [cryptoKeyBinding],
  * });
@@ -117,6 +119,7 @@ import * as utilities from "../utilities";
  *         isPrivate: true,
  *         caPool: caPool.id,
  *     },
+ *     deletionPolicy: "PREVENT",
  * }, {
  *     dependsOn: [
  *         rootCa,
@@ -191,6 +194,7 @@ import * as utilities from "../utilities";
  *         isPrivate: true,
  *         caPool: caPool.id,
  *     },
+ *     deletionPolicy: "PREVENT",
  * }, {
  *     dependsOn: [
  *         rootCa,
@@ -353,6 +357,7 @@ import * as utilities from "../utilities";
  *         isPrivate: true,
  *         caPool: caPool.id,
  *     },
+ *     deletionPolicy: "PREVENT",
  * }, {
  *     dependsOn: [
  *         rootCa,
@@ -430,6 +435,7 @@ import * as utilities from "../utilities";
  *     workforceIdentityFederationConfig: {
  *         enabled: true,
  *     },
+ *     deletionPolicy: "PREVENT",
  * });
  * ```
  *
@@ -495,6 +501,17 @@ export class Instance extends pulumi.CustomResource {
      * Time the Instance was created in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The deletion policy for the instance. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental
+     * deletion by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -575,6 +592,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["hostConfigs"] = state ? state.hostConfigs : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
@@ -597,6 +615,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -628,6 +647,17 @@ export interface InstanceState {
      * Time the Instance was created in UTC.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The deletion policy for the instance. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental
+     * deletion by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -699,6 +729,17 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The deletion policy for the instance. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental
+     * deletion by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The name for the Instance.
      */

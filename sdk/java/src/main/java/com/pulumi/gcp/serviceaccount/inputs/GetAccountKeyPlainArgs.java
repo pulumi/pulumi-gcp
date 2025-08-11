@@ -38,7 +38,11 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
      * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      * 
+     * @deprecated
+     * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
+     * 
      */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
     @Import(name="project")
     private @Nullable String project;
 
@@ -46,7 +50,11 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
      * @return The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      * 
+     * @deprecated
+     * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
+     * 
      */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -111,7 +119,11 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
+         * 
          */
+        @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;

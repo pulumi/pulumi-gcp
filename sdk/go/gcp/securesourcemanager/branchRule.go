@@ -37,16 +37,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:   pulumi.String("us-central1"),
-//				InstanceId: pulumi.String("my-basic-instance"),
+//				Location:       pulumi.String("us-central1"),
+//				InstanceId:     pulumi.String("my-basic-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			repository, err := securesourcemanager.NewRepository(ctx, "repository", &securesourcemanager.RepositoryArgs{
-//				RepositoryId: pulumi.String("my-basic-repository"),
-//				Location:     instance.Location,
-//				Instance:     instance.Name,
+//				RepositoryId:   pulumi.String("my-basic-repository"),
+//				Location:       instance.Location,
+//				Instance:       instance.Name,
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
@@ -80,16 +82,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
-//				Location:   pulumi.String("us-central1"),
-//				InstanceId: pulumi.String("my-initial-instance"),
+//				Location:       pulumi.String("us-central1"),
+//				InstanceId:     pulumi.String("my-initial-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			repository, err := securesourcemanager.NewRepository(ctx, "repository", &securesourcemanager.RepositoryArgs{
-//				RepositoryId: pulumi.String("my-initial-repository"),
-//				Instance:     instance.Name,
-//				Location:     instance.Location,
+//				RepositoryId:   pulumi.String("my-initial-repository"),
+//				Instance:       instance.Name,
+//				Location:       instance.Location,
+//				DeletionPolicy: pulumi.String("PREVENT"),
 //			})
 //			if err != nil {
 //				return err

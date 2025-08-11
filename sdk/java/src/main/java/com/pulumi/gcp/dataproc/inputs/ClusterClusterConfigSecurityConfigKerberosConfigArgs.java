@@ -262,8 +262,6 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfigArgs extends 
      * The Cloud Storage URI of the truststore file used for
      * SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
      * 
-     * ***
-     * 
      */
     @Import(name="truststoreUri")
     private @Nullable Output<String> truststoreUri;
@@ -271,8 +269,6 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfigArgs extends 
     /**
      * @return The Cloud Storage URI of the truststore file used for
      * SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> truststoreUri() {
@@ -645,8 +641,6 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfigArgs extends 
          * @param truststoreUri The Cloud Storage URI of the truststore file used for
          * SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -658,8 +652,6 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfigArgs extends 
         /**
          * @param truststoreUri The Cloud Storage URI of the truststore file used for
          * SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -8427,6 +8427,16 @@ type GetAutonomousDatabasesAutonomousDatabase struct {
 	// The name of the VPC network used by the Autonomous Database.
 	// Format: projects/{project}/global/networks/{network}
 	Network string `pulumi:"network"`
+	// The name of the OdbNetwork associated with the Autonomous Database.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork string `pulumi:"odbNetwork"`
+	// The name of the OdbSubnet associated with the Autonomous Database for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet string `pulumi:"odbSubnet"`
 	// The project to which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project string `pulumi:"project"`
@@ -8487,6 +8497,16 @@ type GetAutonomousDatabasesAutonomousDatabaseArgs struct {
 	// The name of the VPC network used by the Autonomous Database.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringInput `pulumi:"network"`
+	// The name of the OdbNetwork associated with the Autonomous Database.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork pulumi.StringInput `pulumi:"odbNetwork"`
+	// The name of the OdbSubnet associated with the Autonomous Database for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet pulumi.StringInput `pulumi:"odbSubnet"`
 	// The project to which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -8623,6 +8643,22 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) Name() pulumi.StringOutp
 // Format: projects/{project}/global/networks/{network}
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The name of the OdbNetwork associated with the Autonomous Database.
+// Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+// It is optional but if specified, this should match the parent ODBNetwork of
+// the odbSubnet and backup_odb_subnet.
+func (o GetAutonomousDatabasesAutonomousDatabaseOutput) OdbNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.OdbNetwork }).(pulumi.StringOutput)
+}
+
+// The name of the OdbSubnet associated with the Autonomous Database for
+// IP allocation. Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+func (o GetAutonomousDatabasesAutonomousDatabaseOutput) OdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
 // The project to which the resource belongs. If it
@@ -13691,6 +13727,10 @@ func (o GetCloudVmClusterPropertyTimeZoneArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetCloudVmClustersCloudVmCluster struct {
+	// The name of the backup OdbSubnet associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	BackupOdbSubnet string `pulumi:"backupOdbSubnet"`
 	// CIDR range of the backup subnet.
 	BackupSubnetCidr string `pulumi:"backupSubnetCidr"`
 	// Network settings. CIDR to use for cluster IP allocation.
@@ -13728,6 +13768,16 @@ type GetCloudVmClustersCloudVmCluster struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network string `pulumi:"network"`
+	// The name of the OdbNetwork associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork string `pulumi:"odbNetwork"`
+	// The name of the OdbSubnet associated with the VM Cluster for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet string `pulumi:"odbSubnet"`
 	// The project to which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project string `pulumi:"project"`
@@ -13750,6 +13800,10 @@ type GetCloudVmClustersCloudVmClusterInput interface {
 }
 
 type GetCloudVmClustersCloudVmClusterArgs struct {
+	// The name of the backup OdbSubnet associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	BackupOdbSubnet pulumi.StringInput `pulumi:"backupOdbSubnet"`
 	// CIDR range of the backup subnet.
 	BackupSubnetCidr pulumi.StringInput `pulumi:"backupSubnetCidr"`
 	// Network settings. CIDR to use for cluster IP allocation.
@@ -13787,6 +13841,16 @@ type GetCloudVmClustersCloudVmClusterArgs struct {
 	// The name of the VPC network.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringInput `pulumi:"network"`
+	// The name of the OdbNetwork associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+	// It is optional but if specified, this should match the parent ODBNetwork of
+	// the odbSubnet and backup_odb_subnet.
+	OdbNetwork pulumi.StringInput `pulumi:"odbNetwork"`
+	// The name of the OdbSubnet associated with the VM Cluster for
+	// IP allocation. Format:
+	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+	OdbSubnet pulumi.StringInput `pulumi:"odbSubnet"`
 	// The project to which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -13846,6 +13910,13 @@ func (o GetCloudVmClustersCloudVmClusterOutput) ToGetCloudVmClustersCloudVmClust
 
 func (o GetCloudVmClustersCloudVmClusterOutput) ToGetCloudVmClustersCloudVmClusterOutputWithContext(ctx context.Context) GetCloudVmClustersCloudVmClusterOutput {
 	return o
+}
+
+// The name of the backup OdbSubnet associated with the VM Cluster.
+// Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+func (o GetCloudVmClustersCloudVmClusterOutput) BackupOdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.BackupOdbSubnet }).(pulumi.StringOutput)
 }
 
 // CIDR range of the backup subnet.
@@ -13922,6 +13993,22 @@ func (o GetCloudVmClustersCloudVmClusterOutput) Name() pulumi.StringOutput {
 // Format: projects/{project}/global/networks/{network}
 func (o GetCloudVmClustersCloudVmClusterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The name of the OdbNetwork associated with the VM Cluster.
+// Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+// It is optional but if specified, this should match the parent ODBNetwork of
+// the odbSubnet and backup_odb_subnet.
+func (o GetCloudVmClustersCloudVmClusterOutput) OdbNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.OdbNetwork }).(pulumi.StringOutput)
+}
+
+// The name of the OdbSubnet associated with the VM Cluster for
+// IP allocation. Format:
+// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+func (o GetCloudVmClustersCloudVmClusterOutput) OdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
 // The project to which the resource belongs. If it

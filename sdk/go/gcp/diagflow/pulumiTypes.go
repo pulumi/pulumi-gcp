@@ -11140,6 +11140,615 @@ func (o CxGenerativeSettingsLlmModelSettingsPtrOutput) PromptText() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type CxGeneratorLlmModelSettings struct {
+	// The selected LLM model.
+	Model *string `pulumi:"model"`
+	// The custom prompt to use.
+	PromptText *string `pulumi:"promptText"`
+}
+
+// CxGeneratorLlmModelSettingsInput is an input type that accepts CxGeneratorLlmModelSettingsArgs and CxGeneratorLlmModelSettingsOutput values.
+// You can construct a concrete instance of `CxGeneratorLlmModelSettingsInput` via:
+//
+//	CxGeneratorLlmModelSettingsArgs{...}
+type CxGeneratorLlmModelSettingsInput interface {
+	pulumi.Input
+
+	ToCxGeneratorLlmModelSettingsOutput() CxGeneratorLlmModelSettingsOutput
+	ToCxGeneratorLlmModelSettingsOutputWithContext(context.Context) CxGeneratorLlmModelSettingsOutput
+}
+
+type CxGeneratorLlmModelSettingsArgs struct {
+	// The selected LLM model.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// The custom prompt to use.
+	PromptText pulumi.StringPtrInput `pulumi:"promptText"`
+}
+
+func (CxGeneratorLlmModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGeneratorLlmModelSettings)(nil)).Elem()
+}
+
+func (i CxGeneratorLlmModelSettingsArgs) ToCxGeneratorLlmModelSettingsOutput() CxGeneratorLlmModelSettingsOutput {
+	return i.ToCxGeneratorLlmModelSettingsOutputWithContext(context.Background())
+}
+
+func (i CxGeneratorLlmModelSettingsArgs) ToCxGeneratorLlmModelSettingsOutputWithContext(ctx context.Context) CxGeneratorLlmModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorLlmModelSettingsOutput)
+}
+
+func (i CxGeneratorLlmModelSettingsArgs) ToCxGeneratorLlmModelSettingsPtrOutput() CxGeneratorLlmModelSettingsPtrOutput {
+	return i.ToCxGeneratorLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxGeneratorLlmModelSettingsArgs) ToCxGeneratorLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxGeneratorLlmModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorLlmModelSettingsOutput).ToCxGeneratorLlmModelSettingsPtrOutputWithContext(ctx)
+}
+
+// CxGeneratorLlmModelSettingsPtrInput is an input type that accepts CxGeneratorLlmModelSettingsArgs, CxGeneratorLlmModelSettingsPtr and CxGeneratorLlmModelSettingsPtrOutput values.
+// You can construct a concrete instance of `CxGeneratorLlmModelSettingsPtrInput` via:
+//
+//	        CxGeneratorLlmModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxGeneratorLlmModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxGeneratorLlmModelSettingsPtrOutput() CxGeneratorLlmModelSettingsPtrOutput
+	ToCxGeneratorLlmModelSettingsPtrOutputWithContext(context.Context) CxGeneratorLlmModelSettingsPtrOutput
+}
+
+type cxGeneratorLlmModelSettingsPtrType CxGeneratorLlmModelSettingsArgs
+
+func CxGeneratorLlmModelSettingsPtr(v *CxGeneratorLlmModelSettingsArgs) CxGeneratorLlmModelSettingsPtrInput {
+	return (*cxGeneratorLlmModelSettingsPtrType)(v)
+}
+
+func (*cxGeneratorLlmModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGeneratorLlmModelSettings)(nil)).Elem()
+}
+
+func (i *cxGeneratorLlmModelSettingsPtrType) ToCxGeneratorLlmModelSettingsPtrOutput() CxGeneratorLlmModelSettingsPtrOutput {
+	return i.ToCxGeneratorLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxGeneratorLlmModelSettingsPtrType) ToCxGeneratorLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxGeneratorLlmModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorLlmModelSettingsPtrOutput)
+}
+
+type CxGeneratorLlmModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxGeneratorLlmModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGeneratorLlmModelSettings)(nil)).Elem()
+}
+
+func (o CxGeneratorLlmModelSettingsOutput) ToCxGeneratorLlmModelSettingsOutput() CxGeneratorLlmModelSettingsOutput {
+	return o
+}
+
+func (o CxGeneratorLlmModelSettingsOutput) ToCxGeneratorLlmModelSettingsOutputWithContext(ctx context.Context) CxGeneratorLlmModelSettingsOutput {
+	return o
+}
+
+func (o CxGeneratorLlmModelSettingsOutput) ToCxGeneratorLlmModelSettingsPtrOutput() CxGeneratorLlmModelSettingsPtrOutput {
+	return o.ToCxGeneratorLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxGeneratorLlmModelSettingsOutput) ToCxGeneratorLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxGeneratorLlmModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxGeneratorLlmModelSettings) *CxGeneratorLlmModelSettings {
+		return &v
+	}).(CxGeneratorLlmModelSettingsPtrOutput)
+}
+
+// The selected LLM model.
+func (o CxGeneratorLlmModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGeneratorLlmModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// The custom prompt to use.
+func (o CxGeneratorLlmModelSettingsOutput) PromptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGeneratorLlmModelSettings) *string { return v.PromptText }).(pulumi.StringPtrOutput)
+}
+
+type CxGeneratorLlmModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxGeneratorLlmModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGeneratorLlmModelSettings)(nil)).Elem()
+}
+
+func (o CxGeneratorLlmModelSettingsPtrOutput) ToCxGeneratorLlmModelSettingsPtrOutput() CxGeneratorLlmModelSettingsPtrOutput {
+	return o
+}
+
+func (o CxGeneratorLlmModelSettingsPtrOutput) ToCxGeneratorLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxGeneratorLlmModelSettingsPtrOutput {
+	return o
+}
+
+func (o CxGeneratorLlmModelSettingsPtrOutput) Elem() CxGeneratorLlmModelSettingsOutput {
+	return o.ApplyT(func(v *CxGeneratorLlmModelSettings) CxGeneratorLlmModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxGeneratorLlmModelSettings
+		return ret
+	}).(CxGeneratorLlmModelSettingsOutput)
+}
+
+// The selected LLM model.
+func (o CxGeneratorLlmModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGeneratorLlmModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// The custom prompt to use.
+func (o CxGeneratorLlmModelSettingsPtrOutput) PromptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGeneratorLlmModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PromptText
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxGeneratorModelParameter struct {
+	// The maximum number of tokens to generate.
+	MaxDecodeSteps *int `pulumi:"maxDecodeSteps"`
+	// The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+	// Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+	Temperature *float64 `pulumi:"temperature"`
+	// If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
+	// Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+	TopK *int `pulumi:"topK"`
+	// If set, only the tokens comprising the top topP probability mass are considered.
+	// If both topP and topK are set, topP will be used for further refining candidates selected with topK.
+	// Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
+	TopP *float64 `pulumi:"topP"`
+}
+
+// CxGeneratorModelParameterInput is an input type that accepts CxGeneratorModelParameterArgs and CxGeneratorModelParameterOutput values.
+// You can construct a concrete instance of `CxGeneratorModelParameterInput` via:
+//
+//	CxGeneratorModelParameterArgs{...}
+type CxGeneratorModelParameterInput interface {
+	pulumi.Input
+
+	ToCxGeneratorModelParameterOutput() CxGeneratorModelParameterOutput
+	ToCxGeneratorModelParameterOutputWithContext(context.Context) CxGeneratorModelParameterOutput
+}
+
+type CxGeneratorModelParameterArgs struct {
+	// The maximum number of tokens to generate.
+	MaxDecodeSteps pulumi.IntPtrInput `pulumi:"maxDecodeSteps"`
+	// The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+	// Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
+	// Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+	TopK pulumi.IntPtrInput `pulumi:"topK"`
+	// If set, only the tokens comprising the top topP probability mass are considered.
+	// If both topP and topK are set, topP will be used for further refining candidates selected with topK.
+	// Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
+	TopP pulumi.Float64PtrInput `pulumi:"topP"`
+}
+
+func (CxGeneratorModelParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGeneratorModelParameter)(nil)).Elem()
+}
+
+func (i CxGeneratorModelParameterArgs) ToCxGeneratorModelParameterOutput() CxGeneratorModelParameterOutput {
+	return i.ToCxGeneratorModelParameterOutputWithContext(context.Background())
+}
+
+func (i CxGeneratorModelParameterArgs) ToCxGeneratorModelParameterOutputWithContext(ctx context.Context) CxGeneratorModelParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorModelParameterOutput)
+}
+
+func (i CxGeneratorModelParameterArgs) ToCxGeneratorModelParameterPtrOutput() CxGeneratorModelParameterPtrOutput {
+	return i.ToCxGeneratorModelParameterPtrOutputWithContext(context.Background())
+}
+
+func (i CxGeneratorModelParameterArgs) ToCxGeneratorModelParameterPtrOutputWithContext(ctx context.Context) CxGeneratorModelParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorModelParameterOutput).ToCxGeneratorModelParameterPtrOutputWithContext(ctx)
+}
+
+// CxGeneratorModelParameterPtrInput is an input type that accepts CxGeneratorModelParameterArgs, CxGeneratorModelParameterPtr and CxGeneratorModelParameterPtrOutput values.
+// You can construct a concrete instance of `CxGeneratorModelParameterPtrInput` via:
+//
+//	        CxGeneratorModelParameterArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxGeneratorModelParameterPtrInput interface {
+	pulumi.Input
+
+	ToCxGeneratorModelParameterPtrOutput() CxGeneratorModelParameterPtrOutput
+	ToCxGeneratorModelParameterPtrOutputWithContext(context.Context) CxGeneratorModelParameterPtrOutput
+}
+
+type cxGeneratorModelParameterPtrType CxGeneratorModelParameterArgs
+
+func CxGeneratorModelParameterPtr(v *CxGeneratorModelParameterArgs) CxGeneratorModelParameterPtrInput {
+	return (*cxGeneratorModelParameterPtrType)(v)
+}
+
+func (*cxGeneratorModelParameterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGeneratorModelParameter)(nil)).Elem()
+}
+
+func (i *cxGeneratorModelParameterPtrType) ToCxGeneratorModelParameterPtrOutput() CxGeneratorModelParameterPtrOutput {
+	return i.ToCxGeneratorModelParameterPtrOutputWithContext(context.Background())
+}
+
+func (i *cxGeneratorModelParameterPtrType) ToCxGeneratorModelParameterPtrOutputWithContext(ctx context.Context) CxGeneratorModelParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorModelParameterPtrOutput)
+}
+
+type CxGeneratorModelParameterOutput struct{ *pulumi.OutputState }
+
+func (CxGeneratorModelParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGeneratorModelParameter)(nil)).Elem()
+}
+
+func (o CxGeneratorModelParameterOutput) ToCxGeneratorModelParameterOutput() CxGeneratorModelParameterOutput {
+	return o
+}
+
+func (o CxGeneratorModelParameterOutput) ToCxGeneratorModelParameterOutputWithContext(ctx context.Context) CxGeneratorModelParameterOutput {
+	return o
+}
+
+func (o CxGeneratorModelParameterOutput) ToCxGeneratorModelParameterPtrOutput() CxGeneratorModelParameterPtrOutput {
+	return o.ToCxGeneratorModelParameterPtrOutputWithContext(context.Background())
+}
+
+func (o CxGeneratorModelParameterOutput) ToCxGeneratorModelParameterPtrOutputWithContext(ctx context.Context) CxGeneratorModelParameterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxGeneratorModelParameter) *CxGeneratorModelParameter {
+		return &v
+	}).(CxGeneratorModelParameterPtrOutput)
+}
+
+// The maximum number of tokens to generate.
+func (o CxGeneratorModelParameterOutput) MaxDecodeSteps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxGeneratorModelParameter) *int { return v.MaxDecodeSteps }).(pulumi.IntPtrOutput)
+}
+
+// The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+// Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+func (o CxGeneratorModelParameterOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CxGeneratorModelParameter) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+// If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
+// Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+func (o CxGeneratorModelParameterOutput) TopK() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxGeneratorModelParameter) *int { return v.TopK }).(pulumi.IntPtrOutput)
+}
+
+// If set, only the tokens comprising the top topP probability mass are considered.
+// If both topP and topK are set, topP will be used for further refining candidates selected with topK.
+// Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
+func (o CxGeneratorModelParameterOutput) TopP() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CxGeneratorModelParameter) *float64 { return v.TopP }).(pulumi.Float64PtrOutput)
+}
+
+type CxGeneratorModelParameterPtrOutput struct{ *pulumi.OutputState }
+
+func (CxGeneratorModelParameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGeneratorModelParameter)(nil)).Elem()
+}
+
+func (o CxGeneratorModelParameterPtrOutput) ToCxGeneratorModelParameterPtrOutput() CxGeneratorModelParameterPtrOutput {
+	return o
+}
+
+func (o CxGeneratorModelParameterPtrOutput) ToCxGeneratorModelParameterPtrOutputWithContext(ctx context.Context) CxGeneratorModelParameterPtrOutput {
+	return o
+}
+
+func (o CxGeneratorModelParameterPtrOutput) Elem() CxGeneratorModelParameterOutput {
+	return o.ApplyT(func(v *CxGeneratorModelParameter) CxGeneratorModelParameter {
+		if v != nil {
+			return *v
+		}
+		var ret CxGeneratorModelParameter
+		return ret
+	}).(CxGeneratorModelParameterOutput)
+}
+
+// The maximum number of tokens to generate.
+func (o CxGeneratorModelParameterPtrOutput) MaxDecodeSteps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxGeneratorModelParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDecodeSteps
+	}).(pulumi.IntPtrOutput)
+}
+
+// The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+// Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+func (o CxGeneratorModelParameterPtrOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CxGeneratorModelParameter) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.Float64PtrOutput)
+}
+
+// If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
+// Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+func (o CxGeneratorModelParameterPtrOutput) TopK() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxGeneratorModelParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TopK
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, only the tokens comprising the top topP probability mass are considered.
+// If both topP and topK are set, topP will be used for further refining candidates selected with topK.
+// Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
+func (o CxGeneratorModelParameterPtrOutput) TopP() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CxGeneratorModelParameter) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TopP
+	}).(pulumi.Float64PtrOutput)
+}
+
+type CxGeneratorPlaceholder struct {
+	// Unique ID used to map custom placeholder to parameters in fulfillment.
+	Id *string `pulumi:"id"`
+	// Custom placeholder value in the prompt text.
+	Name *string `pulumi:"name"`
+}
+
+// CxGeneratorPlaceholderInput is an input type that accepts CxGeneratorPlaceholderArgs and CxGeneratorPlaceholderOutput values.
+// You can construct a concrete instance of `CxGeneratorPlaceholderInput` via:
+//
+//	CxGeneratorPlaceholderArgs{...}
+type CxGeneratorPlaceholderInput interface {
+	pulumi.Input
+
+	ToCxGeneratorPlaceholderOutput() CxGeneratorPlaceholderOutput
+	ToCxGeneratorPlaceholderOutputWithContext(context.Context) CxGeneratorPlaceholderOutput
+}
+
+type CxGeneratorPlaceholderArgs struct {
+	// Unique ID used to map custom placeholder to parameters in fulfillment.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Custom placeholder value in the prompt text.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CxGeneratorPlaceholderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGeneratorPlaceholder)(nil)).Elem()
+}
+
+func (i CxGeneratorPlaceholderArgs) ToCxGeneratorPlaceholderOutput() CxGeneratorPlaceholderOutput {
+	return i.ToCxGeneratorPlaceholderOutputWithContext(context.Background())
+}
+
+func (i CxGeneratorPlaceholderArgs) ToCxGeneratorPlaceholderOutputWithContext(ctx context.Context) CxGeneratorPlaceholderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorPlaceholderOutput)
+}
+
+// CxGeneratorPlaceholderArrayInput is an input type that accepts CxGeneratorPlaceholderArray and CxGeneratorPlaceholderArrayOutput values.
+// You can construct a concrete instance of `CxGeneratorPlaceholderArrayInput` via:
+//
+//	CxGeneratorPlaceholderArray{ CxGeneratorPlaceholderArgs{...} }
+type CxGeneratorPlaceholderArrayInput interface {
+	pulumi.Input
+
+	ToCxGeneratorPlaceholderArrayOutput() CxGeneratorPlaceholderArrayOutput
+	ToCxGeneratorPlaceholderArrayOutputWithContext(context.Context) CxGeneratorPlaceholderArrayOutput
+}
+
+type CxGeneratorPlaceholderArray []CxGeneratorPlaceholderInput
+
+func (CxGeneratorPlaceholderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxGeneratorPlaceholder)(nil)).Elem()
+}
+
+func (i CxGeneratorPlaceholderArray) ToCxGeneratorPlaceholderArrayOutput() CxGeneratorPlaceholderArrayOutput {
+	return i.ToCxGeneratorPlaceholderArrayOutputWithContext(context.Background())
+}
+
+func (i CxGeneratorPlaceholderArray) ToCxGeneratorPlaceholderArrayOutputWithContext(ctx context.Context) CxGeneratorPlaceholderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorPlaceholderArrayOutput)
+}
+
+type CxGeneratorPlaceholderOutput struct{ *pulumi.OutputState }
+
+func (CxGeneratorPlaceholderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGeneratorPlaceholder)(nil)).Elem()
+}
+
+func (o CxGeneratorPlaceholderOutput) ToCxGeneratorPlaceholderOutput() CxGeneratorPlaceholderOutput {
+	return o
+}
+
+func (o CxGeneratorPlaceholderOutput) ToCxGeneratorPlaceholderOutputWithContext(ctx context.Context) CxGeneratorPlaceholderOutput {
+	return o
+}
+
+// Unique ID used to map custom placeholder to parameters in fulfillment.
+func (o CxGeneratorPlaceholderOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGeneratorPlaceholder) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Custom placeholder value in the prompt text.
+func (o CxGeneratorPlaceholderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGeneratorPlaceholder) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CxGeneratorPlaceholderArrayOutput struct{ *pulumi.OutputState }
+
+func (CxGeneratorPlaceholderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxGeneratorPlaceholder)(nil)).Elem()
+}
+
+func (o CxGeneratorPlaceholderArrayOutput) ToCxGeneratorPlaceholderArrayOutput() CxGeneratorPlaceholderArrayOutput {
+	return o
+}
+
+func (o CxGeneratorPlaceholderArrayOutput) ToCxGeneratorPlaceholderArrayOutputWithContext(ctx context.Context) CxGeneratorPlaceholderArrayOutput {
+	return o
+}
+
+func (o CxGeneratorPlaceholderArrayOutput) Index(i pulumi.IntInput) CxGeneratorPlaceholderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxGeneratorPlaceholder {
+		return vs[0].([]CxGeneratorPlaceholder)[vs[1].(int)]
+	}).(CxGeneratorPlaceholderOutput)
+}
+
+type CxGeneratorPromptText struct {
+	// Text input which can be used for prompt or banned phrases.
+	Text *string `pulumi:"text"`
+}
+
+// CxGeneratorPromptTextInput is an input type that accepts CxGeneratorPromptTextArgs and CxGeneratorPromptTextOutput values.
+// You can construct a concrete instance of `CxGeneratorPromptTextInput` via:
+//
+//	CxGeneratorPromptTextArgs{...}
+type CxGeneratorPromptTextInput interface {
+	pulumi.Input
+
+	ToCxGeneratorPromptTextOutput() CxGeneratorPromptTextOutput
+	ToCxGeneratorPromptTextOutputWithContext(context.Context) CxGeneratorPromptTextOutput
+}
+
+type CxGeneratorPromptTextArgs struct {
+	// Text input which can be used for prompt or banned phrases.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxGeneratorPromptTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGeneratorPromptText)(nil)).Elem()
+}
+
+func (i CxGeneratorPromptTextArgs) ToCxGeneratorPromptTextOutput() CxGeneratorPromptTextOutput {
+	return i.ToCxGeneratorPromptTextOutputWithContext(context.Background())
+}
+
+func (i CxGeneratorPromptTextArgs) ToCxGeneratorPromptTextOutputWithContext(ctx context.Context) CxGeneratorPromptTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorPromptTextOutput)
+}
+
+func (i CxGeneratorPromptTextArgs) ToCxGeneratorPromptTextPtrOutput() CxGeneratorPromptTextPtrOutput {
+	return i.ToCxGeneratorPromptTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxGeneratorPromptTextArgs) ToCxGeneratorPromptTextPtrOutputWithContext(ctx context.Context) CxGeneratorPromptTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorPromptTextOutput).ToCxGeneratorPromptTextPtrOutputWithContext(ctx)
+}
+
+// CxGeneratorPromptTextPtrInput is an input type that accepts CxGeneratorPromptTextArgs, CxGeneratorPromptTextPtr and CxGeneratorPromptTextPtrOutput values.
+// You can construct a concrete instance of `CxGeneratorPromptTextPtrInput` via:
+//
+//	        CxGeneratorPromptTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxGeneratorPromptTextPtrInput interface {
+	pulumi.Input
+
+	ToCxGeneratorPromptTextPtrOutput() CxGeneratorPromptTextPtrOutput
+	ToCxGeneratorPromptTextPtrOutputWithContext(context.Context) CxGeneratorPromptTextPtrOutput
+}
+
+type cxGeneratorPromptTextPtrType CxGeneratorPromptTextArgs
+
+func CxGeneratorPromptTextPtr(v *CxGeneratorPromptTextArgs) CxGeneratorPromptTextPtrInput {
+	return (*cxGeneratorPromptTextPtrType)(v)
+}
+
+func (*cxGeneratorPromptTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGeneratorPromptText)(nil)).Elem()
+}
+
+func (i *cxGeneratorPromptTextPtrType) ToCxGeneratorPromptTextPtrOutput() CxGeneratorPromptTextPtrOutput {
+	return i.ToCxGeneratorPromptTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxGeneratorPromptTextPtrType) ToCxGeneratorPromptTextPtrOutputWithContext(ctx context.Context) CxGeneratorPromptTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxGeneratorPromptTextPtrOutput)
+}
+
+type CxGeneratorPromptTextOutput struct{ *pulumi.OutputState }
+
+func (CxGeneratorPromptTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxGeneratorPromptText)(nil)).Elem()
+}
+
+func (o CxGeneratorPromptTextOutput) ToCxGeneratorPromptTextOutput() CxGeneratorPromptTextOutput {
+	return o
+}
+
+func (o CxGeneratorPromptTextOutput) ToCxGeneratorPromptTextOutputWithContext(ctx context.Context) CxGeneratorPromptTextOutput {
+	return o
+}
+
+func (o CxGeneratorPromptTextOutput) ToCxGeneratorPromptTextPtrOutput() CxGeneratorPromptTextPtrOutput {
+	return o.ToCxGeneratorPromptTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxGeneratorPromptTextOutput) ToCxGeneratorPromptTextPtrOutputWithContext(ctx context.Context) CxGeneratorPromptTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxGeneratorPromptText) *CxGeneratorPromptText {
+		return &v
+	}).(CxGeneratorPromptTextPtrOutput)
+}
+
+// Text input which can be used for prompt or banned phrases.
+func (o CxGeneratorPromptTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxGeneratorPromptText) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type CxGeneratorPromptTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxGeneratorPromptTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxGeneratorPromptText)(nil)).Elem()
+}
+
+func (o CxGeneratorPromptTextPtrOutput) ToCxGeneratorPromptTextPtrOutput() CxGeneratorPromptTextPtrOutput {
+	return o
+}
+
+func (o CxGeneratorPromptTextPtrOutput) ToCxGeneratorPromptTextPtrOutputWithContext(ctx context.Context) CxGeneratorPromptTextPtrOutput {
+	return o
+}
+
+func (o CxGeneratorPromptTextPtrOutput) Elem() CxGeneratorPromptTextOutput {
+	return o.ApplyT(func(v *CxGeneratorPromptText) CxGeneratorPromptText {
+		if v != nil {
+			return *v
+		}
+		var ret CxGeneratorPromptText
+		return ret
+	}).(CxGeneratorPromptTextOutput)
+}
+
+// Text input which can be used for prompt or banned phrases.
+func (o CxGeneratorPromptTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxGeneratorPromptText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
 type CxIntentParameter struct {
 	// The entity type of the parameter.
 	// Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
@@ -31307,12 +31916,56 @@ func (o CxVersionNluSettingArrayOutput) Index(i pulumi.IntInput) CxVersionNluSet
 }
 
 type CxWebhookGenericWebService struct {
-	// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+	// Specifies a list of allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, Dialogflow will use Google's default trust store
+	// to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+	// name". For instance a certificate can be self-signed using the following
+	// command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
+	// HTTP method for the flexible webhook calls. Standard webhook always uses
+	// POST.
+	// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+	HttpMethod *string `pulumi:"httpMethod"`
+	// Represents configuration of OAuth client credential flow for 3rd party
+	// API authentication.
+	// Structure is documented below.
+	OauthConfig *CxWebhookGenericWebServiceOauthConfig `pulumi:"oauthConfig"`
+	// Maps the values extracted from specific fields of the flexible webhook
+	// response into session parameters.
+	// - Key: session parameter name
+	// - Value: field path in the webhook response
+	ParameterMapping map[string]string `pulumi:"parameterMapping"`
+	// Defines a custom JSON object as request body to send to flexible webhook.
+	RequestBody *string `pulumi:"requestBody"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders map[string]string `pulumi:"requestHeaders"`
-	// Whether to use speech adaptation for speech recognition.
+	// The SecretManager secret version resource storing the username:password
+	// pair for HTTP Basic authentication.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForUsernamePassword *string `pulumi:"secretVersionForUsernamePassword"`
+	// The HTTP request headers to send together with webhook requests. Header
+	// values are stored in SecretManager secret versions.
+	// When the same header name is specified in both `requestHeaders` and
+	// `secretVersionsForRequestHeaders`, the value in
+	// `secretVersionsForRequestHeaders` will be used.
+	// Structure is documented below.
+	SecretVersionsForRequestHeaders []CxWebhookGenericWebServiceSecretVersionsForRequestHeader `pulumi:"secretVersionsForRequestHeaders"`
+	// Indicate the auth token type generated from the [Diglogflow service
+	// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+	// The generated token is sent in the Authorization header.
+	// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+	ServiceAgentAuth *string `pulumi:"serviceAgentAuth"`
+	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri string `pulumi:"uri"`
+	// Type of the webhook.
+	// Possible values are: `STANDARD`, `FLEXIBLE`.
+	WebhookType *string `pulumi:"webhookType"`
 }
 
 // CxWebhookGenericWebServiceInput is an input type that accepts CxWebhookGenericWebServiceArgs and CxWebhookGenericWebServiceOutput values.
@@ -31327,12 +31980,56 @@ type CxWebhookGenericWebServiceInput interface {
 }
 
 type CxWebhookGenericWebServiceArgs struct {
-	// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+	// Specifies a list of allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, Dialogflow will use Google's default trust store
+	// to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+	// name". For instance a certificate can be self-signed using the following
+	// command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 	AllowedCaCerts pulumi.StringArrayInput `pulumi:"allowedCaCerts"`
+	// HTTP method for the flexible webhook calls. Standard webhook always uses
+	// POST.
+	// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	// Represents configuration of OAuth client credential flow for 3rd party
+	// API authentication.
+	// Structure is documented below.
+	OauthConfig CxWebhookGenericWebServiceOauthConfigPtrInput `pulumi:"oauthConfig"`
+	// Maps the values extracted from specific fields of the flexible webhook
+	// response into session parameters.
+	// - Key: session parameter name
+	// - Value: field path in the webhook response
+	ParameterMapping pulumi.StringMapInput `pulumi:"parameterMapping"`
+	// Defines a custom JSON object as request body to send to flexible webhook.
+	RequestBody pulumi.StringPtrInput `pulumi:"requestBody"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
-	// Whether to use speech adaptation for speech recognition.
+	// The SecretManager secret version resource storing the username:password
+	// pair for HTTP Basic authentication.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForUsernamePassword pulumi.StringPtrInput `pulumi:"secretVersionForUsernamePassword"`
+	// The HTTP request headers to send together with webhook requests. Header
+	// values are stored in SecretManager secret versions.
+	// When the same header name is specified in both `requestHeaders` and
+	// `secretVersionsForRequestHeaders`, the value in
+	// `secretVersionsForRequestHeaders` will be used.
+	// Structure is documented below.
+	SecretVersionsForRequestHeaders CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayInput `pulumi:"secretVersionsForRequestHeaders"`
+	// Indicate the auth token type generated from the [Diglogflow service
+	// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+	// The generated token is sent in the Authorization header.
+	// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+	ServiceAgentAuth pulumi.StringPtrInput `pulumi:"serviceAgentAuth"`
+	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri pulumi.StringInput `pulumi:"uri"`
+	// Type of the webhook.
+	// Possible values are: `STANDARD`, `FLEXIBLE`.
+	WebhookType pulumi.StringPtrInput `pulumi:"webhookType"`
 }
 
 func (CxWebhookGenericWebServiceArgs) ElementType() reflect.Type {
@@ -31412,9 +32109,46 @@ func (o CxWebhookGenericWebServiceOutput) ToCxWebhookGenericWebServicePtrOutputW
 	}).(CxWebhookGenericWebServicePtrOutput)
 }
 
-// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+// Specifies a list of allowed custom CA certificates (in DER format) for
+// HTTPS verification. This overrides the default SSL trust store. If this
+// is empty or unspecified, Dialogflow will use Google's default trust store
+// to verify certificates.
+// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+// name". For instance a certificate can be self-signed using the following
+// command,
+// openssl x509 -req -days 200 -in example.com.csr\
+// -signkey example.com.key\
+// -out example.com.crt\
+// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 func (o CxWebhookGenericWebServiceOutput) AllowedCaCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxWebhookGenericWebService) []string { return v.AllowedCaCerts }).(pulumi.StringArrayOutput)
+}
+
+// HTTP method for the flexible webhook calls. Standard webhook always uses
+// POST.
+// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+func (o CxWebhookGenericWebServiceOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// Represents configuration of OAuth client credential flow for 3rd party
+// API authentication.
+// Structure is documented below.
+func (o CxWebhookGenericWebServiceOutput) OauthConfig() CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) *CxWebhookGenericWebServiceOauthConfig { return v.OauthConfig }).(CxWebhookGenericWebServiceOauthConfigPtrOutput)
+}
+
+// Maps the values extracted from specific fields of the flexible webhook
+// response into session parameters.
+// - Key: session parameter name
+// - Value: field path in the webhook response
+func (o CxWebhookGenericWebServiceOutput) ParameterMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) map[string]string { return v.ParameterMapping }).(pulumi.StringMapOutput)
+}
+
+// Defines a custom JSON object as request body to send to flexible webhook.
+func (o CxWebhookGenericWebServiceOutput) RequestBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) *string { return v.RequestBody }).(pulumi.StringPtrOutput)
 }
 
 // The HTTP request headers to send together with webhook requests.
@@ -31422,9 +32156,42 @@ func (o CxWebhookGenericWebServiceOutput) RequestHeaders() pulumi.StringMapOutpu
 	return o.ApplyT(func(v CxWebhookGenericWebService) map[string]string { return v.RequestHeaders }).(pulumi.StringMapOutput)
 }
 
-// Whether to use speech adaptation for speech recognition.
+// The SecretManager secret version resource storing the username:password
+// pair for HTTP Basic authentication.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookGenericWebServiceOutput) SecretVersionForUsernamePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) *string { return v.SecretVersionForUsernamePassword }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with webhook requests. Header
+// values are stored in SecretManager secret versions.
+// When the same header name is specified in both `requestHeaders` and
+// `secretVersionsForRequestHeaders`, the value in
+// `secretVersionsForRequestHeaders` will be used.
+// Structure is documented below.
+func (o CxWebhookGenericWebServiceOutput) SecretVersionsForRequestHeaders() CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) []CxWebhookGenericWebServiceSecretVersionsForRequestHeader {
+		return v.SecretVersionsForRequestHeaders
+	}).(CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput)
+}
+
+// Indicate the auth token type generated from the [Diglogflow service
+// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+// The generated token is sent in the Authorization header.
+// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+func (o CxWebhookGenericWebServiceOutput) ServiceAgentAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) *string { return v.ServiceAgentAuth }).(pulumi.StringPtrOutput)
+}
+
+// The webhook URI for receiving POST requests. It must use https protocol.
 func (o CxWebhookGenericWebServiceOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v CxWebhookGenericWebService) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Type of the webhook.
+// Possible values are: `STANDARD`, `FLEXIBLE`.
+func (o CxWebhookGenericWebServiceOutput) WebhookType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) *string { return v.WebhookType }).(pulumi.StringPtrOutput)
 }
 
 type CxWebhookGenericWebServicePtrOutput struct{ *pulumi.OutputState }
@@ -31451,7 +32218,17 @@ func (o CxWebhookGenericWebServicePtrOutput) Elem() CxWebhookGenericWebServiceOu
 	}).(CxWebhookGenericWebServiceOutput)
 }
 
-// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+// Specifies a list of allowed custom CA certificates (in DER format) for
+// HTTPS verification. This overrides the default SSL trust store. If this
+// is empty or unspecified, Dialogflow will use Google's default trust store
+// to verify certificates.
+// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+// name". For instance a certificate can be self-signed using the following
+// command,
+// openssl x509 -req -days 200 -in example.com.csr\
+// -signkey example.com.key\
+// -out example.com.crt\
+// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 func (o CxWebhookGenericWebServicePtrOutput) AllowedCaCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxWebhookGenericWebService) []string {
 		if v == nil {
@@ -31459,6 +32236,53 @@ func (o CxWebhookGenericWebServicePtrOutput) AllowedCaCerts() pulumi.StringArray
 		}
 		return v.AllowedCaCerts
 	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP method for the flexible webhook calls. Standard webhook always uses
+// POST.
+// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+func (o CxWebhookGenericWebServicePtrOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents configuration of OAuth client credential flow for 3rd party
+// API authentication.
+// Structure is documented below.
+func (o CxWebhookGenericWebServicePtrOutput) OauthConfig() CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) *CxWebhookGenericWebServiceOauthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OauthConfig
+	}).(CxWebhookGenericWebServiceOauthConfigPtrOutput)
+}
+
+// Maps the values extracted from specific fields of the flexible webhook
+// response into session parameters.
+// - Key: session parameter name
+// - Value: field path in the webhook response
+func (o CxWebhookGenericWebServicePtrOutput) ParameterMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterMapping
+	}).(pulumi.StringMapOutput)
+}
+
+// Defines a custom JSON object as request body to send to flexible webhook.
+func (o CxWebhookGenericWebServicePtrOutput) RequestBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestBody
+	}).(pulumi.StringPtrOutput)
 }
 
 // The HTTP request headers to send together with webhook requests.
@@ -31471,7 +32295,47 @@ func (o CxWebhookGenericWebServicePtrOutput) RequestHeaders() pulumi.StringMapOu
 	}).(pulumi.StringMapOutput)
 }
 
-// Whether to use speech adaptation for speech recognition.
+// The SecretManager secret version resource storing the username:password
+// pair for HTTP Basic authentication.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookGenericWebServicePtrOutput) SecretVersionForUsernamePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForUsernamePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with webhook requests. Header
+// values are stored in SecretManager secret versions.
+// When the same header name is specified in both `requestHeaders` and
+// `secretVersionsForRequestHeaders`, the value in
+// `secretVersionsForRequestHeaders` will be used.
+// Structure is documented below.
+func (o CxWebhookGenericWebServicePtrOutput) SecretVersionsForRequestHeaders() CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) []CxWebhookGenericWebServiceSecretVersionsForRequestHeader {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionsForRequestHeaders
+	}).(CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput)
+}
+
+// Indicate the auth token type generated from the [Diglogflow service
+// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+// The generated token is sent in the Authorization header.
+// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+func (o CxWebhookGenericWebServicePtrOutput) ServiceAgentAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAgentAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+// The webhook URI for receiving POST requests. It must use https protocol.
 func (o CxWebhookGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxWebhookGenericWebService) *string {
 		if v == nil {
@@ -31481,10 +32345,367 @@ func (o CxWebhookGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Type of the webhook.
+// Possible values are: `STANDARD`, `FLEXIBLE`.
+func (o CxWebhookGenericWebServicePtrOutput) WebhookType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookType
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxWebhookGenericWebServiceOauthConfig struct {
+	// The client ID provided by the 3rd party platform.
+	ClientId string `pulumi:"clientId"`
+	// The client secret provided by the 3rd party platform.  If the
+	// `secretVersionForClientSecret` field is set, this field will be
+	// ignored.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// The OAuth scopes to grant.
+	Scopes []string `pulumi:"scopes"`
+	// The name of the SecretManager secret version resource storing the
+	// client secret. If this field is set, the `clientSecret` field will be
+	// ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForClientSecret *string `pulumi:"secretVersionForClientSecret"`
+	// The token endpoint provided by the 3rd party platform to exchange an
+	// access token.
+	TokenEndpoint string `pulumi:"tokenEndpoint"`
+}
+
+// CxWebhookGenericWebServiceOauthConfigInput is an input type that accepts CxWebhookGenericWebServiceOauthConfigArgs and CxWebhookGenericWebServiceOauthConfigOutput values.
+// You can construct a concrete instance of `CxWebhookGenericWebServiceOauthConfigInput` via:
+//
+//	CxWebhookGenericWebServiceOauthConfigArgs{...}
+type CxWebhookGenericWebServiceOauthConfigInput interface {
+	pulumi.Input
+
+	ToCxWebhookGenericWebServiceOauthConfigOutput() CxWebhookGenericWebServiceOauthConfigOutput
+	ToCxWebhookGenericWebServiceOauthConfigOutputWithContext(context.Context) CxWebhookGenericWebServiceOauthConfigOutput
+}
+
+type CxWebhookGenericWebServiceOauthConfigArgs struct {
+	// The client ID provided by the 3rd party platform.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The client secret provided by the 3rd party platform.  If the
+	// `secretVersionForClientSecret` field is set, this field will be
+	// ignored.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// The OAuth scopes to grant.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The name of the SecretManager secret version resource storing the
+	// client secret. If this field is set, the `clientSecret` field will be
+	// ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForClientSecret pulumi.StringPtrInput `pulumi:"secretVersionForClientSecret"`
+	// The token endpoint provided by the 3rd party platform to exchange an
+	// access token.
+	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
+}
+
+func (CxWebhookGenericWebServiceOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookGenericWebServiceOauthConfig)(nil)).Elem()
+}
+
+func (i CxWebhookGenericWebServiceOauthConfigArgs) ToCxWebhookGenericWebServiceOauthConfigOutput() CxWebhookGenericWebServiceOauthConfigOutput {
+	return i.ToCxWebhookGenericWebServiceOauthConfigOutputWithContext(context.Background())
+}
+
+func (i CxWebhookGenericWebServiceOauthConfigArgs) ToCxWebhookGenericWebServiceOauthConfigOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceOauthConfigOutput)
+}
+
+func (i CxWebhookGenericWebServiceOauthConfigArgs) ToCxWebhookGenericWebServiceOauthConfigPtrOutput() CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return i.ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxWebhookGenericWebServiceOauthConfigArgs) ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceOauthConfigOutput).ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(ctx)
+}
+
+// CxWebhookGenericWebServiceOauthConfigPtrInput is an input type that accepts CxWebhookGenericWebServiceOauthConfigArgs, CxWebhookGenericWebServiceOauthConfigPtr and CxWebhookGenericWebServiceOauthConfigPtrOutput values.
+// You can construct a concrete instance of `CxWebhookGenericWebServiceOauthConfigPtrInput` via:
+//
+//	        CxWebhookGenericWebServiceOauthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxWebhookGenericWebServiceOauthConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxWebhookGenericWebServiceOauthConfigPtrOutput() CxWebhookGenericWebServiceOauthConfigPtrOutput
+	ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(context.Context) CxWebhookGenericWebServiceOauthConfigPtrOutput
+}
+
+type cxWebhookGenericWebServiceOauthConfigPtrType CxWebhookGenericWebServiceOauthConfigArgs
+
+func CxWebhookGenericWebServiceOauthConfigPtr(v *CxWebhookGenericWebServiceOauthConfigArgs) CxWebhookGenericWebServiceOauthConfigPtrInput {
+	return (*cxWebhookGenericWebServiceOauthConfigPtrType)(v)
+}
+
+func (*cxWebhookGenericWebServiceOauthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookGenericWebServiceOauthConfig)(nil)).Elem()
+}
+
+func (i *cxWebhookGenericWebServiceOauthConfigPtrType) ToCxWebhookGenericWebServiceOauthConfigPtrOutput() CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return i.ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxWebhookGenericWebServiceOauthConfigPtrType) ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceOauthConfigPtrOutput)
+}
+
+type CxWebhookGenericWebServiceOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookGenericWebServiceOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookGenericWebServiceOauthConfig)(nil)).Elem()
+}
+
+func (o CxWebhookGenericWebServiceOauthConfigOutput) ToCxWebhookGenericWebServiceOauthConfigOutput() CxWebhookGenericWebServiceOauthConfigOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceOauthConfigOutput) ToCxWebhookGenericWebServiceOauthConfigOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceOauthConfigOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceOauthConfigOutput) ToCxWebhookGenericWebServiceOauthConfigPtrOutput() CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return o.ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxWebhookGenericWebServiceOauthConfigOutput) ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookGenericWebServiceOauthConfig) *CxWebhookGenericWebServiceOauthConfig {
+		return &v
+	}).(CxWebhookGenericWebServiceOauthConfigPtrOutput)
+}
+
+// The client ID provided by the 3rd party platform.
+func (o CxWebhookGenericWebServiceOauthConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebServiceOauthConfig) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The client secret provided by the 3rd party platform.  If the
+// `secretVersionForClientSecret` field is set, this field will be
+// ignored.
+func (o CxWebhookGenericWebServiceOauthConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebServiceOauthConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The OAuth scopes to grant.
+func (o CxWebhookGenericWebServiceOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebServiceOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The name of the SecretManager secret version resource storing the
+// client secret. If this field is set, the `clientSecret` field will be
+// ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookGenericWebServiceOauthConfigOutput) SecretVersionForClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebServiceOauthConfig) *string { return v.SecretVersionForClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint provided by the 3rd party platform to exchange an
+// access token.
+func (o CxWebhookGenericWebServiceOauthConfigOutput) TokenEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebServiceOauthConfig) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+type CxWebhookGenericWebServiceOauthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookGenericWebServiceOauthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookGenericWebServiceOauthConfig)(nil)).Elem()
+}
+
+func (o CxWebhookGenericWebServiceOauthConfigPtrOutput) ToCxWebhookGenericWebServiceOauthConfigPtrOutput() CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceOauthConfigPtrOutput) ToCxWebhookGenericWebServiceOauthConfigPtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceOauthConfigPtrOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceOauthConfigPtrOutput) Elem() CxWebhookGenericWebServiceOauthConfigOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebServiceOauthConfig) CxWebhookGenericWebServiceOauthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxWebhookGenericWebServiceOauthConfig
+		return ret
+	}).(CxWebhookGenericWebServiceOauthConfigOutput)
+}
+
+// The client ID provided by the 3rd party platform.
+func (o CxWebhookGenericWebServiceOauthConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebServiceOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client secret provided by the 3rd party platform.  If the
+// `secretVersionForClientSecret` field is set, this field will be
+// ignored.
+func (o CxWebhookGenericWebServiceOauthConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebServiceOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OAuth scopes to grant.
+func (o CxWebhookGenericWebServiceOauthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebServiceOauthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the SecretManager secret version resource storing the
+// client secret. If this field is set, the `clientSecret` field will be
+// ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookGenericWebServiceOauthConfigPtrOutput) SecretVersionForClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebServiceOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint provided by the 3rd party platform to exchange an
+// access token.
+func (o CxWebhookGenericWebServiceOauthConfigPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebServiceOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxWebhookGenericWebServiceSecretVersionsForRequestHeader struct {
+	// The identifier for this object. Format specified above.
+	Key string `pulumi:"key"`
+	// The SecretManager secret version resource storing the header value.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// CxWebhookGenericWebServiceSecretVersionsForRequestHeaderInput is an input type that accepts CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs and CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput values.
+// You can construct a concrete instance of `CxWebhookGenericWebServiceSecretVersionsForRequestHeaderInput` via:
+//
+//	CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs{...}
+type CxWebhookGenericWebServiceSecretVersionsForRequestHeaderInput interface {
+	pulumi.Input
+
+	ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput() CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput
+	ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutputWithContext(context.Context) CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput
+}
+
+type CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs struct {
+	// The identifier for this object. Format specified above.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The SecretManager secret version resource storing the header value.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookGenericWebServiceSecretVersionsForRequestHeader)(nil)).Elem()
+}
+
+func (i CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs) ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput() CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return i.ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs) ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput)
+}
+
+// CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayInput is an input type that accepts CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArray and CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayInput` via:
+//
+//	CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArray{ CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs{...} }
+type CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput() CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput
+	ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutputWithContext(context.Context) CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput
+}
+
+type CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArray []CxWebhookGenericWebServiceSecretVersionsForRequestHeaderInput
+
+func (CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxWebhookGenericWebServiceSecretVersionsForRequestHeader)(nil)).Elem()
+}
+
+func (i CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArray) ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput() CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return i.ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArray) ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput)
+}
+
+type CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookGenericWebServiceSecretVersionsForRequestHeader)(nil)).Elem()
+}
+
+func (o CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput) ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput() CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput) ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebServiceSecretVersionsForRequestHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The SecretManager secret version resource storing the header value.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebServiceSecretVersionsForRequestHeader) string { return v.SecretVersion }).(pulumi.StringOutput)
+}
+
+type CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxWebhookGenericWebServiceSecretVersionsForRequestHeader)(nil)).Elem()
+}
+
+func (o CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput) ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput() CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput) ToCxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput) Index(i pulumi.IntInput) CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxWebhookGenericWebServiceSecretVersionsForRequestHeader {
+		return vs[0].([]CxWebhookGenericWebServiceSecretVersionsForRequestHeader)[vs[1].(int)]
+	}).(CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput)
+}
+
 type CxWebhookServiceDirectory struct {
-	// The name of Service Directory service.
+	// Represents configuration for a generic web service.
 	// Structure is documented below.
-	GenericWebService CxWebhookServiceDirectoryGenericWebService `pulumi:"genericWebService"`
+	GenericWebService *CxWebhookServiceDirectoryGenericWebService `pulumi:"genericWebService"`
 	// The name of Service Directory service.
 	Service string `pulumi:"service"`
 }
@@ -31501,9 +32722,9 @@ type CxWebhookServiceDirectoryInput interface {
 }
 
 type CxWebhookServiceDirectoryArgs struct {
-	// The name of Service Directory service.
+	// Represents configuration for a generic web service.
 	// Structure is documented below.
-	GenericWebService CxWebhookServiceDirectoryGenericWebServiceInput `pulumi:"genericWebService"`
+	GenericWebService CxWebhookServiceDirectoryGenericWebServicePtrInput `pulumi:"genericWebService"`
 	// The name of Service Directory service.
 	Service pulumi.StringInput `pulumi:"service"`
 }
@@ -31585,12 +32806,12 @@ func (o CxWebhookServiceDirectoryOutput) ToCxWebhookServiceDirectoryPtrOutputWit
 	}).(CxWebhookServiceDirectoryPtrOutput)
 }
 
-// The name of Service Directory service.
+// Represents configuration for a generic web service.
 // Structure is documented below.
-func (o CxWebhookServiceDirectoryOutput) GenericWebService() CxWebhookServiceDirectoryGenericWebServiceOutput {
-	return o.ApplyT(func(v CxWebhookServiceDirectory) CxWebhookServiceDirectoryGenericWebService {
+func (o CxWebhookServiceDirectoryOutput) GenericWebService() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectory) *CxWebhookServiceDirectoryGenericWebService {
 		return v.GenericWebService
-	}).(CxWebhookServiceDirectoryGenericWebServiceOutput)
+	}).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
 }
 
 // The name of Service Directory service.
@@ -31622,14 +32843,14 @@ func (o CxWebhookServiceDirectoryPtrOutput) Elem() CxWebhookServiceDirectoryOutp
 	}).(CxWebhookServiceDirectoryOutput)
 }
 
-// The name of Service Directory service.
+// Represents configuration for a generic web service.
 // Structure is documented below.
 func (o CxWebhookServiceDirectoryPtrOutput) GenericWebService() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
 	return o.ApplyT(func(v *CxWebhookServiceDirectory) *CxWebhookServiceDirectoryGenericWebService {
 		if v == nil {
 			return nil
 		}
-		return &v.GenericWebService
+		return v.GenericWebService
 	}).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
 }
 
@@ -31644,12 +32865,56 @@ func (o CxWebhookServiceDirectoryPtrOutput) Service() pulumi.StringPtrOutput {
 }
 
 type CxWebhookServiceDirectoryGenericWebService struct {
-	// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+	// Specifies a list of allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, Dialogflow will use Google's default trust store
+	// to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+	// name". For instance a certificate can be self-signed using the following
+	// command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
+	// HTTP method for the flexible webhook calls. Standard webhook always uses
+	// POST.
+	// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+	HttpMethod *string `pulumi:"httpMethod"`
+	// Represents configuration of OAuth client credential flow for 3rd party
+	// API authentication.
+	// Structure is documented below.
+	OauthConfig *CxWebhookServiceDirectoryGenericWebServiceOauthConfig `pulumi:"oauthConfig"`
+	// Maps the values extracted from specific fields of the flexible webhook
+	// response into session parameters.
+	// - Key: session parameter name
+	// - Value: field path in the webhook response
+	ParameterMapping map[string]string `pulumi:"parameterMapping"`
+	// Defines a custom JSON object as request body to send to flexible webhook.
+	RequestBody *string `pulumi:"requestBody"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders map[string]string `pulumi:"requestHeaders"`
-	// Whether to use speech adaptation for speech recognition.
+	// The SecretManager secret version resource storing the username:password
+	// pair for HTTP Basic authentication.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForUsernamePassword *string `pulumi:"secretVersionForUsernamePassword"`
+	// The HTTP request headers to send together with webhook requests. Header
+	// values are stored in SecretManager secret versions.
+	// When the same header name is specified in both `requestHeaders` and
+	// `secretVersionsForRequestHeaders`, the value in
+	// `secretVersionsForRequestHeaders` will be used.
+	// Structure is documented below.
+	SecretVersionsForRequestHeaders []CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader `pulumi:"secretVersionsForRequestHeaders"`
+	// Indicate the auth token type generated from the [Diglogflow service
+	// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+	// The generated token is sent in the Authorization header.
+	// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+	ServiceAgentAuth *string `pulumi:"serviceAgentAuth"`
+	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri string `pulumi:"uri"`
+	// Type of the webhook.
+	// Possible values are: `STANDARD`, `FLEXIBLE`.
+	WebhookType *string `pulumi:"webhookType"`
 }
 
 // CxWebhookServiceDirectoryGenericWebServiceInput is an input type that accepts CxWebhookServiceDirectoryGenericWebServiceArgs and CxWebhookServiceDirectoryGenericWebServiceOutput values.
@@ -31664,12 +32929,56 @@ type CxWebhookServiceDirectoryGenericWebServiceInput interface {
 }
 
 type CxWebhookServiceDirectoryGenericWebServiceArgs struct {
-	// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+	// Specifies a list of allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, Dialogflow will use Google's default trust store
+	// to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+	// name". For instance a certificate can be self-signed using the following
+	// command,
+	// openssl x509 -req -days 200 -in example.com.csr\
+	// -signkey example.com.key\
+	// -out example.com.crt\
+	// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 	AllowedCaCerts pulumi.StringArrayInput `pulumi:"allowedCaCerts"`
+	// HTTP method for the flexible webhook calls. Standard webhook always uses
+	// POST.
+	// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	// Represents configuration of OAuth client credential flow for 3rd party
+	// API authentication.
+	// Structure is documented below.
+	OauthConfig CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrInput `pulumi:"oauthConfig"`
+	// Maps the values extracted from specific fields of the flexible webhook
+	// response into session parameters.
+	// - Key: session parameter name
+	// - Value: field path in the webhook response
+	ParameterMapping pulumi.StringMapInput `pulumi:"parameterMapping"`
+	// Defines a custom JSON object as request body to send to flexible webhook.
+	RequestBody pulumi.StringPtrInput `pulumi:"requestBody"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
-	// Whether to use speech adaptation for speech recognition.
+	// The SecretManager secret version resource storing the username:password
+	// pair for HTTP Basic authentication.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForUsernamePassword pulumi.StringPtrInput `pulumi:"secretVersionForUsernamePassword"`
+	// The HTTP request headers to send together with webhook requests. Header
+	// values are stored in SecretManager secret versions.
+	// When the same header name is specified in both `requestHeaders` and
+	// `secretVersionsForRequestHeaders`, the value in
+	// `secretVersionsForRequestHeaders` will be used.
+	// Structure is documented below.
+	SecretVersionsForRequestHeaders CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayInput `pulumi:"secretVersionsForRequestHeaders"`
+	// Indicate the auth token type generated from the [Diglogflow service
+	// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+	// The generated token is sent in the Authorization header.
+	// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+	ServiceAgentAuth pulumi.StringPtrInput `pulumi:"serviceAgentAuth"`
+	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri pulumi.StringInput `pulumi:"uri"`
+	// Type of the webhook.
+	// Possible values are: `STANDARD`, `FLEXIBLE`.
+	WebhookType pulumi.StringPtrInput `pulumi:"webhookType"`
 }
 
 func (CxWebhookServiceDirectoryGenericWebServiceArgs) ElementType() reflect.Type {
@@ -31749,9 +33058,48 @@ func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToCxWebhookServiceDire
 	}).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
 }
 
-// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+// Specifies a list of allowed custom CA certificates (in DER format) for
+// HTTPS verification. This overrides the default SSL trust store. If this
+// is empty or unspecified, Dialogflow will use Google's default trust store
+// to verify certificates.
+// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+// name". For instance a certificate can be self-signed using the following
+// command,
+// openssl x509 -req -days 200 -in example.com.csr\
+// -signkey example.com.key\
+// -out example.com.crt\
+// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 func (o CxWebhookServiceDirectoryGenericWebServiceOutput) AllowedCaCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) []string { return v.AllowedCaCerts }).(pulumi.StringArrayOutput)
+}
+
+// HTTP method for the flexible webhook calls. Standard webhook always uses
+// POST.
+// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// Represents configuration of OAuth client credential flow for 3rd party
+// API authentication.
+// Structure is documented below.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) OauthConfig() CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) *CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
+		return v.OauthConfig
+	}).(CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput)
+}
+
+// Maps the values extracted from specific fields of the flexible webhook
+// response into session parameters.
+// - Key: session parameter name
+// - Value: field path in the webhook response
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ParameterMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) map[string]string { return v.ParameterMapping }).(pulumi.StringMapOutput)
+}
+
+// Defines a custom JSON object as request body to send to flexible webhook.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) RequestBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) *string { return v.RequestBody }).(pulumi.StringPtrOutput)
 }
 
 // The HTTP request headers to send together with webhook requests.
@@ -31759,9 +33107,42 @@ func (o CxWebhookServiceDirectoryGenericWebServiceOutput) RequestHeaders() pulum
 	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) map[string]string { return v.RequestHeaders }).(pulumi.StringMapOutput)
 }
 
-// Whether to use speech adaptation for speech recognition.
+// The SecretManager secret version resource storing the username:password
+// pair for HTTP Basic authentication.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) SecretVersionForUsernamePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) *string { return v.SecretVersionForUsernamePassword }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with webhook requests. Header
+// values are stored in SecretManager secret versions.
+// When the same header name is specified in both `requestHeaders` and
+// `secretVersionsForRequestHeaders`, the value in
+// `secretVersionsForRequestHeaders` will be used.
+// Structure is documented below.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) SecretVersionsForRequestHeaders() CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) []CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader {
+		return v.SecretVersionsForRequestHeaders
+	}).(CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput)
+}
+
+// Indicate the auth token type generated from the [Diglogflow service
+// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+// The generated token is sent in the Authorization header.
+// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ServiceAgentAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) *string { return v.ServiceAgentAuth }).(pulumi.StringPtrOutput)
+}
+
+// The webhook URI for receiving POST requests. It must use https protocol.
 func (o CxWebhookServiceDirectoryGenericWebServiceOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Type of the webhook.
+// Possible values are: `STANDARD`, `FLEXIBLE`.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) WebhookType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) *string { return v.WebhookType }).(pulumi.StringPtrOutput)
 }
 
 type CxWebhookServiceDirectoryGenericWebServicePtrOutput struct{ *pulumi.OutputState }
@@ -31788,7 +33169,17 @@ func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) Elem() CxWebhookSer
 	}).(CxWebhookServiceDirectoryGenericWebServiceOutput)
 }
 
-// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+// Specifies a list of allowed custom CA certificates (in DER format) for
+// HTTPS verification. This overrides the default SSL trust store. If this
+// is empty or unspecified, Dialogflow will use Google's default trust store
+// to verify certificates.
+// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+// name". For instance a certificate can be self-signed using the following
+// command,
+// openssl x509 -req -days 200 -in example.com.csr\
+// -signkey example.com.key\
+// -out example.com.crt\
+// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) AllowedCaCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) []string {
 		if v == nil {
@@ -31796,6 +33187,53 @@ func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) AllowedCaCerts() pu
 		}
 		return v.AllowedCaCerts
 	}).(pulumi.StringArrayOutput)
+}
+
+// HTTP method for the flexible webhook calls. Standard webhook always uses
+// POST.
+// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents configuration of OAuth client credential flow for 3rd party
+// API authentication.
+// Structure is documented below.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) OauthConfig() CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) *CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OauthConfig
+	}).(CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput)
+}
+
+// Maps the values extracted from specific fields of the flexible webhook
+// response into session parameters.
+// - Key: session parameter name
+// - Value: field path in the webhook response
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ParameterMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterMapping
+	}).(pulumi.StringMapOutput)
+}
+
+// Defines a custom JSON object as request body to send to flexible webhook.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) RequestBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestBody
+	}).(pulumi.StringPtrOutput)
 }
 
 // The HTTP request headers to send together with webhook requests.
@@ -31808,7 +33246,47 @@ func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) RequestHeaders() pu
 	}).(pulumi.StringMapOutput)
 }
 
-// Whether to use speech adaptation for speech recognition.
+// The SecretManager secret version resource storing the username:password
+// pair for HTTP Basic authentication.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) SecretVersionForUsernamePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForUsernamePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with webhook requests. Header
+// values are stored in SecretManager secret versions.
+// When the same header name is specified in both `requestHeaders` and
+// `secretVersionsForRequestHeaders`, the value in
+// `secretVersionsForRequestHeaders` will be used.
+// Structure is documented below.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) SecretVersionsForRequestHeaders() CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) []CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionsForRequestHeaders
+	}).(CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput)
+}
+
+// Indicate the auth token type generated from the [Diglogflow service
+// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+// The generated token is sent in the Authorization header.
+// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ServiceAgentAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAgentAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+// The webhook URI for receiving POST requests. It must use https protocol.
 func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) *string {
 		if v == nil {
@@ -31816,6 +33294,367 @@ func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) Uri() pulumi.String
 		}
 		return &v.Uri
 	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the webhook.
+// Possible values are: `STANDARD`, `FLEXIBLE`.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) WebhookType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookType
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceOauthConfig struct {
+	// The client ID provided by the 3rd party platform.
+	ClientId string `pulumi:"clientId"`
+	// The client secret provided by the 3rd party platform.  If the
+	// `secretVersionForClientSecret` field is set, this field will be
+	// ignored.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// The OAuth scopes to grant.
+	Scopes []string `pulumi:"scopes"`
+	// The name of the SecretManager secret version resource storing the
+	// client secret. If this field is set, the `clientSecret` field will be
+	// ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForClientSecret *string `pulumi:"secretVersionForClientSecret"`
+	// The token endpoint provided by the 3rd party platform to exchange an
+	// access token.
+	TokenEndpoint string `pulumi:"tokenEndpoint"`
+}
+
+// CxWebhookServiceDirectoryGenericWebServiceOauthConfigInput is an input type that accepts CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs and CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput values.
+// You can construct a concrete instance of `CxWebhookServiceDirectoryGenericWebServiceOauthConfigInput` via:
+//
+//	CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs{...}
+type CxWebhookServiceDirectoryGenericWebServiceOauthConfigInput interface {
+	pulumi.Input
+
+	ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput() CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput
+	ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigOutputWithContext(context.Context) CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs struct {
+	// The client ID provided by the 3rd party platform.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The client secret provided by the 3rd party platform.  If the
+	// `secretVersionForClientSecret` field is set, this field will be
+	// ignored.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// The OAuth scopes to grant.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The name of the SecretManager secret version resource storing the
+	// client secret. If this field is set, the `clientSecret` field will be
+	// ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForClientSecret pulumi.StringPtrInput `pulumi:"secretVersionForClientSecret"`
+	// The token endpoint provided by the 3rd party platform to exchange an
+	// access token.
+	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
+}
+
+func (CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceOauthConfig)(nil)).Elem()
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput() CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput {
+	return i.ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigOutputWithContext(context.Background())
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput)
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput() CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return i.ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput).ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(ctx)
+}
+
+// CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrInput is an input type that accepts CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs, CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtr and CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput values.
+// You can construct a concrete instance of `CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrInput` via:
+//
+//	        CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput() CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput
+	ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(context.Context) CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput
+}
+
+type cxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrType CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs
+
+func CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtr(v *CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs) CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrInput {
+	return (*cxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrType)(v)
+}
+
+func (*cxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookServiceDirectoryGenericWebServiceOauthConfig)(nil)).Elem()
+}
+
+func (i *cxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrType) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput() CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return i.ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrType) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceOauthConfig)(nil)).Elem()
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput() CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput() CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return o.ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookServiceDirectoryGenericWebServiceOauthConfig) *CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
+		return &v
+	}).(CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput)
+}
+
+// The client ID provided by the 3rd party platform.
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebServiceOauthConfig) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The client secret provided by the 3rd party platform.  If the
+// `secretVersionForClientSecret` field is set, this field will be
+// ignored.
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebServiceOauthConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The OAuth scopes to grant.
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebServiceOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The name of the SecretManager secret version resource storing the
+// client secret. If this field is set, the `clientSecret` field will be
+// ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) SecretVersionForClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebServiceOauthConfig) *string {
+		return v.SecretVersionForClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint provided by the 3rd party platform to exchange an
+// access token.
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput) TokenEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebServiceOauthConfig) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookServiceDirectoryGenericWebServiceOauthConfig)(nil)).Elem()
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput() CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) ToCxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) Elem() CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebServiceOauthConfig) CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxWebhookServiceDirectoryGenericWebServiceOauthConfig
+		return ret
+	}).(CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput)
+}
+
+// The client ID provided by the 3rd party platform.
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebServiceOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client secret provided by the 3rd party platform.  If the
+// `secretVersionForClientSecret` field is set, this field will be
+// ignored.
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebServiceOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OAuth scopes to grant.
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebServiceOauthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the SecretManager secret version resource storing the
+// client secret. If this field is set, the `clientSecret` field will be
+// ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) SecretVersionForClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebServiceOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint provided by the 3rd party platform to exchange an
+// access token.
+func (o CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebServiceOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader struct {
+	// The identifier for this object. Format specified above.
+	Key string `pulumi:"key"`
+	// The SecretManager secret version resource storing the header value.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderInput is an input type that accepts CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs and CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput values.
+// You can construct a concrete instance of `CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderInput` via:
+//
+//	CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs{...}
+type CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderInput interface {
+	pulumi.Input
+
+	ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput() CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput
+	ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutputWithContext(context.Context) CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs struct {
+	// The identifier for this object. Format specified above.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The SecretManager secret version resource storing the header value.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader)(nil)).Elem()
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs) ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput() CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return i.ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs) ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput)
+}
+
+// CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayInput is an input type that accepts CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArray and CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayInput` via:
+//
+//	CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArray{ CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs{...} }
+type CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput() CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput
+	ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutputWithContext(context.Context) CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArray []CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderInput
+
+func (CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader)(nil)).Elem()
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArray) ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput() CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return i.ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArray) ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader)(nil)).Elem()
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput) ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput() CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput) ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The SecretManager secret version resource storing the header value.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader) string {
+		return v.SecretVersion
+	}).(pulumi.StringOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader)(nil)).Elem()
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput) ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput() CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput) ToCxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput) Index(i pulumi.IntInput) CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader {
+		return vs[0].([]CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader)[vs[1].(int)]
+	}).(CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput)
 }
 
 type EncryptionSpecEncryptionSpec struct {
@@ -32641,6 +34480,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsKnowledgeConnectorSettingsPtrInput)(nil)).Elem(), CxGenerativeSettingsKnowledgeConnectorSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsLlmModelSettingsInput)(nil)).Elem(), CxGenerativeSettingsLlmModelSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxGenerativeSettingsLlmModelSettingsPtrInput)(nil)).Elem(), CxGenerativeSettingsLlmModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGeneratorLlmModelSettingsInput)(nil)).Elem(), CxGeneratorLlmModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGeneratorLlmModelSettingsPtrInput)(nil)).Elem(), CxGeneratorLlmModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGeneratorModelParameterInput)(nil)).Elem(), CxGeneratorModelParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGeneratorModelParameterPtrInput)(nil)).Elem(), CxGeneratorModelParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGeneratorPlaceholderInput)(nil)).Elem(), CxGeneratorPlaceholderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGeneratorPlaceholderArrayInput)(nil)).Elem(), CxGeneratorPlaceholderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGeneratorPromptTextInput)(nil)).Elem(), CxGeneratorPromptTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxGeneratorPromptTextPtrInput)(nil)).Elem(), CxGeneratorPromptTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentParameterInput)(nil)).Elem(), CxIntentParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentParameterArrayInput)(nil)).Elem(), CxIntentParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentTrainingPhraseInput)(nil)).Elem(), CxIntentTrainingPhraseArgs{})
@@ -32889,10 +34736,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingArrayInput)(nil)).Elem(), CxVersionNluSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceInput)(nil)).Elem(), CxWebhookGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServicePtrInput)(nil)).Elem(), CxWebhookGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceOauthConfigInput)(nil)).Elem(), CxWebhookGenericWebServiceOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceOauthConfigPtrInput)(nil)).Elem(), CxWebhookGenericWebServiceOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceSecretVersionsForRequestHeaderInput)(nil)).Elem(), CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayInput)(nil)).Elem(), CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryInput)(nil)).Elem(), CxWebhookServiceDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryPtrInput)(nil)).Elem(), CxWebhookServiceDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServicePtrInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceOauthConfigInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionSpecEncryptionSpecInput)(nil)).Elem(), EncryptionSpecEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionSpecEncryptionSpecPtrInput)(nil)).Elem(), EncryptionSpecEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeEntityInput)(nil)).Elem(), EntityTypeEntityArgs{})
@@ -33037,6 +34892,14 @@ func init() {
 	pulumi.RegisterOutputType(CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxGenerativeSettingsLlmModelSettingsOutput{})
 	pulumi.RegisterOutputType(CxGenerativeSettingsLlmModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxGeneratorLlmModelSettingsOutput{})
+	pulumi.RegisterOutputType(CxGeneratorLlmModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxGeneratorModelParameterOutput{})
+	pulumi.RegisterOutputType(CxGeneratorModelParameterPtrOutput{})
+	pulumi.RegisterOutputType(CxGeneratorPlaceholderOutput{})
+	pulumi.RegisterOutputType(CxGeneratorPlaceholderArrayOutput{})
+	pulumi.RegisterOutputType(CxGeneratorPromptTextOutput{})
+	pulumi.RegisterOutputType(CxGeneratorPromptTextPtrOutput{})
 	pulumi.RegisterOutputType(CxIntentParameterOutput{})
 	pulumi.RegisterOutputType(CxIntentParameterArrayOutput{})
 	pulumi.RegisterOutputType(CxIntentTrainingPhraseOutput{})
@@ -33285,10 +35148,18 @@ func init() {
 	pulumi.RegisterOutputType(CxVersionNluSettingArrayOutput{})
 	pulumi.RegisterOutputType(CxWebhookGenericWebServiceOutput{})
 	pulumi.RegisterOutputType(CxWebhookGenericWebServicePtrOutput{})
+	pulumi.RegisterOutputType(CxWebhookGenericWebServiceOauthConfigOutput{})
+	pulumi.RegisterOutputType(CxWebhookGenericWebServiceOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxWebhookGenericWebServiceSecretVersionsForRequestHeaderOutput{})
+	pulumi.RegisterOutputType(CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(CxWebhookServiceDirectoryOutput{})
 	pulumi.RegisterOutputType(CxWebhookServiceDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServiceOutput{})
 	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServicePtrOutput{})
+	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServiceOauthConfigOutput{})
+	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServiceOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderOutput{})
+	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(EncryptionSpecEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(EncryptionSpecEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityOutput{})

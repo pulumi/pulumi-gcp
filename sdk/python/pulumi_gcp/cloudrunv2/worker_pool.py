@@ -1089,6 +1089,7 @@ class WorkerPool(pulumi.CustomResource):
                 "node_selector": {
                     "accelerator": "nvidia-l4",
                 },
+                "gpu_zonal_redundancy_disabled": True,
             })
         ```
         ### Cloudrunv2 Worker Pool Secret
@@ -1511,6 +1512,7 @@ class WorkerPool(pulumi.CustomResource):
                 "node_selector": {
                     "accelerator": "nvidia-l4",
                 },
+                "gpu_zonal_redundancy_disabled": True,
             })
         ```
         ### Cloudrunv2 Worker Pool Secret

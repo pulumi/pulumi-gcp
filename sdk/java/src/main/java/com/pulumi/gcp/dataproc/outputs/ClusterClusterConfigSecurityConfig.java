@@ -4,25 +4,43 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigSecurityConfigIdentityConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigSecurityConfigKerberosConfig;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterConfigSecurityConfig {
     /**
-     * @return Kerberos Configuration
+     * @return Identity Configuration. At least one of `identity_config`
+     * or `kerberos_config` is required.
      * 
      */
-    private ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig;
+    private @Nullable ClusterClusterConfigSecurityConfigIdentityConfig identityConfig;
+    /**
+     * @return Kerberos Configuration. At least one of `identity_config`
+     * or `kerberos_config` is required.
+     * 
+     */
+    private @Nullable ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig;
 
     private ClusterClusterConfigSecurityConfig() {}
     /**
-     * @return Kerberos Configuration
+     * @return Identity Configuration. At least one of `identity_config`
+     * or `kerberos_config` is required.
      * 
      */
-    public ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig() {
-        return this.kerberosConfig;
+    public Optional<ClusterClusterConfigSecurityConfigIdentityConfig> identityConfig() {
+        return Optional.ofNullable(this.identityConfig);
+    }
+    /**
+     * @return Kerberos Configuration. At least one of `identity_config`
+     * or `kerberos_config` is required.
+     * 
+     */
+    public Optional<ClusterClusterConfigSecurityConfigKerberosConfig> kerberosConfig() {
+        return Optional.ofNullable(this.kerberosConfig);
     }
 
     public static Builder builder() {
@@ -34,23 +52,30 @@ public final class ClusterClusterConfigSecurityConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig;
+        private @Nullable ClusterClusterConfigSecurityConfigIdentityConfig identityConfig;
+        private @Nullable ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig;
         public Builder() {}
         public Builder(ClusterClusterConfigSecurityConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.identityConfig = defaults.identityConfig;
     	      this.kerberosConfig = defaults.kerberosConfig;
         }
 
         @CustomType.Setter
-        public Builder kerberosConfig(ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig) {
-            if (kerberosConfig == null) {
-              throw new MissingRequiredPropertyException("ClusterClusterConfigSecurityConfig", "kerberosConfig");
-            }
+        public Builder identityConfig(@Nullable ClusterClusterConfigSecurityConfigIdentityConfig identityConfig) {
+
+            this.identityConfig = identityConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kerberosConfig(@Nullable ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig) {
+
             this.kerberosConfig = kerberosConfig;
             return this;
         }
         public ClusterClusterConfigSecurityConfig build() {
             final var _resultValue = new ClusterClusterConfigSecurityConfig();
+            _resultValue.identityConfig = identityConfig;
             _resultValue.kerberosConfig = kerberosConfig;
             return _resultValue;
         }

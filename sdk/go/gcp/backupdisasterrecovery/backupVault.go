@@ -45,6 +45,7 @@ import (
 //				},
 //				ForceUpdate:                pulumi.Bool(true),
 //				AccessRestriction:          pulumi.String("WITHIN_ORGANIZATION"),
+//				BackupRetentionInheritance: pulumi.String("INHERIT_VAULT_RETENTION"),
 //				IgnoreInactiveDatasources:  pulumi.Bool(true),
 //				IgnoreBackupPlanReferences: pulumi.Bool(true),
 //				AllowMissing:               pulumi.Bool(true),
@@ -99,6 +100,9 @@ type BackupVault struct {
 	BackupCount pulumi.StringOutput `pulumi:"backupCount"`
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration pulumi.StringOutput `pulumi:"backupMinimumEnforcedRetentionDuration"`
+	// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+	// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+	BackupRetentionInheritance pulumi.StringPtrOutput `pulumi:"backupRetentionInheritance"`
 	// Required. ID of the requesting object.
 	BackupVaultId pulumi.StringOutput `pulumi:"backupVaultId"`
 	// Output only. The time when the instance was created.
@@ -225,6 +229,9 @@ type backupVaultState struct {
 	BackupCount *string `pulumi:"backupCount"`
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration *string `pulumi:"backupMinimumEnforcedRetentionDuration"`
+	// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+	// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+	BackupRetentionInheritance *string `pulumi:"backupRetentionInheritance"`
 	// Required. ID of the requesting object.
 	BackupVaultId *string `pulumi:"backupVaultId"`
 	// Output only. The time when the instance was created.
@@ -308,6 +315,9 @@ type BackupVaultState struct {
 	BackupCount pulumi.StringPtrInput
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration pulumi.StringPtrInput
+	// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+	// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+	BackupRetentionInheritance pulumi.StringPtrInput
 	// Required. ID of the requesting object.
 	BackupVaultId pulumi.StringPtrInput
 	// Output only. The time when the instance was created.
@@ -393,6 +403,9 @@ type backupVaultArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration string `pulumi:"backupMinimumEnforcedRetentionDuration"`
+	// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+	// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+	BackupRetentionInheritance *string `pulumi:"backupRetentionInheritance"`
 	// Required. ID of the requesting object.
 	BackupVaultId string `pulumi:"backupVaultId"`
 	// Optional. The description of the BackupVault instance (2048 characters or less).
@@ -445,6 +458,9 @@ type BackupVaultArgs struct {
 	Annotations pulumi.StringMapInput
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration pulumi.StringInput
+	// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+	// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+	BackupRetentionInheritance pulumi.StringPtrInput
 	// Required. ID of the requesting object.
 	BackupVaultId pulumi.StringInput
 	// Optional. The description of the BackupVault instance (2048 characters or less).
@@ -597,6 +613,12 @@ func (o BackupVaultOutput) BackupCount() pulumi.StringOutput {
 // Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 func (o BackupVaultOutput) BackupMinimumEnforcedRetentionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.BackupMinimumEnforcedRetentionDuration }).(pulumi.StringOutput)
+}
+
+// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+func (o BackupVaultOutput) BackupRetentionInheritance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringPtrOutput { return v.BackupRetentionInheritance }).(pulumi.StringPtrOutput)
 }
 
 // Required. ID of the requesting object.

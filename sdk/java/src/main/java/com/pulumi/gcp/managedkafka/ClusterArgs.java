@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
 import com.pulumi.gcp.managedkafka.inputs.ClusterRebalanceConfigArgs;
+import com.pulumi.gcp.managedkafka.inputs.ClusterTlsConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -137,6 +138,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rebalanceConfig);
     }
 
+    /**
+     * TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tlsConfig")
+    private @Nullable Output<ClusterTlsConfigArgs> tlsConfig;
+
+    /**
+     * @return TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterTlsConfigArgs>> tlsConfig() {
+        return Optional.ofNullable(this.tlsConfig);
+    }
+
     private ClusterArgs() {}
 
     private ClusterArgs(ClusterArgs $) {
@@ -147,6 +165,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.project = $.project;
         this.rebalanceConfig = $.rebalanceConfig;
+        this.tlsConfig = $.tlsConfig;
     }
 
     public static Builder builder() {
@@ -324,6 +343,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rebalanceConfig(ClusterRebalanceConfigArgs rebalanceConfig) {
             return rebalanceConfig(Output.of(rebalanceConfig));
+        }
+
+        /**
+         * @param tlsConfig TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsConfig(@Nullable Output<ClusterTlsConfigArgs> tlsConfig) {
+            $.tlsConfig = tlsConfig;
+            return this;
+        }
+
+        /**
+         * @param tlsConfig TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsConfig(ClusterTlsConfigArgs tlsConfig) {
+            return tlsConfig(Output.of(tlsConfig));
         }
 
         public ClusterArgs build() {

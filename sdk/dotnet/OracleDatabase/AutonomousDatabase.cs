@@ -119,6 +119,69 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// ### Oracledatabase Autonomous Database Odbnetwork
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myADB = new Gcp.OracleDatabase.AutonomousDatabase("myADB", new()
+    ///     {
+    ///         AutonomousDatabaseId = "my-instance",
+    ///         Location = "europe-west2",
+    ///         Project = "my-project",
+    ///         Database = "mydatabase",
+    ///         AdminPassword = "123Abpassword",
+    ///         OdbNetwork = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+    ///         OdbSubnet = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+    ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
+    ///         {
+    ///             ComputeCount = 2,
+    ///             DataStorageSizeTb = 1,
+    ///             DbVersion = "19c",
+    ///             DbWorkload = "OLTP",
+    ///             LicenseType = "LICENSE_INCLUDED",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Oracledatabase Autonomous Database Publicip
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myADB = new Gcp.OracleDatabase.AutonomousDatabase("myADB", new()
+    ///     {
+    ///         AutonomousDatabaseId = "my-instance",
+    ///         Location = "europe-west2",
+    ///         Project = "my-project",
+    ///         Database = "mydatabase",
+    ///         AdminPassword = "123Abpassword",
+    ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
+    ///         {
+    ///             ComputeCount = 2,
+    ///             DataStorageSizeTb = 1,
+    ///             DbVersion = "19c",
+    ///             DbWorkload = "OLTP",
+    ///             LicenseType = "LICENSE_INCLUDED",
+    ///             MtlsConnectionRequired = true,
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -166,7 +229,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// The subnet CIDR range for the Autonmous Database.
         /// </summary>
         [Output("cidr")]
-        public Output<string> Cidr { get; private set; } = null!;
+        public Output<string?> Cidr { get; private set; } = null!;
 
         /// <summary>
         /// The date and time that the Autonomous Database was created.
@@ -231,7 +294,25 @@ namespace Pulumi.Gcp.OracleDatabase
         /// Format: projects/{project}/global/networks/{network}
         /// </summary>
         [Output("network")]
-        public Output<string> Network { get; private set; } = null!;
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the OdbNetwork associated with the Autonomous Database.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        /// It is optional but if specified, this should match the parent ODBNetwork of
+        /// the odb_subnet and backup_odb_subnet.
+        /// </summary>
+        [Output("odbNetwork")]
+        public Output<string?> OdbNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the OdbSubnet associated with the Autonomous Database for
+        /// IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Output("odbSubnet")]
+        public Output<string?> OdbSubnet { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -323,8 +404,8 @@ namespace Pulumi.Gcp.OracleDatabase
         /// <summary>
         /// The subnet CIDR range for the Autonmous Database.
         /// </summary>
-        [Input("cidr", required: true)]
-        public Input<string> Cidr { get; set; } = null!;
+        [Input("cidr")]
+        public Input<string>? Cidr { get; set; }
 
         /// <summary>
         /// The name of the Autonomous Database. The database name must be unique in
@@ -368,8 +449,26 @@ namespace Pulumi.Gcp.OracleDatabase
         /// The name of the VPC network used by the Autonomous Database.
         /// Format: projects/{project}/global/networks/{network}
         /// </summary>
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The name of the OdbNetwork associated with the Autonomous Database.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        /// It is optional but if specified, this should match the parent ODBNetwork of
+        /// the odb_subnet and backup_odb_subnet.
+        /// </summary>
+        [Input("odbNetwork")]
+        public Input<string>? OdbNetwork { get; set; }
+
+        /// <summary>
+        /// The name of the OdbSubnet associated with the Autonomous Database for
+        /// IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Input("odbSubnet")]
+        public Input<string>? OdbSubnet { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -494,6 +593,24 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The name of the OdbNetwork associated with the Autonomous Database.
+        /// Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
+        /// It is optional but if specified, this should match the parent ODBNetwork of
+        /// the odb_subnet and backup_odb_subnet.
+        /// </summary>
+        [Input("odbNetwork")]
+        public Input<string>? OdbNetwork { get; set; }
+
+        /// <summary>
+        /// The name of the OdbSubnet associated with the Autonomous Database for
+        /// IP allocation. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// </summary>
+        [Input("odbSubnet")]
+        public Input<string>? OdbSubnet { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

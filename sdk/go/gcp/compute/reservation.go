@@ -119,7 +119,7 @@ import (
 //				return err
 //			}
 //			foobar, err := compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
-//				Name:         pulumi.String("tf-test-instance-template"),
+//				Name:         pulumi.String("instance-template"),
 //				MachineType:  pulumi.String("n2-standard-2"),
 //				CanIpForward: pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
@@ -197,7 +197,7 @@ import (
 //				return err
 //			}
 //			foobar, err := compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
-//				Name:         pulumi.String("tf-test-instance-template"),
+//				Name:         pulumi.String("instance-template"),
 //				MachineType:  pulumi.String("g2-standard-4"),
 //				CanIpForward: pulumi.Bool(false),
 //				Tags: pulumi.StringArray{

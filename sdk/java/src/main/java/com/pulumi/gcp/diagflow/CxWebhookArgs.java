@@ -50,14 +50,14 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates if automatic spell correction is enabled in detect intent requests.
+     * Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      * 
      */
     @Import(name="enableSpellCorrection")
     private @Nullable Output<Boolean> enableSpellCorrection;
 
     /**
-     * @return Indicates if automatic spell correction is enabled in detect intent requests.
+     * @return Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      * 
      */
     public Optional<Output<Boolean>> enableSpellCorrection() {
@@ -65,14 +65,14 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines whether this agent should log conversation queries.
+     * Deprecated. Determines whether this agent should log conversation queries.
      * 
      */
     @Import(name="enableStackdriverLogging")
     private @Nullable Output<Boolean> enableStackdriverLogging;
 
     /**
-     * @return Determines whether this agent should log conversation queries.
+     * @return Deprecated. Determines whether this agent should log conversation queries.
      * 
      */
     public Optional<Output<Boolean>> enableStackdriverLogging() {
@@ -80,7 +80,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for a generic web service.
+     * Represents configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -88,7 +88,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<CxWebhookGenericWebServiceArgs> genericWebService;
 
     /**
-     * @return Configuration for a generic web service.
+     * @return Represents configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -114,14 +114,14 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+     * Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
      * 
      */
     @Import(name="securitySettings")
     private @Nullable Output<String> securitySettings;
 
     /**
-     * @return Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+     * @return Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
      * 
      */
     public Optional<Output<String>> securitySettings() {
@@ -235,7 +235,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableSpellCorrection Indicates if automatic spell correction is enabled in detect intent requests.
+         * @param enableSpellCorrection Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableSpellCorrection Indicates if automatic spell correction is enabled in detect intent requests.
+         * @param enableSpellCorrection Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableStackdriverLogging Determines whether this agent should log conversation queries.
+         * @param enableStackdriverLogging Deprecated. Determines whether this agent should log conversation queries.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableStackdriverLogging Determines whether this agent should log conversation queries.
+         * @param enableStackdriverLogging Deprecated. Determines whether this agent should log conversation queries.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param genericWebService Configuration for a generic web service.
+         * @param genericWebService Represents configuration for a generic web service.
          * Structure is documented below.
          * 
          * @return builder
@@ -289,7 +289,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param genericWebService Configuration for a generic web service.
+         * @param genericWebService Represents configuration for a generic web service.
          * Structure is documented below.
          * 
          * @return builder
@@ -323,7 +323,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securitySettings Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+         * @param securitySettings Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securitySettings Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
+         * @param securitySettings Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
          * 
          * @return builder
          * 

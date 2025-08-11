@@ -87,6 +87,7 @@ class ClusterArgs:
                  private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protect_config: Optional[pulumi.Input['ClusterProtectConfigArgs']] = None,
+                 rbac_binding_config: Optional[pulumi.Input['ClusterRbacBindingConfigArgs']] = None,
                  release_channel: Optional[pulumi.Input['ClusterReleaseChannelArgs']] = None,
                  remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -108,9 +109,6 @@ class ClusterArgs:
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
         :param pulumi.Input['ClusterAnonymousAuthenticationConfigArgs'] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-               
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -287,6 +285,9 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input['ClusterRbacBindingConfigArgs'] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -455,6 +456,8 @@ class ClusterArgs:
             pulumi.set(__self__, "project", project)
         if protect_config is not None:
             pulumi.set(__self__, "protect_config", protect_config)
+        if rbac_binding_config is not None:
+            pulumi.set(__self__, "rbac_binding_config", rbac_binding_config)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if remove_default_node_pool is not None:
@@ -514,9 +517,6 @@ class ClusterArgs:
     def anonymous_authentication_config(self) -> Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]:
         """
         Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "anonymous_authentication_config")
 
@@ -1392,6 +1392,20 @@ class ClusterArgs:
         pulumi.set(self, "protect_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="rbacBindingConfig")
+    def rbac_binding_config(self) -> Optional[pulumi.Input['ClusterRbacBindingConfigArgs']]:
+        """
+        RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "rbac_binding_config")
+
+    @rbac_binding_config.setter
+    def rbac_binding_config(self, value: Optional[pulumi.Input['ClusterRbacBindingConfigArgs']]):
+        pulumi.set(self, "rbac_binding_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input['ClusterReleaseChannelArgs']]:
         """
@@ -1645,6 +1659,7 @@ class _ClusterState:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protect_config: Optional[pulumi.Input['ClusterProtectConfigArgs']] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rbac_binding_config: Optional[pulumi.Input['ClusterRbacBindingConfigArgs']] = None,
                  release_channel: Optional[pulumi.Input['ClusterReleaseChannelArgs']] = None,
                  remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1669,9 +1684,6 @@ class _ClusterState:
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
         :param pulumi.Input['ClusterAnonymousAuthenticationConfigArgs'] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-               
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -1855,6 +1867,9 @@ class _ClusterState:
                is not provided, the provider project is used.
         :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input['ClusterRbacBindingConfigArgs'] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -2043,6 +2058,8 @@ class _ClusterState:
             pulumi.set(__self__, "protect_config", protect_config)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if rbac_binding_config is not None:
+            pulumi.set(__self__, "rbac_binding_config", rbac_binding_config)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if remove_default_node_pool is not None:
@@ -2108,9 +2125,6 @@ class _ClusterState:
     def anonymous_authentication_config(self) -> Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]:
         """
         Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "anonymous_authentication_config")
 
@@ -3057,6 +3071,20 @@ class _ClusterState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="rbacBindingConfig")
+    def rbac_binding_config(self) -> Optional[pulumi.Input['ClusterRbacBindingConfigArgs']]:
+        """
+        RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "rbac_binding_config")
+
+    @rbac_binding_config.setter
+    def rbac_binding_config(self, value: Optional[pulumi.Input['ClusterRbacBindingConfigArgs']]):
+        pulumi.set(self, "rbac_binding_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input['ClusterReleaseChannelArgs']]:
         """
@@ -3348,6 +3376,7 @@ class Cluster(pulumi.CustomResource):
                  private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protect_config: Optional[pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
+                 rbac_binding_config: Optional[pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
                  release_channel: Optional[pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
                  remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -3491,9 +3520,6 @@ class Cluster(pulumi.CustomResource):
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
         :param pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-               
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -3670,6 +3696,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -3914,6 +3943,7 @@ class Cluster(pulumi.CustomResource):
                  private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protect_config: Optional[pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
+                 rbac_binding_config: Optional[pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
                  release_channel: Optional[pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
                  remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -4002,6 +4032,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
             __props__.__dict__["project"] = project
             __props__.__dict__["protect_config"] = protect_config
+            __props__.__dict__["rbac_binding_config"] = rbac_binding_config
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
             __props__.__dict__["resource_labels"] = resource_labels
@@ -4108,6 +4139,7 @@ class Cluster(pulumi.CustomResource):
             project: Optional[pulumi.Input[_builtins.str]] = None,
             protect_config: Optional[pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rbac_binding_config: Optional[pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
             release_channel: Optional[pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
             remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
             resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -4137,9 +4169,6 @@ class Cluster(pulumi.CustomResource):
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
         :param pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-               
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -4323,6 +4352,9 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -4443,6 +4475,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["protect_config"] = protect_config
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["rbac_binding_config"] = rbac_binding_config
         __props__.__dict__["release_channel"] = release_channel
         __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
         __props__.__dict__["resource_labels"] = resource_labels
@@ -4485,9 +4518,6 @@ class Cluster(pulumi.CustomResource):
     def anonymous_authentication_config(self) -> pulumi.Output['outputs.ClusterAnonymousAuthenticationConfig']:
         """
         Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "anonymous_authentication_config")
 
@@ -5152,6 +5182,16 @@ class Cluster(pulumi.CustomResource):
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="rbacBindingConfig")
+    def rbac_binding_config(self) -> pulumi.Output['outputs.ClusterRbacBindingConfig']:
+        """
+        RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "rbac_binding_config")
 
     @_builtins.property
     @pulumi.getter(name="releaseChannel")

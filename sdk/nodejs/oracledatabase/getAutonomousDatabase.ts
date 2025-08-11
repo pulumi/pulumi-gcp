@@ -75,6 +75,8 @@ export interface GetAutonomousDatabaseResult {
     readonly location: string;
     readonly name: string;
     readonly network: string;
+    readonly odbNetwork: string;
+    readonly odbSubnet: string;
     readonly project?: string;
     readonly properties: outputs.oracledatabase.GetAutonomousDatabaseProperty[];
     readonly pulumiLabels: {[key: string]: string};

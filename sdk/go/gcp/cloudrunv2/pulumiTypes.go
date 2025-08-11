@@ -1082,6 +1082,8 @@ type JobTemplateTemplate struct {
 	// The execution environment being used to host this Task.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
+	// True if GPU zonal redundancy is disabled on this execution.
+	GpuZonalRedundancyDisabled *bool `pulumi:"gpuZonalRedundancyDisabled"`
 	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// Node Selector describes the hardware requirements of the resources.
@@ -1120,6 +1122,8 @@ type JobTemplateTemplateArgs struct {
 	// The execution environment being used to host this Task.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
+	// True if GPU zonal redundancy is disabled on this execution.
+	GpuZonalRedundancyDisabled pulumi.BoolPtrInput `pulumi:"gpuZonalRedundancyDisabled"`
 	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// Node Selector describes the hardware requirements of the resources.
@@ -1232,6 +1236,11 @@ func (o JobTemplateTemplateOutput) ExecutionEnvironment() pulumi.StringPtrOutput
 	return o.ApplyT(func(v JobTemplateTemplate) *string { return v.ExecutionEnvironment }).(pulumi.StringPtrOutput)
 }
 
+// True if GPU zonal redundancy is disabled on this execution.
+func (o JobTemplateTemplateOutput) GpuZonalRedundancyDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplate) *bool { return v.GpuZonalRedundancyDisabled }).(pulumi.BoolPtrOutput)
+}
+
 // Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 func (o JobTemplateTemplateOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplate) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
@@ -1320,6 +1329,16 @@ func (o JobTemplateTemplatePtrOutput) ExecutionEnvironment() pulumi.StringPtrOut
 		}
 		return v.ExecutionEnvironment
 	}).(pulumi.StringPtrOutput)
+}
+
+// True if GPU zonal redundancy is disabled on this execution.
+func (o JobTemplateTemplatePtrOutput) GpuZonalRedundancyDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GpuZonalRedundancyDisabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
@@ -16578,6 +16597,8 @@ type GetJobTemplateTemplate struct {
 	EncryptionKey string `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
+	// True if GPU zonal redundancy is disabled on this execution.
+	GpuZonalRedundancyDisabled bool `pulumi:"gpuZonalRedundancyDisabled"`
 	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries int `pulumi:"maxRetries"`
 	// Node Selector describes the hardware requirements of the resources.
@@ -16612,6 +16633,8 @@ type GetJobTemplateTemplateArgs struct {
 	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
 	ExecutionEnvironment pulumi.StringInput `pulumi:"executionEnvironment"`
+	// True if GPU zonal redundancy is disabled on this execution.
+	GpuZonalRedundancyDisabled pulumi.BoolInput `pulumi:"gpuZonalRedundancyDisabled"`
 	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
 	// Node Selector describes the hardware requirements of the resources.
@@ -16692,6 +16715,11 @@ func (o GetJobTemplateTemplateOutput) EncryptionKey() pulumi.StringOutput {
 // The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
 func (o GetJobTemplateTemplateOutput) ExecutionEnvironment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
+}
+
+// True if GPU zonal redundancy is disabled on this execution.
+func (o GetJobTemplateTemplateOutput) GpuZonalRedundancyDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) bool { return v.GpuZonalRedundancyDisabled }).(pulumi.BoolOutput)
 }
 
 // Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.

@@ -408,6 +408,11 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.SubnetworkParams | undefined>;
+    /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
@@ -518,6 +523,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["privateIpGoogleAccess"] = state ? state.privateIpGoogleAccess : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -546,6 +552,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -685,6 +692,11 @@ export interface SubnetworkState {
      * Only networks that are in the distributed mode can have subnetworks.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.SubnetworkParams>;
     /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
@@ -851,6 +863,11 @@ export interface SubnetworkArgs {
      * Only networks that are in the distributed mode can have subnetworks.
      */
     network: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.SubnetworkParams>;
     /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.

@@ -49,6 +49,23 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     * 
+     */
+    @Import(name="discoveryType")
+    private @Nullable Output<String> discoveryType;
+
+    /**
+     * @return Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+     * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+     * 
+     */
+    public Optional<Output<String>> discoveryType() {
+        return Optional.ofNullable(this.discoveryType);
+    }
+
+    /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      * 
      */
@@ -211,6 +228,7 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
     private DataExchangeState(DataExchangeState $) {
         this.dataExchangeId = $.dataExchangeId;
         this.description = $.description;
+        this.discoveryType = $.discoveryType;
         this.displayName = $.displayName;
         this.documentation = $.documentation;
         this.icon = $.icon;
@@ -281,6 +299,29 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param discoveryType Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+         * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder discoveryType(@Nullable Output<String> discoveryType) {
+            $.discoveryType = discoveryType;
+            return this;
+        }
+
+        /**
+         * @param discoveryType Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+         * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder discoveryType(String discoveryType) {
+            return discoveryType(Output.of(discoveryType));
         }
 
         /**

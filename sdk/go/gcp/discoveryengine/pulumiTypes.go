@@ -657,6 +657,109 @@ func (o ChatEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CmekConfigSingleRegionKey struct {
+	// Single-regional kms key resource name which will be used to encrypt
+	// resources
+	// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// CmekConfigSingleRegionKeyInput is an input type that accepts CmekConfigSingleRegionKeyArgs and CmekConfigSingleRegionKeyOutput values.
+// You can construct a concrete instance of `CmekConfigSingleRegionKeyInput` via:
+//
+//	CmekConfigSingleRegionKeyArgs{...}
+type CmekConfigSingleRegionKeyInput interface {
+	pulumi.Input
+
+	ToCmekConfigSingleRegionKeyOutput() CmekConfigSingleRegionKeyOutput
+	ToCmekConfigSingleRegionKeyOutputWithContext(context.Context) CmekConfigSingleRegionKeyOutput
+}
+
+type CmekConfigSingleRegionKeyArgs struct {
+	// Single-regional kms key resource name which will be used to encrypt
+	// resources
+	// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+}
+
+func (CmekConfigSingleRegionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmekConfigSingleRegionKey)(nil)).Elem()
+}
+
+func (i CmekConfigSingleRegionKeyArgs) ToCmekConfigSingleRegionKeyOutput() CmekConfigSingleRegionKeyOutput {
+	return i.ToCmekConfigSingleRegionKeyOutputWithContext(context.Background())
+}
+
+func (i CmekConfigSingleRegionKeyArgs) ToCmekConfigSingleRegionKeyOutputWithContext(ctx context.Context) CmekConfigSingleRegionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmekConfigSingleRegionKeyOutput)
+}
+
+// CmekConfigSingleRegionKeyArrayInput is an input type that accepts CmekConfigSingleRegionKeyArray and CmekConfigSingleRegionKeyArrayOutput values.
+// You can construct a concrete instance of `CmekConfigSingleRegionKeyArrayInput` via:
+//
+//	CmekConfigSingleRegionKeyArray{ CmekConfigSingleRegionKeyArgs{...} }
+type CmekConfigSingleRegionKeyArrayInput interface {
+	pulumi.Input
+
+	ToCmekConfigSingleRegionKeyArrayOutput() CmekConfigSingleRegionKeyArrayOutput
+	ToCmekConfigSingleRegionKeyArrayOutputWithContext(context.Context) CmekConfigSingleRegionKeyArrayOutput
+}
+
+type CmekConfigSingleRegionKeyArray []CmekConfigSingleRegionKeyInput
+
+func (CmekConfigSingleRegionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CmekConfigSingleRegionKey)(nil)).Elem()
+}
+
+func (i CmekConfigSingleRegionKeyArray) ToCmekConfigSingleRegionKeyArrayOutput() CmekConfigSingleRegionKeyArrayOutput {
+	return i.ToCmekConfigSingleRegionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i CmekConfigSingleRegionKeyArray) ToCmekConfigSingleRegionKeyArrayOutputWithContext(ctx context.Context) CmekConfigSingleRegionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmekConfigSingleRegionKeyArrayOutput)
+}
+
+type CmekConfigSingleRegionKeyOutput struct{ *pulumi.OutputState }
+
+func (CmekConfigSingleRegionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmekConfigSingleRegionKey)(nil)).Elem()
+}
+
+func (o CmekConfigSingleRegionKeyOutput) ToCmekConfigSingleRegionKeyOutput() CmekConfigSingleRegionKeyOutput {
+	return o
+}
+
+func (o CmekConfigSingleRegionKeyOutput) ToCmekConfigSingleRegionKeyOutputWithContext(ctx context.Context) CmekConfigSingleRegionKeyOutput {
+	return o
+}
+
+// Single-regional kms key resource name which will be used to encrypt
+// resources
+// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+func (o CmekConfigSingleRegionKeyOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CmekConfigSingleRegionKey) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+type CmekConfigSingleRegionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (CmekConfigSingleRegionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CmekConfigSingleRegionKey)(nil)).Elem()
+}
+
+func (o CmekConfigSingleRegionKeyArrayOutput) ToCmekConfigSingleRegionKeyArrayOutput() CmekConfigSingleRegionKeyArrayOutput {
+	return o
+}
+
+func (o CmekConfigSingleRegionKeyArrayOutput) ToCmekConfigSingleRegionKeyArrayOutputWithContext(ctx context.Context) CmekConfigSingleRegionKeyArrayOutput {
+	return o
+}
+
+func (o CmekConfigSingleRegionKeyArrayOutput) Index(i pulumi.IntInput) CmekConfigSingleRegionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CmekConfigSingleRegionKey {
+		return vs[0].([]CmekConfigSingleRegionKey)[vs[1].(int)]
+	}).(CmekConfigSingleRegionKeyOutput)
+}
+
 type DataStoreAdvancedSiteSearchConfig struct {
 	// If set true, automatic refresh is disabled for the DataStore.
 	DisableAutomaticRefresh *bool `pulumi:"disableAutomaticRefresh"`
@@ -2675,6 +2778,1094 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+type RecommendationEngineCommonConfig struct {
+	// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+	CompanyName *string `pulumi:"companyName"`
+}
+
+// RecommendationEngineCommonConfigInput is an input type that accepts RecommendationEngineCommonConfigArgs and RecommendationEngineCommonConfigOutput values.
+// You can construct a concrete instance of `RecommendationEngineCommonConfigInput` via:
+//
+//	RecommendationEngineCommonConfigArgs{...}
+type RecommendationEngineCommonConfigInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineCommonConfigOutput() RecommendationEngineCommonConfigOutput
+	ToRecommendationEngineCommonConfigOutputWithContext(context.Context) RecommendationEngineCommonConfigOutput
+}
+
+type RecommendationEngineCommonConfigArgs struct {
+	// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+	CompanyName pulumi.StringPtrInput `pulumi:"companyName"`
+}
+
+func (RecommendationEngineCommonConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineCommonConfig)(nil)).Elem()
+}
+
+func (i RecommendationEngineCommonConfigArgs) ToRecommendationEngineCommonConfigOutput() RecommendationEngineCommonConfigOutput {
+	return i.ToRecommendationEngineCommonConfigOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineCommonConfigArgs) ToRecommendationEngineCommonConfigOutputWithContext(ctx context.Context) RecommendationEngineCommonConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineCommonConfigOutput)
+}
+
+func (i RecommendationEngineCommonConfigArgs) ToRecommendationEngineCommonConfigPtrOutput() RecommendationEngineCommonConfigPtrOutput {
+	return i.ToRecommendationEngineCommonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineCommonConfigArgs) ToRecommendationEngineCommonConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineCommonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineCommonConfigOutput).ToRecommendationEngineCommonConfigPtrOutputWithContext(ctx)
+}
+
+// RecommendationEngineCommonConfigPtrInput is an input type that accepts RecommendationEngineCommonConfigArgs, RecommendationEngineCommonConfigPtr and RecommendationEngineCommonConfigPtrOutput values.
+// You can construct a concrete instance of `RecommendationEngineCommonConfigPtrInput` via:
+//
+//	        RecommendationEngineCommonConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecommendationEngineCommonConfigPtrInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineCommonConfigPtrOutput() RecommendationEngineCommonConfigPtrOutput
+	ToRecommendationEngineCommonConfigPtrOutputWithContext(context.Context) RecommendationEngineCommonConfigPtrOutput
+}
+
+type recommendationEngineCommonConfigPtrType RecommendationEngineCommonConfigArgs
+
+func RecommendationEngineCommonConfigPtr(v *RecommendationEngineCommonConfigArgs) RecommendationEngineCommonConfigPtrInput {
+	return (*recommendationEngineCommonConfigPtrType)(v)
+}
+
+func (*recommendationEngineCommonConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineCommonConfig)(nil)).Elem()
+}
+
+func (i *recommendationEngineCommonConfigPtrType) ToRecommendationEngineCommonConfigPtrOutput() RecommendationEngineCommonConfigPtrOutput {
+	return i.ToRecommendationEngineCommonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *recommendationEngineCommonConfigPtrType) ToRecommendationEngineCommonConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineCommonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineCommonConfigPtrOutput)
+}
+
+type RecommendationEngineCommonConfigOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineCommonConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineCommonConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineCommonConfigOutput) ToRecommendationEngineCommonConfigOutput() RecommendationEngineCommonConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineCommonConfigOutput) ToRecommendationEngineCommonConfigOutputWithContext(ctx context.Context) RecommendationEngineCommonConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineCommonConfigOutput) ToRecommendationEngineCommonConfigPtrOutput() RecommendationEngineCommonConfigPtrOutput {
+	return o.ToRecommendationEngineCommonConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RecommendationEngineCommonConfigOutput) ToRecommendationEngineCommonConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineCommonConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecommendationEngineCommonConfig) *RecommendationEngineCommonConfig {
+		return &v
+	}).(RecommendationEngineCommonConfigPtrOutput)
+}
+
+// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+func (o RecommendationEngineCommonConfigOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineCommonConfig) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
+}
+
+type RecommendationEngineCommonConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineCommonConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineCommonConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineCommonConfigPtrOutput) ToRecommendationEngineCommonConfigPtrOutput() RecommendationEngineCommonConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineCommonConfigPtrOutput) ToRecommendationEngineCommonConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineCommonConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineCommonConfigPtrOutput) Elem() RecommendationEngineCommonConfigOutput {
+	return o.ApplyT(func(v *RecommendationEngineCommonConfig) RecommendationEngineCommonConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RecommendationEngineCommonConfig
+		return ret
+	}).(RecommendationEngineCommonConfigOutput)
+}
+
+// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+func (o RecommendationEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineCommonConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfig struct {
+	// More feature configs of the selected engine type.
+	// Structure is documented below.
+	EngineFeaturesConfig *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig `pulumi:"engineFeaturesConfig"`
+	// The optimization objective. e.g., `cvr`.
+	// This field together with MediaRecommendationEngineConfig.type describes
+	// engine metadata to use to control engine training and serving.
+	// Currently supported values: `ctr`, `cvr`.
+	// If not specified, we choose default based on engine type. Default depends on type of recommendation:
+	// `recommended-for-you` => `ctr`
+	// `others-you-may-like` => `ctr`
+	OptimizationObjective *string `pulumi:"optimizationObjective"`
+	// Name and value of the custom threshold for cvr optimization_objective.
+	// For targetField `watch-time`, targetFieldValue must be an integer
+	// value indicating the media progress time in seconds between (0, 86400]
+	// (excludes 0, includes 86400) (e.g., 90).
+	// For targetField `watch-percentage`, the targetFieldValue must be a
+	// valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+	// Structure is documented below.
+	OptimizationObjectiveConfig *RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig `pulumi:"optimizationObjectiveConfig"`
+	// The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
+	// Since part of the cost of running the service
+	// is frequency of training - this can be used to determine when to train
+	// engine in order to control cost. If not specified: the default value for
+	// `CreateEngine` method is `TRAINING`. The default value for
+	// `UpdateEngine` method is to keep the state the same as before.
+	// Possible values are: `PAUSED`, `TRAINING`.
+	TrainingState *string `pulumi:"trainingState"`
+	// The type of engine. e.g., `recommended-for-you`.
+	// This field together with MediaRecommendationEngineConfig.optimizationObjective describes
+	// engine metadata to use to control engine training and serving.
+	// Currently supported values: `recommended-for-you`, `others-you-may-like`,
+	// `more-like-this`, `most-popular-items`.
+	Type *string `pulumi:"type"`
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigArgs and RecommendationEngineMediaRecommendationEngineConfigOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigInput` via:
+//
+//	RecommendationEngineMediaRecommendationEngineConfigArgs{...}
+type RecommendationEngineMediaRecommendationEngineConfigInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigOutput() RecommendationEngineMediaRecommendationEngineConfigOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigOutput
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigArgs struct {
+	// More feature configs of the selected engine type.
+	// Structure is documented below.
+	EngineFeaturesConfig RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrInput `pulumi:"engineFeaturesConfig"`
+	// The optimization objective. e.g., `cvr`.
+	// This field together with MediaRecommendationEngineConfig.type describes
+	// engine metadata to use to control engine training and serving.
+	// Currently supported values: `ctr`, `cvr`.
+	// If not specified, we choose default based on engine type. Default depends on type of recommendation:
+	// `recommended-for-you` => `ctr`
+	// `others-you-may-like` => `ctr`
+	OptimizationObjective pulumi.StringPtrInput `pulumi:"optimizationObjective"`
+	// Name and value of the custom threshold for cvr optimization_objective.
+	// For targetField `watch-time`, targetFieldValue must be an integer
+	// value indicating the media progress time in seconds between (0, 86400]
+	// (excludes 0, includes 86400) (e.g., 90).
+	// For targetField `watch-percentage`, the targetFieldValue must be a
+	// valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+	// Structure is documented below.
+	OptimizationObjectiveConfig RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrInput `pulumi:"optimizationObjectiveConfig"`
+	// The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
+	// Since part of the cost of running the service
+	// is frequency of training - this can be used to determine when to train
+	// engine in order to control cost. If not specified: the default value for
+	// `CreateEngine` method is `TRAINING`. The default value for
+	// `UpdateEngine` method is to keep the state the same as before.
+	// Possible values are: `PAUSED`, `TRAINING`.
+	TrainingState pulumi.StringPtrInput `pulumi:"trainingState"`
+	// The type of engine. e.g., `recommended-for-you`.
+	// This field together with MediaRecommendationEngineConfig.optimizationObjective describes
+	// engine metadata to use to control engine training and serving.
+	// Currently supported values: `recommended-for-you`, `others-you-may-like`,
+	// `more-like-this`, `most-popular-items`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RecommendationEngineMediaRecommendationEngineConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfig)(nil)).Elem()
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigOutput() RecommendationEngineMediaRecommendationEngineConfigOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigOutput)
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigOutput).ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(ctx)
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigPtrInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigArgs, RecommendationEngineMediaRecommendationEngineConfigPtr and RecommendationEngineMediaRecommendationEngineConfigPtrOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigPtrInput` via:
+//
+//	        RecommendationEngineMediaRecommendationEngineConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecommendationEngineMediaRecommendationEngineConfigPtrInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigPtrOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigPtrOutput
+}
+
+type recommendationEngineMediaRecommendationEngineConfigPtrType RecommendationEngineMediaRecommendationEngineConfigArgs
+
+func RecommendationEngineMediaRecommendationEngineConfigPtr(v *RecommendationEngineMediaRecommendationEngineConfigArgs) RecommendationEngineMediaRecommendationEngineConfigPtrInput {
+	return (*recommendationEngineMediaRecommendationEngineConfigPtrType)(v)
+}
+
+func (*recommendationEngineMediaRecommendationEngineConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfig)(nil)).Elem()
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigOutput() RecommendationEngineMediaRecommendationEngineConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigPtrOutput {
+	return o.ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecommendationEngineMediaRecommendationEngineConfig) *RecommendationEngineMediaRecommendationEngineConfig {
+		return &v
+	}).(RecommendationEngineMediaRecommendationEngineConfigPtrOutput)
+}
+
+// More feature configs of the selected engine type.
+// Structure is documented below.
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) EngineFeaturesConfig() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig {
+		return v.EngineFeaturesConfig
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput)
+}
+
+// The optimization objective. e.g., `cvr`.
+// This field together with MediaRecommendationEngineConfig.type describes
+// engine metadata to use to control engine training and serving.
+// Currently supported values: `ctr`, `cvr`.
+// If not specified, we choose default based on engine type. Default depends on type of recommendation:
+// `recommended-for-you` => `ctr`
+// `others-you-may-like` => `ctr`
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) OptimizationObjective() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfig) *string { return v.OptimizationObjective }).(pulumi.StringPtrOutput)
+}
+
+// Name and value of the custom threshold for cvr optimization_objective.
+// For targetField `watch-time`, targetFieldValue must be an integer
+// value indicating the media progress time in seconds between (0, 86400]
+// (excludes 0, includes 86400) (e.g., 90).
+// For targetField `watch-percentage`, the targetFieldValue must be a
+// valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+// Structure is documented below.
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) OptimizationObjectiveConfig() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfig) *RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig {
+		return v.OptimizationObjectiveConfig
+	}).(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput)
+}
+
+// The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
+// Since part of the cost of running the service
+// is frequency of training - this can be used to determine when to train
+// engine in order to control cost. If not specified: the default value for
+// `CreateEngine` method is `TRAINING`. The default value for
+// `UpdateEngine` method is to keep the state the same as before.
+// Possible values are: `PAUSED`, `TRAINING`.
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) TrainingState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfig) *string { return v.TrainingState }).(pulumi.StringPtrOutput)
+}
+
+// The type of engine. e.g., `recommended-for-you`.
+// This field together with MediaRecommendationEngineConfig.optimizationObjective describes
+// engine metadata to use to control engine training and serving.
+// Currently supported values: `recommended-for-you`, `others-you-may-like`,
+// `more-like-this`, `most-popular-items`.
+func (o RecommendationEngineMediaRecommendationEngineConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigPtrOutput) Elem() RecommendationEngineMediaRecommendationEngineConfigOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfig) RecommendationEngineMediaRecommendationEngineConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RecommendationEngineMediaRecommendationEngineConfig
+		return ret
+	}).(RecommendationEngineMediaRecommendationEngineConfigOutput)
+}
+
+// More feature configs of the selected engine type.
+// Structure is documented below.
+func (o RecommendationEngineMediaRecommendationEngineConfigPtrOutput) EngineFeaturesConfig() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EngineFeaturesConfig
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput)
+}
+
+// The optimization objective. e.g., `cvr`.
+// This field together with MediaRecommendationEngineConfig.type describes
+// engine metadata to use to control engine training and serving.
+// Currently supported values: `ctr`, `cvr`.
+// If not specified, we choose default based on engine type. Default depends on type of recommendation:
+// `recommended-for-you` => `ctr`
+// `others-you-may-like` => `ctr`
+func (o RecommendationEngineMediaRecommendationEngineConfigPtrOutput) OptimizationObjective() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OptimizationObjective
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name and value of the custom threshold for cvr optimization_objective.
+// For targetField `watch-time`, targetFieldValue must be an integer
+// value indicating the media progress time in seconds between (0, 86400]
+// (excludes 0, includes 86400) (e.g., 90).
+// For targetField `watch-percentage`, the targetFieldValue must be a
+// valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+// Structure is documented below.
+func (o RecommendationEngineMediaRecommendationEngineConfigPtrOutput) OptimizationObjectiveConfig() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfig) *RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OptimizationObjectiveConfig
+	}).(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput)
+}
+
+// The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
+// Since part of the cost of running the service
+// is frequency of training - this can be used to determine when to train
+// engine in order to control cost. If not specified: the default value for
+// `CreateEngine` method is `TRAINING`. The default value for
+// `UpdateEngine` method is to keep the state the same as before.
+// Possible values are: `PAUSED`, `TRAINING`.
+func (o RecommendationEngineMediaRecommendationEngineConfigPtrOutput) TrainingState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of engine. e.g., `recommended-for-you`.
+// This field together with MediaRecommendationEngineConfig.optimizationObjective describes
+// engine metadata to use to control engine training and serving.
+// Currently supported values: `recommended-for-you`, `others-you-may-like`,
+// `more-like-this`, `most-popular-items`.
+func (o RecommendationEngineMediaRecommendationEngineConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig struct {
+	// Feature configurations that are required for creating a Most Popular engine.
+	// Structure is documented below.
+	MostPopularConfig *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig `pulumi:"mostPopularConfig"`
+	// Additional feature configurations for creating a `recommended-for-you` engine.
+	// Structure is documented below.
+	RecommendedForYouConfig *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig `pulumi:"recommendedForYouConfig"`
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs and RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigInput` via:
+//
+//	RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs{...}
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs struct {
+	// Feature configurations that are required for creating a Most Popular engine.
+	// Structure is documented below.
+	MostPopularConfig RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrInput `pulumi:"mostPopularConfig"`
+	// Additional feature configurations for creating a `recommended-for-you` engine.
+	// Structure is documented below.
+	RecommendedForYouConfig RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrInput `pulumi:"recommendedForYouConfig"`
+}
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig)(nil)).Elem()
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput)
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput).ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(ctx)
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs, RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtr and RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrInput` via:
+//
+//	        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput
+}
+
+type recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrType RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs
+
+func RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtr(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrInput {
+	return (*recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrType)(v)
+}
+
+func (*recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig)(nil)).Elem()
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return o.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig {
+		return &v
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput)
+}
+
+// Feature configurations that are required for creating a Most Popular engine.
+// Structure is documented below.
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput) MostPopularConfig() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig {
+		return v.MostPopularConfig
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput)
+}
+
+// Additional feature configurations for creating a `recommended-for-you` engine.
+// Structure is documented below.
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput) RecommendedForYouConfig() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig {
+		return v.RecommendedForYouConfig
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput) Elem() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig
+		return ret
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput)
+}
+
+// Feature configurations that are required for creating a Most Popular engine.
+// Structure is documented below.
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput) MostPopularConfig() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MostPopularConfig
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput)
+}
+
+// Additional feature configurations for creating a `recommended-for-you` engine.
+// Structure is documented below.
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput) RecommendedForYouConfig() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RecommendedForYouConfig
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig struct {
+	// The time window of which the engine is queried at training and
+	// prediction time. Positive integers only. The value translates to the
+	// last X days of events. Currently required for the `most-popular-items`
+	// engine.
+	TimeWindowDays *int `pulumi:"timeWindowDays"`
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs and RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigInput` via:
+//
+//	RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs{...}
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs struct {
+	// The time window of which the engine is queried at training and
+	// prediction time. Positive integers only. The value translates to the
+	// last X days of events. Currently required for the `most-popular-items`
+	// engine.
+	TimeWindowDays pulumi.IntPtrInput `pulumi:"timeWindowDays"`
+}
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig)(nil)).Elem()
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput)
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput).ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(ctx)
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs, RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtr and RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrInput` via:
+//
+//	        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput
+}
+
+type recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrType RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs
+
+func RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtr(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrInput {
+	return (*recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrType)(v)
+}
+
+func (*recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig)(nil)).Elem()
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return o.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig {
+		return &v
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput)
+}
+
+// The time window of which the engine is queried at training and
+// prediction time. Positive integers only. The value translates to the
+// last X days of events. Currently required for the `most-popular-items`
+// engine.
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput) TimeWindowDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig) *int {
+		return v.TimeWindowDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput) Elem() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig
+		return ret
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput)
+}
+
+// The time window of which the engine is queried at training and
+// prediction time. Positive integers only. The value translates to the
+// last X days of events. Currently required for the `most-popular-items`
+// engine.
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput) TimeWindowDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindowDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig struct {
+	// The type of event with which the engine is queried at prediction time.
+	// If set to `generic`, only `view-item`, `media-play`,and
+	// `media-complete` will be used as `context-event` in engine training. If
+	// set to `view-home-page`, `view-home-page` will also be used as
+	// `context-events` in addition to `view-item`, `media-play`, and
+	// `media-complete`. Currently supported for the `recommended-for-you`
+	// engine. Currently supported values: `view-home-page`, `generic`.
+	ContextEventType *string `pulumi:"contextEventType"`
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs and RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigInput` via:
+//
+//	RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs{...}
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs struct {
+	// The type of event with which the engine is queried at prediction time.
+	// If set to `generic`, only `view-item`, `media-play`,and
+	// `media-complete` will be used as `context-event` in engine training. If
+	// set to `view-home-page`, `view-home-page` will also be used as
+	// `context-events` in addition to `view-item`, `media-play`, and
+	// `media-complete`. Currently supported for the `recommended-for-you`
+	// engine. Currently supported values: `view-home-page`, `generic`.
+	ContextEventType pulumi.StringPtrInput `pulumi:"contextEventType"`
+}
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig)(nil)).Elem()
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput)
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput).ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(ctx)
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs, RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtr and RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrInput` via:
+//
+//	        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput
+}
+
+type recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrType RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs
+
+func RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtr(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrInput {
+	return (*recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrType)(v)
+}
+
+func (*recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig)(nil)).Elem()
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return o.ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig) *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig {
+		return &v
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput)
+}
+
+// The type of event with which the engine is queried at prediction time.
+// If set to `generic`, only `view-item`, `media-play`,and
+// `media-complete` will be used as `context-event` in engine training. If
+// set to `view-home-page`, `view-home-page` will also be used as
+// `context-events` in addition to `view-item`, `media-play`, and
+// `media-complete`. Currently supported for the `recommended-for-you`
+// engine. Currently supported values: `view-home-page`, `generic`.
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput) ContextEventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig) *string {
+		return v.ContextEventType
+	}).(pulumi.StringPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput) Elem() RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig) RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig
+		return ret
+	}).(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput)
+}
+
+// The type of event with which the engine is queried at prediction time.
+// If set to `generic`, only `view-item`, `media-play`,and
+// `media-complete` will be used as `context-event` in engine training. If
+// set to `view-home-page`, `view-home-page` will also be used as
+// `context-events` in addition to `view-item`, `media-play`, and
+// `media-complete`. Currently supported for the `recommended-for-you`
+// engine. Currently supported values: `view-home-page`, `generic`.
+func (o RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput) ContextEventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextEventType
+	}).(pulumi.StringPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig struct {
+	// The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+	TargetField *string `pulumi:"targetField"`
+	// The threshold to be applied to the target (e.g., 0.5).
+	TargetFieldValueFloat *float64 `pulumi:"targetFieldValueFloat"`
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs and RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigInput` via:
+//
+//	RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs{...}
+type RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs struct {
+	// The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+	TargetField pulumi.StringPtrInput `pulumi:"targetField"`
+	// The threshold to be applied to the target (e.g., 0.5).
+	TargetFieldValueFloat pulumi.Float64PtrInput `pulumi:"targetFieldValueFloat"`
+}
+
+func (RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig)(nil)).Elem()
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput)
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput).ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(ctx)
+}
+
+// RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrInput is an input type that accepts RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs, RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtr and RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput values.
+// You can construct a concrete instance of `RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrInput` via:
+//
+//	        RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrInput interface {
+	pulumi.Input
+
+	ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput
+	ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(context.Context) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput
+}
+
+type recommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrType RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs
+
+func RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtr(v *RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrInput {
+	return (*recommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrType)(v)
+}
+
+func (*recommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig)(nil)).Elem()
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return i.ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *recommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrType) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return o.ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig) *RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig {
+		return &v
+	}).(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput)
+}
+
+// The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput) TargetField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig) *string {
+		return v.TargetField
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold to be applied to the target (e.g., 0.5).
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput) TargetFieldValueFloat() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig) *float64 {
+		return v.TargetFieldValueFloat
+	}).(pulumi.Float64PtrOutput)
+}
+
+type RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig)(nil)).Elem()
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) ToRecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutputWithContext(ctx context.Context) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput {
+	return o
+}
+
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) Elem() RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig) RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig
+		return ret
+	}).(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput)
+}
+
+// The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) TargetField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetField
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold to be applied to the target (e.g., 0.5).
+func (o RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput) TargetFieldValueFloat() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TargetFieldValueFloat
+	}).(pulumi.Float64PtrOutput)
+}
+
 type SearchEngineCommonConfig struct {
 	// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
 	CompanyName *string `pulumi:"companyName"`
@@ -3339,6 +4530,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineMetadataArrayInput)(nil)).Elem(), ChatEngineChatEngineMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigPtrInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CmekConfigSingleRegionKeyInput)(nil)).Elem(), CmekConfigSingleRegionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CmekConfigSingleRegionKeyArrayInput)(nil)).Elem(), CmekConfigSingleRegionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreAdvancedSiteSearchConfigInput)(nil)).Elem(), DataStoreAdvancedSiteSearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreAdvancedSiteSearchConfigPtrInput)(nil)).Elem(), DataStoreAdvancedSiteSearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
@@ -3363,6 +4556,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineCommonConfigInput)(nil)).Elem(), RecommendationEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineCommonConfigPtrInput)(nil)).Elem(), RecommendationEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigPtrInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrInput)(nil)).Elem(), RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigPtrInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineSearchEngineConfigInput)(nil)).Elem(), SearchEngineSearchEngineConfigArgs{})
@@ -3381,6 +4586,8 @@ func init() {
 	pulumi.RegisterOutputType(ChatEngineChatEngineMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ChatEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(ChatEngineCommonConfigPtrOutput{})
+	pulumi.RegisterOutputType(CmekConfigSingleRegionKeyOutput{})
+	pulumi.RegisterOutputType(CmekConfigSingleRegionKeyArrayOutput{})
 	pulumi.RegisterOutputType(DataStoreAdvancedSiteSearchConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreAdvancedSiteSearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigOutput{})
@@ -3405,6 +4612,18 @@ func init() {
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineCommonConfigOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineCommonConfigPtrOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigPtrOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigPtrOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigPtrOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigPtrOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigOutput{})
+	pulumi.RegisterOutputType(RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineSearchEngineConfigOutput{})

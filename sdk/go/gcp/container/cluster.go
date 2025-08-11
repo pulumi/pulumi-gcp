@@ -212,8 +212,6 @@ type Cluster struct {
 	// set to `true`).
 	AllowNetAdmin pulumi.BoolPtrOutput `pulumi:"allowNetAdmin"`
 	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	AnonymousAuthenticationConfig ClusterAnonymousAuthenticationConfigOutput `pulumi:"anonymousAuthenticationConfig"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -467,6 +465,10 @@ type Cluster struct {
 	ProtectConfig ClusterProtectConfigOutput `pulumi:"protectConfig"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	RbacBindingConfig ClusterRbacBindingConfigOutput `pulumi:"rbacBindingConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
 	// When updating this field, GKE imposes specific version requirements. See
@@ -571,8 +573,6 @@ type clusterState struct {
 	// set to `true`).
 	AllowNetAdmin *bool `pulumi:"allowNetAdmin"`
 	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	AnonymousAuthenticationConfig *ClusterAnonymousAuthenticationConfig `pulumi:"anonymousAuthenticationConfig"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -826,6 +826,10 @@ type clusterState struct {
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	RbacBindingConfig *ClusterRbacBindingConfig `pulumi:"rbacBindingConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
 	// When updating this field, GKE imposes specific version requirements. See
@@ -896,8 +900,6 @@ type ClusterState struct {
 	// set to `true`).
 	AllowNetAdmin pulumi.BoolPtrInput
 	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	AnonymousAuthenticationConfig ClusterAnonymousAuthenticationConfigPtrInput
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -1151,6 +1153,10 @@ type ClusterState struct {
 	ProtectConfig ClusterProtectConfigPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	RbacBindingConfig ClusterRbacBindingConfigPtrInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
 	// When updating this field, GKE imposes specific version requirements. See
@@ -1225,8 +1231,6 @@ type clusterArgs struct {
 	// set to `true`).
 	AllowNetAdmin *bool `pulumi:"allowNetAdmin"`
 	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	AnonymousAuthenticationConfig *ClusterAnonymousAuthenticationConfig `pulumi:"anonymousAuthenticationConfig"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -1467,6 +1471,10 @@ type clusterArgs struct {
 	Project *string `pulumi:"project"`
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
+	// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	RbacBindingConfig *ClusterRbacBindingConfig `pulumi:"rbacBindingConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
 	// When updating this field, GKE imposes specific version requirements. See
@@ -1527,8 +1535,6 @@ type ClusterArgs struct {
 	// set to `true`).
 	AllowNetAdmin pulumi.BoolPtrInput
 	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	AnonymousAuthenticationConfig ClusterAnonymousAuthenticationConfigPtrInput
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -1769,6 +1775,10 @@ type ClusterArgs struct {
 	Project pulumi.StringPtrInput
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigPtrInput
+	// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	RbacBindingConfig ClusterRbacBindingConfigPtrInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
 	// When updating this field, GKE imposes specific version requirements. See
@@ -1920,8 +1930,6 @@ func (o ClusterOutput) AllowNetAdmin() pulumi.BoolPtrOutput {
 }
 
 // Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-//
-// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 func (o ClusterOutput) AnonymousAuthenticationConfig() ClusterAnonymousAuthenticationConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAnonymousAuthenticationConfigOutput { return v.AnonymousAuthenticationConfig }).(ClusterAnonymousAuthenticationConfigOutput)
 }
@@ -2383,6 +2391,13 @@ func (o ClusterOutput) ProtectConfig() ClusterProtectConfigOutput {
 // The combination of labels configured directly on the resource and default labels configured on the provider.
 func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+//
+// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+func (o ClusterOutput) RbacBindingConfig() ClusterRbacBindingConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRbacBindingConfigOutput { return v.RbacBindingConfig }).(ClusterRbacBindingConfigOutput)
 }
 
 // Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)

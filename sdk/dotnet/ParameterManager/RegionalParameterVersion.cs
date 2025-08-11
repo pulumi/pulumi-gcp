@@ -102,6 +102,66 @@ namespace Pulumi.Gcp.ParameterManager
     /// 
     /// });
     /// ```
+    /// ### Regional Parameter Version With Json Format With File
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var regional_parameter_basic = new Gcp.ParameterManager.RegionalParameter("regional-parameter-basic", new()
+    ///     {
+    ///         ParameterId = "regional_parameter",
+    ///         Format = "JSON",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var regional_parameter_version_with_json_format_with_file = new Gcp.ParameterManager.RegionalParameterVersion("regional-parameter-version-with-json-format-with-file", new()
+    ///     {
+    ///         Parameter = regional_parameter_basic.Id,
+    ///         ParameterVersionId = "regional_parameter_version",
+    ///         ParameterData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "regional-parameter-json-data.json",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Regional Parameter Version With Yaml Format With File
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var regional_parameter_basic = new Gcp.ParameterManager.RegionalParameter("regional-parameter-basic", new()
+    ///     {
+    ///         ParameterId = "regional_parameter",
+    ///         Format = "YAML",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var regional_parameter_version_with_yaml_format_with_file = new Gcp.ParameterManager.RegionalParameterVersion("regional-parameter-version-with-yaml-format-with-file", new()
+    ///     {
+    ///         Parameter = regional_parameter_basic.Id,
+    ///         ParameterVersionId = "regional_parameter_version",
+    ///         ParameterData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "regional-parameter-yaml-data.yaml",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

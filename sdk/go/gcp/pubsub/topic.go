@@ -354,7 +354,39 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Topic Single Smt
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//				MessageTransforms: pubsub.TopicMessageTransformArray{
+//					&pubsub.TopicMessageTransformArgs{
+//						JavascriptUdf: &pubsub.TopicMessageTransformJavascriptUdfArgs{
+//							FunctionName: pulumi.String("isYearEven"),
+//							Code:         pulumi.String("function isYearEven(message, metadata) {\n  const data = JSON.parse(message.data);\n  return message.year %2 === 0;\n}\n"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Import
 //
 // Topic can be imported using any of these accepted formats:

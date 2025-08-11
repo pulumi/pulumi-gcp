@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.BatchEnvironmentConfigExecutionConfigAuthenticationConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BatchEnvironmentConfigExecutionConfig {
+    /**
+     * @return Authentication configuration for a workload is used to set the default identity for the workload execution.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable BatchEnvironmentConfigExecutionConfigAuthenticationConfig authenticationConfig;
     /**
      * @return The Cloud KMS key to use for encryption.
      * 
@@ -60,6 +67,14 @@ public final class BatchEnvironmentConfigExecutionConfig {
     private @Nullable String ttl;
 
     private BatchEnvironmentConfigExecutionConfig() {}
+    /**
+     * @return Authentication configuration for a workload is used to set the default identity for the workload execution.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<BatchEnvironmentConfigExecutionConfigAuthenticationConfig> authenticationConfig() {
+        return Optional.ofNullable(this.authenticationConfig);
+    }
     /**
      * @return The Cloud KMS key to use for encryption.
      * 
@@ -130,6 +145,7 @@ public final class BatchEnvironmentConfigExecutionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable BatchEnvironmentConfigExecutionConfigAuthenticationConfig authenticationConfig;
         private @Nullable String kmsKey;
         private @Nullable List<String> networkTags;
         private @Nullable String networkUri;
@@ -140,6 +156,7 @@ public final class BatchEnvironmentConfigExecutionConfig {
         public Builder() {}
         public Builder(BatchEnvironmentConfigExecutionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authenticationConfig = defaults.authenticationConfig;
     	      this.kmsKey = defaults.kmsKey;
     	      this.networkTags = defaults.networkTags;
     	      this.networkUri = defaults.networkUri;
@@ -149,6 +166,12 @@ public final class BatchEnvironmentConfigExecutionConfig {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
+        public Builder authenticationConfig(@Nullable BatchEnvironmentConfigExecutionConfigAuthenticationConfig authenticationConfig) {
+
+            this.authenticationConfig = authenticationConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
 
@@ -196,6 +219,7 @@ public final class BatchEnvironmentConfigExecutionConfig {
         }
         public BatchEnvironmentConfigExecutionConfig build() {
             final var _resultValue = new BatchEnvironmentConfigExecutionConfig();
+            _resultValue.authenticationConfig = authenticationConfig;
             _resultValue.kmsKey = kmsKey;
             _resultValue.networkTags = networkTags;
             _resultValue.networkUri = networkUri;

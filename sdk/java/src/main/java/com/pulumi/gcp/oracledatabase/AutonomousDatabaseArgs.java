@@ -59,15 +59,15 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
      * The subnet CIDR range for the Autonmous Database.
      * 
      */
-    @Import(name="cidr", required=true)
-    private Output<String> cidr;
+    @Import(name="cidr")
+    private @Nullable Output<String> cidr;
 
     /**
      * @return The subnet CIDR range for the Autonmous Database.
      * 
      */
-    public Output<String> cidr() {
-        return this.cidr;
+    public Optional<Output<String>> cidr() {
+        return Optional.ofNullable(this.cidr);
     }
 
     /**
@@ -152,16 +152,58 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
      * Format: projects/{project}/global/networks/{network}
      * 
      */
-    @Import(name="network", required=true)
-    private Output<String> network;
+    @Import(name="network")
+    private @Nullable Output<String> network;
 
     /**
      * @return The name of the VPC network used by the Autonomous Database.
      * Format: projects/{project}/global/networks/{network}
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    @Import(name="odbNetwork")
+    private @Nullable Output<String> odbNetwork;
+
+    /**
+     * @return The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    public Optional<Output<String>> odbNetwork() {
+        return Optional.ofNullable(this.odbNetwork);
+    }
+
+    /**
+     * The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    @Import(name="odbSubnet")
+    private @Nullable Output<String> odbSubnet;
+
+    /**
+     * @return The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public Optional<Output<String>> odbSubnet() {
+        return Optional.ofNullable(this.odbSubnet);
     }
 
     /**
@@ -210,6 +252,8 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
         this.labels = $.labels;
         this.location = $.location;
         this.network = $.network;
+        this.odbNetwork = $.odbNetwork;
+        this.odbSubnet = $.odbSubnet;
         this.project = $.project;
         this.properties = $.properties;
     }
@@ -286,7 +330,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder cidr(Output<String> cidr) {
+        public Builder cidr(@Nullable Output<String> cidr) {
             $.cidr = cidr;
             return this;
         }
@@ -411,7 +455,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder network(Output<String> network) {
+        public Builder network(@Nullable Output<String> network) {
             $.network = network;
             return this;
         }
@@ -425,6 +469,60 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param odbNetwork The name of the OdbNetwork associated with the Autonomous Database.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+         * It is optional but if specified, this should match the parent ODBNetwork of
+         * the odb_subnet and backup_odb_subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbNetwork(@Nullable Output<String> odbNetwork) {
+            $.odbNetwork = odbNetwork;
+            return this;
+        }
+
+        /**
+         * @param odbNetwork The name of the OdbNetwork associated with the Autonomous Database.
+         * Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+         * It is optional but if specified, this should match the parent ODBNetwork of
+         * the odb_subnet and backup_odb_subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbNetwork(String odbNetwork) {
+            return odbNetwork(Output.of(odbNetwork));
+        }
+
+        /**
+         * @param odbSubnet The name of the OdbSubnet associated with the Autonomous Database for
+         * IP allocation. Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbSubnet(@Nullable Output<String> odbSubnet) {
+            $.odbSubnet = odbSubnet;
+            return this;
+        }
+
+        /**
+         * @param odbSubnet The name of the OdbSubnet associated with the Autonomous Database for
+         * IP allocation. Format:
+         * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder odbSubnet(String odbSubnet) {
+            return odbSubnet(Output.of(odbSubnet));
         }
 
         /**
@@ -477,17 +575,11 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
             if ($.autonomousDatabaseId == null) {
                 throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "autonomousDatabaseId");
             }
-            if ($.cidr == null) {
-                throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "cidr");
-            }
             if ($.database == null) {
                 throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "database");
             }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "location");
-            }
-            if ($.network == null) {
-                throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "network");
             }
             if ($.properties == null) {
                 throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "properties");

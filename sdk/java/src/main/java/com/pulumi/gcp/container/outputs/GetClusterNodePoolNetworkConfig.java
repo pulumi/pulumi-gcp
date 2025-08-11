@@ -56,6 +56,11 @@ public final class GetClusterNodePoolNetworkConfig {
      * 
      */
     private String podRange;
+    /**
+     * @return The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+     * 
+     */
+    private String subnetwork;
 
     private GetClusterNodePoolNetworkConfig() {}
     /**
@@ -114,6 +119,13 @@ public final class GetClusterNodePoolNetworkConfig {
     public String podRange() {
         return this.podRange;
     }
+    /**
+     * @return The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
+     * 
+     */
+    public String subnetwork() {
+        return this.subnetwork;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -132,6 +144,7 @@ public final class GetClusterNodePoolNetworkConfig {
         private List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
         private String podIpv4CidrBlock;
         private String podRange;
+        private String subnetwork;
         public Builder() {}
         public Builder(GetClusterNodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -143,6 +156,7 @@ public final class GetClusterNodePoolNetworkConfig {
     	      this.podCidrOverprovisionConfigs = defaults.podCidrOverprovisionConfigs;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
+    	      this.subnetwork = defaults.subnetwork;
         }
 
         @CustomType.Setter
@@ -221,6 +235,14 @@ public final class GetClusterNodePoolNetworkConfig {
             this.podRange = podRange;
             return this;
         }
+        @CustomType.Setter
+        public Builder subnetwork(String subnetwork) {
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
+            return this;
+        }
         public GetClusterNodePoolNetworkConfig build() {
             final var _resultValue = new GetClusterNodePoolNetworkConfig();
             _resultValue.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
@@ -231,6 +253,7 @@ public final class GetClusterNodePoolNetworkConfig {
             _resultValue.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             _resultValue.podIpv4CidrBlock = podIpv4CidrBlock;
             _resultValue.podRange = podRange;
+            _resultValue.subnetwork = subnetwork;
             return _resultValue;
         }
     }

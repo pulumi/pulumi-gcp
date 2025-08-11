@@ -126,6 +126,9 @@ namespace Pulumi.Gcp.Storage
         [Output("customerEncryption")]
         public Output<Outputs.BucketObjectCustomerEncryption?> CustomerEncryption { get; private set; } = null!;
 
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
         [Output("detectMd5hash")]
         public Output<string?> DetectMd5hash { get; private set; } = null!;
 
@@ -354,6 +357,9 @@ namespace Pulumi.Gcp.Storage
             }
         }
 
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 
@@ -513,6 +519,9 @@ namespace Pulumi.Gcp.Storage
                 _customerEncryption = Output.Tuple<Input<Inputs.BucketObjectCustomerEncryptionGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }

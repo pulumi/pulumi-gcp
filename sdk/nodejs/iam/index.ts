@@ -30,6 +30,11 @@ export const getTestablePermissions: typeof import("./getTestablePermissions").g
 export const getTestablePermissionsOutput: typeof import("./getTestablePermissions").getTestablePermissionsOutput = null as any;
 utilities.lazyLoad(exports, ["getTestablePermissions","getTestablePermissionsOutput"], () => require("./getTestablePermissions"));
 
+export { GetWorkforcePoolIamPolicyArgs, GetWorkforcePoolIamPolicyResult, GetWorkforcePoolIamPolicyOutputArgs } from "./getWorkforcePoolIamPolicy";
+export const getWorkforcePoolIamPolicy: typeof import("./getWorkforcePoolIamPolicy").getWorkforcePoolIamPolicy = null as any;
+export const getWorkforcePoolIamPolicyOutput: typeof import("./getWorkforcePoolIamPolicy").getWorkforcePoolIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkforcePoolIamPolicy","getWorkforcePoolIamPolicyOutput"], () => require("./getWorkforcePoolIamPolicy"));
+
 export { GetWorkloadIdentityPoolArgs, GetWorkloadIdentityPoolResult, GetWorkloadIdentityPoolOutputArgs } from "./getWorkloadIdentityPool";
 export const getWorkloadIdentityPool: typeof import("./getWorkloadIdentityPool").getWorkloadIdentityPool = null as any;
 export const getWorkloadIdentityPoolOutput: typeof import("./getWorkloadIdentityPool").getWorkloadIdentityPoolOutput = null as any;
@@ -74,6 +79,21 @@ export { WorkforcePoolArgs, WorkforcePoolState } from "./workforcePool";
 export type WorkforcePool = import("./workforcePool").WorkforcePool;
 export const WorkforcePool: typeof import("./workforcePool").WorkforcePool = null as any;
 utilities.lazyLoad(exports, ["WorkforcePool"], () => require("./workforcePool"));
+
+export { WorkforcePoolIamBindingArgs, WorkforcePoolIamBindingState } from "./workforcePoolIamBinding";
+export type WorkforcePoolIamBinding = import("./workforcePoolIamBinding").WorkforcePoolIamBinding;
+export const WorkforcePoolIamBinding: typeof import("./workforcePoolIamBinding").WorkforcePoolIamBinding = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolIamBinding"], () => require("./workforcePoolIamBinding"));
+
+export { WorkforcePoolIamMemberArgs, WorkforcePoolIamMemberState } from "./workforcePoolIamMember";
+export type WorkforcePoolIamMember = import("./workforcePoolIamMember").WorkforcePoolIamMember;
+export const WorkforcePoolIamMember: typeof import("./workforcePoolIamMember").WorkforcePoolIamMember = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolIamMember"], () => require("./workforcePoolIamMember"));
+
+export { WorkforcePoolIamPolicyArgs, WorkforcePoolIamPolicyState } from "./workforcePoolIamPolicy";
+export type WorkforcePoolIamPolicy = import("./workforcePoolIamPolicy").WorkforcePoolIamPolicy;
+export const WorkforcePoolIamPolicy: typeof import("./workforcePoolIamPolicy").WorkforcePoolIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolIamPolicy"], () => require("./workforcePoolIamPolicy"));
 
 export { WorkforcePoolProviderArgs, WorkforcePoolProviderState } from "./workforcePoolProvider";
 export type WorkforcePoolProvider = import("./workforcePoolProvider").WorkforcePoolProvider;
@@ -143,6 +163,12 @@ const _module = {
                 return new ProjectsPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/workforcePool:WorkforcePool":
                 return new WorkforcePool(name, <any>undefined, { urn })
+            case "gcp:iam/workforcePoolIamBinding:WorkforcePoolIamBinding":
+                return new WorkforcePoolIamBinding(name, <any>undefined, { urn })
+            case "gcp:iam/workforcePoolIamMember:WorkforcePoolIamMember":
+                return new WorkforcePoolIamMember(name, <any>undefined, { urn })
+            case "gcp:iam/workforcePoolIamPolicy:WorkforcePoolIamPolicy":
+                return new WorkforcePoolIamPolicy(name, <any>undefined, { urn })
             case "gcp:iam/workforcePoolProvider:WorkforcePoolProvider":
                 return new WorkforcePoolProvider(name, <any>undefined, { urn })
             case "gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey":
@@ -175,6 +201,9 @@ pulumi.runtime.registerResourceModule("gcp", "iam/organizationsPolicyBinding", _
 pulumi.runtime.registerResourceModule("gcp", "iam/principalAccessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/projectsPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePool", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProvider", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProviderKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPool", _module)

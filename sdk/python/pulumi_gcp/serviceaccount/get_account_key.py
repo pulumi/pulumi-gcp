@@ -66,6 +66,7 @@ class GetAccountKeyResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.""")
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
 

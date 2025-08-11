@@ -4,15 +4,23 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyAdditionalIpRangesConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterIpAllocationPolicy {
+    /**
+     * @return The configuration for individual additional subnetworks attached to the cluster.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs;
     /**
      * @return The configuration for additional pod secondary ranges at
      * the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
@@ -67,6 +75,14 @@ public final class ClusterIpAllocationPolicy {
     private @Nullable String stackType;
 
     private ClusterIpAllocationPolicy() {}
+    /**
+     * @return The configuration for individual additional subnetworks attached to the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public List<ClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs() {
+        return this.additionalIpRangesConfigs == null ? List.of() : this.additionalIpRangesConfigs;
+    }
     /**
      * @return The configuration for additional pod secondary ranges at
      * the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
@@ -143,6 +159,7 @@ public final class ClusterIpAllocationPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs;
         private @Nullable ClusterIpAllocationPolicyAdditionalPodRangesConfig additionalPodRangesConfig;
         private @Nullable String clusterIpv4CidrBlock;
         private @Nullable String clusterSecondaryRangeName;
@@ -153,6 +170,7 @@ public final class ClusterIpAllocationPolicy {
         public Builder() {}
         public Builder(ClusterIpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalIpRangesConfigs = defaults.additionalIpRangesConfigs;
     	      this.additionalPodRangesConfig = defaults.additionalPodRangesConfig;
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
@@ -162,6 +180,15 @@ public final class ClusterIpAllocationPolicy {
     	      this.stackType = defaults.stackType;
         }
 
+        @CustomType.Setter
+        public Builder additionalIpRangesConfigs(@Nullable List<ClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs) {
+
+            this.additionalIpRangesConfigs = additionalIpRangesConfigs;
+            return this;
+        }
+        public Builder additionalIpRangesConfigs(ClusterIpAllocationPolicyAdditionalIpRangesConfig... additionalIpRangesConfigs) {
+            return additionalIpRangesConfigs(List.of(additionalIpRangesConfigs));
+        }
         @CustomType.Setter
         public Builder additionalPodRangesConfig(@Nullable ClusterIpAllocationPolicyAdditionalPodRangesConfig additionalPodRangesConfig) {
 
@@ -206,6 +233,7 @@ public final class ClusterIpAllocationPolicy {
         }
         public ClusterIpAllocationPolicy build() {
             final var _resultValue = new ClusterIpAllocationPolicy();
+            _resultValue.additionalIpRangesConfigs = additionalIpRangesConfigs;
             _resultValue.additionalPodRangesConfig = additionalPodRangesConfig;
             _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;

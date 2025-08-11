@@ -35,6 +35,11 @@ export type AiEndpointIamPolicy = import("./aiEndpointIamPolicy").AiEndpointIamP
 export const AiEndpointIamPolicy: typeof import("./aiEndpointIamPolicy").AiEndpointIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AiEndpointIamPolicy"], () => require("./aiEndpointIamPolicy"));
 
+export { AiEndpointWithModelGardenDeploymentArgs, AiEndpointWithModelGardenDeploymentState } from "./aiEndpointWithModelGardenDeployment";
+export type AiEndpointWithModelGardenDeployment = import("./aiEndpointWithModelGardenDeployment").AiEndpointWithModelGardenDeployment;
+export const AiEndpointWithModelGardenDeployment: typeof import("./aiEndpointWithModelGardenDeployment").AiEndpointWithModelGardenDeployment = null as any;
+utilities.lazyLoad(exports, ["AiEndpointWithModelGardenDeployment"], () => require("./aiEndpointWithModelGardenDeployment"));
+
 export { AiFeatureGroupArgs, AiFeatureGroupState } from "./aiFeatureGroup";
 export type AiFeatureGroup = import("./aiFeatureGroup").AiFeatureGroup;
 export const AiFeatureGroup: typeof import("./aiFeatureGroup").AiFeatureGroup = null as any;
@@ -222,6 +227,8 @@ const _module = {
                 return new AiEndpointIamMember(name, <any>undefined, { urn })
             case "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy":
                 return new AiEndpointIamPolicy(name, <any>undefined, { urn })
+            case "gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment":
+                return new AiEndpointWithModelGardenDeployment(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureGroup:AiFeatureGroup":
                 return new AiFeatureGroup(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature":
@@ -287,6 +294,7 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointWithModelGardenDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroupFeature", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroupIamBinding", _module)

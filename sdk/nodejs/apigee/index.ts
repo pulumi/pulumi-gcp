@@ -15,6 +15,11 @@ export type Api = import("./api").Api;
 export const Api: typeof import("./api").Api = null as any;
 utilities.lazyLoad(exports, ["Api"], () => require("./api"));
 
+export { ApiProductArgs, ApiProductState } from "./apiProduct";
+export type ApiProduct = import("./apiProduct").ApiProduct;
+export const ApiProduct: typeof import("./apiProduct").ApiProduct = null as any;
+utilities.lazyLoad(exports, ["ApiProduct"], () => require("./apiProduct"));
+
 export { AppGroupArgs, AppGroupState } from "./appGroup";
 export type AppGroup = import("./appGroup").AppGroup;
 export const AppGroup: typeof import("./appGroup").AppGroup = null as any;
@@ -140,6 +145,11 @@ export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
+export { SecurityActionArgs, SecurityActionState } from "./securityAction";
+export type SecurityAction = import("./securityAction").SecurityAction;
+export const SecurityAction: typeof import("./securityAction").SecurityAction = null as any;
+utilities.lazyLoad(exports, ["SecurityAction"], () => require("./securityAction"));
+
 export { SecurityMonitoringConditionArgs, SecurityMonitoringConditionState } from "./securityMonitoringCondition";
 export type SecurityMonitoringCondition = import("./securityMonitoringCondition").SecurityMonitoringCondition;
 export const SecurityMonitoringCondition: typeof import("./securityMonitoringCondition").SecurityMonitoringCondition = null as any;
@@ -179,6 +189,8 @@ const _module = {
                 return new AddonsConfig(name, <any>undefined, { urn })
             case "gcp:apigee/api:Api":
                 return new Api(name, <any>undefined, { urn })
+            case "gcp:apigee/apiProduct:ApiProduct":
+                return new ApiProduct(name, <any>undefined, { urn })
             case "gcp:apigee/appGroup:AppGroup":
                 return new AppGroup(name, <any>undefined, { urn })
             case "gcp:apigee/controlPlaneAccess:ControlPlaneAccess":
@@ -227,6 +239,8 @@ const _module = {
                 return new NatAddress(name, <any>undefined, { urn })
             case "gcp:apigee/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "gcp:apigee/securityAction:SecurityAction":
+                return new SecurityAction(name, <any>undefined, { urn })
             case "gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition":
                 return new SecurityMonitoringCondition(name, <any>undefined, { urn })
             case "gcp:apigee/securityProfileV2:SecurityProfileV2":
@@ -246,6 +260,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "apigee/addonsConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/api", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/apiProduct", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/appGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/controlPlaneAccess", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/developer", _module)
@@ -270,6 +285,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesPkcs12", _m
 pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesSelfSignedCert", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/natAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/securityAction", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/securityMonitoringCondition", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/securityProfileV2", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflow", _module)

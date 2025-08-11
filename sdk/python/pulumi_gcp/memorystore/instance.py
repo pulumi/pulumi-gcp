@@ -515,8 +515,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]] discovery_endpoints: (Deprecated)
-               Output only. Endpoints clients can connect to the instance through. Currently only one
-               discovery endpoint is supported.
+               Deprecated. Output only. Endpoints clients can connect to the instance through.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]] endpoints: Endpoints for the instance.
@@ -611,8 +610,8 @@ class _InstanceState:
         if desired_psc_auto_connections is not None:
             pulumi.set(__self__, "desired_psc_auto_connections", desired_psc_auto_connections)
         if discovery_endpoints is not None:
-            warnings.warn("""`discovery_endpoints` is deprecated  Use `endpoints` instead.""", DeprecationWarning)
-            pulumi.log.warn("""discovery_endpoints is deprecated: `discovery_endpoints` is deprecated  Use `endpoints` instead.""")
+            warnings.warn("""This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.""", DeprecationWarning)
+            pulumi.log.warn("""discovery_endpoints is deprecated: This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.""")
         if discovery_endpoints is not None:
             pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
         if effective_labels is not None:
@@ -783,12 +782,11 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="discoveryEndpoints")
-    @_utilities.deprecated("""`discovery_endpoints` is deprecated  Use `endpoints` instead.""")
+    @_utilities.deprecated("""This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.""")
     def discovery_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]]:
         """
         (Deprecated)
-        Output only. Endpoints clients can connect to the instance through. Currently only one
-        discovery endpoint is supported.
+        Deprecated. Output only. Endpoints clients can connect to the instance through.
         Structure is documented below.
         """
         return pulumi.get(self, "discovery_endpoints")
@@ -2068,8 +2066,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict']]]] discovery_endpoints: (Deprecated)
-               Output only. Endpoints clients can connect to the instance through. Currently only one
-               discovery endpoint is supported.
+               Deprecated. Output only. Endpoints clients can connect to the instance through.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: Endpoints for the instance.
@@ -2261,12 +2258,11 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="discoveryEndpoints")
-    @_utilities.deprecated("""`discovery_endpoints` is deprecated  Use `endpoints` instead.""")
+    @_utilities.deprecated("""This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.""")
     def discovery_endpoints(self) -> pulumi.Output[Sequence['outputs.InstanceDiscoveryEndpoint']]:
         """
         (Deprecated)
-        Output only. Endpoints clients can connect to the instance through. Currently only one
-        discovery endpoint is supported.
+        Deprecated. Output only. Endpoints clients can connect to the instance through.
         Structure is documented below.
         """
         return pulumi.get(self, "discovery_endpoints")

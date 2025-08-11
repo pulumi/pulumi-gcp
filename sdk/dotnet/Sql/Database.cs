@@ -91,8 +91,6 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// * `{{instance}}/{{name}}`
     /// 
-    /// * `{{name}}`
-    /// 
     /// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
     /// 
     /// ```sh
@@ -109,10 +107,6 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// ```sh
     /// $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:sql/database:Database default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:sql/database:Database")]

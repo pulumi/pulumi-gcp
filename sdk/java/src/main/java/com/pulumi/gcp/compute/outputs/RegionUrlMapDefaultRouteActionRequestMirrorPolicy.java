@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +19,12 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
      * 
      */
     private @Nullable String backendService;
+    /**
+     * @return The percentage of requests to be mirrored to backendService.
+     * The value must be between 0.0 and 100.0 inclusive.
+     * 
+     */
+    private @Nullable Double mirrorPercent;
 
     private RegionUrlMapDefaultRouteActionRequestMirrorPolicy() {}
     /**
@@ -28,6 +35,14 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
      */
     public Optional<String> backendService() {
         return Optional.ofNullable(this.backendService);
+    }
+    /**
+     * @return The percentage of requests to be mirrored to backendService.
+     * The value must be between 0.0 and 100.0 inclusive.
+     * 
+     */
+    public Optional<Double> mirrorPercent() {
+        return Optional.ofNullable(this.mirrorPercent);
     }
 
     public static Builder builder() {
@@ -40,10 +55,12 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String backendService;
+        private @Nullable Double mirrorPercent;
         public Builder() {}
         public Builder(RegionUrlMapDefaultRouteActionRequestMirrorPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendService = defaults.backendService;
+    	      this.mirrorPercent = defaults.mirrorPercent;
         }
 
         @CustomType.Setter
@@ -52,9 +69,16 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
             this.backendService = backendService;
             return this;
         }
+        @CustomType.Setter
+        public Builder mirrorPercent(@Nullable Double mirrorPercent) {
+
+            this.mirrorPercent = mirrorPercent;
+            return this;
+        }
         public RegionUrlMapDefaultRouteActionRequestMirrorPolicy build() {
             final var _resultValue = new RegionUrlMapDefaultRouteActionRequestMirrorPolicy();
             _resultValue.backendService = backendService;
+            _resultValue.mirrorPercent = mirrorPercent;
             return _resultValue;
         }
     }

@@ -14,29 +14,113 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxWebhookServiceDirectoryGenericWebService
     {
         /// <summary>
-        /// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        /// Specifies a list of allowed custom CA certificates (in DER format) for
+        /// HTTPS verification. This overrides the default SSL trust store. If this
+        /// is empty or unspecified, Dialogflow will use Google's default trust store
+        /// to verify certificates.
+        /// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+        /// name". For instance a certificate can be self-signed using the following
+        /// command,
+        /// openssl x509 -req -days 200 -in example.com.csr \
+        /// -signkey example.com.key \
+        /// -out example.com.crt \
+        /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
         /// </summary>
         public readonly ImmutableArray<string> AllowedCaCerts;
+        /// <summary>
+        /// HTTP method for the flexible webhook calls. Standard webhook always uses
+        /// POST.
+        /// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        /// </summary>
+        public readonly string? HttpMethod;
+        /// <summary>
+        /// Represents configuration of OAuth client credential flow for 3rd party
+        /// API authentication.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfig? OauthConfig;
+        /// <summary>
+        /// Maps the values extracted from specific fields of the flexible webhook
+        /// response into session parameters.
+        /// - Key: session parameter name
+        /// - Value: field path in the webhook response
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ParameterMapping;
+        /// <summary>
+        /// Defines a custom JSON object as request body to send to flexible webhook.
+        /// </summary>
+        public readonly string? RequestBody;
         /// <summary>
         /// The HTTP request headers to send together with webhook requests.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? RequestHeaders;
         /// <summary>
-        /// Whether to use speech adaptation for speech recognition.
+        /// The SecretManager secret version resource storing the username:password
+        /// pair for HTTP Basic authentication.
+        /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        /// </summary>
+        public readonly string? SecretVersionForUsernamePassword;
+        /// <summary>
+        /// The HTTP request headers to send together with webhook requests. Header
+        /// values are stored in SecretManager secret versions.
+        /// When the same header name is specified in both `request_headers` and
+        /// `secret_versions_for_request_headers`, the value in
+        /// `secret_versions_for_request_headers` will be used.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader> SecretVersionsForRequestHeaders;
+        /// <summary>
+        /// Indicate the auth token type generated from the [Diglogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        /// The generated token is sent in the Authorization header.
+        /// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+        /// </summary>
+        public readonly string? ServiceAgentAuth;
+        /// <summary>
+        /// The webhook URI for receiving POST requests. It must use https protocol.
         /// </summary>
         public readonly string Uri;
+        /// <summary>
+        /// Type of the webhook.
+        /// Possible values are: `STANDARD`, `FLEXIBLE`.
+        /// </summary>
+        public readonly string? WebhookType;
 
         [OutputConstructor]
         private CxWebhookServiceDirectoryGenericWebService(
             ImmutableArray<string> allowedCaCerts,
 
+            string? httpMethod,
+
+            Outputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfig? oauthConfig,
+
+            ImmutableDictionary<string, string>? parameterMapping,
+
+            string? requestBody,
+
             ImmutableDictionary<string, string>? requestHeaders,
 
-            string uri)
+            string? secretVersionForUsernamePassword,
+
+            ImmutableArray<Outputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader> secretVersionsForRequestHeaders,
+
+            string? serviceAgentAuth,
+
+            string uri,
+
+            string? webhookType)
         {
             AllowedCaCerts = allowedCaCerts;
+            HttpMethod = httpMethod;
+            OauthConfig = oauthConfig;
+            ParameterMapping = parameterMapping;
+            RequestBody = requestBody;
             RequestHeaders = requestHeaders;
+            SecretVersionForUsernamePassword = secretVersionForUsernamePassword;
+            SecretVersionsForRequestHeaders = secretVersionsForRequestHeaders;
+            ServiceAgentAuth = serviceAgentAuth;
             Uri = uri;
+            WebhookType = webhookType;
         }
     }
 }

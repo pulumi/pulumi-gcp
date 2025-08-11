@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogicalView{}
 	case "gcp:bigtable/materializedView:MaterializedView":
 		r = &MaterializedView{}
+	case "gcp:bigtable/schemaBundle:SchemaBundle":
+		r = &SchemaBundle{}
 	case "gcp:bigtable/table:Table":
 		r = &Table{}
 	case "gcp:bigtable/tableIamBinding:TableIamBinding":
@@ -103,6 +105,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigtable/materializedView",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigtable/schemaBundle",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

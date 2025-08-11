@@ -139,6 +139,90 @@ import (
 //	}
 //
 // ```
+// ### Regional Parameter Version With Json Format With File
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			regional_parameter_basic, err := parametermanager.NewRegionalParameter(ctx, "regional-parameter-basic", &parametermanager.RegionalParameterArgs{
+//				ParameterId: pulumi.String("regional_parameter"),
+//				Format:      pulumi.String("JSON"),
+//				Location:    pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "regional-parameter-json-data.json",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-json-format-with-file", &parametermanager.RegionalParameterVersionArgs{
+//				Parameter:          regional_parameter_basic.ID(),
+//				ParameterVersionId: pulumi.String("regional_parameter_version"),
+//				ParameterData:      pulumi.String(invokeFile.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Regional Parameter Version With Yaml Format With File
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			regional_parameter_basic, err := parametermanager.NewRegionalParameter(ctx, "regional-parameter-basic", &parametermanager.RegionalParameterArgs{
+//				ParameterId: pulumi.String("regional_parameter"),
+//				Format:      pulumi.String("YAML"),
+//				Location:    pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "regional-parameter-yaml-data.yaml",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-yaml-format-with-file", &parametermanager.RegionalParameterVersionArgs{
+//				Parameter:          regional_parameter_basic.ID(),
+//				ParameterVersionId: pulumi.String("regional_parameter_version"),
+//				ParameterData:      pulumi.String(invokeFile.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

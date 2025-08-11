@@ -10,10 +10,20 @@ export type ChatEngine = import("./chatEngine").ChatEngine;
 export const ChatEngine: typeof import("./chatEngine").ChatEngine = null as any;
 utilities.lazyLoad(exports, ["ChatEngine"], () => require("./chatEngine"));
 
+export { CmekConfigArgs, CmekConfigState } from "./cmekConfig";
+export type CmekConfig = import("./cmekConfig").CmekConfig;
+export const CmekConfig: typeof import("./cmekConfig").CmekConfig = null as any;
+utilities.lazyLoad(exports, ["CmekConfig"], () => require("./cmekConfig"));
+
 export { DataStoreArgs, DataStoreState } from "./dataStore";
 export type DataStore = import("./dataStore").DataStore;
 export const DataStore: typeof import("./dataStore").DataStore = null as any;
 utilities.lazyLoad(exports, ["DataStore"], () => require("./dataStore"));
+
+export { RecommendationEngineArgs, RecommendationEngineState } from "./recommendationEngine";
+export type RecommendationEngine = import("./recommendationEngine").RecommendationEngine;
+export const RecommendationEngine: typeof import("./recommendationEngine").RecommendationEngine = null as any;
+utilities.lazyLoad(exports, ["RecommendationEngine"], () => require("./recommendationEngine"));
 
 export { SchemaArgs, SchemaState } from "./schema";
 export type Schema = import("./schema").Schema;
@@ -42,8 +52,12 @@ const _module = {
         switch (type) {
             case "gcp:discoveryengine/chatEngine:ChatEngine":
                 return new ChatEngine(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/cmekConfig:CmekConfig":
+                return new CmekConfig(name, <any>undefined, { urn })
             case "gcp:discoveryengine/dataStore:DataStore":
                 return new DataStore(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/recommendationEngine:RecommendationEngine":
+                return new RecommendationEngine(name, <any>undefined, { urn })
             case "gcp:discoveryengine/schema:Schema":
                 return new Schema(name, <any>undefined, { urn })
             case "gcp:discoveryengine/searchEngine:SearchEngine":
@@ -58,7 +72,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/chatEngine", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/cmekConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/recommendationEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/schema", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/searchEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/sitemap", _module)

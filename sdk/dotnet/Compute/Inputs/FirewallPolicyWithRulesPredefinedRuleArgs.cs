@@ -109,6 +109,30 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _targetResources = value;
         }
 
+        [Input("targetSecureTags")]
+        private InputList<Inputs.FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs>? _targetSecureTags;
+
+        /// <summary>
+        /// (Output)
+        /// A list of secure tags that controls which instances the firewall rule
+        /// applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
+        /// firewall rule applies only to instances in the VPC network that have one
+        /// of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        /// INEFFECTIVE state, then this rule will be ignored.
+        /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
+        /// &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
+        /// If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor
+        /// &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies
+        /// to all instances on the specified network.
+        /// Maximum number of target secure tags allowed is 256.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs> TargetSecureTags
+        {
+            get => _targetSecureTags ?? (_targetSecureTags = new InputList<Inputs.FirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs>());
+            set => _targetSecureTags = value;
+        }
+
         [Input("targetServiceAccounts")]
         private InputList<string>? _targetServiceAccounts;
 
