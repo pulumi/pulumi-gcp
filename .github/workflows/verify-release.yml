@@ -45,14 +45,10 @@ env:
   GOOGLE_PROJECT_NUMBER: "895284651812"
   GOOGLE_REGION: us-central1
   GOOGLE_ZONE: us-central1-a
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PULUMI_MISSING_DOCS_ERROR: "true"
-  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-  PYPI_USERNAME: __token__
   TF_APPEND_USER_AGENT: pulumi
 
 jobs:
@@ -95,6 +91,8 @@ jobs:
           directory: examples/bucket
           provider: gcp
           providerVersion: ${{ inputs.providerVersion }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Verify python release
         uses: pulumi/verify-provider-release@679d5e6838ac4f68696bfa1bf9e2c5da94509dd6 # v1.3.1
         with:
