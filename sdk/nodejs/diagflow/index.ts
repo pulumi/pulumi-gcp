@@ -50,6 +50,11 @@ export type CxPage = import("./cxPage").CxPage;
 export const CxPage: typeof import("./cxPage").CxPage = null as any;
 utilities.lazyLoad(exports, ["CxPage"], () => require("./cxPage"));
 
+export { CxPlaybookArgs, CxPlaybookState } from "./cxPlaybook";
+export type CxPlaybook = import("./cxPlaybook").CxPlaybook;
+export const CxPlaybook: typeof import("./cxPlaybook").CxPlaybook = null as any;
+utilities.lazyLoad(exports, ["CxPlaybook"], () => require("./cxPlaybook"));
+
 export { CxSecuritySettingsArgs, CxSecuritySettingsState } from "./cxSecuritySettings";
 export type CxSecuritySettings = import("./cxSecuritySettings").CxSecuritySettings;
 export const CxSecuritySettings: typeof import("./cxSecuritySettings").CxSecuritySettings = null as any;
@@ -118,6 +123,8 @@ const _module = {
                 return new CxIntent(name, <any>undefined, { urn })
             case "gcp:diagflow/cxPage:CxPage":
                 return new CxPage(name, <any>undefined, { urn })
+            case "gcp:diagflow/cxPlaybook:CxPlaybook":
+                return new CxPlaybook(name, <any>undefined, { urn })
             case "gcp:diagflow/cxSecuritySettings:CxSecuritySettings":
                 return new CxSecuritySettings(name, <any>undefined, { urn })
             case "gcp:diagflow/cxTestCase:CxTestCase":
@@ -150,6 +157,7 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/cxGenerativeSettings", _m
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxGenerator", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxIntent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxPage", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/cxPlaybook", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxSecuritySettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxTestCase", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxTool", _module)

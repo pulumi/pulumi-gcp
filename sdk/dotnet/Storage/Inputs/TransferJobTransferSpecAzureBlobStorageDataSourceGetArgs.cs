@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class TransferJobTransferSpecAzureBlobStorageDataSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Credentials used to authenticate API requests to Azure block.
+        /// ) Credentials used to authenticate API requests to Azure block.
         /// </summary>
         [Input("azureCredentials")]
         public Input<Inputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsGetArgs>? AzureCredentials { get; set; }
@@ -25,10 +25,16 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string> Container { get; set; } = null!;
 
         /// <summary>
-        /// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        /// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
         /// </summary>
         [Input("credentialsSecret")]
         public Input<string>? CredentialsSecret { get; set; }
+
+        /// <summary>
+        /// Federated identity config of a user registered Azure application. Structure documented below.
+        /// </summary>
+        [Input("federatedIdentityConfig")]
+        public Input<Inputs.TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigGetArgs>? FederatedIdentityConfig { get; set; }
 
         /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.

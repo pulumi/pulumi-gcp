@@ -20,6 +20,11 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
      */
     private @Nullable List<String> allowedConsumerProjects;
     /**
+     * @return Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer&#39;s VPC. For example: &#34;projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment&#34;. This is required to enable outbound connection on a PSC instance.
+     * 
+     */
+    private @Nullable String networkAttachmentUri;
+    /**
      * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
      * 
      */
@@ -37,6 +42,13 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
      */
     public List<String> allowedConsumerProjects() {
         return this.allowedConsumerProjects == null ? List.of() : this.allowedConsumerProjects;
+    }
+    /**
+     * @return Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer&#39;s VPC. For example: &#34;projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment&#34;. This is required to enable outbound connection on a PSC instance.
+     * 
+     */
+    public Optional<String> networkAttachmentUri() {
+        return Optional.ofNullable(this.networkAttachmentUri);
     }
     /**
      * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
@@ -63,12 +75,14 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedConsumerProjects;
+        private @Nullable String networkAttachmentUri;
         private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
         private @Nullable Boolean pscEnabled;
         public Builder() {}
         public Builder(DatabaseInstanceSettingsIpConfigurationPscConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
+    	      this.networkAttachmentUri = defaults.networkAttachmentUri;
     	      this.pscAutoConnections = defaults.pscAutoConnections;
     	      this.pscEnabled = defaults.pscEnabled;
         }
@@ -81,6 +95,12 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
         }
         public Builder allowedConsumerProjects(String... allowedConsumerProjects) {
             return allowedConsumerProjects(List.of(allowedConsumerProjects));
+        }
+        @CustomType.Setter
+        public Builder networkAttachmentUri(@Nullable String networkAttachmentUri) {
+
+            this.networkAttachmentUri = networkAttachmentUri;
+            return this;
         }
         @CustomType.Setter
         public Builder pscAutoConnections(@Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> pscAutoConnections) {
@@ -100,6 +120,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
         public DatabaseInstanceSettingsIpConfigurationPscConfig build() {
             final var _resultValue = new DatabaseInstanceSettingsIpConfigurationPscConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
+            _resultValue.networkAttachmentUri = networkAttachmentUri;
             _resultValue.pscAutoConnections = pscAutoConnections;
             _resultValue.pscEnabled = pscEnabled;
             return _resultValue;

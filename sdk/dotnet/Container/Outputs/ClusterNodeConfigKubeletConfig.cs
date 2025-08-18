@@ -73,6 +73,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         /// </summary>
         public readonly int? PodPidsLimit;
+        /// <summary>
+        /// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+        /// </summary>
+        public readonly bool? SingleProcessOomKill;
 
         [OutputConstructor]
         private ClusterNodeConfigKubeletConfig(
@@ -98,7 +102,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? insecureKubeletReadonlyPortEnabled,
 
-            int? podPidsLimit)
+            int? podPidsLimit,
+
+            bool? singleProcessOomKill)
         {
             AllowedUnsafeSysctls = allowedUnsafeSysctls;
             ContainerLogMaxFiles = containerLogMaxFiles;
@@ -112,6 +118,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ImageMinimumGcAge = imageMinimumGcAge;
             InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             PodPidsLimit = podPidsLimit;
+            SingleProcessOomKill = singleProcessOomKill;
         }
     }
 }

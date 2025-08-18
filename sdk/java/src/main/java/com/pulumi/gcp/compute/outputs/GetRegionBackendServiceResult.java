@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceCustomMetric;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceDynamicForwarding;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceFailoverPolicy;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceHaPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceOutlierDetection;
@@ -43,6 +44,7 @@ public final class GetRegionBackendServiceResult {
     private List<GetRegionBackendServiceFailoverPolicy> failoverPolicies;
     private String fingerprint;
     private Integer generatedId;
+    private List<GetRegionBackendServiceHaPolicy> haPolicies;
     private List<String> healthChecks;
     private List<GetRegionBackendServiceIap> iaps;
     /**
@@ -113,6 +115,9 @@ public final class GetRegionBackendServiceResult {
     }
     public Integer generatedId() {
         return this.generatedId;
+    }
+    public List<GetRegionBackendServiceHaPolicy> haPolicies() {
+        return this.haPolicies;
     }
     public List<String> healthChecks() {
         return this.healthChecks;
@@ -203,6 +208,7 @@ public final class GetRegionBackendServiceResult {
         private List<GetRegionBackendServiceFailoverPolicy> failoverPolicies;
         private String fingerprint;
         private Integer generatedId;
+        private List<GetRegionBackendServiceHaPolicy> haPolicies;
         private List<String> healthChecks;
         private List<GetRegionBackendServiceIap> iaps;
         private String id;
@@ -241,6 +247,7 @@ public final class GetRegionBackendServiceResult {
     	      this.failoverPolicies = defaults.failoverPolicies;
     	      this.fingerprint = defaults.fingerprint;
     	      this.generatedId = defaults.generatedId;
+    	      this.haPolicies = defaults.haPolicies;
     	      this.healthChecks = defaults.healthChecks;
     	      this.iaps = defaults.iaps;
     	      this.id = defaults.id;
@@ -406,6 +413,17 @@ public final class GetRegionBackendServiceResult {
             }
             this.generatedId = generatedId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder haPolicies(List<GetRegionBackendServiceHaPolicy> haPolicies) {
+            if (haPolicies == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "haPolicies");
+            }
+            this.haPolicies = haPolicies;
+            return this;
+        }
+        public Builder haPolicies(GetRegionBackendServiceHaPolicy... haPolicies) {
+            return haPolicies(List.of(haPolicies));
         }
         @CustomType.Setter
         public Builder healthChecks(List<String> healthChecks) {
@@ -598,6 +616,7 @@ public final class GetRegionBackendServiceResult {
             _resultValue.failoverPolicies = failoverPolicies;
             _resultValue.fingerprint = fingerprint;
             _resultValue.generatedId = generatedId;
+            _resultValue.haPolicies = haPolicies;
             _resultValue.healthChecks = healthChecks;
             _resultValue.iaps = iaps;
             _resultValue.id = id;

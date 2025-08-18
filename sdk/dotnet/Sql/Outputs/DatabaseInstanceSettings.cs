@@ -22,11 +22,13 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly Outputs.DatabaseInstanceSettingsAdvancedMachineFeatures? AdvancedMachineFeatures;
         /// <summary>
         /// The availability type of the Cloud SQL
-        /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+        /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
         /// `settings.backup_configuration.enabled` is set to `true`.
         /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
         /// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
         /// is set to `true`. Defaults to `ZONAL`.
+        /// For read pool instances, this field is read-only. The availability type is changed by specifying
+        /// the number of nodes (`node_count`).
         /// </summary>
         public readonly string? AvailabilityType;
         public readonly Outputs.DatabaseInstanceSettingsBackupConfiguration? BackupConfiguration;
@@ -80,6 +82,14 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         /// </summary>
         public readonly string? Edition;
+        /// <summary>
+        /// (Computed) The availability type of
+        /// the Cloud SQL instance, high availability (REGIONAL) or single zone
+        /// (ZONAL). This field always contains the value that is reported by the API (for
+        /// read pools, `settings.0.effective_availability_type` may differ from
+        /// `settings.0.availability_type`).
+        /// </summary>
+        public readonly string? EffectiveAvailabilityType;
         /// <summary>
         /// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         /// </summary>
@@ -168,6 +178,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? edition,
 
+            string? effectiveAvailabilityType,
+
             bool? enableDataplexIntegration,
 
             bool? enableGoogleMlIntegration,
@@ -215,6 +227,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskSize = diskSize;
             DiskType = diskType;
             Edition = edition;
+            EffectiveAvailabilityType = effectiveAvailabilityType;
             EnableDataplexIntegration = enableDataplexIntegration;
             EnableGoogleMlIntegration = enableGoogleMlIntegration;
             InsightsConfig = insightsConfig;

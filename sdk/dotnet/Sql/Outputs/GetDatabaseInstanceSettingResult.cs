@@ -26,6 +26,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
         /// For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
         /// is set to true. Defaults to ZONAL.
+        /// For read pool instances, this field is read-only. The availability type is changed by specifying
+        /// the number of nodes (node_count).
         /// </summary>
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> BackupConfigurations;
@@ -79,6 +81,12 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         /// </summary>
         public readonly string Edition;
+        /// <summary>
+        /// The availability type of the Cloud SQL instance, high availability
+        /// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+        /// API (for read pools, effective_availability_type may differ from availability_type).
+        /// </summary>
+        public readonly string EffectiveAvailabilityType;
         /// <summary>
         /// Enables Dataplex Integration.
         /// </summary>
@@ -164,6 +172,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string edition,
 
+            string effectiveAvailabilityType,
+
             bool enableDataplexIntegration,
 
             bool enableGoogleMlIntegration,
@@ -211,6 +221,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskSize = diskSize;
             DiskType = diskType;
             Edition = edition;
+            EffectiveAvailabilityType = effectiveAvailabilityType;
             EnableDataplexIntegration = enableDataplexIntegration;
             EnableGoogleMlIntegration = enableGoogleMlIntegration;
             InsightsConfigs = insightsConfigs;

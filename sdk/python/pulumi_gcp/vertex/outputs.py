@@ -111,6 +111,10 @@ __all__ = [
     'AiIndexMetadataConfigAlgorithmConfigTreeAhConfig',
     'AiMetadataStoreEncryptionSpec',
     'AiMetadataStoreState',
+    'AiRagEngineConfigRagManagedDbConfig',
+    'AiRagEngineConfigRagManagedDbConfigBasic',
+    'AiRagEngineConfigRagManagedDbConfigScaled',
+    'AiRagEngineConfigRagManagedDbConfigUnprovisioned',
     'AiTensorboardEncryptionSpec',
     'GetAiIndexDeployedIndexResult',
     'GetAiIndexIndexStatResult',
@@ -6016,6 +6020,71 @@ class AiMetadataStoreState(dict):
         The disk utilization of the MetadataStore in bytes.
         """
         return pulumi.get(self, "disk_utilization_bytes")
+
+
+@pulumi.output_type
+class AiRagEngineConfigRagManagedDbConfig(dict):
+    def __init__(__self__, *,
+                 basic: Optional['outputs.AiRagEngineConfigRagManagedDbConfigBasic'] = None,
+                 scaled: Optional['outputs.AiRagEngineConfigRagManagedDbConfigScaled'] = None,
+                 unprovisioned: Optional['outputs.AiRagEngineConfigRagManagedDbConfigUnprovisioned'] = None):
+        """
+        :param 'AiRagEngineConfigRagManagedDbConfigBasicArgs' basic: Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+               NOTE: This is the default tier if not explicitly chosen.
+        :param 'AiRagEngineConfigRagManagedDbConfigScaledArgs' scaled: Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+        :param 'AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs' unprovisioned: Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+               NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+        """
+        if basic is not None:
+            pulumi.set(__self__, "basic", basic)
+        if scaled is not None:
+            pulumi.set(__self__, "scaled", scaled)
+        if unprovisioned is not None:
+            pulumi.set(__self__, "unprovisioned", unprovisioned)
+
+    @_builtins.property
+    @pulumi.getter
+    def basic(self) -> Optional['outputs.AiRagEngineConfigRagManagedDbConfigBasic']:
+        """
+        Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+        NOTE: This is the default tier if not explicitly chosen.
+        """
+        return pulumi.get(self, "basic")
+
+    @_builtins.property
+    @pulumi.getter
+    def scaled(self) -> Optional['outputs.AiRagEngineConfigRagManagedDbConfigScaled']:
+        """
+        Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+        """
+        return pulumi.get(self, "scaled")
+
+    @_builtins.property
+    @pulumi.getter
+    def unprovisioned(self) -> Optional['outputs.AiRagEngineConfigRagManagedDbConfigUnprovisioned']:
+        """
+        Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+        NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+        """
+        return pulumi.get(self, "unprovisioned")
+
+
+@pulumi.output_type
+class AiRagEngineConfigRagManagedDbConfigBasic(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class AiRagEngineConfigRagManagedDbConfigScaled(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class AiRagEngineConfigRagManagedDbConfigUnprovisioned(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

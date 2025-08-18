@@ -27,6 +27,7 @@ class BackupPlanArgs:
                  location: pulumi.Input[_builtins.str],
                  resource_type: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
@@ -36,8 +37,9 @@ class BackupPlanArgs:
         :param pulumi.Input[_builtins.str] backup_vault: Backup vault where the backups gets stored using this Backup plan.
         :param pulumi.Input[_builtins.str] location: The location for the backup plan
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
+        :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -48,6 +50,8 @@ class BackupPlanArgs:
         pulumi.set(__self__, "resource_type", resource_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if log_retention_days is not None:
+            pulumi.set(__self__, "log_retention_days", log_retention_days)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -105,7 +109,7 @@ class BackupPlanArgs:
     def resource_type(self) -> pulumi.Input[_builtins.str]:
         """
         The resource type to which the `BackupPlan` will be applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         """
         return pulumi.get(self, "resource_type")
 
@@ -124,6 +128,18 @@ class BackupPlanArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logRetentionDays")
+    def log_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+        """
+        return pulumi.get(self, "log_retention_days")
+
+    @log_retention_days.setter
+    def log_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "log_retention_days", value)
 
     @_builtins.property
     @pulumi.getter
@@ -149,6 +165,7 @@ class _BackupPlanState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -164,11 +181,12 @@ class _BackupPlanState:
         :param pulumi.Input[_builtins.str] create_time: When the `BackupPlan` was created.
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[_builtins.str] location: The location for the backup plan
+        :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
         :param pulumi.Input[_builtins.str] name: The name of backup plan resource created
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_resource_types: The list of all resource types to which the 'BackupPlan' can be applied.
         :param pulumi.Input[_builtins.str] update_time: When the `BackupPlan` was last updated.
         """
@@ -186,6 +204,8 @@ class _BackupPlanState:
             pulumi.set(__self__, "description", description)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if log_retention_days is not None:
+            pulumi.set(__self__, "log_retention_days", log_retention_days)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -283,6 +303,18 @@ class _BackupPlanState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="logRetentionDays")
+    def log_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+        """
+        return pulumi.get(self, "log_retention_days")
+
+    @log_retention_days.setter
+    def log_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "log_retention_days", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -312,7 +344,7 @@ class _BackupPlanState:
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The resource type to which the `BackupPlan` will be applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         """
         return pulumi.get(self, "resource_type")
 
@@ -356,6 +388,7 @@ class BackupPlan(pulumi.CustomResource):
                  backup_vault: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -428,6 +461,36 @@ class BackupPlan(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Backup Dr Backup Plan For Csql Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+            location="us-central1",
+            backup_vault_id="backup-vault-csql-test",
+            backup_minimum_enforced_retention_duration="100000s")
+        my_csql_backup_plan_1 = gcp.backupdisasterrecovery.BackupPlan("my-csql-backup-plan-1",
+            location="us-central1",
+            backup_plan_id="backup-plan-csql-test",
+            resource_type="sqladmin.googleapis.com/Instance",
+            backup_vault=my_backup_vault.id,
+            backup_rules=[{
+                "rule_id": "rule-1",
+                "backup_retention_days": 5,
+                "standard_schedule": {
+                    "recurrence_type": "HOURLY",
+                    "hourly_frequency": 6,
+                    "time_zone": "UTC",
+                    "backup_window": {
+                        "start_hour_of_day": 0,
+                        "end_hour_of_day": 6,
+                    },
+                },
+            }],
+            log_retention_days=4)
+        ```
 
         ## Import
 
@@ -461,10 +524,11 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_vault: Backup vault where the backups gets stored using this Backup plan.
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[_builtins.str] location: The location for the backup plan
+        :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         """
         ...
     @overload
@@ -541,6 +605,36 @@ class BackupPlan(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Backup Dr Backup Plan For Csql Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+            location="us-central1",
+            backup_vault_id="backup-vault-csql-test",
+            backup_minimum_enforced_retention_duration="100000s")
+        my_csql_backup_plan_1 = gcp.backupdisasterrecovery.BackupPlan("my-csql-backup-plan-1",
+            location="us-central1",
+            backup_plan_id="backup-plan-csql-test",
+            resource_type="sqladmin.googleapis.com/Instance",
+            backup_vault=my_backup_vault.id,
+            backup_rules=[{
+                "rule_id": "rule-1",
+                "backup_retention_days": 5,
+                "standard_schedule": {
+                    "recurrence_type": "HOURLY",
+                    "hourly_frequency": 6,
+                    "time_zone": "UTC",
+                    "backup_window": {
+                        "start_hour_of_day": 0,
+                        "end_hour_of_day": 6,
+                    },
+                },
+            }],
+            log_retention_days=4)
+        ```
 
         ## Import
 
@@ -586,6 +680,7 @@ class BackupPlan(pulumi.CustomResource):
                  backup_vault: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -610,6 +705,7 @@ class BackupPlan(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["log_retention_days"] = log_retention_days
             __props__.__dict__["project"] = project
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
@@ -636,6 +732,7 @@ class BackupPlan(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -656,11 +753,12 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: When the `BackupPlan` was created.
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[_builtins.str] location: The location for the backup plan
+        :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
         :param pulumi.Input[_builtins.str] name: The name of backup plan resource created
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_resource_types: The list of all resource types to which the 'BackupPlan' can be applied.
         :param pulumi.Input[_builtins.str] update_time: When the `BackupPlan` was last updated.
         """
@@ -675,6 +773,7 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["location"] = location
+        __props__.__dict__["log_retention_days"] = log_retention_days
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["resource_type"] = resource_type
@@ -740,6 +839,14 @@ class BackupPlan(pulumi.CustomResource):
         return pulumi.get(self, "location")
 
     @_builtins.property
+    @pulumi.getter(name="logRetentionDays")
+    def log_retention_days(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+        """
+        return pulumi.get(self, "log_retention_days")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
@@ -761,7 +868,7 @@ class BackupPlan(pulumi.CustomResource):
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
         The resource type to which the `BackupPlan` will be applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         """
         return pulumi.get(self, "resource_type")
 

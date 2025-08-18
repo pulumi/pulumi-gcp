@@ -495,6 +495,124 @@ import (
 //	}
 //
 // ```
+// ### Service Attachment Cross Region Ilb
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			healthCheck, err := compute.NewHealthCheck(ctx, "health_check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("sa"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			backendService, err := compute.NewBackendService(ctx, "backend_service", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("sa"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				HealthChecks:        healthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			urlMap, err := compute.NewURLMap(ctx, "url_map", &compute.URLMapArgs{
+//				Name:           pulumi.String("sa"),
+//				Description:    pulumi.String("Url map."),
+//				DefaultService: backendService.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			httpProxy, err := compute.NewTargetHttpProxy(ctx, "http_proxy", &compute.TargetHttpProxyArgs{
+//				Name:        pulumi.String("sa"),
+//				Description: pulumi.String("a description"),
+//				UrlMap:      urlMap.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("sa"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnetworkProxy, err := compute.NewSubnetwork(ctx, "subnetwork_proxy", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("sa-proxy"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     network.ID(),
+//				Purpose:     pulumi.String("GLOBAL_MANAGED_PROXY"),
+//				Role:        pulumi.String("ACTIVE"),
+//				IpCidrRange: pulumi.String("10.2.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("sa"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     network.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			forwardingRule, err := compute.NewGlobalForwardingRule(ctx, "forwarding_rule", &compute.GlobalForwardingRuleArgs{
+//				Name:                pulumi.String("sa"),
+//				Target:              httpProxy.ID(),
+//				Network:             network.ID(),
+//				Subnetwork:          subnetwork.ID(),
+//				PortRange:           pulumi.String("80"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				subnetworkProxy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			subnetworkPsc, err := compute.NewSubnetwork(ctx, "subnetwork_psc", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("sa-psc"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     network.ID(),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewServiceAttachment(ctx, "psc_ilb_service_attachment", &compute.ServiceAttachmentArgs{
+//				Name:                 pulumi.String("sa"),
+//				Region:               pulumi.String("us-central1"),
+//				Description:          pulumi.String("A service attachment configured with Terraform"),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				EnableProxyProtocol:  pulumi.Bool(false),
+//				NatSubnets: pulumi.StringArray{
+//					subnetworkPsc.ID(),
+//				},
+//				TargetService: forwardingRule.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

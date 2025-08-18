@@ -19,6 +19,7 @@ import com.pulumi.gcp.sql.outputs.DatabaseInstanceRestoreBackupContext;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceServerCaCert;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettings;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -318,6 +319,61 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Cloud SQL Instance with PSC outbound
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
+ *             .name("psc-enabled-main-instance")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-f1-micro")
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
+ *                         .pscEnabled(true)
+ *                         .allowedConsumerProjects("allowed-consumer-project-name")
+ *                         .networkAttachmentUri("network-attachment-uri")
+ *                         .build())
+ *                     .ipv4Enabled(false)
+ *                     .build())
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .enabled(true)
+ *                     .binaryLogEnabled(true)
+ *                     .build())
+ *                 .availabilityType("REGIONAL")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Switchover
  * 
  * Users can perform a switchover on a replica by following the steps below.
@@ -553,14 +609,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.firstIpAddress;
     }
     /**
-     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * @return The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      * 
      */
     public Output<String> instanceType() {
@@ -623,6 +679,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * For a read pool instance, the number of nodes in the read pool.
+     * 
+     */
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> nodeCount;
+
+    /**
+     * @return For a read pool instance, the number of nodes in the read pool.
+     * 
+     */
+    public Output<Integer> nodeCount() {
+        return this.nodeCount;
     }
     /**
      * The first private (`PRIVATE`) IPv4 address assigned.

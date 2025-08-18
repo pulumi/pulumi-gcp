@@ -448,6 +448,113 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Service Attachment Cross Region Ilb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var healthCheck = new Gcp.Compute.HealthCheck("health_check", new()
+    ///     {
+    ///         Name = "sa",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var backendService = new Gcp.Compute.BackendService("backend_service", new()
+    ///     {
+    ///         Name = "sa",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = healthCheck.Id,
+    ///     });
+    /// 
+    ///     var urlMap = new Gcp.Compute.URLMap("url_map", new()
+    ///     {
+    ///         Name = "sa",
+    ///         Description = "Url map.",
+    ///         DefaultService = backendService.Id,
+    ///     });
+    /// 
+    ///     var httpProxy = new Gcp.Compute.TargetHttpProxy("http_proxy", new()
+    ///     {
+    ///         Name = "sa",
+    ///         Description = "a description",
+    ///         UrlMap = urlMap.Id,
+    ///     });
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "sa",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetworkProxy = new Gcp.Compute.Subnetwork("subnetwork_proxy", new()
+    ///     {
+    ///         Name = "sa-proxy",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         Purpose = "GLOBAL_MANAGED_PROXY",
+    ///         Role = "ACTIVE",
+    ///         IpCidrRange = "10.2.0.0/16",
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Name = "sa",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///     });
+    /// 
+    ///     var forwardingRule = new Gcp.Compute.GlobalForwardingRule("forwarding_rule", new()
+    ///     {
+    ///         Name = "sa",
+    ///         Target = httpProxy.Id,
+    ///         Network = network.Id,
+    ///         Subnetwork = subnetwork.Id,
+    ///         PortRange = "80",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             subnetworkProxy,
+    ///         },
+    ///     });
+    /// 
+    ///     var subnetworkPsc = new Gcp.Compute.Subnetwork("subnetwork_psc", new()
+    ///     {
+    ///         Name = "sa-psc",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbServiceAttachment = new Gcp.Compute.ServiceAttachment("psc_ilb_service_attachment", new()
+    ///     {
+    ///         Name = "sa",
+    ///         Region = "us-central1",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         EnableProxyProtocol = false,
+    ///         NatSubnets = new[]
+    ///         {
+    ///             subnetworkPsc.Id,
+    ///         },
+    ///         TargetService = forwardingRule.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

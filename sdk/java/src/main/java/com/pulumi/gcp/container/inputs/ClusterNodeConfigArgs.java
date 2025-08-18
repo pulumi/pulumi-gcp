@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigAdvancedMachineFeaturesArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigBootDiskArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigConfidentialNodesArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigContainerdConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEffectiveTaintArgs;
@@ -59,6 +60,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configuration of the node pool boot disk. Structure is documented below
+     * 
+     */
+    @Import(name="bootDisk")
+    private @Nullable Output<ClusterNodeConfigBootDiskArgs> bootDisk;
+
+    /**
+     * @return Configuration of the node pool boot disk. Structure is documented below
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigBootDiskArgs>> bootDisk() {
+        return Optional.ofNullable(this.bootDisk);
+    }
+
+    /**
      * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
@@ -105,7 +121,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Size of the disk attached to each node, specified
-     * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+     * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+     * Prefer configuring `boot_disk`.
      * 
      */
     @Import(name="diskSizeGb")
@@ -113,7 +130,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Size of the disk attached to each node, specified
-     * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+     * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+     * Prefer configuring `boot_disk`.
      * 
      */
     public Optional<Output<Integer>> diskSizeGb() {
@@ -122,7 +140,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
      * 
      */
     @Import(name="diskType")
@@ -130,7 +148,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -824,6 +842,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     private ClusterNodeConfigArgs(ClusterNodeConfigArgs $) {
         this.advancedMachineFeatures = $.advancedMachineFeatures;
+        this.bootDisk = $.bootDisk;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
         this.confidentialNodes = $.confidentialNodes;
         this.containerdConfig = $.containerdConfig;
@@ -912,6 +931,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param bootDisk Configuration of the node pool boot disk. Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDisk(@Nullable Output<ClusterNodeConfigBootDiskArgs> bootDisk) {
+            $.bootDisk = bootDisk;
+            return this;
+        }
+
+        /**
+         * @param bootDisk Configuration of the node pool boot disk. Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDisk(ClusterNodeConfigBootDiskArgs bootDisk) {
+            return bootDisk(Output.of(bootDisk));
+        }
+
+        /**
          * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
          * 
          * @return builder
@@ -976,7 +1016,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param diskSizeGb Size of the disk attached to each node, specified
-         * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+         * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+         * Prefer configuring `boot_disk`.
          * 
          * @return builder
          * 
@@ -988,7 +1029,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param diskSizeGb Size of the disk attached to each node, specified
-         * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+         * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+         * Prefer configuring `boot_disk`.
          * 
          * @return builder
          * 
@@ -999,7 +1041,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param diskType Type of the disk attached to each node
-         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
          * 
          * @return builder
          * 
@@ -1011,7 +1053,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param diskType Type of the disk attached to each node
-         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
          * 
          * @return builder
          * 

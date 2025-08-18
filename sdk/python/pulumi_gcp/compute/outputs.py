@@ -378,6 +378,9 @@ __all__ = [
     'RegionBackendServiceDynamicForwarding',
     'RegionBackendServiceDynamicForwardingIpPortSelection',
     'RegionBackendServiceFailoverPolicy',
+    'RegionBackendServiceHaPolicy',
+    'RegionBackendServiceHaPolicyLeader',
+    'RegionBackendServiceHaPolicyLeaderNetworkEndpoint',
     'RegionBackendServiceIamBindingCondition',
     'RegionBackendServiceIamMemberCondition',
     'RegionBackendServiceIap',
@@ -490,6 +493,8 @@ __all__ = [
     'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink',
     'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage',
     'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo',
+    'RegionSecurityPolicyAdvancedOptionsConfig',
+    'RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig',
     'RegionSecurityPolicyDdosProtectionConfig',
     'RegionSecurityPolicyRule',
     'RegionSecurityPolicyRuleMatch',
@@ -966,6 +971,9 @@ __all__ = [
     'GetRegionBackendServiceDynamicForwardingResult',
     'GetRegionBackendServiceDynamicForwardingIpPortSelectionResult',
     'GetRegionBackendServiceFailoverPolicyResult',
+    'GetRegionBackendServiceHaPolicyResult',
+    'GetRegionBackendServiceHaPolicyLeaderResult',
+    'GetRegionBackendServiceHaPolicyLeaderNetworkEndpointResult',
     'GetRegionBackendServiceIapResult',
     'GetRegionBackendServiceLogConfigResult',
     'GetRegionBackendServiceOutlierDetectionResult',
@@ -28444,6 +28452,157 @@ class RegionBackendServiceFailoverPolicy(dict):
 
 
 @pulumi.output_type
+class RegionBackendServiceHaPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fastIpMove":
+            suggest = "fast_ip_move"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceHaPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceHaPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceHaPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fast_ip_move: Optional[_builtins.str] = None,
+                 leader: Optional['outputs.RegionBackendServiceHaPolicyLeader'] = None):
+        """
+        :param _builtins.str fast_ip_move: Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
+               Supported values are:
+               * `DISABLED`: Fast IP Move is disabled. You can only use the haPolicy.leader API to
+               update the leader.
+               * `GARP_RA`: Provides a method to very quickly define a new network endpoint as the
+               leader. This method is faster than updating the leader using the
+               haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+               network endpoint that should become the new leader sends either a
+               Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+               packet (IPv6). Google Cloud immediately but temporarily associates the
+               forwarding rule IP address with that VM, and both new and in-flight packets
+               are quickly delivered to that VM.
+               Possible values are: `DISABLED`, `GARP_RA`.
+        :param 'RegionBackendServiceHaPolicyLeaderArgs' leader: Selects one of the network endpoints attached to the backend NEGs of this service as the
+               active endpoint (the leader) that receives all traffic.
+               Structure is documented below.
+        """
+        if fast_ip_move is not None:
+            pulumi.set(__self__, "fast_ip_move", fast_ip_move)
+        if leader is not None:
+            pulumi.set(__self__, "leader", leader)
+
+    @_builtins.property
+    @pulumi.getter(name="fastIpMove")
+    def fast_ip_move(self) -> Optional[_builtins.str]:
+        """
+        Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
+        Supported values are:
+        * `DISABLED`: Fast IP Move is disabled. You can only use the haPolicy.leader API to
+        update the leader.
+        * `GARP_RA`: Provides a method to very quickly define a new network endpoint as the
+        leader. This method is faster than updating the leader using the
+        haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+        network endpoint that should become the new leader sends either a
+        Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+        packet (IPv6). Google Cloud immediately but temporarily associates the
+        forwarding rule IP address with that VM, and both new and in-flight packets
+        are quickly delivered to that VM.
+        Possible values are: `DISABLED`, `GARP_RA`.
+        """
+        return pulumi.get(self, "fast_ip_move")
+
+    @_builtins.property
+    @pulumi.getter
+    def leader(self) -> Optional['outputs.RegionBackendServiceHaPolicyLeader']:
+        """
+        Selects one of the network endpoints attached to the backend NEGs of this service as the
+        active endpoint (the leader) that receives all traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "leader")
+
+
+@pulumi.output_type
+class RegionBackendServiceHaPolicyLeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendGroup":
+            suggest = "backend_group"
+        elif key == "networkEndpoint":
+            suggest = "network_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceHaPolicyLeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceHaPolicyLeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceHaPolicyLeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backend_group: Optional[_builtins.str] = None,
+                 network_endpoint: Optional['outputs.RegionBackendServiceHaPolicyLeaderNetworkEndpoint'] = None):
+        """
+        :param _builtins.str backend_group: A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
+               attached to.
+        :param 'RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs' network_endpoint: The network endpoint within the leader.backendGroup that is designated as the leader.
+               Structure is documented below.
+        """
+        if backend_group is not None:
+            pulumi.set(__self__, "backend_group", backend_group)
+        if network_endpoint is not None:
+            pulumi.set(__self__, "network_endpoint", network_endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="backendGroup")
+    def backend_group(self) -> Optional[_builtins.str]:
+        """
+        A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
+        attached to.
+        """
+        return pulumi.get(self, "backend_group")
+
+    @_builtins.property
+    @pulumi.getter(name="networkEndpoint")
+    def network_endpoint(self) -> Optional['outputs.RegionBackendServiceHaPolicyLeaderNetworkEndpoint']:
+        """
+        The network endpoint within the leader.backendGroup that is designated as the leader.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_endpoint")
+
+
+@pulumi.output_type
+class RegionBackendServiceHaPolicyLeaderNetworkEndpoint(dict):
+    def __init__(__self__, *,
+                 instance: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str instance: The name of the VM instance of the leader network endpoint. The instance must
+               already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+        """
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+
+    @_builtins.property
+    @pulumi.getter
+    def instance(self) -> Optional[_builtins.str]:
+        """
+        The name of the VM instance of the leader network endpoint. The instance must
+        already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+        """
+        return pulumi.get(self, "instance")
+
+
+@pulumi.output_type
 class RegionBackendServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: _builtins.str,
@@ -36877,6 +37036,143 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo(dict):
         Rollout status of the future quota limit.
         """
         return pulumi.get(self, "rollout_status")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyAdvancedOptionsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jsonCustomConfig":
+            suggest = "json_custom_config"
+        elif key == "jsonParsing":
+            suggest = "json_parsing"
+        elif key == "logLevel":
+            suggest = "log_level"
+        elif key == "requestBodyInspectionSize":
+            suggest = "request_body_inspection_size"
+        elif key == "userIpRequestHeaders":
+            suggest = "user_ip_request_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyAdvancedOptionsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyAdvancedOptionsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyAdvancedOptionsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 json_custom_config: Optional['outputs.RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig'] = None,
+                 json_parsing: Optional[_builtins.str] = None,
+                 log_level: Optional[_builtins.str] = None,
+                 request_body_inspection_size: Optional[_builtins.str] = None,
+                 user_ip_request_headers: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs' json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+               Structure is documented below.
+        :param _builtins.str json_parsing: JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL".
+               Possible values are: `DISABLED`, `STANDARD`, `STANDARD_WITH_GRAPHQL`.
+        :param _builtins.str log_level: Logging level. Supported values include: "NORMAL", "VERBOSE".
+               Possible values are: `NORMAL`, `VERBOSE`.
+        :param _builtins.str request_body_inspection_size: The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+               Values are case insensitive.
+               Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
+        :param Sequence[_builtins.str] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+        if json_custom_config is not None:
+            pulumi.set(__self__, "json_custom_config", json_custom_config)
+        if json_parsing is not None:
+            pulumi.set(__self__, "json_parsing", json_parsing)
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+        if request_body_inspection_size is not None:
+            pulumi.set(__self__, "request_body_inspection_size", request_body_inspection_size)
+        if user_ip_request_headers is not None:
+            pulumi.set(__self__, "user_ip_request_headers", user_ip_request_headers)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonCustomConfig")
+    def json_custom_config(self) -> Optional['outputs.RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig']:
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "json_custom_config")
+
+    @_builtins.property
+    @pulumi.getter(name="jsonParsing")
+    def json_parsing(self) -> Optional[_builtins.str]:
+        """
+        JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL".
+        Possible values are: `DISABLED`, `STANDARD`, `STANDARD_WITH_GRAPHQL`.
+        """
+        return pulumi.get(self, "json_parsing")
+
+    @_builtins.property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[_builtins.str]:
+        """
+        Logging level. Supported values include: "NORMAL", "VERBOSE".
+        Possible values are: `NORMAL`, `VERBOSE`.
+        """
+        return pulumi.get(self, "log_level")
+
+    @_builtins.property
+    @pulumi.getter(name="requestBodyInspectionSize")
+    def request_body_inspection_size(self) -> Optional[_builtins.str]:
+        """
+        The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+        Values are case insensitive.
+        Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
+        """
+        return pulumi.get(self, "request_body_inspection_size")
+
+    @_builtins.property
+    @pulumi.getter(name="userIpRequestHeaders")
+    def user_ip_request_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+        return pulumi.get(self, "user_ip_request_headers")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentTypes":
+            suggest = "content_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_types: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] content_types: A list of custom Content-Type header values to apply the JSON parsing.
+        """
+        pulumi.set(__self__, "content_types", content_types)
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Sequence[_builtins.str]:
+        """
+        A list of custom Content-Type header values to apply the JSON parsing.
+        """
+        return pulumi.get(self, "content_types")
 
 
 @pulumi.output_type
@@ -69928,6 +70224,114 @@ class GetRegionBackendServiceFailoverPolicyResult(dict):
         This field is only used with l4 load balancing.
         """
         return pulumi.get(self, "failover_ratio")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceHaPolicyResult(dict):
+    def __init__(__self__, *,
+                 fast_ip_move: _builtins.str,
+                 leaders: Sequence['outputs.GetRegionBackendServiceHaPolicyLeaderResult']):
+        """
+        :param _builtins.str fast_ip_move: Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
+               Supported values are:
+               
+               * 'DISABLED': Fast IP Move is disabled. You can only use the haPolicy.leader API to
+                             update the leader.
+               
+               * 'GARP_RA': Provides a method to very quickly define a new network endpoint as the
+                            leader. This method is faster than updating the leader using the
+                            haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+                            network endpoint that should become the new leader sends either a
+                            Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+                            packet (IPv6). Google Cloud immediately but temporarily associates the
+                            forwarding rule IP address with that VM, and both new and in-flight packets
+                            are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
+        :param Sequence['GetRegionBackendServiceHaPolicyLeaderArgs'] leaders: Selects one of the network endpoints attached to the backend NEGs of this service as the
+               active endpoint (the leader) that receives all traffic.
+        """
+        pulumi.set(__self__, "fast_ip_move", fast_ip_move)
+        pulumi.set(__self__, "leaders", leaders)
+
+    @_builtins.property
+    @pulumi.getter(name="fastIpMove")
+    def fast_ip_move(self) -> _builtins.str:
+        """
+        Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
+        Supported values are:
+
+        * 'DISABLED': Fast IP Move is disabled. You can only use the haPolicy.leader API to
+                      update the leader.
+
+        * 'GARP_RA': Provides a method to very quickly define a new network endpoint as the
+                     leader. This method is faster than updating the leader using the
+                     haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+                     network endpoint that should become the new leader sends either a
+                     Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+                     packet (IPv6). Google Cloud immediately but temporarily associates the
+                     forwarding rule IP address with that VM, and both new and in-flight packets
+                     are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
+        """
+        return pulumi.get(self, "fast_ip_move")
+
+    @_builtins.property
+    @pulumi.getter
+    def leaders(self) -> Sequence['outputs.GetRegionBackendServiceHaPolicyLeaderResult']:
+        """
+        Selects one of the network endpoints attached to the backend NEGs of this service as the
+        active endpoint (the leader) that receives all traffic.
+        """
+        return pulumi.get(self, "leaders")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceHaPolicyLeaderResult(dict):
+    def __init__(__self__, *,
+                 backend_group: _builtins.str,
+                 network_endpoints: Sequence['outputs.GetRegionBackendServiceHaPolicyLeaderNetworkEndpointResult']):
+        """
+        :param _builtins.str backend_group: A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
+               attached to.
+        :param Sequence['GetRegionBackendServiceHaPolicyLeaderNetworkEndpointArgs'] network_endpoints: The network endpoint within the leader.backendGroup that is designated as the leader.
+        """
+        pulumi.set(__self__, "backend_group", backend_group)
+        pulumi.set(__self__, "network_endpoints", network_endpoints)
+
+    @_builtins.property
+    @pulumi.getter(name="backendGroup")
+    def backend_group(self) -> _builtins.str:
+        """
+        A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
+        attached to.
+        """
+        return pulumi.get(self, "backend_group")
+
+    @_builtins.property
+    @pulumi.getter(name="networkEndpoints")
+    def network_endpoints(self) -> Sequence['outputs.GetRegionBackendServiceHaPolicyLeaderNetworkEndpointResult']:
+        """
+        The network endpoint within the leader.backendGroup that is designated as the leader.
+        """
+        return pulumi.get(self, "network_endpoints")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceHaPolicyLeaderNetworkEndpointResult(dict):
+    def __init__(__self__, *,
+                 instance: _builtins.str):
+        """
+        :param _builtins.str instance: The name of the VM instance of the leader network endpoint. The instance must
+               already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+        """
+        pulumi.set(__self__, "instance", instance)
+
+    @_builtins.property
+    @pulumi.getter
+    def instance(self) -> _builtins.str:
+        """
+        The name of the VM instance of the leader network endpoint. The instance must
+        already be attached to the NEG specified in the haPolicy.leader.backendGroup.
+        """
+        return pulumi.get(self, "instance")
 
 
 @pulumi.output_type

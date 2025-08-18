@@ -6,6 +6,7 @@ package com.pulumi.gcp.backupdisasterrecovery.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanBackupRule;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -26,6 +27,7 @@ public final class GetBackupPlanResult {
      */
     private String id;
     private String location;
+    private Integer logRetentionDays;
     private String name;
     private @Nullable String project;
     private String resourceType;
@@ -61,6 +63,9 @@ public final class GetBackupPlanResult {
     public String location() {
         return this.location;
     }
+    public Integer logRetentionDays() {
+        return this.logRetentionDays;
+    }
     public String name() {
         return this.name;
     }
@@ -94,6 +99,7 @@ public final class GetBackupPlanResult {
         private String description;
         private String id;
         private String location;
+        private Integer logRetentionDays;
         private String name;
         private @Nullable String project;
         private String resourceType;
@@ -110,6 +116,7 @@ public final class GetBackupPlanResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
+    	      this.logRetentionDays = defaults.logRetentionDays;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.resourceType = defaults.resourceType;
@@ -185,6 +192,14 @@ public final class GetBackupPlanResult {
             return this;
         }
         @CustomType.Setter
+        public Builder logRetentionDays(Integer logRetentionDays) {
+            if (logRetentionDays == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "logRetentionDays");
+            }
+            this.logRetentionDays = logRetentionDays;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetBackupPlanResult", "name");
@@ -235,6 +250,7 @@ public final class GetBackupPlanResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.location = location;
+            _resultValue.logRetentionDays = logRetentionDays;
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.resourceType = resourceType;

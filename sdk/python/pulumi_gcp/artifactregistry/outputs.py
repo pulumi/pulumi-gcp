@@ -43,6 +43,7 @@ __all__ = [
     'RepositoryVirtualRepositoryConfigUpstreamPolicy',
     'RepositoryVulnerabilityScanningConfig',
     'GetDockerImagesDockerImageResult',
+    'GetRepositoriesRepositoryResult',
     'GetRepositoryCleanupPolicyResult',
     'GetRepositoryCleanupPolicyConditionResult',
     'GetRepositoryCleanupPolicyMostRecentVersionResult',
@@ -67,6 +68,7 @@ __all__ = [
     'GetRepositoryVirtualRepositoryConfigResult',
     'GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult',
     'GetRepositoryVulnerabilityScanningConfigResult',
+    'GetVersionRelatedTagResult',
 ]
 
 @pulumi.output_type
@@ -1484,6 +1486,79 @@ class GetDockerImagesDockerImageResult(dict):
 
 
 @pulumi.output_type
+class GetRepositoriesRepositoryResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 format: _builtins.str,
+                 id: _builtins.str,
+                 repository_id: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param _builtins.str create_time: The time when the repository was created.
+        :param _builtins.str description: The user-provided description of the repository.
+        :param _builtins.str format: The format of packages that are stored in the repository. Supported formats can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+        :param _builtins.str id: An identifier for the resource with format `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
+        :param _builtins.str repository_id: The last part of the repository name, for example: `"repo1"`
+        :param _builtins.str update_time: The time when the repository was last updated.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "repository_id", repository_id)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the repository was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The user-provided description of the repository.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def format(self) -> _builtins.str:
+        """
+        The format of packages that are stored in the repository. Supported formats can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+        """
+        return pulumi.get(self, "format")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        An identifier for the resource with format `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="repositoryId")
+    def repository_id(self) -> _builtins.str:
+        """
+        The last part of the repository name, for example: `"repo1"`
+        """
+        return pulumi.get(self, "repository_id")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time when the repository was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
 class GetRepositoryCleanupPolicyResult(dict):
     def __init__(__self__, *,
                  action: _builtins.str,
@@ -2259,5 +2334,30 @@ class GetRepositoryVulnerabilityScanningConfigResult(dict):
         This provides an explanation for the state of scanning on this repository.
         """
         return pulumi.get(self, "enablement_state_reason")
+
+
+@pulumi.output_type
+class GetVersionRelatedTagResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param _builtins.str name: The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
 
 

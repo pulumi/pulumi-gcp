@@ -49,6 +49,21 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     }
 
     /**
+     * The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+     * 
+     */
+    @Import(name="cloudfrontDomain")
+    private @Nullable Output<String> cloudfrontDomain;
+
+    /**
+     * @return The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+     * 
+     */
+    public Optional<Output<String>> cloudfrontDomain() {
+        return Optional.ofNullable(this.cloudfrontDomain);
+    }
+
+    /**
      * Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
      * 
      */
@@ -98,6 +113,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     private TransferJobTransferSpecAwsS3DataSourceArgs(TransferJobTransferSpecAwsS3DataSourceArgs $) {
         this.awsAccessKey = $.awsAccessKey;
         this.bucketName = $.bucketName;
+        this.cloudfrontDomain = $.cloudfrontDomain;
         this.managedPrivateNetwork = $.managedPrivateNetwork;
         this.path = $.path;
         this.roleArn = $.roleArn;
@@ -161,6 +177,27 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
          */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
+        }
+
+        /**
+         * @param cloudfrontDomain The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudfrontDomain(@Nullable Output<String> cloudfrontDomain) {
+            $.cloudfrontDomain = cloudfrontDomain;
+            return this;
+        }
+
+        /**
+         * @param cloudfrontDomain The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudfrontDomain(String cloudfrontDomain) {
+            return cloudfrontDomain(Output.of(cloudfrontDomain));
         }
 
         /**

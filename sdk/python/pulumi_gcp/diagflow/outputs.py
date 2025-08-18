@@ -170,6 +170,9 @@ __all__ = [
     'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall',
     'CxPageTransitionRouteTriggerFulfillmentMessageText',
     'CxPageTransitionRouteTriggerFulfillmentSetParameterAction',
+    'CxPlaybookInstruction',
+    'CxPlaybookInstructionStep',
+    'CxPlaybookLlmModelSettings',
     'CxSecuritySettingsAudioExportSettings',
     'CxSecuritySettingsInsightsExportSettings',
     'CxTestCaseLastTestResult',
@@ -9559,6 +9562,120 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterAction(dict):
         The new JSON-encoded value of the parameter. A null value clears the parameter.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CxPlaybookInstruction(dict):
+    def __init__(__self__, *,
+                 guidelines: Optional[_builtins.str] = None,
+                 steps: Optional[Sequence['outputs.CxPlaybookInstructionStep']] = None):
+        """
+        :param _builtins.str guidelines: General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+        :param Sequence['CxPlaybookInstructionStepArgs'] steps: Ordered list of step by step execution instructions to accomplish target goal.
+               Structure is documented below.
+        """
+        if guidelines is not None:
+            pulumi.set(__self__, "guidelines", guidelines)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+
+    @_builtins.property
+    @pulumi.getter
+    def guidelines(self) -> Optional[_builtins.str]:
+        """
+        General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+        """
+        return pulumi.get(self, "guidelines")
+
+    @_builtins.property
+    @pulumi.getter
+    def steps(self) -> Optional[Sequence['outputs.CxPlaybookInstructionStep']]:
+        """
+        Ordered list of step by step execution instructions to accomplish target goal.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "steps")
+
+
+@pulumi.output_type
+class CxPlaybookInstructionStep(dict):
+    def __init__(__self__, *,
+                 steps: Optional[_builtins.str] = None,
+                 text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str steps: Sub-processing needed to execute the current step.
+               This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+        :param _builtins.str text: Step instruction in text format.
+        """
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @_builtins.property
+    @pulumi.getter
+    def steps(self) -> Optional[_builtins.str]:
+        """
+        Sub-processing needed to execute the current step.
+        This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+        """
+        return pulumi.get(self, "steps")
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        Step instruction in text format.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxPlaybookLlmModelSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "promptText":
+            suggest = "prompt_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPlaybookLlmModelSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPlaybookLlmModelSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPlaybookLlmModelSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 model: Optional[_builtins.str] = None,
+                 prompt_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str model: The selected LLM model.
+        :param _builtins.str prompt_text: The custom prompt to use.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if prompt_text is not None:
+            pulumi.set(__self__, "prompt_text", prompt_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        The selected LLM model.
+        """
+        return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter(name="promptText")
+    def prompt_text(self) -> Optional[_builtins.str]:
+        """
+        The custom prompt to use.
+        """
+        return pulumi.get(self, "prompt_text")
 
 
 @pulumi.output_type

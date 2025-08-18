@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigAdvancedMachineFeatures;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigBootDisk;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigConfidentialNodes;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigContainerdConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEffectiveTaint;
@@ -42,6 +43,11 @@ public final class NodePoolNodeConfig {
      * 
      */
     private @Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
+    /**
+     * @return Boot disk configuration for node pools nodes.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigBootDisk bootDisk;
     /**
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
      * 
@@ -270,6 +276,13 @@ public final class NodePoolNodeConfig {
      */
     public Optional<NodePoolNodeConfigAdvancedMachineFeatures> advancedMachineFeatures() {
         return Optional.ofNullable(this.advancedMachineFeatures);
+    }
+    /**
+     * @return Boot disk configuration for node pools nodes.
+     * 
+     */
+    public Optional<NodePoolNodeConfigBootDisk> bootDisk() {
+        return Optional.ofNullable(this.bootDisk);
     }
     /**
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
@@ -590,6 +603,7 @@ public final class NodePoolNodeConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
+        private @Nullable NodePoolNodeConfigBootDisk bootDisk;
         private @Nullable String bootDiskKmsKey;
         private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
         private @Nullable NodePoolNodeConfigContainerdConfig containerdConfig;
@@ -638,6 +652,7 @@ public final class NodePoolNodeConfig {
         public Builder(NodePoolNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
+    	      this.bootDisk = defaults.bootDisk;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.containerdConfig = defaults.containerdConfig;
@@ -688,6 +703,12 @@ public final class NodePoolNodeConfig {
         public Builder advancedMachineFeatures(@Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures) {
 
             this.advancedMachineFeatures = advancedMachineFeatures;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bootDisk(@Nullable NodePoolNodeConfigBootDisk bootDisk) {
+
+            this.bootDisk = bootDisk;
             return this;
         }
         @CustomType.Setter
@@ -978,6 +999,7 @@ public final class NodePoolNodeConfig {
         public NodePoolNodeConfig build() {
             final var _resultValue = new NodePoolNodeConfig();
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
+            _resultValue.bootDisk = bootDisk;
             _resultValue.bootDiskKmsKey = bootDiskKmsKey;
             _resultValue.confidentialNodes = confidentialNodes;
             _resultValue.containerdConfig = containerdConfig;

@@ -24,6 +24,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("failoverDrReplicaName")]
         public Input<string>? FailoverDrReplicaName { get; set; }
 
+        /// <summary>
+        /// Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+        /// </summary>
+        [Input("psaWriteEndpoint")]
+        public Input<string>? PsaWriteEndpoint { get; set; }
+
         public DatabaseInstanceReplicationClusterGetArgs()
         {
         }

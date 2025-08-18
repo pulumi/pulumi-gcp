@@ -17048,6 +17048,547 @@ func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadata
 	}).(AiMetadataStoreStateTypeOutput)
 }
 
+type AiRagEngineConfigRagManagedDbConfig struct {
+	// Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+	// NOTE: This is the default tier if not explicitly chosen.
+	Basic *AiRagEngineConfigRagManagedDbConfigBasic `pulumi:"basic"`
+	// Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+	Scaled *AiRagEngineConfigRagManagedDbConfigScaled `pulumi:"scaled"`
+	// Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+	// NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+	Unprovisioned *AiRagEngineConfigRagManagedDbConfigUnprovisioned `pulumi:"unprovisioned"`
+}
+
+// AiRagEngineConfigRagManagedDbConfigInput is an input type that accepts AiRagEngineConfigRagManagedDbConfigArgs and AiRagEngineConfigRagManagedDbConfigOutput values.
+// You can construct a concrete instance of `AiRagEngineConfigRagManagedDbConfigInput` via:
+//
+//	AiRagEngineConfigRagManagedDbConfigArgs{...}
+type AiRagEngineConfigRagManagedDbConfigInput interface {
+	pulumi.Input
+
+	ToAiRagEngineConfigRagManagedDbConfigOutput() AiRagEngineConfigRagManagedDbConfigOutput
+	ToAiRagEngineConfigRagManagedDbConfigOutputWithContext(context.Context) AiRagEngineConfigRagManagedDbConfigOutput
+}
+
+type AiRagEngineConfigRagManagedDbConfigArgs struct {
+	// Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+	// NOTE: This is the default tier if not explicitly chosen.
+	Basic AiRagEngineConfigRagManagedDbConfigBasicPtrInput `pulumi:"basic"`
+	// Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+	Scaled AiRagEngineConfigRagManagedDbConfigScaledPtrInput `pulumi:"scaled"`
+	// Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+	// NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+	Unprovisioned AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput `pulumi:"unprovisioned"`
+}
+
+func (AiRagEngineConfigRagManagedDbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfig)(nil)).Elem()
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigArgs) ToAiRagEngineConfigRagManagedDbConfigOutput() AiRagEngineConfigRagManagedDbConfigOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigOutputWithContext(context.Background())
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigArgs) ToAiRagEngineConfigRagManagedDbConfigOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigOutput)
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigArgs) ToAiRagEngineConfigRagManagedDbConfigPtrOutput() AiRagEngineConfigRagManagedDbConfigPtrOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigArgs) ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigOutput).ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(ctx)
+}
+
+// AiRagEngineConfigRagManagedDbConfigPtrInput is an input type that accepts AiRagEngineConfigRagManagedDbConfigArgs, AiRagEngineConfigRagManagedDbConfigPtr and AiRagEngineConfigRagManagedDbConfigPtrOutput values.
+// You can construct a concrete instance of `AiRagEngineConfigRagManagedDbConfigPtrInput` via:
+//
+//	        AiRagEngineConfigRagManagedDbConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagEngineConfigRagManagedDbConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiRagEngineConfigRagManagedDbConfigPtrOutput() AiRagEngineConfigRagManagedDbConfigPtrOutput
+	ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(context.Context) AiRagEngineConfigRagManagedDbConfigPtrOutput
+}
+
+type aiRagEngineConfigRagManagedDbConfigPtrType AiRagEngineConfigRagManagedDbConfigArgs
+
+func AiRagEngineConfigRagManagedDbConfigPtr(v *AiRagEngineConfigRagManagedDbConfigArgs) AiRagEngineConfigRagManagedDbConfigPtrInput {
+	return (*aiRagEngineConfigRagManagedDbConfigPtrType)(v)
+}
+
+func (*aiRagEngineConfigRagManagedDbConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagEngineConfigRagManagedDbConfig)(nil)).Elem()
+}
+
+func (i *aiRagEngineConfigRagManagedDbConfigPtrType) ToAiRagEngineConfigRagManagedDbConfigPtrOutput() AiRagEngineConfigRagManagedDbConfigPtrOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagEngineConfigRagManagedDbConfigPtrType) ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigOutput struct{ *pulumi.OutputState }
+
+func (AiRagEngineConfigRagManagedDbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfig)(nil)).Elem()
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigOutput) ToAiRagEngineConfigRagManagedDbConfigOutput() AiRagEngineConfigRagManagedDbConfigOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigOutput) ToAiRagEngineConfigRagManagedDbConfigOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigOutput) ToAiRagEngineConfigRagManagedDbConfigPtrOutput() AiRagEngineConfigRagManagedDbConfigPtrOutput {
+	return o.ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigOutput) ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagEngineConfigRagManagedDbConfig) *AiRagEngineConfigRagManagedDbConfig {
+		return &v
+	}).(AiRagEngineConfigRagManagedDbConfigPtrOutput)
+}
+
+// Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+// NOTE: This is the default tier if not explicitly chosen.
+func (o AiRagEngineConfigRagManagedDbConfigOutput) Basic() AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return o.ApplyT(func(v AiRagEngineConfigRagManagedDbConfig) *AiRagEngineConfigRagManagedDbConfigBasic { return v.Basic }).(AiRagEngineConfigRagManagedDbConfigBasicPtrOutput)
+}
+
+// Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+func (o AiRagEngineConfigRagManagedDbConfigOutput) Scaled() AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return o.ApplyT(func(v AiRagEngineConfigRagManagedDbConfig) *AiRagEngineConfigRagManagedDbConfigScaled {
+		return v.Scaled
+	}).(AiRagEngineConfigRagManagedDbConfigScaledPtrOutput)
+}
+
+// Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+// NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+func (o AiRagEngineConfigRagManagedDbConfigOutput) Unprovisioned() AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return o.ApplyT(func(v AiRagEngineConfigRagManagedDbConfig) *AiRagEngineConfigRagManagedDbConfigUnprovisioned {
+		return v.Unprovisioned
+	}).(AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagEngineConfigRagManagedDbConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagEngineConfigRagManagedDbConfig)(nil)).Elem()
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigPtrOutput) ToAiRagEngineConfigRagManagedDbConfigPtrOutput() AiRagEngineConfigRagManagedDbConfigPtrOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigPtrOutput) ToAiRagEngineConfigRagManagedDbConfigPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigPtrOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigPtrOutput) Elem() AiRagEngineConfigRagManagedDbConfigOutput {
+	return o.ApplyT(func(v *AiRagEngineConfigRagManagedDbConfig) AiRagEngineConfigRagManagedDbConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagEngineConfigRagManagedDbConfig
+		return ret
+	}).(AiRagEngineConfigRagManagedDbConfigOutput)
+}
+
+// Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+// NOTE: This is the default tier if not explicitly chosen.
+func (o AiRagEngineConfigRagManagedDbConfigPtrOutput) Basic() AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return o.ApplyT(func(v *AiRagEngineConfigRagManagedDbConfig) *AiRagEngineConfigRagManagedDbConfigBasic {
+		if v == nil {
+			return nil
+		}
+		return v.Basic
+	}).(AiRagEngineConfigRagManagedDbConfigBasicPtrOutput)
+}
+
+// Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+func (o AiRagEngineConfigRagManagedDbConfigPtrOutput) Scaled() AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return o.ApplyT(func(v *AiRagEngineConfigRagManagedDbConfig) *AiRagEngineConfigRagManagedDbConfigScaled {
+		if v == nil {
+			return nil
+		}
+		return v.Scaled
+	}).(AiRagEngineConfigRagManagedDbConfigScaledPtrOutput)
+}
+
+// Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+// NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+func (o AiRagEngineConfigRagManagedDbConfigPtrOutput) Unprovisioned() AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return o.ApplyT(func(v *AiRagEngineConfigRagManagedDbConfig) *AiRagEngineConfigRagManagedDbConfigUnprovisioned {
+		if v == nil {
+			return nil
+		}
+		return v.Unprovisioned
+	}).(AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigBasic struct {
+}
+
+// AiRagEngineConfigRagManagedDbConfigBasicInput is an input type that accepts AiRagEngineConfigRagManagedDbConfigBasicArgs and AiRagEngineConfigRagManagedDbConfigBasicOutput values.
+// You can construct a concrete instance of `AiRagEngineConfigRagManagedDbConfigBasicInput` via:
+//
+//	AiRagEngineConfigRagManagedDbConfigBasicArgs{...}
+type AiRagEngineConfigRagManagedDbConfigBasicInput interface {
+	pulumi.Input
+
+	ToAiRagEngineConfigRagManagedDbConfigBasicOutput() AiRagEngineConfigRagManagedDbConfigBasicOutput
+	ToAiRagEngineConfigRagManagedDbConfigBasicOutputWithContext(context.Context) AiRagEngineConfigRagManagedDbConfigBasicOutput
+}
+
+type AiRagEngineConfigRagManagedDbConfigBasicArgs struct {
+}
+
+func (AiRagEngineConfigRagManagedDbConfigBasicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigBasic)(nil)).Elem()
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigBasicArgs) ToAiRagEngineConfigRagManagedDbConfigBasicOutput() AiRagEngineConfigRagManagedDbConfigBasicOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigBasicOutputWithContext(context.Background())
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigBasicArgs) ToAiRagEngineConfigRagManagedDbConfigBasicOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigBasicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigBasicOutput)
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigBasicArgs) ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutput() AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigBasicArgs) ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigBasicOutput).ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(ctx)
+}
+
+// AiRagEngineConfigRagManagedDbConfigBasicPtrInput is an input type that accepts AiRagEngineConfigRagManagedDbConfigBasicArgs, AiRagEngineConfigRagManagedDbConfigBasicPtr and AiRagEngineConfigRagManagedDbConfigBasicPtrOutput values.
+// You can construct a concrete instance of `AiRagEngineConfigRagManagedDbConfigBasicPtrInput` via:
+//
+//	        AiRagEngineConfigRagManagedDbConfigBasicArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagEngineConfigRagManagedDbConfigBasicPtrInput interface {
+	pulumi.Input
+
+	ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutput() AiRagEngineConfigRagManagedDbConfigBasicPtrOutput
+	ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(context.Context) AiRagEngineConfigRagManagedDbConfigBasicPtrOutput
+}
+
+type aiRagEngineConfigRagManagedDbConfigBasicPtrType AiRagEngineConfigRagManagedDbConfigBasicArgs
+
+func AiRagEngineConfigRagManagedDbConfigBasicPtr(v *AiRagEngineConfigRagManagedDbConfigBasicArgs) AiRagEngineConfigRagManagedDbConfigBasicPtrInput {
+	return (*aiRagEngineConfigRagManagedDbConfigBasicPtrType)(v)
+}
+
+func (*aiRagEngineConfigRagManagedDbConfigBasicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagEngineConfigRagManagedDbConfigBasic)(nil)).Elem()
+}
+
+func (i *aiRagEngineConfigRagManagedDbConfigBasicPtrType) ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutput() AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagEngineConfigRagManagedDbConfigBasicPtrType) ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigBasicPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigBasicOutput struct{ *pulumi.OutputState }
+
+func (AiRagEngineConfigRagManagedDbConfigBasicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigBasic)(nil)).Elem()
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigBasicOutput) ToAiRagEngineConfigRagManagedDbConfigBasicOutput() AiRagEngineConfigRagManagedDbConfigBasicOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigBasicOutput) ToAiRagEngineConfigRagManagedDbConfigBasicOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigBasicOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigBasicOutput) ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutput() AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return o.ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigBasicOutput) ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagEngineConfigRagManagedDbConfigBasic) *AiRagEngineConfigRagManagedDbConfigBasic {
+		return &v
+	}).(AiRagEngineConfigRagManagedDbConfigBasicPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigBasicPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagEngineConfigRagManagedDbConfigBasicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagEngineConfigRagManagedDbConfigBasic)(nil)).Elem()
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigBasicPtrOutput) ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutput() AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigBasicPtrOutput) ToAiRagEngineConfigRagManagedDbConfigBasicPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigBasicPtrOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigBasicPtrOutput) Elem() AiRagEngineConfigRagManagedDbConfigBasicOutput {
+	return o.ApplyT(func(v *AiRagEngineConfigRagManagedDbConfigBasic) AiRagEngineConfigRagManagedDbConfigBasic {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagEngineConfigRagManagedDbConfigBasic
+		return ret
+	}).(AiRagEngineConfigRagManagedDbConfigBasicOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigScaled struct {
+}
+
+// AiRagEngineConfigRagManagedDbConfigScaledInput is an input type that accepts AiRagEngineConfigRagManagedDbConfigScaledArgs and AiRagEngineConfigRagManagedDbConfigScaledOutput values.
+// You can construct a concrete instance of `AiRagEngineConfigRagManagedDbConfigScaledInput` via:
+//
+//	AiRagEngineConfigRagManagedDbConfigScaledArgs{...}
+type AiRagEngineConfigRagManagedDbConfigScaledInput interface {
+	pulumi.Input
+
+	ToAiRagEngineConfigRagManagedDbConfigScaledOutput() AiRagEngineConfigRagManagedDbConfigScaledOutput
+	ToAiRagEngineConfigRagManagedDbConfigScaledOutputWithContext(context.Context) AiRagEngineConfigRagManagedDbConfigScaledOutput
+}
+
+type AiRagEngineConfigRagManagedDbConfigScaledArgs struct {
+}
+
+func (AiRagEngineConfigRagManagedDbConfigScaledArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigScaled)(nil)).Elem()
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigScaledArgs) ToAiRagEngineConfigRagManagedDbConfigScaledOutput() AiRagEngineConfigRagManagedDbConfigScaledOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigScaledOutputWithContext(context.Background())
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigScaledArgs) ToAiRagEngineConfigRagManagedDbConfigScaledOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigScaledOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigScaledOutput)
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigScaledArgs) ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutput() AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigScaledArgs) ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigScaledOutput).ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(ctx)
+}
+
+// AiRagEngineConfigRagManagedDbConfigScaledPtrInput is an input type that accepts AiRagEngineConfigRagManagedDbConfigScaledArgs, AiRagEngineConfigRagManagedDbConfigScaledPtr and AiRagEngineConfigRagManagedDbConfigScaledPtrOutput values.
+// You can construct a concrete instance of `AiRagEngineConfigRagManagedDbConfigScaledPtrInput` via:
+//
+//	        AiRagEngineConfigRagManagedDbConfigScaledArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagEngineConfigRagManagedDbConfigScaledPtrInput interface {
+	pulumi.Input
+
+	ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutput() AiRagEngineConfigRagManagedDbConfigScaledPtrOutput
+	ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(context.Context) AiRagEngineConfigRagManagedDbConfigScaledPtrOutput
+}
+
+type aiRagEngineConfigRagManagedDbConfigScaledPtrType AiRagEngineConfigRagManagedDbConfigScaledArgs
+
+func AiRagEngineConfigRagManagedDbConfigScaledPtr(v *AiRagEngineConfigRagManagedDbConfigScaledArgs) AiRagEngineConfigRagManagedDbConfigScaledPtrInput {
+	return (*aiRagEngineConfigRagManagedDbConfigScaledPtrType)(v)
+}
+
+func (*aiRagEngineConfigRagManagedDbConfigScaledPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagEngineConfigRagManagedDbConfigScaled)(nil)).Elem()
+}
+
+func (i *aiRagEngineConfigRagManagedDbConfigScaledPtrType) ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutput() AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagEngineConfigRagManagedDbConfigScaledPtrType) ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigScaledPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigScaledOutput struct{ *pulumi.OutputState }
+
+func (AiRagEngineConfigRagManagedDbConfigScaledOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigScaled)(nil)).Elem()
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigScaledOutput) ToAiRagEngineConfigRagManagedDbConfigScaledOutput() AiRagEngineConfigRagManagedDbConfigScaledOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigScaledOutput) ToAiRagEngineConfigRagManagedDbConfigScaledOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigScaledOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigScaledOutput) ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutput() AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return o.ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigScaledOutput) ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagEngineConfigRagManagedDbConfigScaled) *AiRagEngineConfigRagManagedDbConfigScaled {
+		return &v
+	}).(AiRagEngineConfigRagManagedDbConfigScaledPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigScaledPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagEngineConfigRagManagedDbConfigScaledPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagEngineConfigRagManagedDbConfigScaled)(nil)).Elem()
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigScaledPtrOutput) ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutput() AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigScaledPtrOutput) ToAiRagEngineConfigRagManagedDbConfigScaledPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigScaledPtrOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigScaledPtrOutput) Elem() AiRagEngineConfigRagManagedDbConfigScaledOutput {
+	return o.ApplyT(func(v *AiRagEngineConfigRagManagedDbConfigScaled) AiRagEngineConfigRagManagedDbConfigScaled {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagEngineConfigRagManagedDbConfigScaled
+		return ret
+	}).(AiRagEngineConfigRagManagedDbConfigScaledOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigUnprovisioned struct {
+}
+
+// AiRagEngineConfigRagManagedDbConfigUnprovisionedInput is an input type that accepts AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs and AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput values.
+// You can construct a concrete instance of `AiRagEngineConfigRagManagedDbConfigUnprovisionedInput` via:
+//
+//	AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{...}
+type AiRagEngineConfigRagManagedDbConfigUnprovisionedInput interface {
+	pulumi.Input
+
+	ToAiRagEngineConfigRagManagedDbConfigUnprovisionedOutput() AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput
+	ToAiRagEngineConfigRagManagedDbConfigUnprovisionedOutputWithContext(context.Context) AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput
+}
+
+type AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs struct {
+}
+
+func (AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisioned)(nil)).Elem()
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedOutput() AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigUnprovisionedOutputWithContext(context.Background())
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput)
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput() AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(context.Background())
+}
+
+func (i AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput).ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(ctx)
+}
+
+// AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput is an input type that accepts AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs, AiRagEngineConfigRagManagedDbConfigUnprovisionedPtr and AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput values.
+// You can construct a concrete instance of `AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput` via:
+//
+//	        AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput interface {
+	pulumi.Input
+
+	ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput() AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput
+	ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(context.Context) AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput
+}
+
+type aiRagEngineConfigRagManagedDbConfigUnprovisionedPtrType AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs
+
+func AiRagEngineConfigRagManagedDbConfigUnprovisionedPtr(v *AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs) AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput {
+	return (*aiRagEngineConfigRagManagedDbConfigUnprovisionedPtrType)(v)
+}
+
+func (*aiRagEngineConfigRagManagedDbConfigUnprovisionedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagEngineConfigRagManagedDbConfigUnprovisioned)(nil)).Elem()
+}
+
+func (i *aiRagEngineConfigRagManagedDbConfigUnprovisionedPtrType) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput() AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return i.ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(context.Background())
+}
+
+func (i *aiRagEngineConfigRagManagedDbConfigUnprovisionedPtrType) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput struct{ *pulumi.OutputState }
+
+func (AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisioned)(nil)).Elem()
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedOutput() AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput() AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return o.ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(context.Background())
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiRagEngineConfigRagManagedDbConfigUnprovisioned) *AiRagEngineConfigRagManagedDbConfigUnprovisioned {
+		return &v
+	}).(AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput)
+}
+
+type AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput struct{ *pulumi.OutputState }
+
+func (AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiRagEngineConfigRagManagedDbConfigUnprovisioned)(nil)).Elem()
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput() AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput) ToAiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutputWithContext(ctx context.Context) AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput {
+	return o
+}
+
+func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput) Elem() AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput {
+	return o.ApplyT(func(v *AiRagEngineConfigRagManagedDbConfigUnprovisioned) AiRagEngineConfigRagManagedDbConfigUnprovisioned {
+		if v != nil {
+			return *v
+		}
+		var ret AiRagEngineConfigRagManagedDbConfigUnprovisioned
+		return ret
+	}).(AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput)
+}
+
 type AiTensorboardEncryptionSpec struct {
 	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
 	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -18219,6 +18760,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecPtrInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeInput)(nil)).Elem(), AiMetadataStoreStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigBasicInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigBasicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigBasicPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigBasicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigScaledInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigScaledArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigScaledPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigScaledArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisionedInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecPtrInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexInput)(nil)).Elem(), GetAiIndexDeployedIndexArgs{})
@@ -18425,6 +18974,14 @@ func init() {
 	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigOutput{})
+	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigBasicOutput{})
+	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigBasicPtrOutput{})
+	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigScaledOutput{})
+	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigScaledPtrOutput{})
+	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigUnprovisionedOutput{})
+	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetAiIndexDeployedIndexOutput{})

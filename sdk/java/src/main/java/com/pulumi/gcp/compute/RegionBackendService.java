@@ -18,6 +18,7 @@ import com.pulumi.gcp.compute.outputs.RegionBackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceCustomMetric;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceDynamicForwarding;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceFailoverPolicy;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceHaPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceOutlierDetection;
@@ -825,6 +826,172 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Backend Service Ha Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("rbs-net")
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("region-service")
+ *             .protocol("UDP")
+ *             .loadBalancingScheme("EXTERNAL")
+ *             .network(default_.id())
+ *             .haPolicy(RegionBackendServiceHaPolicyArgs.builder()
+ *                 .fastIpMove("GARP_RA")
+ *                 .build())
+ *             .connectionDrainingTimeoutSec(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Backend Service Ha Policy Manual Leader
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.NetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.NetworkEndpoint;
+ * import com.pulumi.gcp.compute.NetworkEndpointArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyLeaderArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("rbs-net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("rbs-subnet")
+ *             .ipCidrRange("10.1.2.0/24")
+ *             .region("us-central1")
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-12")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var endpoint_instance = new Instance("endpoint-instance", InstanceArgs.builder()
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .name("rbs-instance")
+ *             .machineType("e2-medium")
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(myImage.selfLink())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
+ *             .name("rbs-neg")
+ *             .networkEndpointType("GCE_VM_IP")
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var endpoint = new NetworkEndpoint("endpoint", NetworkEndpointArgs.builder()
+ *             .networkEndpointGroup(neg.name())
+ *             .instance(endpoint_instance.name())
+ *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("region-service")
+ *             .protocol("UDP")
+ *             .loadBalancingScheme("EXTERNAL")
+ *             .network(default_.id())
+ *             .backends(RegionBackendServiceBackendArgs.builder()
+ *                 .group(neg.selfLink())
+ *                 .balancingMode("CONNECTION")
+ *                 .build())
+ *             .haPolicy(RegionBackendServiceHaPolicyArgs.builder()
+ *                 .fastIpMove("GARP_RA")
+ *                 .leader(RegionBackendServiceHaPolicyLeaderArgs.builder()
+ *                     .backendGroup(neg.selfLink())
+ *                     .networkEndpoint(RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs.builder()
+ *                         .instance(endpoint_instance.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .connectionDrainingTimeoutSec(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -1116,6 +1283,36 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> generatedId() {
         return this.generatedId;
+    }
+    /**
+     * Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+     * The backends of this regional backend service must only specify zonal network endpoint groups
+     * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+     * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+     * requires customers to be responsible for tracking backend endpoint health and electing a
+     * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+     * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+     * Passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="haPolicy", refs={RegionBackendServiceHaPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ RegionBackendServiceHaPolicy> haPolicy;
+
+    /**
+     * @return Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+     * The backends of this regional backend service must only specify zonal network endpoint groups
+     * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+     * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+     * requires customers to be responsible for tracking backend endpoint health and electing a
+     * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+     * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+     * Passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionBackendServiceHaPolicy>> haPolicy() {
+        return Codegen.optional(this.haPolicy);
     }
     /**
      * The set of URLs to HealthCheck resources for health checking

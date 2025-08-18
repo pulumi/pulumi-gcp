@@ -30,6 +30,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
+     * Allows customers to specify if they are okay with deploying a multi-zone
+     * instance in less than 3 zones. Once set, if there is a zonal outage during
+     * the instance creation, the instance will only be deployed in 2 zones, and
+     * stay within the 2 zones for its lifecycle.
+     * 
+     */
+    @Import(name="allowFewerZonesDeployment")
+    private @Nullable Output<Boolean> allowFewerZonesDeployment;
+
+    /**
+     * @return Allows customers to specify if they are okay with deploying a multi-zone
+     * instance in less than 3 zones. Once set, if there is a zonal outage during
+     * the instance creation, the instance will only be deployed in 2 zones, and
+     * stay within the 2 zones for its lifecycle.
+     * 
+     */
+    public Optional<Output<Boolean>> allowFewerZonesDeployment() {
+        return Optional.ofNullable(this.allowFewerZonesDeployment);
+    }
+
+    /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
      * IAM_AUTH
@@ -447,6 +468,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.allowFewerZonesDeployment = $.allowFewerZonesDeployment;
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
         this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
@@ -488,6 +510,33 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowFewerZonesDeployment Allows customers to specify if they are okay with deploying a multi-zone
+         * instance in less than 3 zones. Once set, if there is a zonal outage during
+         * the instance creation, the instance will only be deployed in 2 zones, and
+         * stay within the 2 zones for its lifecycle.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowFewerZonesDeployment(@Nullable Output<Boolean> allowFewerZonesDeployment) {
+            $.allowFewerZonesDeployment = allowFewerZonesDeployment;
+            return this;
+        }
+
+        /**
+         * @param allowFewerZonesDeployment Allows customers to specify if they are okay with deploying a multi-zone
+         * instance in less than 3 zones. Once set, if there is a zonal outage during
+         * the instance creation, the instance will only be deployed in 2 zones, and
+         * stay within the 2 zones for its lifecycle.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowFewerZonesDeployment(Boolean allowFewerZonesDeployment) {
+            return allowFewerZonesDeployment(Output.of(allowFewerZonesDeployment));
         }
 
         /**

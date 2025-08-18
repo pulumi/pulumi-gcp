@@ -506,6 +506,129 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Service Attachment Cross Region Ilb
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.ServiceAttachment;
+ * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()
+ *             .name("sa")
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var backendService = new BackendService("backendService", BackendServiceArgs.builder()
+ *             .name("sa")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(healthCheck.id())
+ *             .build());
+ * 
+ *         var urlMap = new URLMap("urlMap", URLMapArgs.builder()
+ *             .name("sa")
+ *             .description("Url map.")
+ *             .defaultService(backendService.id())
+ *             .build());
+ * 
+ *         var httpProxy = new TargetHttpProxy("httpProxy", TargetHttpProxyArgs.builder()
+ *             .name("sa")
+ *             .description("a description")
+ *             .urlMap(urlMap.id())
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("sa")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetworkProxy = new Subnetwork("subnetworkProxy", SubnetworkArgs.builder()
+ *             .name("sa-proxy")
+ *             .region("us-central1")
+ *             .network(network.id())
+ *             .purpose("GLOBAL_MANAGED_PROXY")
+ *             .role("ACTIVE")
+ *             .ipCidrRange("10.2.0.0/16")
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
+ *             .name("sa")
+ *             .region("us-central1")
+ *             .network(network.id())
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .build());
+ * 
+ *         var forwardingRule = new GlobalForwardingRule("forwardingRule", GlobalForwardingRuleArgs.builder()
+ *             .name("sa")
+ *             .target(httpProxy.id())
+ *             .network(network.id())
+ *             .subnetwork(subnetwork.id())
+ *             .portRange("80")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(subnetworkProxy)
+ *                 .build());
+ * 
+ *         var subnetworkPsc = new Subnetwork("subnetworkPsc", SubnetworkArgs.builder()
+ *             .name("sa-psc")
+ *             .region("us-central1")
+ *             .network(network.id())
+ *             .purpose("PRIVATE_SERVICE_CONNECT")
+ *             .ipCidrRange("10.1.0.0/16")
+ *             .build());
+ * 
+ *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
+ *             .name("sa")
+ *             .region("us-central1")
+ *             .description("A service attachment configured with Terraform")
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
+ *             .enableProxyProtocol(false)
+ *             .natSubnets(subnetworkPsc.id())
+ *             .targetService(forwardingRule.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -186,6 +186,13 @@ namespace Pulumi.Gcp.Compute
     public partial class RegionSecurityPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Advanced Options Config of this security policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("advancedOptionsConfig")]
+        public Output<Outputs.RegionSecurityPolicyAdvancedOptionsConfig?> AdvancedOptionsConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for Google Cloud Armor DDOS Proctection Config.
         /// Structure is documented below.
         /// </summary>
@@ -318,6 +325,13 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionSecurityPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Advanced Options Config of this security policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedOptionsConfig")]
+        public Input<Inputs.RegionSecurityPolicyAdvancedOptionsConfigArgs>? AdvancedOptionsConfig { get; set; }
+
+        /// <summary>
         /// Configuration for Google Cloud Armor DDOS Proctection Config.
         /// Structure is documented below.
         /// </summary>
@@ -398,6 +412,13 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RegionSecurityPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Advanced Options Config of this security policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedOptionsConfig")]
+        public Input<Inputs.RegionSecurityPolicyAdvancedOptionsConfigGetArgs>? AdvancedOptionsConfig { get; set; }
+
         /// <summary>
         /// Configuration for Google Cloud Armor DDOS Proctection Config.
         /// Structure is documented below.

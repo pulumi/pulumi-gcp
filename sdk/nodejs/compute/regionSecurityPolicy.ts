@@ -166,6 +166,11 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Advanced Options Config of this security policy.
+     * Structure is documented below.
+     */
+    public readonly advancedOptionsConfig!: pulumi.Output<outputs.compute.RegionSecurityPolicyAdvancedOptionsConfig | undefined>;
+    /**
      * Configuration for Google Cloud Armor DDOS Proctection Config.
      * Structure is documented below.
      */
@@ -241,6 +246,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionSecurityPolicyState | undefined;
+            resourceInputs["advancedOptionsConfig"] = state ? state.advancedOptionsConfig : undefined;
             resourceInputs["ddosProtectionConfig"] = state ? state.ddosProtectionConfig : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
@@ -255,6 +261,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["userDefinedFields"] = state ? state.userDefinedFields : undefined;
         } else {
             const args = argsOrState as RegionSecurityPolicyArgs | undefined;
+            resourceInputs["advancedOptionsConfig"] = args ? args.advancedOptionsConfig : undefined;
             resourceInputs["ddosProtectionConfig"] = args ? args.ddosProtectionConfig : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -277,6 +284,11 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionSecurityPolicy resources.
  */
 export interface RegionSecurityPolicyState {
+    /**
+     * Advanced Options Config of this security policy.
+     * Structure is documented below.
+     */
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyAdvancedOptionsConfig>;
     /**
      * Configuration for Google Cloud Armor DDOS Proctection Config.
      * Structure is documented below.
@@ -345,6 +357,11 @@ export interface RegionSecurityPolicyState {
  * The set of arguments for constructing a RegionSecurityPolicy resource.
  */
 export interface RegionSecurityPolicyArgs {
+    /**
+     * Advanced Options Config of this security policy.
+     * Structure is documented below.
+     */
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyAdvancedOptionsConfig>;
     /**
      * Configuration for Google Cloud Armor DDOS Proctection Config.
      * Structure is documented below.

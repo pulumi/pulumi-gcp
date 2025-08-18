@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceFailoverPolicyResult> FailoverPolicies;
         public readonly string Fingerprint;
         public readonly int GeneratedId;
+        public readonly ImmutableArray<Outputs.GetRegionBackendServiceHaPolicyResult> HaPolicies;
         public readonly ImmutableArray<string> HealthChecks;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceIapResult> Iaps;
         /// <summary>
@@ -223,6 +224,8 @@ namespace Pulumi.Gcp.Compute
 
             int generatedId,
 
+            ImmutableArray<Outputs.GetRegionBackendServiceHaPolicyResult> haPolicies,
+
             ImmutableArray<string> healthChecks,
 
             ImmutableArray<Outputs.GetRegionBackendServiceIapResult> iaps,
@@ -278,6 +281,7 @@ namespace Pulumi.Gcp.Compute
             FailoverPolicies = failoverPolicies;
             Fingerprint = fingerprint;
             GeneratedId = generatedId;
+            HaPolicies = haPolicies;
             HealthChecks = healthChecks;
             Iaps = iaps;
             Id = id;

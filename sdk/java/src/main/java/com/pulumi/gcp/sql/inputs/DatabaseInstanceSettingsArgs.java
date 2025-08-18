@@ -66,11 +66,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
     /**
      * The availability type of the Cloud SQL
-     * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
+     * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
      * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
+     * For read pool instances, this field is read-only. The availability type is changed by specifying
+     * the number of nodes (`node_count`).
      * 
      */
     @Import(name="availabilityType")
@@ -78,11 +80,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
     /**
      * @return The availability type of the Cloud SQL
-     * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
+     * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
      * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
+     * For read pool instances, this field is read-only. The availability type is changed by specifying
+     * the number of nodes (`node_count`).
      * 
      */
     public Optional<Output<String>> availabilityType() {
@@ -291,6 +295,29 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * (Computed) The availability type of
+     * the Cloud SQL instance, high availability (REGIONAL) or single zone
+     * (ZONAL). This field always contains the value that is reported by the API (for
+     * read pools, `settings.0.effective_availability_type` may differ from
+     * `settings.0.availability_type`).
+     * 
+     */
+    @Import(name="effectiveAvailabilityType")
+    private @Nullable Output<String> effectiveAvailabilityType;
+
+    /**
+     * @return (Computed) The availability type of
+     * the Cloud SQL instance, high availability (REGIONAL) or single zone
+     * (ZONAL). This field always contains the value that is reported by the API (for
+     * read pools, `settings.0.effective_availability_type` may differ from
+     * `settings.0.availability_type`).
+     * 
+     */
+    public Optional<Output<String>> effectiveAvailabilityType() {
+        return Optional.ofNullable(this.effectiveAvailabilityType);
+    }
+
+    /**
      * Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
      * 
      */
@@ -496,6 +523,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
         this.edition = $.edition;
+        this.effectiveAvailabilityType = $.effectiveAvailabilityType;
         this.enableDataplexIntegration = $.enableDataplexIntegration;
         this.enableGoogleMlIntegration = $.enableGoogleMlIntegration;
         this.insightsConfig = $.insightsConfig;
@@ -573,11 +601,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
         /**
          * @param availabilityType The availability type of the Cloud SQL
-         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
+         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
          * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
          * is set to `true`. Defaults to `ZONAL`.
+         * For read pool instances, this field is read-only. The availability type is changed by specifying
+         * the number of nodes (`node_count`).
          * 
          * @return builder
          * 
@@ -589,11 +619,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
         /**
          * @param availabilityType The availability type of the Cloud SQL
-         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
+         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
          * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
          * is set to `true`. Defaults to `ZONAL`.
+         * For read pool instances, this field is read-only. The availability type is changed by specifying
+         * the number of nodes (`node_count`).
          * 
          * @return builder
          * 
@@ -893,6 +925,35 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder edition(String edition) {
             return edition(Output.of(edition));
+        }
+
+        /**
+         * @param effectiveAvailabilityType (Computed) The availability type of
+         * the Cloud SQL instance, high availability (REGIONAL) or single zone
+         * (ZONAL). This field always contains the value that is reported by the API (for
+         * read pools, `settings.0.effective_availability_type` may differ from
+         * `settings.0.availability_type`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAvailabilityType(@Nullable Output<String> effectiveAvailabilityType) {
+            $.effectiveAvailabilityType = effectiveAvailabilityType;
+            return this;
+        }
+
+        /**
+         * @param effectiveAvailabilityType (Computed) The availability type of
+         * the Cloud SQL instance, high availability (REGIONAL) or single zone
+         * (ZONAL). This field always contains the value that is reported by the API (for
+         * read pools, `settings.0.effective_availability_type` may differ from
+         * `settings.0.availability_type`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAvailabilityType(String effectiveAvailabilityType) {
+            return effectiveAvailabilityType(Output.of(effectiveAvailabilityType));
         }
 
         /**

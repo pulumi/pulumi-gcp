@@ -406,6 +406,92 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Region Backend Service Ha Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {name: "rbs-net"});
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     protocol: "UDP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     network: _default.id,
+ *     haPolicy: {
+ *         fastIpMove: "GARP_RA",
+ *     },
+ *     connectionDrainingTimeoutSec: 0,
+ * });
+ * ```
+ * ### Region Backend Service Ha Policy Manual Leader
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "rbs-net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "rbs-subnet",
+ *     ipCidrRange: "10.1.2.0/24",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-12",
+ *     project: "debian-cloud",
+ * });
+ * const endpoint_instance = new gcp.compute.Instance("endpoint-instance", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "rbs-instance",
+ *     machineType: "e2-medium",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: myImage.then(myImage => myImage.selfLink),
+ *         },
+ *     },
+ * });
+ * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
+ *     name: "rbs-neg",
+ *     networkEndpointType: "GCE_VM_IP",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     zone: "us-central1-a",
+ * });
+ * const endpoint = new gcp.compute.NetworkEndpoint("endpoint", {
+ *     networkEndpointGroup: neg.name,
+ *     instance: endpoint_instance.name,
+ *     ipAddress: endpoint_instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     protocol: "UDP",
+ *     loadBalancingScheme: "EXTERNAL",
+ *     network: _default.id,
+ *     backends: [{
+ *         group: neg.selfLink,
+ *         balancingMode: "CONNECTION",
+ *     }],
+ *     haPolicy: {
+ *         fastIpMove: "GARP_RA",
+ *         leader: {
+ *             backendGroup: neg.selfLink,
+ *             networkEndpoint: {
+ *                 instance: endpoint_instance.name,
+ *             },
+ *         },
+ *     },
+ *     connectionDrainingTimeoutSec: 0,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -549,6 +635,18 @@ export class RegionBackendService extends pulumi.CustomResource {
      * The unique identifier for the resource. This identifier is defined by the server.
      */
     public /*out*/ readonly generatedId!: pulumi.Output<number>;
+    /**
+     * Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+     * The backends of this regional backend service must only specify zonal network endpoint groups
+     * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+     * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+     * requires customers to be responsible for tracking backend endpoint health and electing a
+     * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+     * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+     * Passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    public readonly haPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceHaPolicy | undefined>;
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
@@ -748,6 +846,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["generatedId"] = state ? state.generatedId : undefined;
+            resourceInputs["haPolicy"] = state ? state.haPolicy : undefined;
             resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
             resourceInputs["iap"] = state ? state.iap : undefined;
             resourceInputs["ipAddressSelectionPolicy"] = state ? state.ipAddressSelectionPolicy : undefined;
@@ -781,6 +880,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["dynamicForwarding"] = args ? args.dynamicForwarding : undefined;
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
             resourceInputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
+            resourceInputs["haPolicy"] = args ? args.haPolicy : undefined;
             resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
             resourceInputs["iap"] = args ? args.iap : undefined;
             resourceInputs["ipAddressSelectionPolicy"] = args ? args.ipAddressSelectionPolicy : undefined;
@@ -897,6 +997,18 @@ export interface RegionBackendServiceState {
      * The unique identifier for the resource. This identifier is defined by the server.
      */
     generatedId?: pulumi.Input<number>;
+    /**
+     * Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+     * The backends of this regional backend service must only specify zonal network endpoint groups
+     * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+     * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+     * requires customers to be responsible for tracking backend endpoint health and electing a
+     * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+     * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+     * Passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    haPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceHaPolicy>;
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
@@ -1144,6 +1256,18 @@ export interface RegionBackendServiceArgs {
      * Structure is documented below.
      */
     failoverPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceFailoverPolicy>;
+    /**
+     * Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+     * The backends of this regional backend service must only specify zonal network endpoint groups
+     * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+     * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+     * requires customers to be responsible for tracking backend endpoint health and electing a
+     * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+     * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+     * Passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    haPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceHaPolicy>;
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health

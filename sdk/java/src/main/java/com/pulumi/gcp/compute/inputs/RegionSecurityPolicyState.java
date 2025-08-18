@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyAdvancedOptionsConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyDdosProtectionConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyUserDefinedFieldArgs;
@@ -18,6 +19,23 @@ import javax.annotation.Nullable;
 public final class RegionSecurityPolicyState extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionSecurityPolicyState Empty = new RegionSecurityPolicyState();
+
+    /**
+     * Advanced Options Config of this security policy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="advancedOptionsConfig")
+    private @Nullable Output<RegionSecurityPolicyAdvancedOptionsConfigArgs> advancedOptionsConfig;
+
+    /**
+     * @return Advanced Options Config of this security policy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionSecurityPolicyAdvancedOptionsConfigArgs>> advancedOptionsConfig() {
+        return Optional.ofNullable(this.advancedOptionsConfig);
+    }
 
     /**
      * Configuration for Google Cloud Armor DDOS Proctection Config.
@@ -230,6 +248,7 @@ public final class RegionSecurityPolicyState extends com.pulumi.resources.Resour
     private RegionSecurityPolicyState() {}
 
     private RegionSecurityPolicyState(RegionSecurityPolicyState $) {
+        this.advancedOptionsConfig = $.advancedOptionsConfig;
         this.ddosProtectionConfig = $.ddosProtectionConfig;
         this.description = $.description;
         this.fingerprint = $.fingerprint;
@@ -260,6 +279,29 @@ public final class RegionSecurityPolicyState extends com.pulumi.resources.Resour
 
         public Builder(RegionSecurityPolicyState defaults) {
             $ = new RegionSecurityPolicyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedOptionsConfig Advanced Options Config of this security policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedOptionsConfig(@Nullable Output<RegionSecurityPolicyAdvancedOptionsConfigArgs> advancedOptionsConfig) {
+            $.advancedOptionsConfig = advancedOptionsConfig;
+            return this;
+        }
+
+        /**
+         * @param advancedOptionsConfig Advanced Options Config of this security policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedOptionsConfig(RegionSecurityPolicyAdvancedOptionsConfigArgs advancedOptionsConfig) {
+            return advancedOptionsConfig(Output.of(advancedOptionsConfig));
         }
 
         /**

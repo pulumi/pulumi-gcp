@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.NodePoolNodeConfigAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
 
         /// <summary>
+        /// Boot disk configuration for node pools nodes.
+        /// </summary>
+        [Input("bootDisk")]
+        public Input<Inputs.NodePoolNodeConfigBootDiskGetArgs>? BootDisk { get; set; }
+
+        /// <summary>
         /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         /// </summary>
         [Input("bootDiskKmsKey")]

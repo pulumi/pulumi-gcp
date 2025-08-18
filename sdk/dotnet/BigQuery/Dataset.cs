@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         {
     ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
     ///             {
-    ///                 Role = "OWNER",
+    ///                 Role = "roles/bigquery.dataOwner",
     ///                 UserByEmail = bqowner.Email,
     ///             },
     ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs

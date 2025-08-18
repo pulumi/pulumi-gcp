@@ -21796,6 +21796,8 @@ type ClusterNodeConfig struct {
 	// Specifies options for controlling
 	// advanced machine features. Structure is documented below.
 	AdvancedMachineFeatures *ClusterNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
+	// Configuration of the node pool boot disk. Structure is documented below
+	BootDisk *ClusterNodeConfigBootDisk `pulumi:"bootDisk"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
@@ -21803,10 +21805,11 @@ type ClusterNodeConfig struct {
 	// Parameters to customize containerd runtime. Structure is documented below.
 	ContainerdConfig *ClusterNodeConfigContainerdConfig `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified
-	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+	// Prefer configuring `bootDisk`.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
 	DiskType *string `pulumi:"diskType"`
 	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints []ClusterNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
@@ -21952,6 +21955,8 @@ type ClusterNodeConfigArgs struct {
 	// Specifies options for controlling
 	// advanced machine features. Structure is documented below.
 	AdvancedMachineFeatures ClusterNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
+	// Configuration of the node pool boot disk. Structure is documented below
+	BootDisk ClusterNodeConfigBootDiskPtrInput `pulumi:"bootDisk"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
@@ -21959,10 +21964,11 @@ type ClusterNodeConfigArgs struct {
 	// Parameters to customize containerd runtime. Structure is documented below.
 	ContainerdConfig ClusterNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified
-	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+	// Prefer configuring `bootDisk`.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints ClusterNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
@@ -22176,6 +22182,11 @@ func (o ClusterNodeConfigOutput) AdvancedMachineFeatures() ClusterNodeConfigAdva
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigAdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
+// Configuration of the node pool boot disk. Structure is documented below
+func (o ClusterNodeConfigOutput) BootDisk() ClusterNodeConfigBootDiskPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigBootDisk { return v.BootDisk }).(ClusterNodeConfigBootDiskPtrOutput)
+}
+
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
@@ -22192,13 +22203,14 @@ func (o ClusterNodeConfigOutput) ContainerdConfig() ClusterNodeConfigContainerdC
 }
 
 // Size of the disk attached to each node, specified
-// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+// Prefer configuring `bootDisk`.
 func (o ClusterNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
 func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -22484,6 +22496,16 @@ func (o ClusterNodeConfigPtrOutput) AdvancedMachineFeatures() ClusterNodeConfigA
 	}).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
+// Configuration of the node pool boot disk. Structure is documented below
+func (o ClusterNodeConfigPtrOutput) BootDisk() ClusterNodeConfigBootDiskPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigBootDisk {
+		if v == nil {
+			return nil
+		}
+		return v.BootDisk
+	}).(ClusterNodeConfigBootDiskPtrOutput)
+}
+
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
@@ -22515,7 +22537,8 @@ func (o ClusterNodeConfigPtrOutput) ContainerdConfig() ClusterNodeConfigContaine
 }
 
 // Size of the disk attached to each node, specified
-// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+// Prefer configuring `bootDisk`.
 func (o ClusterNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *int {
 		if v == nil {
@@ -22526,7 +22549,7 @@ func (o ClusterNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
 func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -23147,6 +23170,208 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulu
 			return nil
 		}
 		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeConfigBootDisk struct {
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+	DiskType *string `pulumi:"diskType"`
+	// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+	SizeGb *int `pulumi:"sizeGb"`
+}
+
+// ClusterNodeConfigBootDiskInput is an input type that accepts ClusterNodeConfigBootDiskArgs and ClusterNodeConfigBootDiskOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigBootDiskInput` via:
+//
+//	ClusterNodeConfigBootDiskArgs{...}
+type ClusterNodeConfigBootDiskInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigBootDiskOutput() ClusterNodeConfigBootDiskOutput
+	ToClusterNodeConfigBootDiskOutputWithContext(context.Context) ClusterNodeConfigBootDiskOutput
+}
+
+type ClusterNodeConfigBootDiskArgs struct {
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+}
+
+func (ClusterNodeConfigBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigBootDiskArgs) ToClusterNodeConfigBootDiskOutput() ClusterNodeConfigBootDiskOutput {
+	return i.ToClusterNodeConfigBootDiskOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigBootDiskArgs) ToClusterNodeConfigBootDiskOutputWithContext(ctx context.Context) ClusterNodeConfigBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigBootDiskOutput)
+}
+
+func (i ClusterNodeConfigBootDiskArgs) ToClusterNodeConfigBootDiskPtrOutput() ClusterNodeConfigBootDiskPtrOutput {
+	return i.ToClusterNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigBootDiskArgs) ToClusterNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) ClusterNodeConfigBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigBootDiskOutput).ToClusterNodeConfigBootDiskPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigBootDiskPtrInput is an input type that accepts ClusterNodeConfigBootDiskArgs, ClusterNodeConfigBootDiskPtr and ClusterNodeConfigBootDiskPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigBootDiskPtrInput` via:
+//
+//	        ClusterNodeConfigBootDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigBootDiskPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigBootDiskPtrOutput() ClusterNodeConfigBootDiskPtrOutput
+	ToClusterNodeConfigBootDiskPtrOutputWithContext(context.Context) ClusterNodeConfigBootDiskPtrOutput
+}
+
+type clusterNodeConfigBootDiskPtrType ClusterNodeConfigBootDiskArgs
+
+func ClusterNodeConfigBootDiskPtr(v *ClusterNodeConfigBootDiskArgs) ClusterNodeConfigBootDiskPtrInput {
+	return (*clusterNodeConfigBootDiskPtrType)(v)
+}
+
+func (*clusterNodeConfigBootDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigBootDiskPtrType) ToClusterNodeConfigBootDiskPtrOutput() ClusterNodeConfigBootDiskPtrOutput {
+	return i.ToClusterNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigBootDiskPtrType) ToClusterNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) ClusterNodeConfigBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigBootDiskPtrOutput)
+}
+
+type ClusterNodeConfigBootDiskOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigBootDiskOutput) ToClusterNodeConfigBootDiskOutput() ClusterNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o ClusterNodeConfigBootDiskOutput) ToClusterNodeConfigBootDiskOutputWithContext(ctx context.Context) ClusterNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o ClusterNodeConfigBootDiskOutput) ToClusterNodeConfigBootDiskPtrOutput() ClusterNodeConfigBootDiskPtrOutput {
+	return o.ToClusterNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigBootDiskOutput) ToClusterNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) ClusterNodeConfigBootDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigBootDisk) *ClusterNodeConfigBootDisk {
+		return &v
+	}).(ClusterNodeConfigBootDiskPtrOutput)
+}
+
+// Type of the disk attached to each node
+// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+func (o ClusterNodeConfigBootDiskOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigBootDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+func (o ClusterNodeConfigBootDiskOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigBootDisk) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+func (o ClusterNodeConfigBootDiskOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigBootDisk) *int { return v.ProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
+// Size of the disk attached to each node, specified
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+func (o ClusterNodeConfigBootDiskOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigBootDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeConfigBootDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigBootDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigBootDiskPtrOutput) ToClusterNodeConfigBootDiskPtrOutput() ClusterNodeConfigBootDiskPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigBootDiskPtrOutput) ToClusterNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) ClusterNodeConfigBootDiskPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigBootDiskPtrOutput) Elem() ClusterNodeConfigBootDiskOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigBootDisk) ClusterNodeConfigBootDisk {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigBootDisk
+		return ret
+	}).(ClusterNodeConfigBootDiskOutput)
+}
+
+// Type of the disk attached to each node
+// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+func (o ClusterNodeConfigBootDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigBootDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+func (o ClusterNodeConfigBootDiskPtrOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+func (o ClusterNodeConfigBootDiskPtrOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size of the disk attached to each node, specified
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+func (o ClusterNodeConfigBootDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGb
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -25230,6 +25455,8 @@ type ClusterNodeConfigKubeletConfig struct {
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit *int `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+	SingleProcessOomKill *bool `pulumi:"singleProcessOomKill"`
 }
 
 // ClusterNodeConfigKubeletConfigInput is an input type that accepts ClusterNodeConfigKubeletConfigArgs and ClusterNodeConfigKubeletConfigOutput values.
@@ -25280,6 +25507,8 @@ type ClusterNodeConfigKubeletConfigArgs struct {
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit pulumi.IntPtrInput `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+	SingleProcessOomKill pulumi.BoolPtrInput `pulumi:"singleProcessOomKill"`
 }
 
 func (ClusterNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
@@ -25429,6 +25658,11 @@ func (o ClusterNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled
 // Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 func (o ClusterNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *int { return v.PodPidsLimit }).(pulumi.IntPtrOutput)
+}
+
+// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+func (o ClusterNodeConfigKubeletConfigOutput) SingleProcessOomKill() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *bool { return v.SingleProcessOomKill }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodeConfigKubeletConfigPtrOutput struct{ *pulumi.OutputState }
@@ -25585,6 +25819,16 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) PodPidsLimit() pulumi.IntPtrOut
 		}
 		return v.PodPidsLimit
 	}).(pulumi.IntPtrOutput)
+}
+
+// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) SingleProcessOomKill() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SingleProcessOomKill
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodeConfigLinuxNodeConfig struct {
@@ -30435,6 +30679,8 @@ type ClusterNodePoolNodeConfig struct {
 	// Specifies options for controlling
 	// advanced machine features. Structure is documented below.
 	AdvancedMachineFeatures *ClusterNodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
+	// Configuration of the node pool boot disk. Structure is documented below
+	BootDisk *ClusterNodePoolNodeConfigBootDisk `pulumi:"bootDisk"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
@@ -30442,10 +30688,11 @@ type ClusterNodePoolNodeConfig struct {
 	// Parameters to customize containerd runtime. Structure is documented below.
 	ContainerdConfig *ClusterNodePoolNodeConfigContainerdConfig `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified
-	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+	// Prefer configuring `bootDisk`.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
 	DiskType *string `pulumi:"diskType"`
 	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints []ClusterNodePoolNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
@@ -30591,6 +30838,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Specifies options for controlling
 	// advanced machine features. Structure is documented below.
 	AdvancedMachineFeatures ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
+	// Configuration of the node pool boot disk. Structure is documented below
+	BootDisk ClusterNodePoolNodeConfigBootDiskPtrInput `pulumi:"bootDisk"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for Confidential Nodes feature. Structure is documented below.
@@ -30598,10 +30847,11 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Parameters to customize containerd runtime. Structure is documented below.
 	ContainerdConfig ClusterNodePoolNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
 	// Size of the disk attached to each node, specified
-	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+	// Prefer configuring `bootDisk`.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node
-	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints ClusterNodePoolNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
@@ -30817,6 +31067,11 @@ func (o ClusterNodePoolNodeConfigOutput) AdvancedMachineFeatures() ClusterNodePo
 	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
+// Configuration of the node pool boot disk. Structure is documented below
+func (o ClusterNodePoolNodeConfigOutput) BootDisk() ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigBootDisk { return v.BootDisk }).(ClusterNodePoolNodeConfigBootDiskPtrOutput)
+}
+
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
@@ -30837,13 +31092,14 @@ func (o ClusterNodePoolNodeConfigOutput) ContainerdConfig() ClusterNodePoolNodeC
 }
 
 // Size of the disk attached to each node, specified
-// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+// Prefer configuring `bootDisk`.
 func (o ClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
 func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -31149,6 +31405,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) AdvancedMachineFeatures() ClusterNod
 	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
+// Configuration of the node pool boot disk. Structure is documented below
+func (o ClusterNodePoolNodeConfigPtrOutput) BootDisk() ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigBootDisk {
+		if v == nil {
+			return nil
+		}
+		return v.BootDisk
+	}).(ClusterNodePoolNodeConfigBootDiskPtrOutput)
+}
+
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
@@ -31180,7 +31446,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ContainerdConfig() ClusterNodePoolNo
 }
 
 // Size of the disk attached to each node, specified
-// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+// Prefer configuring `bootDisk`.
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *int {
 		if v == nil {
@@ -31191,7 +31458,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Type of the disk attached to each node
-// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
 		if v == nil {
@@ -31812,6 +32079,208 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCor
 			return nil
 		}
 		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigBootDisk struct {
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+	DiskType *string `pulumi:"diskType"`
+	// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+	SizeGb *int `pulumi:"sizeGb"`
+}
+
+// ClusterNodePoolNodeConfigBootDiskInput is an input type that accepts ClusterNodePoolNodeConfigBootDiskArgs and ClusterNodePoolNodeConfigBootDiskOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigBootDiskInput` via:
+//
+//	ClusterNodePoolNodeConfigBootDiskArgs{...}
+type ClusterNodePoolNodeConfigBootDiskInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigBootDiskOutput() ClusterNodePoolNodeConfigBootDiskOutput
+	ToClusterNodePoolNodeConfigBootDiskOutputWithContext(context.Context) ClusterNodePoolNodeConfigBootDiskOutput
+}
+
+type ClusterNodePoolNodeConfigBootDiskArgs struct {
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+}
+
+func (ClusterNodePoolNodeConfigBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigBootDiskArgs) ToClusterNodePoolNodeConfigBootDiskOutput() ClusterNodePoolNodeConfigBootDiskOutput {
+	return i.ToClusterNodePoolNodeConfigBootDiskOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigBootDiskArgs) ToClusterNodePoolNodeConfigBootDiskOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigBootDiskOutput)
+}
+
+func (i ClusterNodePoolNodeConfigBootDiskArgs) ToClusterNodePoolNodeConfigBootDiskPtrOutput() ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return i.ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigBootDiskArgs) ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigBootDiskOutput).ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigBootDiskPtrInput is an input type that accepts ClusterNodePoolNodeConfigBootDiskArgs, ClusterNodePoolNodeConfigBootDiskPtr and ClusterNodePoolNodeConfigBootDiskPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigBootDiskPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigBootDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigBootDiskPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigBootDiskPtrOutput() ClusterNodePoolNodeConfigBootDiskPtrOutput
+	ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigBootDiskPtrOutput
+}
+
+type clusterNodePoolNodeConfigBootDiskPtrType ClusterNodePoolNodeConfigBootDiskArgs
+
+func ClusterNodePoolNodeConfigBootDiskPtr(v *ClusterNodePoolNodeConfigBootDiskArgs) ClusterNodePoolNodeConfigBootDiskPtrInput {
+	return (*clusterNodePoolNodeConfigBootDiskPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigBootDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigBootDiskPtrType) ToClusterNodePoolNodeConfigBootDiskPtrOutput() ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return i.ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigBootDiskPtrType) ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigBootDiskPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigBootDiskOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigBootDiskOutput) ToClusterNodePoolNodeConfigBootDiskOutput() ClusterNodePoolNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigBootDiskOutput) ToClusterNodePoolNodeConfigBootDiskOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigBootDiskOutput) ToClusterNodePoolNodeConfigBootDiskPtrOutput() ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return o.ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigBootDiskOutput) ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigBootDisk) *ClusterNodePoolNodeConfigBootDisk {
+		return &v
+	}).(ClusterNodePoolNodeConfigBootDiskPtrOutput)
+}
+
+// Type of the disk attached to each node
+// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+func (o ClusterNodePoolNodeConfigBootDiskOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigBootDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+func (o ClusterNodePoolNodeConfigBootDiskOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigBootDisk) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+func (o ClusterNodePoolNodeConfigBootDiskOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigBootDisk) *int { return v.ProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
+// Size of the disk attached to each node, specified
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+func (o ClusterNodePoolNodeConfigBootDiskOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigBootDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigBootDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigBootDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigBootDiskPtrOutput) ToClusterNodePoolNodeConfigBootDiskPtrOutput() ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigBootDiskPtrOutput) ToClusterNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigBootDiskPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigBootDiskPtrOutput) Elem() ClusterNodePoolNodeConfigBootDiskOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigBootDisk) ClusterNodePoolNodeConfigBootDisk {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigBootDisk
+		return ret
+	}).(ClusterNodePoolNodeConfigBootDiskOutput)
+}
+
+// Type of the disk attached to each node
+// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+func (o ClusterNodePoolNodeConfigBootDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigBootDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+func (o ClusterNodePoolNodeConfigBootDiskPtrOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+func (o ClusterNodePoolNodeConfigBootDiskPtrOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size of the disk attached to each node, specified
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+func (o ClusterNodePoolNodeConfigBootDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGb
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -33897,6 +34366,8 @@ type ClusterNodePoolNodeConfigKubeletConfig struct {
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit *int `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+	SingleProcessOomKill *bool `pulumi:"singleProcessOomKill"`
 }
 
 // ClusterNodePoolNodeConfigKubeletConfigInput is an input type that accepts ClusterNodePoolNodeConfigKubeletConfigArgs and ClusterNodePoolNodeConfigKubeletConfigOutput values.
@@ -33947,6 +34418,8 @@ type ClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit pulumi.IntPtrInput `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+	SingleProcessOomKill pulumi.BoolPtrInput `pulumi:"singleProcessOomKill"`
 }
 
 func (ClusterNodePoolNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
@@ -34096,6 +34569,11 @@ func (o ClusterNodePoolNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPor
 // Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 func (o ClusterNodePoolNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *int { return v.PodPidsLimit }).(pulumi.IntPtrOutput)
+}
+
+// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) SingleProcessOomKill() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *bool { return v.SingleProcessOomKill }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigKubeletConfigPtrOutput struct{ *pulumi.OutputState }
@@ -34252,6 +34730,16 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) PodPidsLimit() pulumi.I
 		}
 		return v.PodPidsLimit
 	}).(pulumi.IntPtrOutput)
+}
+
+// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) SingleProcessOomKill() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SingleProcessOomKill
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigLinuxNodeConfig struct {
@@ -41745,6 +42233,8 @@ func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Disabled() pul
 type NodePoolNodeConfig struct {
 	// Specifies options for controlling advanced machine features.
 	AdvancedMachineFeatures *NodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
+	// Boot disk configuration for node pools nodes.
+	BootDisk *NodePoolNodeConfigBootDisk `pulumi:"bootDisk"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
@@ -41849,6 +42339,8 @@ type NodePoolNodeConfigInput interface {
 type NodePoolNodeConfigArgs struct {
 	// Specifies options for controlling advanced machine features.
 	AdvancedMachineFeatures NodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
+	// Boot disk configuration for node pools nodes.
+	BootDisk NodePoolNodeConfigBootDiskPtrInput `pulumi:"bootDisk"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
@@ -42021,6 +42513,11 @@ func (o NodePoolNodeConfigOutput) AdvancedMachineFeatures() NodePoolNodeConfigAd
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigAdvancedMachineFeatures {
 		return v.AdvancedMachineFeatures
 	}).(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
+// Boot disk configuration for node pools nodes.
+func (o NodePoolNodeConfigOutput) BootDisk() NodePoolNodeConfigBootDiskPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigBootDisk { return v.BootDisk }).(NodePoolNodeConfigBootDiskPtrOutput)
 }
 
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
@@ -42279,6 +42776,16 @@ func (o NodePoolNodeConfigPtrOutput) AdvancedMachineFeatures() NodePoolNodeConfi
 		}
 		return v.AdvancedMachineFeatures
 	}).(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
+// Boot disk configuration for node pools nodes.
+func (o NodePoolNodeConfigPtrOutput) BootDisk() NodePoolNodeConfigBootDiskPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigBootDisk {
+		if v == nil {
+			return nil
+		}
+		return v.BootDisk
+	}).(NodePoolNodeConfigBootDiskPtrOutput)
 }
 
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
@@ -42893,6 +43400,200 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pul
 			return nil
 		}
 		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
+type NodePoolNodeConfigBootDisk struct {
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType *string `pulumi:"diskType"`
+	// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	SizeGb *int `pulumi:"sizeGb"`
+}
+
+// NodePoolNodeConfigBootDiskInput is an input type that accepts NodePoolNodeConfigBootDiskArgs and NodePoolNodeConfigBootDiskOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigBootDiskInput` via:
+//
+//	NodePoolNodeConfigBootDiskArgs{...}
+type NodePoolNodeConfigBootDiskInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigBootDiskOutput() NodePoolNodeConfigBootDiskOutput
+	ToNodePoolNodeConfigBootDiskOutputWithContext(context.Context) NodePoolNodeConfigBootDiskOutput
+}
+
+type NodePoolNodeConfigBootDiskArgs struct {
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+}
+
+func (NodePoolNodeConfigBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigBootDiskArgs) ToNodePoolNodeConfigBootDiskOutput() NodePoolNodeConfigBootDiskOutput {
+	return i.ToNodePoolNodeConfigBootDiskOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigBootDiskArgs) ToNodePoolNodeConfigBootDiskOutputWithContext(ctx context.Context) NodePoolNodeConfigBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigBootDiskOutput)
+}
+
+func (i NodePoolNodeConfigBootDiskArgs) ToNodePoolNodeConfigBootDiskPtrOutput() NodePoolNodeConfigBootDiskPtrOutput {
+	return i.ToNodePoolNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigBootDiskArgs) ToNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigBootDiskOutput).ToNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigBootDiskPtrInput is an input type that accepts NodePoolNodeConfigBootDiskArgs, NodePoolNodeConfigBootDiskPtr and NodePoolNodeConfigBootDiskPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigBootDiskPtrInput` via:
+//
+//	        NodePoolNodeConfigBootDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigBootDiskPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigBootDiskPtrOutput() NodePoolNodeConfigBootDiskPtrOutput
+	ToNodePoolNodeConfigBootDiskPtrOutputWithContext(context.Context) NodePoolNodeConfigBootDiskPtrOutput
+}
+
+type nodePoolNodeConfigBootDiskPtrType NodePoolNodeConfigBootDiskArgs
+
+func NodePoolNodeConfigBootDiskPtr(v *NodePoolNodeConfigBootDiskArgs) NodePoolNodeConfigBootDiskPtrInput {
+	return (*nodePoolNodeConfigBootDiskPtrType)(v)
+}
+
+func (*nodePoolNodeConfigBootDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigBootDiskPtrType) ToNodePoolNodeConfigBootDiskPtrOutput() NodePoolNodeConfigBootDiskPtrOutput {
+	return i.ToNodePoolNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigBootDiskPtrType) ToNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigBootDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigBootDiskPtrOutput)
+}
+
+type NodePoolNodeConfigBootDiskOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigBootDiskOutput) ToNodePoolNodeConfigBootDiskOutput() NodePoolNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigBootDiskOutput) ToNodePoolNodeConfigBootDiskOutputWithContext(ctx context.Context) NodePoolNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigBootDiskOutput) ToNodePoolNodeConfigBootDiskPtrOutput() NodePoolNodeConfigBootDiskPtrOutput {
+	return o.ToNodePoolNodeConfigBootDiskPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigBootDiskOutput) ToNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigBootDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigBootDisk) *NodePoolNodeConfigBootDisk {
+		return &v
+	}).(NodePoolNodeConfigBootDiskPtrOutput)
+}
+
+// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+func (o NodePoolNodeConfigBootDiskOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigBootDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+func (o NodePoolNodeConfigBootDiskOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigBootDisk) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+func (o NodePoolNodeConfigBootDiskOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigBootDisk) *int { return v.ProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
+// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+func (o NodePoolNodeConfigBootDiskOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigBootDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+type NodePoolNodeConfigBootDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigBootDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigBootDiskPtrOutput) ToNodePoolNodeConfigBootDiskPtrOutput() NodePoolNodeConfigBootDiskPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigBootDiskPtrOutput) ToNodePoolNodeConfigBootDiskPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigBootDiskPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigBootDiskPtrOutput) Elem() NodePoolNodeConfigBootDiskOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigBootDisk) NodePoolNodeConfigBootDisk {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigBootDisk
+		return ret
+	}).(NodePoolNodeConfigBootDiskOutput)
+}
+
+// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+func (o NodePoolNodeConfigBootDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigBootDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+func (o NodePoolNodeConfigBootDiskPtrOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+func (o NodePoolNodeConfigBootDiskPtrOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+func (o NodePoolNodeConfigBootDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigBootDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGb
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -44926,6 +45627,8 @@ type NodePoolNodeConfigKubeletConfig struct {
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit *int `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer.
+	SingleProcessOomKill *bool `pulumi:"singleProcessOomKill"`
 }
 
 // NodePoolNodeConfigKubeletConfigInput is an input type that accepts NodePoolNodeConfigKubeletConfigArgs and NodePoolNodeConfigKubeletConfigOutput values.
@@ -44964,6 +45667,8 @@ type NodePoolNodeConfigKubeletConfigArgs struct {
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit pulumi.IntPtrInput `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer.
+	SingleProcessOomKill pulumi.BoolPtrInput `pulumi:"singleProcessOomKill"`
 }
 
 func (NodePoolNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
@@ -45101,6 +45806,11 @@ func (o NodePoolNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnable
 // Controls the maximum number of processes allowed to run in a pod.
 func (o NodePoolNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *int { return v.PodPidsLimit }).(pulumi.IntPtrOutput)
+}
+
+// Defines whether to enable single process OOM killer.
+func (o NodePoolNodeConfigKubeletConfigOutput) SingleProcessOomKill() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *bool { return v.SingleProcessOomKill }).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfigKubeletConfigPtrOutput struct{ *pulumi.OutputState }
@@ -45245,6 +45955,16 @@ func (o NodePoolNodeConfigKubeletConfigPtrOutput) PodPidsLimit() pulumi.IntPtrOu
 		}
 		return v.PodPidsLimit
 	}).(pulumi.IntPtrOutput)
+}
+
+// Defines whether to enable single process OOM killer.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) SingleProcessOomKill() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SingleProcessOomKill
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfigLinuxNodeConfig struct {
@@ -55155,6 +55875,8 @@ type GetClusterNodeConfig struct {
 	AdvancedMachineFeatures []GetClusterNodeConfigAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
+	// Boot disk configuration for node pools nodes.
+	BootDisks []GetClusterNodeConfigBootDisk `pulumi:"bootDisks"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes []GetClusterNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
@@ -55259,6 +55981,8 @@ type GetClusterNodeConfigArgs struct {
 	AdvancedMachineFeatures GetClusterNodeConfigAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
+	// Boot disk configuration for node pools nodes.
+	BootDisks GetClusterNodeConfigBootDiskArrayInput `pulumi:"bootDisks"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes GetClusterNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
@@ -55408,6 +56132,11 @@ func (o GetClusterNodeConfigOutput) AdvancedMachineFeatures() GetClusterNodeConf
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 func (o GetClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
+// Boot disk configuration for node pools nodes.
+func (o GetClusterNodeConfigOutput) BootDisks() GetClusterNodeConfigBootDiskArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigBootDisk { return v.BootDisks }).(GetClusterNodeConfigBootDiskArrayOutput)
 }
 
 // Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
@@ -55770,6 +56499,130 @@ func (o GetClusterNodeConfigAdvancedMachineFeatureArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigAdvancedMachineFeature {
 		return vs[0].([]GetClusterNodeConfigAdvancedMachineFeature)[vs[1].(int)]
 	}).(GetClusterNodeConfigAdvancedMachineFeatureOutput)
+}
+
+type GetClusterNodeConfigBootDisk struct {
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType string `pulumi:"diskType"`
+	// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	SizeGb int `pulumi:"sizeGb"`
+}
+
+// GetClusterNodeConfigBootDiskInput is an input type that accepts GetClusterNodeConfigBootDiskArgs and GetClusterNodeConfigBootDiskOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigBootDiskInput` via:
+//
+//	GetClusterNodeConfigBootDiskArgs{...}
+type GetClusterNodeConfigBootDiskInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigBootDiskOutput() GetClusterNodeConfigBootDiskOutput
+	ToGetClusterNodeConfigBootDiskOutputWithContext(context.Context) GetClusterNodeConfigBootDiskOutput
+}
+
+type GetClusterNodeConfigBootDiskArgs struct {
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
+}
+
+func (GetClusterNodeConfigBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigBootDiskArgs) ToGetClusterNodeConfigBootDiskOutput() GetClusterNodeConfigBootDiskOutput {
+	return i.ToGetClusterNodeConfigBootDiskOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigBootDiskArgs) ToGetClusterNodeConfigBootDiskOutputWithContext(ctx context.Context) GetClusterNodeConfigBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigBootDiskOutput)
+}
+
+// GetClusterNodeConfigBootDiskArrayInput is an input type that accepts GetClusterNodeConfigBootDiskArray and GetClusterNodeConfigBootDiskArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigBootDiskArrayInput` via:
+//
+//	GetClusterNodeConfigBootDiskArray{ GetClusterNodeConfigBootDiskArgs{...} }
+type GetClusterNodeConfigBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigBootDiskArrayOutput() GetClusterNodeConfigBootDiskArrayOutput
+	ToGetClusterNodeConfigBootDiskArrayOutputWithContext(context.Context) GetClusterNodeConfigBootDiskArrayOutput
+}
+
+type GetClusterNodeConfigBootDiskArray []GetClusterNodeConfigBootDiskInput
+
+func (GetClusterNodeConfigBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigBootDiskArray) ToGetClusterNodeConfigBootDiskArrayOutput() GetClusterNodeConfigBootDiskArrayOutput {
+	return i.ToGetClusterNodeConfigBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigBootDiskArray) ToGetClusterNodeConfigBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigBootDiskArrayOutput)
+}
+
+type GetClusterNodeConfigBootDiskOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigBootDiskOutput) ToGetClusterNodeConfigBootDiskOutput() GetClusterNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigBootDiskOutput) ToGetClusterNodeConfigBootDiskOutputWithContext(ctx context.Context) GetClusterNodeConfigBootDiskOutput {
+	return o
+}
+
+// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+func (o GetClusterNodeConfigBootDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigBootDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+func (o GetClusterNodeConfigBootDiskOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigBootDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+func (o GetClusterNodeConfigBootDiskOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigBootDisk) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
+}
+
+// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+func (o GetClusterNodeConfigBootDiskOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigBootDisk) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigBootDiskArrayOutput) ToGetClusterNodeConfigBootDiskArrayOutput() GetClusterNodeConfigBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigBootDiskArrayOutput) ToGetClusterNodeConfigBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigBootDiskArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigBootDisk {
+		return vs[0].([]GetClusterNodeConfigBootDisk)[vs[1].(int)]
+	}).(GetClusterNodeConfigBootDiskOutput)
 }
 
 type GetClusterNodeConfigConfidentialNode struct {
@@ -57367,6 +58220,8 @@ type GetClusterNodeConfigKubeletConfig struct {
 	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit int `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer.
+	SingleProcessOomKill bool `pulumi:"singleProcessOomKill"`
 }
 
 // GetClusterNodeConfigKubeletConfigInput is an input type that accepts GetClusterNodeConfigKubeletConfigArgs and GetClusterNodeConfigKubeletConfigOutput values.
@@ -57405,6 +58260,8 @@ type GetClusterNodeConfigKubeletConfigArgs struct {
 	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit pulumi.IntInput `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer.
+	SingleProcessOomKill pulumi.BoolInput `pulumi:"singleProcessOomKill"`
 }
 
 func (GetClusterNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
@@ -57516,6 +58373,11 @@ func (o GetClusterNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnab
 // Controls the maximum number of processes allowed to run in a pod.
 func (o GetClusterNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.PodPidsLimit }).(pulumi.IntOutput)
+}
+
+// Defines whether to enable single process OOM killer.
+func (o GetClusterNodeConfigKubeletConfigOutput) SingleProcessOomKill() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) bool { return v.SingleProcessOomKill }).(pulumi.BoolOutput)
 }
 
 type GetClusterNodeConfigKubeletConfigArrayOutput struct{ *pulumi.OutputState }
@@ -61032,6 +61894,8 @@ type GetClusterNodePoolNodeConfig struct {
 	AdvancedMachineFeatures []GetClusterNodePoolNodeConfigAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
+	// Boot disk configuration for node pools nodes.
+	BootDisks []GetClusterNodePoolNodeConfigBootDisk `pulumi:"bootDisks"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes []GetClusterNodePoolNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
@@ -61136,6 +62000,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
+	// Boot disk configuration for node pools nodes.
+	BootDisks GetClusterNodePoolNodeConfigBootDiskArrayInput `pulumi:"bootDisks"`
 	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes GetClusterNodePoolNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
@@ -61285,6 +62151,11 @@ func (o GetClusterNodePoolNodeConfigOutput) AdvancedMachineFeatures() GetCluster
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 func (o GetClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
+// Boot disk configuration for node pools nodes.
+func (o GetClusterNodePoolNodeConfigOutput) BootDisks() GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigBootDisk { return v.BootDisks }).(GetClusterNodePoolNodeConfigBootDiskArrayOutput)
 }
 
 // Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
@@ -61669,6 +62540,130 @@ func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigAdvancedMachineFeature {
 		return vs[0].([]GetClusterNodePoolNodeConfigAdvancedMachineFeature)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput)
+}
+
+type GetClusterNodePoolNodeConfigBootDisk struct {
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType string `pulumi:"diskType"`
+	// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	SizeGb int `pulumi:"sizeGb"`
+}
+
+// GetClusterNodePoolNodeConfigBootDiskInput is an input type that accepts GetClusterNodePoolNodeConfigBootDiskArgs and GetClusterNodePoolNodeConfigBootDiskOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigBootDiskInput` via:
+//
+//	GetClusterNodePoolNodeConfigBootDiskArgs{...}
+type GetClusterNodePoolNodeConfigBootDiskInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigBootDiskOutput() GetClusterNodePoolNodeConfigBootDiskOutput
+	ToGetClusterNodePoolNodeConfigBootDiskOutputWithContext(context.Context) GetClusterNodePoolNodeConfigBootDiskOutput
+}
+
+type GetClusterNodePoolNodeConfigBootDiskArgs struct {
+	// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
+}
+
+func (GetClusterNodePoolNodeConfigBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigBootDiskArgs) ToGetClusterNodePoolNodeConfigBootDiskOutput() GetClusterNodePoolNodeConfigBootDiskOutput {
+	return i.ToGetClusterNodePoolNodeConfigBootDiskOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigBootDiskArgs) ToGetClusterNodePoolNodeConfigBootDiskOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigBootDiskOutput)
+}
+
+// GetClusterNodePoolNodeConfigBootDiskArrayInput is an input type that accepts GetClusterNodePoolNodeConfigBootDiskArray and GetClusterNodePoolNodeConfigBootDiskArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigBootDiskArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigBootDiskArray{ GetClusterNodePoolNodeConfigBootDiskArgs{...} }
+type GetClusterNodePoolNodeConfigBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigBootDiskArrayOutput() GetClusterNodePoolNodeConfigBootDiskArrayOutput
+	ToGetClusterNodePoolNodeConfigBootDiskArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigBootDiskArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigBootDiskArray []GetClusterNodePoolNodeConfigBootDiskInput
+
+func (GetClusterNodePoolNodeConfigBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigBootDiskArray) ToGetClusterNodePoolNodeConfigBootDiskArrayOutput() GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigBootDiskArray) ToGetClusterNodePoolNodeConfigBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigBootDiskArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigBootDiskOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) ToGetClusterNodePoolNodeConfigBootDiskOutput() GetClusterNodePoolNodeConfigBootDiskOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) ToGetClusterNodePoolNodeConfigBootDiskOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigBootDiskOutput {
+	return o
+}
+
+// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigBootDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigBootDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigBootDisk) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
+}
+
+// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+func (o GetClusterNodePoolNodeConfigBootDiskOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigBootDisk) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigBootDisk)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskArrayOutput) ToGetClusterNodePoolNodeConfigBootDiskArrayOutput() GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskArrayOutput) ToGetClusterNodePoolNodeConfigBootDiskArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigBootDiskArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigBootDiskArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigBootDisk {
+		return vs[0].([]GetClusterNodePoolNodeConfigBootDisk)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigBootDiskOutput)
 }
 
 type GetClusterNodePoolNodeConfigConfidentialNode struct {
@@ -63270,6 +64265,8 @@ type GetClusterNodePoolNodeConfigKubeletConfig struct {
 	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit int `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer.
+	SingleProcessOomKill bool `pulumi:"singleProcessOomKill"`
 }
 
 // GetClusterNodePoolNodeConfigKubeletConfigInput is an input type that accepts GetClusterNodePoolNodeConfigKubeletConfigArgs and GetClusterNodePoolNodeConfigKubeletConfigOutput values.
@@ -63308,6 +64305,8 @@ type GetClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit pulumi.IntInput `pulumi:"podPidsLimit"`
+	// Defines whether to enable single process OOM killer.
+	SingleProcessOomKill pulumi.BoolInput `pulumi:"singleProcessOomKill"`
 }
 
 func (GetClusterNodePoolNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
@@ -63419,6 +64418,11 @@ func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) InsecureKubeletReadonly
 // Controls the maximum number of processes allowed to run in a pod.
 func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) int { return v.PodPidsLimit }).(pulumi.IntOutput)
+}
+
+// Defines whether to enable single process OOM killer.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) SingleProcessOomKill() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) bool { return v.SingleProcessOomKill }).(pulumi.BoolOutput)
 }
 
 type GetClusterNodePoolNodeConfigKubeletConfigArrayOutput struct{ *pulumi.OutputState }
@@ -67944,6 +68948,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigPtrInput)(nil)).Elem(), ClusterNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), ClusterNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigBootDiskInput)(nil)).Elem(), ClusterNodeConfigBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigBootDiskPtrInput)(nil)).Elem(), ClusterNodeConfigBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigConfidentialNodesInput)(nil)).Elem(), ClusterNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), ClusterNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigContainerdConfigInput)(nil)).Elem(), ClusterNodeConfigContainerdConfigArgs{})
@@ -68040,6 +69046,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigBootDiskInput)(nil)).Elem(), ClusterNodePoolNodeConfigBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigBootDiskPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodesInput)(nil)).Elem(), ClusterNodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigContainerdConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigContainerdConfigArgs{})
@@ -68167,6 +69175,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigBootDiskInput)(nil)).Elem(), NodePoolNodeConfigBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigBootDiskPtrInput)(nil)).Elem(), NodePoolNodeConfigBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigConfidentialNodesInput)(nil)).Elem(), NodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), NodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigContainerdConfigInput)(nil)).Elem(), NodePoolNodeConfigContainerdConfigArgs{})
@@ -68370,6 +69380,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodeConfigAdvancedMachineFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodeConfigAdvancedMachineFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigBootDiskInput)(nil)).Elem(), GetClusterNodeConfigBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigBootDiskArrayInput)(nil)).Elem(), GetClusterNodeConfigBootDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodeConfigConfidentialNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodeConfigConfidentialNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigArgs{})
@@ -68468,6 +69480,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigBootDiskInput)(nil)).Elem(), GetClusterNodePoolNodeConfigBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigBootDiskArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigBootDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigContainerdConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigContainerdConfigArgs{})
@@ -68854,6 +69868,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigAdvancedMachineFeaturesOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigBootDiskOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigContainerdConfigOutput{})
@@ -68950,6 +69966,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigBootDiskOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigContainerdConfigOutput{})
@@ -69077,6 +70095,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigBootDiskOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigBootDiskPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigContainerdConfigOutput{})
@@ -69280,6 +70300,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigAdvancedMachineFeatureOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigAdvancedMachineFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigBootDiskOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigConfidentialNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigConfidentialNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigOutput{})
@@ -69378,6 +70400,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigBootDiskOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigContainerdConfigOutput{})

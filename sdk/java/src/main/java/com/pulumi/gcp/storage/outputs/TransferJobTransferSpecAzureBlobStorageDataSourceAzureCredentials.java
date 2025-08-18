@@ -13,16 +13,12 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredent
     /**
      * @return Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
      * 
-     * &lt;a name=&#34;nested_schedule_start_end_date&#34;&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
-     * 
      */
     private String sasToken;
 
     private TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials() {}
     /**
      * @return Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
-     * 
-     * &lt;a name=&#34;nested_schedule_start_end_date&#34;&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
      * 
      */
     public String sasToken() {

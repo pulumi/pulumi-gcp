@@ -106,6 +106,7 @@ __all__ = [
     'TransferJobTransferSpecAwsS3DataSourceAwsAccessKey',
     'TransferJobTransferSpecAzureBlobStorageDataSource',
     'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials',
+    'TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig',
     'TransferJobTransferSpecGcsDataSink',
     'TransferJobTransferSpecGcsDataSource',
     'TransferJobTransferSpecHdfsDataSource',
@@ -4570,6 +4571,8 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
             suggest = "bucket_name"
         elif key == "awsAccessKey":
             suggest = "aws_access_key"
+        elif key == "cloudfrontDomain":
+            suggest = "cloudfront_domain"
         elif key == "managedPrivateNetwork":
             suggest = "managed_private_network"
         elif key == "roleArn":
@@ -4589,12 +4592,14 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
     def __init__(__self__, *,
                  bucket_name: _builtins.str,
                  aws_access_key: Optional['outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey'] = None,
+                 cloudfront_domain: Optional[_builtins.str] = None,
                  managed_private_network: Optional[_builtins.bool] = None,
                  path: Optional[_builtins.str] = None,
                  role_arn: Optional[_builtins.str] = None):
         """
         :param _builtins.str bucket_name: S3 Bucket name.
         :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs' aws_access_key: AWS credentials block.
+        :param _builtins.str cloudfront_domain: The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
         :param _builtins.bool managed_private_network: Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
         :param _builtins.str path: S3 Bucket path in bucket to transfer.
         :param _builtins.str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
@@ -4602,6 +4607,8 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         pulumi.set(__self__, "bucket_name", bucket_name)
         if aws_access_key is not None:
             pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if cloudfront_domain is not None:
+            pulumi.set(__self__, "cloudfront_domain", cloudfront_domain)
         if managed_private_network is not None:
             pulumi.set(__self__, "managed_private_network", managed_private_network)
         if path is not None:
@@ -4624,6 +4631,14 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         AWS credentials block.
         """
         return pulumi.get(self, "aws_access_key")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudfrontDomain")
+    def cloudfront_domain(self) -> Optional[_builtins.str]:
+        """
+        The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+        """
+        return pulumi.get(self, "cloudfront_domain")
 
     @_builtins.property
     @pulumi.getter(name="managedPrivateNetwork")
@@ -4709,6 +4724,8 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
             suggest = "azure_credentials"
         elif key == "credentialsSecret":
             suggest = "credentials_secret"
+        elif key == "federatedIdentityConfig":
+            suggest = "federated_identity_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAzureBlobStorageDataSource. Access the value via the '{suggest}' property getter instead.")
@@ -4726,12 +4743,14 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
                  storage_account: _builtins.str,
                  azure_credentials: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials'] = None,
                  credentials_secret: Optional[_builtins.str] = None,
+                 federated_identity_config: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig'] = None,
                  path: Optional[_builtins.str] = None):
         """
         :param _builtins.str container: The container to transfer from the Azure Storage account.`
         :param _builtins.str storage_account: The name of the Azure Storage account.
-        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs' azure_credentials: Credentials used to authenticate API requests to Azure block.
-        :param _builtins.str credentials_secret: Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs' azure_credentials: ) Credentials used to authenticate API requests to Azure block.
+        :param _builtins.str credentials_secret: ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs' federated_identity_config: Federated identity config of a user registered Azure application. Structure documented below.
         :param _builtins.str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         pulumi.set(__self__, "container", container)
@@ -4740,6 +4759,8 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
             pulumi.set(__self__, "azure_credentials", azure_credentials)
         if credentials_secret is not None:
             pulumi.set(__self__, "credentials_secret", credentials_secret)
+        if federated_identity_config is not None:
+            pulumi.set(__self__, "federated_identity_config", federated_identity_config)
         if path is not None:
             pulumi.set(__self__, "path", path)
 
@@ -4763,7 +4784,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
     @pulumi.getter(name="azureCredentials")
     def azure_credentials(self) -> Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials']:
         """
-        Credentials used to authenticate API requests to Azure block.
+        ) Credentials used to authenticate API requests to Azure block.
         """
         return pulumi.get(self, "azure_credentials")
 
@@ -4771,9 +4792,17 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
     @pulumi.getter(name="credentialsSecret")
     def credentials_secret(self) -> Optional[_builtins.str]:
         """
-        Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
         """
         return pulumi.get(self, "credentials_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="federatedIdentityConfig")
+    def federated_identity_config(self) -> Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig']:
+        """
+        Federated identity config of a user registered Azure application. Structure documented below.
+        """
+        return pulumi.get(self, "federated_identity_config")
 
     @_builtins.property
     @pulumi.getter
@@ -4807,8 +4836,6 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
                  sas_token: _builtins.str):
         """
         :param _builtins.str sas_token: Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
-               
-               <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
         """
         pulumi.set(__self__, "sas_token", sas_token)
 
@@ -4817,10 +4844,60 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
     def sas_token(self) -> _builtins.str:
         """
         Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+        """
+        return pulumi.get(self, "sas_token")
+
+
+@pulumi.output_type
+class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: _builtins.str,
+                 tenant_id: _builtins.str):
+        """
+        :param _builtins.str client_id: The client (application) ID of the application with federated credentials.
+        :param _builtins.str tenant_id: The client (directory) ID of the application with federated credentials.
+               
+               <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The client (application) ID of the application with federated credentials.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> _builtins.str:
+        """
+        The client (directory) ID of the application with federated credentials.
 
         <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
         """
-        return pulumi.get(self, "sas_token")
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type

@@ -73,6 +73,11 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
      * 
      */
     private Integer podPidsLimit;
+    /**
+     * @return Defines whether to enable single process OOM killer.
+     * 
+     */
+    private Boolean singleProcessOomKill;
 
     private GetClusterNodePoolNodeConfigKubeletConfig() {}
     /**
@@ -159,6 +164,13 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     public Integer podPidsLimit() {
         return this.podPidsLimit;
     }
+    /**
+     * @return Defines whether to enable single process OOM killer.
+     * 
+     */
+    public Boolean singleProcessOomKill() {
+        return this.singleProcessOomKill;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -181,6 +193,7 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         private String imageMinimumGcAge;
         private String insecureKubeletReadonlyPortEnabled;
         private Integer podPidsLimit;
+        private Boolean singleProcessOomKill;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -196,6 +209,7 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     	      this.imageMinimumGcAge = defaults.imageMinimumGcAge;
     	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.podPidsLimit = defaults.podPidsLimit;
+    	      this.singleProcessOomKill = defaults.singleProcessOomKill;
         }
 
         @CustomType.Setter
@@ -297,6 +311,14 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             this.podPidsLimit = podPidsLimit;
             return this;
         }
+        @CustomType.Setter
+        public Builder singleProcessOomKill(Boolean singleProcessOomKill) {
+            if (singleProcessOomKill == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "singleProcessOomKill");
+            }
+            this.singleProcessOomKill = singleProcessOomKill;
+            return this;
+        }
         public GetClusterNodePoolNodeConfigKubeletConfig build() {
             final var _resultValue = new GetClusterNodePoolNodeConfigKubeletConfig();
             _resultValue.allowedUnsafeSysctls = allowedUnsafeSysctls;
@@ -311,6 +333,7 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             _resultValue.imageMinimumGcAge = imageMinimumGcAge;
             _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.podPidsLimit = podPidsLimit;
+            _resultValue.singleProcessOomKill = singleProcessOomKill;
             return _resultValue;
         }
     }

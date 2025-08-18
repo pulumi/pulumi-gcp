@@ -205,6 +205,14 @@ __all__ = [
     'AiMetadataStoreEncryptionSpecArgsDict',
     'AiMetadataStoreStateArgs',
     'AiMetadataStoreStateArgsDict',
+    'AiRagEngineConfigRagManagedDbConfigArgs',
+    'AiRagEngineConfigRagManagedDbConfigArgsDict',
+    'AiRagEngineConfigRagManagedDbConfigBasicArgs',
+    'AiRagEngineConfigRagManagedDbConfigBasicArgsDict',
+    'AiRagEngineConfigRagManagedDbConfigScaledArgs',
+    'AiRagEngineConfigRagManagedDbConfigScaledArgsDict',
+    'AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs',
+    'AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict',
     'AiTensorboardEncryptionSpecArgs',
     'AiTensorboardEncryptionSpecArgsDict',
 ]
@@ -7819,6 +7827,120 @@ class AiMetadataStoreStateArgs:
     @disk_utilization_bytes.setter
     def disk_utilization_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "disk_utilization_bytes", value)
+
+
+if not MYPY:
+    class AiRagEngineConfigRagManagedDbConfigArgsDict(TypedDict):
+        basic: NotRequired[pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgsDict']]
+        """
+        Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+        NOTE: This is the default tier if not explicitly chosen.
+        """
+        scaled: NotRequired[pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgsDict']]
+        """
+        Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+        """
+        unprovisioned: NotRequired[pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict']]
+        """
+        Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+        NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+        """
+elif False:
+    AiRagEngineConfigRagManagedDbConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiRagEngineConfigRagManagedDbConfigArgs:
+    def __init__(__self__, *,
+                 basic: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgs']] = None,
+                 scaled: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgs']] = None,
+                 unprovisioned: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']] = None):
+        """
+        :param pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgs'] basic: Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+               NOTE: This is the default tier if not explicitly chosen.
+        :param pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgs'] scaled: Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+        :param pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs'] unprovisioned: Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+               NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+        """
+        if basic is not None:
+            pulumi.set(__self__, "basic", basic)
+        if scaled is not None:
+            pulumi.set(__self__, "scaled", scaled)
+        if unprovisioned is not None:
+            pulumi.set(__self__, "unprovisioned", unprovisioned)
+
+    @_builtins.property
+    @pulumi.getter
+    def basic(self) -> Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgs']]:
+        """
+        Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
+        NOTE: This is the default tier if not explicitly chosen.
+        """
+        return pulumi.get(self, "basic")
+
+    @basic.setter
+    def basic(self, value: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgs']]):
+        pulumi.set(self, "basic", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scaled(self) -> Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgs']]:
+        """
+        Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
+        """
+        return pulumi.get(self, "scaled")
+
+    @scaled.setter
+    def scaled(self, value: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgs']]):
+        pulumi.set(self, "scaled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unprovisioned(self) -> Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']]:
+        """
+        Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
+        NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
+        """
+        return pulumi.get(self, "unprovisioned")
+
+    @unprovisioned.setter
+    def unprovisioned(self, value: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']]):
+        pulumi.set(self, "unprovisioned", value)
+
+
+if not MYPY:
+    class AiRagEngineConfigRagManagedDbConfigBasicArgsDict(TypedDict):
+        pass
+elif False:
+    AiRagEngineConfigRagManagedDbConfigBasicArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiRagEngineConfigRagManagedDbConfigBasicArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AiRagEngineConfigRagManagedDbConfigScaledArgsDict(TypedDict):
+        pass
+elif False:
+    AiRagEngineConfigRagManagedDbConfigScaledArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiRagEngineConfigRagManagedDbConfigScaledArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict(TypedDict):
+        pass
+elif False:
+    AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:

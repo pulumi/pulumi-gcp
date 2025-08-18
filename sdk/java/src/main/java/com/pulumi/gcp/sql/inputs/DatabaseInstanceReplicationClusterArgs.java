@@ -46,11 +46,27 @@ public final class DatabaseInstanceReplicationClusterArgs extends com.pulumi.res
         return Optional.ofNullable(this.failoverDrReplicaName);
     }
 
+    /**
+     * Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn&#39;t have a DR replica yet or the DR replica is deleted.
+     * 
+     */
+    @Import(name="psaWriteEndpoint")
+    private @Nullable Output<String> psaWriteEndpoint;
+
+    /**
+     * @return Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn&#39;t have a DR replica yet or the DR replica is deleted.
+     * 
+     */
+    public Optional<Output<String>> psaWriteEndpoint() {
+        return Optional.ofNullable(this.psaWriteEndpoint);
+    }
+
     private DatabaseInstanceReplicationClusterArgs() {}
 
     private DatabaseInstanceReplicationClusterArgs(DatabaseInstanceReplicationClusterArgs $) {
         this.drReplica = $.drReplica;
         this.failoverDrReplicaName = $.failoverDrReplicaName;
+        this.psaWriteEndpoint = $.psaWriteEndpoint;
     }
 
     public static Builder builder() {
@@ -111,6 +127,27 @@ public final class DatabaseInstanceReplicationClusterArgs extends com.pulumi.res
          */
         public Builder failoverDrReplicaName(String failoverDrReplicaName) {
             return failoverDrReplicaName(Output.of(failoverDrReplicaName));
+        }
+
+        /**
+         * @param psaWriteEndpoint Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn&#39;t have a DR replica yet or the DR replica is deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder psaWriteEndpoint(@Nullable Output<String> psaWriteEndpoint) {
+            $.psaWriteEndpoint = psaWriteEndpoint;
+            return this;
+        }
+
+        /**
+         * @param psaWriteEndpoint Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn&#39;t have a DR replica yet or the DR replica is deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder psaWriteEndpoint(String psaWriteEndpoint) {
+            return psaWriteEndpoint(Output.of(psaWriteEndpoint));
         }
 
         public DatabaseInstanceReplicationClusterArgs build() {

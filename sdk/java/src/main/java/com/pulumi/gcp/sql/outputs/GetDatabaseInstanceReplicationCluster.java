@@ -21,6 +21,11 @@ public final class GetDatabaseInstanceReplicationCluster {
      * 
      */
     private String failoverDrReplicaName;
+    /**
+     * @return If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn&#39;t have a DR replica yet or the DR replica is deleted.
+     * 
+     */
+    private String psaWriteEndpoint;
 
     private GetDatabaseInstanceReplicationCluster() {}
     /**
@@ -37,6 +42,13 @@ public final class GetDatabaseInstanceReplicationCluster {
     public String failoverDrReplicaName() {
         return this.failoverDrReplicaName;
     }
+    /**
+     * @return If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn&#39;t have a DR replica yet or the DR replica is deleted.
+     * 
+     */
+    public String psaWriteEndpoint() {
+        return this.psaWriteEndpoint;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +61,13 @@ public final class GetDatabaseInstanceReplicationCluster {
     public static final class Builder {
         private Boolean drReplica;
         private String failoverDrReplicaName;
+        private String psaWriteEndpoint;
         public Builder() {}
         public Builder(GetDatabaseInstanceReplicationCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.drReplica = defaults.drReplica;
     	      this.failoverDrReplicaName = defaults.failoverDrReplicaName;
+    	      this.psaWriteEndpoint = defaults.psaWriteEndpoint;
         }
 
         @CustomType.Setter
@@ -72,10 +86,19 @@ public final class GetDatabaseInstanceReplicationCluster {
             this.failoverDrReplicaName = failoverDrReplicaName;
             return this;
         }
+        @CustomType.Setter
+        public Builder psaWriteEndpoint(String psaWriteEndpoint) {
+            if (psaWriteEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceReplicationCluster", "psaWriteEndpoint");
+            }
+            this.psaWriteEndpoint = psaWriteEndpoint;
+            return this;
+        }
         public GetDatabaseInstanceReplicationCluster build() {
             final var _resultValue = new GetDatabaseInstanceReplicationCluster();
             _resultValue.drReplica = drReplica;
             _resultValue.failoverDrReplicaName = failoverDrReplicaName;
+            _resultValue.psaWriteEndpoint = psaWriteEndpoint;
             return _resultValue;
         }
     }

@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         public readonly string Id;
         public readonly string Location;
+        public readonly int LogRetentionDays;
         public readonly string Name;
         public readonly string? Project;
         public readonly string ResourceType;
@@ -95,6 +96,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string location,
 
+            int logRetentionDays,
+
             string name,
 
             string? project,
@@ -113,6 +116,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             Description = description;
             Id = id;
             Location = location;
+            LogRetentionDays = logRetentionDays;
             Name = name;
             Project = project;
             ResourceType = resourceType;

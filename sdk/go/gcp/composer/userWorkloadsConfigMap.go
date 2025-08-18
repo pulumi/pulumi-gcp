@@ -28,13 +28,39 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/composer"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			test, err := serviceaccount.NewAccount(ctx, "test", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("test-sa"),
+//				DisplayName: pulumi.String("Test Service Account for Composer Environment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			composer_worker, err := projects.NewIAMMember(ctx, "composer-worker", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/composer.worker"),
+//				Member: test.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			environment, err := composer.NewEnvironment(ctx, "environment", &composer.EnvironmentArgs{
 //				Name:   pulumi.String("test-environment"),
 //				Region: pulumi.String("us-central1"),
@@ -42,8 +68,13 @@ import (
 //					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
 //						ImageVersion: pulumi.String("composer-3-airflow-2"),
 //					},
+//					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
+//						ServiceAccount: test.Name,
+//					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				composer_worker,
+//			}))
 //			if err != nil {
 //				return err
 //			}

@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string EncryptionKeyName;
         public readonly string FirstIpAddress;
         /// <summary>
-        /// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+        /// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
         /// </summary>
         public readonly string InstanceType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceIpAddressResult> IpAddresses;
@@ -54,6 +54,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string MasterInstanceName;
         public readonly string Name;
+        /// <summary>
+        /// For a read pool instance, the number of nodes in the read pool.
+        /// </summary>
+        public readonly int NodeCount;
         public readonly string PrivateIpAddress;
         /// <summary>
         /// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -129,6 +133,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string name,
 
+            int nodeCount,
+
             string privateIpAddress,
 
             string project,
@@ -171,6 +177,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             MaintenanceVersion = maintenanceVersion;
             MasterInstanceName = masterInstanceName;
             Name = name;
+            NodeCount = nodeCount;
             PrivateIpAddress = privateIpAddress;
             Project = project;
             PscServiceAttachmentLink = pscServiceAttachmentLink;

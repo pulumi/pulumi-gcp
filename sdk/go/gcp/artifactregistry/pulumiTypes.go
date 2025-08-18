@@ -4453,6 +4453,148 @@ func (o GetDockerImagesDockerImageArrayOutput) Index(i pulumi.IntInput) GetDocke
 	}).(GetDockerImagesDockerImageOutput)
 }
 
+type GetRepositoriesRepository struct {
+	// The time when the repository was created.
+	CreateTime string `pulumi:"createTime"`
+	// The user-provided description of the repository.
+	Description string `pulumi:"description"`
+	// The format of packages that are stored in the repository. Supported formats can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+	Format string `pulumi:"format"`
+	// An identifier for the resource with format `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
+	Id string `pulumi:"id"`
+	// The last part of the repository name, for example: `"repo1"`
+	RepositoryId string `pulumi:"repositoryId"`
+	// The time when the repository was last updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetRepositoriesRepositoryInput is an input type that accepts GetRepositoriesRepositoryArgs and GetRepositoriesRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoriesRepositoryInput` via:
+//
+//	GetRepositoriesRepositoryArgs{...}
+type GetRepositoriesRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoriesRepositoryOutput() GetRepositoriesRepositoryOutput
+	ToGetRepositoriesRepositoryOutputWithContext(context.Context) GetRepositoriesRepositoryOutput
+}
+
+type GetRepositoriesRepositoryArgs struct {
+	// The time when the repository was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The user-provided description of the repository.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The format of packages that are stored in the repository. Supported formats can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+	Format pulumi.StringInput `pulumi:"format"`
+	// An identifier for the resource with format `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The last part of the repository name, for example: `"repo1"`
+	RepositoryId pulumi.StringInput `pulumi:"repositoryId"`
+	// The time when the repository was last updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetRepositoriesRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoriesRepository)(nil)).Elem()
+}
+
+func (i GetRepositoriesRepositoryArgs) ToGetRepositoriesRepositoryOutput() GetRepositoriesRepositoryOutput {
+	return i.ToGetRepositoriesRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoriesRepositoryArgs) ToGetRepositoriesRepositoryOutputWithContext(ctx context.Context) GetRepositoriesRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoriesRepositoryOutput)
+}
+
+// GetRepositoriesRepositoryArrayInput is an input type that accepts GetRepositoriesRepositoryArray and GetRepositoriesRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoriesRepositoryArrayInput` via:
+//
+//	GetRepositoriesRepositoryArray{ GetRepositoriesRepositoryArgs{...} }
+type GetRepositoriesRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoriesRepositoryArrayOutput() GetRepositoriesRepositoryArrayOutput
+	ToGetRepositoriesRepositoryArrayOutputWithContext(context.Context) GetRepositoriesRepositoryArrayOutput
+}
+
+type GetRepositoriesRepositoryArray []GetRepositoriesRepositoryInput
+
+func (GetRepositoriesRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoriesRepository)(nil)).Elem()
+}
+
+func (i GetRepositoriesRepositoryArray) ToGetRepositoriesRepositoryArrayOutput() GetRepositoriesRepositoryArrayOutput {
+	return i.ToGetRepositoriesRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoriesRepositoryArray) ToGetRepositoriesRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoriesRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoriesRepositoryArrayOutput)
+}
+
+type GetRepositoriesRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoriesRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoriesRepository)(nil)).Elem()
+}
+
+func (o GetRepositoriesRepositoryOutput) ToGetRepositoriesRepositoryOutput() GetRepositoriesRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoriesRepositoryOutput) ToGetRepositoriesRepositoryOutputWithContext(ctx context.Context) GetRepositoriesRepositoryOutput {
+	return o
+}
+
+// The time when the repository was created.
+func (o GetRepositoriesRepositoryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoriesRepository) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user-provided description of the repository.
+func (o GetRepositoriesRepositoryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoriesRepository) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The format of packages that are stored in the repository. Supported formats can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+func (o GetRepositoriesRepositoryOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoriesRepository) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// An identifier for the resource with format `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
+func (o GetRepositoriesRepositoryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoriesRepository) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last part of the repository name, for example: `"repo1"`
+func (o GetRepositoriesRepositoryOutput) RepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoriesRepository) string { return v.RepositoryId }).(pulumi.StringOutput)
+}
+
+// The time when the repository was last updated.
+func (o GetRepositoriesRepositoryOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoriesRepository) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetRepositoriesRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoriesRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoriesRepository)(nil)).Elem()
+}
+
+func (o GetRepositoriesRepositoryArrayOutput) ToGetRepositoriesRepositoryArrayOutput() GetRepositoriesRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoriesRepositoryArrayOutput) ToGetRepositoriesRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoriesRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoriesRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoriesRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoriesRepository {
+		return vs[0].([]GetRepositoriesRepository)[vs[1].(int)]
+	}).(GetRepositoriesRepositoryOutput)
+}
+
 type GetRepositoryCleanupPolicy struct {
 	// Policy action. Possible values: ["DELETE", "KEEP"]
 	Action string `pulumi:"action"`
@@ -7124,6 +7266,109 @@ func (o GetRepositoryVulnerabilityScanningConfigArrayOutput) Index(i pulumi.IntI
 	}).(GetRepositoryVulnerabilityScanningConfigOutput)
 }
 
+type GetVersionRelatedTag struct {
+	// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+	Name    string `pulumi:"name"`
+	Version string `pulumi:"version"`
+}
+
+// GetVersionRelatedTagInput is an input type that accepts GetVersionRelatedTagArgs and GetVersionRelatedTagOutput values.
+// You can construct a concrete instance of `GetVersionRelatedTagInput` via:
+//
+//	GetVersionRelatedTagArgs{...}
+type GetVersionRelatedTagInput interface {
+	pulumi.Input
+
+	ToGetVersionRelatedTagOutput() GetVersionRelatedTagOutput
+	ToGetVersionRelatedTagOutputWithContext(context.Context) GetVersionRelatedTagOutput
+}
+
+type GetVersionRelatedTagArgs struct {
+	// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+	Name    pulumi.StringInput `pulumi:"name"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetVersionRelatedTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionRelatedTag)(nil)).Elem()
+}
+
+func (i GetVersionRelatedTagArgs) ToGetVersionRelatedTagOutput() GetVersionRelatedTagOutput {
+	return i.ToGetVersionRelatedTagOutputWithContext(context.Background())
+}
+
+func (i GetVersionRelatedTagArgs) ToGetVersionRelatedTagOutputWithContext(ctx context.Context) GetVersionRelatedTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionRelatedTagOutput)
+}
+
+// GetVersionRelatedTagArrayInput is an input type that accepts GetVersionRelatedTagArray and GetVersionRelatedTagArrayOutput values.
+// You can construct a concrete instance of `GetVersionRelatedTagArrayInput` via:
+//
+//	GetVersionRelatedTagArray{ GetVersionRelatedTagArgs{...} }
+type GetVersionRelatedTagArrayInput interface {
+	pulumi.Input
+
+	ToGetVersionRelatedTagArrayOutput() GetVersionRelatedTagArrayOutput
+	ToGetVersionRelatedTagArrayOutputWithContext(context.Context) GetVersionRelatedTagArrayOutput
+}
+
+type GetVersionRelatedTagArray []GetVersionRelatedTagInput
+
+func (GetVersionRelatedTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionRelatedTag)(nil)).Elem()
+}
+
+func (i GetVersionRelatedTagArray) ToGetVersionRelatedTagArrayOutput() GetVersionRelatedTagArrayOutput {
+	return i.ToGetVersionRelatedTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetVersionRelatedTagArray) ToGetVersionRelatedTagArrayOutputWithContext(ctx context.Context) GetVersionRelatedTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionRelatedTagArrayOutput)
+}
+
+type GetVersionRelatedTagOutput struct{ *pulumi.OutputState }
+
+func (GetVersionRelatedTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionRelatedTag)(nil)).Elem()
+}
+
+func (o GetVersionRelatedTagOutput) ToGetVersionRelatedTagOutput() GetVersionRelatedTagOutput {
+	return o
+}
+
+func (o GetVersionRelatedTagOutput) ToGetVersionRelatedTagOutputWithContext(ctx context.Context) GetVersionRelatedTagOutput {
+	return o
+}
+
+// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+func (o GetVersionRelatedTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionRelatedTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetVersionRelatedTagOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionRelatedTag) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetVersionRelatedTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVersionRelatedTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionRelatedTag)(nil)).Elem()
+}
+
+func (o GetVersionRelatedTagArrayOutput) ToGetVersionRelatedTagArrayOutput() GetVersionRelatedTagArrayOutput {
+	return o
+}
+
+func (o GetVersionRelatedTagArrayOutput) ToGetVersionRelatedTagArrayOutputWithContext(ctx context.Context) GetVersionRelatedTagArrayOutput {
+	return o
+}
+
+func (o GetVersionRelatedTagArrayOutput) Index(i pulumi.IntInput) GetVersionRelatedTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVersionRelatedTag {
+		return vs[0].([]GetVersionRelatedTag)[vs[1].(int)]
+	}).(GetVersionRelatedTagOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyInput)(nil)).Elem(), RepositoryCleanupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyArrayInput)(nil)).Elem(), RepositoryCleanupPolicyArray{})
@@ -7179,6 +7424,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVulnerabilityScanningConfigPtrInput)(nil)).Elem(), RepositoryVulnerabilityScanningConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerImagesDockerImageInput)(nil)).Elem(), GetDockerImagesDockerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerImagesDockerImageArrayInput)(nil)).Elem(), GetDockerImagesDockerImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoriesRepositoryInput)(nil)).Elem(), GetRepositoriesRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoriesRepositoryArrayInput)(nil)).Elem(), GetRepositoriesRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyInput)(nil)).Elem(), GetRepositoryCleanupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyArrayInput)(nil)).Elem(), GetRepositoryCleanupPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyConditionInput)(nil)).Elem(), GetRepositoryCleanupPolicyConditionArgs{})
@@ -7227,6 +7474,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVulnerabilityScanningConfigInput)(nil)).Elem(), GetRepositoryVulnerabilityScanningConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVulnerabilityScanningConfigArrayInput)(nil)).Elem(), GetRepositoryVulnerabilityScanningConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionRelatedTagInput)(nil)).Elem(), GetVersionRelatedTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionRelatedTagArrayInput)(nil)).Elem(), GetVersionRelatedTagArray{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyConditionOutput{})
@@ -7281,6 +7530,8 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryVulnerabilityScanningConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetDockerImagesDockerImageOutput{})
 	pulumi.RegisterOutputType(GetDockerImagesDockerImageArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoriesRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoriesRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyConditionOutput{})
@@ -7329,4 +7580,6 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryVulnerabilityScanningConfigOutput{})
 	pulumi.RegisterOutputType(GetRepositoryVulnerabilityScanningConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetVersionRelatedTagOutput{})
+	pulumi.RegisterOutputType(GetVersionRelatedTagArrayOutput{})
 }

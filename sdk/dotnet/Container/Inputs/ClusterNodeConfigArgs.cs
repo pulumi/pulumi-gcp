@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodeConfigAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
 
         /// <summary>
+        /// Configuration of the node pool boot disk. Structure is documented below
+        /// </summary>
+        [Input("bootDisk")]
+        public Input<Inputs.ClusterNodeConfigBootDiskArgs>? BootDisk { get; set; }
+
+        /// <summary>
         /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
         /// </summary>
         [Input("bootDiskKmsKey")]
@@ -39,14 +45,15 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// Size of the disk attached to each node, specified
-        /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+        /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+        /// Prefer configuring `boot_disk`.
         /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
         /// Type of the disk attached to each node
-        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }

@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string BootDiskKmsKey;
         /// <summary>
+        /// Boot disk configuration for node pools nodes.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigBootDiskResult> BootDisks;
+        /// <summary>
         /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult> ConfidentialNodes;
@@ -200,6 +204,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string bootDiskKmsKey,
 
+            ImmutableArray<Outputs.GetClusterNodePoolNodeConfigBootDiskResult> bootDisks,
+
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult> confidentialNodes,
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigContainerdConfigResult> containerdConfigs,
@@ -288,6 +294,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
+            BootDisks = bootDisks;
             ConfidentialNodes = confidentialNodes;
             ContainerdConfigs = containerdConfigs;
             DiskSizeGb = diskSizeGb;

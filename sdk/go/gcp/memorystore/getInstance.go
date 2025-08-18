@@ -61,6 +61,7 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
+	AllowFewerZonesDeployment       bool                                        `pulumi:"allowFewerZonesDeployment"`
 	AuthorizationMode               string                                      `pulumi:"authorizationMode"`
 	AutomatedBackupConfigs          []GetInstanceAutomatedBackupConfig          `pulumi:"automatedBackupConfigs"`
 	BackupCollection                string                                      `pulumi:"backupCollection"`
@@ -143,6 +144,10 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanc
 
 func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
 	return o
+}
+
+func (o LookupInstanceResultOutput) AllowFewerZonesDeployment() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.AllowFewerZonesDeployment }).(pulumi.BoolOutput)
 }
 
 func (o LookupInstanceResultOutput) AuthorizationMode() pulumi.StringOutput {

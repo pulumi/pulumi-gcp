@@ -240,8 +240,9 @@ import (
 //				Location:                   pulumi.String("us-west1"),
 //				Description:                pulumi.String("test admin cluster"),
 //				BootstrapClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
-//				OnPremVersion:              pulumi.String("1.31.0-gke.35"),
+//				OnPremVersion:              pulumi.String("1.33.0-gke.35"),
 //				ImageType:                  pulumi.String("ubuntu_containerd"),
+//				EnableAdvancedCluster:      pulumi.Bool(true),
 //				Vcenter: &gkeonprem.VmwareAdminClusterVcenterArgs{
 //					ResourcePool: pulumi.String("test resource pool"),
 //					Datastore:    pulumi.String("test data store"),
@@ -687,6 +688,8 @@ type vmwareAdminClusterArgs struct {
 	ControlPlaneNode *VmwareAdminClusterControlPlaneNode `pulumi:"controlPlaneNode"`
 	// A human readable description of this VMware admin cluster.
 	Description *string `pulumi:"description"`
+	// If set, the advanced cluster feature is enabled.
+	EnableAdvancedCluster *bool `pulumi:"enableAdvancedCluster"`
 	// The OS image type for the VMware admin cluster.
 	ImageType *string `pulumi:"imageType"`
 	// Specifies the load balancer configuration for VMware admin cluster.
@@ -749,6 +752,8 @@ type VmwareAdminClusterArgs struct {
 	ControlPlaneNode VmwareAdminClusterControlPlaneNodePtrInput
 	// A human readable description of this VMware admin cluster.
 	Description pulumi.StringPtrInput
+	// If set, the advanced cluster feature is enabled.
+	EnableAdvancedCluster pulumi.BoolPtrInput
 	// The OS image type for the VMware admin cluster.
 	ImageType pulumi.StringPtrInput
 	// Specifies the load balancer configuration for VMware admin cluster.

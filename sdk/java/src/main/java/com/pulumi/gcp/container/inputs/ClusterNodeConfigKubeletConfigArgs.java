@@ -222,6 +222,21 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.podPidsLimit);
     }
 
+    /**
+     * Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+     * 
+     */
+    @Import(name="singleProcessOomKill")
+    private @Nullable Output<Boolean> singleProcessOomKill;
+
+    /**
+     * @return Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+     * 
+     */
+    public Optional<Output<Boolean>> singleProcessOomKill() {
+        return Optional.ofNullable(this.singleProcessOomKill);
+    }
+
     private ClusterNodeConfigKubeletConfigArgs() {}
 
     private ClusterNodeConfigKubeletConfigArgs(ClusterNodeConfigKubeletConfigArgs $) {
@@ -237,6 +252,7 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         this.imageMinimumGcAge = $.imageMinimumGcAge;
         this.insecureKubeletReadonlyPortEnabled = $.insecureKubeletReadonlyPortEnabled;
         this.podPidsLimit = $.podPidsLimit;
+        this.singleProcessOomKill = $.singleProcessOomKill;
     }
 
     public static Builder builder() {
@@ -541,6 +557,27 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
          */
         public Builder podPidsLimit(Integer podPidsLimit) {
             return podPidsLimit(Output.of(podPidsLimit));
+        }
+
+        /**
+         * @param singleProcessOomKill Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleProcessOomKill(@Nullable Output<Boolean> singleProcessOomKill) {
+            $.singleProcessOomKill = singleProcessOomKill;
+            return this;
+        }
+
+        /**
+         * @param singleProcessOomKill Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleProcessOomKill(Boolean singleProcessOomKill) {
+            return singleProcessOomKill(Output.of(singleProcessOomKill));
         }
 
         public ClusterNodeConfigKubeletConfigArgs build() {

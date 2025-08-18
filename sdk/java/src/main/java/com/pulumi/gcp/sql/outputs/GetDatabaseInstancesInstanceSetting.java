@@ -41,6 +41,8 @@ public final class GetDatabaseInstancesInstanceSetting {
      * For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
      * For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
      * is set to true. Defaults to ZONAL.
+     * For read pool instances, this field is read-only. The availability type is changed by specifying
+     * the number of nodes (node_count).
      * 
      */
     private String availabilityType;
@@ -107,6 +109,13 @@ public final class GetDatabaseInstancesInstanceSetting {
      * 
      */
     private String edition;
+    /**
+     * @return The availability type of the Cloud SQL instance, high availability
+     * (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+     * API (for read pools, effective_availability_type may differ from availability_type).
+     * 
+     */
+    private String effectiveAvailabilityType;
     /**
      * @return Enables Dataplex Integration.
      * 
@@ -183,6 +192,8 @@ public final class GetDatabaseInstancesInstanceSetting {
      * For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
      * For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
      * is set to true. Defaults to ZONAL.
+     * For read pool instances, this field is read-only. The availability type is changed by specifying
+     * the number of nodes (node_count).
      * 
      */
     public String availabilityType() {
@@ -280,6 +291,15 @@ public final class GetDatabaseInstancesInstanceSetting {
      */
     public String edition() {
         return this.edition;
+    }
+    /**
+     * @return The availability type of the Cloud SQL instance, high availability
+     * (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+     * API (for read pools, effective_availability_type may differ from availability_type).
+     * 
+     */
+    public String effectiveAvailabilityType() {
+        return this.effectiveAvailabilityType;
     }
     /**
      * @return Enables Dataplex Integration.
@@ -392,6 +412,7 @@ public final class GetDatabaseInstancesInstanceSetting {
         private Integer diskSize;
         private String diskType;
         private String edition;
+        private String effectiveAvailabilityType;
         private Boolean enableDataplexIntegration;
         private Boolean enableGoogleMlIntegration;
         private List<GetDatabaseInstancesInstanceSettingInsightsConfig> insightsConfigs;
@@ -428,6 +449,7 @@ public final class GetDatabaseInstancesInstanceSetting {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.edition = defaults.edition;
+    	      this.effectiveAvailabilityType = defaults.effectiveAvailabilityType;
     	      this.enableDataplexIntegration = defaults.enableDataplexIntegration;
     	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
     	      this.insightsConfigs = defaults.insightsConfigs;
@@ -618,6 +640,14 @@ public final class GetDatabaseInstancesInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveAvailabilityType(String effectiveAvailabilityType) {
+            if (effectiveAvailabilityType == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSetting", "effectiveAvailabilityType");
+            }
+            this.effectiveAvailabilityType = effectiveAvailabilityType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enableDataplexIntegration(Boolean enableDataplexIntegration) {
             if (enableDataplexIntegration == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSetting", "enableDataplexIntegration");
@@ -768,6 +798,7 @@ public final class GetDatabaseInstancesInstanceSetting {
             _resultValue.diskSize = diskSize;
             _resultValue.diskType = diskType;
             _resultValue.edition = edition;
+            _resultValue.effectiveAvailabilityType = effectiveAvailabilityType;
             _resultValue.enableDataplexIntegration = enableDataplexIntegration;
             _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
             _resultValue.insightsConfigs = insightsConfigs;

@@ -170,6 +170,11 @@ export type AiMetadataStore = import("./aiMetadataStore").AiMetadataStore;
 export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore = null as any;
 utilities.lazyLoad(exports, ["AiMetadataStore"], () => require("./aiMetadataStore"));
 
+export { AiRagEngineConfigArgs, AiRagEngineConfigState } from "./aiRagEngineConfig";
+export type AiRagEngineConfig = import("./aiRagEngineConfig").AiRagEngineConfig;
+export const AiRagEngineConfig: typeof import("./aiRagEngineConfig").AiRagEngineConfig = null as any;
+utilities.lazyLoad(exports, ["AiRagEngineConfig"], () => require("./aiRagEngineConfig"));
+
 export { AiTensorboardArgs, AiTensorboardState } from "./aiTensorboard";
 export type AiTensorboard = import("./aiTensorboard").AiTensorboard;
 export const AiTensorboard: typeof import("./aiTensorboard").AiTensorboard = null as any;
@@ -281,6 +286,8 @@ const _module = {
                 return new AiIndexEndpointDeployedIndex(name, <any>undefined, { urn })
             case "gcp:vertex/aiMetadataStore:AiMetadataStore":
                 return new AiMetadataStore(name, <any>undefined, { urn })
+            case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
+                return new AiRagEngineConfig(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
                 return new AiTensorboard(name, <any>undefined, { urn })
             default:
@@ -321,4 +328,5 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagEngineConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)

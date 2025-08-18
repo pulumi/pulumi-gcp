@@ -387,6 +387,61 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Topic Multiple Smts
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//				MessageTransforms: pubsub.TopicMessageTransformArray{
+//					&pubsub.TopicMessageTransformArgs{
+//						JavascriptUdf: &pubsub.TopicMessageTransformJavascriptUdfArgs{
+//							FunctionName: pulumi.String("redactSSN"),
+//							Code: pulumi.String(`function redactSSN(message, metadata) {
+//	  const data = JSON.parse(message.data);
+//	  delete data['ssn'];
+//	  message.data = JSON.stringify(data);
+//	  return message;
+//	}
+//
+// `),
+//
+//						},
+//					},
+//					&pubsub.TopicMessageTransformArgs{
+//						JavascriptUdf: &pubsub.TopicMessageTransformJavascriptUdfArgs{
+//							FunctionName: pulumi.String("otherFunc"),
+//							Code:         pulumi.String("function otherFunc(message, metadata) {\n  return null;\n}\n"),
+//						},
+//					},
+//					&pubsub.TopicMessageTransformArgs{
+//						Disabled: pulumi.Bool(true),
+//						JavascriptUdf: &pubsub.TopicMessageTransformJavascriptUdfArgs{
+//							FunctionName: pulumi.String("someSMTWeDisabled"),
+//							Code:         pulumi.String("..."),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Topic can be imported using any of these accepted formats:

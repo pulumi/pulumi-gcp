@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
+        /// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+        /// </summary>
+        [Input("cloudfrontDomain")]
+        public Input<string>? CloudfrontDomain { get; set; }
+
+        /// <summary>
         /// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
         /// </summary>
         [Input("managedPrivateNetwork")]

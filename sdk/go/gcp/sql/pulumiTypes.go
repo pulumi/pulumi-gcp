@@ -883,6 +883,8 @@ type DatabaseInstanceReplicationCluster struct {
 	DrReplica *bool `pulumi:"drReplica"`
 	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
 	FailoverDrReplicaName *string `pulumi:"failoverDrReplicaName"`
+	// Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+	PsaWriteEndpoint *string `pulumi:"psaWriteEndpoint"`
 }
 
 // DatabaseInstanceReplicationClusterInput is an input type that accepts DatabaseInstanceReplicationClusterArgs and DatabaseInstanceReplicationClusterOutput values.
@@ -901,6 +903,8 @@ type DatabaseInstanceReplicationClusterArgs struct {
 	DrReplica pulumi.BoolPtrInput `pulumi:"drReplica"`
 	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
 	FailoverDrReplicaName pulumi.StringPtrInput `pulumi:"failoverDrReplicaName"`
+	// Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+	PsaWriteEndpoint pulumi.StringPtrInput `pulumi:"psaWriteEndpoint"`
 }
 
 func (DatabaseInstanceReplicationClusterArgs) ElementType() reflect.Type {
@@ -990,6 +994,11 @@ func (o DatabaseInstanceReplicationClusterOutput) FailoverDrReplicaName() pulumi
 	return o.ApplyT(func(v DatabaseInstanceReplicationCluster) *string { return v.FailoverDrReplicaName }).(pulumi.StringPtrOutput)
 }
 
+// Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+func (o DatabaseInstanceReplicationClusterOutput) PsaWriteEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceReplicationCluster) *string { return v.PsaWriteEndpoint }).(pulumi.StringPtrOutput)
+}
+
 type DatabaseInstanceReplicationClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceReplicationClusterPtrOutput) ElementType() reflect.Type {
@@ -1031,6 +1040,16 @@ func (o DatabaseInstanceReplicationClusterPtrOutput) FailoverDrReplicaName() pul
 			return nil
 		}
 		return v.FailoverDrReplicaName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+func (o DatabaseInstanceReplicationClusterPtrOutput) PsaWriteEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceReplicationCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PsaWriteEndpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1353,11 +1372,13 @@ type DatabaseInstanceSettings struct {
 	ActiveDirectoryConfig   *DatabaseInstanceSettingsActiveDirectoryConfig   `pulumi:"activeDirectoryConfig"`
 	AdvancedMachineFeatures *DatabaseInstanceSettingsAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The availability type of the Cloud SQL
-	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
 	// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
 	// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
 	// is set to `true`. Defaults to `ZONAL`.
+	// For read pool instances, this field is read-only. The availability type is changed by specifying
+	// the number of nodes (`nodeCount`).
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
@@ -1386,6 +1407,12 @@ type DatabaseInstanceSettings struct {
 	DiskType *string `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition *string `pulumi:"edition"`
+	// (Computed) The availability type of
+	// the Cloud SQL instance, high availability (REGIONAL) or single zone
+	// (ZONAL). This field always contains the value that is reported by the API (for
+	// read pools, `settings.0.effective_availability_type` may differ from
+	// `settings.0.availability_type`).
+	EffectiveAvailabilityType *string `pulumi:"effectiveAvailabilityType"`
 	// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
 	EnableDataplexIntegration *bool `pulumi:"enableDataplexIntegration"`
 	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
@@ -1433,11 +1460,13 @@ type DatabaseInstanceSettingsArgs struct {
 	ActiveDirectoryConfig   DatabaseInstanceSettingsActiveDirectoryConfigPtrInput   `pulumi:"activeDirectoryConfig"`
 	AdvancedMachineFeatures DatabaseInstanceSettingsAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The availability type of the Cloud SQL
-	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
 	// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
 	// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
 	// is set to `true`. Defaults to `ZONAL`.
+	// For read pool instances, this field is read-only. The availability type is changed by specifying
+	// the number of nodes (`nodeCount`).
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
@@ -1466,6 +1495,12 @@ type DatabaseInstanceSettingsArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
+	// (Computed) The availability type of
+	// the Cloud SQL instance, high availability (REGIONAL) or single zone
+	// (ZONAL). This field always contains the value that is reported by the API (for
+	// read pools, `settings.0.effective_availability_type` may differ from
+	// `settings.0.availability_type`).
+	EffectiveAvailabilityType pulumi.StringPtrInput `pulumi:"effectiveAvailabilityType"`
 	// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
 	EnableDataplexIntegration pulumi.BoolPtrInput `pulumi:"enableDataplexIntegration"`
 	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
@@ -1591,11 +1626,13 @@ func (o DatabaseInstanceSettingsOutput) AdvancedMachineFeatures() DatabaseInstan
 }
 
 // The availability type of the Cloud SQL
-// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
 // `settings.backup_configuration.enabled` is set to `true`.
 // For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
 // For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
 // is set to `true`. Defaults to `ZONAL`.
+// For read pool instances, this field is read-only. The availability type is changed by specifying
+// the number of nodes (`nodeCount`).
 func (o DatabaseInstanceSettingsOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
@@ -1676,6 +1713,15 @@ func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 // The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 func (o DatabaseInstanceSettingsOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// (Computed) The availability type of
+// the Cloud SQL instance, high availability (REGIONAL) or single zone
+// (ZONAL). This field always contains the value that is reported by the API (for
+// read pools, `settings.0.effective_availability_type` may differ from
+// `settings.0.availability_type`).
+func (o DatabaseInstanceSettingsOutput) EffectiveAvailabilityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.EffectiveAvailabilityType }).(pulumi.StringPtrOutput)
 }
 
 // Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
@@ -1809,11 +1855,13 @@ func (o DatabaseInstanceSettingsPtrOutput) AdvancedMachineFeatures() DatabaseIns
 }
 
 // The availability type of the Cloud SQL
-// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
 // `settings.backup_configuration.enabled` is set to `true`.
 // For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
 // For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
 // is set to `true`. Defaults to `ZONAL`.
+// For read pool instances, this field is read-only. The availability type is changed by specifying
+// the number of nodes (`nodeCount`).
 func (o DatabaseInstanceSettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {
@@ -1967,6 +2015,20 @@ func (o DatabaseInstanceSettingsPtrOutput) Edition() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Edition
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Computed) The availability type of
+// the Cloud SQL instance, high availability (REGIONAL) or single zone
+// (ZONAL). This field always contains the value that is reported by the API (for
+// read pools, `settings.0.effective_availability_type` may differ from
+// `settings.0.availability_type`).
+func (o DatabaseInstanceSettingsPtrOutput) EffectiveAvailabilityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveAvailabilityType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4118,6 +4180,8 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) Ind
 type DatabaseInstanceSettingsIpConfigurationPscConfig struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+	NetworkAttachmentUri *string `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections []DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
@@ -4138,6 +4202,8 @@ type DatabaseInstanceSettingsIpConfigurationPscConfigInput interface {
 type DatabaseInstanceSettingsIpConfigurationPscConfigArgs struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+	NetworkAttachmentUri pulumi.StringPtrInput `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
@@ -4198,6 +4264,11 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) ToDatabaseInstan
 // List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) NetworkAttachmentUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) *string { return v.NetworkAttachmentUri }).(pulumi.StringPtrOutput)
 }
 
 // A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
@@ -6210,6 +6281,8 @@ type GetDatabaseInstanceReplicationCluster struct {
 	DrReplica bool `pulumi:"drReplica"`
 	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
 	FailoverDrReplicaName string `pulumi:"failoverDrReplicaName"`
+	// If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+	PsaWriteEndpoint string `pulumi:"psaWriteEndpoint"`
 }
 
 // GetDatabaseInstanceReplicationClusterInput is an input type that accepts GetDatabaseInstanceReplicationClusterArgs and GetDatabaseInstanceReplicationClusterOutput values.
@@ -6228,6 +6301,8 @@ type GetDatabaseInstanceReplicationClusterArgs struct {
 	DrReplica pulumi.BoolInput `pulumi:"drReplica"`
 	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
 	FailoverDrReplicaName pulumi.StringInput `pulumi:"failoverDrReplicaName"`
+	// If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+	PsaWriteEndpoint pulumi.StringInput `pulumi:"psaWriteEndpoint"`
 }
 
 func (GetDatabaseInstanceReplicationClusterArgs) ElementType() reflect.Type {
@@ -6289,6 +6364,11 @@ func (o GetDatabaseInstanceReplicationClusterOutput) DrReplica() pulumi.BoolOutp
 // If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
 func (o GetDatabaseInstanceReplicationClusterOutput) FailoverDrReplicaName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicationCluster) string { return v.FailoverDrReplicaName }).(pulumi.StringOutput)
+}
+
+// If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+func (o GetDatabaseInstanceReplicationClusterOutput) PsaWriteEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceReplicationCluster) string { return v.PsaWriteEndpoint }).(pulumi.StringOutput)
 }
 
 type GetDatabaseInstanceReplicationClusterArrayOutput struct{ *pulumi.OutputState }
@@ -6570,6 +6650,8 @@ type GetDatabaseInstanceSetting struct {
 	// For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
 	// For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
 	// is set to true. Defaults to ZONAL.
+	// For read pool instances, this field is read-only. The availability type is changed by specifying
+	// the number of nodes (node_count).
 	AvailabilityType     string                                          `pulumi:"availabilityType"`
 	BackupConfigurations []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
@@ -6598,6 +6680,10 @@ type GetDatabaseInstanceSetting struct {
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
+	// The availability type of the Cloud SQL instance, high availability
+	// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+	// API (for read pools, effectiveAvailabilityType may differ from availability_type).
+	EffectiveAvailabilityType string `pulumi:"effectiveAvailabilityType"`
 	// Enables Dataplex Integration.
 	EnableDataplexIntegration bool `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
@@ -6646,6 +6732,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	// For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
 	// For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
 	// is set to true. Defaults to ZONAL.
+	// For read pool instances, this field is read-only. The availability type is changed by specifying
+	// the number of nodes (node_count).
 	AvailabilityType     pulumi.StringInput                                      `pulumi:"availabilityType"`
 	BackupConfigurations GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
@@ -6674,6 +6762,10 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
+	// The availability type of the Cloud SQL instance, high availability
+	// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+	// API (for read pools, effectiveAvailabilityType may differ from availability_type).
+	EffectiveAvailabilityType pulumi.StringInput `pulumi:"effectiveAvailabilityType"`
 	// Enables Dataplex Integration.
 	EnableDataplexIntegration pulumi.BoolInput `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
@@ -6774,6 +6866,8 @@ func (o GetDatabaseInstanceSettingOutput) AdvancedMachineFeatures() GetDatabaseI
 // For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
 // For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
 // is set to true. Defaults to ZONAL.
+// For read pool instances, this field is read-only. The availability type is changed by specifying
+// the number of nodes (node_count).
 func (o GetDatabaseInstanceSettingOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.AvailabilityType }).(pulumi.StringOutput)
 }
@@ -6856,6 +6950,13 @@ func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 // The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 func (o GetDatabaseInstanceSettingOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// The availability type of the Cloud SQL instance, high availability
+// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+// API (for read pools, effectiveAvailabilityType may differ from availability_type).
+func (o GetDatabaseInstanceSettingOutput) EffectiveAvailabilityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.EffectiveAvailabilityType }).(pulumi.StringOutput)
 }
 
 // Enables Dataplex Integration.
@@ -8368,6 +8469,8 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) I
 type GetDatabaseInstanceSettingIpConfigurationPscConfig struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+	NetworkAttachmentUri string `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections []GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
@@ -8388,6 +8491,8 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfigInput interface {
 type GetDatabaseInstanceSettingIpConfigurationPscConfigArgs struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+	NetworkAttachmentUri pulumi.StringInput `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
@@ -8448,6 +8553,11 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) ToGetDatabaseI
 // List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) NetworkAttachmentUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) string { return v.NetworkAttachmentUri }).(pulumi.StringOutput)
 }
 
 // A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
@@ -9095,7 +9205,7 @@ type GetDatabaseInstancesInstance struct {
 	DnsNames          []GetDatabaseInstancesInstanceDnsName `pulumi:"dnsNames"`
 	EncryptionKeyName string                                `pulumi:"encryptionKeyName"`
 	FirstIpAddress    string                                `pulumi:"firstIpAddress"`
-	// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+	// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 	InstanceType string                                  `pulumi:"instanceType"`
 	IpAddresses  []GetDatabaseInstancesInstanceIpAddress `pulumi:"ipAddresses"`
 	// Maintenance version.
@@ -9103,7 +9213,9 @@ type GetDatabaseInstancesInstance struct {
 	// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
 	MasterInstanceName string `pulumi:"masterInstanceName"`
 	Name               string `pulumi:"name"`
-	PrivateIpAddress   string `pulumi:"privateIpAddress"`
+	// For a read pool instance, the number of nodes in the read pool.
+	NodeCount        int    `pulumi:"nodeCount"`
+	PrivateIpAddress string `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
 	Project string `pulumi:"project"`
 	// The link to service attachment of PSC instance.
@@ -9156,7 +9268,7 @@ type GetDatabaseInstancesInstanceArgs struct {
 	DnsNames          GetDatabaseInstancesInstanceDnsNameArrayInput `pulumi:"dnsNames"`
 	EncryptionKeyName pulumi.StringInput                            `pulumi:"encryptionKeyName"`
 	FirstIpAddress    pulumi.StringInput                            `pulumi:"firstIpAddress"`
-	// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+	// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 	InstanceType pulumi.StringInput                              `pulumi:"instanceType"`
 	IpAddresses  GetDatabaseInstancesInstanceIpAddressArrayInput `pulumi:"ipAddresses"`
 	// Maintenance version.
@@ -9164,7 +9276,9 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
 	MasterInstanceName pulumi.StringInput `pulumi:"masterInstanceName"`
 	Name               pulumi.StringInput `pulumi:"name"`
-	PrivateIpAddress   pulumi.StringInput `pulumi:"privateIpAddress"`
+	// For a read pool instance, the number of nodes in the read pool.
+	NodeCount        pulumi.IntInput    `pulumi:"nodeCount"`
+	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The link to service attachment of PSC instance.
@@ -9283,7 +9397,7 @@ func (o GetDatabaseInstancesInstanceOutput) FirstIpAddress() pulumi.StringOutput
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.FirstIpAddress }).(pulumi.StringOutput)
 }
 
-// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 func (o GetDatabaseInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -9304,6 +9418,11 @@ func (o GetDatabaseInstancesInstanceOutput) MasterInstanceName() pulumi.StringOu
 
 func (o GetDatabaseInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// For a read pool instance, the number of nodes in the read pool.
+func (o GetDatabaseInstancesInstanceOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
@@ -9946,6 +10065,8 @@ type GetDatabaseInstancesInstanceReplicationCluster struct {
 	DrReplica bool `pulumi:"drReplica"`
 	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
 	FailoverDrReplicaName string `pulumi:"failoverDrReplicaName"`
+	// If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+	PsaWriteEndpoint string `pulumi:"psaWriteEndpoint"`
 }
 
 // GetDatabaseInstancesInstanceReplicationClusterInput is an input type that accepts GetDatabaseInstancesInstanceReplicationClusterArgs and GetDatabaseInstancesInstanceReplicationClusterOutput values.
@@ -9964,6 +10085,8 @@ type GetDatabaseInstancesInstanceReplicationClusterArgs struct {
 	DrReplica pulumi.BoolInput `pulumi:"drReplica"`
 	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
 	FailoverDrReplicaName pulumi.StringInput `pulumi:"failoverDrReplicaName"`
+	// If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+	PsaWriteEndpoint pulumi.StringInput `pulumi:"psaWriteEndpoint"`
 }
 
 func (GetDatabaseInstancesInstanceReplicationClusterArgs) ElementType() reflect.Type {
@@ -10025,6 +10148,11 @@ func (o GetDatabaseInstancesInstanceReplicationClusterOutput) DrReplica() pulumi
 // If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
 func (o GetDatabaseInstancesInstanceReplicationClusterOutput) FailoverDrReplicaName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicationCluster) string { return v.FailoverDrReplicaName }).(pulumi.StringOutput)
+}
+
+// If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+func (o GetDatabaseInstancesInstanceReplicationClusterOutput) PsaWriteEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicationCluster) string { return v.PsaWriteEndpoint }).(pulumi.StringOutput)
 }
 
 type GetDatabaseInstancesInstanceReplicationClusterArrayOutput struct{ *pulumi.OutputState }
@@ -10306,6 +10434,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	// For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
 	// For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
 	// is set to true. Defaults to ZONAL.
+	// For read pool instances, this field is read-only. The availability type is changed by specifying
+	// the number of nodes (node_count).
 	AvailabilityType     string                                                   `pulumi:"availabilityType"`
 	BackupConfigurations []GetDatabaseInstancesInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
@@ -10334,6 +10464,10 @@ type GetDatabaseInstancesInstanceSetting struct {
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
+	// The availability type of the Cloud SQL instance, high availability
+	// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+	// API (for read pools, effectiveAvailabilityType may differ from availability_type).
+	EffectiveAvailabilityType string `pulumi:"effectiveAvailabilityType"`
 	// Enables Dataplex Integration.
 	EnableDataplexIntegration bool `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
@@ -10382,6 +10516,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	// For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
 	// For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
 	// is set to true. Defaults to ZONAL.
+	// For read pool instances, this field is read-only. The availability type is changed by specifying
+	// the number of nodes (node_count).
 	AvailabilityType     pulumi.StringInput                                               `pulumi:"availabilityType"`
 	BackupConfigurations GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
@@ -10410,6 +10546,10 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
+	// The availability type of the Cloud SQL instance, high availability
+	// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+	// API (for read pools, effectiveAvailabilityType may differ from availability_type).
+	EffectiveAvailabilityType pulumi.StringInput `pulumi:"effectiveAvailabilityType"`
 	// Enables Dataplex Integration.
 	EnableDataplexIntegration pulumi.BoolInput `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
@@ -10510,6 +10650,8 @@ func (o GetDatabaseInstancesInstanceSettingOutput) AdvancedMachineFeatures() Get
 // For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
 // For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
 // is set to true. Defaults to ZONAL.
+// For read pool instances, this field is read-only. The availability type is changed by specifying
+// the number of nodes (node_count).
 func (o GetDatabaseInstancesInstanceSettingOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.AvailabilityType }).(pulumi.StringOutput)
 }
@@ -10594,6 +10736,13 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DiskType() pulumi.StringOutpu
 // The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 func (o GetDatabaseInstancesInstanceSettingOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// The availability type of the Cloud SQL instance, high availability
+// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+// API (for read pools, effectiveAvailabilityType may differ from availability_type).
+func (o GetDatabaseInstancesInstanceSettingOutput) EffectiveAvailabilityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.EffectiveAvailabilityType }).(pulumi.StringOutput)
 }
 
 // Enables Dataplex Integration.
@@ -12113,6 +12262,8 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray
 type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+	NetworkAttachmentUri string `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
@@ -12133,6 +12284,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput interface 
 type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+	NetworkAttachmentUri pulumi.StringInput `pulumi:"networkAttachmentUri"`
 	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
 	PscAutoConnections GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
@@ -12195,6 +12348,13 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) Allow
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) []string {
 		return v.AllowedConsumerProjects
 	}).(pulumi.StringArrayOutput)
+}
+
+// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) NetworkAttachmentUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) string {
+		return v.NetworkAttachmentUri
+	}).(pulumi.StringOutput)
 }
 
 // A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.

@@ -323,6 +323,12 @@ __all__ = [
     'CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs',
     'CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict',
+    'CxPlaybookInstructionArgs',
+    'CxPlaybookInstructionArgsDict',
+    'CxPlaybookInstructionStepArgs',
+    'CxPlaybookInstructionStepArgsDict',
+    'CxPlaybookLlmModelSettingsArgs',
+    'CxPlaybookLlmModelSettingsArgsDict',
     'CxSecuritySettingsAudioExportSettingsArgs',
     'CxSecuritySettingsAudioExportSettingsArgsDict',
     'CxSecuritySettingsInsightsExportSettingsArgs',
@@ -12478,6 +12484,168 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class CxPlaybookInstructionArgsDict(TypedDict):
+        guidelines: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+        """
+        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPlaybookInstructionStepArgsDict']]]]
+        """
+        Ordered list of step by step execution instructions to accomplish target goal.
+        Structure is documented below.
+        """
+elif False:
+    CxPlaybookInstructionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxPlaybookInstructionArgs:
+    def __init__(__self__, *,
+                 guidelines: Optional[pulumi.Input[_builtins.str]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['CxPlaybookInstructionStepArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] guidelines: General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPlaybookInstructionStepArgs']]] steps: Ordered list of step by step execution instructions to accomplish target goal.
+               Structure is documented below.
+        """
+        if guidelines is not None:
+            pulumi.set(__self__, "guidelines", guidelines)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+
+    @_builtins.property
+    @pulumi.getter
+    def guidelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+        """
+        return pulumi.get(self, "guidelines")
+
+    @guidelines.setter
+    def guidelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "guidelines", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPlaybookInstructionStepArgs']]]]:
+        """
+        Ordered list of step by step execution instructions to accomplish target goal.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPlaybookInstructionStepArgs']]]]):
+        pulumi.set(self, "steps", value)
+
+
+if not MYPY:
+    class CxPlaybookInstructionStepArgsDict(TypedDict):
+        steps: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Sub-processing needed to execute the current step.
+        This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+        """
+        text: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Step instruction in text format.
+        """
+elif False:
+    CxPlaybookInstructionStepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxPlaybookInstructionStepArgs:
+    def __init__(__self__, *,
+                 steps: Optional[pulumi.Input[_builtins.str]] = None,
+                 text: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] steps: Sub-processing needed to execute the current step.
+               This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+        :param pulumi.Input[_builtins.str] text: Step instruction in text format.
+        """
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @_builtins.property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Sub-processing needed to execute the current step.
+        This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "steps", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Step instruction in text format.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+
+if not MYPY:
+    class CxPlaybookLlmModelSettingsArgsDict(TypedDict):
+        model: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The selected LLM model.
+        """
+        prompt_text: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The custom prompt to use.
+        """
+elif False:
+    CxPlaybookLlmModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxPlaybookLlmModelSettingsArgs:
+    def __init__(__self__, *,
+                 model: Optional[pulumi.Input[_builtins.str]] = None,
+                 prompt_text: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] model: The selected LLM model.
+        :param pulumi.Input[_builtins.str] prompt_text: The custom prompt to use.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if prompt_text is not None:
+            pulumi.set(__self__, "prompt_text", prompt_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The selected LLM model.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="promptText")
+    def prompt_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The custom prompt to use.
+        """
+        return pulumi.get(self, "prompt_text")
+
+    @prompt_text.setter
+    def prompt_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prompt_text", value)
 
 
 if not MYPY:

@@ -86,6 +86,11 @@ public final class ClusterNodeConfigKubeletConfig {
      * 
      */
     private @Nullable Integer podPidsLimit;
+    /**
+     * @return Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+     * 
+     */
+    private @Nullable Boolean singleProcessOomKill;
 
     private ClusterNodeConfigKubeletConfig() {}
     /**
@@ -184,6 +189,13 @@ public final class ClusterNodeConfigKubeletConfig {
     public Optional<Integer> podPidsLimit() {
         return Optional.ofNullable(this.podPidsLimit);
     }
+    /**
+     * @return Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+     * 
+     */
+    public Optional<Boolean> singleProcessOomKill() {
+        return Optional.ofNullable(this.singleProcessOomKill);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -206,6 +218,7 @@ public final class ClusterNodeConfigKubeletConfig {
         private @Nullable String imageMinimumGcAge;
         private @Nullable String insecureKubeletReadonlyPortEnabled;
         private @Nullable Integer podPidsLimit;
+        private @Nullable Boolean singleProcessOomKill;
         public Builder() {}
         public Builder(ClusterNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -221,6 +234,7 @@ public final class ClusterNodeConfigKubeletConfig {
     	      this.imageMinimumGcAge = defaults.imageMinimumGcAge;
     	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.podPidsLimit = defaults.podPidsLimit;
+    	      this.singleProcessOomKill = defaults.singleProcessOomKill;
         }
 
         @CustomType.Setter
@@ -298,6 +312,12 @@ public final class ClusterNodeConfigKubeletConfig {
             this.podPidsLimit = podPidsLimit;
             return this;
         }
+        @CustomType.Setter
+        public Builder singleProcessOomKill(@Nullable Boolean singleProcessOomKill) {
+
+            this.singleProcessOomKill = singleProcessOomKill;
+            return this;
+        }
         public ClusterNodeConfigKubeletConfig build() {
             final var _resultValue = new ClusterNodeConfigKubeletConfig();
             _resultValue.allowedUnsafeSysctls = allowedUnsafeSysctls;
@@ -312,6 +332,7 @@ public final class ClusterNodeConfigKubeletConfig {
             _resultValue.imageMinimumGcAge = imageMinimumGcAge;
             _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.podPidsLimit = podPidsLimit;
+            _resultValue.singleProcessOomKill = singleProcessOomKill;
             return _resultValue;
         }
     }

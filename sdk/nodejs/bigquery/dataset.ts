@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     },
  *     accesses: [
  *         {
- *             role: "OWNER",
+ *             role: "roles/bigquery.dataOwner",
  *             userByEmail: bqowner.email,
  *         },
  *         {

@@ -25347,6 +25347,431 @@ func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) In
 	}).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
+type CxPlaybookInstruction struct {
+	// General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+	Guidelines *string `pulumi:"guidelines"`
+	// Ordered list of step by step execution instructions to accomplish target goal.
+	// Structure is documented below.
+	Steps []CxPlaybookInstructionStep `pulumi:"steps"`
+}
+
+// CxPlaybookInstructionInput is an input type that accepts CxPlaybookInstructionArgs and CxPlaybookInstructionOutput values.
+// You can construct a concrete instance of `CxPlaybookInstructionInput` via:
+//
+//	CxPlaybookInstructionArgs{...}
+type CxPlaybookInstructionInput interface {
+	pulumi.Input
+
+	ToCxPlaybookInstructionOutput() CxPlaybookInstructionOutput
+	ToCxPlaybookInstructionOutputWithContext(context.Context) CxPlaybookInstructionOutput
+}
+
+type CxPlaybookInstructionArgs struct {
+	// General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+	Guidelines pulumi.StringPtrInput `pulumi:"guidelines"`
+	// Ordered list of step by step execution instructions to accomplish target goal.
+	// Structure is documented below.
+	Steps CxPlaybookInstructionStepArrayInput `pulumi:"steps"`
+}
+
+func (CxPlaybookInstructionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPlaybookInstruction)(nil)).Elem()
+}
+
+func (i CxPlaybookInstructionArgs) ToCxPlaybookInstructionOutput() CxPlaybookInstructionOutput {
+	return i.ToCxPlaybookInstructionOutputWithContext(context.Background())
+}
+
+func (i CxPlaybookInstructionArgs) ToCxPlaybookInstructionOutputWithContext(ctx context.Context) CxPlaybookInstructionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPlaybookInstructionOutput)
+}
+
+func (i CxPlaybookInstructionArgs) ToCxPlaybookInstructionPtrOutput() CxPlaybookInstructionPtrOutput {
+	return i.ToCxPlaybookInstructionPtrOutputWithContext(context.Background())
+}
+
+func (i CxPlaybookInstructionArgs) ToCxPlaybookInstructionPtrOutputWithContext(ctx context.Context) CxPlaybookInstructionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPlaybookInstructionOutput).ToCxPlaybookInstructionPtrOutputWithContext(ctx)
+}
+
+// CxPlaybookInstructionPtrInput is an input type that accepts CxPlaybookInstructionArgs, CxPlaybookInstructionPtr and CxPlaybookInstructionPtrOutput values.
+// You can construct a concrete instance of `CxPlaybookInstructionPtrInput` via:
+//
+//	        CxPlaybookInstructionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPlaybookInstructionPtrInput interface {
+	pulumi.Input
+
+	ToCxPlaybookInstructionPtrOutput() CxPlaybookInstructionPtrOutput
+	ToCxPlaybookInstructionPtrOutputWithContext(context.Context) CxPlaybookInstructionPtrOutput
+}
+
+type cxPlaybookInstructionPtrType CxPlaybookInstructionArgs
+
+func CxPlaybookInstructionPtr(v *CxPlaybookInstructionArgs) CxPlaybookInstructionPtrInput {
+	return (*cxPlaybookInstructionPtrType)(v)
+}
+
+func (*cxPlaybookInstructionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPlaybookInstruction)(nil)).Elem()
+}
+
+func (i *cxPlaybookInstructionPtrType) ToCxPlaybookInstructionPtrOutput() CxPlaybookInstructionPtrOutput {
+	return i.ToCxPlaybookInstructionPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPlaybookInstructionPtrType) ToCxPlaybookInstructionPtrOutputWithContext(ctx context.Context) CxPlaybookInstructionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPlaybookInstructionPtrOutput)
+}
+
+type CxPlaybookInstructionOutput struct{ *pulumi.OutputState }
+
+func (CxPlaybookInstructionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPlaybookInstruction)(nil)).Elem()
+}
+
+func (o CxPlaybookInstructionOutput) ToCxPlaybookInstructionOutput() CxPlaybookInstructionOutput {
+	return o
+}
+
+func (o CxPlaybookInstructionOutput) ToCxPlaybookInstructionOutputWithContext(ctx context.Context) CxPlaybookInstructionOutput {
+	return o
+}
+
+func (o CxPlaybookInstructionOutput) ToCxPlaybookInstructionPtrOutput() CxPlaybookInstructionPtrOutput {
+	return o.ToCxPlaybookInstructionPtrOutputWithContext(context.Background())
+}
+
+func (o CxPlaybookInstructionOutput) ToCxPlaybookInstructionPtrOutputWithContext(ctx context.Context) CxPlaybookInstructionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPlaybookInstruction) *CxPlaybookInstruction {
+		return &v
+	}).(CxPlaybookInstructionPtrOutput)
+}
+
+// General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+func (o CxPlaybookInstructionOutput) Guidelines() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPlaybookInstruction) *string { return v.Guidelines }).(pulumi.StringPtrOutput)
+}
+
+// Ordered list of step by step execution instructions to accomplish target goal.
+// Structure is documented below.
+func (o CxPlaybookInstructionOutput) Steps() CxPlaybookInstructionStepArrayOutput {
+	return o.ApplyT(func(v CxPlaybookInstruction) []CxPlaybookInstructionStep { return v.Steps }).(CxPlaybookInstructionStepArrayOutput)
+}
+
+type CxPlaybookInstructionPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPlaybookInstructionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPlaybookInstruction)(nil)).Elem()
+}
+
+func (o CxPlaybookInstructionPtrOutput) ToCxPlaybookInstructionPtrOutput() CxPlaybookInstructionPtrOutput {
+	return o
+}
+
+func (o CxPlaybookInstructionPtrOutput) ToCxPlaybookInstructionPtrOutputWithContext(ctx context.Context) CxPlaybookInstructionPtrOutput {
+	return o
+}
+
+func (o CxPlaybookInstructionPtrOutput) Elem() CxPlaybookInstructionOutput {
+	return o.ApplyT(func(v *CxPlaybookInstruction) CxPlaybookInstruction {
+		if v != nil {
+			return *v
+		}
+		var ret CxPlaybookInstruction
+		return ret
+	}).(CxPlaybookInstructionOutput)
+}
+
+// General guidelines for the playbook. These are unstructured instructions that are not directly part of the goal, e.g. "Always be polite". It's valid for this text to be long and used instead of steps altogether.
+func (o CxPlaybookInstructionPtrOutput) Guidelines() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPlaybookInstruction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Guidelines
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ordered list of step by step execution instructions to accomplish target goal.
+// Structure is documented below.
+func (o CxPlaybookInstructionPtrOutput) Steps() CxPlaybookInstructionStepArrayOutput {
+	return o.ApplyT(func(v *CxPlaybookInstruction) []CxPlaybookInstructionStep {
+		if v == nil {
+			return nil
+		}
+		return v.Steps
+	}).(CxPlaybookInstructionStepArrayOutput)
+}
+
+type CxPlaybookInstructionStep struct {
+	// Sub-processing needed to execute the current step.
+	// This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+	Steps *string `pulumi:"steps"`
+	// Step instruction in text format.
+	Text *string `pulumi:"text"`
+}
+
+// CxPlaybookInstructionStepInput is an input type that accepts CxPlaybookInstructionStepArgs and CxPlaybookInstructionStepOutput values.
+// You can construct a concrete instance of `CxPlaybookInstructionStepInput` via:
+//
+//	CxPlaybookInstructionStepArgs{...}
+type CxPlaybookInstructionStepInput interface {
+	pulumi.Input
+
+	ToCxPlaybookInstructionStepOutput() CxPlaybookInstructionStepOutput
+	ToCxPlaybookInstructionStepOutputWithContext(context.Context) CxPlaybookInstructionStepOutput
+}
+
+type CxPlaybookInstructionStepArgs struct {
+	// Sub-processing needed to execute the current step.
+	// This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+	Steps pulumi.StringPtrInput `pulumi:"steps"`
+	// Step instruction in text format.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxPlaybookInstructionStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPlaybookInstructionStep)(nil)).Elem()
+}
+
+func (i CxPlaybookInstructionStepArgs) ToCxPlaybookInstructionStepOutput() CxPlaybookInstructionStepOutput {
+	return i.ToCxPlaybookInstructionStepOutputWithContext(context.Background())
+}
+
+func (i CxPlaybookInstructionStepArgs) ToCxPlaybookInstructionStepOutputWithContext(ctx context.Context) CxPlaybookInstructionStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPlaybookInstructionStepOutput)
+}
+
+// CxPlaybookInstructionStepArrayInput is an input type that accepts CxPlaybookInstructionStepArray and CxPlaybookInstructionStepArrayOutput values.
+// You can construct a concrete instance of `CxPlaybookInstructionStepArrayInput` via:
+//
+//	CxPlaybookInstructionStepArray{ CxPlaybookInstructionStepArgs{...} }
+type CxPlaybookInstructionStepArrayInput interface {
+	pulumi.Input
+
+	ToCxPlaybookInstructionStepArrayOutput() CxPlaybookInstructionStepArrayOutput
+	ToCxPlaybookInstructionStepArrayOutputWithContext(context.Context) CxPlaybookInstructionStepArrayOutput
+}
+
+type CxPlaybookInstructionStepArray []CxPlaybookInstructionStepInput
+
+func (CxPlaybookInstructionStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPlaybookInstructionStep)(nil)).Elem()
+}
+
+func (i CxPlaybookInstructionStepArray) ToCxPlaybookInstructionStepArrayOutput() CxPlaybookInstructionStepArrayOutput {
+	return i.ToCxPlaybookInstructionStepArrayOutputWithContext(context.Background())
+}
+
+func (i CxPlaybookInstructionStepArray) ToCxPlaybookInstructionStepArrayOutputWithContext(ctx context.Context) CxPlaybookInstructionStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPlaybookInstructionStepArrayOutput)
+}
+
+type CxPlaybookInstructionStepOutput struct{ *pulumi.OutputState }
+
+func (CxPlaybookInstructionStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPlaybookInstructionStep)(nil)).Elem()
+}
+
+func (o CxPlaybookInstructionStepOutput) ToCxPlaybookInstructionStepOutput() CxPlaybookInstructionStepOutput {
+	return o
+}
+
+func (o CxPlaybookInstructionStepOutput) ToCxPlaybookInstructionStepOutputWithContext(ctx context.Context) CxPlaybookInstructionStepOutput {
+	return o
+}
+
+// Sub-processing needed to execute the current step.
+// This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
+func (o CxPlaybookInstructionStepOutput) Steps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPlaybookInstructionStep) *string { return v.Steps }).(pulumi.StringPtrOutput)
+}
+
+// Step instruction in text format.
+func (o CxPlaybookInstructionStepOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPlaybookInstructionStep) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type CxPlaybookInstructionStepArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPlaybookInstructionStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPlaybookInstructionStep)(nil)).Elem()
+}
+
+func (o CxPlaybookInstructionStepArrayOutput) ToCxPlaybookInstructionStepArrayOutput() CxPlaybookInstructionStepArrayOutput {
+	return o
+}
+
+func (o CxPlaybookInstructionStepArrayOutput) ToCxPlaybookInstructionStepArrayOutputWithContext(ctx context.Context) CxPlaybookInstructionStepArrayOutput {
+	return o
+}
+
+func (o CxPlaybookInstructionStepArrayOutput) Index(i pulumi.IntInput) CxPlaybookInstructionStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPlaybookInstructionStep {
+		return vs[0].([]CxPlaybookInstructionStep)[vs[1].(int)]
+	}).(CxPlaybookInstructionStepOutput)
+}
+
+type CxPlaybookLlmModelSettings struct {
+	// The selected LLM model.
+	Model *string `pulumi:"model"`
+	// The custom prompt to use.
+	PromptText *string `pulumi:"promptText"`
+}
+
+// CxPlaybookLlmModelSettingsInput is an input type that accepts CxPlaybookLlmModelSettingsArgs and CxPlaybookLlmModelSettingsOutput values.
+// You can construct a concrete instance of `CxPlaybookLlmModelSettingsInput` via:
+//
+//	CxPlaybookLlmModelSettingsArgs{...}
+type CxPlaybookLlmModelSettingsInput interface {
+	pulumi.Input
+
+	ToCxPlaybookLlmModelSettingsOutput() CxPlaybookLlmModelSettingsOutput
+	ToCxPlaybookLlmModelSettingsOutputWithContext(context.Context) CxPlaybookLlmModelSettingsOutput
+}
+
+type CxPlaybookLlmModelSettingsArgs struct {
+	// The selected LLM model.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// The custom prompt to use.
+	PromptText pulumi.StringPtrInput `pulumi:"promptText"`
+}
+
+func (CxPlaybookLlmModelSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPlaybookLlmModelSettings)(nil)).Elem()
+}
+
+func (i CxPlaybookLlmModelSettingsArgs) ToCxPlaybookLlmModelSettingsOutput() CxPlaybookLlmModelSettingsOutput {
+	return i.ToCxPlaybookLlmModelSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPlaybookLlmModelSettingsArgs) ToCxPlaybookLlmModelSettingsOutputWithContext(ctx context.Context) CxPlaybookLlmModelSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPlaybookLlmModelSettingsOutput)
+}
+
+func (i CxPlaybookLlmModelSettingsArgs) ToCxPlaybookLlmModelSettingsPtrOutput() CxPlaybookLlmModelSettingsPtrOutput {
+	return i.ToCxPlaybookLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPlaybookLlmModelSettingsArgs) ToCxPlaybookLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxPlaybookLlmModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPlaybookLlmModelSettingsOutput).ToCxPlaybookLlmModelSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPlaybookLlmModelSettingsPtrInput is an input type that accepts CxPlaybookLlmModelSettingsArgs, CxPlaybookLlmModelSettingsPtr and CxPlaybookLlmModelSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPlaybookLlmModelSettingsPtrInput` via:
+//
+//	        CxPlaybookLlmModelSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPlaybookLlmModelSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPlaybookLlmModelSettingsPtrOutput() CxPlaybookLlmModelSettingsPtrOutput
+	ToCxPlaybookLlmModelSettingsPtrOutputWithContext(context.Context) CxPlaybookLlmModelSettingsPtrOutput
+}
+
+type cxPlaybookLlmModelSettingsPtrType CxPlaybookLlmModelSettingsArgs
+
+func CxPlaybookLlmModelSettingsPtr(v *CxPlaybookLlmModelSettingsArgs) CxPlaybookLlmModelSettingsPtrInput {
+	return (*cxPlaybookLlmModelSettingsPtrType)(v)
+}
+
+func (*cxPlaybookLlmModelSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPlaybookLlmModelSettings)(nil)).Elem()
+}
+
+func (i *cxPlaybookLlmModelSettingsPtrType) ToCxPlaybookLlmModelSettingsPtrOutput() CxPlaybookLlmModelSettingsPtrOutput {
+	return i.ToCxPlaybookLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPlaybookLlmModelSettingsPtrType) ToCxPlaybookLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxPlaybookLlmModelSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPlaybookLlmModelSettingsPtrOutput)
+}
+
+type CxPlaybookLlmModelSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPlaybookLlmModelSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPlaybookLlmModelSettings)(nil)).Elem()
+}
+
+func (o CxPlaybookLlmModelSettingsOutput) ToCxPlaybookLlmModelSettingsOutput() CxPlaybookLlmModelSettingsOutput {
+	return o
+}
+
+func (o CxPlaybookLlmModelSettingsOutput) ToCxPlaybookLlmModelSettingsOutputWithContext(ctx context.Context) CxPlaybookLlmModelSettingsOutput {
+	return o
+}
+
+func (o CxPlaybookLlmModelSettingsOutput) ToCxPlaybookLlmModelSettingsPtrOutput() CxPlaybookLlmModelSettingsPtrOutput {
+	return o.ToCxPlaybookLlmModelSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPlaybookLlmModelSettingsOutput) ToCxPlaybookLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxPlaybookLlmModelSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPlaybookLlmModelSettings) *CxPlaybookLlmModelSettings {
+		return &v
+	}).(CxPlaybookLlmModelSettingsPtrOutput)
+}
+
+// The selected LLM model.
+func (o CxPlaybookLlmModelSettingsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPlaybookLlmModelSettings) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// The custom prompt to use.
+func (o CxPlaybookLlmModelSettingsOutput) PromptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPlaybookLlmModelSettings) *string { return v.PromptText }).(pulumi.StringPtrOutput)
+}
+
+type CxPlaybookLlmModelSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPlaybookLlmModelSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPlaybookLlmModelSettings)(nil)).Elem()
+}
+
+func (o CxPlaybookLlmModelSettingsPtrOutput) ToCxPlaybookLlmModelSettingsPtrOutput() CxPlaybookLlmModelSettingsPtrOutput {
+	return o
+}
+
+func (o CxPlaybookLlmModelSettingsPtrOutput) ToCxPlaybookLlmModelSettingsPtrOutputWithContext(ctx context.Context) CxPlaybookLlmModelSettingsPtrOutput {
+	return o
+}
+
+func (o CxPlaybookLlmModelSettingsPtrOutput) Elem() CxPlaybookLlmModelSettingsOutput {
+	return o.ApplyT(func(v *CxPlaybookLlmModelSettings) CxPlaybookLlmModelSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPlaybookLlmModelSettings
+		return ret
+	}).(CxPlaybookLlmModelSettingsOutput)
+}
+
+// The selected LLM model.
+func (o CxPlaybookLlmModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPlaybookLlmModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// The custom prompt to use.
+func (o CxPlaybookLlmModelSettingsPtrOutput) PromptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPlaybookLlmModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PromptText
+	}).(pulumi.StringPtrOutput)
+}
+
 type CxSecuritySettingsAudioExportSettings struct {
 	// Filename pattern for exported audio.
 	AudioExportPattern *string `pulumi:"audioExportPattern"`
@@ -34654,6 +35079,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPlaybookInstructionInput)(nil)).Elem(), CxPlaybookInstructionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPlaybookInstructionPtrInput)(nil)).Elem(), CxPlaybookInstructionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPlaybookInstructionStepInput)(nil)).Elem(), CxPlaybookInstructionStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPlaybookInstructionStepArrayInput)(nil)).Elem(), CxPlaybookInstructionStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPlaybookLlmModelSettingsInput)(nil)).Elem(), CxPlaybookLlmModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPlaybookLlmModelSettingsPtrInput)(nil)).Elem(), CxPlaybookLlmModelSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxSecuritySettingsAudioExportSettingsInput)(nil)).Elem(), CxSecuritySettingsAudioExportSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxSecuritySettingsAudioExportSettingsPtrInput)(nil)).Elem(), CxSecuritySettingsAudioExportSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxSecuritySettingsInsightsExportSettingsInput)(nil)).Elem(), CxSecuritySettingsInsightsExportSettingsArgs{})
@@ -35066,6 +35497,12 @@ func init() {
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput{})
+	pulumi.RegisterOutputType(CxPlaybookInstructionOutput{})
+	pulumi.RegisterOutputType(CxPlaybookInstructionPtrOutput{})
+	pulumi.RegisterOutputType(CxPlaybookInstructionStepOutput{})
+	pulumi.RegisterOutputType(CxPlaybookInstructionStepArrayOutput{})
+	pulumi.RegisterOutputType(CxPlaybookLlmModelSettingsOutput{})
+	pulumi.RegisterOutputType(CxPlaybookLlmModelSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxSecuritySettingsAudioExportSettingsOutput{})
 	pulumi.RegisterOutputType(CxSecuritySettingsAudioExportSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxSecuritySettingsInsightsExportSettingsOutput{})

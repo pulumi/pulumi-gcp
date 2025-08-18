@@ -79,6 +79,38 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Backup Dr Backup Plan For Csql Resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myBackupVault = new gcp.backupdisasterrecovery.BackupVault("my_backup_vault", {
+ *     location: "us-central1",
+ *     backupVaultId: "backup-vault-csql-test",
+ *     backupMinimumEnforcedRetentionDuration: "100000s",
+ * });
+ * const my_csql_backup_plan_1 = new gcp.backupdisasterrecovery.BackupPlan("my-csql-backup-plan-1", {
+ *     location: "us-central1",
+ *     backupPlanId: "backup-plan-csql-test",
+ *     resourceType: "sqladmin.googleapis.com/Instance",
+ *     backupVault: myBackupVault.id,
+ *     backupRules: [{
+ *         ruleId: "rule-1",
+ *         backupRetentionDays: 5,
+ *         standardSchedule: {
+ *             recurrenceType: "HOURLY",
+ *             hourlyFrequency: 6,
+ *             timeZone: "UTC",
+ *             backupWindow: {
+ *                 startHourOfDay: 0,
+ *                 endHourOfDay: 6,
+ *             },
+ *         },
+ *     }],
+ *     logRetentionDays: 4,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -162,6 +194,10 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+     */
+    public readonly logRetentionDays!: pulumi.Output<number | undefined>;
+    /**
      * The name of backup plan resource created
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -172,7 +208,7 @@ export class BackupPlan extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
@@ -204,6 +240,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["logRetentionDays"] = state ? state.logRetentionDays : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["resourceType"] = state ? state.resourceType : undefined;
@@ -231,6 +268,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["backupVault"] = args ? args.backupVault : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["logRetentionDays"] = args ? args.logRetentionDays : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["resourceType"] = args ? args.resourceType : undefined;
             resourceInputs["backupVaultServiceAccount"] = undefined /*out*/;
@@ -278,6 +316,10 @@ export interface BackupPlanState {
      */
     location?: pulumi.Input<string>;
     /**
+     * This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+     */
+    logRetentionDays?: pulumi.Input<number>;
+    /**
      * The name of backup plan resource created
      */
     name?: pulumi.Input<string>;
@@ -288,7 +330,7 @@ export interface BackupPlanState {
     project?: pulumi.Input<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -327,13 +369,17 @@ export interface BackupPlanArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+     */
+    logRetentionDays?: pulumi.Input<number>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
      */
     resourceType: pulumi.Input<string>;
 }

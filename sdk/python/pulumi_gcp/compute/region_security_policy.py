@@ -21,6 +21,7 @@ __all__ = ['RegionSecurityPolicyArgs', 'RegionSecurityPolicy']
 @pulumi.input_type
 class RegionSecurityPolicyArgs:
     def __init__(__self__, *,
+                 advanced_options_config: Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']] = None,
                  ddos_protection_config: Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -31,6 +32,8 @@ class RegionSecurityPolicyArgs:
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         The set of arguments for constructing a RegionSecurityPolicy resource.
+        :param pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: Advanced Options Config of this security policy.
+               Structure is documented below.
         :param pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs'] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -53,6 +56,8 @@ class RegionSecurityPolicyArgs:
                Rules may then specify matching values for these fields.
                Structure is documented below.
         """
+        if advanced_options_config is not None:
+            pulumi.set(__self__, "advanced_options_config", advanced_options_config)
         if ddos_protection_config is not None:
             pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
         if description is not None:
@@ -69,6 +74,19 @@ class RegionSecurityPolicyArgs:
             pulumi.set(__self__, "type", type)
         if user_defined_fields is not None:
             pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedOptionsConfig")
+    def advanced_options_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']]:
+        """
+        Advanced Options Config of this security policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_options_config")
+
+    @advanced_options_config.setter
+    def advanced_options_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']]):
+        pulumi.set(self, "advanced_options_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ddosProtectionConfig")
@@ -183,6 +201,7 @@ class RegionSecurityPolicyArgs:
 @pulumi.input_type
 class _RegionSecurityPolicyState:
     def __init__(__self__, *,
+                 advanced_options_config: Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']] = None,
                  ddos_protection_config: Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -197,6 +216,8 @@ class _RegionSecurityPolicyState:
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         Input properties used for looking up and filtering RegionSecurityPolicy resources.
+        :param pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: Advanced Options Config of this security policy.
+               Structure is documented below.
         :param pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs'] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -224,6 +245,8 @@ class _RegionSecurityPolicyState:
                Rules may then specify matching values for these fields.
                Structure is documented below.
         """
+        if advanced_options_config is not None:
+            pulumi.set(__self__, "advanced_options_config", advanced_options_config)
         if ddos_protection_config is not None:
             pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
         if description is not None:
@@ -248,6 +271,19 @@ class _RegionSecurityPolicyState:
             pulumi.set(__self__, "type", type)
         if user_defined_fields is not None:
             pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedOptionsConfig")
+    def advanced_options_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']]:
+        """
+        Advanced Options Config of this security policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_options_config")
+
+    @advanced_options_config.setter
+    def advanced_options_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']]):
+        pulumi.set(self, "advanced_options_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ddosProtectionConfig")
@@ -414,6 +450,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_options_config: Optional[pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
                  ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -552,6 +589,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: Advanced Options Config of this security policy.
+               Structure is documented below.
         :param pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -722,6 +761,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_options_config: Optional[pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
                  ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -739,6 +779,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionSecurityPolicyArgs.__new__(RegionSecurityPolicyArgs)
 
+            __props__.__dict__["advanced_options_config"] = advanced_options_config
             __props__.__dict__["ddos_protection_config"] = ddos_protection_config
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
@@ -761,6 +802,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_options_config: Optional[pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
             ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -780,6 +822,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: Advanced Options Config of this security policy.
+               Structure is documented below.
         :param pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -811,6 +855,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
 
         __props__ = _RegionSecurityPolicyState.__new__(_RegionSecurityPolicyState)
 
+        __props__.__dict__["advanced_options_config"] = advanced_options_config
         __props__.__dict__["ddos_protection_config"] = ddos_protection_config
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
@@ -824,6 +869,15 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["user_defined_fields"] = user_defined_fields
         return RegionSecurityPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedOptionsConfig")
+    def advanced_options_config(self) -> pulumi.Output[Optional['outputs.RegionSecurityPolicyAdvancedOptionsConfig']]:
+        """
+        Advanced Options Config of this security policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_options_config")
 
     @_builtins.property
     @pulumi.getter(name="ddosProtectionConfig")

@@ -5102,6 +5102,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxPlaybook",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxPlaybook:CxPlaybook": "CxPlaybook"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/cxSecuritySettings",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -9930,6 +9938,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiMetadataStore:AiMetadataStore": "AiMetadataStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiRagEngineConfig",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": "AiRagEngineConfig"
   }
  },
  {

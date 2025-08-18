@@ -553,6 +553,8 @@ class DatabaseInstanceReplicationCluster(dict):
             suggest = "dr_replica"
         elif key == "failoverDrReplicaName":
             suggest = "failover_dr_replica_name"
+        elif key == "psaWriteEndpoint":
+            suggest = "psa_write_endpoint"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceReplicationCluster. Access the value via the '{suggest}' property getter instead.")
@@ -567,15 +569,19 @@ class DatabaseInstanceReplicationCluster(dict):
 
     def __init__(__self__, *,
                  dr_replica: Optional[_builtins.bool] = None,
-                 failover_dr_replica_name: Optional[_builtins.str] = None):
+                 failover_dr_replica_name: Optional[_builtins.str] = None,
+                 psa_write_endpoint: Optional[_builtins.str] = None):
         """
         :param _builtins.bool dr_replica: Read-only field that indicates whether the replica is a DR replica.
         :param _builtins.str failover_dr_replica_name: If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        :param _builtins.str psa_write_endpoint: Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
         """
         if dr_replica is not None:
             pulumi.set(__self__, "dr_replica", dr_replica)
         if failover_dr_replica_name is not None:
             pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+        if psa_write_endpoint is not None:
+            pulumi.set(__self__, "psa_write_endpoint", psa_write_endpoint)
 
     @_builtins.property
     @pulumi.getter(name="drReplica")
@@ -592,6 +598,14 @@ class DatabaseInstanceReplicationCluster(dict):
         If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
         """
         return pulumi.get(self, "failover_dr_replica_name")
+
+    @_builtins.property
+    @pulumi.getter(name="psaWriteEndpoint")
+    def psa_write_endpoint(self) -> Optional[_builtins.str]:
+        """
+        Read-only field which if set, indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+        """
+        return pulumi.get(self, "psa_write_endpoint")
 
 
 @pulumi.output_type
@@ -786,6 +800,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "disk_size"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "effectiveAvailabilityType":
+            suggest = "effective_availability_type"
         elif key == "enableDataplexIntegration":
             suggest = "enable_dataplex_integration"
         elif key == "enableGoogleMlIntegration":
@@ -843,6 +859,7 @@ class DatabaseInstanceSettings(dict):
                  disk_size: Optional[_builtins.int] = None,
                  disk_type: Optional[_builtins.str] = None,
                  edition: Optional[_builtins.str] = None,
+                 effective_availability_type: Optional[_builtins.str] = None,
                  enable_dataplex_integration: Optional[_builtins.bool] = None,
                  enable_google_ml_integration: Optional[_builtins.bool] = None,
                  insights_config: Optional['outputs.DatabaseInstanceSettingsInsightsConfig'] = None,
@@ -863,11 +880,13 @@ class DatabaseInstanceSettings(dict):
         :param _builtins.str activation_policy: This specifies when the instance should be
                active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
         :param _builtins.str availability_type: The availability type of the Cloud SQL
-               instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+               instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
                `settings.backup_configuration.enabled` is set to `true`.
                For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
                For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`. Defaults to `ZONAL`.
+               For read pool instances, this field is read-only. The availability type is changed by specifying
+               the number of nodes (`node_count`).
         :param _builtins.str collation: The name of server instance collation.
         :param Sequence['DatabaseInstanceSettingsConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param _builtins.str connector_enforcement: Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
@@ -880,6 +899,11 @@ class DatabaseInstanceSettings(dict):
         :param _builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         :param _builtins.str disk_type: The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
         :param _builtins.str edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        :param _builtins.str effective_availability_type: (Computed) The availability type of
+               the Cloud SQL instance, high availability (REGIONAL) or single zone
+               (ZONAL). This field always contains the value that is reported by the API (for
+               read pools, `settings.0.effective_availability_type` may differ from
+               `settings.0.availability_type`).
         :param _builtins.bool enable_dataplex_integration: Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         :param _builtins.bool enable_google_ml_integration: Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         :param 'DatabaseInstanceSettingsInsightsConfigArgs' insights_config: Configuration of Query Insights.
@@ -930,6 +954,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if effective_availability_type is not None:
+            pulumi.set(__self__, "effective_availability_type", effective_availability_type)
         if enable_dataplex_integration is not None:
             pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         if enable_google_ml_integration is not None:
@@ -991,11 +1017,13 @@ class DatabaseInstanceSettings(dict):
     def availability_type(self) -> Optional[_builtins.str]:
         """
         The availability type of the Cloud SQL
-        instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
+        instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
         `settings.backup_configuration.enabled` is set to `true`.
         For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
         For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
         is set to `true`. Defaults to `ZONAL`.
+        For read pool instances, this field is read-only. The availability type is changed by specifying
+        the number of nodes (`node_count`).
         """
         return pulumi.get(self, "availability_type")
 
@@ -1109,6 +1137,18 @@ class DatabaseInstanceSettings(dict):
         The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         """
         return pulumi.get(self, "edition")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveAvailabilityType")
+    def effective_availability_type(self) -> Optional[_builtins.str]:
+        """
+        (Computed) The availability type of
+        the Cloud SQL instance, high availability (REGIONAL) or single zone
+        (ZONAL). This field always contains the value that is reported by the API (for
+        read pools, `settings.0.effective_availability_type` may differ from
+        `settings.0.availability_type`).
+        """
+        return pulumi.get(self, "effective_availability_type")
 
     @_builtins.property
     @pulumi.getter(name="enableDataplexIntegration")
@@ -1966,6 +2006,8 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
         suggest = None
         if key == "allowedConsumerProjects":
             suggest = "allowed_consumer_projects"
+        elif key == "networkAttachmentUri":
+            suggest = "network_attachment_uri"
         elif key == "pscAutoConnections":
             suggest = "psc_auto_connections"
         elif key == "pscEnabled":
@@ -1984,15 +2026,19 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
 
     def __init__(__self__, *,
                  allowed_consumer_projects: Optional[Sequence[_builtins.str]] = None,
+                 network_attachment_uri: Optional[_builtins.str] = None,
                  psc_auto_connections: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection']] = None,
                  psc_enabled: Optional[_builtins.bool] = None):
         """
         :param Sequence[_builtins.str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param _builtins.str network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
         :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs'] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         :param _builtins.bool psc_enabled: Whether PSC connectivity is enabled for this instance.
         """
         if allowed_consumer_projects is not None:
             pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        if network_attachment_uri is not None:
+            pulumi.set(__self__, "network_attachment_uri", network_attachment_uri)
         if psc_auto_connections is not None:
             pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         if psc_enabled is not None:
@@ -2005,6 +2051,14 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
         List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         """
         return pulumi.get(self, "allowed_consumer_projects")
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachmentUri")
+    def network_attachment_uri(self) -> Optional[_builtins.str]:
+        """
+        Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        """
+        return pulumi.get(self, "network_attachment_uri")
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")
@@ -2870,13 +2924,16 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
 class GetDatabaseInstanceReplicationClusterResult(dict):
     def __init__(__self__, *,
                  dr_replica: _builtins.bool,
-                 failover_dr_replica_name: _builtins.str):
+                 failover_dr_replica_name: _builtins.str,
+                 psa_write_endpoint: _builtins.str):
         """
         :param _builtins.bool dr_replica: Read-only field that indicates whether the replica is a DR replica.
         :param _builtins.str failover_dr_replica_name: If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        :param _builtins.str psa_write_endpoint: If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
         """
         pulumi.set(__self__, "dr_replica", dr_replica)
         pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+        pulumi.set(__self__, "psa_write_endpoint", psa_write_endpoint)
 
     @_builtins.property
     @pulumi.getter(name="drReplica")
@@ -2893,6 +2950,14 @@ class GetDatabaseInstanceReplicationClusterResult(dict):
         If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
         """
         return pulumi.get(self, "failover_dr_replica_name")
+
+    @_builtins.property
+    @pulumi.getter(name="psaWriteEndpoint")
+    def psa_write_endpoint(self) -> _builtins.str:
+        """
+        If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+        """
+        return pulumi.get(self, "psa_write_endpoint")
 
 
 @pulumi.output_type
@@ -3019,6 +3084,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  disk_size: _builtins.int,
                  disk_type: _builtins.str,
                  edition: _builtins.str,
+                 effective_availability_type: _builtins.str,
                  enable_dataplex_integration: _builtins.bool,
                  enable_google_ml_integration: _builtins.bool,
                  insights_configs: Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult'],
@@ -3041,6 +3107,8 @@ class GetDatabaseInstanceSettingResult(dict):
                For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
                For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
                is set to true. Defaults to ZONAL.
+               For read pool instances, this field is read-only. The availability type is changed by specifying
+               the number of nodes (node_count).
         :param _builtins.str collation: The name of server instance collation.
         :param Sequence['GetDatabaseInstanceSettingConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param _builtins.str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
@@ -3053,6 +3121,9 @@ class GetDatabaseInstanceSettingResult(dict):
         :param _builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
         :param _builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         :param _builtins.str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        :param _builtins.str effective_availability_type: The availability type of the Cloud SQL instance, high availability
+               (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+               API (for read pools, effective_availability_type may differ from availability_type).
         :param _builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param _builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
         :param Sequence['GetDatabaseInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
@@ -3083,6 +3154,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "effective_availability_type", effective_availability_type)
         pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         pulumi.set(__self__, "insights_configs", insights_configs)
@@ -3126,6 +3198,8 @@ class GetDatabaseInstanceSettingResult(dict):
         For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
         For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
         is set to true. Defaults to ZONAL.
+        For read pool instances, this field is read-only. The availability type is changed by specifying
+        the number of nodes (node_count).
         """
         return pulumi.get(self, "availability_type")
 
@@ -3239,6 +3313,16 @@ class GetDatabaseInstanceSettingResult(dict):
         The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         """
         return pulumi.get(self, "edition")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveAvailabilityType")
+    def effective_availability_type(self) -> _builtins.str:
+        """
+        The availability type of the Cloud SQL instance, high availability
+        (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+        API (for read pools, effective_availability_type may differ from availability_type).
+        """
+        return pulumi.get(self, "effective_availability_type")
 
     @_builtins.property
     @pulumi.getter(name="enableDataplexIntegration")
@@ -3842,14 +3926,17 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
 class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[_builtins.str],
+                 network_attachment_uri: _builtins.str,
                  psc_auto_connections: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult'],
                  psc_enabled: _builtins.bool):
         """
         :param Sequence[_builtins.str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param _builtins.str network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
         :param Sequence['GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs'] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         :param _builtins.bool psc_enabled: Whether PSC connectivity is enabled for this instance.
         """
         pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        pulumi.set(__self__, "network_attachment_uri", network_attachment_uri)
         pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         pulumi.set(__self__, "psc_enabled", psc_enabled)
 
@@ -3860,6 +3947,14 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
         List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         """
         return pulumi.get(self, "allowed_consumer_projects")
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachmentUri")
+    def network_attachment_uri(self) -> _builtins.str:
+        """
+        Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        """
+        return pulumi.get(self, "network_attachment_uri")
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")
@@ -4117,6 +4212,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  maintenance_version: _builtins.str,
                  master_instance_name: _builtins.str,
                  name: _builtins.str,
+                 node_count: _builtins.int,
                  private_ip_address: _builtins.str,
                  project: _builtins.str,
                  psc_service_attachment_link: _builtins.str,
@@ -4138,9 +4234,10 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param _builtins.str database_version: To filter out the Cloud SQL instances which are of the specified database version.
         :param _builtins.str dns_name: The instance-level dns name of the instance for PSC instances or public IP CAS instances.
         :param Sequence['GetDatabaseInstancesInstanceDnsNameArgs'] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
-        :param _builtins.str instance_type: The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+        :param _builtins.str instance_type: The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
         :param _builtins.str maintenance_version: Maintenance version.
         :param _builtins.str master_instance_name: The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+        :param _builtins.int node_count: For a read pool instance, the number of nodes in the read pool.
         :param _builtins.str project: The ID of the project in which the resources belong. If it is not provided, the provider project is used.
         :param _builtins.str psc_service_attachment_link: The link to service attachment of PSC instance.
         :param _builtins.str region: To filter out the Cloud SQL instances which are located in the specified region.
@@ -4166,6 +4263,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "maintenance_version", maintenance_version)
         pulumi.set(__self__, "master_instance_name", master_instance_name)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_ip_address", private_ip_address)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "psc_service_attachment_link", psc_service_attachment_link)
@@ -4248,7 +4346,7 @@ class GetDatabaseInstancesInstanceResult(dict):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> _builtins.str:
         """
-        The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+        The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
         """
         return pulumi.get(self, "instance_type")
 
@@ -4277,6 +4375,14 @@ class GetDatabaseInstancesInstanceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> _builtins.int:
+        """
+        For a read pool instance, the number of nodes in the read pool.
+        """
+        return pulumi.get(self, "node_count")
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
@@ -4636,13 +4742,16 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
 class GetDatabaseInstancesInstanceReplicationClusterResult(dict):
     def __init__(__self__, *,
                  dr_replica: _builtins.bool,
-                 failover_dr_replica_name: _builtins.str):
+                 failover_dr_replica_name: _builtins.str,
+                 psa_write_endpoint: _builtins.str):
         """
         :param _builtins.bool dr_replica: Read-only field that indicates whether the replica is a DR replica.
         :param _builtins.str failover_dr_replica_name: If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        :param _builtins.str psa_write_endpoint: If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
         """
         pulumi.set(__self__, "dr_replica", dr_replica)
         pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+        pulumi.set(__self__, "psa_write_endpoint", psa_write_endpoint)
 
     @_builtins.property
     @pulumi.getter(name="drReplica")
@@ -4659,6 +4768,14 @@ class GetDatabaseInstancesInstanceReplicationClusterResult(dict):
         If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
         """
         return pulumi.get(self, "failover_dr_replica_name")
+
+    @_builtins.property
+    @pulumi.getter(name="psaWriteEndpoint")
+    def psa_write_endpoint(self) -> _builtins.str:
+        """
+        If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.
+        """
+        return pulumi.get(self, "psa_write_endpoint")
 
 
 @pulumi.output_type
@@ -4785,6 +4902,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  disk_size: _builtins.int,
                  disk_type: _builtins.str,
                  edition: _builtins.str,
+                 effective_availability_type: _builtins.str,
                  enable_dataplex_integration: _builtins.bool,
                  enable_google_ml_integration: _builtins.bool,
                  insights_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult'],
@@ -4807,6 +4925,8 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
                For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
                is set to true. Defaults to ZONAL.
+               For read pool instances, this field is read-only. The availability type is changed by specifying
+               the number of nodes (node_count).
         :param _builtins.str collation: The name of server instance collation.
         :param Sequence['GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param _builtins.str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
@@ -4819,6 +4939,9 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         :param _builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
         :param _builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         :param _builtins.str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        :param _builtins.str effective_availability_type: The availability type of the Cloud SQL instance, high availability
+               (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+               API (for read pools, effective_availability_type may differ from availability_type).
         :param _builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param _builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
         :param Sequence['GetDatabaseInstancesInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
@@ -4849,6 +4972,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "effective_availability_type", effective_availability_type)
         pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         pulumi.set(__self__, "insights_configs", insights_configs)
@@ -4892,6 +5016,8 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
         For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
         is set to true. Defaults to ZONAL.
+        For read pool instances, this field is read-only. The availability type is changed by specifying
+        the number of nodes (node_count).
         """
         return pulumi.get(self, "availability_type")
 
@@ -5005,6 +5131,16 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         """
         return pulumi.get(self, "edition")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveAvailabilityType")
+    def effective_availability_type(self) -> _builtins.str:
+        """
+        The availability type of the Cloud SQL instance, high availability
+        (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
+        API (for read pools, effective_availability_type may differ from availability_type).
+        """
+        return pulumi.get(self, "effective_availability_type")
 
     @_builtins.property
     @pulumi.getter(name="enableDataplexIntegration")
@@ -5602,14 +5738,17 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult(
 class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[_builtins.str],
+                 network_attachment_uri: _builtins.str,
                  psc_auto_connections: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult'],
                  psc_enabled: _builtins.bool):
         """
         :param Sequence[_builtins.str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param _builtins.str network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
         :param Sequence['GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs'] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         :param _builtins.bool psc_enabled: Whether PSC connectivity is enabled for this instance.
         """
         pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        pulumi.set(__self__, "network_attachment_uri", network_attachment_uri)
         pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         pulumi.set(__self__, "psc_enabled", psc_enabled)
 
@@ -5620,6 +5759,14 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
         List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         """
         return pulumi.get(self, "allowed_consumer_projects")
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachmentUri")
+    def network_attachment_uri(self) -> _builtins.str:
+        """
+        Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        """
+        return pulumi.get(self, "network_attachment_uri")
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")

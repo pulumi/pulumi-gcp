@@ -259,8 +259,9 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         Location = "us-west1",
     ///         Description = "test admin cluster",
     ///         BootstrapClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-    ///         OnPremVersion = "1.31.0-gke.35",
+    ///         OnPremVersion = "1.33.0-gke.35",
     ///         ImageType = "ubuntu_containerd",
+    ///         EnableAdvancedCluster = true,
     ///         Vcenter = new Gcp.GkeOnPrem.Inputs.VmwareAdminClusterVcenterArgs
     ///         {
     ///             ResourcePool = "test resource pool",
@@ -671,6 +672,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// If set, the advanced cluster feature is enabled.
+        /// </summary>
+        [Input("enableAdvancedCluster")]
+        public Input<bool>? EnableAdvancedCluster { get; set; }
 
         /// <summary>
         /// The OS image type for the VMware admin cluster.

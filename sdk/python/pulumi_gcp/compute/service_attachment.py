@@ -921,6 +921,69 @@ class ServiceAttachment(pulumi.CustomResource):
             }],
             reconcile_connections=False)
         ```
+        ### Service Attachment Cross Region Ilb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="sa",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        backend_service = gcp.compute.BackendService("backend_service",
+            name="sa",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=health_check.id)
+        url_map = gcp.compute.URLMap("url_map",
+            name="sa",
+            description="Url map.",
+            default_service=backend_service.id)
+        http_proxy = gcp.compute.TargetHttpProxy("http_proxy",
+            name="sa",
+            description="a description",
+            url_map=url_map.id)
+        network = gcp.compute.Network("network",
+            name="sa",
+            auto_create_subnetworks=False)
+        subnetwork_proxy = gcp.compute.Subnetwork("subnetwork_proxy",
+            name="sa-proxy",
+            region="us-central1",
+            network=network.id,
+            purpose="GLOBAL_MANAGED_PROXY",
+            role="ACTIVE",
+            ip_cidr_range="10.2.0.0/16")
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="sa",
+            region="us-central1",
+            network=network.id,
+            ip_cidr_range="10.0.0.0/16")
+        forwarding_rule = gcp.compute.GlobalForwardingRule("forwarding_rule",
+            name="sa",
+            target=http_proxy.id,
+            network=network.id,
+            subnetwork=subnetwork.id,
+            port_range="80",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            opts = pulumi.ResourceOptions(depends_on=[subnetwork_proxy]))
+        subnetwork_psc = gcp.compute.Subnetwork("subnetwork_psc",
+            name="sa-psc",
+            region="us-central1",
+            network=network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="sa",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            connection_preference="ACCEPT_AUTOMATIC",
+            enable_proxy_protocol=False,
+            nat_subnets=[subnetwork_psc.id],
+            target_service=forwarding_rule.id)
+        ```
 
         ## Import
 
@@ -1270,6 +1333,69 @@ class ServiceAttachment(pulumi.CustomResource):
                 "connection_limit": 4,
             }],
             reconcile_connections=False)
+        ```
+        ### Service Attachment Cross Region Ilb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="sa",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        backend_service = gcp.compute.BackendService("backend_service",
+            name="sa",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=health_check.id)
+        url_map = gcp.compute.URLMap("url_map",
+            name="sa",
+            description="Url map.",
+            default_service=backend_service.id)
+        http_proxy = gcp.compute.TargetHttpProxy("http_proxy",
+            name="sa",
+            description="a description",
+            url_map=url_map.id)
+        network = gcp.compute.Network("network",
+            name="sa",
+            auto_create_subnetworks=False)
+        subnetwork_proxy = gcp.compute.Subnetwork("subnetwork_proxy",
+            name="sa-proxy",
+            region="us-central1",
+            network=network.id,
+            purpose="GLOBAL_MANAGED_PROXY",
+            role="ACTIVE",
+            ip_cidr_range="10.2.0.0/16")
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="sa",
+            region="us-central1",
+            network=network.id,
+            ip_cidr_range="10.0.0.0/16")
+        forwarding_rule = gcp.compute.GlobalForwardingRule("forwarding_rule",
+            name="sa",
+            target=http_proxy.id,
+            network=network.id,
+            subnetwork=subnetwork.id,
+            port_range="80",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            opts = pulumi.ResourceOptions(depends_on=[subnetwork_proxy]))
+        subnetwork_psc = gcp.compute.Subnetwork("subnetwork_psc",
+            name="sa-psc",
+            region="us-central1",
+            network=network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="sa",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            connection_preference="ACCEPT_AUTOMATIC",
+            enable_proxy_protocol=False,
+            nat_subnets=[subnetwork_psc.id],
+            target_service=forwarding_rule.id)
         ```
 
         ## Import

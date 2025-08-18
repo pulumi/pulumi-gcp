@@ -13516,6 +13516,8 @@ type TransferJobTransferSpecAwsS3DataSource struct {
 	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
+	// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+	CloudfrontDomain *string `pulumi:"cloudfrontDomain"`
 	// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
 	ManagedPrivateNetwork *bool `pulumi:"managedPrivateNetwork"`
 	// S3 Bucket path in bucket to transfer.
@@ -13540,6 +13542,8 @@ type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+	CloudfrontDomain pulumi.StringPtrInput `pulumi:"cloudfrontDomain"`
 	// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
 	ManagedPrivateNetwork pulumi.BoolPtrInput `pulumi:"managedPrivateNetwork"`
 	// S3 Bucket path in bucket to transfer.
@@ -13637,6 +13641,11 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.String
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+func (o TransferJobTransferSpecAwsS3DataSourceOutput) CloudfrontDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.CloudfrontDomain }).(pulumi.StringPtrOutput)
+}
+
 // Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) ManagedPrivateNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *bool { return v.ManagedPrivateNetwork }).(pulumi.BoolPtrOutput)
@@ -13693,6 +13702,16 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.Str
 			return nil
 		}
 		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) CloudfrontDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudfrontDomain
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13883,12 +13902,14 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) SecretAcces
 }
 
 type TransferJobTransferSpecAzureBlobStorageDataSource struct {
-	// Credentials used to authenticate API requests to Azure block.
+	// ) Credentials used to authenticate API requests to Azure block.
 	AzureCredentials *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.`
 	Container string `pulumi:"container"`
-	// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+	// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
 	CredentialsSecret *string `pulumi:"credentialsSecret"`
+	// Federated identity config of a user registered Azure application. Structure documented below.
+	FederatedIdentityConfig *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig `pulumi:"federatedIdentityConfig"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
 	// The name of the Azure Storage account.
@@ -13907,12 +13928,14 @@ type TransferJobTransferSpecAzureBlobStorageDataSourceInput interface {
 }
 
 type TransferJobTransferSpecAzureBlobStorageDataSourceArgs struct {
-	// Credentials used to authenticate API requests to Azure block.
+	// ) Credentials used to authenticate API requests to Azure block.
 	AzureCredentials TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrInput `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.`
 	Container pulumi.StringInput `pulumi:"container"`
-	// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+	// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
 	CredentialsSecret pulumi.StringPtrInput `pulumi:"credentialsSecret"`
+	// Federated identity config of a user registered Azure application. Structure documented below.
+	FederatedIdentityConfig TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrInput `pulumi:"federatedIdentityConfig"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The name of the Azure Storage account.
@@ -13996,7 +14019,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTr
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput)
 }
 
-// Credentials used to authenticate API requests to Azure block.
+// ) Credentials used to authenticate API requests to Azure block.
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) AzureCredentials() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
 		return v.AzureCredentials
@@ -14008,9 +14031,16 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) Container() pul
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) string { return v.Container }).(pulumi.StringOutput)
 }
 
-// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) CredentialsSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *string { return v.CredentialsSecret }).(pulumi.StringPtrOutput)
+}
+
+// Federated identity config of a user registered Azure application. Structure documented below.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) FederatedIdentityConfig() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
+		return v.FederatedIdentityConfig
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput)
 }
 
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -14047,7 +14077,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Elem() Trans
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourceOutput)
 }
 
-// Credentials used to authenticate API requests to Azure block.
+// ) Credentials used to authenticate API requests to Azure block.
 func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) AzureCredentials() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
 		if v == nil {
@@ -14067,7 +14097,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Container() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
 func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) CredentialsSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *string {
 		if v == nil {
@@ -14075,6 +14105,16 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) CredentialsS
 		}
 		return v.CredentialsSecret
 	}).(pulumi.StringPtrOutput)
+}
+
+// Federated identity config of a user registered Azure application. Structure documented below.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) FederatedIdentityConfig() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FederatedIdentityConfig
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput)
 }
 
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -14099,8 +14139,6 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) StorageAccou
 
 type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials struct {
 	// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
-	//
-	// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
 	SasToken string `pulumi:"sasToken"`
 }
 
@@ -14117,8 +14155,6 @@ type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsInput inte
 
 type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs struct {
 	// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
-	//
-	// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
 	SasToken pulumi.StringInput `pulumi:"sasToken"`
 }
 
@@ -14200,8 +14236,6 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput)
 }
 
 // Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
-//
-// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) SasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) string { return v.SasToken }).(pulumi.StringOutput)
 }
@@ -14231,14 +14265,180 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutp
 }
 
 // Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
-//
-// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput) SasToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.SasToken
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig struct {
+	// The client (application) ID of the application with federated credentials.
+	ClientId string `pulumi:"clientId"`
+	// The client (directory) ID of the application with federated credentials.
+	//
+	// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
+	TenantId string `pulumi:"tenantId"`
+}
+
+// TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigInput is an input type that accepts TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs and TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigInput` via:
+//
+//	TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs{...}
+type TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutputWithContext(context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs struct {
+	// The client (application) ID of the application with federated credentials.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The client (directory) ID of the application with federated credentials.
+	//
+	// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig)(nil)).Elem()
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput)
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput).ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrInput is an input type that accepts TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs, TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtr and TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrInput` via:
+//
+//	        TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput
+	ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput
+}
+
+type transferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrType TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs
+
+func TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtr(v *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrInput {
+	return (*transferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrType)(v)
+}
+
+func (*transferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrType) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return i.ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrType) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return o.ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig) *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
+		return &v
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput)
+}
+
+// The client (application) ID of the application with federated credentials.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig) string {
+		return v.ClientId
+	}).(pulumi.StringOutput)
+}
+
+// The client (directory) ID of the application with federated credentials.
+//
+// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig) string {
+		return v.TenantId
+	}).(pulumi.StringOutput)
+}
+
+type TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput) ToTransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput) Elem() TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig) TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig
+		return ret
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput)
+}
+
+// The client (application) ID of the application with federated credentials.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client (directory) ID of the application with federated credentials.
+//
+// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21769,6 +21969,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecAzureBlobStorageDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsInput)(nil)).Elem(), TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrInput)(nil)).Elem(), TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigInput)(nil)).Elem(), TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrInput)(nil)).Elem(), TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecGcsDataSinkInput)(nil)).Elem(), TransferJobTransferSpecGcsDataSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecGcsDataSinkPtrInput)(nil)).Elem(), TransferJobTransferSpecGcsDataSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecGcsDataSourceInput)(nil)).Elem(), TransferJobTransferSpecGcsDataSourceArgs{})
@@ -22071,6 +22273,8 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSinkOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSinkPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSourceOutput{})

@@ -29,6 +29,7 @@ class DatabaseInstanceArgs:
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
@@ -61,7 +62,7 @@ class DatabaseInstanceArgs:
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-        :param pulumi.Input[_builtins.str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
@@ -70,6 +71,7 @@ class DatabaseInstanceArgs:
                blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
@@ -104,6 +106,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "master_instance_name", master_instance_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -191,7 +195,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         """
         return pulumi.get(self, "instance_type")
 
@@ -239,6 +243,18 @@ class DatabaseInstanceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        For a read pool instance, the number of nodes in the read pool.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
@@ -364,6 +380,7 @@ class _DatabaseInstanceState:
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  psc_service_attachment_link: Optional[pulumi.Input[_builtins.str]] = None,
@@ -408,7 +425,7 @@ class _DatabaseInstanceState:
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[_builtins.str] first_ip_address: The first IPv4 address of any type assigned.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
@@ -417,6 +434,7 @@ class _DatabaseInstanceState:
                blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
         :param pulumi.Input[_builtins.str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -470,6 +488,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "master_instance_name", master_instance_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if project is not None:
@@ -630,7 +650,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         """
         return pulumi.get(self, "instance_type")
 
@@ -687,6 +707,18 @@ class _DatabaseInstanceState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        For a read pool instance, the number of nodes in the read pool.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
@@ -879,6 +911,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
@@ -1027,6 +1060,33 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Cloud SQL Instance with PSC outbound
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            name="psc-enabled-main-instance",
+            database_version="MYSQL_8_0",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "psc_configs": [{
+                        "psc_enabled": True,
+                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
+                        "network_attachment_uri": "network-attachment-uri",
+                    }],
+                    "ipv4_enabled": False,
+                },
+                "backup_configuration": {
+                    "enabled": True,
+                    "binary_log_enabled": True,
+                },
+                "availability_type": "REGIONAL",
+            })
+        ```
+
         ## Switchover
 
         Users can perform a switchover on a replica by following the steps below.
@@ -1118,7 +1178,7 @@ class DatabaseInstance(pulumi.CustomResource):
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-        :param pulumi.Input[_builtins.str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
@@ -1127,6 +1187,7 @@ class DatabaseInstance(pulumi.CustomResource):
                blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
@@ -1291,6 +1352,33 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Cloud SQL Instance with PSC outbound
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            name="psc-enabled-main-instance",
+            database_version="MYSQL_8_0",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "psc_configs": [{
+                        "psc_enabled": True,
+                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
+                        "network_attachment_uri": "network-attachment-uri",
+                    }],
+                    "ipv4_enabled": False,
+                },
+                "backup_configuration": {
+                    "enabled": True,
+                    "binary_log_enabled": True,
+                },
+                "availability_type": "REGIONAL",
+            })
+        ```
+
         ## Switchover
 
         Users can perform a switchover on a replica by following the steps below.
@@ -1381,6 +1469,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
@@ -1408,6 +1497,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["maintenance_version"] = maintenance_version
             __props__.__dict__["master_instance_name"] = master_instance_name
             __props__.__dict__["name"] = name
+            __props__.__dict__["node_count"] = node_count
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["replica_configuration"] = None if replica_configuration is None else pulumi.Output.secret(replica_configuration)
@@ -1454,6 +1544,7 @@ class DatabaseInstance(pulumi.CustomResource):
             maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
             master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            node_count: Optional[pulumi.Input[_builtins.int]] = None,
             private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             psc_service_attachment_link: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1503,7 +1594,7 @@ class DatabaseInstance(pulumi.CustomResource):
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[_builtins.str] first_ip_address: The first IPv4 address of any type assigned.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
@@ -1512,6 +1603,7 @@ class DatabaseInstance(pulumi.CustomResource):
                blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
         :param pulumi.Input[_builtins.str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -1555,6 +1647,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["maintenance_version"] = maintenance_version
         __props__.__dict__["master_instance_name"] = master_instance_name
         __props__.__dict__["name"] = name
+        __props__.__dict__["node_count"] = node_count
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_service_attachment_link"] = psc_service_attachment_link
@@ -1666,7 +1759,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         """
         return pulumi.get(self, "instance_type")
 
@@ -1703,6 +1796,14 @@ class DatabaseInstance(pulumi.CustomResource):
         up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        For a read pool instance, the number of nodes in the read pool.
+        """
+        return pulumi.get(self, "node_count")
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
