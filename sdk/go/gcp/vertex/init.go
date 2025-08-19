@@ -87,6 +87,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiIndexEndpointDeployedIndex{}
 	case "gcp:vertex/aiMetadataStore:AiMetadataStore":
 		r = &AiMetadataStore{}
+	case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
+		r = &AiRagEngineConfig{}
 	case "gcp:vertex/aiTensorboard:AiTensorboard":
 		r = &AiTensorboard{}
 	default:
@@ -265,6 +267,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiMetadataStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiRagEngineConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

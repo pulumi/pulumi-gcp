@@ -205,6 +205,9 @@ import (
 type RegionSecurityPolicy struct {
 	pulumi.CustomResourceState
 
+	// Advanced Options Config of this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig RegionSecurityPolicyAdvancedOptionsConfigPtrOutput `pulumi:"advancedOptionsConfig"`
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig RegionSecurityPolicyDdosProtectionConfigPtrOutput `pulumi:"ddosProtectionConfig"`
@@ -275,6 +278,9 @@ func GetRegionSecurityPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionSecurityPolicy resources.
 type regionSecurityPolicyState struct {
+	// Advanced Options Config of this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig *RegionSecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig *RegionSecurityPolicyDdosProtectionConfig `pulumi:"ddosProtectionConfig"`
@@ -316,6 +322,9 @@ type regionSecurityPolicyState struct {
 }
 
 type RegionSecurityPolicyState struct {
+	// Advanced Options Config of this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig RegionSecurityPolicyAdvancedOptionsConfigPtrInput
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig RegionSecurityPolicyDdosProtectionConfigPtrInput
@@ -361,6 +370,9 @@ func (RegionSecurityPolicyState) ElementType() reflect.Type {
 }
 
 type regionSecurityPolicyArgs struct {
+	// Advanced Options Config of this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig *RegionSecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig *RegionSecurityPolicyDdosProtectionConfig `pulumi:"ddosProtectionConfig"`
@@ -394,6 +406,9 @@ type regionSecurityPolicyArgs struct {
 
 // The set of arguments for constructing a RegionSecurityPolicy resource.
 type RegionSecurityPolicyArgs struct {
+	// Advanced Options Config of this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig RegionSecurityPolicyAdvancedOptionsConfigPtrInput
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig RegionSecurityPolicyDdosProtectionConfigPtrInput
@@ -510,6 +525,14 @@ func (o RegionSecurityPolicyOutput) ToRegionSecurityPolicyOutput() RegionSecurit
 
 func (o RegionSecurityPolicyOutput) ToRegionSecurityPolicyOutputWithContext(ctx context.Context) RegionSecurityPolicyOutput {
 	return o
+}
+
+// Advanced Options Config of this security policy.
+// Structure is documented below.
+func (o RegionSecurityPolicyOutput) AdvancedOptionsConfig() RegionSecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return o.ApplyT(func(v *RegionSecurityPolicy) RegionSecurityPolicyAdvancedOptionsConfigPtrOutput {
+		return v.AdvancedOptionsConfig
+	}).(RegionSecurityPolicyAdvancedOptionsConfigPtrOutput)
 }
 
 // Configuration for Google Cloud Armor DDOS Proctection Config.

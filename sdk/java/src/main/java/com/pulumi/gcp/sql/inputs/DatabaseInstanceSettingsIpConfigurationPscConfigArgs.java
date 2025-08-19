@@ -34,6 +34,21 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
     }
 
     /**
+     * Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer&#39;s VPC. For example: &#34;projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment&#34;. This is required to enable outbound connection on a PSC instance.
+     * 
+     */
+    @Import(name="networkAttachmentUri")
+    private @Nullable Output<String> networkAttachmentUri;
+
+    /**
+     * @return Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer&#39;s VPC. For example: &#34;projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment&#34;. This is required to enable outbound connection on a PSC instance.
+     * 
+     */
+    public Optional<Output<String>> networkAttachmentUri() {
+        return Optional.ofNullable(this.networkAttachmentUri);
+    }
+
+    /**
      * A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
      * 
      */
@@ -67,6 +82,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
 
     private DatabaseInstanceSettingsIpConfigurationPscConfigArgs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs $) {
         this.allowedConsumerProjects = $.allowedConsumerProjects;
+        this.networkAttachmentUri = $.networkAttachmentUri;
         this.pscAutoConnections = $.pscAutoConnections;
         this.pscEnabled = $.pscEnabled;
     }
@@ -118,6 +134,27 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
          */
         public Builder allowedConsumerProjects(String... allowedConsumerProjects) {
             return allowedConsumerProjects(List.of(allowedConsumerProjects));
+        }
+
+        /**
+         * @param networkAttachmentUri Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer&#39;s VPC. For example: &#34;projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment&#34;. This is required to enable outbound connection on a PSC instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkAttachmentUri(@Nullable Output<String> networkAttachmentUri) {
+            $.networkAttachmentUri = networkAttachmentUri;
+            return this;
+        }
+
+        /**
+         * @param networkAttachmentUri Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer&#39;s VPC. For example: &#34;projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment&#34;. This is required to enable outbound connection on a PSC instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkAttachmentUri(String networkAttachmentUri) {
+            return networkAttachmentUri(Output.of(networkAttachmentUri));
         }
 
         /**

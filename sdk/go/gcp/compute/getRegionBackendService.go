@@ -79,6 +79,7 @@ type LookupRegionBackendServiceResult struct {
 	FailoverPolicies             []GetRegionBackendServiceFailoverPolicy           `pulumi:"failoverPolicies"`
 	Fingerprint                  string                                            `pulumi:"fingerprint"`
 	GeneratedId                  int                                               `pulumi:"generatedId"`
+	HaPolicies                   []GetRegionBackendServiceHaPolicy                 `pulumi:"haPolicies"`
 	HealthChecks                 []string                                          `pulumi:"healthChecks"`
 	Iaps                         []GetRegionBackendServiceIap                      `pulumi:"iaps"`
 	// The provider-assigned unique ID for this managed resource.
@@ -209,6 +210,10 @@ func (o LookupRegionBackendServiceResultOutput) Fingerprint() pulumi.StringOutpu
 
 func (o LookupRegionBackendServiceResultOutput) GeneratedId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) int { return v.GeneratedId }).(pulumi.IntOutput)
+}
+
+func (o LookupRegionBackendServiceResultOutput) HaPolicies() GetRegionBackendServiceHaPolicyArrayOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceHaPolicy { return v.HaPolicies }).(GetRegionBackendServiceHaPolicyArrayOutput)
 }
 
 func (o LookupRegionBackendServiceResultOutput) HealthChecks() pulumi.StringArrayOutput {

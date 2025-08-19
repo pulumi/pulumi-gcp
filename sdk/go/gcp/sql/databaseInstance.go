@@ -267,6 +267,53 @@ import (
 //
 // ```
 //
+// ### Cloud SQL Instance with PSC outbound
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("psc-enabled-main-instance"),
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
+//								PscEnabled: pulumi.Bool(true),
+//								AllowedConsumerProjects: pulumi.StringArray{
+//									pulumi.String("allowed-consumer-project-name"),
+//								},
+//								NetworkAttachmentUri: pulumi.String("network-attachment-uri"),
+//							},
+//						},
+//						Ipv4Enabled: pulumi.Bool(false),
+//					},
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//					AvailabilityType: pulumi.String("REGIONAL"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Switchover
 //
 // Users can perform a switchover on a replica by following the steps below.
@@ -374,7 +421,7 @@ type DatabaseInstance struct {
 	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
-	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringOutput                  `pulumi:"instanceType"`
 	IpAddresses  DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -388,6 +435,8 @@ type DatabaseInstance struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringOutput `pulumi:"name"`
+	// For a read pool instance, the number of nodes in the read pool.
+	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
@@ -510,7 +559,7 @@ type databaseInstanceState struct {
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress *string `pulumi:"firstIpAddress"`
-	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType *string                     `pulumi:"instanceType"`
 	IpAddresses  []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -524,6 +573,8 @@ type databaseInstanceState struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
+	// For a read pool instance, the number of nodes in the read pool.
+	NodeCount *int `pulumi:"nodeCount"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
@@ -602,7 +653,7 @@ type DatabaseInstanceState struct {
 	EncryptionKeyName pulumi.StringPtrInput
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringPtrInput
-	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringPtrInput
 	IpAddresses  DatabaseInstanceIpAddressArrayInput
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -616,6 +667,8 @@ type DatabaseInstanceState struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput
+	// For a read pool instance, the number of nodes in the read pool.
+	NodeCount pulumi.IntPtrInput
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
@@ -687,7 +740,7 @@ type databaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
-	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType *string `pulumi:"instanceType"`
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
 	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
@@ -700,6 +753,8 @@ type databaseInstanceArgs struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
+	// For a read pool instance, the number of nodes in the read pool.
+	NodeCount *int `pulumi:"nodeCount"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -756,7 +811,7 @@ type DatabaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
-	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringPtrInput
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
 	MaintenanceVersion pulumi.StringPtrInput
@@ -769,6 +824,8 @@ type DatabaseInstanceArgs struct {
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput
+	// For a read pool instance, the number of nodes in the read pool.
+	NodeCount pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -948,7 +1005,7 @@ func (o DatabaseInstanceOutput) FirstIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.FirstIpAddress }).(pulumi.StringOutput)
 }
 
-// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 func (o DatabaseInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -975,6 +1032,11 @@ func (o DatabaseInstanceOutput) MasterInstanceName() pulumi.StringOutput {
 // up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// For a read pool instance, the number of nodes in the read pool.
+func (o DatabaseInstanceOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
 }
 
 // The first private (`PRIVATE`) IPv4 address assigned.

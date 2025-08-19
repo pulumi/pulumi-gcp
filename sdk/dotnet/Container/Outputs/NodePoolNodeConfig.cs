@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigAdvancedMachineFeatures? AdvancedMachineFeatures;
         /// <summary>
+        /// Boot disk configuration for node pools nodes.
+        /// </summary>
+        public readonly Outputs.NodePoolNodeConfigBootDisk? BootDisk;
+        /// <summary>
         /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         /// </summary>
         public readonly string? BootDiskKmsKey;
@@ -198,6 +202,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private NodePoolNodeConfig(
             Outputs.NodePoolNodeConfigAdvancedMachineFeatures? advancedMachineFeatures,
 
+            Outputs.NodePoolNodeConfigBootDisk? bootDisk,
+
             string? bootDiskKmsKey,
 
             Outputs.NodePoolNodeConfigConfidentialNodes? confidentialNodes,
@@ -287,6 +293,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Outputs.NodePoolNodeConfigWorkloadMetadataConfig? workloadMetadataConfig)
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
+            BootDisk = bootDisk;
             BootDiskKmsKey = bootDiskKmsKey;
             ConfidentialNodes = confidentialNodes;
             ContainerdConfig = containerdConfig;

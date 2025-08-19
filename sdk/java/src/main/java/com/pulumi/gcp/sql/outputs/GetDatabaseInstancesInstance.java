@@ -14,6 +14,7 @@ import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceRestoreBackupConte
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceServerCaCert;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSetting;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -54,7 +55,7 @@ public final class GetDatabaseInstancesInstance {
     private String encryptionKeyName;
     private String firstIpAddress;
     /**
-     * @return The type of the instance. The valid values are:- &#39;SQL_INSTANCE_TYPE_UNSPECIFIED&#39;, &#39;CLOUD_SQL_INSTANCE&#39;, &#39;ON_PREMISES_INSTANCE&#39; and &#39;READ_REPLICA_INSTANCE&#39;.
+     * @return The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
      * 
      */
     private String instanceType;
@@ -70,6 +71,11 @@ public final class GetDatabaseInstancesInstance {
      */
     private String masterInstanceName;
     private String name;
+    /**
+     * @return For a read pool instance, the number of nodes in the read pool.
+     * 
+     */
+    private Integer nodeCount;
     private String privateIpAddress;
     /**
      * @return The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -178,7 +184,7 @@ public final class GetDatabaseInstancesInstance {
         return this.firstIpAddress;
     }
     /**
-     * @return The type of the instance. The valid values are:- &#39;SQL_INSTANCE_TYPE_UNSPECIFIED&#39;, &#39;CLOUD_SQL_INSTANCE&#39;, &#39;ON_PREMISES_INSTANCE&#39; and &#39;READ_REPLICA_INSTANCE&#39;.
+     * @return The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
      * 
      */
     public String instanceType() {
@@ -203,6 +209,13 @@ public final class GetDatabaseInstancesInstance {
     }
     public String name() {
         return this.name;
+    }
+    /**
+     * @return For a read pool instance, the number of nodes in the read pool.
+     * 
+     */
+    public Integer nodeCount() {
+        return this.nodeCount;
     }
     public String privateIpAddress() {
         return this.privateIpAddress;
@@ -310,6 +323,7 @@ public final class GetDatabaseInstancesInstance {
         private String maintenanceVersion;
         private String masterInstanceName;
         private String name;
+        private Integer nodeCount;
         private String privateIpAddress;
         private String project;
         private String pscServiceAttachmentLink;
@@ -341,6 +355,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.maintenanceVersion = defaults.maintenanceVersion;
     	      this.masterInstanceName = defaults.masterInstanceName;
     	      this.name = defaults.name;
+    	      this.nodeCount = defaults.nodeCount;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.project = defaults.project;
     	      this.pscServiceAttachmentLink = defaults.pscServiceAttachmentLink;
@@ -479,6 +494,14 @@ public final class GetDatabaseInstancesInstance {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeCount(Integer nodeCount) {
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
@@ -627,6 +650,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.maintenanceVersion = maintenanceVersion;
             _resultValue.masterInstanceName = masterInstanceName;
             _resultValue.name = name;
+            _resultValue.nodeCount = nodeCount;
             _resultValue.privateIpAddress = privateIpAddress;
             _resultValue.project = project;
             _resultValue.pscServiceAttachmentLink = pscServiceAttachmentLink;

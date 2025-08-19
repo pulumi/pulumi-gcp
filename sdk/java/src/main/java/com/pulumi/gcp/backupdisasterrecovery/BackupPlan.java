@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.backupdisasterrecovery.BackupPlanArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanState;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.BackupPlanBackupRule;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -149,6 +150,68 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Backup Dr Backup Plan For Csql Resource
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlan;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleBackupWindowArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myBackupVault = new BackupVault("myBackupVault", BackupVaultArgs.builder()
+ *             .location("us-central1")
+ *             .backupVaultId("backup-vault-csql-test")
+ *             .backupMinimumEnforcedRetentionDuration("100000s")
+ *             .build());
+ * 
+ *         var my_csql_backup_plan_1 = new BackupPlan("my-csql-backup-plan-1", BackupPlanArgs.builder()
+ *             .location("us-central1")
+ *             .backupPlanId("backup-plan-csql-test")
+ *             .resourceType("sqladmin.googleapis.com/Instance")
+ *             .backupVault(myBackupVault.id())
+ *             .backupRules(BackupPlanBackupRuleArgs.builder()
+ *                 .ruleId("rule-1")
+ *                 .backupRetentionDays(5)
+ *                 .standardSchedule(BackupPlanBackupRuleStandardScheduleArgs.builder()
+ *                     .recurrenceType("HOURLY")
+ *                     .hourlyFrequency(6)
+ *                     .timeZone("UTC")
+ *                     .backupWindow(BackupPlanBackupRuleStandardScheduleBackupWindowArgs.builder()
+ *                         .startHourOfDay(0)
+ *                         .endHourOfDay(6)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .logRetentionDays(4)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -278,6 +341,20 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+     * 
+     */
+    @Export(name="logRetentionDays", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> logRetentionDays;
+
+    /**
+     * @return This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+     * 
+     */
+    public Output<Optional<Integer>> logRetentionDays() {
+        return Codegen.optional(this.logRetentionDays);
+    }
+    /**
      * The name of backup plan resource created
      * 
      */
@@ -309,7 +386,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
@@ -317,7 +394,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource type to which the `BackupPlan` will be applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     public Output<String> resourceType() {

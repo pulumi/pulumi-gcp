@@ -661,6 +661,46 @@ class Topic(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Pubsub Topic Multiple Smts
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            message_transforms=[
+                {
+                    "javascript_udf": {
+                        "function_name": "redactSSN",
+                        "code": \"\"\"function redactSSN(message, metadata) {
+          const data = JSON.parse(message.data);
+          delete data['ssn'];
+          message.data = JSON.stringify(data);
+          return message;
+        }
+        \"\"\",
+                    },
+                },
+                {
+                    "javascript_udf": {
+                        "function_name": "otherFunc",
+                        "code": \"\"\"function otherFunc(message, metadata) {
+          return null;
+        }
+        \"\"\",
+                    },
+                },
+                {
+                    "disabled": True,
+                    "javascript_udf": {
+                        "function_name": "someSMTWeDisabled",
+                        "code": "...",
+                    },
+                },
+            ])
+        ```
+
         ## Import
 
         Topic can be imported using any of these accepted formats:
@@ -926,6 +966,46 @@ class Topic(pulumi.CustomResource):
                 },
             }])
         ```
+        ### Pubsub Topic Multiple Smts
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            message_transforms=[
+                {
+                    "javascript_udf": {
+                        "function_name": "redactSSN",
+                        "code": \"\"\"function redactSSN(message, metadata) {
+          const data = JSON.parse(message.data);
+          delete data['ssn'];
+          message.data = JSON.stringify(data);
+          return message;
+        }
+        \"\"\",
+                    },
+                },
+                {
+                    "javascript_udf": {
+                        "function_name": "otherFunc",
+                        "code": \"\"\"function otherFunc(message, metadata) {
+          return null;
+        }
+        \"\"\",
+                    },
+                },
+                {
+                    "disabled": True,
+                    "javascript_udf": {
+                        "function_name": "someSMTWeDisabled",
+                        "code": "...",
+                    },
+                },
+            ])
+        ```
+
         ## Import
 
         Topic can be imported using any of these accepted formats:

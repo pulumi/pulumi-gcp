@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigAdvancedMachineFeatures? AdvancedMachineFeatures;
         /// <summary>
+        /// Configuration of the node pool boot disk. Structure is documented below
+        /// </summary>
+        public readonly Outputs.ClusterNodeConfigBootDisk? BootDisk;
+        /// <summary>
         /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
         /// </summary>
         public readonly string? BootDiskKmsKey;
@@ -32,12 +36,13 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly Outputs.ClusterNodeConfigContainerdConfig? ContainerdConfig;
         /// <summary>
         /// Size of the disk attached to each node, specified
-        /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+        /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+        /// Prefer configuring `boot_disk`.
         /// </summary>
         public readonly int? DiskSizeGb;
         /// <summary>
         /// Type of the disk attached to each node
-        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
@@ -259,6 +264,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterNodeConfig(
             Outputs.ClusterNodeConfigAdvancedMachineFeatures? advancedMachineFeatures,
 
+            Outputs.ClusterNodeConfigBootDisk? bootDisk,
+
             string? bootDiskKmsKey,
 
             Outputs.ClusterNodeConfigConfidentialNodes? confidentialNodes,
@@ -348,6 +355,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Outputs.ClusterNodeConfigWorkloadMetadataConfig? workloadMetadataConfig)
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
+            BootDisk = bootDisk;
             BootDiskKmsKey = bootDiskKmsKey;
             ConfidentialNodes = confidentialNodes;
             ContainerdConfig = containerdConfig;

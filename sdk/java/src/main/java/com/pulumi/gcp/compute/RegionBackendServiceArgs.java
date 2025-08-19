@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.RegionBackendServiceConsistentHashArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceCustomMetricArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceDynamicForwardingArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceFailoverPolicyArgs;
+import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceOutlierDetectionArgs;
@@ -255,6 +256,37 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<RegionBackendServiceFailoverPolicyArgs>> failoverPolicy() {
         return Optional.ofNullable(this.failoverPolicy);
+    }
+
+    /**
+     * Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+     * The backends of this regional backend service must only specify zonal network endpoint groups
+     * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+     * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+     * requires customers to be responsible for tracking backend endpoint health and electing a
+     * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+     * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+     * Passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="haPolicy")
+    private @Nullable Output<RegionBackendServiceHaPolicyArgs> haPolicy;
+
+    /**
+     * @return Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+     * The backends of this regional backend service must only specify zonal network endpoint groups
+     * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+     * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+     * requires customers to be responsible for tracking backend endpoint health and electing a
+     * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+     * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+     * Passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionBackendServiceHaPolicyArgs>> haPolicy() {
+        return Optional.ofNullable(this.haPolicy);
     }
 
     /**
@@ -730,6 +762,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         this.dynamicForwarding = $.dynamicForwarding;
         this.enableCdn = $.enableCdn;
         this.failoverPolicy = $.failoverPolicy;
+        this.haPolicy = $.haPolicy;
         this.healthChecks = $.healthChecks;
         this.iap = $.iap;
         this.ipAddressSelectionPolicy = $.ipAddressSelectionPolicy;
@@ -1086,6 +1119,43 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          */
         public Builder failoverPolicy(RegionBackendServiceFailoverPolicyArgs failoverPolicy) {
             return failoverPolicy(Output.of(failoverPolicy));
+        }
+
+        /**
+         * @param haPolicy Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+         * The backends of this regional backend service must only specify zonal network endpoint groups
+         * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+         * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+         * requires customers to be responsible for tracking backend endpoint health and electing a
+         * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+         * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+         * Passthrough Network Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder haPolicy(@Nullable Output<RegionBackendServiceHaPolicyArgs> haPolicy) {
+            $.haPolicy = haPolicy;
+            return this;
+        }
+
+        /**
+         * @param haPolicy Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+         * The backends of this regional backend service must only specify zonal network endpoint groups
+         * (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+         * be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+         * requires customers to be responsible for tracking backend endpoint health and electing a
+         * leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+         * haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+         * Passthrough Network Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder haPolicy(RegionBackendServiceHaPolicyArgs haPolicy) {
+            return haPolicy(Output.of(haPolicy));
         }
 
         /**

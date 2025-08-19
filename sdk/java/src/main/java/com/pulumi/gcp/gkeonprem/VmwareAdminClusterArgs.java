@@ -16,6 +16,7 @@ import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPlatformConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterVcenterArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -177,6 +178,21 @@ public final class VmwareAdminClusterArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * If set, the advanced cluster feature is enabled.
+     * 
+     */
+    @Import(name="enableAdvancedCluster")
+    private @Nullable Output<Boolean> enableAdvancedCluster;
+
+    /**
+     * @return If set, the advanced cluster feature is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAdvancedCluster() {
+        return Optional.ofNullable(this.enableAdvancedCluster);
     }
 
     /**
@@ -352,6 +368,7 @@ public final class VmwareAdminClusterArgs extends com.pulumi.resources.ResourceA
         this.bootstrapClusterMembership = $.bootstrapClusterMembership;
         this.controlPlaneNode = $.controlPlaneNode;
         this.description = $.description;
+        this.enableAdvancedCluster = $.enableAdvancedCluster;
         this.imageType = $.imageType;
         this.loadBalancer = $.loadBalancer;
         this.location = $.location;
@@ -580,6 +597,27 @@ public final class VmwareAdminClusterArgs extends com.pulumi.resources.ResourceA
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableAdvancedCluster If set, the advanced cluster feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAdvancedCluster(@Nullable Output<Boolean> enableAdvancedCluster) {
+            $.enableAdvancedCluster = enableAdvancedCluster;
+            return this;
+        }
+
+        /**
+         * @param enableAdvancedCluster If set, the advanced cluster feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAdvancedCluster(Boolean enableAdvancedCluster) {
+            return enableAdvancedCluster(Output.of(enableAdvancedCluster));
         }
 
         /**

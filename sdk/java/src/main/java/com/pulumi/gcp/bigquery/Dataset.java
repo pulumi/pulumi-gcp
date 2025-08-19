@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("env", "default"))
  *             .accesses(            
  *                 DatasetAccessArgs.builder()
- *                     .role("OWNER")
+ *                     .role("roles/bigquery.dataOwner")
  *                     .userByEmail(bqowner.email())
  *                     .build(),
  *                 DatasetAccessArgs.builder()

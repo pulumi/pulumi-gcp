@@ -25,6 +25,11 @@ public final class TransferJobTransferSpecAwsS3DataSource {
      */
     private String bucketName;
     /**
+     * @return The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+     * 
+     */
+    private @Nullable String cloudfrontDomain;
+    /**
      * @return Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
      * 
      */
@@ -54,6 +59,13 @@ public final class TransferJobTransferSpecAwsS3DataSource {
      */
     public String bucketName() {
         return this.bucketName;
+    }
+    /**
+     * @return The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+     * 
+     */
+    public Optional<String> cloudfrontDomain() {
+        return Optional.ofNullable(this.cloudfrontDomain);
     }
     /**
      * @return Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
@@ -88,6 +100,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
     public static final class Builder {
         private @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
         private String bucketName;
+        private @Nullable String cloudfrontDomain;
         private @Nullable Boolean managedPrivateNetwork;
         private @Nullable String path;
         private @Nullable String roleArn;
@@ -96,6 +109,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccessKey = defaults.awsAccessKey;
     	      this.bucketName = defaults.bucketName;
+    	      this.cloudfrontDomain = defaults.cloudfrontDomain;
     	      this.managedPrivateNetwork = defaults.managedPrivateNetwork;
     	      this.path = defaults.path;
     	      this.roleArn = defaults.roleArn;
@@ -113,6 +127,12 @@ public final class TransferJobTransferSpecAwsS3DataSource {
               throw new MissingRequiredPropertyException("TransferJobTransferSpecAwsS3DataSource", "bucketName");
             }
             this.bucketName = bucketName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudfrontDomain(@Nullable String cloudfrontDomain) {
+
+            this.cloudfrontDomain = cloudfrontDomain;
             return this;
         }
         @CustomType.Setter
@@ -137,6 +157,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
             final var _resultValue = new TransferJobTransferSpecAwsS3DataSource();
             _resultValue.awsAccessKey = awsAccessKey;
             _resultValue.bucketName = bucketName;
+            _resultValue.cloudfrontDomain = cloudfrontDomain;
             _resultValue.managedPrivateNetwork = managedPrivateNetwork;
             _resultValue.path = path;
             _resultValue.roleArn = roleArn;

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigBootDisk;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigConfidentialNodes;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigContainerdConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEffectiveTaint;
@@ -44,6 +45,11 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable ClusterNodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
     /**
+     * @return Configuration of the node pool boot disk. Structure is documented below
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigBootDisk bootDisk;
+    /**
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
@@ -60,13 +66,14 @@ public final class ClusterNodePoolNodeConfig {
     private @Nullable ClusterNodePoolNodeConfigContainerdConfig containerdConfig;
     /**
      * @return Size of the disk attached to each node, specified
-     * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+     * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+     * Prefer configuring `boot_disk`.
      * 
      */
     private @Nullable Integer diskSizeGb;
     /**
      * @return Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
      * 
      */
     private @Nullable String diskType;
@@ -325,6 +332,13 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.advancedMachineFeatures);
     }
     /**
+     * @return Configuration of the node pool boot disk. Structure is documented below
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigBootDisk> bootDisk() {
+        return Optional.ofNullable(this.bootDisk);
+    }
+    /**
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
@@ -347,7 +361,8 @@ public final class ClusterNodePoolNodeConfig {
     }
     /**
      * @return Size of the disk attached to each node, specified
-     * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+     * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+     * Prefer configuring `boot_disk`.
      * 
      */
     public Optional<Integer> diskSizeGb() {
@@ -355,7 +370,7 @@ public final class ClusterNodePoolNodeConfig {
     }
     /**
      * @return Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39;
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
      * 
      */
     public Optional<String> diskType() {
@@ -694,6 +709,7 @@ public final class ClusterNodePoolNodeConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
+        private @Nullable ClusterNodePoolNodeConfigBootDisk bootDisk;
         private @Nullable String bootDiskKmsKey;
         private @Nullable ClusterNodePoolNodeConfigConfidentialNodes confidentialNodes;
         private @Nullable ClusterNodePoolNodeConfigContainerdConfig containerdConfig;
@@ -742,6 +758,7 @@ public final class ClusterNodePoolNodeConfig {
         public Builder(ClusterNodePoolNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
+    	      this.bootDisk = defaults.bootDisk;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.containerdConfig = defaults.containerdConfig;
@@ -792,6 +809,12 @@ public final class ClusterNodePoolNodeConfig {
         public Builder advancedMachineFeatures(@Nullable ClusterNodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures) {
 
             this.advancedMachineFeatures = advancedMachineFeatures;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bootDisk(@Nullable ClusterNodePoolNodeConfigBootDisk bootDisk) {
+
+            this.bootDisk = bootDisk;
             return this;
         }
         @CustomType.Setter
@@ -1082,6 +1105,7 @@ public final class ClusterNodePoolNodeConfig {
         public ClusterNodePoolNodeConfig build() {
             final var _resultValue = new ClusterNodePoolNodeConfig();
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
+            _resultValue.bootDisk = bootDisk;
             _resultValue.bootDiskKmsKey = bootDiskKmsKey;
             _resultValue.confidentialNodes = confidentialNodes;
             _resultValue.containerdConfig = containerdConfig;

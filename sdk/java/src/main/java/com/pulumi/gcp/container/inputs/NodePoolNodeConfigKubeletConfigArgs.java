@@ -198,6 +198,21 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         return Optional.ofNullable(this.podPidsLimit);
     }
 
+    /**
+     * Defines whether to enable single process OOM killer.
+     * 
+     */
+    @Import(name="singleProcessOomKill")
+    private @Nullable Output<Boolean> singleProcessOomKill;
+
+    /**
+     * @return Defines whether to enable single process OOM killer.
+     * 
+     */
+    public Optional<Output<Boolean>> singleProcessOomKill() {
+        return Optional.ofNullable(this.singleProcessOomKill);
+    }
+
     private NodePoolNodeConfigKubeletConfigArgs() {}
 
     private NodePoolNodeConfigKubeletConfigArgs(NodePoolNodeConfigKubeletConfigArgs $) {
@@ -213,6 +228,7 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         this.imageMinimumGcAge = $.imageMinimumGcAge;
         this.insecureKubeletReadonlyPortEnabled = $.insecureKubeletReadonlyPortEnabled;
         this.podPidsLimit = $.podPidsLimit;
+        this.singleProcessOomKill = $.singleProcessOomKill;
     }
 
     public static Builder builder() {
@@ -493,6 +509,27 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
          */
         public Builder podPidsLimit(Integer podPidsLimit) {
             return podPidsLimit(Output.of(podPidsLimit));
+        }
+
+        /**
+         * @param singleProcessOomKill Defines whether to enable single process OOM killer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleProcessOomKill(@Nullable Output<Boolean> singleProcessOomKill) {
+            $.singleProcessOomKill = singleProcessOomKill;
+            return this;
+        }
+
+        /**
+         * @param singleProcessOomKill Defines whether to enable single process OOM killer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleProcessOomKill(Boolean singleProcessOomKill) {
+            return singleProcessOomKill(Output.of(singleProcessOomKill));
         }
 
         public NodePoolNodeConfigKubeletConfigArgs build() {

@@ -154,6 +154,7 @@ __all__ = [
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
     'ClusterNodeConfigAdvancedMachineFeatures',
+    'ClusterNodeConfigBootDisk',
     'ClusterNodeConfigConfidentialNodes',
     'ClusterNodeConfigContainerdConfig',
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig',
@@ -203,6 +204,7 @@ __all__ = [
     'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig',
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigAdvancedMachineFeatures',
+    'ClusterNodePoolNodeConfigBootDisk',
     'ClusterNodePoolNodeConfigConfidentialNodes',
     'ClusterNodePoolNodeConfigContainerdConfig',
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig',
@@ -267,6 +269,7 @@ __all__ = [
     'NodePoolNetworkConfigPodCidrOverprovisionConfig',
     'NodePoolNodeConfig',
     'NodePoolNodeConfigAdvancedMachineFeatures',
+    'NodePoolNodeConfigBootDisk',
     'NodePoolNodeConfigConfidentialNodes',
     'NodePoolNodeConfigContainerdConfig',
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig',
@@ -369,6 +372,7 @@ __all__ = [
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigAdvancedMachineFeatureResult',
+    'GetClusterNodeConfigBootDiskResult',
     'GetClusterNodeConfigConfidentialNodeResult',
     'GetClusterNodeConfigContainerdConfigResult',
     'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult',
@@ -418,6 +422,7 @@ __all__ = [
     'GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult',
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult',
+    'GetClusterNodePoolNodeConfigBootDiskResult',
     'GetClusterNodePoolNodeConfigConfidentialNodeResult',
     'GetClusterNodePoolNodeConfigContainerdConfigResult',
     'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult',
@@ -7248,6 +7253,8 @@ class ClusterNodeConfig(dict):
         suggest = None
         if key == "advancedMachineFeatures":
             suggest = "advanced_machine_features"
+        elif key == "bootDisk":
+            suggest = "boot_disk"
         elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
         elif key == "confidentialNodes":
@@ -7336,6 +7343,7 @@ class ClusterNodeConfig(dict):
 
     def __init__(__self__, *,
                  advanced_machine_features: Optional['outputs.ClusterNodeConfigAdvancedMachineFeatures'] = None,
+                 boot_disk: Optional['outputs.ClusterNodeConfigBootDisk'] = None,
                  boot_disk_kms_key: Optional[_builtins.str] = None,
                  confidential_nodes: Optional['outputs.ClusterNodeConfigConfidentialNodes'] = None,
                  containerd_config: Optional['outputs.ClusterNodeConfigContainerdConfig'] = None,
@@ -7383,13 +7391,15 @@ class ClusterNodeConfig(dict):
         """
         :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
+        :param 'ClusterNodeConfigBootDiskArgs' boot_disk: Configuration of the node pool boot disk. Structure is documented below
         :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param _builtins.int disk_size_gb: Size of the disk attached to each node, specified
-               in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+               in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+               Prefer configuring `boot_disk`.
         :param _builtins.str disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         :param Sequence['ClusterNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param _builtins.bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -7490,6 +7500,8 @@ class ClusterNodeConfig(dict):
         """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        if boot_disk is not None:
+            pulumi.set(__self__, "boot_disk", boot_disk)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if confidential_nodes is not None:
@@ -7589,6 +7601,14 @@ class ClusterNodeConfig(dict):
         return pulumi.get(self, "advanced_machine_features")
 
     @_builtins.property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> Optional['outputs.ClusterNodeConfigBootDisk']:
+        """
+        Configuration of the node pool boot disk. Structure is documented below
+        """
+        return pulumi.get(self, "boot_disk")
+
+    @_builtins.property
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[_builtins.str]:
         """
@@ -7617,7 +7637,8 @@ class ClusterNodeConfig(dict):
     def disk_size_gb(self) -> Optional[_builtins.int]:
         """
         Size of the disk attached to each node, specified
-        in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+        in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+        Prefer configuring `boot_disk`.
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -7626,7 +7647,7 @@ class ClusterNodeConfig(dict):
     def disk_type(self) -> Optional[_builtins.str]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -8062,6 +8083,88 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
         Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
         """
         return pulumi.get(self, "performance_monitoring_unit")
+
+
+@pulumi.output_type
+class ClusterNodeConfigBootDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigBootDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigBootDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigBootDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None,
+                 size_gb: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str disk_type: Type of the disk attached to each node
+               (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+        :param _builtins.int provisioned_iops: Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        :param _builtins.int provisioned_throughput: Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        :param _builtins.int size_gb: Size of the disk attached to each node, specified
+               in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+        """
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the disk attached to each node
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the disk attached to each node, specified
+        in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+        """
+        return pulumi.get(self, "size_gb")
 
 
 @pulumi.output_type
@@ -8709,6 +8812,8 @@ class ClusterNodeConfigKubeletConfig(dict):
             suggest = "insecure_kubelet_readonly_port_enabled"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
+        elif key == "singleProcessOomKill":
+            suggest = "single_process_oom_kill"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigKubeletConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8733,7 +8838,8 @@ class ClusterNodeConfigKubeletConfig(dict):
                  image_maximum_gc_age: Optional[_builtins.str] = None,
                  image_minimum_gc_age: Optional[_builtins.str] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[_builtins.str] = None,
-                 pod_pids_limit: Optional[_builtins.int] = None):
+                 pod_pids_limit: Optional[_builtins.int] = None,
+                 single_process_oom_kill: Optional[_builtins.bool] = None):
         """
         :param Sequence[_builtins.str] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
         :param _builtins.int container_log_max_files: Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
@@ -8759,6 +8865,7 @@ class ClusterNodeConfigKubeletConfig(dict):
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         """
         if allowed_unsafe_sysctls is not None:
             pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
@@ -8784,6 +8891,8 @@ class ClusterNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        if single_process_oom_kill is not None:
+            pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
 
     @_builtins.property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -8892,6 +9001,14 @@ class ClusterNodeConfigKubeletConfig(dict):
         Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="singleProcessOomKill")
+    def single_process_oom_kill(self) -> Optional[_builtins.bool]:
+        """
+        Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+        """
+        return pulumi.get(self, "single_process_oom_kill")
 
 
 @pulumi.output_type
@@ -10648,6 +10765,8 @@ class ClusterNodePoolNodeConfig(dict):
         suggest = None
         if key == "advancedMachineFeatures":
             suggest = "advanced_machine_features"
+        elif key == "bootDisk":
+            suggest = "boot_disk"
         elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
         elif key == "confidentialNodes":
@@ -10736,6 +10855,7 @@ class ClusterNodePoolNodeConfig(dict):
 
     def __init__(__self__, *,
                  advanced_machine_features: Optional['outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures'] = None,
+                 boot_disk: Optional['outputs.ClusterNodePoolNodeConfigBootDisk'] = None,
                  boot_disk_kms_key: Optional[_builtins.str] = None,
                  confidential_nodes: Optional['outputs.ClusterNodePoolNodeConfigConfidentialNodes'] = None,
                  containerd_config: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfig'] = None,
@@ -10783,13 +10903,15 @@ class ClusterNodePoolNodeConfig(dict):
         """
         :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigBootDiskArgs' boot_disk: Configuration of the node pool boot disk. Structure is documented below
         :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param _builtins.int disk_size_gb: Size of the disk attached to each node, specified
-               in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+               in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+               Prefer configuring `boot_disk`.
         :param _builtins.str disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         :param Sequence['ClusterNodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param _builtins.bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -10890,6 +11012,8 @@ class ClusterNodePoolNodeConfig(dict):
         """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        if boot_disk is not None:
+            pulumi.set(__self__, "boot_disk", boot_disk)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if confidential_nodes is not None:
@@ -10989,6 +11113,14 @@ class ClusterNodePoolNodeConfig(dict):
         return pulumi.get(self, "advanced_machine_features")
 
     @_builtins.property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> Optional['outputs.ClusterNodePoolNodeConfigBootDisk']:
+        """
+        Configuration of the node pool boot disk. Structure is documented below
+        """
+        return pulumi.get(self, "boot_disk")
+
+    @_builtins.property
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[_builtins.str]:
         """
@@ -11017,7 +11149,8 @@ class ClusterNodePoolNodeConfig(dict):
     def disk_size_gb(self) -> Optional[_builtins.int]:
         """
         Size of the disk attached to each node, specified
-        in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+        in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
+        Prefer configuring `boot_disk`.
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -11026,7 +11159,7 @@ class ClusterNodePoolNodeConfig(dict):
     def disk_type(self) -> Optional[_builtins.str]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced'
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -11462,6 +11595,88 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
         Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
         """
         return pulumi.get(self, "performance_monitoring_unit")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigBootDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigBootDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigBootDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigBootDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None,
+                 size_gb: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str disk_type: Type of the disk attached to each node
+               (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+        :param _builtins.int provisioned_iops: Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        :param _builtins.int provisioned_throughput: Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        :param _builtins.int size_gb: Size of the disk attached to each node, specified
+               in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+        """
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the disk attached to each node
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the disk attached to each node, specified
+        in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
+        """
+        return pulumi.get(self, "size_gb")
 
 
 @pulumi.output_type
@@ -12109,6 +12324,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
             suggest = "insecure_kubelet_readonly_port_enabled"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
+        elif key == "singleProcessOomKill":
+            suggest = "single_process_oom_kill"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigKubeletConfig. Access the value via the '{suggest}' property getter instead.")
@@ -12133,7 +12350,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
                  image_maximum_gc_age: Optional[_builtins.str] = None,
                  image_minimum_gc_age: Optional[_builtins.str] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[_builtins.str] = None,
-                 pod_pids_limit: Optional[_builtins.int] = None):
+                 pod_pids_limit: Optional[_builtins.int] = None,
+                 single_process_oom_kill: Optional[_builtins.bool] = None):
         """
         :param Sequence[_builtins.str] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
         :param _builtins.int container_log_max_files: Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
@@ -12159,6 +12377,7 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         """
         if allowed_unsafe_sysctls is not None:
             pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
@@ -12184,6 +12403,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        if single_process_oom_kill is not None:
+            pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
 
     @_builtins.property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -12292,6 +12513,14 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
         Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="singleProcessOomKill")
+    def single_process_oom_kill(self) -> Optional[_builtins.bool]:
+        """
+        Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+        """
+        return pulumi.get(self, "single_process_oom_kill")
 
 
 @pulumi.output_type
@@ -14638,6 +14867,8 @@ class NodePoolNodeConfig(dict):
         suggest = None
         if key == "advancedMachineFeatures":
             suggest = "advanced_machine_features"
+        elif key == "bootDisk":
+            suggest = "boot_disk"
         elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
         elif key == "confidentialNodes":
@@ -14726,6 +14957,7 @@ class NodePoolNodeConfig(dict):
 
     def __init__(__self__, *,
                  advanced_machine_features: Optional['outputs.NodePoolNodeConfigAdvancedMachineFeatures'] = None,
+                 boot_disk: Optional['outputs.NodePoolNodeConfigBootDisk'] = None,
                  boot_disk_kms_key: Optional[_builtins.str] = None,
                  confidential_nodes: Optional['outputs.NodePoolNodeConfigConfidentialNodes'] = None,
                  containerd_config: Optional['outputs.NodePoolNodeConfigContainerdConfig'] = None,
@@ -14772,6 +15004,7 @@ class NodePoolNodeConfig(dict):
                  workload_metadata_config: Optional['outputs.NodePoolNodeConfigWorkloadMetadataConfig'] = None):
         """
         :param 'NodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling advanced machine features.
+        :param 'NodePoolNodeConfigBootDiskArgs' boot_disk: Boot disk configuration for node pools nodes.
         :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         :param 'NodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         :param 'NodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters for containerd configuration.
@@ -14819,6 +15052,8 @@ class NodePoolNodeConfig(dict):
         """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        if boot_disk is not None:
+            pulumi.set(__self__, "boot_disk", boot_disk)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if confidential_nodes is not None:
@@ -14915,6 +15150,14 @@ class NodePoolNodeConfig(dict):
         Specifies options for controlling advanced machine features.
         """
         return pulumi.get(self, "advanced_machine_features")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> Optional['outputs.NodePoolNodeConfigBootDisk']:
+        """
+        Boot disk configuration for node pools nodes.
+        """
+        return pulumi.get(self, "boot_disk")
 
     @_builtins.property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -15330,6 +15573,84 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
         Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
         """
         return pulumi.get(self, "performance_monitoring_unit")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigBootDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigBootDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigBootDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigBootDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None,
+                 size_gb: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+        :param _builtins.int provisioned_iops: Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+        :param _builtins.int provisioned_throughput: Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+        :param _builtins.int size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        return pulumi.get(self, "size_gb")
 
 
 @pulumi.output_type
@@ -15957,6 +16278,8 @@ class NodePoolNodeConfigKubeletConfig(dict):
             suggest = "insecure_kubelet_readonly_port_enabled"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
+        elif key == "singleProcessOomKill":
+            suggest = "single_process_oom_kill"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigKubeletConfig. Access the value via the '{suggest}' property getter instead.")
@@ -15981,7 +16304,8 @@ class NodePoolNodeConfigKubeletConfig(dict):
                  image_maximum_gc_age: Optional[_builtins.str] = None,
                  image_minimum_gc_age: Optional[_builtins.str] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[_builtins.str] = None,
-                 pod_pids_limit: Optional[_builtins.int] = None):
+                 pod_pids_limit: Optional[_builtins.int] = None,
+                 single_process_oom_kill: Optional[_builtins.bool] = None):
         """
         :param Sequence[_builtins.str] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
         :param _builtins.int container_log_max_files: Defines the maximum number of container log files that can be present for a container.
@@ -15995,6 +16319,7 @@ class NodePoolNodeConfigKubeletConfig(dict):
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected.
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
+        :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         """
         if allowed_unsafe_sysctls is not None:
             pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
@@ -16020,6 +16345,8 @@ class NodePoolNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        if single_process_oom_kill is not None:
+            pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
 
     @_builtins.property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -16116,6 +16443,14 @@ class NodePoolNodeConfigKubeletConfig(dict):
         Controls the maximum number of processes allowed to run in a pod.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="singleProcessOomKill")
+    def single_process_oom_kill(self) -> Optional[_builtins.bool]:
+        """
+        Defines whether to enable single process OOM killer.
+        """
+        return pulumi.get(self, "single_process_oom_kill")
 
 
 @pulumi.output_type
@@ -18938,6 +19273,7 @@ class GetClusterNodeConfigResult(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Sequence['outputs.GetClusterNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: _builtins.str,
+                 boot_disks: Sequence['outputs.GetClusterNodeConfigBootDiskResult'],
                  confidential_nodes: Sequence['outputs.GetClusterNodeConfigConfidentialNodeResult'],
                  containerd_configs: Sequence['outputs.GetClusterNodeConfigContainerdConfigResult'],
                  disk_size_gb: _builtins.int,
@@ -18984,6 +19320,7 @@ class GetClusterNodeConfigResult(dict):
         """
         :param Sequence['GetClusterNodeConfigAdvancedMachineFeatureArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
         :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+        :param Sequence['GetClusterNodeConfigBootDiskArgs'] boot_disks: Boot disk configuration for node pools nodes.
         :param Sequence['GetClusterNodeConfigConfidentialNodeArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         :param Sequence['GetClusterNodeConfigContainerdConfigArgs'] containerd_configs: Parameters for containerd configuration.
         :param _builtins.int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -19030,6 +19367,7 @@ class GetClusterNodeConfigResult(dict):
         """
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        pulumi.set(__self__, "boot_disks", boot_disks)
         pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         pulumi.set(__self__, "containerd_configs", containerd_configs)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -19089,6 +19427,14 @@ class GetClusterNodeConfigResult(dict):
         The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         """
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDisks")
+    def boot_disks(self) -> Sequence['outputs.GetClusterNodeConfigBootDiskResult']:
+        """
+        Boot disk configuration for node pools nodes.
+        """
+        return pulumi.get(self, "boot_disks")
 
     @_builtins.property
     @pulumi.getter(name="confidentialNodes")
@@ -19473,6 +19819,57 @@ class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigBootDiskResult(dict):
+    def __init__(__self__, *,
+                 disk_type: _builtins.str,
+                 provisioned_iops: _builtins.int,
+                 provisioned_throughput: _builtins.int,
+                 size_gb: _builtins.int):
+        """
+        :param _builtins.str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+        :param _builtins.int provisioned_iops: Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+        :param _builtins.int provisioned_throughput: Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+        :param _builtins.int size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        pulumi.set(__self__, "size_gb", size_gb)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> _builtins.str:
+        """
+        Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> _builtins.int:
+        """
+        Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> _builtins.int:
+        """
+        Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> _builtins.int:
+        """
+        Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        return pulumi.get(self, "size_gb")
 
 
 @pulumi.output_type
@@ -19880,7 +20277,8 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
                  image_maximum_gc_age: _builtins.str,
                  image_minimum_gc_age: _builtins.str,
                  insecure_kubelet_readonly_port_enabled: _builtins.str,
-                 pod_pids_limit: _builtins.int):
+                 pod_pids_limit: _builtins.int,
+                 single_process_oom_kill: _builtins.bool):
         """
         :param Sequence[_builtins.str] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
         :param _builtins.int container_log_max_files: Defines the maximum number of container log files that can be present for a container.
@@ -19894,6 +20292,7 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected.
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
+        :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         """
         pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
         pulumi.set(__self__, "container_log_max_files", container_log_max_files)
@@ -19907,6 +20306,7 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
 
     @_builtins.property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -20003,6 +20403,14 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         Controls the maximum number of processes allowed to run in a pod.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="singleProcessOomKill")
+    def single_process_oom_kill(self) -> _builtins.bool:
+        """
+        Defines whether to enable single process OOM killer.
+        """
+        return pulumi.get(self, "single_process_oom_kill")
 
 
 @pulumi.output_type
@@ -21108,6 +21516,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Sequence['outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: _builtins.str,
+                 boot_disks: Sequence['outputs.GetClusterNodePoolNodeConfigBootDiskResult'],
                  confidential_nodes: Sequence['outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult'],
                  containerd_configs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigResult'],
                  disk_size_gb: _builtins.int,
@@ -21154,6 +21563,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         """
         :param Sequence['GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
         :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+        :param Sequence['GetClusterNodePoolNodeConfigBootDiskArgs'] boot_disks: Boot disk configuration for node pools nodes.
         :param Sequence['GetClusterNodePoolNodeConfigConfidentialNodeArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigArgs'] containerd_configs: Parameters for containerd configuration.
         :param _builtins.int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -21200,6 +21610,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         """
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        pulumi.set(__self__, "boot_disks", boot_disks)
         pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         pulumi.set(__self__, "containerd_configs", containerd_configs)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -21259,6 +21670,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
         """
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDisks")
+    def boot_disks(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigBootDiskResult']:
+        """
+        Boot disk configuration for node pools nodes.
+        """
+        return pulumi.get(self, "boot_disks")
 
     @_builtins.property
     @pulumi.getter(name="confidentialNodes")
@@ -21643,6 +22062,57 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigBootDiskResult(dict):
+    def __init__(__self__, *,
+                 disk_type: _builtins.str,
+                 provisioned_iops: _builtins.int,
+                 provisioned_throughput: _builtins.int,
+                 size_gb: _builtins.int):
+        """
+        :param _builtins.str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+        :param _builtins.int provisioned_iops: Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+        :param _builtins.int provisioned_throughput: Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+        :param _builtins.int size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        pulumi.set(__self__, "size_gb", size_gb)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> _builtins.str:
+        """
+        Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> _builtins.int:
+        """
+        Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> _builtins.int:
+        """
+        Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> _builtins.int:
+        """
+        Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        return pulumi.get(self, "size_gb")
 
 
 @pulumi.output_type
@@ -22050,7 +22520,8 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
                  image_maximum_gc_age: _builtins.str,
                  image_minimum_gc_age: _builtins.str,
                  insecure_kubelet_readonly_port_enabled: _builtins.str,
-                 pod_pids_limit: _builtins.int):
+                 pod_pids_limit: _builtins.int,
+                 single_process_oom_kill: _builtins.bool):
         """
         :param Sequence[_builtins.str] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
         :param _builtins.int container_log_max_files: Defines the maximum number of container log files that can be present for a container.
@@ -22064,6 +22535,7 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected.
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
+        :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         """
         pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
         pulumi.set(__self__, "container_log_max_files", container_log_max_files)
@@ -22077,6 +22549,7 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
 
     @_builtins.property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -22173,6 +22646,14 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         Controls the maximum number of processes allowed to run in a pod.
         """
         return pulumi.get(self, "pod_pids_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="singleProcessOomKill")
+    def single_process_oom_kill(self) -> _builtins.bool:
+        """
+        Defines whether to enable single process OOM killer.
+        """
+        return pulumi.get(self, "single_process_oom_kill")
 
 
 @pulumi.output_type

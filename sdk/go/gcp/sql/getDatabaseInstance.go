@@ -74,6 +74,7 @@ type LookupDatabaseInstanceResult struct {
 	MaintenanceVersion         string                                    `pulumi:"maintenanceVersion"`
 	MasterInstanceName         string                                    `pulumi:"masterInstanceName"`
 	Name                       string                                    `pulumi:"name"`
+	NodeCount                  int                                       `pulumi:"nodeCount"`
 	PrivateIpAddress           string                                    `pulumi:"privateIpAddress"`
 	Project                    *string                                   `pulumi:"project"`
 	PscServiceAttachmentLink   string                                    `pulumi:"pscServiceAttachmentLink"`
@@ -185,6 +186,10 @@ func (o LookupDatabaseInstanceResultOutput) MasterInstanceName() pulumi.StringOu
 
 func (o LookupDatabaseInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) PrivateIpAddress() pulumi.StringOutput {

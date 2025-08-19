@@ -314,6 +314,80 @@ import * as utilities from "../utilities";
  *     reconcileConnections: false,
  * });
  * ```
+ * ### Service Attachment Cross Region Ilb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("health_check", {
+ *     name: "sa",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const backendService = new gcp.compute.BackendService("backend_service", {
+ *     name: "sa",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: healthCheck.id,
+ * });
+ * const urlMap = new gcp.compute.URLMap("url_map", {
+ *     name: "sa",
+ *     description: "Url map.",
+ *     defaultService: backendService.id,
+ * });
+ * const httpProxy = new gcp.compute.TargetHttpProxy("http_proxy", {
+ *     name: "sa",
+ *     description: "a description",
+ *     urlMap: urlMap.id,
+ * });
+ * const network = new gcp.compute.Network("network", {
+ *     name: "sa",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnetworkProxy = new gcp.compute.Subnetwork("subnetwork_proxy", {
+ *     name: "sa-proxy",
+ *     region: "us-central1",
+ *     network: network.id,
+ *     purpose: "GLOBAL_MANAGED_PROXY",
+ *     role: "ACTIVE",
+ *     ipCidrRange: "10.2.0.0/16",
+ * });
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "sa",
+ *     region: "us-central1",
+ *     network: network.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ * });
+ * const forwardingRule = new gcp.compute.GlobalForwardingRule("forwarding_rule", {
+ *     name: "sa",
+ *     target: httpProxy.id,
+ *     network: network.id,
+ *     subnetwork: subnetwork.id,
+ *     portRange: "80",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * }, {
+ *     dependsOn: [subnetworkProxy],
+ * });
+ * const subnetworkPsc = new gcp.compute.Subnetwork("subnetwork_psc", {
+ *     name: "sa-psc",
+ *     region: "us-central1",
+ *     network: network.id,
+ *     purpose: "PRIVATE_SERVICE_CONNECT",
+ *     ipCidrRange: "10.1.0.0/16",
+ * });
+ * const pscIlbServiceAttachment = new gcp.compute.ServiceAttachment("psc_ilb_service_attachment", {
+ *     name: "sa",
+ *     region: "us-central1",
+ *     description: "A service attachment configured with Terraform",
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ *     enableProxyProtocol: false,
+ *     natSubnets: [subnetworkPsc.id],
+ *     targetService: forwardingRule.id,
+ * });
+ * ```
  *
  * ## Import
  *

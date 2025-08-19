@@ -803,6 +803,81 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Subscription Multiple Smts
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionMessageTransformJavascriptUdfArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
+ *             .name("example-subscription")
+ *             .topic(example.id())
+ *             .messageTransforms(            
+ *                 SubscriptionMessageTransformArgs.builder()
+ *                     .javascriptUdf(SubscriptionMessageTransformJavascriptUdfArgs.builder()
+ *                         .functionName("redactSSN")
+ *                         .code("""
+ * function redactSSN(message, metadata) {
+ *   const data = JSON.parse(message.data);
+ *   delete data['ssn'];
+ *   message.data = JSON.stringify(data);
+ *   return message;
+ * }
+ *                         """)
+ *                         .build())
+ *                     .build(),
+ *                 SubscriptionMessageTransformArgs.builder()
+ *                     .javascriptUdf(SubscriptionMessageTransformJavascriptUdfArgs.builder()
+ *                         .functionName("otherFunc")
+ *                         .code("""
+ * function otherFunc(message, metadata) {
+ *   return null;
+ * }
+ *                         """)
+ *                         .build())
+ *                     .build(),
+ *                 SubscriptionMessageTransformArgs.builder()
+ *                     .disabled(true)
+ *                     .javascriptUdf(SubscriptionMessageTransformJavascriptUdfArgs.builder()
+ *                         .functionName("someSMTWeDisabled")
+ *                         .code("...")
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Subscription can be imported using any of these accepted formats:

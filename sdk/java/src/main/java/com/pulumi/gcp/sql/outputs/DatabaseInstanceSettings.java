@@ -39,11 +39,13 @@ public final class DatabaseInstanceSettings {
     private @Nullable DatabaseInstanceSettingsAdvancedMachineFeatures advancedMachineFeatures;
     /**
      * @return The availability type of the Cloud SQL
-     * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
+     * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
      * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
+     * For read pool instances, this field is read-only. The availability type is changed by specifying
+     * the number of nodes (`node_count`).
      * 
      */
     private @Nullable String availabilityType;
@@ -110,6 +112,15 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String edition;
+    /**
+     * @return (Computed) The availability type of
+     * the Cloud SQL instance, high availability (REGIONAL) or single zone
+     * (ZONAL). This field always contains the value that is reported by the API (for
+     * read pools, `settings.0.effective_availability_type` may differ from
+     * `settings.0.availability_type`).
+     * 
+     */
+    private @Nullable String effectiveAvailabilityType;
     /**
      * @return Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
      * 
@@ -185,11 +196,13 @@ public final class DatabaseInstanceSettings {
     }
     /**
      * @return The availability type of the Cloud SQL
-     * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
+     * instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
      * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
+     * For read pool instances, this field is read-only. The availability type is changed by specifying
+     * the number of nodes (`node_count`).
      * 
      */
     public Optional<String> availabilityType() {
@@ -287,6 +300,17 @@ public final class DatabaseInstanceSettings {
      */
     public Optional<String> edition() {
         return Optional.ofNullable(this.edition);
+    }
+    /**
+     * @return (Computed) The availability type of
+     * the Cloud SQL instance, high availability (REGIONAL) or single zone
+     * (ZONAL). This field always contains the value that is reported by the API (for
+     * read pools, `settings.0.effective_availability_type` may differ from
+     * `settings.0.availability_type`).
+     * 
+     */
+    public Optional<String> effectiveAvailabilityType() {
+        return Optional.ofNullable(this.effectiveAvailabilityType);
     }
     /**
      * @return Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
@@ -402,6 +426,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable Integer diskSize;
         private @Nullable String diskType;
         private @Nullable String edition;
+        private @Nullable String effectiveAvailabilityType;
         private @Nullable Boolean enableDataplexIntegration;
         private @Nullable Boolean enableGoogleMlIntegration;
         private @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
@@ -438,6 +463,7 @@ public final class DatabaseInstanceSettings {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.edition = defaults.edition;
+    	      this.effectiveAvailabilityType = defaults.effectiveAvailabilityType;
     	      this.enableDataplexIntegration = defaults.enableDataplexIntegration;
     	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
     	      this.insightsConfig = defaults.insightsConfig;
@@ -575,6 +601,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveAvailabilityType(@Nullable String effectiveAvailabilityType) {
+
+            this.effectiveAvailabilityType = effectiveAvailabilityType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enableDataplexIntegration(@Nullable Boolean enableDataplexIntegration) {
 
             this.enableDataplexIntegration = enableDataplexIntegration;
@@ -681,6 +713,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.diskSize = diskSize;
             _resultValue.diskType = diskType;
             _resultValue.edition = edition;
+            _resultValue.effectiveAvailabilityType = effectiveAvailabilityType;
             _resultValue.enableDataplexIntegration = enableDataplexIntegration;
             _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
             _resultValue.insightsConfig = insightsConfig;

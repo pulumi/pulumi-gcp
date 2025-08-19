@@ -221,6 +221,47 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Pubsub Topic Multiple Smts
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     messageTransforms: [
+ *         {
+ *             javascriptUdf: {
+ *                 functionName: "redactSSN",
+ *                 code: `function redactSSN(message, metadata) {
+ *   const data = JSON.parse(message.data);
+ *   delete data['ssn'];
+ *   message.data = JSON.stringify(data);
+ *   return message;
+ * }
+ * `,
+ *             },
+ *         },
+ *         {
+ *             javascriptUdf: {
+ *                 functionName: "otherFunc",
+ *                 code: `function otherFunc(message, metadata) {
+ *   return null;
+ * }
+ * `,
+ *             },
+ *         },
+ *         {
+ *             disabled: true,
+ *             javascriptUdf: {
+ *                 functionName: "someSMTWeDisabled",
+ *                 code: "...",
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Topic can be imported using any of these accepted formats:

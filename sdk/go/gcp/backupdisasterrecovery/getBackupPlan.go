@@ -39,6 +39,7 @@ type LookupBackupPlanResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string   `pulumi:"id"`
 	Location               string   `pulumi:"location"`
+	LogRetentionDays       int      `pulumi:"logRetentionDays"`
 	Name                   string   `pulumi:"name"`
 	Project                *string  `pulumi:"project"`
 	ResourceType           string   `pulumi:"resourceType"`
@@ -112,6 +113,10 @@ func (o LookupBackupPlanResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupBackupPlanResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o LookupBackupPlanResultOutput) LogRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) int { return v.LogRetentionDays }).(pulumi.IntOutput)
 }
 
 func (o LookupBackupPlanResultOutput) Name() pulumi.StringOutput {

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyState;
+import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyAdvancedOptionsConfig;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyDdosProtectionConfig;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyRule;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyUserDefinedField;
@@ -252,6 +253,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/regionSecurityPolicy:RegionSecurityPolicy")
 public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Advanced Options Config of this security policy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="advancedOptionsConfig", refs={RegionSecurityPolicyAdvancedOptionsConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RegionSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfig;
+
+    /**
+     * @return Advanced Options Config of this security policy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionSecurityPolicyAdvancedOptionsConfig>> advancedOptionsConfig() {
+        return Codegen.optional(this.advancedOptionsConfig);
+    }
     /**
      * Configuration for Google Cloud Armor DDOS Proctection Config.
      * Structure is documented below.

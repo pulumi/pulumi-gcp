@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs;
+import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,14 +19,14 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
     public static final TransferJobTransferSpecAzureBlobStorageDataSourceArgs Empty = new TransferJobTransferSpecAzureBlobStorageDataSourceArgs();
 
     /**
-     * Credentials used to authenticate API requests to Azure block.
+     * ) Credentials used to authenticate API requests to Azure block.
      * 
      */
     @Import(name="azureCredentials")
     private @Nullable Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs> azureCredentials;
 
     /**
-     * @return Credentials used to authenticate API requests to Azure block.
+     * @return ) Credentials used to authenticate API requests to Azure block.
      * 
      */
     public Optional<Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs>> azureCredentials() {
@@ -48,18 +49,33 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
     }
 
     /**
-     * Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+     * ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
      * 
      */
     @Import(name="credentialsSecret")
     private @Nullable Output<String> credentialsSecret;
 
     /**
-     * @return Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+     * @return ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
      * 
      */
     public Optional<Output<String>> credentialsSecret() {
         return Optional.ofNullable(this.credentialsSecret);
+    }
+
+    /**
+     * Federated identity config of a user registered Azure application. Structure documented below.
+     * 
+     */
+    @Import(name="federatedIdentityConfig")
+    private @Nullable Output<TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs> federatedIdentityConfig;
+
+    /**
+     * @return Federated identity config of a user registered Azure application. Structure documented below.
+     * 
+     */
+    public Optional<Output<TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs>> federatedIdentityConfig() {
+        return Optional.ofNullable(this.federatedIdentityConfig);
     }
 
     /**
@@ -98,6 +114,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         this.azureCredentials = $.azureCredentials;
         this.container = $.container;
         this.credentialsSecret = $.credentialsSecret;
+        this.federatedIdentityConfig = $.federatedIdentityConfig;
         this.path = $.path;
         this.storageAccount = $.storageAccount;
     }
@@ -121,7 +138,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         }
 
         /**
-         * @param azureCredentials Credentials used to authenticate API requests to Azure block.
+         * @param azureCredentials ) Credentials used to authenticate API requests to Azure block.
          * 
          * @return builder
          * 
@@ -132,7 +149,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         }
 
         /**
-         * @param azureCredentials Credentials used to authenticate API requests to Azure block.
+         * @param azureCredentials ) Credentials used to authenticate API requests to Azure block.
          * 
          * @return builder
          * 
@@ -163,7 +180,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         }
 
         /**
-         * @param credentialsSecret Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+         * @param credentialsSecret ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
          * 
          * @return builder
          * 
@@ -174,13 +191,34 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         }
 
         /**
-         * @param credentialsSecret Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+         * @param credentialsSecret ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
          * 
          * @return builder
          * 
          */
         public Builder credentialsSecret(String credentialsSecret) {
             return credentialsSecret(Output.of(credentialsSecret));
+        }
+
+        /**
+         * @param federatedIdentityConfig Federated identity config of a user registered Azure application. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder federatedIdentityConfig(@Nullable Output<TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs> federatedIdentityConfig) {
+            $.federatedIdentityConfig = federatedIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param federatedIdentityConfig Federated identity config of a user registered Azure application. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder federatedIdentityConfig(TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs federatedIdentityConfig) {
+            return federatedIdentityConfig(Output.of(federatedIdentityConfig));
         }
 
         /**

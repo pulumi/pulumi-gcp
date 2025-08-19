@@ -175,8 +175,9 @@ import * as utilities from "../utilities";
  *     location: "us-west1",
  *     description: "test admin cluster",
  *     bootstrapClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
- *     onPremVersion: "1.31.0-gke.35",
+ *     onPremVersion: "1.33.0-gke.35",
  *     imageType: "ubuntu_containerd",
+ *     enableAdvancedCluster: true,
  *     vcenter: {
  *         resourcePool: "test resource pool",
  *         datastore: "test data store",
@@ -322,7 +323,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
     /**
      * If set, the advanced cluster feature is enabled.
      */
-    public /*out*/ readonly enableAdvancedCluster!: pulumi.Output<boolean>;
+    public readonly enableAdvancedCluster!: pulumi.Output<boolean>;
     /**
      * The DNS name of VMware admin cluster's API server.
      */
@@ -481,6 +482,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
             resourceInputs["bootstrapClusterMembership"] = args ? args.bootstrapClusterMembership : undefined;
             resourceInputs["controlPlaneNode"] = args ? args.controlPlaneNode : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableAdvancedCluster"] = args ? args.enableAdvancedCluster : undefined;
             resourceInputs["imageType"] = args ? args.imageType : undefined;
             resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -493,7 +495,6 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
             resourceInputs["vcenter"] = args ? args.vcenter : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
-            resourceInputs["enableAdvancedCluster"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fleets"] = undefined /*out*/;
@@ -722,6 +723,10 @@ export interface VmwareAdminClusterArgs {
      * A human readable description of this VMware admin cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * If set, the advanced cluster feature is enabled.
+     */
+    enableAdvancedCluster?: pulumi.Input<boolean>;
     /**
      * The OS image type for the VMware admin cluster.
      */

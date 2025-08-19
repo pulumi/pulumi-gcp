@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceResult {
+    private Boolean allowFewerZonesDeployment;
     private String authorizationMode;
     private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
     private String backupCollection;
@@ -79,6 +80,9 @@ public final class GetInstanceResult {
     private List<GetInstanceZoneDistributionConfig> zoneDistributionConfigs;
 
     private GetInstanceResult() {}
+    public Boolean allowFewerZonesDeployment() {
+        return this.allowFewerZonesDeployment;
+    }
     public String authorizationMode() {
         return this.authorizationMode;
     }
@@ -213,6 +217,7 @@ public final class GetInstanceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowFewerZonesDeployment;
         private String authorizationMode;
         private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
         private String backupCollection;
@@ -256,6 +261,7 @@ public final class GetInstanceResult {
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowFewerZonesDeployment = defaults.allowFewerZonesDeployment;
     	      this.authorizationMode = defaults.authorizationMode;
     	      this.automatedBackupConfigs = defaults.automatedBackupConfigs;
     	      this.backupCollection = defaults.backupCollection;
@@ -298,6 +304,14 @@ public final class GetInstanceResult {
     	      this.zoneDistributionConfigs = defaults.zoneDistributionConfigs;
         }
 
+        @CustomType.Setter
+        public Builder allowFewerZonesDeployment(Boolean allowFewerZonesDeployment) {
+            if (allowFewerZonesDeployment == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "allowFewerZonesDeployment");
+            }
+            this.allowFewerZonesDeployment = allowFewerZonesDeployment;
+            return this;
+        }
         @CustomType.Setter
         public Builder authorizationMode(String authorizationMode) {
             if (authorizationMode == null) {
@@ -667,6 +681,7 @@ public final class GetInstanceResult {
         }
         public GetInstanceResult build() {
             final var _resultValue = new GetInstanceResult();
+            _resultValue.allowFewerZonesDeployment = allowFewerZonesDeployment;
             _resultValue.authorizationMode = authorizationMode;
             _resultValue.automatedBackupConfigs = automatedBackupConfigs;
             _resultValue.backupCollection = backupCollection;

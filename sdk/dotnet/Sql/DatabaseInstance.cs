@@ -239,6 +239,51 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
+    /// ### Cloud SQL Instance with PSC outbound
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+    ///     {
+    ///         Name = "psc-enabled-main-instance",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 PscConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+    ///                     {
+    ///                         PscEnabled = true,
+    ///                         AllowedConsumerProjects = new[]
+    ///                         {
+    ///                             "allowed-consumer-project-name",
+    ///                         },
+    ///                         NetworkAttachmentUri = "network-attachment-uri",
+    ///                     },
+    ///                 },
+    ///                 Ipv4Enabled = false,
+    ///             },
+    ///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 BinaryLogEnabled = true,
+    ///             },
+    ///             AvailabilityType = "REGIONAL",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Switchover
     /// 
     /// Users can perform a switchover on a replica by following the steps below.
@@ -383,7 +428,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> FirstIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -413,6 +458,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// For a read pool instance, the number of nodes in the read pool.
+        /// </summary>
+        [Output("nodeCount")]
+        public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
         /// The first private (`PRIVATE`) IPv4 address assigned.
@@ -601,7 +652,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? EncryptionKeyName { get; set; }
 
         /// <summary>
-        /// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -628,6 +679,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// For a read pool instance, the number of nodes in the read pool.
+        /// </summary>
+        [Input("nodeCount")]
+        public Input<int>? NodeCount { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
@@ -807,7 +864,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? FirstIpAddress { get; set; }
 
         /// <summary>
-        /// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -842,6 +899,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// For a read pool instance, the number of nodes in the read pool.
+        /// </summary>
+        [Input("nodeCount")]
+        public Input<int>? NodeCount { get; set; }
 
         /// <summary>
         /// The first private (`PRIVATE`) IPv4 address assigned.

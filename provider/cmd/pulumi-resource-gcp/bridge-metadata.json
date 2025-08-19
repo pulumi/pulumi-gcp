@@ -9417,6 +9417,23 @@
                     "failover_policy": {
                         "maxItemsOne": true
                     },
+                    "ha_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "leader": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "network_endpoint": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "health_checks": {
                         "maxItemsOne": true
                     },
@@ -10180,6 +10197,26 @@
                 "current": "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy",
                 "majorVersion": 8,
                 "fields": {
+                    "advanced_options_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "json_custom_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "content_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "user_ip_request_headers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "ddos_protection_config": {
                         "maxItemsOne": true
                     },
@@ -13362,6 +13399,9 @@
                                 "advanced_machine_features": {
                                     "maxItemsOne": true
                                 },
+                                "boot_disk": {
+                                    "maxItemsOne": true
+                                },
                                 "confidential_nodes": {
                                     "maxItemsOne": true
                                 },
@@ -13549,6 +13589,9 @@
                                     "elem": {
                                         "fields": {
                                             "advanced_machine_features": {
+                                                "maxItemsOne": true
+                                            },
+                                            "boot_disk": {
                                                 "maxItemsOne": true
                                             },
                                             "confidential_nodes": {
@@ -13940,6 +13983,9 @@
                         "elem": {
                             "fields": {
                                 "advanced_machine_features": {
+                                    "maxItemsOne": true
+                                },
+                                "boot_disk": {
                                     "maxItemsOne": true
                                 },
                                 "confidential_nodes": {
@@ -20230,6 +20276,34 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_dialogflow_cx_playbook": {
+                "current": "gcp:diagflow/cxPlaybook:CxPlaybook",
+                "majorVersion": 8,
+                "fields": {
+                    "instruction": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "steps": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "llm_model_settings": {
+                        "maxItemsOne": true
+                    },
+                    "referenced_flows": {
+                        "maxItemsOne": false
+                    },
+                    "referenced_playbooks": {
+                        "maxItemsOne": false
+                    },
+                    "referenced_tools": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -34121,6 +34195,9 @@
                                         "fields": {
                                             "azure_credentials": {
                                                 "maxItemsOne": true
+                                            },
+                                            "federated_identity_config": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -35334,6 +35411,28 @@
                     }
                 }
             },
+            "google_vertex_ai_rag_engine_config": {
+                "current": "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig",
+                "majorVersion": 8,
+                "fields": {
+                    "rag_managed_db_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "basic": {
+                                    "maxItemsOne": true
+                                },
+                                "scaled": {
+                                    "maxItemsOne": true
+                                },
+                                "unprovisioned": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_vertex_ai_tensorboard": {
                 "current": "gcp:vertex/aiTensorboard:AiTensorboard",
                 "majorVersion": 8,
@@ -36142,6 +36241,19 @@
                     }
                 }
             },
+            "google_artifact_registry_package": {
+                "current": "gcp:artifactregistry/getPackage:getPackage",
+                "majorVersion": 8
+            },
+            "google_artifact_registry_repositories": {
+                "current": "gcp:artifactregistry/getRepositories:getRepositories",
+                "majorVersion": 8,
+                "fields": {
+                    "repositories": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_artifact_registry_repository": {
                 "current": "gcp:artifactregistry/getRepository:getRepository",
                 "majorVersion": 8,
@@ -36283,6 +36395,15 @@
             "google_artifact_registry_repository_iam_policy": {
                 "current": "gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy",
                 "majorVersion": 8
+            },
+            "google_artifact_registry_version": {
+                "current": "gcp:artifactregistry/getVersion:getVersion",
+                "majorVersion": 8,
+                "fields": {
+                    "related_tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_backup_dr_backup": {
                 "current": "gcp:backupdisasterrecovery/getBackup:getBackup",
@@ -39113,6 +39234,23 @@
                     "failover_policy": {
                         "maxItemsOne": false
                     },
+                    "ha_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "leader": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "network_endpoint": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "health_checks": {
                         "maxItemsOne": false
                     },
@@ -40425,6 +40563,9 @@
                                 "advanced_machine_features": {
                                     "maxItemsOne": false
                                 },
+                                "boot_disk": {
+                                    "maxItemsOne": false
+                                },
                                 "confidential_nodes": {
                                     "maxItemsOne": false
                                 },
@@ -40612,6 +40753,9 @@
                                     "elem": {
                                         "fields": {
                                             "advanced_machine_features": {
+                                                "maxItemsOne": false
+                                            },
+                                            "boot_disk": {
                                                 "maxItemsOne": false
                                             },
                                             "confidential_nodes": {
@@ -46788,6 +46932,7 @@
             "gcp:diagflow/cxGenerator:CxGenerator": 0,
             "gcp:diagflow/cxIntent:CxIntent": 0,
             "gcp:diagflow/cxPage:CxPage": 0,
+            "gcp:diagflow/cxPlaybook:CxPlaybook": 0,
             "gcp:diagflow/cxSecuritySettings:CxSecuritySettings": 0,
             "gcp:diagflow/cxTestCase:CxTestCase": 0,
             "gcp:diagflow/cxTool:CxTool": 0,
@@ -47392,6 +47537,7 @@
             "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": 0,
             "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex": 0,
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
+            "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig": 0,
             "gcp:vertex/aiTensorboard:AiTensorboard": 0,
             "gcp:vmwareengine/cluster:Cluster": 0,
             "gcp:vmwareengine/externalAccessRule:ExternalAccessRule": 0,
@@ -47438,8 +47584,11 @@
             "gcp:artifactregistry/getDockerImage:getDockerImage": 0,
             "gcp:artifactregistry/getDockerImages:getDockerImages": 0,
             "gcp:artifactregistry/getLocations:getLocations": 0,
+            "gcp:artifactregistry/getPackage:getPackage": 0,
+            "gcp:artifactregistry/getRepositories:getRepositories": 0,
             "gcp:artifactregistry/getRepository:getRepository": 0,
             "gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
+            "gcp:artifactregistry/getVersion:getVersion": 0,
             "gcp:backupdisasterrecovery/getBackup:getBackup": 0,
             "gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan": 0,
             "gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation": 0,

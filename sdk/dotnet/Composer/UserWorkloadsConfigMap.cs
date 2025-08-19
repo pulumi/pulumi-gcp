@@ -29,6 +29,21 @@ namespace Pulumi.Gcp.Composer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var test = new Gcp.ServiceAccount.Account("test", new()
+    ///     {
+    ///         AccountId = "test-sa",
+    ///         DisplayName = "Test Service Account for Composer Environment",
+    ///     });
+    /// 
+    ///     var composer_worker = new Gcp.Projects.IAMMember("composer-worker", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/composer.worker",
+    ///         Member = test.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
     ///     var environment = new Gcp.Composer.Environment("environment", new()
     ///     {
     ///         Name = "test-environment",
@@ -39,6 +54,16 @@ namespace Pulumi.Gcp.Composer
     ///             {
     ///                 ImageVersion = "composer-3-airflow-2",
     ///             },
+    ///             NodeConfig = new Gcp.Composer.Inputs.EnvironmentConfigNodeConfigArgs
+    ///             {
+    ///                 ServiceAccount = test.Name,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             composer_worker,
     ///         },
     ///     });
     /// 

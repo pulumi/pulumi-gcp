@@ -20,6 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const project = gcp.organizations.getProject({});
+ * const test = new gcp.serviceaccount.Account("test", {
+ *     accountId: "test-sa",
+ *     displayName: "Test Service Account for Composer Environment",
+ * });
+ * const composer_worker = new gcp.projects.IAMMember("composer-worker", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/composer.worker",
+ *     member: pulumi.interpolate`serviceAccount:${test.email}`,
+ * });
  * const environment = new gcp.composer.Environment("environment", {
  *     name: "test-environment",
  *     region: "us-central1",
@@ -27,7 +37,12 @@ import * as utilities from "../utilities";
  *         softwareConfig: {
  *             imageVersion: "composer-3-airflow-2",
  *         },
+ *         nodeConfig: {
+ *             serviceAccount: test.name,
+ *         },
  *     },
+ * }, {
+ *     dependsOn: [composer_worker],
  * });
  * const configMap = new gcp.composer.UserWorkloadsConfigMap("config_map", {
  *     name: "test-config-map",

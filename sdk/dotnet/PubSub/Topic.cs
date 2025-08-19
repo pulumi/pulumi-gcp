@@ -327,6 +327,61 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Topic Multiple Smts
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         MessageTransforms = new[]
+    ///         {
+    ///             new Gcp.PubSub.Inputs.TopicMessageTransformArgs
+    ///             {
+    ///                 JavascriptUdf = new Gcp.PubSub.Inputs.TopicMessageTransformJavascriptUdfArgs
+    ///                 {
+    ///                     FunctionName = "redactSSN",
+    ///                     Code = @"function redactSSN(message, metadata) {
+    ///   const data = JSON.parse(message.data);
+    ///   delete data['ssn'];
+    ///   message.data = JSON.stringify(data);
+    ///   return message;
+    /// }
+    /// ",
+    ///                 },
+    ///             },
+    ///             new Gcp.PubSub.Inputs.TopicMessageTransformArgs
+    ///             {
+    ///                 JavascriptUdf = new Gcp.PubSub.Inputs.TopicMessageTransformJavascriptUdfArgs
+    ///                 {
+    ///                     FunctionName = "otherFunc",
+    ///                     Code = @"function otherFunc(message, metadata) {
+    ///   return null;
+    /// }
+    /// ",
+    ///                 },
+    ///             },
+    ///             new Gcp.PubSub.Inputs.TopicMessageTransformArgs
+    ///             {
+    ///                 Disabled = true,
+    ///                 JavascriptUdf = new Gcp.PubSub.Inputs.TopicMessageTransformJavascriptUdfArgs
+    ///                 {
+    ///                     FunctionName = "someSMTWeDisabled",
+    ///                     Code = "...",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Topic can be imported using any of these accepted formats:

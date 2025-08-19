@@ -579,6 +579,67 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Subscription Multiple Smts
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
+    ///         MessageTransforms = new[]
+    ///         {
+    ///             new Gcp.PubSub.Inputs.SubscriptionMessageTransformArgs
+    ///             {
+    ///                 JavascriptUdf = new Gcp.PubSub.Inputs.SubscriptionMessageTransformJavascriptUdfArgs
+    ///                 {
+    ///                     FunctionName = "redactSSN",
+    ///                     Code = @"function redactSSN(message, metadata) {
+    ///   const data = JSON.parse(message.data);
+    ///   delete data['ssn'];
+    ///   message.data = JSON.stringify(data);
+    ///   return message;
+    /// }
+    /// ",
+    ///                 },
+    ///             },
+    ///             new Gcp.PubSub.Inputs.SubscriptionMessageTransformArgs
+    ///             {
+    ///                 JavascriptUdf = new Gcp.PubSub.Inputs.SubscriptionMessageTransformJavascriptUdfArgs
+    ///                 {
+    ///                     FunctionName = "otherFunc",
+    ///                     Code = @"function otherFunc(message, metadata) {
+    ///   return null;
+    /// }
+    /// ",
+    ///                 },
+    ///             },
+    ///             new Gcp.PubSub.Inputs.SubscriptionMessageTransformArgs
+    ///             {
+    ///                 Disabled = true,
+    ///                 JavascriptUdf = new Gcp.PubSub.Inputs.SubscriptionMessageTransformJavascriptUdfArgs
+    ///                 {
+    ///                     FunctionName = "someSMTWeDisabled",
+    ///                     Code = "...",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Subscription can be imported using any of these accepted formats:

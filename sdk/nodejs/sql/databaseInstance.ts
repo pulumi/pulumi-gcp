@@ -153,6 +153,34 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Cloud SQL Instance with PSC outbound
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: "psc-enabled-main-instance",
+ *     databaseVersion: "MYSQL_8_0",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             pscConfigs: [{
+ *                 pscEnabled: true,
+ *                 allowedConsumerProjects: ["allowed-consumer-project-name"],
+ *                 networkAttachmentUri: "network-attachment-uri",
+ *             }],
+ *             ipv4Enabled: false,
+ *         },
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *         availabilityType: "REGIONAL",
+ *     },
+ * });
+ * ```
+ *
  * ## Switchover
  *
  * Users can perform a switchover on a replica by following the steps below.
@@ -304,7 +332,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
     /**
-     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
     public readonly instanceType!: pulumi.Output<string>;
     public /*out*/ readonly ipAddresses!: pulumi.Output<outputs.sql.DatabaseInstanceIpAddress[]>;
@@ -325,6 +353,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * For a read pool instance, the number of nodes in the read pool.
+     */
+    public readonly nodeCount!: pulumi.Output<number>;
     /**
      * The first private (`PRIVATE`) IPv4 address assigned.
      */
@@ -417,6 +449,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["maintenanceVersion"] = state ? state.maintenanceVersion : undefined;
             resourceInputs["masterInstanceName"] = state ? state.masterInstanceName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pscServiceAttachmentLink"] = state ? state.pscServiceAttachmentLink : undefined;
@@ -444,6 +477,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
             resourceInputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["replicaConfiguration"] = args?.replicaConfiguration ? pulumi.secret(args.replicaConfiguration) : undefined;
@@ -532,7 +566,7 @@ export interface DatabaseInstanceState {
      */
     firstIpAddress?: pulumi.Input<string>;
     /**
-     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
     instanceType?: pulumi.Input<string>;
     ipAddresses?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceIpAddress>[]>;
@@ -553,6 +587,10 @@ export interface DatabaseInstanceState {
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     name?: pulumi.Input<string>;
+    /**
+     * For a read pool instance, the number of nodes in the read pool.
+     */
+    nodeCount?: pulumi.Input<number>;
     /**
      * The first private (`PRIVATE`) IPv4 address assigned.
      */
@@ -658,7 +696,7 @@ export interface DatabaseInstanceArgs {
      */
     encryptionKeyName?: pulumi.Input<string>;
     /**
-     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -678,6 +716,10 @@ export interface DatabaseInstanceArgs {
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     name?: pulumi.Input<string>;
+    /**
+     * For a read pool instance, the number of nodes in the read pool.
+     */
+    nodeCount?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

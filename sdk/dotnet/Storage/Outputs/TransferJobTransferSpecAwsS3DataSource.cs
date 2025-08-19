@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string BucketName;
         /// <summary>
+        /// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+        /// </summary>
+        public readonly string? CloudfrontDomain;
+        /// <summary>
         /// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
         /// </summary>
         public readonly bool? ManagedPrivateNetwork;
@@ -40,6 +44,8 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             string bucketName,
 
+            string? cloudfrontDomain,
+
             bool? managedPrivateNetwork,
 
             string? path,
@@ -48,6 +54,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         {
             AwsAccessKey = awsAccessKey;
             BucketName = bucketName;
+            CloudfrontDomain = cloudfrontDomain;
             ManagedPrivateNetwork = managedPrivateNetwork;
             Path = path;
             RoleArn = roleArn;

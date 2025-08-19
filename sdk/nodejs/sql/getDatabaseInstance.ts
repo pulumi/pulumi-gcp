@@ -64,6 +64,7 @@ export interface GetDatabaseInstanceResult {
     readonly maintenanceVersion: string;
     readonly masterInstanceName: string;
     readonly name: string;
+    readonly nodeCount: number;
     readonly privateIpAddress: string;
     readonly project?: string;
     readonly pscServiceAttachmentLink: string;

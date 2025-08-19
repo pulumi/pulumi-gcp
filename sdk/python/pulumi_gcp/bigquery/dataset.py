@@ -1005,7 +1005,7 @@ class Dataset(pulumi.CustomResource):
             },
             accesses=[
                 {
-                    "role": "OWNER",
+                    "role": "roles/bigquery.dataOwner",
                     "user_by_email": bqowner.email,
                 },
                 {
@@ -1308,7 +1308,7 @@ class Dataset(pulumi.CustomResource):
             },
             accesses=[
                 {
-                    "role": "OWNER",
+                    "role": "roles/bigquery.dataOwner",
                     "user_by_email": bqowner.email,
                 },
                 {

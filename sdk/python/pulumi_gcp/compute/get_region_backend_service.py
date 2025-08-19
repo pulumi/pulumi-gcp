@@ -27,7 +27,7 @@ class GetRegionBackendServiceResult:
     """
     A collection of values returned by getRegionBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, outlier_detections=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, outlier_detections=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -73,6 +73,9 @@ class GetRegionBackendServiceResult:
         if generated_id and not isinstance(generated_id, int):
             raise TypeError("Expected argument 'generated_id' to be a int")
         pulumi.set(__self__, "generated_id", generated_id)
+        if ha_policies and not isinstance(ha_policies, list):
+            raise TypeError("Expected argument 'ha_policies' to be a list")
+        pulumi.set(__self__, "ha_policies", ha_policies)
         if health_checks and not isinstance(health_checks, list):
             raise TypeError("Expected argument 'health_checks' to be a list")
         pulumi.set(__self__, "health_checks", health_checks)
@@ -210,6 +213,11 @@ class GetRegionBackendServiceResult:
         return pulumi.get(self, "generated_id")
 
     @_builtins.property
+    @pulumi.getter(name="haPolicies")
+    def ha_policies(self) -> Sequence['outputs.GetRegionBackendServiceHaPolicyResult']:
+        return pulumi.get(self, "ha_policies")
+
+    @_builtins.property
     @pulumi.getter(name="healthChecks")
     def health_checks(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "health_checks")
@@ -334,6 +342,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             failover_policies=self.failover_policies,
             fingerprint=self.fingerprint,
             generated_id=self.generated_id,
+            ha_policies=self.ha_policies,
             health_checks=self.health_checks,
             iaps=self.iaps,
             id=self.id,
@@ -404,6 +413,7 @@ def get_region_backend_service(name: Optional[_builtins.str] = None,
         failover_policies=pulumi.get(__ret__, 'failover_policies'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         generated_id=pulumi.get(__ret__, 'generated_id'),
+        ha_policies=pulumi.get(__ret__, 'ha_policies'),
         health_checks=pulumi.get(__ret__, 'health_checks'),
         iaps=pulumi.get(__ret__, 'iaps'),
         id=pulumi.get(__ret__, 'id'),
@@ -471,6 +481,7 @@ def get_region_backend_service_output(name: Optional[pulumi.Input[_builtins.str]
         failover_policies=pulumi.get(__response__, 'failover_policies'),
         fingerprint=pulumi.get(__response__, 'fingerprint'),
         generated_id=pulumi.get(__response__, 'generated_id'),
+        ha_policies=pulumi.get(__response__, 'ha_policies'),
         health_checks=pulumi.get(__response__, 'health_checks'),
         iaps=pulumi.get(__response__, 'iaps'),
         id=pulumi.get(__response__, 'id'),

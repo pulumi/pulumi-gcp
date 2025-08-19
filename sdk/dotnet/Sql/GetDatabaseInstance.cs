@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string MaintenanceVersion;
         public readonly string MasterInstanceName;
         public readonly string Name;
+        public readonly int NodeCount;
         public readonly string PrivateIpAddress;
         public readonly string? Project;
         public readonly string PscServiceAttachmentLink;
@@ -194,6 +195,8 @@ namespace Pulumi.Gcp.Sql
 
             string name,
 
+            int nodeCount,
+
             string privateIpAddress,
 
             string? project,
@@ -237,6 +240,7 @@ namespace Pulumi.Gcp.Sql
             MaintenanceVersion = maintenanceVersion;
             MasterInstanceName = masterInstanceName;
             Name = name;
+            NodeCount = nodeCount;
             PrivateIpAddress = privateIpAddress;
             Project = project;
             PscServiceAttachmentLink = pscServiceAttachmentLink;

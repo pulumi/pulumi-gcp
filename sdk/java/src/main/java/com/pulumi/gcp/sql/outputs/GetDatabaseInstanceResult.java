@@ -14,6 +14,7 @@ import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceRestoreBackupContext;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceServerCaCert;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSetting;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,6 +42,7 @@ public final class GetDatabaseInstanceResult {
     private String maintenanceVersion;
     private String masterInstanceName;
     private String name;
+    private Integer nodeCount;
     private String privateIpAddress;
     private @Nullable String project;
     private String pscServiceAttachmentLink;
@@ -105,6 +107,9 @@ public final class GetDatabaseInstanceResult {
     }
     public String name() {
         return this.name;
+    }
+    public Integer nodeCount() {
+        return this.nodeCount;
     }
     public String privateIpAddress() {
         return this.privateIpAddress;
@@ -173,6 +178,7 @@ public final class GetDatabaseInstanceResult {
         private String maintenanceVersion;
         private String masterInstanceName;
         private String name;
+        private Integer nodeCount;
         private String privateIpAddress;
         private @Nullable String project;
         private String pscServiceAttachmentLink;
@@ -205,6 +211,7 @@ public final class GetDatabaseInstanceResult {
     	      this.maintenanceVersion = defaults.maintenanceVersion;
     	      this.masterInstanceName = defaults.masterInstanceName;
     	      this.name = defaults.name;
+    	      this.nodeCount = defaults.nodeCount;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.project = defaults.project;
     	      this.pscServiceAttachmentLink = defaults.pscServiceAttachmentLink;
@@ -354,6 +361,14 @@ public final class GetDatabaseInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeCount(Integer nodeCount) {
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateIpAddress(String privateIpAddress) {
             if (privateIpAddress == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "privateIpAddress");
@@ -498,6 +513,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.maintenanceVersion = maintenanceVersion;
             _resultValue.masterInstanceName = masterInstanceName;
             _resultValue.name = name;
+            _resultValue.nodeCount = nodeCount;
             _resultValue.privateIpAddress = privateIpAddress;
             _resultValue.project = project;
             _resultValue.pscServiceAttachmentLink = pscServiceAttachmentLink;

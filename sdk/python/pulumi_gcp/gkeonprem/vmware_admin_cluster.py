@@ -31,6 +31,7 @@ class VmwareAdminClusterArgs:
                  bootstrap_cluster_membership: Optional[pulumi.Input[_builtins.str]] = None,
                  control_plane_node: Optional[pulumi.Input['VmwareAdminClusterControlPlaneNodeArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_advanced_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
                  image_type: Optional[pulumi.Input[_builtins.str]] = None,
                  load_balancer: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -68,6 +69,7 @@ class VmwareAdminClusterArgs:
         :param pulumi.Input['VmwareAdminClusterControlPlaneNodeArgs'] control_plane_node: The VMware admin cluster control plane node configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware admin cluster.
+        :param pulumi.Input[_builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
         :param pulumi.Input[_builtins.str] image_type: The OS image type for the VMware admin cluster.
         :param pulumi.Input['VmwareAdminClusterLoadBalancerArgs'] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
                Structure is documented below.
@@ -100,6 +102,8 @@ class VmwareAdminClusterArgs:
             pulumi.set(__self__, "control_plane_node", control_plane_node)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_advanced_cluster is not None:
+            pulumi.set(__self__, "enable_advanced_cluster", enable_advanced_cluster)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if load_balancer is not None:
@@ -253,6 +257,18 @@ class VmwareAdminClusterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableAdvancedCluster")
+    def enable_advanced_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set, the advanced cluster feature is enabled.
+        """
+        return pulumi.get(self, "enable_advanced_cluster")
+
+    @enable_advanced_cluster.setter
+    def enable_advanced_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_advanced_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="imageType")
@@ -930,6 +946,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                  bootstrap_cluster_membership: Optional[pulumi.Input[_builtins.str]] = None,
                  control_plane_node: Optional[pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_advanced_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
                  image_type: Optional[pulumi.Input[_builtins.str]] = None,
                  load_balancer: Optional[pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1108,8 +1125,9 @@ class VmwareAdminCluster(pulumi.CustomResource):
             location="us-west1",
             description="test admin cluster",
             bootstrap_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            on_prem_version="1.31.0-gke.35",
+            on_prem_version="1.33.0-gke.35",
             image_type="ubuntu_containerd",
+            enable_advanced_cluster=True,
             vcenter={
                 "resource_pool": "test resource pool",
                 "datastore": "test data store",
@@ -1196,6 +1214,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']] control_plane_node: The VMware admin cluster control plane node configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A human readable description of this VMware admin cluster.
+        :param pulumi.Input[_builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
         :param pulumi.Input[_builtins.str] image_type: The OS image type for the VMware admin cluster.
         :param pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
                Structure is documented below.
@@ -1386,8 +1405,9 @@ class VmwareAdminCluster(pulumi.CustomResource):
             location="us-west1",
             description="test admin cluster",
             bootstrap_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-            on_prem_version="1.31.0-gke.35",
+            on_prem_version="1.33.0-gke.35",
             image_type="ubuntu_containerd",
+            enable_advanced_cluster=True,
             vcenter={
                 "resource_pool": "test resource pool",
                 "datastore": "test data store",
@@ -1471,6 +1491,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                  bootstrap_cluster_membership: Optional[pulumi.Input[_builtins.str]] = None,
                  control_plane_node: Optional[pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_advanced_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
                  image_type: Optional[pulumi.Input[_builtins.str]] = None,
                  load_balancer: Optional[pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1498,6 +1519,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
             __props__.__dict__["bootstrap_cluster_membership"] = bootstrap_cluster_membership
             __props__.__dict__["control_plane_node"] = control_plane_node
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_advanced_cluster"] = enable_advanced_cluster
             __props__.__dict__["image_type"] = image_type
             __props__.__dict__["load_balancer"] = load_balancer
             if location is None and not opts.urn:
@@ -1514,7 +1536,6 @@ class VmwareAdminCluster(pulumi.CustomResource):
             __props__.__dict__["vcenter"] = vcenter
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
-            __props__.__dict__["enable_advanced_cluster"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["fleets"] = None

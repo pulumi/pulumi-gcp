@@ -12,6 +12,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicationClusterArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceRestoreBackupContextArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -120,14 +121,14 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * @return The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -187,6 +188,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * For a read pool instance, the number of nodes in the read pool.
+     * 
+     */
+    @Import(name="nodeCount")
+    private @Nullable Output<Integer> nodeCount;
+
+    /**
+     * @return For a read pool instance, the number of nodes in the read pool.
+     * 
+     */
+    public Optional<Output<Integer>> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
     }
 
     /**
@@ -340,6 +356,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.maintenanceVersion = $.maintenanceVersion;
         this.masterInstanceName = $.masterInstanceName;
         this.name = $.name;
+        this.nodeCount = $.nodeCount;
         this.project = $.project;
         this.region = $.region;
         this.replicaConfiguration = $.replicaConfiguration;
@@ -489,7 +506,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceType The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+         * @param instanceType The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
          * 
          * @return builder
          * 
@@ -500,7 +517,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceType The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+         * @param instanceType The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
          * 
          * @return builder
          * 
@@ -580,6 +597,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nodeCount For a read pool instance, the number of nodes in the read pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(@Nullable Output<Integer> nodeCount) {
+            $.nodeCount = nodeCount;
+            return this;
+        }
+
+        /**
+         * @param nodeCount For a read pool instance, the number of nodes in the read pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(Integer nodeCount) {
+            return nodeCount(Output.of(nodeCount));
         }
 
         /**

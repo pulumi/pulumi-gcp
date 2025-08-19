@@ -24,6 +24,12 @@ namespace Pulumi.Gcp.Sql.Inputs
             set => _allowedConsumerProjects = value;
         }
 
+        /// <summary>
+        /// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        /// </summary>
+        [Input("networkAttachmentUri")]
+        public Input<string>? NetworkAttachmentUri { get; set; }
+
         [Input("pscAutoConnections")]
         private InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionGetArgs>? _pscAutoConnections;
 

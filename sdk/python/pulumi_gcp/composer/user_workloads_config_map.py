@@ -227,6 +227,14 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
+        test = gcp.serviceaccount.Account("test",
+            account_id="test-sa",
+            display_name="Test Service Account for Composer Environment")
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            project=project.project_id,
+            role="roles/composer.worker",
+            member=test.email.apply(lambda email: f"serviceAccount:{email}"))
         environment = gcp.composer.Environment("environment",
             name="test-environment",
             region="us-central1",
@@ -234,7 +242,11 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
                 "software_config": {
                     "image_version": "composer-3-airflow-2",
                 },
-            })
+                "node_config": {
+                    "service_account": test.name,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[composer_worker]))
         config_map = gcp.composer.UserWorkloadsConfigMap("config_map",
             name="test-config-map",
             region="us-central1",
@@ -306,6 +318,14 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
+        test = gcp.serviceaccount.Account("test",
+            account_id="test-sa",
+            display_name="Test Service Account for Composer Environment")
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            project=project.project_id,
+            role="roles/composer.worker",
+            member=test.email.apply(lambda email: f"serviceAccount:{email}"))
         environment = gcp.composer.Environment("environment",
             name="test-environment",
             region="us-central1",
@@ -313,7 +333,11 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
                 "software_config": {
                     "image_version": "composer-3-airflow-2",
                 },
-            })
+                "node_config": {
+                    "service_account": test.name,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[composer_worker]))
         config_map = gcp.composer.UserWorkloadsConfigMap("config_map",
             name="test-config-map",
             region="us-central1",

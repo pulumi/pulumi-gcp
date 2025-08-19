@@ -589,6 +589,139 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Backend Service Ha Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "rbs-net",
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "region-service",
+    ///         Protocol = "UDP",
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///         Network = @default.Id,
+    ///         HaPolicy = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyArgs
+    ///         {
+    ///             FastIpMove = "GARP_RA",
+    ///         },
+    ///         ConnectionDrainingTimeoutSec = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Backend Service Ha Policy Manual Leader
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "rbs-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "rbs-subnet",
+    ///         IpCidrRange = "10.1.2.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-12",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var endpoint_instance = new Gcp.Compute.Instance("endpoint-instance", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///             },
+    ///         },
+    ///         Name = "rbs-instance",
+    ///         MachineType = "e2-medium",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new()
+    ///     {
+    ///         Name = "rbs-neg",
+    ///         NetworkEndpointType = "GCE_VM_IP",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var endpoint = new Gcp.Compute.NetworkEndpoint("endpoint", new()
+    ///     {
+    ///         NetworkEndpointGroup = neg.Name,
+    ///         Instance = endpoint_instance.Name,
+    ///         IpAddress = endpoint_instance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "region-service",
+    ///         Protocol = "UDP",
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///         Network = @default.Id,
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = neg.SelfLink,
+    ///                 BalancingMode = "CONNECTION",
+    ///             },
+    ///         },
+    ///         HaPolicy = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyArgs
+    ///         {
+    ///             FastIpMove = "GARP_RA",
+    ///             Leader = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyLeaderArgs
+    ///             {
+    ///                 BackendGroup = neg.SelfLink,
+    ///                 NetworkEndpoint = new Gcp.Compute.Inputs.RegionBackendServiceHaPolicyLeaderNetworkEndpointArgs
+    ///                 {
+    ///                     Instance = endpoint_instance.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ConnectionDrainingTimeoutSec = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -736,6 +869,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("generatedId")]
         public Output<int> GeneratedId { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+        /// The backends of this regional backend service must only specify zonal network endpoint groups
+        /// (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+        /// be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+        /// requires customers to be responsible for tracking backend endpoint health and electing a
+        /// leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+        /// haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+        /// Passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("haPolicy")]
+        public Output<Outputs.RegionBackendServiceHaPolicy?> HaPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The set of URLs to HealthCheck resources for health checking
@@ -1099,6 +1246,20 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionBackendServiceFailoverPolicyArgs>? FailoverPolicy { get; set; }
 
         /// <summary>
+        /// Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+        /// The backends of this regional backend service must only specify zonal network endpoint groups
+        /// (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+        /// be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+        /// requires customers to be responsible for tracking backend endpoint health and electing a
+        /// leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+        /// haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+        /// Passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("haPolicy")]
+        public Input<Inputs.RegionBackendServiceHaPolicyArgs>? HaPolicy { get; set; }
+
+        /// <summary>
         /// The set of URLs to HealthCheck resources for health checking
         /// this RegionBackendService. Currently at most one health
         /// check can be specified.
@@ -1433,6 +1594,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("generatedId")]
         public Input<int>? GeneratedId { get; set; }
+
+        /// <summary>
+        /// Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
+        /// The backends of this regional backend service must only specify zonal network endpoint groups
+        /// (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
+        /// be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy
+        /// requires customers to be responsible for tracking backend endpoint health and electing a
+        /// leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.
+        /// haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
+        /// Passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("haPolicy")]
+        public Input<Inputs.RegionBackendServiceHaPolicyGetArgs>? HaPolicy { get; set; }
 
         /// <summary>
         /// The set of URLs to HealthCheck resources for health checking

@@ -46,7 +46,7 @@ import (
 //				},
 //				Accesses: bigquery.DatasetAccessTypeArray{
 //					&bigquery.DatasetAccessTypeArgs{
-//						Role:        pulumi.String("OWNER"),
+//						Role:        pulumi.String("roles/bigquery.dataOwner"),
 //						UserByEmail: bqowner.Email,
 //					},
 //					&bigquery.DatasetAccessTypeArgs{

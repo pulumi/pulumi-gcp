@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigAdvancedMachineFeaturesArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigBootDiskArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigConfidentialNodesArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigContainerdConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEffectiveTaintArgs;
@@ -54,6 +55,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<NodePoolNodeConfigAdvancedMachineFeaturesArgs>> advancedMachineFeatures() {
         return Optional.ofNullable(this.advancedMachineFeatures);
+    }
+
+    /**
+     * Boot disk configuration for node pools nodes.
+     * 
+     */
+    @Import(name="bootDisk")
+    private @Nullable Output<NodePoolNodeConfigBootDiskArgs> bootDisk;
+
+    /**
+     * @return Boot disk configuration for node pools nodes.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigBootDiskArgs>> bootDisk() {
+        return Optional.ofNullable(this.bootDisk);
     }
 
     /**
@@ -720,6 +736,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
     private NodePoolNodeConfigArgs(NodePoolNodeConfigArgs $) {
         this.advancedMachineFeatures = $.advancedMachineFeatures;
+        this.bootDisk = $.bootDisk;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
         this.confidentialNodes = $.confidentialNodes;
         this.containerdConfig = $.containerdConfig;
@@ -803,6 +820,27 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder advancedMachineFeatures(NodePoolNodeConfigAdvancedMachineFeaturesArgs advancedMachineFeatures) {
             return advancedMachineFeatures(Output.of(advancedMachineFeatures));
+        }
+
+        /**
+         * @param bootDisk Boot disk configuration for node pools nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDisk(@Nullable Output<NodePoolNodeConfigBootDiskArgs> bootDisk) {
+            $.bootDisk = bootDisk;
+            return this;
+        }
+
+        /**
+         * @param bootDisk Boot disk configuration for node pools nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDisk(NodePoolNodeConfigBootDiskArgs bootDisk) {
+            return bootDisk(Output.of(bootDisk));
         }
 
         /**

@@ -15,6 +15,7 @@ from .cx_generative_settings import *
 from .cx_generator import *
 from .cx_intent import *
 from .cx_page import *
+from .cx_playbook import *
 from .cx_security_settings import *
 from .cx_test_case import *
 from .cx_tool import *

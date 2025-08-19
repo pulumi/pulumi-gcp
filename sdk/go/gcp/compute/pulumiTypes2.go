@@ -13,6 +13,1093 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpRange struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs and GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{...}
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
+}
+
+func (GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray and GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{ GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{...} }
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray []GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeInput
+
+func (GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+// The IP CIDR range represented by this alias IP range. This IP CIDR range
+// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+// system or used by other network interfaces. At the time of writing only a
+// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+// error.
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork secondary range name specifying
+// the secondary range from which to allocate the IP CIDR range for this alias IP
+// range. If left unspecified, the primary range of the subnetwork will be used.
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAliasIpRange) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateNetworkInterfaceAliasIpRange {
+		return vs[0].([]GetRegionInstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 string `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
+	ExternalIpv6PrefixLength string `pulumi:"externalIpv6PrefixLength"`
+	// The name of the instance template. One of `name` or `filter` must be provided.
+	Name string `pulumi:"name"`
+	// The [networking tier][network-tier] used for configuring
+	// this instance template. This field can take the following values: PREMIUM or
+	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+	NetworkTier string `pulumi:"networkTier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs and GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{...}
+type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 pulumi.StringInput `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
+	ExternalIpv6PrefixLength pulumi.StringInput `pulumi:"externalIpv6PrefixLength"`
+	// The name of the instance template. One of `name` or `filter` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The [networking tier][network-tier] used for configuring
+	// this instance template. This field can take the following values: PREMIUM or
+	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
+}
+
+func (GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput)
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray and GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{ GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{...} }
+type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput
+
+func (GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return o
+}
+
+// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.ExternalIpv6 }).(pulumi.StringOutput)
+}
+
+// The prefix length of the external IPv6 range.
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string {
+		return v.ExternalIpv6PrefixLength
+	}).(pulumi.StringOutput)
+}
+
+// The name of the instance template. One of `name` or `filter` must be provided.
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The [networking tier][network-tier] used for configuring
+// this instance template. This field can take the following values: PREMIUM or
+// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+		return vs[0].([]GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput)
+}
+
+type GetRegionInstanceTemplateNetworkPerformanceConfig struct {
+	// The egress bandwidth tier for the instance.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// GetRegionInstanceTemplateNetworkPerformanceConfigInput is an input type that accepts GetRegionInstanceTemplateNetworkPerformanceConfigArgs and GetRegionInstanceTemplateNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkPerformanceConfigInput` via:
+//
+//	GetRegionInstanceTemplateNetworkPerformanceConfigArgs{...}
+type GetRegionInstanceTemplateNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkPerformanceConfigOutput() GetRegionInstanceTemplateNetworkPerformanceConfigOutput
+	ToGetRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkPerformanceConfigOutput
+}
+
+type GetRegionInstanceTemplateNetworkPerformanceConfigArgs struct {
+	// The egress bandwidth tier for the instance.
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (GetRegionInstanceTemplateNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkPerformanceConfigArgs) ToGetRegionInstanceTemplateNetworkPerformanceConfigOutput() GetRegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return i.ToGetRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkPerformanceConfigArgs) ToGetRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkPerformanceConfigOutput)
+}
+
+// GetRegionInstanceTemplateNetworkPerformanceConfigArrayInput is an input type that accepts GetRegionInstanceTemplateNetworkPerformanceConfigArray and GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkPerformanceConfigArrayInput` via:
+//
+//	GetRegionInstanceTemplateNetworkPerformanceConfigArray{ GetRegionInstanceTemplateNetworkPerformanceConfigArgs{...} }
+type GetRegionInstanceTemplateNetworkPerformanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput() GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput
+	ToGetRegionInstanceTemplateNetworkPerformanceConfigArrayOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput
+}
+
+type GetRegionInstanceTemplateNetworkPerformanceConfigArray []GetRegionInstanceTemplateNetworkPerformanceConfigInput
+
+func (GetRegionInstanceTemplateNetworkPerformanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkPerformanceConfigArray) ToGetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput() GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return i.ToGetRegionInstanceTemplateNetworkPerformanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkPerformanceConfigArray) ToGetRegionInstanceTemplateNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput)
+}
+
+type GetRegionInstanceTemplateNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkPerformanceConfigOutput) ToGetRegionInstanceTemplateNetworkPerformanceConfigOutput() GetRegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkPerformanceConfigOutput) ToGetRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+// The egress bandwidth tier for the instance.
+func (o GetRegionInstanceTemplateNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput) ToGetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput() GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput) ToGetRegionInstanceTemplateNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateNetworkPerformanceConfig {
+		return vs[0].([]GetRegionInstanceTemplateNetworkPerformanceConfig)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateNetworkPerformanceConfigOutput)
+}
+
+type GetRegionInstanceTemplateReservationAffinity struct {
+	// Specifies the label selector for the reservation to use.
+	SpecificReservations []GetRegionInstanceTemplateReservationAffinitySpecificReservation `pulumi:"specificReservations"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetRegionInstanceTemplateReservationAffinityInput is an input type that accepts GetRegionInstanceTemplateReservationAffinityArgs and GetRegionInstanceTemplateReservationAffinityOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateReservationAffinityInput` via:
+//
+//	GetRegionInstanceTemplateReservationAffinityArgs{...}
+type GetRegionInstanceTemplateReservationAffinityInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateReservationAffinityOutput() GetRegionInstanceTemplateReservationAffinityOutput
+	ToGetRegionInstanceTemplateReservationAffinityOutputWithContext(context.Context) GetRegionInstanceTemplateReservationAffinityOutput
+}
+
+type GetRegionInstanceTemplateReservationAffinityArgs struct {
+	// Specifies the label selector for the reservation to use.
+	SpecificReservations GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayInput `pulumi:"specificReservations"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRegionInstanceTemplateReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateReservationAffinityArgs) ToGetRegionInstanceTemplateReservationAffinityOutput() GetRegionInstanceTemplateReservationAffinityOutput {
+	return i.ToGetRegionInstanceTemplateReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateReservationAffinityArgs) ToGetRegionInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) GetRegionInstanceTemplateReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateReservationAffinityOutput)
+}
+
+// GetRegionInstanceTemplateReservationAffinityArrayInput is an input type that accepts GetRegionInstanceTemplateReservationAffinityArray and GetRegionInstanceTemplateReservationAffinityArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateReservationAffinityArrayInput` via:
+//
+//	GetRegionInstanceTemplateReservationAffinityArray{ GetRegionInstanceTemplateReservationAffinityArgs{...} }
+type GetRegionInstanceTemplateReservationAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateReservationAffinityArrayOutput() GetRegionInstanceTemplateReservationAffinityArrayOutput
+	ToGetRegionInstanceTemplateReservationAffinityArrayOutputWithContext(context.Context) GetRegionInstanceTemplateReservationAffinityArrayOutput
+}
+
+type GetRegionInstanceTemplateReservationAffinityArray []GetRegionInstanceTemplateReservationAffinityInput
+
+func (GetRegionInstanceTemplateReservationAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateReservationAffinityArray) ToGetRegionInstanceTemplateReservationAffinityArrayOutput() GetRegionInstanceTemplateReservationAffinityArrayOutput {
+	return i.ToGetRegionInstanceTemplateReservationAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateReservationAffinityArray) ToGetRegionInstanceTemplateReservationAffinityArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateReservationAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateReservationAffinityArrayOutput)
+}
+
+type GetRegionInstanceTemplateReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateReservationAffinityOutput) ToGetRegionInstanceTemplateReservationAffinityOutput() GetRegionInstanceTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateReservationAffinityOutput) ToGetRegionInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) GetRegionInstanceTemplateReservationAffinityOutput {
+	return o
+}
+
+// Specifies the label selector for the reservation to use.
+func (o GetRegionInstanceTemplateReservationAffinityOutput) SpecificReservations() GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateReservationAffinity) []GetRegionInstanceTemplateReservationAffinitySpecificReservation {
+		return v.SpecificReservations
+	}).(GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetRegionInstanceTemplateReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateReservationAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateReservationAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateReservationAffinityArrayOutput) ToGetRegionInstanceTemplateReservationAffinityArrayOutput() GetRegionInstanceTemplateReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateReservationAffinityArrayOutput) ToGetRegionInstanceTemplateReservationAffinityArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateReservationAffinityArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateReservationAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateReservationAffinity {
+		return vs[0].([]GetRegionInstanceTemplateReservationAffinity)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateReservationAffinityOutput)
+}
+
+type GetRegionInstanceTemplateReservationAffinitySpecificReservation struct {
+	// The key for the node affinity label.
+	Key string `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
+	Values []string `pulumi:"values"`
+}
+
+// GetRegionInstanceTemplateReservationAffinitySpecificReservationInput is an input type that accepts GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs and GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateReservationAffinitySpecificReservationInput` via:
+//
+//	GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs{...}
+type GetRegionInstanceTemplateReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateReservationAffinitySpecificReservationOutput() GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput
+	ToGetRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Context) GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput
+}
+
+type GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs struct {
+	// The key for the node affinity label.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToGetRegionInstanceTemplateReservationAffinitySpecificReservationOutput() GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return i.ToGetRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToGetRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput)
+}
+
+// GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayInput is an input type that accepts GetRegionInstanceTemplateReservationAffinitySpecificReservationArray and GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayInput` via:
+//
+//	GetRegionInstanceTemplateReservationAffinitySpecificReservationArray{ GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs{...} }
+type GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput() GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput
+	ToGetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutputWithContext(context.Context) GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput
+}
+
+type GetRegionInstanceTemplateReservationAffinitySpecificReservationArray []GetRegionInstanceTemplateReservationAffinitySpecificReservationInput
+
+func (GetRegionInstanceTemplateReservationAffinitySpecificReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateReservationAffinitySpecificReservationArray) ToGetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput() GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return i.ToGetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateReservationAffinitySpecificReservationArray) ToGetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput)
+}
+
+type GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToGetRegionInstanceTemplateReservationAffinitySpecificReservationOutput() GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToGetRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+// The key for the node affinity label.
+func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Corresponds to the label values of a reservation resource.
+func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput) ToGetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput() GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput) ToGetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateReservationAffinitySpecificReservation {
+		return vs[0].([]GetRegionInstanceTemplateReservationAffinitySpecificReservation)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput)
+}
+
+type GetRegionInstanceTemplateScheduling struct {
+	// Specifies whether the instance should be
+	// automatically restarted if it is terminated by Compute Engine (not
+	// terminated by a user). This defaults to true.
+	AutomaticRestart bool `pulumi:"automaticRestart"`
+	// Specifies the availability domain, which this instance should be scheduled on.
+	AvailabilityDomain int `pulumi:"availabilityDomain"`
+	// Settings for the instance to perform a graceful shutdown.
+	GracefulShutdowns []GetRegionInstanceTemplateSchedulingGracefulShutdown `pulumi:"gracefulShutdowns"`
+	// Beta Time in seconds for host error detection.
+	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
+	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while
+	//   recovery of the Local Ssd state is attempted. Its value should be in
+	//   between 0 and 168 hours with hour granularity and the default value being 1
+	//   hour.
+	LocalSsdRecoveryTimeouts []GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeouts"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+	// The timeout for new network connections to hosts.
+	MaxRunDurations []GetRegionInstanceTemplateSchedulingMaxRunDuration `pulumi:"maxRunDurations"`
+	// Minimum number of cpus for the instance.
+	MinNodeCpus int `pulumi:"minNodeCpus"`
+	// Specifies node affinities or anti-affinities
+	// to determine which sole-tenant nodes your instances and managed instance
+	// groups will use as host systems. Read more on sole-tenant node creation
+	// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+	// Structure documented below.
+	NodeAffinities []GetRegionInstanceTemplateSchedulingNodeAffinity `pulumi:"nodeAffinities"`
+	// Defines the maintenance behavior for this
+	// instance.
+	OnHostMaintenance string `pulumi:"onHostMaintenance"`
+	// Defines the behaviour for instances with the instance_termination_action.
+	OnInstanceStopActions []GetRegionInstanceTemplateSchedulingOnInstanceStopAction `pulumi:"onInstanceStopActions"`
+	// Allows instance to be preempted. This defaults to
+	// false. Read more on this
+	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+	Preemptible bool `pulumi:"preemptible"`
+	// Describe the type of preemptible VM.
+	ProvisioningModel string `pulumi:"provisioningModel"`
+	// Specifies the timestamp, when the instance will be terminated,
+	// in RFC3339 text format. If specified, the instance termination action
+	// will be performed at the termination time.
+	TerminationTime string `pulumi:"terminationTime"`
+}
+
+// GetRegionInstanceTemplateSchedulingInput is an input type that accepts GetRegionInstanceTemplateSchedulingArgs and GetRegionInstanceTemplateSchedulingOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingArgs{...}
+type GetRegionInstanceTemplateSchedulingInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingOutput() GetRegionInstanceTemplateSchedulingOutput
+	ToGetRegionInstanceTemplateSchedulingOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingOutput
+}
+
+type GetRegionInstanceTemplateSchedulingArgs struct {
+	// Specifies whether the instance should be
+	// automatically restarted if it is terminated by Compute Engine (not
+	// terminated by a user). This defaults to true.
+	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	// Specifies the availability domain, which this instance should be scheduled on.
+	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
+	// Settings for the instance to perform a graceful shutdown.
+	GracefulShutdowns GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput `pulumi:"gracefulShutdowns"`
+	// Beta Time in seconds for host error detection.
+	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
+	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while
+	//   recovery of the Local Ssd state is attempted. Its value should be in
+	//   between 0 and 168 hours with hour granularity and the default value being 1
+	//   hour.
+	LocalSsdRecoveryTimeouts GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput `pulumi:"localSsdRecoveryTimeouts"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+	// The timeout for new network connections to hosts.
+	MaxRunDurations GetRegionInstanceTemplateSchedulingMaxRunDurationArrayInput `pulumi:"maxRunDurations"`
+	// Minimum number of cpus for the instance.
+	MinNodeCpus pulumi.IntInput `pulumi:"minNodeCpus"`
+	// Specifies node affinities or anti-affinities
+	// to determine which sole-tenant nodes your instances and managed instance
+	// groups will use as host systems. Read more on sole-tenant node creation
+	// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+	// Structure documented below.
+	NodeAffinities GetRegionInstanceTemplateSchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+	// Defines the maintenance behavior for this
+	// instance.
+	OnHostMaintenance pulumi.StringInput `pulumi:"onHostMaintenance"`
+	// Defines the behaviour for instances with the instance_termination_action.
+	OnInstanceStopActions GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayInput `pulumi:"onInstanceStopActions"`
+	// Allows instance to be preempted. This defaults to
+	// false. Read more on this
+	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
+	// Describe the type of preemptible VM.
+	ProvisioningModel pulumi.StringInput `pulumi:"provisioningModel"`
+	// Specifies the timestamp, when the instance will be terminated,
+	// in RFC3339 text format. If specified, the instance termination action
+	// will be performed at the termination time.
+	TerminationTime pulumi.StringInput `pulumi:"terminationTime"`
+}
+
+func (GetRegionInstanceTemplateSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateScheduling)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingArgs) ToGetRegionInstanceTemplateSchedulingOutput() GetRegionInstanceTemplateSchedulingOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingArgs) ToGetRegionInstanceTemplateSchedulingOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingArray and GetRegionInstanceTemplateSchedulingArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingArray{ GetRegionInstanceTemplateSchedulingArgs{...} }
+type GetRegionInstanceTemplateSchedulingArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingArrayOutput() GetRegionInstanceTemplateSchedulingArrayOutput
+	ToGetRegionInstanceTemplateSchedulingArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingArray []GetRegionInstanceTemplateSchedulingInput
+
+func (GetRegionInstanceTemplateSchedulingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateScheduling)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingArray) ToGetRegionInstanceTemplateSchedulingArrayOutput() GetRegionInstanceTemplateSchedulingArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingArray) ToGetRegionInstanceTemplateSchedulingArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateScheduling)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingOutput) ToGetRegionInstanceTemplateSchedulingOutput() GetRegionInstanceTemplateSchedulingOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingOutput) ToGetRegionInstanceTemplateSchedulingOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingOutput {
+	return o
+}
+
+// Specifies whether the instance should be
+// automatically restarted if it is terminated by Compute Engine (not
+// terminated by a user). This defaults to true.
+func (o GetRegionInstanceTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+// Specifies the availability domain, which this instance should be scheduled on.
+func (o GetRegionInstanceTemplateSchedulingOutput) AvailabilityDomain() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
+}
+
+// Settings for the instance to perform a graceful shutdown.
+func (o GetRegionInstanceTemplateSchedulingOutput) GracefulShutdowns() GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingGracefulShutdown {
+		return v.GracefulShutdowns
+	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput)
+}
+
+// Beta Time in seconds for host error detection.
+func (o GetRegionInstanceTemplateSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
+}
+
+// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+func (o GetRegionInstanceTemplateSchedulingOutput) InstanceTerminationAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.InstanceTerminationAction }).(pulumi.StringOutput)
+}
+
+// Specifies the maximum amount of time a Local Ssd Vm should wait while
+//
+//	recovery of the Local Ssd state is attempted. Its value should be in
+//	between 0 and 168 hours with hour granularity and the default value being 1
+//	hour.
+func (o GetRegionInstanceTemplateSchedulingOutput) LocalSsdRecoveryTimeouts() GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+		return v.LocalSsdRecoveryTimeouts
+	}).(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput)
+}
+
+// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+func (o GetRegionInstanceTemplateSchedulingOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+// The timeout for new network connections to hosts.
+func (o GetRegionInstanceTemplateSchedulingOutput) MaxRunDurations() GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingMaxRunDuration {
+		return v.MaxRunDurations
+	}).(GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput)
+}
+
+// Minimum number of cpus for the instance.
+func (o GetRegionInstanceTemplateSchedulingOutput) MinNodeCpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.MinNodeCpus }).(pulumi.IntOutput)
+}
+
+// Specifies node affinities or anti-affinities
+// to determine which sole-tenant nodes your instances and managed instance
+// groups will use as host systems. Read more on sole-tenant node creation
+// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+// Structure documented below.
+func (o GetRegionInstanceTemplateSchedulingOutput) NodeAffinities() GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingNodeAffinity {
+		return v.NodeAffinities
+	}).(GetRegionInstanceTemplateSchedulingNodeAffinityArrayOutput)
+}
+
+// Defines the maintenance behavior for this
+// instance.
+func (o GetRegionInstanceTemplateSchedulingOutput) OnHostMaintenance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
+}
+
+// Defines the behaviour for instances with the instance_termination_action.
+func (o GetRegionInstanceTemplateSchedulingOutput) OnInstanceStopActions() GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingOnInstanceStopAction {
+		return v.OnInstanceStopActions
+	}).(GetRegionInstanceTemplateSchedulingOnInstanceStopActionArrayOutput)
+}
+
+// Allows instance to be preempted. This defaults to
+// false. Read more on this
+// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+func (o GetRegionInstanceTemplateSchedulingOutput) Preemptible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+// Describe the type of preemptible VM.
+func (o GetRegionInstanceTemplateSchedulingOutput) ProvisioningModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.ProvisioningModel }).(pulumi.StringOutput)
+}
+
+// Specifies the timestamp, when the instance will be terminated,
+// in RFC3339 text format. If specified, the instance termination action
+// will be performed at the termination time.
+func (o GetRegionInstanceTemplateSchedulingOutput) TerminationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.TerminationTime }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateScheduling)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingArrayOutput) ToGetRegionInstanceTemplateSchedulingArrayOutput() GetRegionInstanceTemplateSchedulingArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingArrayOutput) ToGetRegionInstanceTemplateSchedulingArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateScheduling {
+		return vs[0].([]GetRegionInstanceTemplateScheduling)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdown struct {
+	// Opts-in for graceful shutdown.
+	Enabled bool `pulumi:"enabled"`
+	// The time allotted for the instance to gracefully shut down.
+	// 										If the graceful shutdown isn't complete after this time, then the instance
+	// 										transitions to the STOPPING state.
+	MaxDurations []GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration `pulumi:"maxDurations"`
+}
+
+// GetRegionInstanceTemplateSchedulingGracefulShutdownInput is an input type that accepts GetRegionInstanceTemplateSchedulingGracefulShutdownArgs and GetRegionInstanceTemplateSchedulingGracefulShutdownOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingGracefulShutdownInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingGracefulShutdownArgs{...}
+type GetRegionInstanceTemplateSchedulingGracefulShutdownInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownOutput
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownOutput
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownArgs struct {
+	// Opts-in for graceful shutdown.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The time allotted for the instance to gracefully shut down.
+	// 										If the graceful shutdown isn't complete after this time, then the instance
+	// 										transitions to the STOPPING state.
+	MaxDurations GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput `pulumi:"maxDurations"`
+}
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownArgs) ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownArgs) ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingGracefulShutdownOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingGracefulShutdownArray and GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingGracefulShutdownArray{ GetRegionInstanceTemplateSchedulingGracefulShutdownArgs{...} }
+type GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownArray []GetRegionInstanceTemplateSchedulingGracefulShutdownInput
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownArray) ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownArray) ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return o
+}
+
+// Opts-in for graceful shutdown.
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingGracefulShutdown) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The time allotted for the instance to gracefully shut down.
+//
+//	If the graceful shutdown isn't complete after this time, then the instance
+//	transitions to the STOPPING state.
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownOutput) MaxDurations() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingGracefulShutdown) []GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
+		return v.MaxDurations
+	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingGracefulShutdown)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingGracefulShutdownOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingGracefulShutdown {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingGracefulShutdown)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput is an input type that accepts GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs and GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{...}
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// 													resolution. Durations less than one second are represented
+	// 													with a 0 seconds field and a positive nanos field. Must
+	// 													be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// 													The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput)
+}
+
+// GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput is an input type that accepts GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray and GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput` via:
+//
+//	GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray{ GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{...} }
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput
+	ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray []GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return i.ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+//
+//	resolution. Durations less than one second are represented
+//	with a 0 seconds field and a positive nanos field. Must
+//	be from 0 to 999,999,999 inclusive.
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+//
+//	The value must be between 1 and 3600, which is 3,600 seconds (one hour).
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput() GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) ToGetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
+		return vs[0].([]GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput)
+}
+
 type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout struct {
 	// Span of time that's a fraction of a second at nanosecond
 	// resolution. Durations less than one second are represented
@@ -10891,6 +11978,22 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkPerformanceConfigInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkPerformanceConfigArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkPerformanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinityInput)(nil)).Elem(), GetRegionInstanceTemplateReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinityArrayInput)(nil)).Elem(), GetRegionInstanceTemplateReservationAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinitySpecificReservationInput)(nil)).Elem(), GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayInput)(nil)).Elem(), GetRegionInstanceTemplateReservationAffinitySpecificReservationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingGracefulShutdownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingGracefulShutdownArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateSchedulingMaxRunDurationInput)(nil)).Elem(), GetRegionInstanceTemplateSchedulingMaxRunDurationArgs{})
@@ -11061,6 +12164,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateReservationAffinityOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateReservationAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingGracefulShutdownOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateSchedulingMaxRunDurationOutput{})

@@ -70,6 +70,7 @@ export interface GetRegionBackendServiceResult {
     readonly failoverPolicies: outputs.compute.GetRegionBackendServiceFailoverPolicy[];
     readonly fingerprint: string;
     readonly generatedId: number;
+    readonly haPolicies: outputs.compute.GetRegionBackendServiceHaPolicy[];
     readonly healthChecks: string[];
     readonly iaps: outputs.compute.GetRegionBackendServiceIap[];
     /**

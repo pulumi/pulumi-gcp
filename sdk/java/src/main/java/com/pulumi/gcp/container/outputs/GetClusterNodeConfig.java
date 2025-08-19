@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigAdvancedMachineFeature;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigBootDisk;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigConfidentialNode;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigContainerdConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEffectiveTaint;
@@ -46,6 +47,11 @@ public final class GetClusterNodeConfig {
      * 
      */
     private String bootDiskKmsKey;
+    /**
+     * @return Boot disk configuration for node pools nodes.
+     * 
+     */
+    private List<GetClusterNodeConfigBootDisk> bootDisks;
     /**
      * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
@@ -276,6 +282,13 @@ public final class GetClusterNodeConfig {
      */
     public String bootDiskKmsKey() {
         return this.bootDiskKmsKey;
+    }
+    /**
+     * @return Boot disk configuration for node pools nodes.
+     * 
+     */
+    public List<GetClusterNodeConfigBootDisk> bootDisks() {
+        return this.bootDisks;
     }
     /**
      * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
@@ -590,6 +603,7 @@ public final class GetClusterNodeConfig {
     public static final class Builder {
         private List<GetClusterNodeConfigAdvancedMachineFeature> advancedMachineFeatures;
         private String bootDiskKmsKey;
+        private List<GetClusterNodeConfigBootDisk> bootDisks;
         private List<GetClusterNodeConfigConfidentialNode> confidentialNodes;
         private List<GetClusterNodeConfigContainerdConfig> containerdConfigs;
         private Integer diskSizeGb;
@@ -638,6 +652,7 @@ public final class GetClusterNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
+    	      this.bootDisks = defaults.bootDisks;
     	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.containerdConfigs = defaults.containerdConfigs;
     	      this.diskSizeGb = defaults.diskSizeGb;
@@ -701,6 +716,17 @@ public final class GetClusterNodeConfig {
             }
             this.bootDiskKmsKey = bootDiskKmsKey;
             return this;
+        }
+        @CustomType.Setter
+        public Builder bootDisks(List<GetClusterNodeConfigBootDisk> bootDisks) {
+            if (bootDisks == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "bootDisks");
+            }
+            this.bootDisks = bootDisks;
+            return this;
+        }
+        public Builder bootDisks(GetClusterNodeConfigBootDisk... bootDisks) {
+            return bootDisks(List.of(bootDisks));
         }
         @CustomType.Setter
         public Builder confidentialNodes(List<GetClusterNodeConfigConfidentialNode> confidentialNodes) {
@@ -1122,6 +1148,7 @@ public final class GetClusterNodeConfig {
             final var _resultValue = new GetClusterNodeConfig();
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
             _resultValue.bootDiskKmsKey = bootDiskKmsKey;
+            _resultValue.bootDisks = bootDisks;
             _resultValue.confidentialNodes = confidentialNodes;
             _resultValue.containerdConfigs = containerdConfigs;
             _resultValue.diskSizeGb = diskSizeGb;

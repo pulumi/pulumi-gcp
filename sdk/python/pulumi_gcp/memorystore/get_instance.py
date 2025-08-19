@@ -27,7 +27,10 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, allow_fewer_zones_deployment=None, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+        if allow_fewer_zones_deployment and not isinstance(allow_fewer_zones_deployment, bool):
+            raise TypeError("Expected argument 'allow_fewer_zones_deployment' to be a bool")
+        pulumi.set(__self__, "allow_fewer_zones_deployment", allow_fewer_zones_deployment)
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -148,6 +151,11 @@ class GetInstanceResult:
         if zone_distribution_configs and not isinstance(zone_distribution_configs, list):
             raise TypeError("Expected argument 'zone_distribution_configs' to be a list")
         pulumi.set(__self__, "zone_distribution_configs", zone_distribution_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="allowFewerZonesDeployment")
+    def allow_fewer_zones_deployment(self) -> _builtins.bool:
+        return pulumi.get(self, "allow_fewer_zones_deployment")
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -359,6 +367,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            allow_fewer_zones_deployment=self.allow_fewer_zones_deployment,
             authorization_mode=self.authorization_mode,
             automated_backup_configs=self.automated_backup_configs,
             backup_collection=self.backup_collection,
@@ -433,6 +442,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:memorystore/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        allow_fewer_zones_deployment=pulumi.get(__ret__, 'allow_fewer_zones_deployment'),
         authorization_mode=pulumi.get(__ret__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__ret__, 'automated_backup_configs'),
         backup_collection=pulumi.get(__ret__, 'backup_collection'),
@@ -504,6 +514,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:memorystore/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
+        allow_fewer_zones_deployment=pulumi.get(__response__, 'allow_fewer_zones_deployment'),
         authorization_mode=pulumi.get(__response__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__response__, 'automated_backup_configs'),
         backup_collection=pulumi.get(__response__, 'backup_collection'),

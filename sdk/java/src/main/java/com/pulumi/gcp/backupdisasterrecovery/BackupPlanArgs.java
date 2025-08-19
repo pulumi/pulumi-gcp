@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -96,6 +97,21 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+     * 
+     */
+    @Import(name="logRetentionDays")
+    private @Nullable Output<Integer> logRetentionDays;
+
+    /**
+     * @return This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+     * 
+     */
+    public Optional<Output<Integer>> logRetentionDays() {
+        return Optional.ofNullable(this.logRetentionDays);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -114,7 +130,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     @Import(name="resourceType", required=true)
@@ -122,7 +138,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource type to which the `BackupPlan` will be applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     public Output<String> resourceType() {
@@ -137,6 +153,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         this.backupVault = $.backupVault;
         this.description = $.description;
         this.location = $.location;
+        this.logRetentionDays = $.logRetentionDays;
         this.project = $.project;
         this.resourceType = $.resourceType;
     }
@@ -278,6 +295,27 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param logRetentionDays This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logRetentionDays(@Nullable Output<Integer> logRetentionDays) {
+            $.logRetentionDays = logRetentionDays;
+            return this;
+        }
+
+        /**
+         * @param logRetentionDays This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logRetentionDays(Integer logRetentionDays) {
+            return logRetentionDays(Output.of(logRetentionDays));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -302,7 +340,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceType The resource type to which the `BackupPlan` will be applied.
-         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
          * 
          * @return builder
          * 
@@ -314,7 +352,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceType The resource type to which the `BackupPlan` will be applied.
-         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;storage.googleapis.com/Bucket&#34;.
+         * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
          * 
          * @return builder
          * 

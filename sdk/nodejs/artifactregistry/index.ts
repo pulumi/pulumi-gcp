@@ -20,6 +20,16 @@ export const getLocations: typeof import("./getLocations").getLocations = null a
 export const getLocationsOutput: typeof import("./getLocations").getLocationsOutput = null as any;
 utilities.lazyLoad(exports, ["getLocations","getLocationsOutput"], () => require("./getLocations"));
 
+export { GetPackageArgs, GetPackageResult, GetPackageOutputArgs } from "./getPackage";
+export const getPackage: typeof import("./getPackage").getPackage = null as any;
+export const getPackageOutput: typeof import("./getPackage").getPackageOutput = null as any;
+utilities.lazyLoad(exports, ["getPackage","getPackageOutput"], () => require("./getPackage"));
+
+export { GetRepositoriesArgs, GetRepositoriesResult, GetRepositoriesOutputArgs } from "./getRepositories";
+export const getRepositories: typeof import("./getRepositories").getRepositories = null as any;
+export const getRepositoriesOutput: typeof import("./getRepositories").getRepositoriesOutput = null as any;
+utilities.lazyLoad(exports, ["getRepositories","getRepositoriesOutput"], () => require("./getRepositories"));
+
 export { GetRepositoryArgs, GetRepositoryResult, GetRepositoryOutputArgs } from "./getRepository";
 export const getRepository: typeof import("./getRepository").getRepository = null as any;
 export const getRepositoryOutput: typeof import("./getRepository").getRepositoryOutput = null as any;
@@ -29,6 +39,11 @@ export { GetRepositoryIamPolicyArgs, GetRepositoryIamPolicyResult, GetRepository
 export const getRepositoryIamPolicy: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicy = null as any;
 export const getRepositoryIamPolicyOutput: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRepositoryIamPolicy","getRepositoryIamPolicyOutput"], () => require("./getRepositoryIamPolicy"));
+
+export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
 
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;

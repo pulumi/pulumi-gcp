@@ -74,6 +74,11 @@ public final class NodePoolNodeConfigKubeletConfig {
      * 
      */
     private @Nullable Integer podPidsLimit;
+    /**
+     * @return Defines whether to enable single process OOM killer.
+     * 
+     */
+    private @Nullable Boolean singleProcessOomKill;
 
     private NodePoolNodeConfigKubeletConfig() {}
     /**
@@ -160,6 +165,13 @@ public final class NodePoolNodeConfigKubeletConfig {
     public Optional<Integer> podPidsLimit() {
         return Optional.ofNullable(this.podPidsLimit);
     }
+    /**
+     * @return Defines whether to enable single process OOM killer.
+     * 
+     */
+    public Optional<Boolean> singleProcessOomKill() {
+        return Optional.ofNullable(this.singleProcessOomKill);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -182,6 +194,7 @@ public final class NodePoolNodeConfigKubeletConfig {
         private @Nullable String imageMinimumGcAge;
         private @Nullable String insecureKubeletReadonlyPortEnabled;
         private @Nullable Integer podPidsLimit;
+        private @Nullable Boolean singleProcessOomKill;
         public Builder() {}
         public Builder(NodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -197,6 +210,7 @@ public final class NodePoolNodeConfigKubeletConfig {
     	      this.imageMinimumGcAge = defaults.imageMinimumGcAge;
     	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.podPidsLimit = defaults.podPidsLimit;
+    	      this.singleProcessOomKill = defaults.singleProcessOomKill;
         }
 
         @CustomType.Setter
@@ -274,6 +288,12 @@ public final class NodePoolNodeConfigKubeletConfig {
             this.podPidsLimit = podPidsLimit;
             return this;
         }
+        @CustomType.Setter
+        public Builder singleProcessOomKill(@Nullable Boolean singleProcessOomKill) {
+
+            this.singleProcessOomKill = singleProcessOomKill;
+            return this;
+        }
         public NodePoolNodeConfigKubeletConfig build() {
             final var _resultValue = new NodePoolNodeConfigKubeletConfig();
             _resultValue.allowedUnsafeSysctls = allowedUnsafeSysctls;
@@ -288,6 +308,7 @@ public final class NodePoolNodeConfigKubeletConfig {
             _resultValue.imageMinimumGcAge = imageMinimumGcAge;
             _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.podPidsLimit = podPidsLimit;
+            _resultValue.singleProcessOomKill = singleProcessOomKill;
             return _resultValue;
         }
     }

@@ -35,12 +35,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.composer.Environment;
  * import com.pulumi.gcp.composer.EnvironmentArgs;
  * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
  * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+ * import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigArgs;
  * import com.pulumi.gcp.composer.UserWorkloadsConfigMap;
  * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,6 +62,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var test = new Account("test", AccountArgs.builder()
+ *             .accountId("test-sa")
+ *             .displayName("Test Service Account for Composer Environment")
+ *             .build());
+ * 
+ *         var composer_worker = new IAMMember("composer-worker", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/composer.worker")
+ *             .member(test.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
  *         var environment = new Environment("environment", EnvironmentArgs.builder()
  *             .name("test-environment")
  *             .region("us-central1")
@@ -61,8 +83,13 @@ import javax.annotation.Nullable;
  *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
  *                     .imageVersion("composer-3-airflow-2")
  *                     .build())
+ *                 .nodeConfig(EnvironmentConfigNodeConfigArgs.builder()
+ *                     .serviceAccount(test.name())
+ *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(composer_worker)
+ *                 .build());
  * 
  *         var configMap = new UserWorkloadsConfigMap("configMap", UserWorkloadsConfigMapArgs.builder()
  *             .name("test-config-map")

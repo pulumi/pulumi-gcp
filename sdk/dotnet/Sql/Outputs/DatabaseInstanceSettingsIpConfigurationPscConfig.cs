@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedConsumerProjects;
         /// <summary>
+        /// Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        /// </summary>
+        public readonly string? NetworkAttachmentUri;
+        /// <summary>
         /// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         /// </summary>
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> PscAutoConnections;
@@ -30,11 +34,14 @@ namespace Pulumi.Gcp.Sql.Outputs
         private DatabaseInstanceSettingsIpConfigurationPscConfig(
             ImmutableArray<string> allowedConsumerProjects,
 
+            string? networkAttachmentUri,
+
             ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> pscAutoConnections,
 
             bool? pscEnabled)
         {
             AllowedConsumerProjects = allowedConsumerProjects;
+            NetworkAttachmentUri = networkAttachmentUri;
             PscAutoConnections = pscAutoConnections;
             PscEnabled = pscEnabled;
         }

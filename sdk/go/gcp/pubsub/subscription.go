@@ -705,6 +705,68 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Subscription Multiple Smts
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: example.ID(),
+//				MessageTransforms: pubsub.SubscriptionMessageTransformArray{
+//					&pubsub.SubscriptionMessageTransformArgs{
+//						JavascriptUdf: &pubsub.SubscriptionMessageTransformJavascriptUdfArgs{
+//							FunctionName: pulumi.String("redactSSN"),
+//							Code: pulumi.String(`function redactSSN(message, metadata) {
+//	  const data = JSON.parse(message.data);
+//	  delete data['ssn'];
+//	  message.data = JSON.stringify(data);
+//	  return message;
+//	}
+//
+// `),
+//
+//						},
+//					},
+//					&pubsub.SubscriptionMessageTransformArgs{
+//						JavascriptUdf: &pubsub.SubscriptionMessageTransformJavascriptUdfArgs{
+//							FunctionName: pulumi.String("otherFunc"),
+//							Code:         pulumi.String("function otherFunc(message, metadata) {\n  return null;\n}\n"),
+//						},
+//					},
+//					&pubsub.SubscriptionMessageTransformArgs{
+//						Disabled: pulumi.Bool(true),
+//						JavascriptUdf: &pubsub.SubscriptionMessageTransformJavascriptUdfArgs{
+//							FunctionName: pulumi.String("someSMTWeDisabled"),
+//							Code:         pulumi.String("..."),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Subscription can be imported using any of these accepted formats:

@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("podPidsLimit")]
         public Input<int>? PodPidsLimit { get; set; }
 
+        /// <summary>
+        /// Defines whether to enable single process OOM killer.
+        /// </summary>
+        [Input("singleProcessOomKill")]
+        public Input<bool>? SingleProcessOomKill { get; set; }
+
         public NodePoolNodeConfigKubeletConfigGetArgs()
         {
         }
