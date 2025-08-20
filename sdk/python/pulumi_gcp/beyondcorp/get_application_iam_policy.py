@@ -106,6 +106,8 @@ def get_application_iam_policy(application_id: Optional[_builtins.str] = None,
                                security_gateways_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationIamPolicyResult:
     """
+    > **Warning:** `beyondcorp.Application` and associated IAM resources are deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
+
     Retrieves the current IAM policy data for application
 
     ## Example Usage
@@ -144,6 +146,8 @@ def get_application_iam_policy_output(application_id: Optional[pulumi.Input[_bui
                                       security_gateways_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationIamPolicyResult]:
     """
+    > **Warning:** `beyondcorp.Application` and associated IAM resources are deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
+
     Retrieves the current IAM policy data for application
 
     ## Example Usage

@@ -109,6 +109,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// - 
     /// 
     /// # IAM policy for API Gateway Api
+    /// 
     /// Three different resources help you manage your IAM policy for API Gateway Api. Each of these resources serves a different use case:
     /// 
     /// * `gcp.apigateway.ApiIamPolicy`: Authoritative. Sets the IAM policy for the api and replaces any existing policy already attached.

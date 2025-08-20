@@ -54,7 +54,6 @@ class ProviderArgs:
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -121,7 +120,6 @@ class ProviderArgs:
                  gke_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gkehub_feature_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -287,8 +285,6 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_billing_custom_endpoint", cloud_billing_custom_endpoint)
         if cloud_build_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_build_custom_endpoint", cloud_build_custom_endpoint)
-        if cloud_build_worker_pool_custom_endpoint is not None:
-            pulumi.set(__self__, "cloud_build_worker_pool_custom_endpoint", cloud_build_worker_pool_custom_endpoint)
         if cloud_functions_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_functions_custom_endpoint", cloud_functions_custom_endpoint)
         if cloud_identity_custom_endpoint is not None:
@@ -421,8 +417,6 @@ class ProviderArgs:
             pulumi.set(__self__, "gke_hub2_custom_endpoint", gke_hub2_custom_endpoint)
         if gke_hub_custom_endpoint is not None:
             pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
-        if gkehub_feature_custom_endpoint is not None:
-            pulumi.set(__self__, "gkehub_feature_custom_endpoint", gkehub_feature_custom_endpoint)
         if gkeonprem_custom_endpoint is not None:
             pulumi.set(__self__, "gkeonprem_custom_endpoint", gkeonprem_custom_endpoint)
         if google_partner_name is not None:
@@ -923,15 +917,6 @@ class ProviderArgs:
     @cloud_build_custom_endpoint.setter
     def cloud_build_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cloud_build_custom_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudBuildWorkerPoolCustomEndpoint")
-    def cloud_build_worker_pool_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "cloud_build_worker_pool_custom_endpoint")
-
-    @cloud_build_worker_pool_custom_endpoint.setter
-    def cloud_build_worker_pool_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cloud_build_worker_pool_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudFunctionsCustomEndpoint")
@@ -1526,15 +1511,6 @@ class ProviderArgs:
     @gke_hub_custom_endpoint.setter
     def gke_hub_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "gke_hub_custom_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="gkehubFeatureCustomEndpoint")
-    def gkehub_feature_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "gkehub_feature_custom_endpoint")
-
-    @gkehub_feature_custom_endpoint.setter
-    def gkehub_feature_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "gkehub_feature_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeonpremCustomEndpoint")
@@ -2423,7 +2399,6 @@ class Provider(pulumi.ProviderResource):
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2490,7 +2465,6 @@ class Provider(pulumi.ProviderResource):
                  gke_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gkehub_feature_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2656,7 +2630,6 @@ class Provider(pulumi.ProviderResource):
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2723,7 +2696,6 @@ class Provider(pulumi.ProviderResource):
                  gke_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 gkehub_feature_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  google_partner_name: Optional[pulumi.Input[_builtins.str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2861,7 +2833,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_asset_custom_endpoint"] = cloud_asset_custom_endpoint
             __props__.__dict__["cloud_billing_custom_endpoint"] = cloud_billing_custom_endpoint
             __props__.__dict__["cloud_build_custom_endpoint"] = cloud_build_custom_endpoint
-            __props__.__dict__["cloud_build_worker_pool_custom_endpoint"] = cloud_build_worker_pool_custom_endpoint
             __props__.__dict__["cloud_functions_custom_endpoint"] = cloud_functions_custom_endpoint
             __props__.__dict__["cloud_identity_custom_endpoint"] = cloud_identity_custom_endpoint
             __props__.__dict__["cloud_ids_custom_endpoint"] = cloud_ids_custom_endpoint
@@ -2928,7 +2899,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["gke_backup_custom_endpoint"] = gke_backup_custom_endpoint
             __props__.__dict__["gke_hub2_custom_endpoint"] = gke_hub2_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
-            __props__.__dict__["gkehub_feature_custom_endpoint"] = gkehub_feature_custom_endpoint
             __props__.__dict__["gkeonprem_custom_endpoint"] = gkeonprem_custom_endpoint
             __props__.__dict__["google_partner_name"] = google_partner_name
             __props__.__dict__["healthcare_custom_endpoint"] = healthcare_custom_endpoint
@@ -3196,11 +3166,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudBuildCustomEndpoint")
     def cloud_build_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_build_custom_endpoint")
-
-    @_builtins.property
-    @pulumi.getter(name="cloudBuildWorkerPoolCustomEndpoint")
-    def cloud_build_worker_pool_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "cloud_build_worker_pool_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="cloudFunctionsCustomEndpoint")
@@ -3516,11 +3481,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="gkeHubCustomEndpoint")
     def gke_hub_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_hub_custom_endpoint")
-
-    @_builtins.property
-    @pulumi.getter(name="gkehubFeatureCustomEndpoint")
-    def gkehub_feature_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "gkehub_feature_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="gkeonpremCustomEndpoint")

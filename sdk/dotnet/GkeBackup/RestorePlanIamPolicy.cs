@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// - 
     /// 
     /// # IAM policy for Backup for GKE RestorePlan
+    /// 
     /// Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
     /// 
     /// * `gcp.gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.

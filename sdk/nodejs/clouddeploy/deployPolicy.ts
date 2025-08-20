@@ -38,11 +38,11 @@ import * as utilities from "../utilities";
  *                 timeZone: "America/Los_Angeles",
  *                 weeklyWindows: [{
  *                     startTime: {
- *                         hours: 12,
+ *                         hours: 0,
  *                         minutes: 0,
  *                     },
  *                     endTime: {
- *                         hours: 13,
+ *                         hours: 24,
  *                         minutes: 0,
  *                     },
  *                 }],
@@ -96,16 +96,12 @@ import * as utilities from "../utilities";
  *                     timeZone: "America/Los_Angeles",
  *                     weeklyWindows: [{
  *                         startTime: {
- *                             hours: 12,
+ *                             hours: 0,
  *                             minutes: 0,
- *                             seconds: 0,
- *                             nanos: 0,
  *                         },
  *                         endTime: {
  *                             hours: 13,
  *                             minutes: 0,
- *                             seconds: 0,
- *                             nanos: 0,
  *                         },
  *                     }],
  *                 },
@@ -122,8 +118,6 @@ import * as utilities from "../utilities";
  *                         startTime: {
  *                             hours: 13,
  *                             minutes: 0,
- *                             seconds: 0,
- *                             nanos: 0,
  *                         },
  *                         endTime: {
  *                             hours: 14,
@@ -135,16 +129,12 @@ import * as utilities from "../utilities";
  *                     }],
  *                     oneTimeWindows: [{
  *                         startTime: {
- *                             hours: 15,
+ *                             hours: 0,
  *                             minutes: 0,
- *                             seconds: 0,
- *                             nanos: 0,
  *                         },
  *                         endTime: {
  *                             hours: 16,
  *                             minutes: 0,
- *                             seconds: 0,
- *                             nanos: 0,
  *                         },
  *                         startDate: {
  *                             year: 2019,
@@ -217,7 +207,7 @@ export class DeployPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -227,7 +217,7 @@ export class DeployPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+     * Description of the `DeployPolicy`. Max length is 255 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
@@ -236,11 +226,11 @@ export class DeployPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     * The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -264,17 +254,17 @@ export class DeployPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. Rules to apply. At least one rule must be present.
+     * Rules to apply. At least one rule must be present.
      * Structure is documented below.
      */
     public readonly rules!: pulumi.Output<outputs.clouddeploy.DeployPolicyRule[]>;
     /**
-     * Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+     * Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
      * Structure is documented below.
      */
     public readonly selectors!: pulumi.Output<outputs.clouddeploy.DeployPolicySelector[]>;
     /**
-     * Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+     * When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
      */
     public readonly suspended!: pulumi.Output<boolean | undefined>;
     /**
@@ -355,7 +345,7 @@ export class DeployPolicy extends pulumi.CustomResource {
  */
 export interface DeployPolicyState {
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -365,7 +355,7 @@ export interface DeployPolicyState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+     * Description of the `DeployPolicy`. Max length is 255 characters.
      */
     description?: pulumi.Input<string>;
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -374,11 +364,11 @@ export interface DeployPolicyState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     * The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
-     * Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -402,17 +392,17 @@ export interface DeployPolicyState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Rules to apply. At least one rule must be present.
+     * Rules to apply. At least one rule must be present.
      * Structure is documented below.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeployPolicyRule>[]>;
     /**
-     * Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+     * Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
      * Structure is documented below.
      */
     selectors?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeployPolicySelector>[]>;
     /**
-     * Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+     * When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
      */
     suspended?: pulumi.Input<boolean>;
     /**
@@ -430,17 +420,17 @@ export interface DeployPolicyState {
  */
 export interface DeployPolicyArgs {
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+     * Description of the `DeployPolicy`. Max length is 255 characters.
      */
     description?: pulumi.Input<string>;
     /**
-     * Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -459,17 +449,17 @@ export interface DeployPolicyArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Required. Rules to apply. At least one rule must be present.
+     * Rules to apply. At least one rule must be present.
      * Structure is documented below.
      */
     rules: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeployPolicyRule>[]>;
     /**
-     * Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+     * Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
      * Structure is documented below.
      */
     selectors: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeployPolicySelector>[]>;
     /**
-     * Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+     * When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
      */
     suspended?: pulumi.Input<boolean>;
 }

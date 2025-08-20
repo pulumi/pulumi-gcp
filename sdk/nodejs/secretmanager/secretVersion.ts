@@ -187,10 +187,6 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     public readonly secretData!: pulumi.Output<string | undefined>;
     /**
-     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     */
-    public readonly secretDataWoVersion!: pulumi.Output<number | undefined>;
-    /**
      * The version of the Secret.
      */
     public /*out*/ readonly version!: pulumi.Output<string>;
@@ -216,7 +212,6 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
             resourceInputs["secretData"] = state ? state.secretData : undefined;
-            resourceInputs["secretDataWoVersion"] = state ? state.secretDataWoVersion : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as SecretVersionArgs | undefined;
@@ -228,7 +223,6 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["isSecretDataBase64"] = args ? args.isSecretDataBase64 : undefined;
             resourceInputs["secret"] = args ? args.secret : undefined;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
-            resourceInputs["secretDataWoVersion"] = args ? args.secretDataWoVersion : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -285,10 +279,6 @@ export interface SecretVersionState {
      */
     secretData?: pulumi.Input<string>;
     /**
-     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     */
-    secretDataWoVersion?: pulumi.Input<number>;
-    /**
      * The version of the Secret.
      */
     version?: pulumi.Input<string>;
@@ -324,8 +314,4 @@ export interface SecretVersionArgs {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     secretData?: pulumi.Input<string>;
-    /**
-     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-     */
-    secretDataWoVersion?: pulumi.Input<number>;
 }

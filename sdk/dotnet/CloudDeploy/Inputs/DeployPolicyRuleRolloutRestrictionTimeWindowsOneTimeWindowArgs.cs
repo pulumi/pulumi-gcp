@@ -13,28 +13,28 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     public sealed class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. End date.
+        /// End date.
         /// Structure is documented below.
         /// </summary>
         [Input("endDate", required: true)]
         public Input<Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs> EndDate { get; set; } = null!;
 
         /// <summary>
-        /// Required. End time (exclusive). You may use 24:00 for the end of the day.
+        /// End time (exclusive). You may use 24:00 for the end of the day.
         /// Structure is documented below.
         /// </summary>
         [Input("endTime", required: true)]
         public Input<Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs> EndTime { get; set; } = null!;
 
         /// <summary>
-        /// Required. Start date.
+        /// Start date.
         /// Structure is documented below.
         /// </summary>
         [Input("startDate", required: true)]
         public Input<Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs> StartDate { get; set; } = null!;
 
         /// <summary>
-        /// Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+        /// Start time (inclusive). Use 00:00 for the beginning of the day.
         /// Structure is documented below.
         /// </summary>
         [Input("startTime", required: true)]

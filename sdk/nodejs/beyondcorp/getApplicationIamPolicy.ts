@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+ *
  * Retrieves the current IAM policy data for application
  *
  * ## Example Usage
@@ -70,6 +72,8 @@ export interface GetApplicationIamPolicyResult {
     readonly securityGatewaysId: string;
 }
 /**
+ * > **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+ *
  * Retrieves the current IAM policy data for application
  *
  * ## Example Usage

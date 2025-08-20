@@ -6931,7 +6931,7 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) A
 }
 
 type DeployPolicyRule struct {
-	// Optional. Rollout restrictions.
+	// Rollout restrictions.
 	// Structure is documented below.
 	RolloutRestriction *DeployPolicyRuleRolloutRestriction `pulumi:"rolloutRestriction"`
 }
@@ -6948,7 +6948,7 @@ type DeployPolicyRuleInput interface {
 }
 
 type DeployPolicyRuleArgs struct {
-	// Optional. Rollout restrictions.
+	// Rollout restrictions.
 	// Structure is documented below.
 	RolloutRestriction DeployPolicyRuleRolloutRestrictionPtrInput `pulumi:"rolloutRestriction"`
 }
@@ -7004,7 +7004,7 @@ func (o DeployPolicyRuleOutput) ToDeployPolicyRuleOutputWithContext(ctx context.
 	return o
 }
 
-// Optional. Rollout restrictions.
+// Rollout restrictions.
 // Structure is documented below.
 func (o DeployPolicyRuleOutput) RolloutRestriction() DeployPolicyRuleRolloutRestrictionPtrOutput {
 	return o.ApplyT(func(v DeployPolicyRule) *DeployPolicyRuleRolloutRestriction { return v.RolloutRestriction }).(DeployPolicyRuleRolloutRestrictionPtrOutput)
@@ -7031,15 +7031,15 @@ func (o DeployPolicyRuleArrayOutput) Index(i pulumi.IntInput) DeployPolicyRuleOu
 }
 
 type DeployPolicyRuleRolloutRestriction struct {
-	// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+	// Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
 	// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
 	Actions []string `pulumi:"actions"`
-	// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+	// ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
 	Id string `pulumi:"id"`
-	// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+	// What invoked the action. If left empty, all invoker types will be restricted.
 	// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
 	Invokers []string `pulumi:"invokers"`
-	// Required. Time window within which actions are restricted.
+	// Time window within which actions are restricted.
 	// Structure is documented below.
 	TimeWindows *DeployPolicyRuleRolloutRestrictionTimeWindows `pulumi:"timeWindows"`
 }
@@ -7056,15 +7056,15 @@ type DeployPolicyRuleRolloutRestrictionInput interface {
 }
 
 type DeployPolicyRuleRolloutRestrictionArgs struct {
-	// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+	// Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
 	// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+	// ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+	// What invoked the action. If left empty, all invoker types will be restricted.
 	// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
 	Invokers pulumi.StringArrayInput `pulumi:"invokers"`
-	// Required. Time window within which actions are restricted.
+	// Time window within which actions are restricted.
 	// Structure is documented below.
 	TimeWindows DeployPolicyRuleRolloutRestrictionTimeWindowsPtrInput `pulumi:"timeWindows"`
 }
@@ -7146,24 +7146,24 @@ func (o DeployPolicyRuleRolloutRestrictionOutput) ToDeployPolicyRuleRolloutRestr
 	}).(DeployPolicyRuleRolloutRestrictionPtrOutput)
 }
 
-// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+// Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
 // Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
 func (o DeployPolicyRuleRolloutRestrictionOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestriction) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+// ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
 func (o DeployPolicyRuleRolloutRestrictionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestriction) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+// What invoked the action. If left empty, all invoker types will be restricted.
 // Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
 func (o DeployPolicyRuleRolloutRestrictionOutput) Invokers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestriction) []string { return v.Invokers }).(pulumi.StringArrayOutput)
 }
 
-// Required. Time window within which actions are restricted.
+// Time window within which actions are restricted.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionOutput) TimeWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestriction) *DeployPolicyRuleRolloutRestrictionTimeWindows {
@@ -7195,7 +7195,7 @@ func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Elem() DeployPolicyRuleRoll
 	}).(DeployPolicyRuleRolloutRestrictionOutput)
 }
 
-// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+// Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
 // Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
 func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) []string {
@@ -7206,7 +7206,7 @@ func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Actions() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+// ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
 func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) *string {
 		if v == nil {
@@ -7216,7 +7216,7 @@ func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Id() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+// What invoked the action. If left empty, all invoker types will be restricted.
 // Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
 func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Invokers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) []string {
@@ -7227,7 +7227,7 @@ func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Invokers() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. Time window within which actions are restricted.
+// Time window within which actions are restricted.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionPtrOutput) TimeWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
 	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) *DeployPolicyRuleRolloutRestrictionTimeWindows {
@@ -7239,12 +7239,12 @@ func (o DeployPolicyRuleRolloutRestrictionPtrOutput) TimeWindows() DeployPolicyR
 }
 
 type DeployPolicyRuleRolloutRestrictionTimeWindows struct {
-	// Optional. One-time windows within which actions are restricted.
+	// One-time windows within which actions are restricted.
 	// Structure is documented below.
 	OneTimeWindows []DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow `pulumi:"oneTimeWindows"`
-	// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+	// The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
 	TimeZone string `pulumi:"timeZone"`
-	// Optional. Recurring weekly windows within which actions are restricted.
+	// Recurring weekly windows within which actions are restricted.
 	// Structure is documented below.
 	WeeklyWindows []DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow `pulumi:"weeklyWindows"`
 }
@@ -7261,12 +7261,12 @@ type DeployPolicyRuleRolloutRestrictionTimeWindowsInput interface {
 }
 
 type DeployPolicyRuleRolloutRestrictionTimeWindowsArgs struct {
-	// Optional. One-time windows within which actions are restricted.
+	// One-time windows within which actions are restricted.
 	// Structure is documented below.
 	OneTimeWindows DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayInput `pulumi:"oneTimeWindows"`
-	// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+	// The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
 	TimeZone pulumi.StringInput `pulumi:"timeZone"`
-	// Optional. Recurring weekly windows within which actions are restricted.
+	// Recurring weekly windows within which actions are restricted.
 	// Structure is documented below.
 	WeeklyWindows DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayInput `pulumi:"weeklyWindows"`
 }
@@ -7348,7 +7348,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) ToDeployPolicyRuleR
 	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput)
 }
 
-// Optional. One-time windows within which actions are restricted.
+// One-time windows within which actions are restricted.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) OneTimeWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindows) []DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
@@ -7356,12 +7356,12 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) OneTimeWindows() De
 	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput)
 }
 
-// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+// The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindows) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
-// Optional. Recurring weekly windows within which actions are restricted.
+// Recurring weekly windows within which actions are restricted.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) WeeklyWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindows) []DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
@@ -7393,7 +7393,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) Elem() DeployPol
 	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOutput)
 }
 
-// Optional. One-time windows within which actions are restricted.
+// One-time windows within which actions are restricted.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) OneTimeWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput {
 	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindows) []DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
@@ -7404,7 +7404,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) OneTimeWindows()
 	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput)
 }
 
-// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+// The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindows) *string {
 		if v == nil {
@@ -7414,7 +7414,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) TimeZone() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Recurring weekly windows within which actions are restricted.
+// Recurring weekly windows within which actions are restricted.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) WeeklyWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput {
 	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindows) []DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
@@ -7426,16 +7426,16 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) WeeklyWindows() 
 }
 
 type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow struct {
-	// Required. End date.
+	// End date.
 	// Structure is documented below.
 	EndDate DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate `pulumi:"endDate"`
-	// Required. End time (exclusive). You may use 24:00 for the end of the day.
+	// End time (exclusive). You may use 24:00 for the end of the day.
 	// Structure is documented below.
 	EndTime DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime `pulumi:"endTime"`
-	// Required. Start date.
+	// Start date.
 	// Structure is documented below.
 	StartDate DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate `pulumi:"startDate"`
-	// Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+	// Start time (inclusive). Use 00:00 for the beginning of the day.
 	// Structure is documented below.
 	StartTime DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime `pulumi:"startTime"`
 }
@@ -7452,16 +7452,16 @@ type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowInput interface {
 }
 
 type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs struct {
-	// Required. End date.
+	// End date.
 	// Structure is documented below.
 	EndDate DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateInput `pulumi:"endDate"`
-	// Required. End time (exclusive). You may use 24:00 for the end of the day.
+	// End time (exclusive). You may use 24:00 for the end of the day.
 	// Structure is documented below.
 	EndTime DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeInput `pulumi:"endTime"`
-	// Required. Start date.
+	// Start date.
 	// Structure is documented below.
 	StartDate DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateInput `pulumi:"startDate"`
-	// Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+	// Start time (inclusive). Use 00:00 for the beginning of the day.
 	// Structure is documented below.
 	StartTime DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeInput `pulumi:"startTime"`
 }
@@ -7517,7 +7517,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) ToDepl
 	return o
 }
 
-// Required. End date.
+// End date.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) EndDate() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate {
@@ -7525,7 +7525,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) EndDat
 	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput)
 }
 
-// Required. End time (exclusive). You may use 24:00 for the end of the day.
+// End time (exclusive). You may use 24:00 for the end of the day.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) EndTime() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime {
@@ -7533,7 +7533,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) EndTim
 	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput)
 }
 
-// Required. Start date.
+// Start date.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) StartDate() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate {
@@ -7541,7 +7541,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) StartD
 	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput)
 }
 
-// Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+// Start time (inclusive). Use 00:00 for the beginning of the day.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) StartTime() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime {
@@ -7868,13 +7868,13 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutpu
 }
 
 type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow struct {
-	// Optional. Days of week. If left empty, all days of the week will be included.
+	// Days of week. If left empty, all days of the week will be included.
 	// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
-	// Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+	// End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
 	// Structure is documented below.
 	EndTime *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime `pulumi:"endTime"`
-	// Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+	// Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
 	// Structure is documented below.
 	StartTime *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime `pulumi:"startTime"`
 }
@@ -7891,13 +7891,13 @@ type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowInput interface {
 }
 
 type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs struct {
-	// Optional. Days of week. If left empty, all days of the week will be included.
+	// Days of week. If left empty, all days of the week will be included.
 	// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
-	// Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+	// End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
 	// Structure is documented below.
 	EndTime DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrInput `pulumi:"endTime"`
-	// Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+	// Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
 	// Structure is documented below.
 	StartTime DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrInput `pulumi:"startTime"`
 }
@@ -7953,13 +7953,13 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) ToDeplo
 	return o
 }
 
-// Optional. Days of week. If left empty, all days of the week will be included.
+// Days of week. If left empty, all days of the week will be included.
 // Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) DaysOfWeeks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
 }
 
-// Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+// End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) EndTime() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow) *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime {
@@ -7967,7 +7967,7 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) EndTime
 	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput)
 }
 
-// Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+// Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
 // Structure is documented below.
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) StartTime() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow) *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime {
@@ -8496,7 +8496,7 @@ func (o DeployPolicySelectorArrayOutput) Index(i pulumi.IntInput) DeployPolicySe
 }
 
 type DeployPolicySelectorDeliveryPipeline struct {
-	// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+	// ID of the DeliveryPipeline. The value of this field could be one of the following:
 	// - The last segment of a pipeline name
 	// - "*", all delivery pipelines in a location
 	Id *string `pulumi:"id"`
@@ -8516,7 +8516,7 @@ type DeployPolicySelectorDeliveryPipelineInput interface {
 }
 
 type DeployPolicySelectorDeliveryPipelineArgs struct {
-	// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+	// ID of the DeliveryPipeline. The value of this field could be one of the following:
 	// - The last segment of a pipeline name
 	// - "*", all delivery pipelines in a location
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -8601,7 +8601,7 @@ func (o DeployPolicySelectorDeliveryPipelineOutput) ToDeployPolicySelectorDelive
 	}).(DeployPolicySelectorDeliveryPipelinePtrOutput)
 }
 
-// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+// ID of the DeliveryPipeline. The value of this field could be one of the following:
 // - The last segment of a pipeline name
 // - "*", all delivery pipelines in a location
 func (o DeployPolicySelectorDeliveryPipelineOutput) Id() pulumi.StringPtrOutput {
@@ -8637,7 +8637,7 @@ func (o DeployPolicySelectorDeliveryPipelinePtrOutput) Elem() DeployPolicySelect
 	}).(DeployPolicySelectorDeliveryPipelineOutput)
 }
 
-// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+// ID of the DeliveryPipeline. The value of this field could be one of the following:
 // - The last segment of a pipeline name
 // - "*", all delivery pipelines in a location
 func (o DeployPolicySelectorDeliveryPipelinePtrOutput) Id() pulumi.StringPtrOutput {

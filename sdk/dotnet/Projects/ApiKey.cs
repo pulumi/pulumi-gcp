@@ -192,6 +192,40 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// });
     /// ```
+    /// ### Service_account_key
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "app",
+    ///         Name = "app",
+    ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var keyServiceAccount = new Gcp.ServiceAccount.Account("key_service_account", new()
+    ///     {
+    ///         AccountId = "app",
+    ///         Project = project.ProjectId,
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Projects.ApiKey("primary", new()
+    ///     {
+    ///         Name = "key",
+    ///         DisplayName = "sample-key",
+    ///         Project = project.ProjectId,
+    ///         ServiceAccountEmail = keyServiceAccount.Email,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -253,6 +287,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Output("restrictions")]
         public Output<Outputs.ApiKeyRestrictions?> Restrictions { get; private set; } = null!;
+
+        /// <summary>
+        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        /// </summary>
+        [Output("serviceAccountEmail")]
+        public Output<string?> ServiceAccountEmail { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Unique id in UUID4 format.
@@ -338,6 +378,12 @@ namespace Pulumi.Gcp.Projects
         [Input("restrictions")]
         public Input<Inputs.ApiKeyRestrictionsArgs>? Restrictions { get; set; }
 
+        /// <summary>
+        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        /// </summary>
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
+
         public ApiKeyArgs()
         {
         }
@@ -389,6 +435,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Input("restrictions")]
         public Input<Inputs.ApiKeyRestrictionsGetArgs>? Restrictions { get; set; }
+
+        /// <summary>
+        /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+        /// </summary>
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
         /// Output only. Unique id in UUID4 format.

@@ -208,6 +208,52 @@ import (
 //	}
 //
 // ```
+// ### Service_account_key
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("app"),
+//				Name:           pulumi.String("app"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keyServiceAccount, err := serviceaccount.NewAccount(ctx, "key_service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("app"),
+//				Project:     project.ProjectId,
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewApiKey(ctx, "primary", &projects.ApiKeyArgs{
+//				Name:                pulumi.String("key"),
+//				DisplayName:         pulumi.String("sample-key"),
+//				Project:             project.ProjectId,
+//				ServiceAccountEmail: keyServiceAccount.Email,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -247,6 +293,8 @@ type ApiKey struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Key restrictions.
 	Restrictions ApiKeyRestrictionsPtrOutput `pulumi:"restrictions"`
+	// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+	ServiceAccountEmail pulumi.StringPtrOutput `pulumi:"serviceAccountEmail"`
 	// Output only. Unique id in UUID4 format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -297,6 +345,8 @@ type apiKeyState struct {
 	Project *string `pulumi:"project"`
 	// Key restrictions.
 	Restrictions *ApiKeyRestrictions `pulumi:"restrictions"`
+	// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// Output only. Unique id in UUID4 format.
 	Uid *string `pulumi:"uid"`
 }
@@ -314,6 +364,8 @@ type ApiKeyState struct {
 	Project pulumi.StringPtrInput
 	// Key restrictions.
 	Restrictions ApiKeyRestrictionsPtrInput
+	// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+	ServiceAccountEmail pulumi.StringPtrInput
 	// Output only. Unique id in UUID4 format.
 	Uid pulumi.StringPtrInput
 }
@@ -333,6 +385,8 @@ type apiKeyArgs struct {
 	Project *string `pulumi:"project"`
 	// Key restrictions.
 	Restrictions *ApiKeyRestrictions `pulumi:"restrictions"`
+	// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 }
 
 // The set of arguments for constructing a ApiKey resource.
@@ -347,6 +401,8 @@ type ApiKeyArgs struct {
 	Project pulumi.StringPtrInput
 	// Key restrictions.
 	Restrictions ApiKeyRestrictionsPtrInput
+	// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+	ServiceAccountEmail pulumi.StringPtrInput
 }
 
 func (ApiKeyArgs) ElementType() reflect.Type {
@@ -461,6 +517,11 @@ func (o ApiKeyOutput) Project() pulumi.StringOutput {
 // Key restrictions.
 func (o ApiKeyOutput) Restrictions() ApiKeyRestrictionsPtrOutput {
 	return o.ApplyT(func(v *ApiKey) ApiKeyRestrictionsPtrOutput { return v.Restrictions }).(ApiKeyRestrictionsPtrOutput)
+}
+
+// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+func (o ApiKeyOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiKey) pulumi.StringPtrOutput { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
 // Output only. Unique id in UUID4 format.

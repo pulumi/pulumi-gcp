@@ -38,7 +38,9 @@ class AiIndexArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['AiIndexMetadataArgs'] metadata: An additional information about the Index
+        :param pulumi.Input['AiIndexMetadataArgs'] metadata: Additional information about the Index.
+               Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+               Attempts to create an Index without this field will result in an API error.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -114,7 +116,9 @@ class AiIndexArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input['AiIndexMetadataArgs']]:
         """
-        An additional information about the Index
+        Additional information about the Index.
+        Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+        Attempts to create an Index without this field will result in an API error.
         Structure is documented below.
         """
         return pulumi.get(self, "metadata")
@@ -185,7 +189,9 @@ class _AiIndexState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['AiIndexMetadataArgs'] metadata: An additional information about the Index
+        :param pulumi.Input['AiIndexMetadataArgs'] metadata: Additional information about the Index.
+               Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+               Attempts to create an Index without this field will result in an API error.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         :param pulumi.Input[_builtins.str] name: The resource name of the Index.
@@ -347,7 +353,9 @@ class _AiIndexState:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input['AiIndexMetadataArgs']]:
         """
-        An additional information about the Index
+        Additional information about the Index.
+        Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+        Attempts to create an Index without this field will result in an API error.
         Structure is documented below.
         """
         return pulumi.get(self, "metadata")
@@ -576,7 +584,9 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']] metadata: An additional information about the Index
+        :param pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']] metadata: Additional information about the Index.
+               Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+               Attempts to create an Index without this field will result in an API error.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -808,7 +818,9 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']] metadata: An additional information about the Index
+        :param pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']] metadata: Additional information about the Index.
+               Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+               Attempts to create an Index without this field will result in an API error.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         :param pulumi.Input[_builtins.str] name: The resource name of the Index.
@@ -923,7 +935,9 @@ class AiIndex(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional['outputs.AiIndexMetadata']]:
         """
-        An additional information about the Index
+        Additional information about the Index.
+        Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+        Attempts to create an Index without this field will result in an API error.
         Structure is documented below.
         """
         return pulumi.get(self, "metadata")

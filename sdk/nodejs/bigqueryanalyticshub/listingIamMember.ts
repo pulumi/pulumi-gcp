@@ -79,6 +79,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for BigQuery Analytics Hub Listing
+ *
  * Three different resources help you manage your IAM policy for BigQuery Analytics Hub Listing. Each of these resources serves a different use case:
  *
  * * `gcp.bigqueryanalyticshub.ListingIamPolicy`: Authoritative. Sets the IAM policy for the listing and replaces any existing policy already attached.

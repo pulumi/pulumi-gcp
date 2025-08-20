@@ -329,6 +329,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
         ---
 
         # IAM policy for Apigee Environment
+
         Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
 
         * `apigee.EnvironmentIamPolicy`: Authoritative. Sets the IAM policy for the environment and replaces any existing policy already attached.
@@ -509,6 +510,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
         ---
 
         # IAM policy for Apigee Environment
+
         Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
 
         * `apigee.EnvironmentIamPolicy`: Authoritative. Sets the IAM policy for the environment and replaces any existing policy already attached.

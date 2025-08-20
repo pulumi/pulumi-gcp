@@ -71,6 +71,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for GKEHub Scope
+ *
  * Three different resources help you manage your IAM policy for GKEHub Scope. Each of these resources serves a different use case:
  *
  * * `gcp.gkehub.ScopeIamPolicy`: Authoritative. Sets the IAM policy for the scope and replaces any existing policy already attached.

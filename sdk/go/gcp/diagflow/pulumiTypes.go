@@ -13,6 +13,6247 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ConversationProfileAutomatedAgentConfig struct {
+	// ID of the Dialogflow agent environment to use.
+	// Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+	Agent string `pulumi:"agent"`
+	// Configure lifetime of the Dialogflow session.
+	SessionTtl *string `pulumi:"sessionTtl"`
+}
+
+// ConversationProfileAutomatedAgentConfigInput is an input type that accepts ConversationProfileAutomatedAgentConfigArgs and ConversationProfileAutomatedAgentConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileAutomatedAgentConfigInput` via:
+//
+//	ConversationProfileAutomatedAgentConfigArgs{...}
+type ConversationProfileAutomatedAgentConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileAutomatedAgentConfigOutput() ConversationProfileAutomatedAgentConfigOutput
+	ToConversationProfileAutomatedAgentConfigOutputWithContext(context.Context) ConversationProfileAutomatedAgentConfigOutput
+}
+
+type ConversationProfileAutomatedAgentConfigArgs struct {
+	// ID of the Dialogflow agent environment to use.
+	// Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+	Agent pulumi.StringInput `pulumi:"agent"`
+	// Configure lifetime of the Dialogflow session.
+	SessionTtl pulumi.StringPtrInput `pulumi:"sessionTtl"`
+}
+
+func (ConversationProfileAutomatedAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileAutomatedAgentConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileAutomatedAgentConfigArgs) ToConversationProfileAutomatedAgentConfigOutput() ConversationProfileAutomatedAgentConfigOutput {
+	return i.ToConversationProfileAutomatedAgentConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileAutomatedAgentConfigArgs) ToConversationProfileAutomatedAgentConfigOutputWithContext(ctx context.Context) ConversationProfileAutomatedAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileAutomatedAgentConfigOutput)
+}
+
+func (i ConversationProfileAutomatedAgentConfigArgs) ToConversationProfileAutomatedAgentConfigPtrOutput() ConversationProfileAutomatedAgentConfigPtrOutput {
+	return i.ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileAutomatedAgentConfigArgs) ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(ctx context.Context) ConversationProfileAutomatedAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileAutomatedAgentConfigOutput).ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileAutomatedAgentConfigPtrInput is an input type that accepts ConversationProfileAutomatedAgentConfigArgs, ConversationProfileAutomatedAgentConfigPtr and ConversationProfileAutomatedAgentConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileAutomatedAgentConfigPtrInput` via:
+//
+//	        ConversationProfileAutomatedAgentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileAutomatedAgentConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileAutomatedAgentConfigPtrOutput() ConversationProfileAutomatedAgentConfigPtrOutput
+	ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(context.Context) ConversationProfileAutomatedAgentConfigPtrOutput
+}
+
+type conversationProfileAutomatedAgentConfigPtrType ConversationProfileAutomatedAgentConfigArgs
+
+func ConversationProfileAutomatedAgentConfigPtr(v *ConversationProfileAutomatedAgentConfigArgs) ConversationProfileAutomatedAgentConfigPtrInput {
+	return (*conversationProfileAutomatedAgentConfigPtrType)(v)
+}
+
+func (*conversationProfileAutomatedAgentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileAutomatedAgentConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileAutomatedAgentConfigPtrType) ToConversationProfileAutomatedAgentConfigPtrOutput() ConversationProfileAutomatedAgentConfigPtrOutput {
+	return i.ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileAutomatedAgentConfigPtrType) ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(ctx context.Context) ConversationProfileAutomatedAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileAutomatedAgentConfigPtrOutput)
+}
+
+type ConversationProfileAutomatedAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileAutomatedAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileAutomatedAgentConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileAutomatedAgentConfigOutput) ToConversationProfileAutomatedAgentConfigOutput() ConversationProfileAutomatedAgentConfigOutput {
+	return o
+}
+
+func (o ConversationProfileAutomatedAgentConfigOutput) ToConversationProfileAutomatedAgentConfigOutputWithContext(ctx context.Context) ConversationProfileAutomatedAgentConfigOutput {
+	return o
+}
+
+func (o ConversationProfileAutomatedAgentConfigOutput) ToConversationProfileAutomatedAgentConfigPtrOutput() ConversationProfileAutomatedAgentConfigPtrOutput {
+	return o.ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileAutomatedAgentConfigOutput) ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(ctx context.Context) ConversationProfileAutomatedAgentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileAutomatedAgentConfig) *ConversationProfileAutomatedAgentConfig {
+		return &v
+	}).(ConversationProfileAutomatedAgentConfigPtrOutput)
+}
+
+// ID of the Dialogflow agent environment to use.
+// Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+func (o ConversationProfileAutomatedAgentConfigOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v ConversationProfileAutomatedAgentConfig) string { return v.Agent }).(pulumi.StringOutput)
+}
+
+// Configure lifetime of the Dialogflow session.
+func (o ConversationProfileAutomatedAgentConfigOutput) SessionTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileAutomatedAgentConfig) *string { return v.SessionTtl }).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileAutomatedAgentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileAutomatedAgentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileAutomatedAgentConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileAutomatedAgentConfigPtrOutput) ToConversationProfileAutomatedAgentConfigPtrOutput() ConversationProfileAutomatedAgentConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileAutomatedAgentConfigPtrOutput) ToConversationProfileAutomatedAgentConfigPtrOutputWithContext(ctx context.Context) ConversationProfileAutomatedAgentConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileAutomatedAgentConfigPtrOutput) Elem() ConversationProfileAutomatedAgentConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileAutomatedAgentConfig) ConversationProfileAutomatedAgentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileAutomatedAgentConfig
+		return ret
+	}).(ConversationProfileAutomatedAgentConfigOutput)
+}
+
+// ID of the Dialogflow agent environment to use.
+// Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+func (o ConversationProfileAutomatedAgentConfigPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileAutomatedAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configure lifetime of the Dialogflow session.
+func (o ConversationProfileAutomatedAgentConfigPtrOutput) SessionTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileAutomatedAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfig struct {
+	// Configuration for agent assistance of end user participant.
+	// Structure is documented below.
+	EndUserSuggestionConfig *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig `pulumi:"endUserSuggestionConfig"`
+	// Configuration for agent assistance of human agent participant.
+	// Structure is documented below.
+	HumanAgentSuggestionConfig *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig `pulumi:"humanAgentSuggestionConfig"`
+	// desc
+	// Structure is documented below.
+	MessageAnalysisConfig *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig `pulumi:"messageAnalysisConfig"`
+	// Pub/Sub topic on which to publish new agent assistant events.
+	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+	// Structure is documented below.
+	NotificationConfig *ConversationProfileHumanAgentAssistantConfigNotificationConfig `pulumi:"notificationConfig"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigArgs and ConversationProfileHumanAgentAssistantConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigOutput() ConversationProfileHumanAgentAssistantConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigArgs struct {
+	// Configuration for agent assistance of end user participant.
+	// Structure is documented below.
+	EndUserSuggestionConfig ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrInput `pulumi:"endUserSuggestionConfig"`
+	// Configuration for agent assistance of human agent participant.
+	// Structure is documented below.
+	HumanAgentSuggestionConfig ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrInput `pulumi:"humanAgentSuggestionConfig"`
+	// desc
+	// Structure is documented below.
+	MessageAnalysisConfig ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrInput `pulumi:"messageAnalysisConfig"`
+	// Pub/Sub topic on which to publish new agent assistant events.
+	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+	// Structure is documented below.
+	NotificationConfig ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrInput `pulumi:"notificationConfig"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigArgs) ToConversationProfileHumanAgentAssistantConfigOutput() ConversationProfileHumanAgentAssistantConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigArgs) ToConversationProfileHumanAgentAssistantConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigArgs) ToConversationProfileHumanAgentAssistantConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigArgs) ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigOutput).ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigArgs, ConversationProfileHumanAgentAssistantConfigPtr and ConversationProfileHumanAgentAssistantConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigPtrType ConversationProfileHumanAgentAssistantConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigPtr(v *ConversationProfileHumanAgentAssistantConfigArgs) ConversationProfileHumanAgentAssistantConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigPtrType) ToConversationProfileHumanAgentAssistantConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigPtrType) ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigOutput) ToConversationProfileHumanAgentAssistantConfigOutput() ConversationProfileHumanAgentAssistantConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigOutput) ToConversationProfileHumanAgentAssistantConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigOutput) ToConversationProfileHumanAgentAssistantConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigOutput) ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigPtrOutput)
+}
+
+// Configuration for agent assistance of end user participant.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigOutput) EndUserSuggestionConfig() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig {
+		return v.EndUserSuggestionConfig
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput)
+}
+
+// Configuration for agent assistance of human agent participant.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigOutput) HumanAgentSuggestionConfig() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig {
+		return v.HumanAgentSuggestionConfig
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput)
+}
+
+// desc
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigOutput) MessageAnalysisConfig() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
+		return v.MessageAnalysisConfig
+	}).(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
+}
+
+// Pub/Sub topic on which to publish new agent assistant events.
+// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigOutput) NotificationConfig() ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigNotificationConfig {
+		return v.NotificationConfig
+	}).(ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfig) ConversationProfileHumanAgentAssistantConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigOutput)
+}
+
+// Configuration for agent assistance of end user participant.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) EndUserSuggestionConfig() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EndUserSuggestionConfig
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput)
+}
+
+// Configuration for agent assistance of human agent participant.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) HumanAgentSuggestionConfig() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HumanAgentSuggestionConfig
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput)
+}
+
+// desc
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) MessageAnalysisConfig() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MessageAnalysisConfig
+	}).(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
+}
+
+// Pub/Sub topic on which to publish new agent assistant events.
+// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigPtrOutput) NotificationConfig() ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfig) *ConversationProfileHumanAgentAssistantConfigNotificationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationConfig
+	}).(ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig struct {
+	// When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+	DisableHighLatencyFeaturesSyncDelivery *bool `pulumi:"disableHighLatencyFeaturesSyncDelivery"`
+	// Configuration of different suggestion features. One feature can have only one config.
+	// Structure is documented below.
+	FeatureConfigs []ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig `pulumi:"featureConfigs"`
+	// List of various generator resource names used in the conversation profile.
+	Generators []string `pulumi:"generators"`
+	// If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+	// If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+	GroupSuggestionResponses *bool `pulumi:"groupSuggestionResponses"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs struct {
+	// When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+	DisableHighLatencyFeaturesSyncDelivery pulumi.BoolPtrInput `pulumi:"disableHighLatencyFeaturesSyncDelivery"`
+	// Configuration of different suggestion features. One feature can have only one config.
+	// Structure is documented below.
+	FeatureConfigs ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayInput `pulumi:"featureConfigs"`
+	// List of various generator resource names used in the conversation profile.
+	Generators pulumi.StringArrayInput `pulumi:"generators"`
+	// If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+	// If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+	GroupSuggestionResponses pulumi.BoolPtrInput `pulumi:"groupSuggestionResponses"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput)
+}
+
+// When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) DisableHighLatencyFeaturesSyncDelivery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) *bool {
+		return v.DisableHighLatencyFeaturesSyncDelivery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration of different suggestion features. One feature can have only one config.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) FeatureConfigs() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) []ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig {
+		return v.FeatureConfigs
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput)
+}
+
+// List of various generator resource names used in the conversation profile.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) Generators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) []string {
+		return v.Generators
+	}).(pulumi.StringArrayOutput)
+}
+
+// If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+// If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput) GroupSuggestionResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) *bool {
+		return v.GroupSuggestionResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput)
+}
+
+// When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput) DisableHighLatencyFeaturesSyncDelivery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableHighLatencyFeaturesSyncDelivery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration of different suggestion features. One feature can have only one config.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput) FeatureConfigs() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) []ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureConfigs
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput)
+}
+
+// List of various generator resource names used in the conversation profile.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput) Generators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Generators
+	}).(pulumi.StringArrayOutput)
+}
+
+// If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+// If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput) GroupSuggestionResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GroupSuggestionResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig struct {
+	// Configs of custom conversation model.
+	// Structure is documented below.
+	ConversationModelConfig *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig `pulumi:"conversationModelConfig"`
+	// Config to process conversation.
+	// Structure is documented below.
+	ConversationProcessConfig *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig `pulumi:"conversationProcessConfig"`
+	// Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+	// This feature is only supported for types: KNOWLEDGE_SEARCH.
+	DisableAgentQueryLogging *bool `pulumi:"disableAgentQueryLogging"`
+	// Enable including conversation context during query answer generation.
+	// This feature is only supported for types: KNOWLEDGE_SEARCH.
+	EnableConversationAugmentedQuery *bool `pulumi:"enableConversationAugmentedQuery"`
+	// Automatically iterates all participants and tries to compile suggestions.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+	EnableEventBasedSuggestion *bool `pulumi:"enableEventBasedSuggestion"`
+	// Enable query suggestion only.
+	// This feature is only supported for types: KNOWLEDGE_ASSIST
+	EnableQuerySuggestionOnly *bool `pulumi:"enableQuerySuggestionOnly"`
+	// Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+	// This feature is only supported for types: KNOWLEDGE_ASSIST.
+	EnableQuerySuggestionWhenNoAnswer *bool `pulumi:"enableQuerySuggestionWhenNoAnswer"`
+	// Configs of query.
+	// Structure is documented below.
+	QueryConfig *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig `pulumi:"queryConfig"`
+	// The suggestion feature.
+	// Structure is documented below.
+	SuggestionFeature *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature `pulumi:"suggestionFeature"`
+	// Settings of suggestion trigger.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+	// Structure is documented below.
+	SuggestionTriggerSettings *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings `pulumi:"suggestionTriggerSettings"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs struct {
+	// Configs of custom conversation model.
+	// Structure is documented below.
+	ConversationModelConfig ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrInput `pulumi:"conversationModelConfig"`
+	// Config to process conversation.
+	// Structure is documented below.
+	ConversationProcessConfig ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrInput `pulumi:"conversationProcessConfig"`
+	// Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+	// This feature is only supported for types: KNOWLEDGE_SEARCH.
+	DisableAgentQueryLogging pulumi.BoolPtrInput `pulumi:"disableAgentQueryLogging"`
+	// Enable including conversation context during query answer generation.
+	// This feature is only supported for types: KNOWLEDGE_SEARCH.
+	EnableConversationAugmentedQuery pulumi.BoolPtrInput `pulumi:"enableConversationAugmentedQuery"`
+	// Automatically iterates all participants and tries to compile suggestions.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+	EnableEventBasedSuggestion pulumi.BoolPtrInput `pulumi:"enableEventBasedSuggestion"`
+	// Enable query suggestion only.
+	// This feature is only supported for types: KNOWLEDGE_ASSIST
+	EnableQuerySuggestionOnly pulumi.BoolPtrInput `pulumi:"enableQuerySuggestionOnly"`
+	// Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+	// This feature is only supported for types: KNOWLEDGE_ASSIST.
+	EnableQuerySuggestionWhenNoAnswer pulumi.BoolPtrInput `pulumi:"enableQuerySuggestionWhenNoAnswer"`
+	// Configs of query.
+	// Structure is documented below.
+	QueryConfig ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrInput `pulumi:"queryConfig"`
+	// The suggestion feature.
+	// Structure is documented below.
+	SuggestionFeature ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrInput `pulumi:"suggestionFeature"`
+	// Settings of suggestion trigger.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+	// Structure is documented below.
+	SuggestionTriggerSettings ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput `pulumi:"suggestionTriggerSettings"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArray and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArray{ ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs{...} }
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArray []ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigInput
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArray) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArray) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput {
+	return o
+}
+
+// Configs of custom conversation model.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) ConversationModelConfig() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig {
+		return v.ConversationModelConfig
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput)
+}
+
+// Config to process conversation.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) ConversationProcessConfig() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig {
+		return v.ConversationProcessConfig
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput)
+}
+
+// Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+// This feature is only supported for types: KNOWLEDGE_SEARCH.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) DisableAgentQueryLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *bool {
+		return v.DisableAgentQueryLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable including conversation context during query answer generation.
+// This feature is only supported for types: KNOWLEDGE_SEARCH.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) EnableConversationAugmentedQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *bool {
+		return v.EnableConversationAugmentedQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Automatically iterates all participants and tries to compile suggestions.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) EnableEventBasedSuggestion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *bool {
+		return v.EnableEventBasedSuggestion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable query suggestion only.
+// This feature is only supported for types: KNOWLEDGE_ASSIST
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) EnableQuerySuggestionOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *bool {
+		return v.EnableQuerySuggestionOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+// This feature is only supported for types: KNOWLEDGE_ASSIST.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) EnableQuerySuggestionWhenNoAnswer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *bool {
+		return v.EnableQuerySuggestionWhenNoAnswer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configs of query.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) QueryConfig() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig {
+		return v.QueryConfig
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput)
+}
+
+// The suggestion feature.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) SuggestionFeature() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature {
+		return v.SuggestionFeature
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput)
+}
+
+// Settings of suggestion trigger.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput) SuggestionTriggerSettings() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings {
+		return v.SuggestionTriggerSettings
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput) Index(i pulumi.IntInput) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig {
+		return vs[0].([]ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig)[vs[1].(int)]
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig struct {
+	// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+	BaselineModelVersion *string `pulumi:"baselineModelVersion"`
+	// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+	Model *string `pulumi:"model"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs struct {
+	// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+	BaselineModelVersion pulumi.StringPtrInput `pulumi:"baselineModelVersion"`
+	// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput)
+}
+
+// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput) BaselineModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig) *string {
+		return v.BaselineModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig) *string {
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput)
+}
+
+// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) BaselineModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaselineModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig struct {
+	// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+	RecentSentencesCount *int `pulumi:"recentSentencesCount"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs struct {
+	// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+	RecentSentencesCount pulumi.IntPtrInput `pulumi:"recentSentencesCount"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput)
+}
+
+// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput) RecentSentencesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig) *int {
+		return v.RecentSentencesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput)
+}
+
+// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) RecentSentencesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RecentSentencesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig struct {
+	// Confidence threshold of query result.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+	ConfidenceThreshold *float64 `pulumi:"confidenceThreshold"`
+	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+	// Structure is documented below.
+	ContextFilterSettings *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings `pulumi:"contextFilterSettings"`
+	// Query from Dialogflow agent.
+	// This feature is supported for types: DIALOGFLOW_ASSIST.
+	// Structure is documented below.
+	DialogflowQuerySource *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource `pulumi:"dialogflowQuerySource"`
+	// Query from knowledge base document.
+	// This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
+	// Structure is documented below.
+	DocumentQuerySource *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource `pulumi:"documentQuerySource"`
+	// Query from knowledgebase.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+	// Structure is documented below.
+	KnowledgeBaseQuerySource *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource `pulumi:"knowledgeBaseQuerySource"`
+	// Maximum number of results to return.
+	MaxResults *int `pulumi:"maxResults"`
+	// he customized sections chosen to return when requesting a summary of a conversation.
+	// Structure is documented below.
+	Sections *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections `pulumi:"sections"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs struct {
+	// Confidence threshold of query result.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+	ConfidenceThreshold pulumi.Float64PtrInput `pulumi:"confidenceThreshold"`
+	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+	// Structure is documented below.
+	ContextFilterSettings ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput `pulumi:"contextFilterSettings"`
+	// Query from Dialogflow agent.
+	// This feature is supported for types: DIALOGFLOW_ASSIST.
+	// Structure is documented below.
+	DialogflowQuerySource ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput `pulumi:"dialogflowQuerySource"`
+	// Query from knowledge base document.
+	// This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
+	// Structure is documented below.
+	DocumentQuerySource ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrInput `pulumi:"documentQuerySource"`
+	// Query from knowledgebase.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+	// Structure is documented below.
+	KnowledgeBaseQuerySource ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrInput `pulumi:"knowledgeBaseQuerySource"`
+	// Maximum number of results to return.
+	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
+	// he customized sections chosen to return when requesting a summary of a conversation.
+	// Structure is documented below.
+	Sections ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput `pulumi:"sections"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput)
+}
+
+// Confidence threshold of query result.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *float64 {
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) ContextFilterSettings() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
+		return v.ContextFilterSettings
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// Query from Dialogflow agent.
+// This feature is supported for types: DIALOGFLOW_ASSIST.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) DialogflowQuerySource() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
+		return v.DialogflowQuerySource
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// Query from knowledge base document.
+// This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) DocumentQuerySource() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource {
+		return v.DocumentQuerySource
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput)
+}
+
+// Query from knowledgebase.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) KnowledgeBaseQuerySource() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource {
+		return v.KnowledgeBaseQuerySource
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput)
+}
+
+// Maximum number of results to return.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *int {
+		return v.MaxResults
+	}).(pulumi.IntPtrOutput)
+}
+
+// he customized sections chosen to return when requesting a summary of a conversation.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput) Sections() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections {
+		return v.Sections
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput)
+}
+
+// Confidence threshold of query result.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) ContextFilterSettings() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ContextFilterSettings
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// Query from Dialogflow agent.
+// This feature is supported for types: DIALOGFLOW_ASSIST.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) DialogflowQuerySource() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
+		if v == nil {
+			return nil
+		}
+		return v.DialogflowQuerySource
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// Query from knowledge base document.
+// This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) DocumentQuerySource() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentQuerySource
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput)
+}
+
+// Query from knowledgebase.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) KnowledgeBaseQuerySource() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource {
+		if v == nil {
+			return nil
+		}
+		return v.KnowledgeBaseQuerySource
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput)
+}
+
+// Maximum number of results to return.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxResults
+	}).(pulumi.IntPtrOutput)
+}
+
+// he customized sections chosen to return when requesting a summary of a conversation.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput) Sections() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections {
+		if v == nil {
+			return nil
+		}
+		return v.Sections
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings struct {
+	// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+	DropHandoffMessages *bool `pulumi:"dropHandoffMessages"`
+	// If set to true, all messages from ivr stage are dropped.
+	DropIvrMessages *bool `pulumi:"dropIvrMessages"`
+	// If set to true, all messages from virtual agent are dropped.
+	DropVirtualAgentMessages *bool `pulumi:"dropVirtualAgentMessages"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs struct {
+	// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+	DropHandoffMessages pulumi.BoolPtrInput `pulumi:"dropHandoffMessages"`
+	// If set to true, all messages from ivr stage are dropped.
+	DropIvrMessages pulumi.BoolPtrInput `pulumi:"dropIvrMessages"`
+	// If set to true, all messages from virtual agent are dropped.
+	DropVirtualAgentMessages pulumi.BoolPtrInput `pulumi:"dropVirtualAgentMessages"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) DropHandoffMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		return v.DropHandoffMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from ivr stage are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) DropIvrMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		return v.DropIvrMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from virtual agent are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) DropVirtualAgentMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		return v.DropVirtualAgentMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput)
+}
+
+// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) DropHandoffMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropHandoffMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from ivr stage are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) DropIvrMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropIvrMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from virtual agent are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) DropVirtualAgentMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropVirtualAgentMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource struct {
+	// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	Agent string `pulumi:"agent"`
+	// The Dialogflow assist configuration for human agent.
+	// Structure is documented below.
+	HumanAgentSideConfig *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig `pulumi:"humanAgentSideConfig"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs struct {
+	// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	Agent pulumi.StringInput `pulumi:"agent"`
+	// The Dialogflow assist configuration for human agent.
+	// Structure is documented below.
+	HumanAgentSideConfig ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput `pulumi:"humanAgentSideConfig"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) string {
+		return v.Agent
+	}).(pulumi.StringOutput)
+}
+
+// The Dialogflow assist configuration for human agent.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) HumanAgentSideConfig() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		return v.HumanAgentSideConfig
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput)
+}
+
+// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Dialogflow assist configuration for human agent.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) HumanAgentSideConfig() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HumanAgentSideConfig
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig struct {
+	// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	Agent *string `pulumi:"agent"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs struct {
+	// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	Agent pulumi.StringPtrInput `pulumi:"agent"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *string {
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput)
+}
+
+// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource struct {
+	// Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+	Documents []string `pulumi:"documents"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs struct {
+	// Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+	Documents pulumi.StringArrayInput `pulumi:"documents"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput)
+}
+
+// Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput) Documents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource) []string {
+		return v.Documents
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput)
+}
+
+// Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput) Documents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Documents
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource struct {
+	// Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+	KnowledgeBases []string `pulumi:"knowledgeBases"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs struct {
+	// Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+	KnowledgeBases pulumi.StringArrayInput `pulumi:"knowledgeBases"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput)
+}
+
+// Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput) KnowledgeBases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource) []string {
+		return v.KnowledgeBases
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput)
+}
+
+// Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput) KnowledgeBases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.KnowledgeBases
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections struct {
+	// The selected sections chosen to return when requesting a summary of a conversation
+	// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+	// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+	SectionTypes []string `pulumi:"sectionTypes"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs struct {
+	// The selected sections chosen to return when requesting a summary of a conversation
+	// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+	// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+	SectionTypes pulumi.StringArrayInput `pulumi:"sectionTypes"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput)
+}
+
+// The selected sections chosen to return when requesting a summary of a conversation
+// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput) SectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections) []string {
+		return v.SectionTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput)
+}
+
+// The selected sections chosen to return when requesting a summary of a conversation
+// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) SectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SectionTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature struct {
+	// Type of Human Agent Assistant API feature to request.
+	Type *string `pulumi:"type"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs struct {
+	// Type of Human Agent Assistant API feature to request.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput)
+}
+
+// Type of Human Agent Assistant API feature to request.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput)
+}
+
+// Type of Human Agent Assistant API feature to request.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings struct {
+	// Do not trigger if last utterance is small talk.
+	NoSmallTalk *bool `pulumi:"noSmallTalk"`
+	// Only trigger suggestion if participant role of last utterance is END_USER.
+	OnlyEndUser *bool `pulumi:"onlyEndUser"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs{...}
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs struct {
+	// Do not trigger if last utterance is small talk.
+	NoSmallTalk pulumi.BoolPtrInput `pulumi:"noSmallTalk"`
+	// Only trigger suggestion if participant role of last utterance is END_USER.
+	OnlyEndUser pulumi.BoolPtrInput `pulumi:"onlyEndUser"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput).ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs, ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtr and ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs
+
+func ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtr(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings) *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+// Do not trigger if last utterance is small talk.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) NoSmallTalk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings) *bool {
+		return v.NoSmallTalk
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Only trigger suggestion if participant role of last utterance is END_USER.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) OnlyEndUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings) *bool {
+		return v.OnlyEndUser
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) ToConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings) ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput)
+}
+
+// Do not trigger if last utterance is small talk.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) NoSmallTalk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoSmallTalk
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Only trigger suggestion if participant role of last utterance is END_USER.
+func (o ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) OnlyEndUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OnlyEndUser
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig struct {
+	// When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+	DisableHighLatencyFeaturesSyncDelivery *bool `pulumi:"disableHighLatencyFeaturesSyncDelivery"`
+	// Configuration of different suggestion features. One feature can have only one config.
+	// Structure is documented below.
+	FeatureConfigs []ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig `pulumi:"featureConfigs"`
+	// List of various generator resource names used in the conversation profile.
+	Generators []string `pulumi:"generators"`
+	// If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+	// If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+	GroupSuggestionResponses *bool `pulumi:"groupSuggestionResponses"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs struct {
+	// When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+	DisableHighLatencyFeaturesSyncDelivery pulumi.BoolPtrInput `pulumi:"disableHighLatencyFeaturesSyncDelivery"`
+	// Configuration of different suggestion features. One feature can have only one config.
+	// Structure is documented below.
+	FeatureConfigs ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayInput `pulumi:"featureConfigs"`
+	// List of various generator resource names used in the conversation profile.
+	Generators pulumi.StringArrayInput `pulumi:"generators"`
+	// If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+	// If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+	GroupSuggestionResponses pulumi.BoolPtrInput `pulumi:"groupSuggestionResponses"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput)
+}
+
+// When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) DisableHighLatencyFeaturesSyncDelivery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) *bool {
+		return v.DisableHighLatencyFeaturesSyncDelivery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration of different suggestion features. One feature can have only one config.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) FeatureConfigs() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) []ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig {
+		return v.FeatureConfigs
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput)
+}
+
+// List of various generator resource names used in the conversation profile.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) Generators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) []string {
+		return v.Generators
+	}).(pulumi.StringArrayOutput)
+}
+
+// If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+// If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput) GroupSuggestionResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) *bool {
+		return v.GroupSuggestionResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput)
+}
+
+// When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput) DisableHighLatencyFeaturesSyncDelivery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableHighLatencyFeaturesSyncDelivery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration of different suggestion features. One feature can have only one config.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput) FeatureConfigs() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) []ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureConfigs
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput)
+}
+
+// List of various generator resource names used in the conversation profile.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput) Generators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Generators
+	}).(pulumi.StringArrayOutput)
+}
+
+// If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+// If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput) GroupSuggestionResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GroupSuggestionResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig struct {
+	// Configs of custom conversation model.
+	// Structure is documented below.
+	ConversationModelConfig *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig `pulumi:"conversationModelConfig"`
+	// Config to process conversation.
+	// Structure is documented below.
+	ConversationProcessConfig *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig `pulumi:"conversationProcessConfig"`
+	// Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+	// This feature is only supported for types: KNOWLEDGE_SEARCH.
+	DisableAgentQueryLogging *bool `pulumi:"disableAgentQueryLogging"`
+	// Enable including conversation context during query answer generation.
+	// This feature is only supported for types: KNOWLEDGE_SEARCH.
+	EnableConversationAugmentedQuery *bool `pulumi:"enableConversationAugmentedQuery"`
+	// Automatically iterates all participants and tries to compile suggestions.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+	EnableEventBasedSuggestion *bool `pulumi:"enableEventBasedSuggestion"`
+	// Enable query suggestion only.
+	// This feature is only supported for types: KNOWLEDGE_ASSIST
+	EnableQuerySuggestionOnly *bool `pulumi:"enableQuerySuggestionOnly"`
+	// Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+	// This feature is only supported for types: KNOWLEDGE_ASSIST.
+	EnableQuerySuggestionWhenNoAnswer *bool `pulumi:"enableQuerySuggestionWhenNoAnswer"`
+	// Configs of query.
+	// Structure is documented below.
+	QueryConfig *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig `pulumi:"queryConfig"`
+	// The suggestion feature.
+	// Structure is documented below.
+	SuggestionFeature *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature `pulumi:"suggestionFeature"`
+	// Settings of suggestion trigger.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+	// Structure is documented below.
+	SuggestionTriggerSettings *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings `pulumi:"suggestionTriggerSettings"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs struct {
+	// Configs of custom conversation model.
+	// Structure is documented below.
+	ConversationModelConfig ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrInput `pulumi:"conversationModelConfig"`
+	// Config to process conversation.
+	// Structure is documented below.
+	ConversationProcessConfig ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrInput `pulumi:"conversationProcessConfig"`
+	// Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+	// This feature is only supported for types: KNOWLEDGE_SEARCH.
+	DisableAgentQueryLogging pulumi.BoolPtrInput `pulumi:"disableAgentQueryLogging"`
+	// Enable including conversation context during query answer generation.
+	// This feature is only supported for types: KNOWLEDGE_SEARCH.
+	EnableConversationAugmentedQuery pulumi.BoolPtrInput `pulumi:"enableConversationAugmentedQuery"`
+	// Automatically iterates all participants and tries to compile suggestions.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+	EnableEventBasedSuggestion pulumi.BoolPtrInput `pulumi:"enableEventBasedSuggestion"`
+	// Enable query suggestion only.
+	// This feature is only supported for types: KNOWLEDGE_ASSIST
+	EnableQuerySuggestionOnly pulumi.BoolPtrInput `pulumi:"enableQuerySuggestionOnly"`
+	// Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+	// This feature is only supported for types: KNOWLEDGE_ASSIST.
+	EnableQuerySuggestionWhenNoAnswer pulumi.BoolPtrInput `pulumi:"enableQuerySuggestionWhenNoAnswer"`
+	// Configs of query.
+	// Structure is documented below.
+	QueryConfig ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrInput `pulumi:"queryConfig"`
+	// The suggestion feature.
+	// Structure is documented below.
+	SuggestionFeature ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrInput `pulumi:"suggestionFeature"`
+	// Settings of suggestion trigger.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+	// Structure is documented below.
+	SuggestionTriggerSettings ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput `pulumi:"suggestionTriggerSettings"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArray and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArray{ ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs{...} }
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArray []ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigInput
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArray) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArray) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput {
+	return o
+}
+
+// Configs of custom conversation model.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) ConversationModelConfig() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig {
+		return v.ConversationModelConfig
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput)
+}
+
+// Config to process conversation.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) ConversationProcessConfig() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig {
+		return v.ConversationProcessConfig
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput)
+}
+
+// Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+// This feature is only supported for types: KNOWLEDGE_SEARCH.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) DisableAgentQueryLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *bool {
+		return v.DisableAgentQueryLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable including conversation context during query answer generation.
+// This feature is only supported for types: KNOWLEDGE_SEARCH.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) EnableConversationAugmentedQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *bool {
+		return v.EnableConversationAugmentedQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Automatically iterates all participants and tries to compile suggestions.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) EnableEventBasedSuggestion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *bool {
+		return v.EnableEventBasedSuggestion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable query suggestion only.
+// This feature is only supported for types: KNOWLEDGE_ASSIST
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) EnableQuerySuggestionOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *bool {
+		return v.EnableQuerySuggestionOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+// This feature is only supported for types: KNOWLEDGE_ASSIST.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) EnableQuerySuggestionWhenNoAnswer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *bool {
+		return v.EnableQuerySuggestionWhenNoAnswer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configs of query.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) QueryConfig() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig {
+		return v.QueryConfig
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput)
+}
+
+// The suggestion feature.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) SuggestionFeature() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature {
+		return v.SuggestionFeature
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput)
+}
+
+// Settings of suggestion trigger.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput) SuggestionTriggerSettings() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings {
+		return v.SuggestionTriggerSettings
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput) Index(i pulumi.IntInput) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig {
+		return vs[0].([]ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig)[vs[1].(int)]
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig struct {
+	// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+	BaselineModelVersion *string `pulumi:"baselineModelVersion"`
+	// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+	Model *string `pulumi:"model"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs struct {
+	// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+	BaselineModelVersion pulumi.StringPtrInput `pulumi:"baselineModelVersion"`
+	// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput)
+}
+
+// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput) BaselineModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig) *string {
+		return v.BaselineModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig) *string {
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput)
+}
+
+// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) BaselineModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaselineModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig struct {
+	// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+	RecentSentencesCount *int `pulumi:"recentSentencesCount"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs struct {
+	// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+	RecentSentencesCount pulumi.IntPtrInput `pulumi:"recentSentencesCount"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput)
+}
+
+// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput) RecentSentencesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig) *int {
+		return v.RecentSentencesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput)
+}
+
+// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput) RecentSentencesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RecentSentencesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig struct {
+	// Confidence threshold of query result.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+	ConfidenceThreshold *float64 `pulumi:"confidenceThreshold"`
+	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+	// Structure is documented below.
+	ContextFilterSettings *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings `pulumi:"contextFilterSettings"`
+	// Query from Dialogflow agent.
+	// This feature is supported for types: DIALOGFLOW_ASSIST.
+	// Structure is documented below.
+	DialogflowQuerySource *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource `pulumi:"dialogflowQuerySource"`
+	// Maximum number of results to return.
+	MaxResults *int `pulumi:"maxResults"`
+	// he customized sections chosen to return when requesting a summary of a conversation.
+	// Structure is documented below.
+	Sections *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections `pulumi:"sections"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs struct {
+	// Confidence threshold of query result.
+	// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+	ConfidenceThreshold pulumi.Float64PtrInput `pulumi:"confidenceThreshold"`
+	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+	// Structure is documented below.
+	ContextFilterSettings ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput `pulumi:"contextFilterSettings"`
+	// Query from Dialogflow agent.
+	// This feature is supported for types: DIALOGFLOW_ASSIST.
+	// Structure is documented below.
+	DialogflowQuerySource ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput `pulumi:"dialogflowQuerySource"`
+	// Maximum number of results to return.
+	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
+	// he customized sections chosen to return when requesting a summary of a conversation.
+	// Structure is documented below.
+	Sections ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput `pulumi:"sections"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput)
+}
+
+// Confidence threshold of query result.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *float64 {
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) ContextFilterSettings() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
+		return v.ContextFilterSettings
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// Query from Dialogflow agent.
+// This feature is supported for types: DIALOGFLOW_ASSIST.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) DialogflowQuerySource() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
+		return v.DialogflowQuerySource
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// Maximum number of results to return.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *int {
+		return v.MaxResults
+	}).(pulumi.IntPtrOutput)
+}
+
+// he customized sections chosen to return when requesting a summary of a conversation.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput) Sections() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections {
+		return v.Sections
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput)
+}
+
+// Confidence threshold of query result.
+// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) ContextFilterSettings() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ContextFilterSettings
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// Query from Dialogflow agent.
+// This feature is supported for types: DIALOGFLOW_ASSIST.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) DialogflowQuerySource() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
+		if v == nil {
+			return nil
+		}
+		return v.DialogflowQuerySource
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// Maximum number of results to return.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxResults
+	}).(pulumi.IntPtrOutput)
+}
+
+// he customized sections chosen to return when requesting a summary of a conversation.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput) Sections() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections {
+		if v == nil {
+			return nil
+		}
+		return v.Sections
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings struct {
+	// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+	DropHandoffMessages *bool `pulumi:"dropHandoffMessages"`
+	// If set to true, all messages from ivr stage are dropped.
+	DropIvrMessages *bool `pulumi:"dropIvrMessages"`
+	// If set to true, all messages from virtual agent are dropped.
+	DropVirtualAgentMessages *bool `pulumi:"dropVirtualAgentMessages"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs struct {
+	// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+	DropHandoffMessages pulumi.BoolPtrInput `pulumi:"dropHandoffMessages"`
+	// If set to true, all messages from ivr stage are dropped.
+	DropIvrMessages pulumi.BoolPtrInput `pulumi:"dropIvrMessages"`
+	// If set to true, all messages from virtual agent are dropped.
+	DropVirtualAgentMessages pulumi.BoolPtrInput `pulumi:"dropVirtualAgentMessages"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) DropHandoffMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		return v.DropHandoffMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from ivr stage are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) DropIvrMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		return v.DropIvrMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from virtual agent are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput) DropVirtualAgentMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		return v.DropVirtualAgentMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput)
+}
+
+// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) DropHandoffMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropHandoffMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from ivr stage are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) DropIvrMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropIvrMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from virtual agent are dropped.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput) DropVirtualAgentMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropVirtualAgentMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource struct {
+	// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	Agent string `pulumi:"agent"`
+	// The Dialogflow assist configuration for human agent.
+	// Structure is documented below.
+	HumanAgentSideConfig *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig `pulumi:"humanAgentSideConfig"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs struct {
+	// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	Agent pulumi.StringInput `pulumi:"agent"`
+	// The Dialogflow assist configuration for human agent.
+	// Structure is documented below.
+	HumanAgentSideConfig ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput `pulumi:"humanAgentSideConfig"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) string {
+		return v.Agent
+	}).(pulumi.StringOutput)
+}
+
+// The Dialogflow assist configuration for human agent.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput) HumanAgentSideConfig() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		return v.HumanAgentSideConfig
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput)
+}
+
+// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Dialogflow assist configuration for human agent.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput) HumanAgentSideConfig() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HumanAgentSideConfig
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig struct {
+	// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	Agent *string `pulumi:"agent"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs struct {
+	// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+	Agent pulumi.StringPtrInput `pulumi:"agent"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput)
+}
+
+// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *string {
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput)
+}
+
+// The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections struct {
+	// The selected sections chosen to return when requesting a summary of a conversation
+	// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+	// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+	SectionTypes []string `pulumi:"sectionTypes"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs struct {
+	// The selected sections chosen to return when requesting a summary of a conversation
+	// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+	// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+	SectionTypes pulumi.StringArrayInput `pulumi:"sectionTypes"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput)
+}
+
+// The selected sections chosen to return when requesting a summary of a conversation
+// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput) SectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections) []string {
+		return v.SectionTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput)
+}
+
+// The selected sections chosen to return when requesting a summary of a conversation
+// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput) SectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SectionTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature struct {
+	// Type of Human Agent Assistant API feature to request.
+	Type *string `pulumi:"type"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs struct {
+	// Type of Human Agent Assistant API feature to request.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput)
+}
+
+// Type of Human Agent Assistant API feature to request.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput)
+}
+
+// Type of Human Agent Assistant API feature to request.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings struct {
+	// Do not trigger if last utterance is small talk.
+	NoSmallTalk *bool `pulumi:"noSmallTalk"`
+	// Only trigger suggestion if participant role of last utterance is END_USER.
+	OnlyEndUser *bool `pulumi:"onlyEndUser"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs{...}
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs struct {
+	// Do not trigger if last utterance is small talk.
+	NoSmallTalk pulumi.BoolPtrInput `pulumi:"noSmallTalk"`
+	// Only trigger suggestion if participant role of last utterance is END_USER.
+	OnlyEndUser pulumi.BoolPtrInput `pulumi:"onlyEndUser"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput).ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs, ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtr and ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs
+
+func ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtr(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrType) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings) *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+// Do not trigger if last utterance is small talk.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) NoSmallTalk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings) *bool {
+		return v.NoSmallTalk
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Only trigger suggestion if participant role of last utterance is END_USER.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput) OnlyEndUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings) *bool {
+		return v.OnlyEndUser
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) ToConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings) ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput)
+}
+
+// Do not trigger if last utterance is small talk.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) NoSmallTalk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoSmallTalk
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Only trigger suggestion if participant role of last utterance is END_USER.
+func (o ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput) OnlyEndUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OnlyEndUser
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig struct {
+	// Enable entity extraction in conversation messages on agent assist stage.
+	EnableEntityExtraction *bool `pulumi:"enableEntityExtraction"`
+	// Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
+	EnableSentimentAnalysis *bool `pulumi:"enableSentimentAnalysis"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs and ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs struct {
+	// Enable entity extraction in conversation messages on agent assist stage.
+	EnableEntityExtraction pulumi.BoolPtrInput `pulumi:"enableEntityExtraction"`
+	// Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
+	EnableSentimentAnalysis pulumi.BoolPtrInput `pulumi:"enableSentimentAnalysis"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput).ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs, ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtr and ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrType ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtr(v *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrType) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrType) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig) *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
+}
+
+// Enable entity extraction in conversation messages on agent assist stage.
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput) EnableEntityExtraction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig) *bool {
+		return v.EnableEntityExtraction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig) *bool {
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig) ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput)
+}
+
+// Enable entity extraction in conversation messages on agent assist stage.
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) EnableEntityExtraction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEntityExtraction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
+func (o ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigNotificationConfig struct {
+	// Format of the message
+	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+	MessageFormat *string `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events
+	Topic *string `pulumi:"topic"`
+}
+
+// ConversationProfileHumanAgentAssistantConfigNotificationConfigInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs and ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigNotificationConfigInput` via:
+//
+//	ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs{...}
+type ConversationProfileHumanAgentAssistantConfigNotificationConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigNotificationConfigOutput() ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput
+	ToConversationProfileHumanAgentAssistantConfigNotificationConfigOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput
+}
+
+type ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs struct {
+	// Format of the message
+	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+	MessageFormat pulumi.StringPtrInput `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigNotificationConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs) ToConversationProfileHumanAgentAssistantConfigNotificationConfigOutput() ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs) ToConversationProfileHumanAgentAssistantConfigNotificationConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs) ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs) ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput).ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrInput is an input type that accepts ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs, ConversationProfileHumanAgentAssistantConfigNotificationConfigPtr and ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput
+	ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput
+}
+
+type conversationProfileHumanAgentAssistantConfigNotificationConfigPtrType ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs
+
+func ConversationProfileHumanAgentAssistantConfigNotificationConfigPtr(v *ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs) ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrInput {
+	return (*conversationProfileHumanAgentAssistantConfigNotificationConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentAssistantConfigNotificationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigNotificationConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigNotificationConfigPtrType) ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentAssistantConfigNotificationConfigPtrType) ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigNotificationConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput) ToConversationProfileHumanAgentAssistantConfigNotificationConfigOutput() ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput) ToConversationProfileHumanAgentAssistantConfigNotificationConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput) ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput) ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentAssistantConfigNotificationConfig) *ConversationProfileHumanAgentAssistantConfigNotificationConfig {
+		return &v
+	}).(ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput)
+}
+
+// Format of the message
+// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigNotificationConfig) *string { return v.MessageFormat }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentAssistantConfigNotificationConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentAssistantConfigNotificationConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput() ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput) ToConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput) Elem() ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigNotificationConfig) ConversationProfileHumanAgentAssistantConfigNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentAssistantConfigNotificationConfig
+		return ret
+	}).(ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput)
+}
+
+// Format of the message
+// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events
+func (o ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentAssistantConfigNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileHumanAgentHandoffConfig struct {
+	// Config for using LivePerson.
+	// Structure is documented below.
+	LivePersonConfig *ConversationProfileHumanAgentHandoffConfigLivePersonConfig `pulumi:"livePersonConfig"`
+}
+
+// ConversationProfileHumanAgentHandoffConfigInput is an input type that accepts ConversationProfileHumanAgentHandoffConfigArgs and ConversationProfileHumanAgentHandoffConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentHandoffConfigInput` via:
+//
+//	ConversationProfileHumanAgentHandoffConfigArgs{...}
+type ConversationProfileHumanAgentHandoffConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentHandoffConfigOutput() ConversationProfileHumanAgentHandoffConfigOutput
+	ToConversationProfileHumanAgentHandoffConfigOutputWithContext(context.Context) ConversationProfileHumanAgentHandoffConfigOutput
+}
+
+type ConversationProfileHumanAgentHandoffConfigArgs struct {
+	// Config for using LivePerson.
+	// Structure is documented below.
+	LivePersonConfig ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrInput `pulumi:"livePersonConfig"`
+}
+
+func (ConversationProfileHumanAgentHandoffConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentHandoffConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentHandoffConfigArgs) ToConversationProfileHumanAgentHandoffConfigOutput() ConversationProfileHumanAgentHandoffConfigOutput {
+	return i.ToConversationProfileHumanAgentHandoffConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentHandoffConfigArgs) ToConversationProfileHumanAgentHandoffConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentHandoffConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentHandoffConfigArgs) ToConversationProfileHumanAgentHandoffConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentHandoffConfigArgs) ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentHandoffConfigOutput).ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentHandoffConfigPtrInput is an input type that accepts ConversationProfileHumanAgentHandoffConfigArgs, ConversationProfileHumanAgentHandoffConfigPtr and ConversationProfileHumanAgentHandoffConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentHandoffConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentHandoffConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentHandoffConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentHandoffConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigPtrOutput
+	ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentHandoffConfigPtrOutput
+}
+
+type conversationProfileHumanAgentHandoffConfigPtrType ConversationProfileHumanAgentHandoffConfigArgs
+
+func ConversationProfileHumanAgentHandoffConfigPtr(v *ConversationProfileHumanAgentHandoffConfigArgs) ConversationProfileHumanAgentHandoffConfigPtrInput {
+	return (*conversationProfileHumanAgentHandoffConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentHandoffConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentHandoffConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentHandoffConfigPtrType) ToConversationProfileHumanAgentHandoffConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentHandoffConfigPtrType) ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentHandoffConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentHandoffConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentHandoffConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentHandoffConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigOutput) ToConversationProfileHumanAgentHandoffConfigOutput() ConversationProfileHumanAgentHandoffConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigOutput) ToConversationProfileHumanAgentHandoffConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigOutput) ToConversationProfileHumanAgentHandoffConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigOutput) ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentHandoffConfig) *ConversationProfileHumanAgentHandoffConfig {
+		return &v
+	}).(ConversationProfileHumanAgentHandoffConfigPtrOutput)
+}
+
+// Config for using LivePerson.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentHandoffConfigOutput) LivePersonConfig() ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentHandoffConfig) *ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
+		return v.LivePersonConfig
+	}).(ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentHandoffConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentHandoffConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentHandoffConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigPtrOutput) ToConversationProfileHumanAgentHandoffConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigPtrOutput) ToConversationProfileHumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigPtrOutput) Elem() ConversationProfileHumanAgentHandoffConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentHandoffConfig) ConversationProfileHumanAgentHandoffConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentHandoffConfig
+		return ret
+	}).(ConversationProfileHumanAgentHandoffConfigOutput)
+}
+
+// Config for using LivePerson.
+// Structure is documented below.
+func (o ConversationProfileHumanAgentHandoffConfigPtrOutput) LivePersonConfig() ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentHandoffConfig) *ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LivePersonConfig
+	}).(ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentHandoffConfigLivePersonConfig struct {
+	// Account number of the LivePerson account to connect.
+	AccountNumber string `pulumi:"accountNumber"`
+}
+
+// ConversationProfileHumanAgentHandoffConfigLivePersonConfigInput is an input type that accepts ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs and ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentHandoffConfigLivePersonConfigInput` via:
+//
+//	ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs{...}
+type ConversationProfileHumanAgentHandoffConfigLivePersonConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput() ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput
+	ToConversationProfileHumanAgentHandoffConfigLivePersonConfigOutputWithContext(context.Context) ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput
+}
+
+type ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs struct {
+	// Account number of the LivePerson account to connect.
+	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
+}
+
+func (ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentHandoffConfigLivePersonConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput() ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput {
+	return i.ToConversationProfileHumanAgentHandoffConfigLivePersonConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput)
+}
+
+func (i ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput).ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrInput is an input type that accepts ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs, ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtr and ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrInput` via:
+//
+//	        ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput
+	ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(context.Context) ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput
+}
+
+type conversationProfileHumanAgentHandoffConfigLivePersonConfigPtrType ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs
+
+func ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtr(v *ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs) ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrInput {
+	return (*conversationProfileHumanAgentHandoffConfigLivePersonConfigPtrType)(v)
+}
+
+func (*conversationProfileHumanAgentHandoffConfigLivePersonConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentHandoffConfigLivePersonConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileHumanAgentHandoffConfigLivePersonConfigPtrType) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return i.ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileHumanAgentHandoffConfigLivePersonConfigPtrType) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput)
+}
+
+type ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileHumanAgentHandoffConfigLivePersonConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput() ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o.ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileHumanAgentHandoffConfigLivePersonConfig) *ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
+		return &v
+	}).(ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput)
+}
+
+// Account number of the LivePerson account to connect.
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput) AccountNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v ConversationProfileHumanAgentHandoffConfigLivePersonConfig) string { return v.AccountNumber }).(pulumi.StringOutput)
+}
+
+type ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileHumanAgentHandoffConfigLivePersonConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput() ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput) ToConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput) Elem() ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentHandoffConfigLivePersonConfig) ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileHumanAgentHandoffConfigLivePersonConfig
+		return ret
+	}).(ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput)
+}
+
+// Account number of the LivePerson account to connect.
+func (o ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput) AccountNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileHumanAgentHandoffConfigLivePersonConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccountNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileLoggingConfig struct {
+	// Whether to log conversation events
+	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+}
+
+// ConversationProfileLoggingConfigInput is an input type that accepts ConversationProfileLoggingConfigArgs and ConversationProfileLoggingConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileLoggingConfigInput` via:
+//
+//	ConversationProfileLoggingConfigArgs{...}
+type ConversationProfileLoggingConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileLoggingConfigOutput() ConversationProfileLoggingConfigOutput
+	ToConversationProfileLoggingConfigOutputWithContext(context.Context) ConversationProfileLoggingConfigOutput
+}
+
+type ConversationProfileLoggingConfigArgs struct {
+	// Whether to log conversation events
+	EnableStackdriverLogging pulumi.BoolPtrInput `pulumi:"enableStackdriverLogging"`
+}
+
+func (ConversationProfileLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileLoggingConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileLoggingConfigArgs) ToConversationProfileLoggingConfigOutput() ConversationProfileLoggingConfigOutput {
+	return i.ToConversationProfileLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileLoggingConfigArgs) ToConversationProfileLoggingConfigOutputWithContext(ctx context.Context) ConversationProfileLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileLoggingConfigOutput)
+}
+
+func (i ConversationProfileLoggingConfigArgs) ToConversationProfileLoggingConfigPtrOutput() ConversationProfileLoggingConfigPtrOutput {
+	return i.ToConversationProfileLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileLoggingConfigArgs) ToConversationProfileLoggingConfigPtrOutputWithContext(ctx context.Context) ConversationProfileLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileLoggingConfigOutput).ToConversationProfileLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileLoggingConfigPtrInput is an input type that accepts ConversationProfileLoggingConfigArgs, ConversationProfileLoggingConfigPtr and ConversationProfileLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileLoggingConfigPtrInput` via:
+//
+//	        ConversationProfileLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileLoggingConfigPtrOutput() ConversationProfileLoggingConfigPtrOutput
+	ToConversationProfileLoggingConfigPtrOutputWithContext(context.Context) ConversationProfileLoggingConfigPtrOutput
+}
+
+type conversationProfileLoggingConfigPtrType ConversationProfileLoggingConfigArgs
+
+func ConversationProfileLoggingConfigPtr(v *ConversationProfileLoggingConfigArgs) ConversationProfileLoggingConfigPtrInput {
+	return (*conversationProfileLoggingConfigPtrType)(v)
+}
+
+func (*conversationProfileLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileLoggingConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileLoggingConfigPtrType) ToConversationProfileLoggingConfigPtrOutput() ConversationProfileLoggingConfigPtrOutput {
+	return i.ToConversationProfileLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileLoggingConfigPtrType) ToConversationProfileLoggingConfigPtrOutputWithContext(ctx context.Context) ConversationProfileLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileLoggingConfigPtrOutput)
+}
+
+type ConversationProfileLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileLoggingConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileLoggingConfigOutput) ToConversationProfileLoggingConfigOutput() ConversationProfileLoggingConfigOutput {
+	return o
+}
+
+func (o ConversationProfileLoggingConfigOutput) ToConversationProfileLoggingConfigOutputWithContext(ctx context.Context) ConversationProfileLoggingConfigOutput {
+	return o
+}
+
+func (o ConversationProfileLoggingConfigOutput) ToConversationProfileLoggingConfigPtrOutput() ConversationProfileLoggingConfigPtrOutput {
+	return o.ToConversationProfileLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileLoggingConfigOutput) ToConversationProfileLoggingConfigPtrOutputWithContext(ctx context.Context) ConversationProfileLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileLoggingConfig) *ConversationProfileLoggingConfig {
+		return &v
+	}).(ConversationProfileLoggingConfigPtrOutput)
+}
+
+// Whether to log conversation events
+func (o ConversationProfileLoggingConfigOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileLoggingConfig) *bool { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileLoggingConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileLoggingConfigPtrOutput) ToConversationProfileLoggingConfigPtrOutput() ConversationProfileLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileLoggingConfigPtrOutput) ToConversationProfileLoggingConfigPtrOutputWithContext(ctx context.Context) ConversationProfileLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileLoggingConfigPtrOutput) Elem() ConversationProfileLoggingConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileLoggingConfig) ConversationProfileLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileLoggingConfig
+		return ret
+	}).(ConversationProfileLoggingConfigOutput)
+}
+
+// Whether to log conversation events
+func (o ConversationProfileLoggingConfigPtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileNewMessageEventNotificationConfig struct {
+	// Format of the message
+	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+	MessageFormat *string `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events
+	Topic *string `pulumi:"topic"`
+}
+
+// ConversationProfileNewMessageEventNotificationConfigInput is an input type that accepts ConversationProfileNewMessageEventNotificationConfigArgs and ConversationProfileNewMessageEventNotificationConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileNewMessageEventNotificationConfigInput` via:
+//
+//	ConversationProfileNewMessageEventNotificationConfigArgs{...}
+type ConversationProfileNewMessageEventNotificationConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileNewMessageEventNotificationConfigOutput() ConversationProfileNewMessageEventNotificationConfigOutput
+	ToConversationProfileNewMessageEventNotificationConfigOutputWithContext(context.Context) ConversationProfileNewMessageEventNotificationConfigOutput
+}
+
+type ConversationProfileNewMessageEventNotificationConfigArgs struct {
+	// Format of the message
+	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+	MessageFormat pulumi.StringPtrInput `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (ConversationProfileNewMessageEventNotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileNewMessageEventNotificationConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileNewMessageEventNotificationConfigArgs) ToConversationProfileNewMessageEventNotificationConfigOutput() ConversationProfileNewMessageEventNotificationConfigOutput {
+	return i.ToConversationProfileNewMessageEventNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileNewMessageEventNotificationConfigArgs) ToConversationProfileNewMessageEventNotificationConfigOutputWithContext(ctx context.Context) ConversationProfileNewMessageEventNotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNewMessageEventNotificationConfigOutput)
+}
+
+func (i ConversationProfileNewMessageEventNotificationConfigArgs) ToConversationProfileNewMessageEventNotificationConfigPtrOutput() ConversationProfileNewMessageEventNotificationConfigPtrOutput {
+	return i.ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileNewMessageEventNotificationConfigArgs) ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNewMessageEventNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNewMessageEventNotificationConfigOutput).ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileNewMessageEventNotificationConfigPtrInput is an input type that accepts ConversationProfileNewMessageEventNotificationConfigArgs, ConversationProfileNewMessageEventNotificationConfigPtr and ConversationProfileNewMessageEventNotificationConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileNewMessageEventNotificationConfigPtrInput` via:
+//
+//	        ConversationProfileNewMessageEventNotificationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileNewMessageEventNotificationConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileNewMessageEventNotificationConfigPtrOutput() ConversationProfileNewMessageEventNotificationConfigPtrOutput
+	ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(context.Context) ConversationProfileNewMessageEventNotificationConfigPtrOutput
+}
+
+type conversationProfileNewMessageEventNotificationConfigPtrType ConversationProfileNewMessageEventNotificationConfigArgs
+
+func ConversationProfileNewMessageEventNotificationConfigPtr(v *ConversationProfileNewMessageEventNotificationConfigArgs) ConversationProfileNewMessageEventNotificationConfigPtrInput {
+	return (*conversationProfileNewMessageEventNotificationConfigPtrType)(v)
+}
+
+func (*conversationProfileNewMessageEventNotificationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileNewMessageEventNotificationConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileNewMessageEventNotificationConfigPtrType) ToConversationProfileNewMessageEventNotificationConfigPtrOutput() ConversationProfileNewMessageEventNotificationConfigPtrOutput {
+	return i.ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileNewMessageEventNotificationConfigPtrType) ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNewMessageEventNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNewMessageEventNotificationConfigPtrOutput)
+}
+
+type ConversationProfileNewMessageEventNotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileNewMessageEventNotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileNewMessageEventNotificationConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileNewMessageEventNotificationConfigOutput) ToConversationProfileNewMessageEventNotificationConfigOutput() ConversationProfileNewMessageEventNotificationConfigOutput {
+	return o
+}
+
+func (o ConversationProfileNewMessageEventNotificationConfigOutput) ToConversationProfileNewMessageEventNotificationConfigOutputWithContext(ctx context.Context) ConversationProfileNewMessageEventNotificationConfigOutput {
+	return o
+}
+
+func (o ConversationProfileNewMessageEventNotificationConfigOutput) ToConversationProfileNewMessageEventNotificationConfigPtrOutput() ConversationProfileNewMessageEventNotificationConfigPtrOutput {
+	return o.ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileNewMessageEventNotificationConfigOutput) ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNewMessageEventNotificationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileNewMessageEventNotificationConfig) *ConversationProfileNewMessageEventNotificationConfig {
+		return &v
+	}).(ConversationProfileNewMessageEventNotificationConfigPtrOutput)
+}
+
+// Format of the message
+// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+func (o ConversationProfileNewMessageEventNotificationConfigOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileNewMessageEventNotificationConfig) *string { return v.MessageFormat }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events
+func (o ConversationProfileNewMessageEventNotificationConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileNewMessageEventNotificationConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileNewMessageEventNotificationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileNewMessageEventNotificationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileNewMessageEventNotificationConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileNewMessageEventNotificationConfigPtrOutput) ToConversationProfileNewMessageEventNotificationConfigPtrOutput() ConversationProfileNewMessageEventNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileNewMessageEventNotificationConfigPtrOutput) ToConversationProfileNewMessageEventNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNewMessageEventNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileNewMessageEventNotificationConfigPtrOutput) Elem() ConversationProfileNewMessageEventNotificationConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileNewMessageEventNotificationConfig) ConversationProfileNewMessageEventNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileNewMessageEventNotificationConfig
+		return ret
+	}).(ConversationProfileNewMessageEventNotificationConfigOutput)
+}
+
+// Format of the message
+// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+func (o ConversationProfileNewMessageEventNotificationConfigPtrOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileNewMessageEventNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events
+func (o ConversationProfileNewMessageEventNotificationConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileNewMessageEventNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileNotificationConfig struct {
+	// Format of the message
+	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+	MessageFormat *string `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events
+	Topic *string `pulumi:"topic"`
+}
+
+// ConversationProfileNotificationConfigInput is an input type that accepts ConversationProfileNotificationConfigArgs and ConversationProfileNotificationConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileNotificationConfigInput` via:
+//
+//	ConversationProfileNotificationConfigArgs{...}
+type ConversationProfileNotificationConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileNotificationConfigOutput() ConversationProfileNotificationConfigOutput
+	ToConversationProfileNotificationConfigOutputWithContext(context.Context) ConversationProfileNotificationConfigOutput
+}
+
+type ConversationProfileNotificationConfigArgs struct {
+	// Format of the message
+	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+	MessageFormat pulumi.StringPtrInput `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (ConversationProfileNotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileNotificationConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileNotificationConfigArgs) ToConversationProfileNotificationConfigOutput() ConversationProfileNotificationConfigOutput {
+	return i.ToConversationProfileNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileNotificationConfigArgs) ToConversationProfileNotificationConfigOutputWithContext(ctx context.Context) ConversationProfileNotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNotificationConfigOutput)
+}
+
+func (i ConversationProfileNotificationConfigArgs) ToConversationProfileNotificationConfigPtrOutput() ConversationProfileNotificationConfigPtrOutput {
+	return i.ToConversationProfileNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileNotificationConfigArgs) ToConversationProfileNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNotificationConfigOutput).ToConversationProfileNotificationConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileNotificationConfigPtrInput is an input type that accepts ConversationProfileNotificationConfigArgs, ConversationProfileNotificationConfigPtr and ConversationProfileNotificationConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileNotificationConfigPtrInput` via:
+//
+//	        ConversationProfileNotificationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileNotificationConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileNotificationConfigPtrOutput() ConversationProfileNotificationConfigPtrOutput
+	ToConversationProfileNotificationConfigPtrOutputWithContext(context.Context) ConversationProfileNotificationConfigPtrOutput
+}
+
+type conversationProfileNotificationConfigPtrType ConversationProfileNotificationConfigArgs
+
+func ConversationProfileNotificationConfigPtr(v *ConversationProfileNotificationConfigArgs) ConversationProfileNotificationConfigPtrInput {
+	return (*conversationProfileNotificationConfigPtrType)(v)
+}
+
+func (*conversationProfileNotificationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileNotificationConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileNotificationConfigPtrType) ToConversationProfileNotificationConfigPtrOutput() ConversationProfileNotificationConfigPtrOutput {
+	return i.ToConversationProfileNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileNotificationConfigPtrType) ToConversationProfileNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNotificationConfigPtrOutput)
+}
+
+type ConversationProfileNotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileNotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileNotificationConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileNotificationConfigOutput) ToConversationProfileNotificationConfigOutput() ConversationProfileNotificationConfigOutput {
+	return o
+}
+
+func (o ConversationProfileNotificationConfigOutput) ToConversationProfileNotificationConfigOutputWithContext(ctx context.Context) ConversationProfileNotificationConfigOutput {
+	return o
+}
+
+func (o ConversationProfileNotificationConfigOutput) ToConversationProfileNotificationConfigPtrOutput() ConversationProfileNotificationConfigPtrOutput {
+	return o.ToConversationProfileNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileNotificationConfigOutput) ToConversationProfileNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNotificationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileNotificationConfig) *ConversationProfileNotificationConfig {
+		return &v
+	}).(ConversationProfileNotificationConfigPtrOutput)
+}
+
+// Format of the message
+// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+func (o ConversationProfileNotificationConfigOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileNotificationConfig) *string { return v.MessageFormat }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events
+func (o ConversationProfileNotificationConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileNotificationConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileNotificationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileNotificationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileNotificationConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileNotificationConfigPtrOutput) ToConversationProfileNotificationConfigPtrOutput() ConversationProfileNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileNotificationConfigPtrOutput) ToConversationProfileNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileNotificationConfigPtrOutput) Elem() ConversationProfileNotificationConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileNotificationConfig) ConversationProfileNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileNotificationConfig
+		return ret
+	}).(ConversationProfileNotificationConfigOutput)
+}
+
+// Format of the message
+// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+func (o ConversationProfileNotificationConfigPtrOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events
+func (o ConversationProfileNotificationConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileSttConfig struct {
+	// Audio encoding of the audio content to process.
+	// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+	AudioEncoding *string `pulumi:"audioEncoding"`
+	// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+	EnableWordInfo *bool `pulumi:"enableWordInfo"`
+	// The language of the supplied audio.
+	LanguageCode *string `pulumi:"languageCode"`
+	// Which Speech model to select.
+	// Leave this field unspecified to use Agent Speech settings for model selection.
+	Model *string `pulumi:"model"`
+	// Sample rate (in Hertz) of the audio content sent in the query.
+	SampleRateHertz *int `pulumi:"sampleRateHertz"`
+	// The speech model used in speech to text.
+	// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+	SpeechModelVariant *string `pulumi:"speechModelVariant"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+// ConversationProfileSttConfigInput is an input type that accepts ConversationProfileSttConfigArgs and ConversationProfileSttConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileSttConfigInput` via:
+//
+//	ConversationProfileSttConfigArgs{...}
+type ConversationProfileSttConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileSttConfigOutput() ConversationProfileSttConfigOutput
+	ToConversationProfileSttConfigOutputWithContext(context.Context) ConversationProfileSttConfigOutput
+}
+
+type ConversationProfileSttConfigArgs struct {
+	// Audio encoding of the audio content to process.
+	// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+	AudioEncoding pulumi.StringPtrInput `pulumi:"audioEncoding"`
+	// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+	EnableWordInfo pulumi.BoolPtrInput `pulumi:"enableWordInfo"`
+	// The language of the supplied audio.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// Which Speech model to select.
+	// Leave this field unspecified to use Agent Speech settings for model selection.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// Sample rate (in Hertz) of the audio content sent in the query.
+	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
+	// The speech model used in speech to text.
+	// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+	SpeechModelVariant pulumi.StringPtrInput `pulumi:"speechModelVariant"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+func (ConversationProfileSttConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileSttConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileSttConfigArgs) ToConversationProfileSttConfigOutput() ConversationProfileSttConfigOutput {
+	return i.ToConversationProfileSttConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileSttConfigArgs) ToConversationProfileSttConfigOutputWithContext(ctx context.Context) ConversationProfileSttConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSttConfigOutput)
+}
+
+func (i ConversationProfileSttConfigArgs) ToConversationProfileSttConfigPtrOutput() ConversationProfileSttConfigPtrOutput {
+	return i.ToConversationProfileSttConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileSttConfigArgs) ToConversationProfileSttConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSttConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSttConfigOutput).ToConversationProfileSttConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileSttConfigPtrInput is an input type that accepts ConversationProfileSttConfigArgs, ConversationProfileSttConfigPtr and ConversationProfileSttConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileSttConfigPtrInput` via:
+//
+//	        ConversationProfileSttConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileSttConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileSttConfigPtrOutput() ConversationProfileSttConfigPtrOutput
+	ToConversationProfileSttConfigPtrOutputWithContext(context.Context) ConversationProfileSttConfigPtrOutput
+}
+
+type conversationProfileSttConfigPtrType ConversationProfileSttConfigArgs
+
+func ConversationProfileSttConfigPtr(v *ConversationProfileSttConfigArgs) ConversationProfileSttConfigPtrInput {
+	return (*conversationProfileSttConfigPtrType)(v)
+}
+
+func (*conversationProfileSttConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileSttConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileSttConfigPtrType) ToConversationProfileSttConfigPtrOutput() ConversationProfileSttConfigPtrOutput {
+	return i.ToConversationProfileSttConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileSttConfigPtrType) ToConversationProfileSttConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSttConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSttConfigPtrOutput)
+}
+
+type ConversationProfileSttConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileSttConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileSttConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileSttConfigOutput) ToConversationProfileSttConfigOutput() ConversationProfileSttConfigOutput {
+	return o
+}
+
+func (o ConversationProfileSttConfigOutput) ToConversationProfileSttConfigOutputWithContext(ctx context.Context) ConversationProfileSttConfigOutput {
+	return o
+}
+
+func (o ConversationProfileSttConfigOutput) ToConversationProfileSttConfigPtrOutput() ConversationProfileSttConfigPtrOutput {
+	return o.ToConversationProfileSttConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileSttConfigOutput) ToConversationProfileSttConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSttConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileSttConfig) *ConversationProfileSttConfig {
+		return &v
+	}).(ConversationProfileSttConfigPtrOutput)
+}
+
+// Audio encoding of the audio content to process.
+// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+func (o ConversationProfileSttConfigOutput) AudioEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *string { return v.AudioEncoding }).(pulumi.StringPtrOutput)
+}
+
+// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+func (o ConversationProfileSttConfigOutput) EnableWordInfo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *bool { return v.EnableWordInfo }).(pulumi.BoolPtrOutput)
+}
+
+// The language of the supplied audio.
+func (o ConversationProfileSttConfigOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// Which Speech model to select.
+// Leave this field unspecified to use Agent Speech settings for model selection.
+func (o ConversationProfileSttConfigOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// Sample rate (in Hertz) of the audio content sent in the query.
+func (o ConversationProfileSttConfigOutput) SampleRateHertz() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *int { return v.SampleRateHertz }).(pulumi.IntPtrOutput)
+}
+
+// The speech model used in speech to text.
+// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+func (o ConversationProfileSttConfigOutput) SpeechModelVariant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *string { return v.SpeechModelVariant }).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o ConversationProfileSttConfigOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *bool { return v.UseTimeoutBasedEndpointing }).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileSttConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileSttConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileSttConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileSttConfigPtrOutput) ToConversationProfileSttConfigPtrOutput() ConversationProfileSttConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileSttConfigPtrOutput) ToConversationProfileSttConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSttConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileSttConfigPtrOutput) Elem() ConversationProfileSttConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) ConversationProfileSttConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileSttConfig
+		return ret
+	}).(ConversationProfileSttConfigOutput)
+}
+
+// Audio encoding of the audio content to process.
+// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+func (o ConversationProfileSttConfigPtrOutput) AudioEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AudioEncoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+func (o ConversationProfileSttConfigPtrOutput) EnableWordInfo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableWordInfo
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The language of the supplied audio.
+func (o ConversationProfileSttConfigPtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Which Speech model to select.
+// Leave this field unspecified to use Agent Speech settings for model selection.
+func (o ConversationProfileSttConfigPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sample rate (in Hertz) of the audio content sent in the query.
+func (o ConversationProfileSttConfigPtrOutput) SampleRateHertz() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SampleRateHertz
+	}).(pulumi.IntPtrOutput)
+}
+
+// The speech model used in speech to text.
+// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+func (o ConversationProfileSttConfigPtrOutput) SpeechModelVariant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpeechModelVariant
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o ConversationProfileSttConfigPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTimeoutBasedEndpointing
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileTtsConfig struct {
+	// An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileIds []string `pulumi:"effectsProfileIds"`
+	// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch *float64 `pulumi:"pitch"`
+	// Speaking rate/speed, in the range [0.25, 4.0].
+	SpeakingRate *float64 `pulumi:"speakingRate"`
+	// The desired voice of the synthesized audio.
+	// Structure is documented below.
+	Voice *ConversationProfileTtsConfigVoice `pulumi:"voice"`
+	// Volume gain (in dB) of the normal native volume supported by the specific voice.
+	VolumeGainDb *float64 `pulumi:"volumeGainDb"`
+}
+
+// ConversationProfileTtsConfigInput is an input type that accepts ConversationProfileTtsConfigArgs and ConversationProfileTtsConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileTtsConfigInput` via:
+//
+//	ConversationProfileTtsConfigArgs{...}
+type ConversationProfileTtsConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileTtsConfigOutput() ConversationProfileTtsConfigOutput
+	ToConversationProfileTtsConfigOutputWithContext(context.Context) ConversationProfileTtsConfigOutput
+}
+
+type ConversationProfileTtsConfigArgs struct {
+	// An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileIds pulumi.StringArrayInput `pulumi:"effectsProfileIds"`
+	// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch pulumi.Float64PtrInput `pulumi:"pitch"`
+	// Speaking rate/speed, in the range [0.25, 4.0].
+	SpeakingRate pulumi.Float64PtrInput `pulumi:"speakingRate"`
+	// The desired voice of the synthesized audio.
+	// Structure is documented below.
+	Voice ConversationProfileTtsConfigVoicePtrInput `pulumi:"voice"`
+	// Volume gain (in dB) of the normal native volume supported by the specific voice.
+	VolumeGainDb pulumi.Float64PtrInput `pulumi:"volumeGainDb"`
+}
+
+func (ConversationProfileTtsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileTtsConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileTtsConfigArgs) ToConversationProfileTtsConfigOutput() ConversationProfileTtsConfigOutput {
+	return i.ToConversationProfileTtsConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileTtsConfigArgs) ToConversationProfileTtsConfigOutputWithContext(ctx context.Context) ConversationProfileTtsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileTtsConfigOutput)
+}
+
+func (i ConversationProfileTtsConfigArgs) ToConversationProfileTtsConfigPtrOutput() ConversationProfileTtsConfigPtrOutput {
+	return i.ToConversationProfileTtsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileTtsConfigArgs) ToConversationProfileTtsConfigPtrOutputWithContext(ctx context.Context) ConversationProfileTtsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileTtsConfigOutput).ToConversationProfileTtsConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileTtsConfigPtrInput is an input type that accepts ConversationProfileTtsConfigArgs, ConversationProfileTtsConfigPtr and ConversationProfileTtsConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileTtsConfigPtrInput` via:
+//
+//	        ConversationProfileTtsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileTtsConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileTtsConfigPtrOutput() ConversationProfileTtsConfigPtrOutput
+	ToConversationProfileTtsConfigPtrOutputWithContext(context.Context) ConversationProfileTtsConfigPtrOutput
+}
+
+type conversationProfileTtsConfigPtrType ConversationProfileTtsConfigArgs
+
+func ConversationProfileTtsConfigPtr(v *ConversationProfileTtsConfigArgs) ConversationProfileTtsConfigPtrInput {
+	return (*conversationProfileTtsConfigPtrType)(v)
+}
+
+func (*conversationProfileTtsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileTtsConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileTtsConfigPtrType) ToConversationProfileTtsConfigPtrOutput() ConversationProfileTtsConfigPtrOutput {
+	return i.ToConversationProfileTtsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileTtsConfigPtrType) ToConversationProfileTtsConfigPtrOutputWithContext(ctx context.Context) ConversationProfileTtsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileTtsConfigPtrOutput)
+}
+
+type ConversationProfileTtsConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileTtsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileTtsConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileTtsConfigOutput) ToConversationProfileTtsConfigOutput() ConversationProfileTtsConfigOutput {
+	return o
+}
+
+func (o ConversationProfileTtsConfigOutput) ToConversationProfileTtsConfigOutputWithContext(ctx context.Context) ConversationProfileTtsConfigOutput {
+	return o
+}
+
+func (o ConversationProfileTtsConfigOutput) ToConversationProfileTtsConfigPtrOutput() ConversationProfileTtsConfigPtrOutput {
+	return o.ToConversationProfileTtsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileTtsConfigOutput) ToConversationProfileTtsConfigPtrOutputWithContext(ctx context.Context) ConversationProfileTtsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileTtsConfig) *ConversationProfileTtsConfig {
+		return &v
+	}).(ConversationProfileTtsConfigPtrOutput)
+}
+
+// An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+func (o ConversationProfileTtsConfigOutput) EffectsProfileIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConversationProfileTtsConfig) []string { return v.EffectsProfileIds }).(pulumi.StringArrayOutput)
+}
+
+// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+func (o ConversationProfileTtsConfigOutput) Pitch() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ConversationProfileTtsConfig) *float64 { return v.Pitch }).(pulumi.Float64PtrOutput)
+}
+
+// Speaking rate/speed, in the range [0.25, 4.0].
+func (o ConversationProfileTtsConfigOutput) SpeakingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ConversationProfileTtsConfig) *float64 { return v.SpeakingRate }).(pulumi.Float64PtrOutput)
+}
+
+// The desired voice of the synthesized audio.
+// Structure is documented below.
+func (o ConversationProfileTtsConfigOutput) Voice() ConversationProfileTtsConfigVoicePtrOutput {
+	return o.ApplyT(func(v ConversationProfileTtsConfig) *ConversationProfileTtsConfigVoice { return v.Voice }).(ConversationProfileTtsConfigVoicePtrOutput)
+}
+
+// Volume gain (in dB) of the normal native volume supported by the specific voice.
+func (o ConversationProfileTtsConfigOutput) VolumeGainDb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ConversationProfileTtsConfig) *float64 { return v.VolumeGainDb }).(pulumi.Float64PtrOutput)
+}
+
+type ConversationProfileTtsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileTtsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileTtsConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileTtsConfigPtrOutput) ToConversationProfileTtsConfigPtrOutput() ConversationProfileTtsConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileTtsConfigPtrOutput) ToConversationProfileTtsConfigPtrOutputWithContext(ctx context.Context) ConversationProfileTtsConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileTtsConfigPtrOutput) Elem() ConversationProfileTtsConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfig) ConversationProfileTtsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileTtsConfig
+		return ret
+	}).(ConversationProfileTtsConfigOutput)
+}
+
+// An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+func (o ConversationProfileTtsConfigPtrOutput) EffectsProfileIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectsProfileIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+func (o ConversationProfileTtsConfigPtrOutput) Pitch() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Pitch
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Speaking rate/speed, in the range [0.25, 4.0].
+func (o ConversationProfileTtsConfigPtrOutput) SpeakingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SpeakingRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The desired voice of the synthesized audio.
+// Structure is documented below.
+func (o ConversationProfileTtsConfigPtrOutput) Voice() ConversationProfileTtsConfigVoicePtrOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfig) *ConversationProfileTtsConfigVoice {
+		if v == nil {
+			return nil
+		}
+		return v.Voice
+	}).(ConversationProfileTtsConfigVoicePtrOutput)
+}
+
+// Volume gain (in dB) of the normal native volume supported by the specific voice.
+func (o ConversationProfileTtsConfigPtrOutput) VolumeGainDb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeGainDb
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ConversationProfileTtsConfigVoice struct {
+	// The name of the voice.
+	Name *string `pulumi:"name"`
+	// The preferred gender of the voice.
+	// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+	SsmlGender *string `pulumi:"ssmlGender"`
+}
+
+// ConversationProfileTtsConfigVoiceInput is an input type that accepts ConversationProfileTtsConfigVoiceArgs and ConversationProfileTtsConfigVoiceOutput values.
+// You can construct a concrete instance of `ConversationProfileTtsConfigVoiceInput` via:
+//
+//	ConversationProfileTtsConfigVoiceArgs{...}
+type ConversationProfileTtsConfigVoiceInput interface {
+	pulumi.Input
+
+	ToConversationProfileTtsConfigVoiceOutput() ConversationProfileTtsConfigVoiceOutput
+	ToConversationProfileTtsConfigVoiceOutputWithContext(context.Context) ConversationProfileTtsConfigVoiceOutput
+}
+
+type ConversationProfileTtsConfigVoiceArgs struct {
+	// The name of the voice.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The preferred gender of the voice.
+	// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+	SsmlGender pulumi.StringPtrInput `pulumi:"ssmlGender"`
+}
+
+func (ConversationProfileTtsConfigVoiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileTtsConfigVoice)(nil)).Elem()
+}
+
+func (i ConversationProfileTtsConfigVoiceArgs) ToConversationProfileTtsConfigVoiceOutput() ConversationProfileTtsConfigVoiceOutput {
+	return i.ToConversationProfileTtsConfigVoiceOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileTtsConfigVoiceArgs) ToConversationProfileTtsConfigVoiceOutputWithContext(ctx context.Context) ConversationProfileTtsConfigVoiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileTtsConfigVoiceOutput)
+}
+
+func (i ConversationProfileTtsConfigVoiceArgs) ToConversationProfileTtsConfigVoicePtrOutput() ConversationProfileTtsConfigVoicePtrOutput {
+	return i.ToConversationProfileTtsConfigVoicePtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileTtsConfigVoiceArgs) ToConversationProfileTtsConfigVoicePtrOutputWithContext(ctx context.Context) ConversationProfileTtsConfigVoicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileTtsConfigVoiceOutput).ToConversationProfileTtsConfigVoicePtrOutputWithContext(ctx)
+}
+
+// ConversationProfileTtsConfigVoicePtrInput is an input type that accepts ConversationProfileTtsConfigVoiceArgs, ConversationProfileTtsConfigVoicePtr and ConversationProfileTtsConfigVoicePtrOutput values.
+// You can construct a concrete instance of `ConversationProfileTtsConfigVoicePtrInput` via:
+//
+//	        ConversationProfileTtsConfigVoiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileTtsConfigVoicePtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileTtsConfigVoicePtrOutput() ConversationProfileTtsConfigVoicePtrOutput
+	ToConversationProfileTtsConfigVoicePtrOutputWithContext(context.Context) ConversationProfileTtsConfigVoicePtrOutput
+}
+
+type conversationProfileTtsConfigVoicePtrType ConversationProfileTtsConfigVoiceArgs
+
+func ConversationProfileTtsConfigVoicePtr(v *ConversationProfileTtsConfigVoiceArgs) ConversationProfileTtsConfigVoicePtrInput {
+	return (*conversationProfileTtsConfigVoicePtrType)(v)
+}
+
+func (*conversationProfileTtsConfigVoicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileTtsConfigVoice)(nil)).Elem()
+}
+
+func (i *conversationProfileTtsConfigVoicePtrType) ToConversationProfileTtsConfigVoicePtrOutput() ConversationProfileTtsConfigVoicePtrOutput {
+	return i.ToConversationProfileTtsConfigVoicePtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileTtsConfigVoicePtrType) ToConversationProfileTtsConfigVoicePtrOutputWithContext(ctx context.Context) ConversationProfileTtsConfigVoicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileTtsConfigVoicePtrOutput)
+}
+
+type ConversationProfileTtsConfigVoiceOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileTtsConfigVoiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileTtsConfigVoice)(nil)).Elem()
+}
+
+func (o ConversationProfileTtsConfigVoiceOutput) ToConversationProfileTtsConfigVoiceOutput() ConversationProfileTtsConfigVoiceOutput {
+	return o
+}
+
+func (o ConversationProfileTtsConfigVoiceOutput) ToConversationProfileTtsConfigVoiceOutputWithContext(ctx context.Context) ConversationProfileTtsConfigVoiceOutput {
+	return o
+}
+
+func (o ConversationProfileTtsConfigVoiceOutput) ToConversationProfileTtsConfigVoicePtrOutput() ConversationProfileTtsConfigVoicePtrOutput {
+	return o.ToConversationProfileTtsConfigVoicePtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileTtsConfigVoiceOutput) ToConversationProfileTtsConfigVoicePtrOutputWithContext(ctx context.Context) ConversationProfileTtsConfigVoicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileTtsConfigVoice) *ConversationProfileTtsConfigVoice {
+		return &v
+	}).(ConversationProfileTtsConfigVoicePtrOutput)
+}
+
+// The name of the voice.
+func (o ConversationProfileTtsConfigVoiceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileTtsConfigVoice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The preferred gender of the voice.
+// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+func (o ConversationProfileTtsConfigVoiceOutput) SsmlGender() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileTtsConfigVoice) *string { return v.SsmlGender }).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileTtsConfigVoicePtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileTtsConfigVoicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileTtsConfigVoice)(nil)).Elem()
+}
+
+func (o ConversationProfileTtsConfigVoicePtrOutput) ToConversationProfileTtsConfigVoicePtrOutput() ConversationProfileTtsConfigVoicePtrOutput {
+	return o
+}
+
+func (o ConversationProfileTtsConfigVoicePtrOutput) ToConversationProfileTtsConfigVoicePtrOutputWithContext(ctx context.Context) ConversationProfileTtsConfigVoicePtrOutput {
+	return o
+}
+
+func (o ConversationProfileTtsConfigVoicePtrOutput) Elem() ConversationProfileTtsConfigVoiceOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfigVoice) ConversationProfileTtsConfigVoice {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileTtsConfigVoice
+		return ret
+	}).(ConversationProfileTtsConfigVoiceOutput)
+}
+
+// The name of the voice.
+func (o ConversationProfileTtsConfigVoicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfigVoice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The preferred gender of the voice.
+// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+func (o ConversationProfileTtsConfigVoicePtrOutput) SsmlGender() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileTtsConfigVoice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SsmlGender
+	}).(pulumi.StringPtrOutput)
+}
+
 type CxAgentAdvancedSettings struct {
 	// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
 	// * Agent level
@@ -34771,6 +41012,78 @@ func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFoll
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileAutomatedAgentConfigInput)(nil)).Elem(), ConversationProfileAutomatedAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileAutomatedAgentConfigPtrInput)(nil)).Elem(), ConversationProfileAutomatedAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigNotificationConfigInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentHandoffConfigInput)(nil)).Elem(), ConversationProfileHumanAgentHandoffConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentHandoffConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentHandoffConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentHandoffConfigLivePersonConfigInput)(nil)).Elem(), ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrInput)(nil)).Elem(), ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileLoggingConfigInput)(nil)).Elem(), ConversationProfileLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileLoggingConfigPtrInput)(nil)).Elem(), ConversationProfileLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNewMessageEventNotificationConfigInput)(nil)).Elem(), ConversationProfileNewMessageEventNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNewMessageEventNotificationConfigPtrInput)(nil)).Elem(), ConversationProfileNewMessageEventNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNotificationConfigInput)(nil)).Elem(), ConversationProfileNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNotificationConfigPtrInput)(nil)).Elem(), ConversationProfileNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigInput)(nil)).Elem(), ConversationProfileSttConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigPtrInput)(nil)).Elem(), ConversationProfileSttConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileTtsConfigInput)(nil)).Elem(), ConversationProfileTtsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileTtsConfigPtrInput)(nil)).Elem(), ConversationProfileTtsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileTtsConfigVoiceInput)(nil)).Elem(), ConversationProfileTtsConfigVoiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileTtsConfigVoicePtrInput)(nil)).Elem(), ConversationProfileTtsConfigVoiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsInput)(nil)).Elem(), CxAgentAdvancedSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsAudioExportGcsDestinationInput)(nil)).Elem(), CxAgentAdvancedSettingsAudioExportGcsDestinationArgs{})
@@ -35189,6 +41502,78 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentGenericWebServicePtrInput)(nil)).Elem(), FulfillmentGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentFollowupIntentInfoInput)(nil)).Elem(), IntentFollowupIntentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentFollowupIntentInfoArrayInput)(nil)).Elem(), IntentFollowupIntentInfoArray{})
+	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeaturePtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigNotificationConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentHandoffConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentHandoffConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentHandoffConfigLivePersonConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileHumanAgentHandoffConfigLivePersonConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileLoggingConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileNewMessageEventNotificationConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileNewMessageEventNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileNotificationConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileSttConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileSttConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileTtsConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileTtsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileTtsConfigVoiceOutput{})
+	pulumi.RegisterOutputType(ConversationProfileTtsConfigVoicePtrOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsAudioExportGcsDestinationOutput{})

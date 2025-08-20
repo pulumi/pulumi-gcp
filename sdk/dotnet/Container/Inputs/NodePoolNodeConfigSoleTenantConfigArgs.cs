@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigSoleTenantConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+        /// </summary>
+        [Input("minNodeCpus")]
+        public Input<int>? MinNodeCpus { get; set; }
+
         [Input("nodeAffinities", required: true)]
         private InputList<Inputs.NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>? _nodeAffinities;
 

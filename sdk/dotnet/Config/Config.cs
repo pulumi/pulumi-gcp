@@ -270,13 +270,6 @@ namespace Pulumi.Gcp
             set => _cloudBuildCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _cloudBuildWorkerPoolCustomEndpoint = new __Value<string?>(() => __config.Get("cloudBuildWorkerPoolCustomEndpoint"));
-        public static string? CloudBuildWorkerPoolCustomEndpoint
-        {
-            get => _cloudBuildWorkerPoolCustomEndpoint.Get();
-            set => _cloudBuildWorkerPoolCustomEndpoint.Set(value);
-        }
-
         private static readonly __Value<string?> _cloudFunctionsCustomEndpoint = new __Value<string?>(() => __config.Get("cloudFunctionsCustomEndpoint"));
         public static string? CloudFunctionsCustomEndpoint
         {
@@ -744,13 +737,6 @@ namespace Pulumi.Gcp
         {
             get => _gkeHubCustomEndpoint.Get();
             set => _gkeHubCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _gkehubFeatureCustomEndpoint = new __Value<string?>(() => __config.Get("gkehubFeatureCustomEndpoint"));
-        public static string? GkehubFeatureCustomEndpoint
-        {
-            get => _gkehubFeatureCustomEndpoint.Get();
-            set => _gkehubFeatureCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _gkeonpremCustomEndpoint = new __Value<string?>(() => __config.Get("gkeonpremCustomEndpoint"));

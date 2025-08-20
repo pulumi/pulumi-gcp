@@ -281,14 +281,6 @@ Object.defineProperty(exports, "cloudBuildCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const cloudBuildWorkerPoolCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "cloudBuildWorkerPoolCustomEndpoint", {
-    get() {
-        return __config.get("cloudBuildWorkerPoolCustomEndpoint");
-    },
-    enumerable: true,
-});
-
 export declare const cloudFunctionsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudFunctionsCustomEndpoint", {
     get() {
@@ -821,14 +813,6 @@ export declare const gkeHubCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gkeHubCustomEndpoint", {
     get() {
         return __config.get("gkeHubCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const gkehubFeatureCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "gkehubFeatureCustomEndpoint", {
-    get() {
-        return __config.get("gkehubFeatureCustomEndpoint");
     },
     enumerable: true,
 });

@@ -231,7 +231,9 @@ namespace Pulumi.Gcp.Vertex
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// An additional information about the Index
+        /// Additional information about the Index.
+        /// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+        /// Attempts to create an Index without this field will result in an API error.
         /// Structure is documented below.
         /// </summary>
         [Output("metadata")]
@@ -361,7 +363,9 @@ namespace Pulumi.Gcp.Vertex
         }
 
         /// <summary>
-        /// An additional information about the Index
+        /// Additional information about the Index.
+        /// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+        /// Attempts to create an Index without this field will result in an API error.
         /// Structure is documented below.
         /// </summary>
         [Input("metadata")]
@@ -477,7 +481,9 @@ namespace Pulumi.Gcp.Vertex
         }
 
         /// <summary>
-        /// An additional information about the Index
+        /// Additional information about the Index.
+        /// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+        /// Attempts to create an Index without this field will result in an API error.
         /// Structure is documented below.
         /// </summary>
         [Input("metadata")]

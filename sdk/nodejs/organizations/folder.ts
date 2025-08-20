@@ -68,6 +68,10 @@ export class Folder extends pulumi.CustomResource {
     }
 
     /**
+     * Optional capabilities configured for this folder.
+     */
+    public /*out*/ readonly configuredCapabilities!: pulumi.Output<string[]>;
+    /**
      * Timestamp when the Folder was created. Assigned by the server.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
@@ -86,6 +90,10 @@ export class Folder extends pulumi.CustomResource {
      * The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    /**
+     * Management Project associated with this folder (if capability is enabled).
+     */
+    public /*out*/ readonly managementProject!: pulumi.Output<string>;
     /**
      * The resource name of the Folder. Its format is folders/{folder_id}.
      */
@@ -113,11 +121,13 @@ export class Folder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
+            resourceInputs["configuredCapabilities"] = state ? state.configuredCapabilities : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
+            resourceInputs["managementProject"] = state ? state.managementProject : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -133,9 +143,11 @@ export class Folder extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["configuredCapabilities"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["folderId"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["managementProject"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -147,6 +159,10 @@ export class Folder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Folder resources.
  */
 export interface FolderState {
+    /**
+     * Optional capabilities configured for this folder.
+     */
+    configuredCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the Folder was created. Assigned by the server.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -166,6 +182,10 @@ export interface FolderState {
      * The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
      */
     lifecycleState?: pulumi.Input<string>;
+    /**
+     * Management Project associated with this folder (if capability is enabled).
+     */
+    managementProject?: pulumi.Input<string>;
     /**
      * The resource name of the Folder. Its format is folders/{folder_id}.
      */

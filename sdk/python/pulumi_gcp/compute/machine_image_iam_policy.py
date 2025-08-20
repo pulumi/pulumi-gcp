@@ -278,6 +278,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Compute Engine MachineImage
+
         Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
 
         * `compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
@@ -558,6 +559,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Compute Engine MachineImage
+
         Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
 
         * `compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.

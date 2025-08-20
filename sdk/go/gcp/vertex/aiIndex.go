@@ -212,7 +212,9 @@ type AiIndex struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// An additional information about the Index
+	// Additional information about the Index.
+	// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+	// Attempts to create an Index without this field will result in an API error.
 	// Structure is documented below.
 	Metadata AiIndexMetadataPtrOutput `pulumi:"metadata"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
@@ -293,7 +295,9 @@ type aiIndexState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// An additional information about the Index
+	// Additional information about the Index.
+	// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+	// Attempts to create an Index without this field will result in an API error.
 	// Structure is documented below.
 	Metadata *AiIndexMetadata `pulumi:"metadata"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
@@ -337,7 +341,9 @@ type AiIndexState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// An additional information about the Index
+	// Additional information about the Index.
+	// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+	// Attempts to create an Index without this field will result in an API error.
 	// Structure is documented below.
 	Metadata AiIndexMetadataPtrInput
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
@@ -373,7 +379,9 @@ type aiIndexArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// An additional information about the Index
+	// Additional information about the Index.
+	// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+	// Attempts to create an Index without this field will result in an API error.
 	// Structure is documented below.
 	Metadata *AiIndexMetadata `pulumi:"metadata"`
 	// The ID of the project in which the resource belongs.
@@ -397,7 +405,9 @@ type AiIndexArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// An additional information about the Index
+	// Additional information about the Index.
+	// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+	// Attempts to create an Index without this field will result in an API error.
 	// Structure is documented below.
 	Metadata AiIndexMetadataPtrInput
 	// The ID of the project in which the resource belongs.
@@ -545,7 +555,9 @@ func (o AiIndexOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// An additional information about the Index
+// Additional information about the Index.
+// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+// Attempts to create an Index without this field will result in an API error.
 // Structure is documented below.
 func (o AiIndexOutput) Metadata() AiIndexMetadataPtrOutput {
 	return o.ApplyT(func(v *AiIndex) AiIndexMetadataPtrOutput { return v.Metadata }).(AiIndexMetadataPtrOutput)

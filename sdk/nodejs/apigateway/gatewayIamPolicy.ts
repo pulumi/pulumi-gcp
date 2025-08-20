@@ -74,6 +74,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for API Gateway Gateway
+ *
  * Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
  *
  * * `gcp.apigateway.GatewayIamPolicy`: Authoritative. Sets the IAM policy for the gateway and replaces any existing policy already attached.

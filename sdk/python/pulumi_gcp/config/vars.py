@@ -158,10 +158,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('cloudBuildCustomEndpoint')
 
     @_builtins.property
-    def cloud_build_worker_pool_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('cloudBuildWorkerPoolCustomEndpoint')
-
-    @_builtins.property
     def cloud_functions_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudFunctionsCustomEndpoint')
 
@@ -428,10 +424,6 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def gke_hub_custom_endpoint(self) -> Optional[str]:
         return __config__.get('gkeHubCustomEndpoint')
-
-    @_builtins.property
-    def gkehub_feature_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('gkehubFeatureCustomEndpoint')
 
     @_builtins.property
     def gkeonprem_custom_endpoint(self) -> Optional[str]:

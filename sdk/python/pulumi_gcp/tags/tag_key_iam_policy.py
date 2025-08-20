@@ -183,6 +183,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
         ---
 
         # IAM policy for Tags TagKey
+
         Three different resources help you manage your IAM policy for Tags TagKey. Each of these resources serves a different use case:
 
         * `tags.TagKeyIamPolicy`: Authoritative. Sets the IAM policy for the tagkey and replaces any existing policy already attached.
@@ -342,6 +343,7 @@ class TagKeyIamPolicy(pulumi.CustomResource):
         ---
 
         # IAM policy for Tags TagKey
+
         Three different resources help you manage your IAM policy for Tags TagKey. Each of these resources serves a different use case:
 
         * `tags.TagKeyIamPolicy`: Authoritative. Sets the IAM policy for the tagkey and replaces any existing policy already attached.

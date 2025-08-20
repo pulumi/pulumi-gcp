@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.Dataproc
     /// - 
     /// 
     /// # IAM policy for Dataproc Metastore Service
+    /// 
     /// Three different resources help you manage your IAM policy for Dataproc Metastore Service. Each of these resources serves a different use case:
     /// 
     /// * `gcp.dataproc.MetastoreServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.

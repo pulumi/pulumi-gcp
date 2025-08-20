@@ -76,6 +76,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for BigQuery Data Policy DataPolicy
+ *
  * Three different resources help you manage your IAM policy for BigQuery Data Policy DataPolicy. Each of these resources serves a different use case:
  *
  * * `gcp.bigquerydatapolicy.DataPolicyIamPolicy`: Authoritative. Sets the IAM policy for the datapolicy and replaces any existing policy already attached.

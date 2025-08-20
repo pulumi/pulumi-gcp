@@ -68,6 +68,7 @@ __all__ = [
     'GetRepositoryVirtualRepositoryConfigResult',
     'GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult',
     'GetRepositoryVulnerabilityScanningConfigResult',
+    'GetTagsTagResult',
     'GetVersionRelatedTagResult',
 ]
 
@@ -2334,6 +2335,35 @@ class GetRepositoryVulnerabilityScanningConfigResult(dict):
         This provides an explanation for the state of scanning on this repository.
         """
         return pulumi.get(self, "enablement_state_reason")
+
+
+@pulumi.output_type
+class GetTagsTagResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param _builtins.str name: The name of the tag, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1`. If the package part contains slashes, the slashes are escaped.
+        :param _builtins.str version: The version of the tag.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the tag, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1`. If the package part contains slashes, the slashes are escaped.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        The version of the tag.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

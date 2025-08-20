@@ -113,9 +113,6 @@ func GetCloudBillingCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudBuildCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudBuildCustomEndpoint")
 }
-func GetCloudBuildWorkerPoolCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:cloudBuildWorkerPoolCustomEndpoint")
-}
 func GetCloudFunctionsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudFunctionsCustomEndpoint")
 }
@@ -324,9 +321,6 @@ func GetGkeHub2CustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetGkeHubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeHubCustomEndpoint")
-}
-func GetGkehubFeatureCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:gkehubFeatureCustomEndpoint")
 }
 func GetGkeonpremCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeonpremCustomEndpoint")

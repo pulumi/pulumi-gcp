@@ -49,6 +49,10 @@ export interface GetFolderArgs {
  */
 export interface GetFolderResult {
     /**
+     * Optional capabilities configured for this folder.
+     */
+    readonly configuredCapabilities: string[];
+    /**
      * Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     readonly createTime: string;
@@ -68,6 +72,10 @@ export interface GetFolderResult {
      */
     readonly lifecycleState: string;
     readonly lookupOrganization?: boolean;
+    /**
+     * Management Project associated with this folder (if capability is enabled).
+     */
+    readonly managementProject: string;
     /**
      * The resource name of the Folder in the form `folders/{folder_id}`.
      */

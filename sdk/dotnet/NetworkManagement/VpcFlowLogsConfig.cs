@@ -10,65 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkManagement
 {
     /// <summary>
-    /// VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+    /// VPC Flow Logs Config is a resource that lets you configure Flow Logs for Networks, Subnets, Interconnect attachments or VPN Tunnels.
     /// 
     /// ## Example Usage
     /// 
-    /// ### Network Management Vpc Flow Logs Config Interconnect Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var network = new Gcp.Compute.Network("network", new()
-    ///     {
-    ///         Name = "full-interconnect-test-network",
-    ///     });
-    /// 
-    ///     var router = new Gcp.Compute.Router("router", new()
-    ///     {
-    ///         Name = "full-interconnect-test-router",
-    ///         Network = network.Name,
-    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
-    ///         {
-    ///             Asn = 16550,
-    ///         },
-    ///     });
-    /// 
-    ///     var attachment = new Gcp.Compute.InterconnectAttachment("attachment", new()
-    ///     {
-    ///         Name = "full-interconnect-test-id",
-    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
-    ///         Type = "PARTNER",
-    ///         Router = router.Id,
-    ///         Mtu = "1500",
-    ///     });
-    /// 
-    ///     var interconnect_test = new Gcp.NetworkManagement.VpcFlowLogsConfig("interconnect-test", new()
-    ///     {
-    ///         VpcFlowLogsConfigId = "full-interconnect-test-id",
-    ///         Location = "global",
-    ///         InterconnectAttachment = Output.Tuple(project, attachment.Name).Apply(values =&gt;
-    ///         {
-    ///             var project = values.Item1;
-    ///             var name = values.Item2;
-    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/regions/us-east4/interconnectAttachments/{name}";
-    ///         }),
-    ///         State = "ENABLED",
-    ///         AggregationInterval = "INTERVAL_5_SEC",
-    ///         Description = "VPC Flow Logs over a VPN Gateway.",
-    ///         FlowSampling = 0.5,
-    ///         Metadata = "INCLUDE_ALL_METADATA",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Network Management Vpc Flow Logs Config Interconnect Basic
     /// 
     /// ```csharp
@@ -212,7 +157,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
-    /// ### Network Management Vpc Flow Logs Config Vpn Full
+    /// ### Network Management Vpc Flow Logs Config Network Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -226,86 +171,59 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "full-test-network",
+    ///         Name = "basic-network-test-network",
     ///     });
     /// 
-    ///     var targetGateway = new Gcp.Compute.VPNGateway("target_gateway", new()
+    ///     var network_test = new Gcp.NetworkManagement.VpcFlowLogsConfig("network-test", new()
     ///     {
-    ///         Name = "full-test-gateway",
-    ///         Network = network.Id,
-    ///     });
-    /// 
-    ///     var vpnStaticIp = new Gcp.Compute.Address("vpn_static_ip", new()
-    ///     {
-    ///         Name = "full-test-address",
-    ///     });
-    /// 
-    ///     var frEsp = new Gcp.Compute.ForwardingRule("fr_esp", new()
-    ///     {
-    ///         Name = "full-test-fresp",
-    ///         IpProtocol = "ESP",
-    ///         IpAddress = vpnStaticIp.IPAddress,
-    ///         Target = targetGateway.Id,
-    ///     });
-    /// 
-    ///     var frUdp500 = new Gcp.Compute.ForwardingRule("fr_udp500", new()
-    ///     {
-    ///         Name = "full-test-fr500",
-    ///         IpProtocol = "UDP",
-    ///         PortRange = "500",
-    ///         IpAddress = vpnStaticIp.IPAddress,
-    ///         Target = targetGateway.Id,
-    ///     });
-    /// 
-    ///     var frUdp4500 = new Gcp.Compute.ForwardingRule("fr_udp4500", new()
-    ///     {
-    ///         Name = "full-test-fr4500",
-    ///         IpProtocol = "UDP",
-    ///         PortRange = "4500",
-    ///         IpAddress = vpnStaticIp.IPAddress,
-    ///         Target = targetGateway.Id,
-    ///     });
-    /// 
-    ///     var tunnel = new Gcp.Compute.VPNTunnel("tunnel", new()
-    ///     {
-    ///         Name = "full-test-tunnel",
-    ///         PeerIp = "15.0.0.120",
-    ///         SharedSecret = "a secret message",
-    ///         TargetVpnGateway = targetGateway.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             frEsp,
-    ///             frUdp500,
-    ///             frUdp4500,
-    ///         },
-    ///     });
-    /// 
-    ///     var vpn_test = new Gcp.NetworkManagement.VpcFlowLogsConfig("vpn-test", new()
-    ///     {
-    ///         VpcFlowLogsConfigId = "full-test-id",
+    ///         VpcFlowLogsConfigId = "basic-network-test-id",
     ///         Location = "global",
-    ///         VpnTunnel = Output.Tuple(project, tunnel.Name).Apply(values =&gt;
+    ///         Network = Output.Tuple(project, network.Name).Apply(values =&gt;
     ///         {
     ///             var project = values.Item1;
     ///             var name = values.Item2;
-    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/regions/us-central1/vpnTunnels/{name}";
+    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/global/networks/{name}";
     ///         }),
-    ///         State = "ENABLED",
-    ///         AggregationInterval = "INTERVAL_5_SEC",
-    ///         Description = "VPC Flow Logs over a VPN Gateway.",
-    ///         FlowSampling = 0.5,
-    ///         Metadata = "INCLUDE_ALL_METADATA",
     ///     });
     /// 
-    ///     var route = new Gcp.Compute.Route("route", new()
+    /// });
+    /// ```
+    /// ### Network Management Vpc Flow Logs Config Subnet Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "full-test-route",
-    ///         Network = network.Name,
-    ///         DestRange = "15.0.0.0/24",
-    ///         Priority = 1000,
-    ///         NextHopVpnTunnel = tunnel.Id,
+    ///         Name = "basic-subnet-test-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Name = "basic-subnet-test-subnetwork",
+    ///         IpCidrRange = "10.2.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     var subnet_test = new Gcp.NetworkManagement.VpcFlowLogsConfig("subnet-test", new()
+    ///     {
+    ///         VpcFlowLogsConfigId = "basic-subnet-test-id",
+    ///         Location = "global",
+    ///         Subnet = Output.Tuple(project, subnetwork.Name).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var name = values.Item2;
+    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/regions/us-central1/subnetworks/{name}";
+    ///         }),
     ///     });
     /// 
     /// });
@@ -340,7 +258,7 @@ namespace Pulumi.Gcp.NetworkManagement
     {
         /// <summary>
         /// Optional. The aggregation interval for the logs. Default value is
-        /// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+        /// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         /// </summary>
         [Output("aggregationInterval")]
         public Output<string> AggregationInterval { get; private set; } = null!;
@@ -424,6 +342,12 @@ namespace Pulumi.Gcp.NetworkManagement
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -439,10 +363,28 @@ namespace Pulumi.Gcp.NetworkManagement
 
         /// <summary>
         /// Optional. The state of the VPC Flow Log configuration. Default value
-        /// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+        /// is ENABLED. When creating a new configuration, it must be enabled.
+        /// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+        /// </summary>
+        [Output("subnet")]
+        public Output<string?> Subnet { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the state of the configured target resource for diagnostic
+        /// purposes.
+        /// Possible values:
+        /// TARGET_RESOURCE_STATE_UNSPECIFIED
+        /// TARGET_RESOURCE_EXISTS
+        /// TARGET_RESOURCE_DOES_NOT_EXIST
+        /// </summary>
+        [Output("targetResourceState")]
+        public Output<string> TargetResourceState { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The time the config was updated.
@@ -515,7 +457,7 @@ namespace Pulumi.Gcp.NetworkManagement
     {
         /// <summary>
         /// Optional. The aggregation interval for the logs. Default value is
-        /// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+        /// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         /// </summary>
         [Input("aggregationInterval")]
         public Input<string>? AggregationInterval { get; set; }
@@ -593,6 +535,12 @@ namespace Pulumi.Gcp.NetworkManagement
         }
 
         /// <summary>
+        /// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -601,10 +549,17 @@ namespace Pulumi.Gcp.NetworkManagement
 
         /// <summary>
         /// Optional. The state of the VPC Flow Log configuration. Default value
-        /// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+        /// is ENABLED. When creating a new configuration, it must be enabled.
+        /// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+        /// </summary>
+        [Input("subnet")]
+        public Input<string>? Subnet { get; set; }
 
         /// <summary>
         /// Required. ID of the `VpcFlowLogsConfig`.
@@ -628,7 +583,7 @@ namespace Pulumi.Gcp.NetworkManagement
     {
         /// <summary>
         /// Optional. The aggregation interval for the logs. Default value is
-        /// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+        /// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         /// </summary>
         [Input("aggregationInterval")]
         public Input<string>? AggregationInterval { get; set; }
@@ -734,6 +689,12 @@ namespace Pulumi.Gcp.NetworkManagement
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -759,10 +720,28 @@ namespace Pulumi.Gcp.NetworkManagement
 
         /// <summary>
         /// Optional. The state of the VPC Flow Log configuration. Default value
-        /// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+        /// is ENABLED. When creating a new configuration, it must be enabled.
+        /// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+        /// </summary>
+        [Input("subnet")]
+        public Input<string>? Subnet { get; set; }
+
+        /// <summary>
+        /// Describes the state of the configured target resource for diagnostic
+        /// purposes.
+        /// Possible values:
+        /// TARGET_RESOURCE_STATE_UNSPECIFIED
+        /// TARGET_RESOURCE_EXISTS
+        /// TARGET_RESOURCE_DOES_NOT_EXIST
+        /// </summary>
+        [Input("targetResourceState")]
+        public Input<string>? TargetResourceState { get; set; }
 
         /// <summary>
         /// Output only. The time the config was updated.

@@ -139,6 +139,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for BeyondCorp SecurityGateway
+ *
  * Three different resources help you manage your IAM policy for BeyondCorp SecurityGateway. Each of these resources serves a different use case:
  *
  * * `gcp.beyondcorp.SecurityGatewayIamPolicy`: Authoritative. Sets the IAM policy for the securitygateway and replaces any existing policy already attached.

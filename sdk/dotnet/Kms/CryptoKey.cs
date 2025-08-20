@@ -202,6 +202,7 @@ namespace Pulumi.Gcp.Kms
         /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         /// You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
         /// or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        /// This field is only applicable during initial CryptoKey creation.
         /// </summary>
         [Output("skipInitialVersionCreation")]
         public Output<bool?> SkipInitialVersionCreation { get; private set; } = null!;
@@ -348,6 +349,7 @@ namespace Pulumi.Gcp.Kms
         /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         /// You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
         /// or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        /// This field is only applicable during initial CryptoKey creation.
         /// </summary>
         [Input("skipInitialVersionCreation")]
         public Input<bool>? SkipInitialVersionCreation { get; set; }
@@ -498,6 +500,7 @@ namespace Pulumi.Gcp.Kms
         /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         /// You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
         /// or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        /// This field is only applicable during initial CryptoKey creation.
         /// </summary>
         [Input("skipInitialVersionCreation")]
         public Input<bool>? SkipInitialVersionCreation { get; set; }

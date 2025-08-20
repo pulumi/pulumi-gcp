@@ -15,6 +15,78 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ConversationProfileAutomatedAgentConfigArgs',
+    'ConversationProfileAutomatedAgentConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs',
+    'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs',
+    'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict',
+    'ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs',
+    'ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict',
+    'ConversationProfileHumanAgentHandoffConfigArgs',
+    'ConversationProfileHumanAgentHandoffConfigArgsDict',
+    'ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs',
+    'ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict',
+    'ConversationProfileLoggingConfigArgs',
+    'ConversationProfileLoggingConfigArgsDict',
+    'ConversationProfileNewMessageEventNotificationConfigArgs',
+    'ConversationProfileNewMessageEventNotificationConfigArgsDict',
+    'ConversationProfileNotificationConfigArgs',
+    'ConversationProfileNotificationConfigArgsDict',
+    'ConversationProfileSttConfigArgs',
+    'ConversationProfileSttConfigArgsDict',
+    'ConversationProfileTtsConfigArgs',
+    'ConversationProfileTtsConfigArgsDict',
+    'ConversationProfileTtsConfigVoiceArgs',
+    'ConversationProfileTtsConfigVoiceArgsDict',
     'CxAgentAdvancedSettingsArgs',
     'CxAgentAdvancedSettingsArgsDict',
     'CxAgentAdvancedSettingsAudioExportGcsDestinationArgs',
@@ -436,6 +508,2595 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class ConversationProfileAutomatedAgentConfigArgsDict(TypedDict):
+        agent: pulumi.Input[_builtins.str]
+        """
+        ID of the Dialogflow agent environment to use.
+        Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+        """
+        session_ttl: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Configure lifetime of the Dialogflow session.
+        """
+elif False:
+    ConversationProfileAutomatedAgentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileAutomatedAgentConfigArgs:
+    def __init__(__self__, *,
+                 agent: pulumi.Input[_builtins.str],
+                 session_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] agent: ID of the Dialogflow agent environment to use.
+               Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+        :param pulumi.Input[_builtins.str] session_ttl: Configure lifetime of the Dialogflow session.
+        """
+        pulumi.set(__self__, "agent", agent)
+        if session_ttl is not None:
+            pulumi.set(__self__, "session_ttl", session_ttl)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the Dialogflow agent environment to use.
+        Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "agent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sessionTtl")
+    def session_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Configure lifetime of the Dialogflow session.
+        """
+        return pulumi.get(self, "session_ttl")
+
+    @session_ttl.setter
+    def session_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "session_ttl", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigArgsDict(TypedDict):
+        end_user_suggestion_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict']]
+        """
+        Configuration for agent assistance of end user participant.
+        Structure is documented below.
+        """
+        human_agent_suggestion_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict']]
+        """
+        Configuration for agent assistance of human agent participant.
+        Structure is documented below.
+        """
+        message_analysis_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict']]
+        """
+        desc
+        Structure is documented below.
+        """
+        notification_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict']]
+        """
+        Pub/Sub topic on which to publish new agent assistant events.
+        Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+        Structure is documented below.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigArgs:
+    def __init__(__self__, *,
+                 end_user_suggestion_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs']] = None,
+                 human_agent_suggestion_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs']] = None,
+                 message_analysis_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs']] = None,
+                 notification_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs']] = None):
+        """
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs'] end_user_suggestion_config: Configuration for agent assistance of end user participant.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs'] human_agent_suggestion_config: Configuration for agent assistance of human agent participant.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs'] message_analysis_config: desc
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs'] notification_config: Pub/Sub topic on which to publish new agent assistant events.
+               Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+               Structure is documented below.
+        """
+        if end_user_suggestion_config is not None:
+            pulumi.set(__self__, "end_user_suggestion_config", end_user_suggestion_config)
+        if human_agent_suggestion_config is not None:
+            pulumi.set(__self__, "human_agent_suggestion_config", human_agent_suggestion_config)
+        if message_analysis_config is not None:
+            pulumi.set(__self__, "message_analysis_config", message_analysis_config)
+        if notification_config is not None:
+            pulumi.set(__self__, "notification_config", notification_config)
+
+    @_builtins.property
+    @pulumi.getter(name="endUserSuggestionConfig")
+    def end_user_suggestion_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs']]:
+        """
+        Configuration for agent assistance of end user participant.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_user_suggestion_config")
+
+    @end_user_suggestion_config.setter
+    def end_user_suggestion_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs']]):
+        pulumi.set(self, "end_user_suggestion_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="humanAgentSuggestionConfig")
+    def human_agent_suggestion_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs']]:
+        """
+        Configuration for agent assistance of human agent participant.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "human_agent_suggestion_config")
+
+    @human_agent_suggestion_config.setter
+    def human_agent_suggestion_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs']]):
+        pulumi.set(self, "human_agent_suggestion_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="messageAnalysisConfig")
+    def message_analysis_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs']]:
+        """
+        desc
+        Structure is documented below.
+        """
+        return pulumi.get(self, "message_analysis_config")
+
+    @message_analysis_config.setter
+    def message_analysis_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs']]):
+        pulumi.set(self, "message_analysis_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs']]:
+        """
+        Pub/Sub topic on which to publish new agent assistant events.
+        Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @notification_config.setter
+    def notification_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs']]):
+        pulumi.set(self, "notification_config", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict(TypedDict):
+        disable_high_latency_features_sync_delivery: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+        """
+        feature_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict']]]]
+        """
+        Configuration of different suggestion features. One feature can have only one config.
+        Structure is documented below.
+        """
+        generators: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of various generator resource names used in the conversation profile.
+        """
+        group_suggestion_responses: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+        If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigArgs:
+    def __init__(__self__, *,
+                 disable_high_latency_features_sync_delivery: Optional[pulumi.Input[_builtins.bool]] = None,
+                 feature_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs']]]] = None,
+                 generators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_suggestion_responses: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disable_high_latency_features_sync_delivery: When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+        :param pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs']]] feature_configs: Configuration of different suggestion features. One feature can have only one config.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] generators: List of various generator resource names used in the conversation profile.
+        :param pulumi.Input[_builtins.bool] group_suggestion_responses: If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+               If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+        """
+        if disable_high_latency_features_sync_delivery is not None:
+            pulumi.set(__self__, "disable_high_latency_features_sync_delivery", disable_high_latency_features_sync_delivery)
+        if feature_configs is not None:
+            pulumi.set(__self__, "feature_configs", feature_configs)
+        if generators is not None:
+            pulumi.set(__self__, "generators", generators)
+        if group_suggestion_responses is not None:
+            pulumi.set(__self__, "group_suggestion_responses", group_suggestion_responses)
+
+    @_builtins.property
+    @pulumi.getter(name="disableHighLatencyFeaturesSyncDelivery")
+    def disable_high_latency_features_sync_delivery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+        """
+        return pulumi.get(self, "disable_high_latency_features_sync_delivery")
+
+    @disable_high_latency_features_sync_delivery.setter
+    def disable_high_latency_features_sync_delivery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_high_latency_features_sync_delivery", value)
+
+    @_builtins.property
+    @pulumi.getter(name="featureConfigs")
+    def feature_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs']]]]:
+        """
+        Configuration of different suggestion features. One feature can have only one config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feature_configs")
+
+    @feature_configs.setter
+    def feature_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs']]]]):
+        pulumi.set(self, "feature_configs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def generators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of various generator resource names used in the conversation profile.
+        """
+        return pulumi.get(self, "generators")
+
+    @generators.setter
+    def generators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "generators", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupSuggestionResponses")
+    def group_suggestion_responses(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+        If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+        """
+        return pulumi.get(self, "group_suggestion_responses")
+
+    @group_suggestion_responses.setter
+    def group_suggestion_responses(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "group_suggestion_responses", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict(TypedDict):
+        conversation_model_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict']]
+        """
+        Configs of custom conversation model.
+        Structure is documented below.
+        """
+        conversation_process_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict']]
+        """
+        Config to process conversation.
+        Structure is documented below.
+        """
+        disable_agent_query_logging: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+        This feature is only supported for types: KNOWLEDGE_SEARCH.
+        """
+        enable_conversation_augmented_query: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable including conversation context during query answer generation.
+        This feature is only supported for types: KNOWLEDGE_SEARCH.
+        """
+        enable_event_based_suggestion: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Automatically iterates all participants and tries to compile suggestions.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+        """
+        enable_query_suggestion_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable query suggestion only.
+        This feature is only supported for types: KNOWLEDGE_ASSIST
+        """
+        enable_query_suggestion_when_no_answer: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+        This feature is only supported for types: KNOWLEDGE_ASSIST.
+        """
+        query_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict']]
+        """
+        Configs of query.
+        Structure is documented below.
+        """
+        suggestion_feature: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict']]
+        """
+        The suggestion feature.
+        Structure is documented below.
+        """
+        suggestion_trigger_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict']]
+        """
+        Settings of suggestion trigger.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+        Structure is documented below.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigArgs:
+    def __init__(__self__, *,
+                 conversation_model_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs']] = None,
+                 conversation_process_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs']] = None,
+                 disable_agent_query_logging: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_conversation_augmented_query: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_event_based_suggestion: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_query_suggestion_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_query_suggestion_when_no_answer: Optional[pulumi.Input[_builtins.bool]] = None,
+                 query_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs']] = None,
+                 suggestion_feature: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs']] = None,
+                 suggestion_trigger_settings: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs']] = None):
+        """
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs'] conversation_model_config: Configs of custom conversation model.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs'] conversation_process_config: Config to process conversation.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] disable_agent_query_logging: Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+               This feature is only supported for types: KNOWLEDGE_SEARCH.
+        :param pulumi.Input[_builtins.bool] enable_conversation_augmented_query: Enable including conversation context during query answer generation.
+               This feature is only supported for types: KNOWLEDGE_SEARCH.
+        :param pulumi.Input[_builtins.bool] enable_event_based_suggestion: Automatically iterates all participants and tries to compile suggestions.
+               This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+        :param pulumi.Input[_builtins.bool] enable_query_suggestion_only: Enable query suggestion only.
+               This feature is only supported for types: KNOWLEDGE_ASSIST
+        :param pulumi.Input[_builtins.bool] enable_query_suggestion_when_no_answer: Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+               This feature is only supported for types: KNOWLEDGE_ASSIST.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs'] query_config: Configs of query.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs'] suggestion_feature: The suggestion feature.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs'] suggestion_trigger_settings: Settings of suggestion trigger.
+               This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+               Structure is documented below.
+        """
+        if conversation_model_config is not None:
+            pulumi.set(__self__, "conversation_model_config", conversation_model_config)
+        if conversation_process_config is not None:
+            pulumi.set(__self__, "conversation_process_config", conversation_process_config)
+        if disable_agent_query_logging is not None:
+            pulumi.set(__self__, "disable_agent_query_logging", disable_agent_query_logging)
+        if enable_conversation_augmented_query is not None:
+            pulumi.set(__self__, "enable_conversation_augmented_query", enable_conversation_augmented_query)
+        if enable_event_based_suggestion is not None:
+            pulumi.set(__self__, "enable_event_based_suggestion", enable_event_based_suggestion)
+        if enable_query_suggestion_only is not None:
+            pulumi.set(__self__, "enable_query_suggestion_only", enable_query_suggestion_only)
+        if enable_query_suggestion_when_no_answer is not None:
+            pulumi.set(__self__, "enable_query_suggestion_when_no_answer", enable_query_suggestion_when_no_answer)
+        if query_config is not None:
+            pulumi.set(__self__, "query_config", query_config)
+        if suggestion_feature is not None:
+            pulumi.set(__self__, "suggestion_feature", suggestion_feature)
+        if suggestion_trigger_settings is not None:
+            pulumi.set(__self__, "suggestion_trigger_settings", suggestion_trigger_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationModelConfig")
+    def conversation_model_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs']]:
+        """
+        Configs of custom conversation model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_model_config")
+
+    @conversation_model_config.setter
+    def conversation_model_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs']]):
+        pulumi.set(self, "conversation_model_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationProcessConfig")
+    def conversation_process_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs']]:
+        """
+        Config to process conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_process_config")
+
+    @conversation_process_config.setter
+    def conversation_process_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs']]):
+        pulumi.set(self, "conversation_process_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableAgentQueryLogging")
+    def disable_agent_query_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+        This feature is only supported for types: KNOWLEDGE_SEARCH.
+        """
+        return pulumi.get(self, "disable_agent_query_logging")
+
+    @disable_agent_query_logging.setter
+    def disable_agent_query_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_agent_query_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableConversationAugmentedQuery")
+    def enable_conversation_augmented_query(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable including conversation context during query answer generation.
+        This feature is only supported for types: KNOWLEDGE_SEARCH.
+        """
+        return pulumi.get(self, "enable_conversation_augmented_query")
+
+    @enable_conversation_augmented_query.setter
+    def enable_conversation_augmented_query(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_conversation_augmented_query", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableEventBasedSuggestion")
+    def enable_event_based_suggestion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Automatically iterates all participants and tries to compile suggestions.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+        """
+        return pulumi.get(self, "enable_event_based_suggestion")
+
+    @enable_event_based_suggestion.setter
+    def enable_event_based_suggestion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_event_based_suggestion", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableQuerySuggestionOnly")
+    def enable_query_suggestion_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable query suggestion only.
+        This feature is only supported for types: KNOWLEDGE_ASSIST
+        """
+        return pulumi.get(self, "enable_query_suggestion_only")
+
+    @enable_query_suggestion_only.setter
+    def enable_query_suggestion_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_query_suggestion_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableQuerySuggestionWhenNoAnswer")
+    def enable_query_suggestion_when_no_answer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+        This feature is only supported for types: KNOWLEDGE_ASSIST.
+        """
+        return pulumi.get(self, "enable_query_suggestion_when_no_answer")
+
+    @enable_query_suggestion_when_no_answer.setter
+    def enable_query_suggestion_when_no_answer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_query_suggestion_when_no_answer", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryConfig")
+    def query_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs']]:
+        """
+        Configs of query.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_config")
+
+    @query_config.setter
+    def query_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs']]):
+        pulumi.set(self, "query_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="suggestionFeature")
+    def suggestion_feature(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs']]:
+        """
+        The suggestion feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "suggestion_feature")
+
+    @suggestion_feature.setter
+    def suggestion_feature(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs']]):
+        pulumi.set(self, "suggestion_feature", value)
+
+    @_builtins.property
+    @pulumi.getter(name="suggestionTriggerSettings")
+    def suggestion_trigger_settings(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs']]:
+        """
+        Settings of suggestion trigger.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "suggestion_trigger_settings")
+
+    @suggestion_trigger_settings.setter
+    def suggestion_trigger_settings(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs']]):
+        pulumi.set(self, "suggestion_trigger_settings", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict(TypedDict):
+        baseline_model_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        """
+        model: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfigArgs:
+    def __init__(__self__, *,
+                 baseline_model_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 model: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] baseline_model_version: Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        :param pulumi.Input[_builtins.str] model: Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+        """
+        if baseline_model_version is not None:
+            pulumi.set(__self__, "baseline_model_version", baseline_model_version)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter(name="baselineModelVersion")
+    def baseline_model_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        """
+        return pulumi.get(self, "baseline_model_version")
+
+    @baseline_model_version.setter
+    def baseline_model_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "baseline_model_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict(TypedDict):
+        recent_sentences_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfigArgs:
+    def __init__(__self__, *,
+                 recent_sentences_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] recent_sentences_count: Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+        if recent_sentences_count is not None:
+            pulumi.set(__self__, "recent_sentences_count", recent_sentences_count)
+
+    @_builtins.property
+    @pulumi.getter(name="recentSentencesCount")
+    def recent_sentences_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+        return pulumi.get(self, "recent_sentences_count")
+
+    @recent_sentences_count.setter
+    def recent_sentences_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "recent_sentences_count", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict(TypedDict):
+        confidence_threshold: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Confidence threshold of query result.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+        """
+        context_filter_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict']]
+        """
+        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+        Structure is documented below.
+        """
+        dialogflow_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict']]
+        """
+        Query from Dialogflow agent.
+        This feature is supported for types: DIALOGFLOW_ASSIST.
+        Structure is documented below.
+        """
+        document_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict']]
+        """
+        Query from knowledge base document.
+        This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
+        Structure is documented below.
+        """
+        knowledge_base_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict']]
+        """
+        Query from knowledgebase.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+        Structure is documented below.
+        """
+        max_results: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum number of results to return.
+        """
+        sections: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict']]
+        """
+        he customized sections chosen to return when requesting a summary of a conversation.
+        Structure is documented below.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigArgs:
+    def __init__(__self__, *,
+                 confidence_threshold: Optional[pulumi.Input[_builtins.float]] = None,
+                 context_filter_settings: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs']] = None,
+                 dialogflow_query_source: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs']] = None,
+                 document_query_source: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs']] = None,
+                 knowledge_base_query_source: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs']] = None,
+                 max_results: Optional[pulumi.Input[_builtins.int]] = None,
+                 sections: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.float] confidence_threshold: Confidence threshold of query result.
+               This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs'] context_filter_settings: Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs'] dialogflow_query_source: Query from Dialogflow agent.
+               This feature is supported for types: DIALOGFLOW_ASSIST.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs'] document_query_source: Query from knowledge base document.
+               This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs'] knowledge_base_query_source: Query from knowledgebase.
+               This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] max_results: Maximum number of results to return.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs'] sections: he customized sections chosen to return when requesting a summary of a conversation.
+               Structure is documented below.
+        """
+        if confidence_threshold is not None:
+            pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        if context_filter_settings is not None:
+            pulumi.set(__self__, "context_filter_settings", context_filter_settings)
+        if dialogflow_query_source is not None:
+            pulumi.set(__self__, "dialogflow_query_source", dialogflow_query_source)
+        if document_query_source is not None:
+            pulumi.set(__self__, "document_query_source", document_query_source)
+        if knowledge_base_query_source is not None:
+            pulumi.set(__self__, "knowledge_base_query_source", knowledge_base_query_source)
+        if max_results is not None:
+            pulumi.set(__self__, "max_results", max_results)
+        if sections is not None:
+            pulumi.set(__self__, "sections", sections)
+
+    @_builtins.property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Confidence threshold of query result.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+        """
+        return pulumi.get(self, "confidence_threshold")
+
+    @confidence_threshold.setter
+    def confidence_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "confidence_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contextFilterSettings")
+    def context_filter_settings(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs']]:
+        """
+        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "context_filter_settings")
+
+    @context_filter_settings.setter
+    def context_filter_settings(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs']]):
+        pulumi.set(self, "context_filter_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dialogflowQuerySource")
+    def dialogflow_query_source(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs']]:
+        """
+        Query from Dialogflow agent.
+        This feature is supported for types: DIALOGFLOW_ASSIST.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dialogflow_query_source")
+
+    @dialogflow_query_source.setter
+    def dialogflow_query_source(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs']]):
+        pulumi.set(self, "dialogflow_query_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="documentQuerySource")
+    def document_query_source(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs']]:
+        """
+        Query from knowledge base document.
+        This feature is supported for types: SMART_REPLY, SMART_COMPOSE.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "document_query_source")
+
+    @document_query_source.setter
+    def document_query_source(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs']]):
+        pulumi.set(self, "document_query_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseQuerySource")
+    def knowledge_base_query_source(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs']]:
+        """
+        Query from knowledgebase.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "knowledge_base_query_source")
+
+    @knowledge_base_query_source.setter
+    def knowledge_base_query_source(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs']]):
+        pulumi.set(self, "knowledge_base_query_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxResults")
+    def max_results(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum number of results to return.
+        """
+        return pulumi.get(self, "max_results")
+
+    @max_results.setter
+    def max_results(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_results", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sections(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs']]:
+        """
+        he customized sections chosen to return when requesting a summary of a conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sections")
+
+    @sections.setter
+    def sections(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs']]):
+        pulumi.set(self, "sections", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict(TypedDict):
+        drop_handoff_messages: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+        """
+        drop_ivr_messages: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, all messages from ivr stage are dropped.
+        """
+        drop_virtual_agent_messages: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, all messages from virtual agent are dropped.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs:
+    def __init__(__self__, *,
+                 drop_handoff_messages: Optional[pulumi.Input[_builtins.bool]] = None,
+                 drop_ivr_messages: Optional[pulumi.Input[_builtins.bool]] = None,
+                 drop_virtual_agent_messages: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] drop_handoff_messages: If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+        :param pulumi.Input[_builtins.bool] drop_ivr_messages: If set to true, all messages from ivr stage are dropped.
+        :param pulumi.Input[_builtins.bool] drop_virtual_agent_messages: If set to true, all messages from virtual agent are dropped.
+        """
+        if drop_handoff_messages is not None:
+            pulumi.set(__self__, "drop_handoff_messages", drop_handoff_messages)
+        if drop_ivr_messages is not None:
+            pulumi.set(__self__, "drop_ivr_messages", drop_ivr_messages)
+        if drop_virtual_agent_messages is not None:
+            pulumi.set(__self__, "drop_virtual_agent_messages", drop_virtual_agent_messages)
+
+    @_builtins.property
+    @pulumi.getter(name="dropHandoffMessages")
+    def drop_handoff_messages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+        """
+        return pulumi.get(self, "drop_handoff_messages")
+
+    @drop_handoff_messages.setter
+    def drop_handoff_messages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "drop_handoff_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dropIvrMessages")
+    def drop_ivr_messages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, all messages from ivr stage are dropped.
+        """
+        return pulumi.get(self, "drop_ivr_messages")
+
+    @drop_ivr_messages.setter
+    def drop_ivr_messages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "drop_ivr_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dropVirtualAgentMessages")
+    def drop_virtual_agent_messages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, all messages from virtual agent are dropped.
+        """
+        return pulumi.get(self, "drop_virtual_agent_messages")
+
+    @drop_virtual_agent_messages.setter
+    def drop_virtual_agent_messages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "drop_virtual_agent_messages", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict(TypedDict):
+        agent: pulumi.Input[_builtins.str]
+        """
+        he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+        human_agent_side_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict']]
+        """
+        The Dialogflow assist configuration for human agent.
+        Structure is documented below.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs:
+    def __init__(__self__, *,
+                 agent: pulumi.Input[_builtins.str],
+                 human_agent_side_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] agent: he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs'] human_agent_side_config: The Dialogflow assist configuration for human agent.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "agent", agent)
+        if human_agent_side_config is not None:
+            pulumi.set(__self__, "human_agent_side_config", human_agent_side_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> pulumi.Input[_builtins.str]:
+        """
+        he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "agent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="humanAgentSideConfig")
+    def human_agent_side_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs']]:
+        """
+        The Dialogflow assist configuration for human agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "human_agent_side_config")
+
+    @human_agent_side_config.setter
+    def human_agent_side_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs']]):
+        pulumi.set(self, "human_agent_side_config", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict(TypedDict):
+        agent: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs:
+    def __init__(__self__, *,
+                 agent: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] agent: The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "agent", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict(TypedDict):
+        documents: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySourceArgs:
+    def __init__(__self__, *,
+                 documents: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] documents: Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+        """
+        pulumi.set(__self__, "documents", documents)
+
+    @_builtins.property
+    @pulumi.getter
+    def documents(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+        """
+        return pulumi.get(self, "documents")
+
+    @documents.setter
+    def documents(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "documents", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict(TypedDict):
+        knowledge_bases: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySourceArgs:
+    def __init__(__self__, *,
+                 knowledge_bases: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] knowledge_bases: Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+        """
+        pulumi.set(__self__, "knowledge_bases", knowledge_bases)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBases")
+    def knowledge_bases(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+        """
+        return pulumi.get(self, "knowledge_bases")
+
+    @knowledge_bases.setter
+    def knowledge_bases(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "knowledge_bases", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict(TypedDict):
+        section_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The selected sections chosen to return when requesting a summary of a conversation
+        If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+        Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs:
+    def __init__(__self__, *,
+                 section_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] section_types: The selected sections chosen to return when requesting a summary of a conversation
+               If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+               Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+        """
+        if section_types is not None:
+            pulumi.set(__self__, "section_types", section_types)
+
+    @_builtins.property
+    @pulumi.getter(name="sectionTypes")
+    def section_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The selected sections chosen to return when requesting a summary of a conversation
+        If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+        Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+        """
+        return pulumi.get(self, "section_types")
+
+    @section_types.setter
+    def section_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "section_types", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of Human Agent Assistant API feature to request.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeatureArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: Type of Human Agent Assistant API feature to request.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of Human Agent Assistant API feature to request.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict(TypedDict):
+        no_small_talk: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Do not trigger if last utterance is small talk.
+        """
+        only_end_user: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Only trigger suggestion if participant role of last utterance is END_USER.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs:
+    def __init__(__self__, *,
+                 no_small_talk: Optional[pulumi.Input[_builtins.bool]] = None,
+                 only_end_user: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] no_small_talk: Do not trigger if last utterance is small talk.
+        :param pulumi.Input[_builtins.bool] only_end_user: Only trigger suggestion if participant role of last utterance is END_USER.
+        """
+        if no_small_talk is not None:
+            pulumi.set(__self__, "no_small_talk", no_small_talk)
+        if only_end_user is not None:
+            pulumi.set(__self__, "only_end_user", only_end_user)
+
+    @_builtins.property
+    @pulumi.getter(name="noSmallTalk")
+    def no_small_talk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Do not trigger if last utterance is small talk.
+        """
+        return pulumi.get(self, "no_small_talk")
+
+    @no_small_talk.setter
+    def no_small_talk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_small_talk", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onlyEndUser")
+    def only_end_user(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Only trigger suggestion if participant role of last utterance is END_USER.
+        """
+        return pulumi.get(self, "only_end_user")
+
+    @only_end_user.setter
+    def only_end_user(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "only_end_user", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict(TypedDict):
+        disable_high_latency_features_sync_delivery: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+        """
+        feature_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict']]]]
+        """
+        Configuration of different suggestion features. One feature can have only one config.
+        Structure is documented below.
+        """
+        generators: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of various generator resource names used in the conversation profile.
+        """
+        group_suggestion_responses: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+        If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs:
+    def __init__(__self__, *,
+                 disable_high_latency_features_sync_delivery: Optional[pulumi.Input[_builtins.bool]] = None,
+                 feature_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs']]]] = None,
+                 generators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_suggestion_responses: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disable_high_latency_features_sync_delivery: When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+        :param pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs']]] feature_configs: Configuration of different suggestion features. One feature can have only one config.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] generators: List of various generator resource names used in the conversation profile.
+        :param pulumi.Input[_builtins.bool] group_suggestion_responses: If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+               If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+        """
+        if disable_high_latency_features_sync_delivery is not None:
+            pulumi.set(__self__, "disable_high_latency_features_sync_delivery", disable_high_latency_features_sync_delivery)
+        if feature_configs is not None:
+            pulumi.set(__self__, "feature_configs", feature_configs)
+        if generators is not None:
+            pulumi.set(__self__, "generators", generators)
+        if group_suggestion_responses is not None:
+            pulumi.set(__self__, "group_suggestion_responses", group_suggestion_responses)
+
+    @_builtins.property
+    @pulumi.getter(name="disableHighLatencyFeaturesSyncDelivery")
+    def disable_high_latency_features_sync_delivery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When disableHighLatencyFeaturesSyncDelivery is true and using the AnalyzeContent API, we will not deliver the responses from high latency features in the API response. The humanAgentAssistantConfig.notification_config must be configured and enableEventBasedSuggestion must be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s): KNOWLEDGE_ASSIST
+        """
+        return pulumi.get(self, "disable_high_latency_features_sync_delivery")
+
+    @disable_high_latency_features_sync_delivery.setter
+    def disable_high_latency_features_sync_delivery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_high_latency_features_sync_delivery", value)
+
+    @_builtins.property
+    @pulumi.getter(name="featureConfigs")
+    def feature_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs']]]]:
+        """
+        Configuration of different suggestion features. One feature can have only one config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feature_configs")
+
+    @feature_configs.setter
+    def feature_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs']]]]):
+        pulumi.set(self, "feature_configs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def generators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of various generator resource names used in the conversation profile.
+        """
+        return pulumi.get(self, "generators")
+
+    @generators.setter
+    def generators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "generators", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupSuggestionResponses")
+    def group_suggestion_responses(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If groupSuggestionResponses is false, and there are multiple featureConfigs in event based suggestion or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or StreamingAnalyzeContentResponse.
+        If groupSuggestionResponses set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+        """
+        return pulumi.get(self, "group_suggestion_responses")
+
+    @group_suggestion_responses.setter
+    def group_suggestion_responses(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "group_suggestion_responses", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict(TypedDict):
+        conversation_model_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict']]
+        """
+        Configs of custom conversation model.
+        Structure is documented below.
+        """
+        conversation_process_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict']]
+        """
+        Config to process conversation.
+        Structure is documented below.
+        """
+        disable_agent_query_logging: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+        This feature is only supported for types: KNOWLEDGE_SEARCH.
+        """
+        enable_conversation_augmented_query: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable including conversation context during query answer generation.
+        This feature is only supported for types: KNOWLEDGE_SEARCH.
+        """
+        enable_event_based_suggestion: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Automatically iterates all participants and tries to compile suggestions.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+        """
+        enable_query_suggestion_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable query suggestion only.
+        This feature is only supported for types: KNOWLEDGE_ASSIST
+        """
+        enable_query_suggestion_when_no_answer: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+        This feature is only supported for types: KNOWLEDGE_ASSIST.
+        """
+        query_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict']]
+        """
+        Configs of query.
+        Structure is documented below.
+        """
+        suggestion_feature: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict']]
+        """
+        The suggestion feature.
+        Structure is documented below.
+        """
+        suggestion_trigger_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict']]
+        """
+        Settings of suggestion trigger.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+        Structure is documented below.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigArgs:
+    def __init__(__self__, *,
+                 conversation_model_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs']] = None,
+                 conversation_process_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs']] = None,
+                 disable_agent_query_logging: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_conversation_augmented_query: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_event_based_suggestion: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_query_suggestion_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_query_suggestion_when_no_answer: Optional[pulumi.Input[_builtins.bool]] = None,
+                 query_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs']] = None,
+                 suggestion_feature: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs']] = None,
+                 suggestion_trigger_settings: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs']] = None):
+        """
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs'] conversation_model_config: Configs of custom conversation model.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs'] conversation_process_config: Config to process conversation.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] disable_agent_query_logging: Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+               This feature is only supported for types: KNOWLEDGE_SEARCH.
+        :param pulumi.Input[_builtins.bool] enable_conversation_augmented_query: Enable including conversation context during query answer generation.
+               This feature is only supported for types: KNOWLEDGE_SEARCH.
+        :param pulumi.Input[_builtins.bool] enable_event_based_suggestion: Automatically iterates all participants and tries to compile suggestions.
+               This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+        :param pulumi.Input[_builtins.bool] enable_query_suggestion_only: Enable query suggestion only.
+               This feature is only supported for types: KNOWLEDGE_ASSIST
+        :param pulumi.Input[_builtins.bool] enable_query_suggestion_when_no_answer: Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+               This feature is only supported for types: KNOWLEDGE_ASSIST.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs'] query_config: Configs of query.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs'] suggestion_feature: The suggestion feature.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs'] suggestion_trigger_settings: Settings of suggestion trigger.
+               This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+               Structure is documented below.
+        """
+        if conversation_model_config is not None:
+            pulumi.set(__self__, "conversation_model_config", conversation_model_config)
+        if conversation_process_config is not None:
+            pulumi.set(__self__, "conversation_process_config", conversation_process_config)
+        if disable_agent_query_logging is not None:
+            pulumi.set(__self__, "disable_agent_query_logging", disable_agent_query_logging)
+        if enable_conversation_augmented_query is not None:
+            pulumi.set(__self__, "enable_conversation_augmented_query", enable_conversation_augmented_query)
+        if enable_event_based_suggestion is not None:
+            pulumi.set(__self__, "enable_event_based_suggestion", enable_event_based_suggestion)
+        if enable_query_suggestion_only is not None:
+            pulumi.set(__self__, "enable_query_suggestion_only", enable_query_suggestion_only)
+        if enable_query_suggestion_when_no_answer is not None:
+            pulumi.set(__self__, "enable_query_suggestion_when_no_answer", enable_query_suggestion_when_no_answer)
+        if query_config is not None:
+            pulumi.set(__self__, "query_config", query_config)
+        if suggestion_feature is not None:
+            pulumi.set(__self__, "suggestion_feature", suggestion_feature)
+        if suggestion_trigger_settings is not None:
+            pulumi.set(__self__, "suggestion_trigger_settings", suggestion_trigger_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationModelConfig")
+    def conversation_model_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs']]:
+        """
+        Configs of custom conversation model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_model_config")
+
+    @conversation_model_config.setter
+    def conversation_model_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs']]):
+        pulumi.set(self, "conversation_model_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationProcessConfig")
+    def conversation_process_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs']]:
+        """
+        Config to process conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_process_config")
+
+    @conversation_process_config.setter
+    def conversation_process_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs']]):
+        pulumi.set(self, "conversation_process_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableAgentQueryLogging")
+    def disable_agent_query_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
+        This feature is only supported for types: KNOWLEDGE_SEARCH.
+        """
+        return pulumi.get(self, "disable_agent_query_logging")
+
+    @disable_agent_query_logging.setter
+    def disable_agent_query_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_agent_query_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableConversationAugmentedQuery")
+    def enable_conversation_augmented_query(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable including conversation context during query answer generation.
+        This feature is only supported for types: KNOWLEDGE_SEARCH.
+        """
+        return pulumi.get(self, "enable_conversation_augmented_query")
+
+    @enable_conversation_augmented_query.setter
+    def enable_conversation_augmented_query(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_conversation_augmented_query", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableEventBasedSuggestion")
+    def enable_event_based_suggestion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Automatically iterates all participants and tries to compile suggestions.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
+        """
+        return pulumi.get(self, "enable_event_based_suggestion")
+
+    @enable_event_based_suggestion.setter
+    def enable_event_based_suggestion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_event_based_suggestion", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableQuerySuggestionOnly")
+    def enable_query_suggestion_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable query suggestion only.
+        This feature is only supported for types: KNOWLEDGE_ASSIST
+        """
+        return pulumi.get(self, "enable_query_suggestion_only")
+
+    @enable_query_suggestion_only.setter
+    def enable_query_suggestion_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_query_suggestion_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableQuerySuggestionWhenNoAnswer")
+    def enable_query_suggestion_when_no_answer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
+        This feature is only supported for types: KNOWLEDGE_ASSIST.
+        """
+        return pulumi.get(self, "enable_query_suggestion_when_no_answer")
+
+    @enable_query_suggestion_when_no_answer.setter
+    def enable_query_suggestion_when_no_answer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_query_suggestion_when_no_answer", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryConfig")
+    def query_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs']]:
+        """
+        Configs of query.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_config")
+
+    @query_config.setter
+    def query_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs']]):
+        pulumi.set(self, "query_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="suggestionFeature")
+    def suggestion_feature(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs']]:
+        """
+        The suggestion feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "suggestion_feature")
+
+    @suggestion_feature.setter
+    def suggestion_feature(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs']]):
+        pulumi.set(self, "suggestion_feature", value)
+
+    @_builtins.property
+    @pulumi.getter(name="suggestionTriggerSettings")
+    def suggestion_trigger_settings(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs']]:
+        """
+        Settings of suggestion trigger.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "suggestion_trigger_settings")
+
+    @suggestion_trigger_settings.setter
+    def suggestion_trigger_settings(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs']]):
+        pulumi.set(self, "suggestion_trigger_settings", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict(TypedDict):
+        baseline_model_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        """
+        model: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfigArgs:
+    def __init__(__self__, *,
+                 baseline_model_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 model: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] baseline_model_version: Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        :param pulumi.Input[_builtins.str] model: Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+        """
+        if baseline_model_version is not None:
+            pulumi.set(__self__, "baseline_model_version", baseline_model_version)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter(name="baselineModelVersion")
+    def baseline_model_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        """
+        return pulumi.get(self, "baseline_model_version")
+
+    @baseline_model_version.setter
+    def baseline_model_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "baseline_model_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict(TypedDict):
+        recent_sentences_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfigArgs:
+    def __init__(__self__, *,
+                 recent_sentences_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] recent_sentences_count: Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+        if recent_sentences_count is not None:
+            pulumi.set(__self__, "recent_sentences_count", recent_sentences_count)
+
+    @_builtins.property
+    @pulumi.getter(name="recentSentencesCount")
+    def recent_sentences_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
+        """
+        return pulumi.get(self, "recent_sentences_count")
+
+    @recent_sentences_count.setter
+    def recent_sentences_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "recent_sentences_count", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict(TypedDict):
+        confidence_threshold: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Confidence threshold of query result.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+        """
+        context_filter_settings: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict']]
+        """
+        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+        Structure is documented below.
+        """
+        dialogflow_query_source: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict']]
+        """
+        Query from Dialogflow agent.
+        This feature is supported for types: DIALOGFLOW_ASSIST.
+        Structure is documented below.
+        """
+        max_results: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum number of results to return.
+        """
+        sections: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict']]
+        """
+        he customized sections chosen to return when requesting a summary of a conversation.
+        Structure is documented below.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigArgs:
+    def __init__(__self__, *,
+                 confidence_threshold: Optional[pulumi.Input[_builtins.float]] = None,
+                 context_filter_settings: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs']] = None,
+                 dialogflow_query_source: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs']] = None,
+                 max_results: Optional[pulumi.Input[_builtins.int]] = None,
+                 sections: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.float] confidence_threshold: Confidence threshold of query result.
+               This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs'] context_filter_settings: Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs'] dialogflow_query_source: Query from Dialogflow agent.
+               This feature is supported for types: DIALOGFLOW_ASSIST.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] max_results: Maximum number of results to return.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs'] sections: he customized sections chosen to return when requesting a summary of a conversation.
+               Structure is documented below.
+        """
+        if confidence_threshold is not None:
+            pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        if context_filter_settings is not None:
+            pulumi.set(__self__, "context_filter_settings", context_filter_settings)
+        if dialogflow_query_source is not None:
+            pulumi.set(__self__, "dialogflow_query_source", dialogflow_query_source)
+        if max_results is not None:
+            pulumi.set(__self__, "max_results", max_results)
+        if sections is not None:
+            pulumi.set(__self__, "sections", sections)
+
+    @_builtins.property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Confidence threshold of query result.
+        This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
+        """
+        return pulumi.get(self, "confidence_threshold")
+
+    @confidence_threshold.setter
+    def confidence_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "confidence_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contextFilterSettings")
+    def context_filter_settings(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs']]:
+        """
+        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "context_filter_settings")
+
+    @context_filter_settings.setter
+    def context_filter_settings(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs']]):
+        pulumi.set(self, "context_filter_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dialogflowQuerySource")
+    def dialogflow_query_source(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs']]:
+        """
+        Query from Dialogflow agent.
+        This feature is supported for types: DIALOGFLOW_ASSIST.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dialogflow_query_source")
+
+    @dialogflow_query_source.setter
+    def dialogflow_query_source(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs']]):
+        pulumi.set(self, "dialogflow_query_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxResults")
+    def max_results(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum number of results to return.
+        """
+        return pulumi.get(self, "max_results")
+
+    @max_results.setter
+    def max_results(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_results", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sections(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs']]:
+        """
+        he customized sections chosen to return when requesting a summary of a conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sections")
+
+    @sections.setter
+    def sections(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs']]):
+        pulumi.set(self, "sections", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict(TypedDict):
+        drop_handoff_messages: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+        """
+        drop_ivr_messages: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, all messages from ivr stage are dropped.
+        """
+        drop_virtual_agent_messages: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, all messages from virtual agent are dropped.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettingsArgs:
+    def __init__(__self__, *,
+                 drop_handoff_messages: Optional[pulumi.Input[_builtins.bool]] = None,
+                 drop_ivr_messages: Optional[pulumi.Input[_builtins.bool]] = None,
+                 drop_virtual_agent_messages: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] drop_handoff_messages: If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+        :param pulumi.Input[_builtins.bool] drop_ivr_messages: If set to true, all messages from ivr stage are dropped.
+        :param pulumi.Input[_builtins.bool] drop_virtual_agent_messages: If set to true, all messages from virtual agent are dropped.
+        """
+        if drop_handoff_messages is not None:
+            pulumi.set(__self__, "drop_handoff_messages", drop_handoff_messages)
+        if drop_ivr_messages is not None:
+            pulumi.set(__self__, "drop_ivr_messages", drop_ivr_messages)
+        if drop_virtual_agent_messages is not None:
+            pulumi.set(__self__, "drop_virtual_agent_messages", drop_virtual_agent_messages)
+
+    @_builtins.property
+    @pulumi.getter(name="dropHandoffMessages")
+    def drop_handoff_messages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+        """
+        return pulumi.get(self, "drop_handoff_messages")
+
+    @drop_handoff_messages.setter
+    def drop_handoff_messages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "drop_handoff_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dropIvrMessages")
+    def drop_ivr_messages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, all messages from ivr stage are dropped.
+        """
+        return pulumi.get(self, "drop_ivr_messages")
+
+    @drop_ivr_messages.setter
+    def drop_ivr_messages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "drop_ivr_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dropVirtualAgentMessages")
+    def drop_virtual_agent_messages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, all messages from virtual agent are dropped.
+        """
+        return pulumi.get(self, "drop_virtual_agent_messages")
+
+    @drop_virtual_agent_messages.setter
+    def drop_virtual_agent_messages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "drop_virtual_agent_messages", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict(TypedDict):
+        agent: pulumi.Input[_builtins.str]
+        """
+        he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+        human_agent_side_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict']]
+        """
+        The Dialogflow assist configuration for human agent.
+        Structure is documented below.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs:
+    def __init__(__self__, *,
+                 agent: pulumi.Input[_builtins.str],
+                 human_agent_side_config: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] agent: he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        :param pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs'] human_agent_side_config: The Dialogflow assist configuration for human agent.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "agent", agent)
+        if human_agent_side_config is not None:
+            pulumi.set(__self__, "human_agent_side_config", human_agent_side_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> pulumi.Input[_builtins.str]:
+        """
+        he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "agent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="humanAgentSideConfig")
+    def human_agent_side_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs']]:
+        """
+        The Dialogflow assist configuration for human agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "human_agent_side_config")
+
+    @human_agent_side_config.setter
+    def human_agent_side_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs']]):
+        pulumi.set(self, "human_agent_side_config", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict(TypedDict):
+        agent: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs:
+    def __init__(__self__, *,
+                 agent: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] agent: The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "agent", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict(TypedDict):
+        section_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The selected sections chosen to return when requesting a summary of a conversation
+        If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+        Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs:
+    def __init__(__self__, *,
+                 section_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] section_types: The selected sections chosen to return when requesting a summary of a conversation
+               If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+               Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+        """
+        if section_types is not None:
+            pulumi.set(__self__, "section_types", section_types)
+
+    @_builtins.property
+    @pulumi.getter(name="sectionTypes")
+    def section_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The selected sections chosen to return when requesting a summary of a conversation
+        If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
+        Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
+        """
+        return pulumi.get(self, "section_types")
+
+    @section_types.setter
+    def section_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "section_types", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of Human Agent Assistant API feature to request.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionFeatureArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: Type of Human Agent Assistant API feature to request.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of Human Agent Assistant API feature to request.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict(TypedDict):
+        no_small_talk: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Do not trigger if last utterance is small talk.
+        """
+        only_end_user: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Only trigger suggestion if participant role of last utterance is END_USER.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigSuggestionTriggerSettingsArgs:
+    def __init__(__self__, *,
+                 no_small_talk: Optional[pulumi.Input[_builtins.bool]] = None,
+                 only_end_user: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] no_small_talk: Do not trigger if last utterance is small talk.
+        :param pulumi.Input[_builtins.bool] only_end_user: Only trigger suggestion if participant role of last utterance is END_USER.
+        """
+        if no_small_talk is not None:
+            pulumi.set(__self__, "no_small_talk", no_small_talk)
+        if only_end_user is not None:
+            pulumi.set(__self__, "only_end_user", only_end_user)
+
+    @_builtins.property
+    @pulumi.getter(name="noSmallTalk")
+    def no_small_talk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Do not trigger if last utterance is small talk.
+        """
+        return pulumi.get(self, "no_small_talk")
+
+    @no_small_talk.setter
+    def no_small_talk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_small_talk", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onlyEndUser")
+    def only_end_user(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Only trigger suggestion if participant role of last utterance is END_USER.
+        """
+        return pulumi.get(self, "only_end_user")
+
+    @only_end_user.setter
+    def only_end_user(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "only_end_user", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict(TypedDict):
+        enable_entity_extraction: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable entity extraction in conversation messages on agent assist stage.
+        """
+        enable_sentiment_analysis: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs:
+    def __init__(__self__, *,
+                 enable_entity_extraction: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_sentiment_analysis: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_entity_extraction: Enable entity extraction in conversation messages on agent assist stage.
+        :param pulumi.Input[_builtins.bool] enable_sentiment_analysis: Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
+        """
+        if enable_entity_extraction is not None:
+            pulumi.set(__self__, "enable_entity_extraction", enable_entity_extraction)
+        if enable_sentiment_analysis is not None:
+            pulumi.set(__self__, "enable_sentiment_analysis", enable_sentiment_analysis)
+
+    @_builtins.property
+    @pulumi.getter(name="enableEntityExtraction")
+    def enable_entity_extraction(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable entity extraction in conversation messages on agent assist stage.
+        """
+        return pulumi.get(self, "enable_entity_extraction")
+
+    @enable_entity_extraction.setter
+    def enable_entity_extraction(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_entity_extraction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSentimentAnalysis")
+    def enable_sentiment_analysis(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
+        """
+        return pulumi.get(self, "enable_sentiment_analysis")
+
+    @enable_sentiment_analysis.setter
+    def enable_sentiment_analysis(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_sentiment_analysis", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict(TypedDict):
+        message_format: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Format of the message
+        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        """
+        topic: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Pub/Sub topic to publish conversation events
+        """
+elif False:
+    ConversationProfileHumanAgentAssistantConfigNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs:
+    def __init__(__self__, *,
+                 message_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] message_format: Format of the message
+               Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        :param pulumi.Input[_builtins.str] topic: Name of the Pub/Sub topic to publish conversation events
+        """
+        if message_format is not None:
+            pulumi.set(__self__, "message_format", message_format)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @_builtins.property
+    @pulumi.getter(name="messageFormat")
+    def message_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Format of the message
+        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        """
+        return pulumi.get(self, "message_format")
+
+    @message_format.setter
+    def message_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Pub/Sub topic to publish conversation events
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "topic", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentHandoffConfigArgsDict(TypedDict):
+        live_person_config: NotRequired[pulumi.Input['ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict']]
+        """
+        Config for using LivePerson.
+        Structure is documented below.
+        """
+elif False:
+    ConversationProfileHumanAgentHandoffConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentHandoffConfigArgs:
+    def __init__(__self__, *,
+                 live_person_config: Optional[pulumi.Input['ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs']] = None):
+        """
+        :param pulumi.Input['ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs'] live_person_config: Config for using LivePerson.
+               Structure is documented below.
+        """
+        if live_person_config is not None:
+            pulumi.set(__self__, "live_person_config", live_person_config)
+
+    @_builtins.property
+    @pulumi.getter(name="livePersonConfig")
+    def live_person_config(self) -> Optional[pulumi.Input['ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs']]:
+        """
+        Config for using LivePerson.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_person_config")
+
+    @live_person_config.setter
+    def live_person_config(self, value: Optional[pulumi.Input['ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs']]):
+        pulumi.set(self, "live_person_config", value)
+
+
+if not MYPY:
+    class ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict(TypedDict):
+        account_number: pulumi.Input[_builtins.str]
+        """
+        Account number of the LivePerson account to connect.
+        """
+elif False:
+    ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileHumanAgentHandoffConfigLivePersonConfigArgs:
+    def __init__(__self__, *,
+                 account_number: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] account_number: Account number of the LivePerson account to connect.
+        """
+        pulumi.set(__self__, "account_number", account_number)
+
+    @_builtins.property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> pulumi.Input[_builtins.str]:
+        """
+        Account number of the LivePerson account to connect.
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_number", value)
+
+
+if not MYPY:
+    class ConversationProfileLoggingConfigArgsDict(TypedDict):
+        enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to log conversation events
+        """
+elif False:
+    ConversationProfileLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileLoggingConfigArgs:
+    def __init__(__self__, *,
+                 enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Whether to log conversation events
+        """
+        if enable_stackdriver_logging is not None:
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+
+    @_builtins.property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to log conversation events
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+    @enable_stackdriver_logging.setter
+    def enable_stackdriver_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_stackdriver_logging", value)
+
+
+if not MYPY:
+    class ConversationProfileNewMessageEventNotificationConfigArgsDict(TypedDict):
+        message_format: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Format of the message
+        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        """
+        topic: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Pub/Sub topic to publish conversation events
+        """
+elif False:
+    ConversationProfileNewMessageEventNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileNewMessageEventNotificationConfigArgs:
+    def __init__(__self__, *,
+                 message_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] message_format: Format of the message
+               Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        :param pulumi.Input[_builtins.str] topic: Name of the Pub/Sub topic to publish conversation events
+        """
+        if message_format is not None:
+            pulumi.set(__self__, "message_format", message_format)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @_builtins.property
+    @pulumi.getter(name="messageFormat")
+    def message_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Format of the message
+        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        """
+        return pulumi.get(self, "message_format")
+
+    @message_format.setter
+    def message_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Pub/Sub topic to publish conversation events
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "topic", value)
+
+
+if not MYPY:
+    class ConversationProfileNotificationConfigArgsDict(TypedDict):
+        message_format: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Format of the message
+        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        """
+        topic: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Pub/Sub topic to publish conversation events
+        """
+elif False:
+    ConversationProfileNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileNotificationConfigArgs:
+    def __init__(__self__, *,
+                 message_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] message_format: Format of the message
+               Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        :param pulumi.Input[_builtins.str] topic: Name of the Pub/Sub topic to publish conversation events
+        """
+        if message_format is not None:
+            pulumi.set(__self__, "message_format", message_format)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @_builtins.property
+    @pulumi.getter(name="messageFormat")
+    def message_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Format of the message
+        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        """
+        return pulumi.get(self, "message_format")
+
+    @message_format.setter
+    def message_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Pub/Sub topic to publish conversation events
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "topic", value)
+
+
+if not MYPY:
+    class ConversationProfileSttConfigArgsDict(TypedDict):
+        audio_encoding: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Audio encoding of the audio content to process.
+        Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+        """
+        enable_word_info: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+        """
+        language_code: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The language of the supplied audio.
+        """
+        model: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Which Speech model to select.
+        Leave this field unspecified to use Agent Speech settings for model selection.
+        """
+        sample_rate_hertz: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Sample rate (in Hertz) of the audio content sent in the query.
+        """
+        speech_model_variant: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The speech model used in speech to text.
+        Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+        """
+        use_timeout_based_endpointing: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+elif False:
+    ConversationProfileSttConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileSttConfigArgs:
+    def __init__(__self__, *,
+                 audio_encoding: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_word_info: Optional[pulumi.Input[_builtins.bool]] = None,
+                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 model: Optional[pulumi.Input[_builtins.str]] = None,
+                 sample_rate_hertz: Optional[pulumi.Input[_builtins.int]] = None,
+                 speech_model_variant: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_timeout_based_endpointing: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] audio_encoding: Audio encoding of the audio content to process.
+               Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+        :param pulumi.Input[_builtins.bool] enable_word_info: If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+        :param pulumi.Input[_builtins.str] language_code: The language of the supplied audio.
+        :param pulumi.Input[_builtins.str] model: Which Speech model to select.
+               Leave this field unspecified to use Agent Speech settings for model selection.
+        :param pulumi.Input[_builtins.int] sample_rate_hertz: Sample rate (in Hertz) of the audio content sent in the query.
+        :param pulumi.Input[_builtins.str] speech_model_variant: The speech model used in speech to text.
+               Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+        :param pulumi.Input[_builtins.bool] use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+        if audio_encoding is not None:
+            pulumi.set(__self__, "audio_encoding", audio_encoding)
+        if enable_word_info is not None:
+            pulumi.set(__self__, "enable_word_info", enable_word_info)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if sample_rate_hertz is not None:
+            pulumi.set(__self__, "sample_rate_hertz", sample_rate_hertz)
+        if speech_model_variant is not None:
+            pulumi.set(__self__, "speech_model_variant", speech_model_variant)
+        if use_timeout_based_endpointing is not None:
+            pulumi.set(__self__, "use_timeout_based_endpointing", use_timeout_based_endpointing)
+
+    @_builtins.property
+    @pulumi.getter(name="audioEncoding")
+    def audio_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Audio encoding of the audio content to process.
+        Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+        """
+        return pulumi.get(self, "audio_encoding")
+
+    @audio_encoding.setter
+    def audio_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "audio_encoding", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableWordInfo")
+    def enable_word_info(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
+        """
+        return pulumi.get(self, "enable_word_info")
+
+    @enable_word_info.setter
+    def enable_word_info(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_word_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language of the supplied audio.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "language_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Which Speech model to select.
+        Leave this field unspecified to use Agent Speech settings for model selection.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sampleRateHertz")
+    def sample_rate_hertz(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Sample rate (in Hertz) of the audio content sent in the query.
+        """
+        return pulumi.get(self, "sample_rate_hertz")
+
+    @sample_rate_hertz.setter
+    def sample_rate_hertz(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sample_rate_hertz", value)
+
+    @_builtins.property
+    @pulumi.getter(name="speechModelVariant")
+    def speech_model_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The speech model used in speech to text.
+        Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
+        """
+        return pulumi.get(self, "speech_model_variant")
+
+    @speech_model_variant.setter
+    def speech_model_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "speech_model_variant", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useTimeoutBasedEndpointing")
+    def use_timeout_based_endpointing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+        return pulumi.get(self, "use_timeout_based_endpointing")
+
+    @use_timeout_based_endpointing.setter
+    def use_timeout_based_endpointing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_timeout_based_endpointing", value)
+
+
+if not MYPY:
+    class ConversationProfileTtsConfigArgsDict(TypedDict):
+        effects_profile_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        """
+        pitch: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        """
+        speaking_rate: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Speaking rate/speed, in the range [0.25, 4.0].
+        """
+        voice: NotRequired[pulumi.Input['ConversationProfileTtsConfigVoiceArgsDict']]
+        """
+        The desired voice of the synthesized audio.
+        Structure is documented below.
+        """
+        volume_gain_db: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Volume gain (in dB) of the normal native volume supported by the specific voice.
+        """
+elif False:
+    ConversationProfileTtsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileTtsConfigArgs:
+    def __init__(__self__, *,
+                 effects_profile_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pitch: Optional[pulumi.Input[_builtins.float]] = None,
+                 speaking_rate: Optional[pulumi.Input[_builtins.float]] = None,
+                 voice: Optional[pulumi.Input['ConversationProfileTtsConfigVoiceArgs']] = None,
+                 volume_gain_db: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effects_profile_ids: An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        :param pulumi.Input[_builtins.float] pitch: Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        :param pulumi.Input[_builtins.float] speaking_rate: Speaking rate/speed, in the range [0.25, 4.0].
+        :param pulumi.Input['ConversationProfileTtsConfigVoiceArgs'] voice: The desired voice of the synthesized audio.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.float] volume_gain_db: Volume gain (in dB) of the normal native volume supported by the specific voice.
+        """
+        if effects_profile_ids is not None:
+            pulumi.set(__self__, "effects_profile_ids", effects_profile_ids)
+        if pitch is not None:
+            pulumi.set(__self__, "pitch", pitch)
+        if speaking_rate is not None:
+            pulumi.set(__self__, "speaking_rate", speaking_rate)
+        if voice is not None:
+            pulumi.set(__self__, "voice", voice)
+        if volume_gain_db is not None:
+            pulumi.set(__self__, "volume_gain_db", volume_gain_db)
+
+    @_builtins.property
+    @pulumi.getter(name="effectsProfileIds")
+    def effects_profile_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        """
+        return pulumi.get(self, "effects_profile_ids")
+
+    @effects_profile_ids.setter
+    def effects_profile_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effects_profile_ids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pitch(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        """
+        return pulumi.get(self, "pitch")
+
+    @pitch.setter
+    def pitch(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "pitch", value)
+
+    @_builtins.property
+    @pulumi.getter(name="speakingRate")
+    def speaking_rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Speaking rate/speed, in the range [0.25, 4.0].
+        """
+        return pulumi.get(self, "speaking_rate")
+
+    @speaking_rate.setter
+    def speaking_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "speaking_rate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def voice(self) -> Optional[pulumi.Input['ConversationProfileTtsConfigVoiceArgs']]:
+        """
+        The desired voice of the synthesized audio.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "voice")
+
+    @voice.setter
+    def voice(self, value: Optional[pulumi.Input['ConversationProfileTtsConfigVoiceArgs']]):
+        pulumi.set(self, "voice", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeGainDb")
+    def volume_gain_db(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Volume gain (in dB) of the normal native volume supported by the specific voice.
+        """
+        return pulumi.get(self, "volume_gain_db")
+
+    @volume_gain_db.setter
+    def volume_gain_db(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "volume_gain_db", value)
+
+
+if not MYPY:
+    class ConversationProfileTtsConfigVoiceArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the voice.
+        """
+        ssml_gender: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The preferred gender of the voice.
+        Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+        """
+elif False:
+    ConversationProfileTtsConfigVoiceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConversationProfileTtsConfigVoiceArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssml_gender: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the voice.
+        :param pulumi.Input[_builtins.str] ssml_gender: The preferred gender of the voice.
+               Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ssml_gender is not None:
+            pulumi.set(__self__, "ssml_gender", ssml_gender)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the voice.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ssmlGender")
+    def ssml_gender(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The preferred gender of the voice.
+        Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
+        """
+        return pulumi.get(self, "ssml_gender")
+
+    @ssml_gender.setter
+    def ssml_gender(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssml_gender", value)
+
 
 if not MYPY:
     class CxAgentAdvancedSettingsArgsDict(TypedDict):

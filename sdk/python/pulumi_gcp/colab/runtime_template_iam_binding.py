@@ -369,6 +369,7 @@ class RuntimeTemplateIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Colab Enterprise RuntimeTemplate
+
         Three different resources help you manage your IAM policy for Colab Enterprise RuntimeTemplate. Each of these resources serves a different use case:
 
         * `colab.RuntimeTemplateIamPolicy`: Authoritative. Sets the IAM policy for the runtimetemplate and replaces any existing policy already attached.
@@ -560,6 +561,7 @@ class RuntimeTemplateIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Colab Enterprise RuntimeTemplate
+
         Three different resources help you manage your IAM policy for Colab Enterprise RuntimeTemplate. Each of these resources serves a different use case:
 
         * `colab.RuntimeTemplateIamPolicy`: Authoritative. Sets the IAM policy for the runtimetemplate and replaces any existing policy already attached.

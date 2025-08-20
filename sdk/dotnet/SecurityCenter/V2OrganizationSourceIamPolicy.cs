@@ -107,6 +107,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// ---
     /// 
     /// # IAM policy for Security Command Center (SCC) v2 API OrganizationSource
+    /// 
     /// Three different resources help you manage your IAM policy for Security Command Center (SCC) v2 API OrganizationSource. Each of these resources serves a different use case:
     /// 
     /// * `gcp.securitycenter.V2OrganizationSourceIamPolicy`: Authoritative. Sets the IAM policy for the organizationsource and replaces any existing policy already attached.

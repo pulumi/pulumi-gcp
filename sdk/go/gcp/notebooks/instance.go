@@ -47,8 +47,8 @@ import (
 //				Location:    pulumi.String("us-west1-a"),
 //				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
-//					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("pytorch-latest-cu124"),
+//					Project:     pulumi.String("cloud-notebooks-managed"),
+//					ImageFamily: pulumi.String("workbench-instances"),
 //				},
 //			})
 //			if err != nil {
@@ -78,8 +78,8 @@ import (
 //				Location:    pulumi.String("us-west1-a"),
 //				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
-//					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("pytorch-latest-cu124"),
+//					Project:     pulumi.String("cloud-notebooks-managed"),
+//					ImageFamily: pulumi.String("workbench-instances"),
 //				},
 //				DesiredState: pulumi.String("STOPPED"),
 //			})
@@ -149,8 +149,8 @@ import (
 //					CoreCount: pulumi.Int(1),
 //				},
 //				VmImage: &notebooks.InstanceVmImageArgs{
-//					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("pytorch-latest-cu124"),
+//					Project:     pulumi.String("cloud-notebooks-managed"),
+//					ImageFamily: pulumi.String("workbench-instances"),
 //				},
 //			})
 //			if err != nil {
@@ -194,8 +194,8 @@ import (
 //				Location:    pulumi.String("us-central1-a"),
 //				MachineType: pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
-//					Project:     pulumi.String("deeplearning-platform-release"),
-//					ImageFamily: pulumi.String("pytorch-latest-cu124"),
+//					Project:     pulumi.String("cloud-notebooks-managed"),
+//					ImageFamily: pulumi.String("workbench-instances"),
 //				},
 //				InstanceOwners: pulumi.StringArray{
 //					pulumi.String("my@service-account.com"),
@@ -203,7 +203,7 @@ import (
 //				ServiceAccount:   pulumi.String("my@service-account.com"),
 //				InstallGpuDriver: pulumi.Bool(true),
 //				BootDiskType:     pulumi.String("PD_SSD"),
-//				BootDiskSizeGb:   pulumi.Int(110),
+//				BootDiskSizeGb:   pulumi.Int(150),
 //				NoPublicIp:       pulumi.Bool(true),
 //				NoProxyAccess:    pulumi.Bool(true),
 //				Network:          pulumi.String(myNetwork.Id),

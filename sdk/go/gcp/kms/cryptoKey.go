@@ -171,6 +171,7 @@ type CryptoKey struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
 	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// This field is only applicable during initial CryptoKey creation.
 	SkipInitialVersionCreation pulumi.BoolPtrOutput `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -265,6 +266,7 @@ type cryptoKeyState struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
 	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// This field is only applicable during initial CryptoKey creation.
 	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -322,6 +324,7 @@ type CryptoKeyState struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
 	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// This field is only applicable during initial CryptoKey creation.
 	SkipInitialVersionCreation pulumi.BoolPtrInput
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -374,6 +377,7 @@ type cryptoKeyArgs struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
 	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// This field is only applicable during initial CryptoKey creation.
 	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -423,6 +427,7 @@ type CryptoKeyArgs struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
 	// or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+	// This field is only applicable during initial CryptoKey creation.
 	SkipInitialVersionCreation pulumi.BoolPtrInput
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
@@ -604,6 +609,7 @@ func (o CryptoKeyOutput) RotationPeriod() pulumi.StringPtrOutput {
 // If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 // You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
 // or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+// This field is only applicable during initial CryptoKey creation.
 func (o CryptoKeyOutput) SkipInitialVersionCreation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolPtrOutput { return v.SkipInitialVersionCreation }).(pulumi.BoolPtrOutput)
 }

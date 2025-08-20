@@ -116,10 +116,15 @@ import * as utilities from "../utilities";
  *     keyRing: keyRing.id,
  * });
  * const project = gcp.organizations.getProject({});
- * const cryptoKeyMember = new gcp.kms.CryptoKeyIAMMember("crypto_key_member", {
+ * const cryptoKeyMemberCdfSa = new gcp.kms.CryptoKeyIAMMember("crypto_key_member_cdf_sa", {
  *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`),
+ * });
+ * const cryptoKeyMemberGcsSa = new gcp.kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gs-project-accounts.iam.gserviceaccount.com`),
  * });
  * const cmek = new gcp.datafusion.Instance("cmek", {
  *     name: "my-instance",
@@ -129,7 +134,10 @@ import * as utilities from "../utilities";
  *         keyReference: cryptoKey.id,
  *     },
  * }, {
- *     dependsOn: [cryptoKeyMember],
+ *     dependsOn: [
+ *         cryptoKeyMemberCdfSa,
+ *         cryptoKeyMemberGcsSa,
+ *     ],
  * });
  * ```
  * ### Data Fusion Instance Enterprise

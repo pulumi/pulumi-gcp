@@ -14,21 +14,21 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeployPolicyRuleRolloutRestriction
     {
         /// <summary>
-        /// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+        /// Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
         /// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>
-        /// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+        /// ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+        /// What invoked the action. If left empty, all invoker types will be restricted.
         /// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
         /// </summary>
         public readonly ImmutableArray<string> Invokers;
         /// <summary>
-        /// Required. Time window within which actions are restricted.
+        /// Time window within which actions are restricted.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeployPolicyRuleRolloutRestrictionTimeWindows? TimeWindows;

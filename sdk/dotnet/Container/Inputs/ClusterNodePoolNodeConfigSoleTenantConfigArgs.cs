@@ -12,11 +12,17 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolNodeConfigSoleTenantConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type's CPU count.
+        /// </summary>
+        [Input("minNodeCpus")]
+        public Input<int>? MinNodeCpus { get; set; }
+
         [Input("nodeAffinities", required: true)]
         private InputList<Inputs.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>? _nodeAffinities;
 
         /// <summary>
-        /// .
+        /// The node affinity settings for the sole tenant node pool. Structure is documented below.
         /// </summary>
         public InputList<Inputs.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs> NodeAffinities
         {

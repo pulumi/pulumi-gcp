@@ -5,43 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+ * VPC Flow Logs Config is a resource that lets you configure Flow Logs for Networks, Subnets, Interconnect attachments or VPN Tunnels.
  *
  * ## Example Usage
  *
- * ### Network Management Vpc Flow Logs Config Interconnect Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const network = new gcp.compute.Network("network", {name: "full-interconnect-test-network"});
- * const router = new gcp.compute.Router("router", {
- *     name: "full-interconnect-test-router",
- *     network: network.name,
- *     bgp: {
- *         asn: 16550,
- *     },
- * });
- * const attachment = new gcp.compute.InterconnectAttachment("attachment", {
- *     name: "full-interconnect-test-id",
- *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
- *     type: "PARTNER",
- *     router: router.id,
- *     mtu: "1500",
- * });
- * const interconnect_test = new gcp.networkmanagement.VpcFlowLogsConfig("interconnect-test", {
- *     vpcFlowLogsConfigId: "full-interconnect-test-id",
- *     location: "global",
- *     interconnectAttachment: pulumi.all([project, attachment.name]).apply(([project, name]) => `projects/${project.number}/regions/us-east4/interconnectAttachments/${name}`),
- *     state: "ENABLED",
- *     aggregationInterval: "INTERVAL_5_SEC",
- *     description: "VPC Flow Logs over a VPN Gateway.",
- *     flowSampling: 0.5,
- *     metadata: "INCLUDE_ALL_METADATA",
- * });
- * ```
  * ### Network Management Vpc Flow Logs Config Interconnect Basic
  *
  * ```typescript
@@ -128,67 +95,41 @@ import * as utilities from "../utilities";
  *     nextHopVpnTunnel: tunnel.id,
  * });
  * ```
- * ### Network Management Vpc Flow Logs Config Vpn Full
+ * ### Network Management Vpc Flow Logs Config Network Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const network = new gcp.compute.Network("network", {name: "full-test-network"});
- * const targetGateway = new gcp.compute.VPNGateway("target_gateway", {
- *     name: "full-test-gateway",
+ * const network = new gcp.compute.Network("network", {name: "basic-network-test-network"});
+ * const network_test = new gcp.networkmanagement.VpcFlowLogsConfig("network-test", {
+ *     vpcFlowLogsConfigId: "basic-network-test-id",
+ *     location: "global",
+ *     network: pulumi.all([project, network.name]).apply(([project, name]) => `projects/${project.number}/global/networks/${name}`),
+ * });
+ * ```
+ * ### Network Management Vpc Flow Logs Config Subnet Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const network = new gcp.compute.Network("network", {
+ *     name: "basic-subnet-test-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "basic-subnet-test-subnetwork",
+ *     ipCidrRange: "10.2.0.0/16",
+ *     region: "us-central1",
  *     network: network.id,
  * });
- * const vpnStaticIp = new gcp.compute.Address("vpn_static_ip", {name: "full-test-address"});
- * const frEsp = new gcp.compute.ForwardingRule("fr_esp", {
- *     name: "full-test-fresp",
- *     ipProtocol: "ESP",
- *     ipAddress: vpnStaticIp.address,
- *     target: targetGateway.id,
- * });
- * const frUdp500 = new gcp.compute.ForwardingRule("fr_udp500", {
- *     name: "full-test-fr500",
- *     ipProtocol: "UDP",
- *     portRange: "500",
- *     ipAddress: vpnStaticIp.address,
- *     target: targetGateway.id,
- * });
- * const frUdp4500 = new gcp.compute.ForwardingRule("fr_udp4500", {
- *     name: "full-test-fr4500",
- *     ipProtocol: "UDP",
- *     portRange: "4500",
- *     ipAddress: vpnStaticIp.address,
- *     target: targetGateway.id,
- * });
- * const tunnel = new gcp.compute.VPNTunnel("tunnel", {
- *     name: "full-test-tunnel",
- *     peerIp: "15.0.0.120",
- *     sharedSecret: "a secret message",
- *     targetVpnGateway: targetGateway.id,
- * }, {
- *     dependsOn: [
- *         frEsp,
- *         frUdp500,
- *         frUdp4500,
- *     ],
- * });
- * const vpn_test = new gcp.networkmanagement.VpcFlowLogsConfig("vpn-test", {
- *     vpcFlowLogsConfigId: "full-test-id",
+ * const subnet_test = new gcp.networkmanagement.VpcFlowLogsConfig("subnet-test", {
+ *     vpcFlowLogsConfigId: "basic-subnet-test-id",
  *     location: "global",
- *     vpnTunnel: pulumi.all([project, tunnel.name]).apply(([project, name]) => `projects/${project.number}/regions/us-central1/vpnTunnels/${name}`),
- *     state: "ENABLED",
- *     aggregationInterval: "INTERVAL_5_SEC",
- *     description: "VPC Flow Logs over a VPN Gateway.",
- *     flowSampling: 0.5,
- *     metadata: "INCLUDE_ALL_METADATA",
- * });
- * const route = new gcp.compute.Route("route", {
- *     name: "full-test-route",
- *     network: network.name,
- *     destRange: "15.0.0.0/24",
- *     priority: 1000,
- *     nextHopVpnTunnel: tunnel.id,
+ *     subnet: pulumi.all([project, subnetwork.name]).apply(([project, name]) => `projects/${project.number}/regions/us-central1/subnetworks/${name}`),
  * });
  * ```
  *
@@ -246,7 +187,7 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
 
     /**
      * Optional. The aggregation interval for the logs. Default value is
-     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
      */
     public readonly aggregationInterval!: pulumi.Output<string>;
     /**
@@ -306,6 +247,10 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+     */
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -317,9 +262,23 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. The state of the VPC Flow Log configuration. Default value
-     * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+     * is ENABLED. When creating a new configuration, it must be enabled.
+     * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
      */
     public readonly state!: pulumi.Output<string>;
+    /**
+     * Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+     */
+    public readonly subnet!: pulumi.Output<string | undefined>;
+    /**
+     * Describes the state of the configured target resource for diagnostic
+     * purposes.
+     * Possible values:
+     * TARGET_RESOURCE_STATE_UNSPECIFIED
+     * TARGET_RESOURCE_EXISTS
+     * TARGET_RESOURCE_DOES_NOT_EXIST
+     */
+    public /*out*/ readonly targetResourceState!: pulumi.Output<string>;
     /**
      * Output only. The time the config was updated.
      */
@@ -358,9 +317,12 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["metadataFields"] = state ? state.metadataFields : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["subnet"] = state ? state.subnet : undefined;
+            resourceInputs["targetResourceState"] = state ? state.targetResourceState : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["vpcFlowLogsConfigId"] = state ? state.vpcFlowLogsConfigId : undefined;
             resourceInputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
@@ -381,14 +343,17 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["metadataFields"] = args ? args.metadataFields : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["subnet"] = args ? args.subnet : undefined;
             resourceInputs["vpcFlowLogsConfigId"] = args ? args.vpcFlowLogsConfigId : undefined;
             resourceInputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["targetResourceState"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -404,7 +369,7 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
 export interface VpcFlowLogsConfigState {
     /**
      * Optional. The aggregation interval for the logs. Default value is
-     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
      */
     aggregationInterval?: pulumi.Input<string>;
     /**
@@ -464,6 +429,10 @@ export interface VpcFlowLogsConfigState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+     */
+    network?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -475,9 +444,23 @@ export interface VpcFlowLogsConfigState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. The state of the VPC Flow Log configuration. Default value
-     * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+     * is ENABLED. When creating a new configuration, it must be enabled.
+     * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
      */
     state?: pulumi.Input<string>;
+    /**
+     * Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+     */
+    subnet?: pulumi.Input<string>;
+    /**
+     * Describes the state of the configured target resource for diagnostic
+     * purposes.
+     * Possible values:
+     * TARGET_RESOURCE_STATE_UNSPECIFIED
+     * TARGET_RESOURCE_EXISTS
+     * TARGET_RESOURCE_DOES_NOT_EXIST
+     */
+    targetResourceState?: pulumi.Input<string>;
     /**
      * Output only. The time the config was updated.
      */
@@ -498,7 +481,7 @@ export interface VpcFlowLogsConfigState {
 export interface VpcFlowLogsConfigArgs {
     /**
      * Optional. The aggregation interval for the logs. Default value is
-     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
      */
     aggregationInterval?: pulumi.Input<string>;
     /**
@@ -546,15 +529,24 @@ export interface VpcFlowLogsConfigArgs {
      */
     metadataFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+     */
+    network?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * Optional. The state of the VPC Flow Log configuration. Default value
-     * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+     * is ENABLED. When creating a new configuration, it must be enabled.
+     * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
      */
     state?: pulumi.Input<string>;
+    /**
+     * Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+     */
+    subnet?: pulumi.Input<string>;
     /**
      * Required. ID of the `VpcFlowLogsConfig`.
      */

@@ -12,78 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+// VPC Flow Logs Config is a resource that lets you configure Flow Logs for Networks, Subnets, Interconnect attachments or VPN Tunnels.
 //
 // ## Example Usage
 //
-// ### Network Management Vpc Flow Logs Config Interconnect Full
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkmanagement"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name: pulumi.String("full-interconnect-test-network"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
-//				Name:    pulumi.String("full-interconnect-test-router"),
-//				Network: network.Name,
-//				Bgp: &compute.RouterBgpArgs{
-//					Asn: pulumi.Int(16550),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			attachment, err := compute.NewInterconnectAttachment(ctx, "attachment", &compute.InterconnectAttachmentArgs{
-//				Name:                   pulumi.String("full-interconnect-test-id"),
-//				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
-//				Type:                   pulumi.String("PARTNER"),
-//				Router:                 router.ID(),
-//				Mtu:                    pulumi.String("1500"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkmanagement.NewVpcFlowLogsConfig(ctx, "interconnect-test", &networkmanagement.VpcFlowLogsConfigArgs{
-//				VpcFlowLogsConfigId: pulumi.String("full-interconnect-test-id"),
-//				Location:            pulumi.String("global"),
-//				InterconnectAttachment: attachment.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v/regions/us-east4/interconnectAttachments/%v", project.Number, name), nil
-//				}).(pulumi.StringOutput),
-//				State:               pulumi.String("ENABLED"),
-//				AggregationInterval: pulumi.String("INTERVAL_5_SEC"),
-//				Description:         pulumi.String("VPC Flow Logs over a VPN Gateway."),
-//				FlowSampling:        pulumi.Float64(0.5),
-//				Metadata:            pulumi.String("INCLUDE_ALL_METADATA"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Network Management Vpc Flow Logs Config Interconnect Basic
 //
 // ```go
@@ -255,7 +187,7 @@ import (
 //	}
 //
 // ```
-// ### Network Management Vpc Flow Logs Config Vpn Full
+// ### Network Management Vpc Flow Logs Config Network Basic
 //
 // ```go
 // package main
@@ -278,87 +210,70 @@ import (
 //				return err
 //			}
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name: pulumi.String("full-test-network"),
+//				Name: pulumi.String("basic-network-test-network"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
-//				Name:    pulumi.String("full-test-gateway"),
-//				Network: network.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vpnStaticIp, err := compute.NewAddress(ctx, "vpn_static_ip", &compute.AddressArgs{
-//				Name: pulumi.String("full-test-address"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			frEsp, err := compute.NewForwardingRule(ctx, "fr_esp", &compute.ForwardingRuleArgs{
-//				Name:       pulumi.String("full-test-fresp"),
-//				IpProtocol: pulumi.String("ESP"),
-//				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			frUdp500, err := compute.NewForwardingRule(ctx, "fr_udp500", &compute.ForwardingRuleArgs{
-//				Name:       pulumi.String("full-test-fr500"),
-//				IpProtocol: pulumi.String("UDP"),
-//				PortRange:  pulumi.String("500"),
-//				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			frUdp4500, err := compute.NewForwardingRule(ctx, "fr_udp4500", &compute.ForwardingRuleArgs{
-//				Name:       pulumi.String("full-test-fr4500"),
-//				IpProtocol: pulumi.String("UDP"),
-//				PortRange:  pulumi.String("4500"),
-//				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			tunnel, err := compute.NewVPNTunnel(ctx, "tunnel", &compute.VPNTunnelArgs{
-//				Name:             pulumi.String("full-test-tunnel"),
-//				PeerIp:           pulumi.String("15.0.0.120"),
-//				SharedSecret:     pulumi.String("a secret message"),
-//				TargetVpnGateway: targetGateway.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				frEsp,
-//				frUdp500,
-//				frUdp4500,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkmanagement.NewVpcFlowLogsConfig(ctx, "vpn-test", &networkmanagement.VpcFlowLogsConfigArgs{
-//				VpcFlowLogsConfigId: pulumi.String("full-test-id"),
+//			_, err = networkmanagement.NewVpcFlowLogsConfig(ctx, "network-test", &networkmanagement.VpcFlowLogsConfigArgs{
+//				VpcFlowLogsConfigId: pulumi.String("basic-network-test-id"),
 //				Location:            pulumi.String("global"),
-//				VpnTunnel: tunnel.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v/regions/us-central1/vpnTunnels/%v", project.Number, name), nil
+//				Network: network.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/%v/global/networks/%v", project.Number, name), nil
 //				}).(pulumi.StringOutput),
-//				State:               pulumi.String("ENABLED"),
-//				AggregationInterval: pulumi.String("INTERVAL_5_SEC"),
-//				Description:         pulumi.String("VPC Flow Logs over a VPN Gateway."),
-//				FlowSampling:        pulumi.Float64(0.5),
-//				Metadata:            pulumi.String("INCLUDE_ALL_METADATA"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRoute(ctx, "route", &compute.RouteArgs{
-//				Name:             pulumi.String("full-test-route"),
-//				Network:          network.Name,
-//				DestRange:        pulumi.String("15.0.0.0/24"),
-//				Priority:         pulumi.Int(1000),
-//				NextHopVpnTunnel: tunnel.ID(),
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Management Vpc Flow Logs Config Subnet Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkmanagement"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("basic-subnet-test-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("basic-subnet-test-subnetwork"),
+//				IpCidrRange: pulumi.String("10.2.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     network.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkmanagement.NewVpcFlowLogsConfig(ctx, "subnet-test", &networkmanagement.VpcFlowLogsConfigArgs{
+//				VpcFlowLogsConfigId: pulumi.String("basic-subnet-test-id"),
+//				Location:            pulumi.String("global"),
+//				Subnet: subnetwork.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/%v", project.Number, name), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -396,7 +311,7 @@ type VpcFlowLogsConfig struct {
 	pulumi.CustomResourceState
 
 	// Optional. The aggregation interval for the logs. Default value is
-	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
 	AggregationInterval pulumi.StringOutput `pulumi:"aggregationInterval"`
 	// Output only. The time the config was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -432,6 +347,8 @@ type VpcFlowLogsConfig struct {
 	MetadataFields pulumi.StringArrayOutput `pulumi:"metadataFields"`
 	// Identifier. Unique name of the configuration using the form:     `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -439,8 +356,18 @@ type VpcFlowLogsConfig struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Optional. The state of the VPC Flow Log configuration. Default value
-	// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+	// is ENABLED. When creating a new configuration, it must be enabled.
+	// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
 	State pulumi.StringOutput `pulumi:"state"`
+	// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+	Subnet pulumi.StringPtrOutput `pulumi:"subnet"`
+	// Describes the state of the configured target resource for diagnostic
+	// purposes.
+	// Possible values:
+	// TARGET_RESOURCE_STATE_UNSPECIFIED
+	// TARGET_RESOURCE_EXISTS
+	// TARGET_RESOURCE_DOES_NOT_EXIST
+	TargetResourceState pulumi.StringOutput `pulumi:"targetResourceState"`
 	// Output only. The time the config was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Required. ID of the `VpcFlowLogsConfig`.
@@ -491,7 +418,7 @@ func GetVpcFlowLogsConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering VpcFlowLogsConfig resources.
 type vpcFlowLogsConfigState struct {
 	// Optional. The aggregation interval for the logs. Default value is
-	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
 	AggregationInterval *string `pulumi:"aggregationInterval"`
 	// Output only. The time the config was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -527,6 +454,8 @@ type vpcFlowLogsConfigState struct {
 	MetadataFields []string `pulumi:"metadataFields"`
 	// Identifier. Unique name of the configuration using the form:     `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
 	Name *string `pulumi:"name"`
+	// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -534,8 +463,18 @@ type vpcFlowLogsConfigState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Optional. The state of the VPC Flow Log configuration. Default value
-	// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+	// is ENABLED. When creating a new configuration, it must be enabled.
+	// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
 	State *string `pulumi:"state"`
+	// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+	Subnet *string `pulumi:"subnet"`
+	// Describes the state of the configured target resource for diagnostic
+	// purposes.
+	// Possible values:
+	// TARGET_RESOURCE_STATE_UNSPECIFIED
+	// TARGET_RESOURCE_EXISTS
+	// TARGET_RESOURCE_DOES_NOT_EXIST
+	TargetResourceState *string `pulumi:"targetResourceState"`
 	// Output only. The time the config was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Required. ID of the `VpcFlowLogsConfig`.
@@ -546,7 +485,7 @@ type vpcFlowLogsConfigState struct {
 
 type VpcFlowLogsConfigState struct {
 	// Optional. The aggregation interval for the logs. Default value is
-	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
 	AggregationInterval pulumi.StringPtrInput
 	// Output only. The time the config was created.
 	CreateTime pulumi.StringPtrInput
@@ -582,6 +521,8 @@ type VpcFlowLogsConfigState struct {
 	MetadataFields pulumi.StringArrayInput
 	// Identifier. Unique name of the configuration using the form:     `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
 	Name pulumi.StringPtrInput
+	// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -589,8 +530,18 @@ type VpcFlowLogsConfigState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Optional. The state of the VPC Flow Log configuration. Default value
-	// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+	// is ENABLED. When creating a new configuration, it must be enabled.
+	// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
 	State pulumi.StringPtrInput
+	// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+	Subnet pulumi.StringPtrInput
+	// Describes the state of the configured target resource for diagnostic
+	// purposes.
+	// Possible values:
+	// TARGET_RESOURCE_STATE_UNSPECIFIED
+	// TARGET_RESOURCE_EXISTS
+	// TARGET_RESOURCE_DOES_NOT_EXIST
+	TargetResourceState pulumi.StringPtrInput
 	// Output only. The time the config was updated.
 	UpdateTime pulumi.StringPtrInput
 	// Required. ID of the `VpcFlowLogsConfig`.
@@ -605,7 +556,7 @@ func (VpcFlowLogsConfigState) ElementType() reflect.Type {
 
 type vpcFlowLogsConfigArgs struct {
 	// Optional. The aggregation interval for the logs. Default value is
-	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
 	AggregationInterval *string `pulumi:"aggregationInterval"`
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
@@ -635,12 +586,17 @@ type vpcFlowLogsConfigArgs struct {
 	// Optional. Custom metadata fields to include in the reported VPC flow
 	// logs. Can only be specified if \"metadata\" was set to CUSTOM_METADATA.
 	MetadataFields []string `pulumi:"metadataFields"`
+	// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Optional. The state of the VPC Flow Log configuration. Default value
-	// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+	// is ENABLED. When creating a new configuration, it must be enabled.
+	// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
 	State *string `pulumi:"state"`
+	// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+	Subnet *string `pulumi:"subnet"`
 	// Required. ID of the `VpcFlowLogsConfig`.
 	VpcFlowLogsConfigId string `pulumi:"vpcFlowLogsConfigId"`
 	// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
@@ -650,7 +606,7 @@ type vpcFlowLogsConfigArgs struct {
 // The set of arguments for constructing a VpcFlowLogsConfig resource.
 type VpcFlowLogsConfigArgs struct {
 	// Optional. The aggregation interval for the logs. Default value is
-	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
 	AggregationInterval pulumi.StringPtrInput
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
@@ -680,12 +636,17 @@ type VpcFlowLogsConfigArgs struct {
 	// Optional. Custom metadata fields to include in the reported VPC flow
 	// logs. Can only be specified if \"metadata\" was set to CUSTOM_METADATA.
 	MetadataFields pulumi.StringArrayInput
+	// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Optional. The state of the VPC Flow Log configuration. Default value
-	// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+	// is ENABLED. When creating a new configuration, it must be enabled.
+	// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
 	State pulumi.StringPtrInput
+	// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+	Subnet pulumi.StringPtrInput
 	// Required. ID of the `VpcFlowLogsConfig`.
 	VpcFlowLogsConfigId pulumi.StringInput
 	// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
@@ -780,7 +741,7 @@ func (o VpcFlowLogsConfigOutput) ToVpcFlowLogsConfigOutputWithContext(ctx contex
 }
 
 // Optional. The aggregation interval for the logs. Default value is
-// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
 func (o VpcFlowLogsConfigOutput) AggregationInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringOutput { return v.AggregationInterval }).(pulumi.StringOutput)
 }
@@ -852,6 +813,11 @@ func (o VpcFlowLogsConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+func (o VpcFlowLogsConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o VpcFlowLogsConfigOutput) Project() pulumi.StringOutput {
@@ -865,9 +831,25 @@ func (o VpcFlowLogsConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // Optional. The state of the VPC Flow Log configuration. Default value
-// is ENABLED. When creating a new configuration, it must be enabled.   Possible
+// is ENABLED. When creating a new configuration, it must be enabled.
+// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
 func (o VpcFlowLogsConfigOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+func (o VpcFlowLogsConfigOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringPtrOutput { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+// Describes the state of the configured target resource for diagnostic
+// purposes.
+// Possible values:
+// TARGET_RESOURCE_STATE_UNSPECIFIED
+// TARGET_RESOURCE_EXISTS
+// TARGET_RESOURCE_DOES_NOT_EXIST
+func (o VpcFlowLogsConfigOutput) TargetResourceState() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringOutput { return v.TargetResourceState }).(pulumi.StringOutput)
 }
 
 // Output only. The time the config was updated.

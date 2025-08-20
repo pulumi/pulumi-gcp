@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.Beyondcorp
     public static class GetApplicationIamPolicy
     {
         /// <summary>
+        /// &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+        /// 
         /// Retrieves the current IAM policy data for application
         /// 
         /// 
@@ -39,6 +41,8 @@ namespace Pulumi.Gcp.Beyondcorp
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationIamPolicyResult>("gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy", args ?? new GetApplicationIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+        /// 
         /// Retrieves the current IAM policy data for application
         /// 
         /// 
@@ -66,6 +70,8 @@ namespace Pulumi.Gcp.Beyondcorp
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationIamPolicyResult>("gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy", args ?? new GetApplicationIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+        /// 
         /// Retrieves the current IAM policy data for application
         /// 
         /// 

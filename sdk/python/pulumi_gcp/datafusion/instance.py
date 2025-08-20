@@ -1121,10 +1121,14 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             key_ring=key_ring.id)
         project = gcp.organizations.get_project()
-        crypto_key_member = gcp.kms.CryptoKeyIAMMember("crypto_key_member",
+        crypto_key_member_cdf_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_cdf_sa",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
+        crypto_key_member_gcs_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gs-project-accounts.iam.gserviceaccount.com")
         cmek = gcp.datafusion.Instance("cmek",
             name="my-instance",
             region="us-central1",
@@ -1132,7 +1136,10 @@ class Instance(pulumi.CustomResource):
             crypto_key_config={
                 "key_reference": crypto_key.id,
             },
-            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
+            opts = pulumi.ResourceOptions(depends_on=[
+                    crypto_key_member_cdf_sa,
+                    crypto_key_member_gcs_sa,
+                ]))
         ```
         ### Data Fusion Instance Enterprise
 
@@ -1367,10 +1374,14 @@ class Instance(pulumi.CustomResource):
             name="my-instance",
             key_ring=key_ring.id)
         project = gcp.organizations.get_project()
-        crypto_key_member = gcp.kms.CryptoKeyIAMMember("crypto_key_member",
+        crypto_key_member_cdf_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_cdf_sa",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
+        crypto_key_member_gcs_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gs-project-accounts.iam.gserviceaccount.com")
         cmek = gcp.datafusion.Instance("cmek",
             name="my-instance",
             region="us-central1",
@@ -1378,7 +1389,10 @@ class Instance(pulumi.CustomResource):
             crypto_key_config={
                 "key_reference": crypto_key.id,
             },
-            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
+            opts = pulumi.ResourceOptions(depends_on=[
+                    crypto_key_member_cdf_sa,
+                    crypto_key_member_gcs_sa,
+                ]))
         ```
         ### Data Fusion Instance Enterprise
 

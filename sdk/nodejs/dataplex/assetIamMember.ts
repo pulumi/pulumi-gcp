@@ -82,6 +82,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for Dataplex Asset
+ *
  * Three different resources help you manage your IAM policy for Dataplex Asset. Each of these resources serves a different use case:
  *
  * * `gcp.dataplex.AssetIamPolicy`: Authoritative. Sets the IAM policy for the asset and replaces any existing policy already attached.

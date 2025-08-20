@@ -110,6 +110,7 @@ namespace Pulumi.Gcp.Healthcare
     /// ---
     /// 
     /// # IAM policy for Cloud Healthcare ConsentStore
+    /// 
     /// Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
     /// 
     /// * `gcp.healthcare.ConsentStoreIamPolicy`: Authoritative. Sets the IAM policy for the consentstore and replaces any existing policy already attached.

@@ -367,6 +367,7 @@ class TagTemplateIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Data Catalog TagTemplate
+
         Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 
         * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
@@ -547,6 +548,7 @@ class TagTemplateIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Data Catalog TagTemplate
+
         Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 
         * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.

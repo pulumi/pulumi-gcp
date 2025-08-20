@@ -40,6 +40,16 @@ export const getRepositoryIamPolicy: typeof import("./getRepositoryIamPolicy").g
 export const getRepositoryIamPolicyOutput: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRepositoryIamPolicy","getRepositoryIamPolicyOutput"], () => require("./getRepositoryIamPolicy"));
 
+export { GetTagArgs, GetTagResult, GetTagOutputArgs } from "./getTag";
+export const getTag: typeof import("./getTag").getTag = null as any;
+export const getTagOutput: typeof import("./getTag").getTagOutput = null as any;
+utilities.lazyLoad(exports, ["getTag","getTagOutput"], () => require("./getTag"));
+
+export { GetTagsArgs, GetTagsResult, GetTagsOutputArgs } from "./getTags";
+export const getTags: typeof import("./getTags").getTags = null as any;
+export const getTagsOutput: typeof import("./getTags").getTagsOutput = null as any;
+utilities.lazyLoad(exports, ["getTags","getTagsOutput"], () => require("./getTags"));
+
 export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
 export const getVersion: typeof import("./getVersion").getVersion = null as any;
 export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;

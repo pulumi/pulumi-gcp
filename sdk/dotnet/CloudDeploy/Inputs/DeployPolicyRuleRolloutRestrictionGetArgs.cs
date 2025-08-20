@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         private InputList<string>? _actions;
 
         /// <summary>
-        /// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+        /// Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
         /// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
         /// </summary>
         public InputList<string> Actions
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         }
 
         /// <summary>
-        /// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+        /// ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         private InputList<string>? _invokers;
 
         /// <summary>
-        /// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+        /// What invoked the action. If left empty, all invoker types will be restricted.
         /// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
         /// </summary>
         public InputList<string> Invokers
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         }
 
         /// <summary>
-        /// Required. Time window within which actions are restricted.
+        /// Time window within which actions are restricted.
         /// Structure is documented below.
         /// </summary>
         [Input("timeWindows")]

@@ -377,6 +377,7 @@ class AutoscalingPolicyIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataproc AutoscalingPolicy
+
         Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
 
         * `dataproc.AutoscalingPolicyIamPolicy`: Authoritative. Sets the IAM policy for the autoscalingpolicy and replaces any existing policy already attached.
@@ -570,6 +571,7 @@ class AutoscalingPolicyIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataproc AutoscalingPolicy
+
         Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
 
         * `dataproc.AutoscalingPolicyIamPolicy`: Authoritative. Sets the IAM policy for the autoscalingpolicy and replaces any existing policy already attached.

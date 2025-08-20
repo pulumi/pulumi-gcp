@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves the current IAM policy data for application
+// > **Warning:** `beyondcorp.Application` and associated IAM resources are deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
+//
+// # Retrieves the current IAM policy data for application
 //
 // ## Example Usage
 //

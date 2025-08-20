@@ -204,7 +204,9 @@ export class AiIndex extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * An additional information about the Index
+     * Additional information about the Index.
+     * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+     * Attempts to create an Index without this field will result in an API error.
      * Structure is documented below.
      */
     public readonly metadata!: pulumi.Output<outputs.vertex.AiIndexMetadata | undefined>;
@@ -340,7 +342,9 @@ export interface AiIndexState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * An additional information about the Index
+     * Additional information about the Index.
+     * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+     * Attempts to create an Index without this field will result in an API error.
      * Structure is documented below.
      */
     metadata?: pulumi.Input<inputs.vertex.AiIndexMetadata>;
@@ -397,7 +401,9 @@ export interface AiIndexArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * An additional information about the Index
+     * Additional information about the Index.
+     * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+     * Attempts to create an Index without this field will result in an API error.
      * Structure is documented below.
      */
     metadata?: pulumi.Input<inputs.vertex.AiIndexMetadata>;

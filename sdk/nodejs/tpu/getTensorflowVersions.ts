@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:**
+ * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+ *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+ *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+ *
  * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
  *
  * ## Example Usage
@@ -73,6 +78,11 @@ export interface GetTensorflowVersionsResult {
     readonly zone: string;
 }
 /**
+ * > **Warning:**
+ * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+ *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+ *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+ *
  * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
  *
  * ## Example Usage
