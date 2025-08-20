@@ -33,10 +33,10 @@ index dc4f93b07..9eb8f47d8 100644
  
  * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
 diff --git a/website/docs/r/api_gateway_api_config_iam.html.markdown b/website/docs/r/api_gateway_api_config_iam.html.markdown
-index d09aa8276..b7f7b273d 100644
+index 503bba070..745376fcc 100644
 --- a/website/docs/r/api_gateway_api_config_iam.html.markdown
 +++ b/website/docs/r/api_gateway_api_config_iam.html.markdown
-@@ -35,10 +35,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
+@@ -36,10 +36,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
  ~> **Note:** `google_api_gateway_api_config_iam_binding` resources **can be** used in conjunction with `google_api_gateway_api_config_iam_member` resources **only if** they do not grant privilege to the same role.
  
  
@@ -49,10 +49,10 @@ index d09aa8276..b7f7b273d 100644
  ```hcl
  data "google_iam_policy" "admin" {
 diff --git a/website/docs/r/api_gateway_api_iam.html.markdown b/website/docs/r/api_gateway_api_iam.html.markdown
-index 2614405f0..72690f6dd 100644
+index cf4a465aa..e715b9ea0 100644
 --- a/website/docs/r/api_gateway_api_iam.html.markdown
 +++ b/website/docs/r/api_gateway_api_iam.html.markdown
-@@ -35,10 +35,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
+@@ -36,10 +36,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
  ~> **Note:** `google_api_gateway_api_iam_binding` resources **can be** used in conjunction with `google_api_gateway_api_iam_member` resources **only if** they do not grant privilege to the same role.
  
  
@@ -79,10 +79,10 @@ index f6e0ca29a..2f3f2dda7 100644
  
  * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
 diff --git a/website/docs/r/api_gateway_gateway_iam.html.markdown b/website/docs/r/api_gateway_gateway_iam.html.markdown
-index fef1318af..96841be84 100644
+index 3e783707a..a424f130c 100644
 --- a/website/docs/r/api_gateway_gateway_iam.html.markdown
 +++ b/website/docs/r/api_gateway_gateway_iam.html.markdown
-@@ -35,10 +35,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
+@@ -36,10 +36,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
  ~> **Note:** `google_api_gateway_gateway_iam_binding` resources **can be** used in conjunction with `google_api_gateway_gateway_iam_member` resources **only if** they do not grant privilege to the same role.
  
  
@@ -676,10 +676,10 @@ index 7cb3f4be6..040254c1b 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_image_iam.html.markdown b/website/docs/r/compute_image_iam.html.markdown
-index c02f73582..1f47b804b 100644
+index 2fdddfcd2..ecb38a790 100644
 --- a/website/docs/r/compute_image_iam.html.markdown
 +++ b/website/docs/r/compute_image_iam.html.markdown
-@@ -180,8 +180,8 @@ The `condition` block supports:
+@@ -181,8 +181,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -832,10 +832,10 @@ index 368fd2b5c..e9c72d4e2 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_instance_iam.html.markdown b/website/docs/r/compute_instance_iam.html.markdown
-index 8f8057095..c22f1931c 100644
+index 471b19e39..3f536efc3 100644
 --- a/website/docs/r/compute_instance_iam.html.markdown
 +++ b/website/docs/r/compute_instance_iam.html.markdown
-@@ -189,8 +189,8 @@ The `condition` block supports:
+@@ -190,8 +190,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -935,10 +935,10 @@ index 5e74467ae..3f89eade0 100644
  
  * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
 diff --git a/website/docs/r/compute_machine_image_iam.html.markdown b/website/docs/r/compute_machine_image_iam.html.markdown
-index 6f161afa2..5e1ba2322 100644
+index 6e55e0068..a973379ed 100644
 --- a/website/docs/r/compute_machine_image_iam.html.markdown
 +++ b/website/docs/r/compute_machine_image_iam.html.markdown
-@@ -35,11 +35,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
+@@ -36,11 +36,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
  ~> **Note:** `google_compute_machine_image_iam_binding` resources **can be** used in conjunction with `google_compute_machine_image_iam_member` resources **only if** they do not grant privilege to the same role.
  
  ~> **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
@@ -951,7 +951,7 @@ index 6f161afa2..5e1ba2322 100644
  
  ```hcl
  data "google_iam_policy" "admin" {
-@@ -190,9 +186,6 @@ The `condition` block supports:
+@@ -191,9 +187,6 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -1564,10 +1564,10 @@ index ed7053242..4f2f84e56 100644
  
  * `private_ip_google_access` -
 diff --git a/website/docs/r/compute_subnetwork_iam.html.markdown b/website/docs/r/compute_subnetwork_iam.html.markdown
-index f576ba950..6bfb7f02d 100644
+index b7c79068c..d9ba75125 100644
 --- a/website/docs/r/compute_subnetwork_iam.html.markdown
 +++ b/website/docs/r/compute_subnetwork_iam.html.markdown
-@@ -190,8 +190,8 @@ The `condition` block supports:
+@@ -191,8 +191,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -1608,7 +1608,7 @@ index d88864517..9095d5782 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index a0719c567..3e2928fdc 100644
+index 86a68ebf9..da9603b4a 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -1753,7 +1753,7 @@ index a0719c567..3e2928fdc 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1347,7 +1359,7 @@ for more details. This field only applies to private clusters, when
+@@ -1353,7 +1365,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1762,7 +1762,7 @@ index a0719c567..3e2928fdc 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1455,9 +1467,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1461,9 +1473,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2306,7 +2306,7 @@ index a9a1871e6..a9081e790 100644
  
  ## Attributes Reference
 diff --git a/website/docs/r/google_folder.html.markdown b/website/docs/r/google_folder.html.markdown
-index 765363d59..997f2907f 100644
+index ddeb18070..92d794b23 100644
 --- a/website/docs/r/google_folder.html.markdown
 +++ b/website/docs/r/google_folder.html.markdown
 @@ -29,7 +29,7 @@ A folder can contain projects, other folders, or a combination of both. You can
@@ -2897,10 +2897,10 @@ index 8c2c5aea0..d0e0a9bb3 100644
  
  * `google_healthcare_hl7_v2_store_iam_policy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
 diff --git a/website/docs/r/iap_app_engine_service_iam.html.markdown b/website/docs/r/iap_app_engine_service_iam.html.markdown
-index 956054871..bfb2f44c0 100644
+index d6e35f215..eaa0685b7 100644
 --- a/website/docs/r/iap_app_engine_service_iam.html.markdown
 +++ b/website/docs/r/iap_app_engine_service_iam.html.markdown
-@@ -187,8 +187,8 @@ The `condition` block supports:
+@@ -188,8 +188,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2912,10 +2912,10 @@ index 956054871..bfb2f44c0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_app_engine_version_iam.html.markdown b/website/docs/r/iap_app_engine_version_iam.html.markdown
-index b7435ec3a..940806141 100644
+index 9e8e23285..b5777b1bd 100644
 --- a/website/docs/r/iap_app_engine_version_iam.html.markdown
 +++ b/website/docs/r/iap_app_engine_version_iam.html.markdown
-@@ -194,8 +194,8 @@ The `condition` block supports:
+@@ -195,8 +195,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2955,10 +2955,10 @@ index 52e7d1830..427b93822 100644
  ## Example Usage - Iap Client
  
 diff --git a/website/docs/r/iap_tunnel_iam.html.markdown b/website/docs/r/iap_tunnel_iam.html.markdown
-index 10cdbfaaa..d09825e1d 100644
+index ad174ec93..b83a2f3cf 100644
 --- a/website/docs/r/iap_tunnel_iam.html.markdown
 +++ b/website/docs/r/iap_tunnel_iam.html.markdown
-@@ -173,9 +173,6 @@ The `condition` block supports:
+@@ -174,9 +174,6 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2969,10 +2969,10 @@ index 10cdbfaaa..d09825e1d 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/iap_tunnel_instance_iam.html.markdown b/website/docs/r/iap_tunnel_instance_iam.html.markdown
-index c9134b1d9..8d987d894 100644
+index 1e65de9b3..8947176e1 100644
 --- a/website/docs/r/iap_tunnel_instance_iam.html.markdown
 +++ b/website/docs/r/iap_tunnel_instance_iam.html.markdown
-@@ -189,8 +189,8 @@ The `condition` block supports:
+@@ -190,8 +190,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2984,10 +2984,10 @@ index c9134b1d9..8d987d894 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_backend_service_iam.html.markdown b/website/docs/r/iap_web_backend_service_iam.html.markdown
-index 924c3f1b9..9eea380c5 100644
+index 52c15c6ab..90576c43e 100644
 --- a/website/docs/r/iap_web_backend_service_iam.html.markdown
 +++ b/website/docs/r/iap_web_backend_service_iam.html.markdown
-@@ -180,8 +180,8 @@ The `condition` block supports:
+@@ -181,8 +181,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2999,10 +2999,10 @@ index 924c3f1b9..9eea380c5 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_iam.html.markdown b/website/docs/r/iap_web_iam.html.markdown
-index 832de469b..5d4b9eebb 100644
+index b4a8631f3..ee84ac3f7 100644
 --- a/website/docs/r/iap_web_iam.html.markdown
 +++ b/website/docs/r/iap_web_iam.html.markdown
-@@ -173,8 +173,8 @@ The `condition` block supports:
+@@ -174,8 +174,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -3014,10 +3014,10 @@ index 832de469b..5d4b9eebb 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_type_app_engine_iam.html.markdown b/website/docs/r/iap_web_type_app_engine_iam.html.markdown
-index 4d57e2e74..5e7819e66 100644
+index 090bf892c..d624adf0a 100644
 --- a/website/docs/r/iap_web_type_app_engine_iam.html.markdown
 +++ b/website/docs/r/iap_web_type_app_engine_iam.html.markdown
-@@ -180,8 +180,8 @@ The `condition` block supports:
+@@ -181,8 +181,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -3029,10 +3029,10 @@ index 4d57e2e74..5e7819e66 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_type_compute_iam.html.markdown b/website/docs/r/iap_web_type_compute_iam.html.markdown
-index e7d5faab8..005a2bcb0 100644
+index 2bb672f99..a8ec57fdf 100644
 --- a/website/docs/r/iap_web_type_compute_iam.html.markdown
 +++ b/website/docs/r/iap_web_type_compute_iam.html.markdown
-@@ -173,8 +173,8 @@ The `condition` block supports:
+@@ -174,8 +174,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -3044,7 +3044,7 @@ index e7d5faab8..005a2bcb0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index 8e327f476..3c663e7fc 100644
+index 16dcdb499..1a61a8c35 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -25,9 +25,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -3329,7 +3329,7 @@ index e3ad33db0..ad9bba840 100644
  ## Example Usage - Uptime Check Config Http
  
 diff --git a/website/docs/r/notebooks_instance.html.markdown b/website/docs/r/notebooks_instance.html.markdown
-index c1a4745c3..56547c8dc 100644
+index 20c2cb77d..4f99b12c2 100644
 --- a/website/docs/r/notebooks_instance.html.markdown
 +++ b/website/docs/r/notebooks_instance.html.markdown
 @@ -90,7 +90,6 @@ resource "google_notebooks_instance" "instance" {
@@ -3391,7 +3391,7 @@ index 23e80dcb3..18f441852 100644
    depends_on = [google_service_networking_connection.private_service_connection]
  
 diff --git a/website/docs/r/secret_manager_secret_version.html.markdown b/website/docs/r/secret_manager_secret_version.html.markdown
-index 8b0d0f579..01a877d8d 100644
+index 0dbcc6ad1..de55eef8e 100644
 --- a/website/docs/r/secret_manager_secret_version.html.markdown
 +++ b/website/docs/r/secret_manager_secret_version.html.markdown
 @@ -30,15 +30,8 @@ To get more information about SecretVersion, see:
@@ -3474,10 +3474,10 @@ index 394862da3..8ca4ab603 100644
  
  * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
 diff --git a/website/docs/r/service_directory_namespace_iam.html.markdown b/website/docs/r/service_directory_namespace_iam.html.markdown
-index a4ff5f4ef..96187c05c 100644
+index 47cf15102..49c9e830c 100644
 --- a/website/docs/r/service_directory_namespace_iam.html.markdown
 +++ b/website/docs/r/service_directory_namespace_iam.html.markdown
-@@ -34,11 +34,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
+@@ -35,11 +35,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
  
  ~> **Note:** `google_service_directory_namespace_iam_binding` resources **can be** used in conjunction with `google_service_directory_namespace_iam_member` resources **only if** they do not grant privilege to the same role.
  
@@ -3505,10 +3505,10 @@ index 238710ea0..712ffdcfa 100644
  
  * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
 diff --git a/website/docs/r/service_directory_service_iam.html.markdown b/website/docs/r/service_directory_service_iam.html.markdown
-index f2313f588..30012c3d5 100644
+index 4cf946b27..0db49cfae 100644
 --- a/website/docs/r/service_directory_service_iam.html.markdown
 +++ b/website/docs/r/service_directory_service_iam.html.markdown
-@@ -34,11 +34,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
+@@ -35,11 +35,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
  
  ~> **Note:** `google_service_directory_service_iam_binding` resources **can be** used in conjunction with `google_service_directory_service_iam_member` resources **only if** they do not grant privilege to the same role.
  
@@ -3681,7 +3681,7 @@ index af4d54854..aa2c01def 100644
  ## Example Usage
  
 diff --git a/website/docs/r/sql_user.html.markdown b/website/docs/r/sql_user.html.markdown
-index 1afac262e..5fafa3a4f 100644
+index d3e4a7bb3..48878d436 100644
 --- a/website/docs/r/sql_user.html.markdown
 +++ b/website/docs/r/sql_user.html.markdown
 @@ -23,8 +23,6 @@ description: |-

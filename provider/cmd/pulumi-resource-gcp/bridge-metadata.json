@@ -13472,6 +13472,15 @@
                                         "fields": {
                                             "allowed_unsafe_sysctls": {
                                                 "maxItemsOne": false
+                                            },
+                                            "eviction_minimum_reclaim": {
+                                                "maxItemsOne": true
+                                            },
+                                            "eviction_soft": {
+                                                "maxItemsOne": true
+                                            },
+                                            "eviction_soft_grace_period": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -13664,6 +13673,15 @@
                                                     "fields": {
                                                         "allowed_unsafe_sysctls": {
                                                             "maxItemsOne": false
+                                                        },
+                                                        "eviction_minimum_reclaim": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "eviction_soft": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "eviction_soft_grace_period": {
+                                                            "maxItemsOne": true
                                                         }
                                                     }
                                                 }
@@ -14058,6 +14076,15 @@
                                         "fields": {
                                             "allowed_unsafe_sysctls": {
                                                 "maxItemsOne": false
+                                            },
+                                            "eviction_minimum_reclaim": {
+                                                "maxItemsOne": true
+                                            },
+                                            "eviction_soft": {
+                                                "maxItemsOne": true
+                                            },
+                                            "eviction_soft_grace_period": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -19523,6 +19550,201 @@
                     }
                 }
             },
+            "google_dialogflow_conversation_profile": {
+                "current": "gcp:diagflow/conversationProfile:ConversationProfile",
+                "majorVersion": 8,
+                "fields": {
+                    "automated_agent_config": {
+                        "maxItemsOne": true
+                    },
+                    "human_agent_assistant_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "end_user_suggestion_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "feature_configs": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "conversation_model_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "conversation_process_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "query_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "context_filter_settings": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "dialogflow_query_source": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "human_agent_side_config": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "document_query_source": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "documents": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "knowledge_base_query_source": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "knowledge_bases": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "sections": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "section_types": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "suggestion_feature": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "suggestion_trigger_settings": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "generators": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "human_agent_suggestion_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "feature_configs": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "conversation_model_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "conversation_process_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "query_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "context_filter_settings": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "dialogflow_query_source": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "human_agent_side_config": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "sections": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "section_types": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "suggestion_feature": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "suggestion_trigger_settings": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "generators": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "message_analysis_config": {
+                                    "maxItemsOne": true
+                                },
+                                "notification_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "human_agent_handoff_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "live_person_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "logging_config": {
+                        "maxItemsOne": true
+                    },
+                    "new_message_event_notification_config": {
+                        "maxItemsOne": true
+                    },
+                    "notification_config": {
+                        "maxItemsOne": true
+                    },
+                    "stt_config": {
+                        "maxItemsOne": true
+                    },
+                    "tts_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "effects_profile_id": {
+                                    "maxItemsOne": false
+                                },
+                                "voice": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_dialogflow_cx_agent": {
                 "current": "gcp:diagflow/cxAgent:CxAgent",
                 "majorVersion": 8,
@@ -22213,7 +22435,12 @@
             },
             "google_folder": {
                 "current": "gcp:organizations/folder:Folder",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "configured_capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_folder_access_approval_settings": {
                 "current": "gcp:folder/accessApprovalSettings:AccessApprovalSettings",
@@ -36396,6 +36623,19 @@
                 "current": "gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy",
                 "majorVersion": 8
             },
+            "google_artifact_registry_tag": {
+                "current": "gcp:artifactregistry/getTag:getTag",
+                "majorVersion": 8
+            },
+            "google_artifact_registry_tags": {
+                "current": "gcp:artifactregistry/getTags:getTags",
+                "majorVersion": 8,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_artifact_registry_version": {
                 "current": "gcp:artifactregistry/getVersion:getVersion",
                 "majorVersion": 8,
@@ -40636,6 +40876,15 @@
                                         "fields": {
                                             "allowed_unsafe_sysctls": {
                                                 "maxItemsOne": false
+                                            },
+                                            "eviction_minimum_reclaim": {
+                                                "maxItemsOne": false
+                                            },
+                                            "eviction_soft": {
+                                                "maxItemsOne": false
+                                            },
+                                            "eviction_soft_grace_period": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -40827,6 +41076,15 @@
                                                 "elem": {
                                                     "fields": {
                                                         "allowed_unsafe_sysctls": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "eviction_minimum_reclaim": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "eviction_soft": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "eviction_soft_grace_period": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -41561,7 +41819,12 @@
             },
             "google_folder": {
                 "current": "gcp:organizations/getFolder:getFolder",
-                "majorVersion": 8
+                "majorVersion": 8,
+                "fields": {
+                    "configured_capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_folder_iam_policy": {
                 "current": "gcp:folder/getIamPolicy:getIamPolicy",
@@ -46924,6 +47187,7 @@
             "gcp:developerconnect/gitRepositoryLink:GitRepositoryLink": 0,
             "gcp:developerconnect/insightsConfig:InsightsConfig": 0,
             "gcp:diagflow/agent:Agent": 0,
+            "gcp:diagflow/conversationProfile:ConversationProfile": 0,
             "gcp:diagflow/cxAgent:CxAgent": 0,
             "gcp:diagflow/cxEntityType:CxEntityType": 0,
             "gcp:diagflow/cxEnvironment:CxEnvironment": 0,
@@ -47588,6 +47852,8 @@
             "gcp:artifactregistry/getRepositories:getRepositories": 0,
             "gcp:artifactregistry/getRepository:getRepository": 0,
             "gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
+            "gcp:artifactregistry/getTag:getTag": 0,
+            "gcp:artifactregistry/getTags:getTags": 0,
             "gcp:artifactregistry/getVersion:getVersion": 0,
             "gcp:backupdisasterrecovery/getBackup:getBackup": 0,
             "gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan": 0,
