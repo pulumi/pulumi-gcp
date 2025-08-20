@@ -15,24 +15,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeployPolicyRuleRolloutRestriction {
     /**
-     * @return Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+     * @return Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
      * Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
      * 
      */
     private @Nullable List<String> actions;
     /**
-     * @return Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+     * @return ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
      * 
      */
     private String id;
     /**
-     * @return Optional. What invoked the action. If left empty, all invoker types will be restricted.
+     * @return What invoked the action. If left empty, all invoker types will be restricted.
      * Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
      * 
      */
     private @Nullable List<String> invokers;
     /**
-     * @return Required. Time window within which actions are restricted.
+     * @return Time window within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class DeployPolicyRuleRolloutRestriction {
 
     private DeployPolicyRuleRolloutRestriction() {}
     /**
-     * @return Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+     * @return Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
      * Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
      * 
      */
@@ -48,14 +48,14 @@ public final class DeployPolicyRuleRolloutRestriction {
         return this.actions == null ? List.of() : this.actions;
     }
     /**
-     * @return Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+     * @return ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Optional. What invoked the action. If left empty, all invoker types will be restricted.
+     * @return What invoked the action. If left empty, all invoker types will be restricted.
      * Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
      * 
      */
@@ -63,7 +63,7 @@ public final class DeployPolicyRuleRolloutRestriction {
         return this.invokers == null ? List.of() : this.invokers;
     }
     /**
-     * @return Required. Time window within which actions are restricted.
+     * @return Time window within which actions are restricted.
      * Structure is documented below.
      * 
      */

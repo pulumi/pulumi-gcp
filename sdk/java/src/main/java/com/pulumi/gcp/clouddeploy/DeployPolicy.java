@@ -75,11 +75,11 @@ import javax.annotation.Nullable;
  *                         .timeZone("America/Los_Angeles")
  *                         .weeklyWindows(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs.builder()
  *                             .startTime(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs.builder()
- *                                 .hours(12)
+ *                                 .hours(0)
  *                                 .minutes(0)
  *                                 .build())
  *                             .endTime(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs.builder()
- *                                 .hours(13)
+ *                                 .hours(24)
  *                                 .minutes(0)
  *                                 .build())
  *                             .build())
@@ -158,16 +158,12 @@ import javax.annotation.Nullable;
  *                             .timeZone("America/Los_Angeles")
  *                             .weeklyWindows(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs.builder()
  *                                 .startTime(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs.builder()
- *                                     .hours(12)
+ *                                     .hours(0)
  *                                     .minutes(0)
- *                                     .seconds(0)
- *                                     .nanos(0)
  *                                     .build())
  *                                 .endTime(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs.builder()
  *                                     .hours(13)
  *                                     .minutes(0)
- *                                     .seconds(0)
- *                                     .nanos(0)
  *                                     .build())
  *                                 .build())
  *                             .build())
@@ -184,8 +180,6 @@ import javax.annotation.Nullable;
  *                                 .startTime(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs.builder()
  *                                     .hours(13)
  *                                     .minutes(0)
- *                                     .seconds(0)
- *                                     .nanos(0)
  *                                     .build())
  *                                 .endTime(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs.builder()
  *                                     .hours(14)
@@ -197,16 +191,12 @@ import javax.annotation.Nullable;
  *                                 .build())
  *                             .oneTimeWindows(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs.builder()
  *                                 .startTime(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs.builder()
- *                                     .hours(15)
+ *                                     .hours(0)
  *                                     .minutes(0)
- *                                     .seconds(0)
- *                                     .nanos(0)
  *                                     .build())
  *                                 .endTime(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs.builder()
  *                                     .hours(16)
  *                                     .minutes(0)
- *                                     .seconds(0)
- *                                     .nanos(0)
  *                                     .build())
  *                                 .startDate(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs.builder()
  *                                     .year(2019)
@@ -258,7 +248,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:clouddeploy/deployPolicy:DeployPolicy")
 public class DeployPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -267,7 +257,7 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+     * @return User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -290,14 +280,14 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+     * Description of the `DeployPolicy`. Max length is 255 characters.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+     * @return Description of the `DeployPolicy`. Max length is 255 characters.
      * 
      */
     public Output<Optional<String>> description() {
@@ -324,21 +314,21 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     * The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return Optional. The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     * @return The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Output<String> etag() {
         return this.etag;
     }
     /**
-     * Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
+     * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -347,7 +337,7 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
+     * @return Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -416,7 +406,7 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Required. Rules to apply. At least one rule must be present.
+     * Rules to apply. At least one rule must be present.
      * Structure is documented below.
      * 
      */
@@ -424,7 +414,7 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
     private Output<List<DeployPolicyRule>> rules;
 
     /**
-     * @return Required. Rules to apply. At least one rule must be present.
+     * @return Rules to apply. At least one rule must be present.
      * Structure is documented below.
      * 
      */
@@ -432,7 +422,7 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
-     * Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+     * Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
      * Structure is documented below.
      * 
      */
@@ -440,7 +430,7 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
     private Output<List<DeployPolicySelector>> selectors;
 
     /**
-     * @return Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+     * @return Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
      * Structure is documented below.
      * 
      */
@@ -448,14 +438,14 @@ public class DeployPolicy extends com.pulumi.resources.CustomResource {
         return this.selectors;
     }
     /**
-     * Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+     * When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
      * 
      */
     @Export(name="suspended", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> suspended;
 
     /**
-     * @return Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+     * @return When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
      * 
      */
     public Output<Optional<Boolean>> suspended() {

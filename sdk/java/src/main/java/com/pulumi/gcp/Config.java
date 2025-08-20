@@ -118,9 +118,6 @@ public final class Config {
     public Optional<String> cloudBuildCustomEndpoint() {
         return Codegen.stringProp("cloudBuildCustomEndpoint").config(config).get();
     }
-    public Optional<String> cloudBuildWorkerPoolCustomEndpoint() {
-        return Codegen.stringProp("cloudBuildWorkerPoolCustomEndpoint").config(config).get();
-    }
     public Optional<String> cloudFunctionsCustomEndpoint() {
         return Codegen.stringProp("cloudFunctionsCustomEndpoint").config(config).get();
     }
@@ -321,9 +318,6 @@ public final class Config {
     }
     public Optional<String> gkeHubCustomEndpoint() {
         return Codegen.stringProp("gkeHubCustomEndpoint").config(config).get();
-    }
-    public Optional<String> gkehubFeatureCustomEndpoint() {
-        return Codegen.stringProp("gkehubFeatureCustomEndpoint").config(config).get();
     }
     public Optional<String> gkeonpremCustomEndpoint() {
         return Codegen.stringProp("gkeonpremCustomEndpoint").config(config).get();

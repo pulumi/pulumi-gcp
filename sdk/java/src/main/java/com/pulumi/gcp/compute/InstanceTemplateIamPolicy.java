@@ -294,6 +294,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for Compute Engine InstanceTemplate
+ * 
  * Three different resources help you manage your IAM policy for Compute Engine InstanceTemplate. Each of these resources serves a different use case:
  * 
  * * `gcp.compute.InstanceTemplateIamPolicy`: Authoritative. Sets the IAM policy for the instancetemplate and replaces any existing policy already attached.

@@ -18,83 +18,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+ * VPC Flow Logs Config is a resource that lets you configure Flow Logs for Networks, Subnets, Interconnect attachments or VPN Tunnels.
  * 
  * ## Example Usage
  * 
- * ### Network Management Vpc Flow Logs Config Interconnect Full
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.Router;
- * import com.pulumi.gcp.compute.RouterArgs;
- * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
- * import com.pulumi.gcp.compute.InterconnectAttachment;
- * import com.pulumi.gcp.compute.InterconnectAttachmentArgs;
- * import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfig;
- * import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .build());
- * 
- *         var network = new Network("network", NetworkArgs.builder()
- *             .name("full-interconnect-test-network")
- *             .build());
- * 
- *         var router = new Router("router", RouterArgs.builder()
- *             .name("full-interconnect-test-router")
- *             .network(network.name())
- *             .bgp(RouterBgpArgs.builder()
- *                 .asn(16550)
- *                 .build())
- *             .build());
- * 
- *         var attachment = new InterconnectAttachment("attachment", InterconnectAttachmentArgs.builder()
- *             .name("full-interconnect-test-id")
- *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
- *             .type("PARTNER")
- *             .router(router.id())
- *             .mtu("1500")
- *             .build());
- * 
- *         var interconnect_test = new VpcFlowLogsConfig("interconnect-test", VpcFlowLogsConfigArgs.builder()
- *             .vpcFlowLogsConfigId("full-interconnect-test-id")
- *             .location("global")
- *             .interconnectAttachment(attachment.name().applyValue(_name -> String.format("projects/%s/regions/us-east4/interconnectAttachments/%s", project.number(),_name)))
- *             .state("ENABLED")
- *             .aggregationInterval("INTERVAL_5_SEC")
- *             .description("VPC Flow Logs over a VPN Gateway.")
- *             .flowSampling(0.5)
- *             .metadata("INCLUDE_ALL_METADATA")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Management Vpc Flow Logs Config Interconnect Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -273,7 +200,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Management Vpc Flow Logs Config Vpn Full
+ * ### Network Management Vpc Flow Logs Config Network Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -287,19 +214,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.VPNGateway;
- * import com.pulumi.gcp.compute.VPNGatewayArgs;
- * import com.pulumi.gcp.compute.Address;
- * import com.pulumi.gcp.compute.AddressArgs;
- * import com.pulumi.gcp.compute.ForwardingRule;
- * import com.pulumi.gcp.compute.ForwardingRuleArgs;
- * import com.pulumi.gcp.compute.VPNTunnel;
- * import com.pulumi.gcp.compute.VPNTunnelArgs;
  * import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfig;
  * import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfigArgs;
- * import com.pulumi.gcp.compute.Route;
- * import com.pulumi.gcp.compute.RouteArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -317,70 +233,70 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("full-test-network")
+ *             .name("basic-network-test-network")
  *             .build());
  * 
- *         var targetGateway = new VPNGateway("targetGateway", VPNGatewayArgs.builder()
- *             .name("full-test-gateway")
+ *         var network_test = new VpcFlowLogsConfig("network-test", VpcFlowLogsConfigArgs.builder()
+ *             .vpcFlowLogsConfigId("basic-network-test-id")
+ *             .location("global")
+ *             .network(network.name().applyValue(_name -> String.format("projects/%s/global/networks/%s", project.number(),_name)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Management Vpc Flow Logs Config Subnet Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfig;
+ * import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("basic-subnet-test-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
+ *             .name("basic-subnet-test-subnetwork")
+ *             .ipCidrRange("10.2.0.0/16")
+ *             .region("us-central1")
  *             .network(network.id())
  *             .build());
  * 
- *         var vpnStaticIp = new Address("vpnStaticIp", AddressArgs.builder()
- *             .name("full-test-address")
- *             .build());
- * 
- *         var frEsp = new ForwardingRule("frEsp", ForwardingRuleArgs.builder()
- *             .name("full-test-fresp")
- *             .ipProtocol("ESP")
- *             .ipAddress(vpnStaticIp.address())
- *             .target(targetGateway.id())
- *             .build());
- * 
- *         var frUdp500 = new ForwardingRule("frUdp500", ForwardingRuleArgs.builder()
- *             .name("full-test-fr500")
- *             .ipProtocol("UDP")
- *             .portRange("500")
- *             .ipAddress(vpnStaticIp.address())
- *             .target(targetGateway.id())
- *             .build());
- * 
- *         var frUdp4500 = new ForwardingRule("frUdp4500", ForwardingRuleArgs.builder()
- *             .name("full-test-fr4500")
- *             .ipProtocol("UDP")
- *             .portRange("4500")
- *             .ipAddress(vpnStaticIp.address())
- *             .target(targetGateway.id())
- *             .build());
- * 
- *         var tunnel = new VPNTunnel("tunnel", VPNTunnelArgs.builder()
- *             .name("full-test-tunnel")
- *             .peerIp("15.0.0.120")
- *             .sharedSecret("a secret message")
- *             .targetVpnGateway(targetGateway.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     frEsp,
- *                     frUdp500,
- *                     frUdp4500)
- *                 .build());
- * 
- *         var vpn_test = new VpcFlowLogsConfig("vpn-test", VpcFlowLogsConfigArgs.builder()
- *             .vpcFlowLogsConfigId("full-test-id")
+ *         var subnet_test = new VpcFlowLogsConfig("subnet-test", VpcFlowLogsConfigArgs.builder()
+ *             .vpcFlowLogsConfigId("basic-subnet-test-id")
  *             .location("global")
- *             .vpnTunnel(tunnel.name().applyValue(_name -> String.format("projects/%s/regions/us-central1/vpnTunnels/%s", project.number(),_name)))
- *             .state("ENABLED")
- *             .aggregationInterval("INTERVAL_5_SEC")
- *             .description("VPC Flow Logs over a VPN Gateway.")
- *             .flowSampling(0.5)
- *             .metadata("INCLUDE_ALL_METADATA")
- *             .build());
- * 
- *         var route = new Route("route", RouteArgs.builder()
- *             .name("full-test-route")
- *             .network(network.name())
- *             .destRange("15.0.0.0/24")
- *             .priority(1000)
- *             .nextHopVpnTunnel(tunnel.id())
+ *             .subnet(subnetwork.name().applyValue(_name -> String.format("projects/%s/regions/us-central1/subnetworks/%s", project.number(),_name)))
  *             .build());
  * 
  *     }
@@ -418,7 +334,7 @@ import javax.annotation.Nullable;
 public class VpcFlowLogsConfig extends com.pulumi.resources.CustomResource {
     /**
      * Optional. The aggregation interval for the logs. Default value is
-     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN&#34;
+     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
      * 
      */
     @Export(name="aggregationInterval", refs={String.class}, tree="[0]")
@@ -426,7 +342,7 @@ public class VpcFlowLogsConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. The aggregation interval for the logs. Default value is
-     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN&#34;
+     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
      * 
      */
     public Output<String> aggregationInterval() {
@@ -611,6 +527,20 @@ public class VpcFlowLogsConfig extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+     * 
+     */
+    @Export(name="network", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> network;
+
+    /**
+     * @return Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+     * 
+     */
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -644,7 +574,8 @@ public class VpcFlowLogsConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. The state of the VPC Flow Log configuration. Default value
-     * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+     * is ENABLED. When creating a new configuration, it must be enabled.
+     * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -652,11 +583,50 @@ public class VpcFlowLogsConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. The state of the VPC Flow Log configuration. Default value
-     * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+     * is ENABLED. When creating a new configuration, it must be enabled.
+     * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
      * 
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+     * 
+     */
+    @Export(name="subnet", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> subnet;
+
+    /**
+     * @return Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+     * 
+     */
+    public Output<Optional<String>> subnet() {
+        return Codegen.optional(this.subnet);
+    }
+    /**
+     * Describes the state of the configured target resource for diagnostic
+     * purposes.
+     * Possible values:
+     * TARGET_RESOURCE_STATE_UNSPECIFIED
+     * TARGET_RESOURCE_EXISTS
+     * TARGET_RESOURCE_DOES_NOT_EXIST
+     * 
+     */
+    @Export(name="targetResourceState", refs={String.class}, tree="[0]")
+    private Output<String> targetResourceState;
+
+    /**
+     * @return Describes the state of the configured target resource for diagnostic
+     * purposes.
+     * Possible values:
+     * TARGET_RESOURCE_STATE_UNSPECIFIED
+     * TARGET_RESOURCE_EXISTS
+     * TARGET_RESOURCE_DOES_NOT_EXIST
+     * 
+     */
+    public Output<String> targetResourceState() {
+        return this.targetResourceState;
     }
     /**
      * Output only. The time the config was updated.

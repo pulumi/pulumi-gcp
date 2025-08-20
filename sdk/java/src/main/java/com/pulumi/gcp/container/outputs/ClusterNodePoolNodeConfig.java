@@ -276,7 +276,7 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
     /**
-     * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+     * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigSoleTenantConfig soleTenantConfig;
@@ -639,7 +639,7 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.shieldedInstanceConfig);
     }
     /**
-     * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+     * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfigSoleTenantConfig> soleTenantConfig() {

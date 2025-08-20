@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeployPolicyRule {
     /**
-     * @return Optional. Rollout restrictions.
+     * @return Rollout restrictions.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class DeployPolicyRule {
 
     private DeployPolicyRule() {}
     /**
-     * @return Optional. Rollout restrictions.
+     * @return Rollout restrictions.
      * Structure is documented below.
      * 
      */

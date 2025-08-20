@@ -158,6 +158,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for Cloud Functions (2nd gen) function
+ * 
  * Three different resources help you manage your IAM policy for Cloud Functions (2nd gen) function. Each of these resources serves a different use case:
  * 
  * * `gcp.cloudfunctionsv2.FunctionIamPolicy`: Authoritative. Sets the IAM policy for the function and replaces any existing policy already attached.

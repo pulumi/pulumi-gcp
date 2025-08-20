@@ -19,7 +19,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
     public static final DeployPolicyRuleRolloutRestrictionArgs Empty = new DeployPolicyRuleRolloutRestrictionArgs();
 
     /**
-     * Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+     * Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
      * Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
      * 
      */
@@ -27,7 +27,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
     private @Nullable Output<List<String>> actions;
 
     /**
-     * @return Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+     * @return Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
      * Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
      * 
      */
@@ -36,14 +36,14 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
     }
 
     /**
-     * Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+     * ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+     * @return ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
      * 
      */
     public Output<String> id() {
@@ -51,7 +51,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
     }
 
     /**
-     * Optional. What invoked the action. If left empty, all invoker types will be restricted.
+     * What invoked the action. If left empty, all invoker types will be restricted.
      * Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
      * 
      */
@@ -59,7 +59,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
     private @Nullable Output<List<String>> invokers;
 
     /**
-     * @return Optional. What invoked the action. If left empty, all invoker types will be restricted.
+     * @return What invoked the action. If left empty, all invoker types will be restricted.
      * Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
      * 
      */
@@ -68,7 +68,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
     }
 
     /**
-     * Required. Time window within which actions are restricted.
+     * Time window within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -76,7 +76,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
     private @Nullable Output<DeployPolicyRuleRolloutRestrictionTimeWindowsArgs> timeWindows;
 
     /**
-     * @return Required. Time window within which actions are restricted.
+     * @return Time window within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -112,7 +112,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param actions Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+         * @param actions Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
          * Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
          * 
          * @return builder
@@ -124,7 +124,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param actions Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+         * @param actions Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
          * Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
          * 
          * @return builder
@@ -135,7 +135,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param actions Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+         * @param actions Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
          * Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
          * 
          * @return builder
@@ -146,7 +146,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param id Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+         * @param id ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param id Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+         * @param id ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param invokers Optional. What invoked the action. If left empty, all invoker types will be restricted.
+         * @param invokers What invoked the action. If left empty, all invoker types will be restricted.
          * Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
          * 
          * @return builder
@@ -179,7 +179,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param invokers Optional. What invoked the action. If left empty, all invoker types will be restricted.
+         * @param invokers What invoked the action. If left empty, all invoker types will be restricted.
          * Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
          * 
          * @return builder
@@ -190,7 +190,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param invokers Optional. What invoked the action. If left empty, all invoker types will be restricted.
+         * @param invokers What invoked the action. If left empty, all invoker types will be restricted.
          * Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
          * 
          * @return builder
@@ -201,7 +201,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param timeWindows Required. Time window within which actions are restricted.
+         * @param timeWindows Time window within which actions are restricted.
          * Structure is documented below.
          * 
          * @return builder
@@ -213,7 +213,7 @@ public final class DeployPolicyRuleRolloutRestrictionArgs extends com.pulumi.res
         }
 
         /**
-         * @param timeWindows Required. Time window within which actions are restricted.
+         * @param timeWindows Time window within which actions are restricted.
          * Structure is documented below.
          * 
          * @return builder

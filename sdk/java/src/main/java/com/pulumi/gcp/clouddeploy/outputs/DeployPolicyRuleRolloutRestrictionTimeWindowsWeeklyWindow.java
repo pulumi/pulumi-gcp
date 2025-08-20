@@ -15,19 +15,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
     /**
-     * @return Optional. Days of week. If left empty, all days of the week will be included.
+     * @return Days of week. If left empty, all days of the week will be included.
      * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     private @Nullable List<String> daysOfWeeks;
     /**
-     * @return Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+     * @return End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
      * Structure is documented below.
      * 
      */
     private @Nullable DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime endTime;
     /**
-     * @return Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+     * @return Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
      * Structure is documented below.
      * 
      */
@@ -35,7 +35,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
 
     private DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow() {}
     /**
-     * @return Optional. Days of week. If left empty, all days of the week will be included.
+     * @return Days of week. If left empty, all days of the week will be included.
      * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
@@ -43,7 +43,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
         return this.daysOfWeeks == null ? List.of() : this.daysOfWeeks;
     }
     /**
-     * @return Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+     * @return End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
      * Structure is documented below.
      * 
      */
@@ -51,7 +51,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
         return Optional.ofNullable(this.endTime);
     }
     /**
-     * @return Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+     * @return Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
      * Structure is documented below.
      * 
      */

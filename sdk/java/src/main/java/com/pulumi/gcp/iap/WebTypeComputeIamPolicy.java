@@ -288,6 +288,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for Identity-Aware Proxy WebTypeCompute
+ * 
  * Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeCompute. Each of these resources serves a different use case:
  * 
  * * `gcp.iap.WebTypeComputeIamPolicy`: Authoritative. Sets the IAM policy for the webtypecompute and replaces any existing policy already attached.

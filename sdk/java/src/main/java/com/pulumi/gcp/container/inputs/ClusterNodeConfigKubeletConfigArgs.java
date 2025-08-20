@@ -5,6 +5,9 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionSoftArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -133,6 +136,66 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+     * 
+     */
+    @Import(name="evictionMaxPodGracePeriodSeconds")
+    private @Nullable Output<Integer> evictionMaxPodGracePeriodSeconds;
+
+    /**
+     * @return Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+     * 
+     */
+    public Optional<Output<Integer>> evictionMaxPodGracePeriodSeconds() {
+        return Optional.ofNullable(this.evictionMaxPodGracePeriodSeconds);
+    }
+
+    /**
+     * Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+     * 
+     */
+    @Import(name="evictionMinimumReclaim")
+    private @Nullable Output<ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs> evictionMinimumReclaim;
+
+    /**
+     * @return Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs>> evictionMinimumReclaim() {
+        return Optional.ofNullable(this.evictionMinimumReclaim);
+    }
+
+    /**
+     * Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+     * 
+     */
+    @Import(name="evictionSoft")
+    private @Nullable Output<ClusterNodeConfigKubeletConfigEvictionSoftArgs> evictionSoft;
+
+    /**
+     * @return Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigKubeletConfigEvictionSoftArgs>> evictionSoft() {
+        return Optional.ofNullable(this.evictionSoft);
+    }
+
+    /**
+     * Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
+     * 
+     */
+    @Import(name="evictionSoftGracePeriod")
+    private @Nullable Output<ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs> evictionSoftGracePeriod;
+
+    /**
+     * @return Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs>> evictionSoftGracePeriod() {
+        return Optional.ofNullable(this.evictionSoftGracePeriod);
+    }
+
+    /**
      * Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
      * 
      */
@@ -208,6 +271,21 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+     * 
+     */
+    @Import(name="maxParallelImagePulls")
+    private @Nullable Output<Integer> maxParallelImagePulls;
+
+    /**
+     * @return Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+     * 
+     */
+    public Optional<Output<Integer>> maxParallelImagePulls() {
+        return Optional.ofNullable(this.maxParallelImagePulls);
+    }
+
+    /**
      * Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
      * 
      */
@@ -246,11 +324,16 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         this.cpuCfsQuota = $.cpuCfsQuota;
         this.cpuCfsQuotaPeriod = $.cpuCfsQuotaPeriod;
         this.cpuManagerPolicy = $.cpuManagerPolicy;
+        this.evictionMaxPodGracePeriodSeconds = $.evictionMaxPodGracePeriodSeconds;
+        this.evictionMinimumReclaim = $.evictionMinimumReclaim;
+        this.evictionSoft = $.evictionSoft;
+        this.evictionSoftGracePeriod = $.evictionSoftGracePeriod;
         this.imageGcHighThresholdPercent = $.imageGcHighThresholdPercent;
         this.imageGcLowThresholdPercent = $.imageGcLowThresholdPercent;
         this.imageMaximumGcAge = $.imageMaximumGcAge;
         this.imageMinimumGcAge = $.imageMinimumGcAge;
         this.insecureKubeletReadonlyPortEnabled = $.insecureKubeletReadonlyPortEnabled;
+        this.maxParallelImagePulls = $.maxParallelImagePulls;
         this.podPidsLimit = $.podPidsLimit;
         this.singleProcessOomKill = $.singleProcessOomKill;
     }
@@ -434,6 +517,90 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param evictionMaxPodGracePeriodSeconds Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionMaxPodGracePeriodSeconds(@Nullable Output<Integer> evictionMaxPodGracePeriodSeconds) {
+            $.evictionMaxPodGracePeriodSeconds = evictionMaxPodGracePeriodSeconds;
+            return this;
+        }
+
+        /**
+         * @param evictionMaxPodGracePeriodSeconds Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionMaxPodGracePeriodSeconds(Integer evictionMaxPodGracePeriodSeconds) {
+            return evictionMaxPodGracePeriodSeconds(Output.of(evictionMaxPodGracePeriodSeconds));
+        }
+
+        /**
+         * @param evictionMinimumReclaim Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionMinimumReclaim(@Nullable Output<ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs> evictionMinimumReclaim) {
+            $.evictionMinimumReclaim = evictionMinimumReclaim;
+            return this;
+        }
+
+        /**
+         * @param evictionMinimumReclaim Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionMinimumReclaim(ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs evictionMinimumReclaim) {
+            return evictionMinimumReclaim(Output.of(evictionMinimumReclaim));
+        }
+
+        /**
+         * @param evictionSoft Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionSoft(@Nullable Output<ClusterNodeConfigKubeletConfigEvictionSoftArgs> evictionSoft) {
+            $.evictionSoft = evictionSoft;
+            return this;
+        }
+
+        /**
+         * @param evictionSoft Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionSoft(ClusterNodeConfigKubeletConfigEvictionSoftArgs evictionSoft) {
+            return evictionSoft(Output.of(evictionSoft));
+        }
+
+        /**
+         * @param evictionSoftGracePeriod Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionSoftGracePeriod(@Nullable Output<ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs> evictionSoftGracePeriod) {
+            $.evictionSoftGracePeriod = evictionSoftGracePeriod;
+            return this;
+        }
+
+        /**
+         * @param evictionSoftGracePeriod Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionSoftGracePeriod(ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs evictionSoftGracePeriod) {
+            return evictionSoftGracePeriod(Output.of(evictionSoftGracePeriod));
+        }
+
+        /**
          * @param imageGcHighThresholdPercent Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
          * 
          * @return builder
@@ -536,6 +703,27 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
          */
         public Builder insecureKubeletReadonlyPortEnabled(String insecureKubeletReadonlyPortEnabled) {
             return insecureKubeletReadonlyPortEnabled(Output.of(insecureKubeletReadonlyPortEnabled));
+        }
+
+        /**
+         * @param maxParallelImagePulls Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxParallelImagePulls(@Nullable Output<Integer> maxParallelImagePulls) {
+            $.maxParallelImagePulls = maxParallelImagePulls;
+            return this;
+        }
+
+        /**
+         * @param maxParallelImagePulls Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxParallelImagePulls(Integer maxParallelImagePulls) {
+            return maxParallelImagePulls(Output.of(maxParallelImagePulls));
         }
 
         /**

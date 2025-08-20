@@ -7,8 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigSoleTenantConfigNodeAffinityArgs;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterNodeConfigSoleTenantConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,14 +19,29 @@ public final class ClusterNodeConfigSoleTenantConfigArgs extends com.pulumi.reso
     public static final ClusterNodeConfigSoleTenantConfigArgs Empty = new ClusterNodeConfigSoleTenantConfigArgs();
 
     /**
-     * .
+     * Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type&#39;s CPU count.
+     * 
+     */
+    @Import(name="minNodeCpus")
+    private @Nullable Output<Integer> minNodeCpus;
+
+    /**
+     * @return Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type&#39;s CPU count.
+     * 
+     */
+    public Optional<Output<Integer>> minNodeCpus() {
+        return Optional.ofNullable(this.minNodeCpus);
+    }
+
+    /**
+     * The node affinity settings for the sole tenant node pool. Structure is documented below.
      * 
      */
     @Import(name="nodeAffinities", required=true)
     private Output<List<ClusterNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities;
 
     /**
-     * @return .
+     * @return The node affinity settings for the sole tenant node pool. Structure is documented below.
      * 
      */
     public Output<List<ClusterNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities() {
@@ -33,6 +51,7 @@ public final class ClusterNodeConfigSoleTenantConfigArgs extends com.pulumi.reso
     private ClusterNodeConfigSoleTenantConfigArgs() {}
 
     private ClusterNodeConfigSoleTenantConfigArgs(ClusterNodeConfigSoleTenantConfigArgs $) {
+        this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
     }
 
@@ -55,7 +74,28 @@ public final class ClusterNodeConfigSoleTenantConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param nodeAffinities .
+         * @param minNodeCpus Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type&#39;s CPU count.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodeCpus(@Nullable Output<Integer> minNodeCpus) {
+            $.minNodeCpus = minNodeCpus;
+            return this;
+        }
+
+        /**
+         * @param minNodeCpus Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type&#39;s CPU count.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodeCpus(Integer minNodeCpus) {
+            return minNodeCpus(Output.of(minNodeCpus));
+        }
+
+        /**
+         * @param nodeAffinities The node affinity settings for the sole tenant node pool. Structure is documented below.
          * 
          * @return builder
          * 
@@ -66,7 +106,7 @@ public final class ClusterNodeConfigSoleTenantConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param nodeAffinities .
+         * @param nodeAffinities The node affinity settings for the sole tenant node pool. Structure is documented below.
          * 
          * @return builder
          * 
@@ -76,7 +116,7 @@ public final class ClusterNodeConfigSoleTenantConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param nodeAffinities .
+         * @param nodeAffinities The node affinity settings for the sole tenant node pool. Structure is documented below.
          * 
          * @return builder
          * 

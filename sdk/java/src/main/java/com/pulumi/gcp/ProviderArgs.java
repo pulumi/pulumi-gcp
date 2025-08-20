@@ -259,13 +259,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cloudBuildCustomEndpoint);
     }
 
-    @Import(name="cloudBuildWorkerPoolCustomEndpoint")
-    private @Nullable Output<String> cloudBuildWorkerPoolCustomEndpoint;
-
-    public Optional<Output<String>> cloudBuildWorkerPoolCustomEndpoint() {
-        return Optional.ofNullable(this.cloudBuildWorkerPoolCustomEndpoint);
-    }
-
     @Import(name="cloudFunctionsCustomEndpoint")
     private @Nullable Output<String> cloudFunctionsCustomEndpoint;
 
@@ -726,13 +719,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> gkeHubCustomEndpoint() {
         return Optional.ofNullable(this.gkeHubCustomEndpoint);
-    }
-
-    @Import(name="gkehubFeatureCustomEndpoint")
-    private @Nullable Output<String> gkehubFeatureCustomEndpoint;
-
-    public Optional<Output<String>> gkehubFeatureCustomEndpoint() {
-        return Optional.ofNullable(this.gkehubFeatureCustomEndpoint);
     }
 
     @Import(name="gkeonpremCustomEndpoint")
@@ -1430,7 +1416,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudAssetCustomEndpoint = $.cloudAssetCustomEndpoint;
         this.cloudBillingCustomEndpoint = $.cloudBillingCustomEndpoint;
         this.cloudBuildCustomEndpoint = $.cloudBuildCustomEndpoint;
-        this.cloudBuildWorkerPoolCustomEndpoint = $.cloudBuildWorkerPoolCustomEndpoint;
         this.cloudFunctionsCustomEndpoint = $.cloudFunctionsCustomEndpoint;
         this.cloudIdentityCustomEndpoint = $.cloudIdentityCustomEndpoint;
         this.cloudIdsCustomEndpoint = $.cloudIdsCustomEndpoint;
@@ -1497,7 +1482,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.gkeBackupCustomEndpoint = $.gkeBackupCustomEndpoint;
         this.gkeHub2CustomEndpoint = $.gkeHub2CustomEndpoint;
         this.gkeHubCustomEndpoint = $.gkeHubCustomEndpoint;
-        this.gkehubFeatureCustomEndpoint = $.gkehubFeatureCustomEndpoint;
         this.gkeonpremCustomEndpoint = $.gkeonpremCustomEndpoint;
         this.googlePartnerName = $.googlePartnerName;
         this.healthcareCustomEndpoint = $.healthcareCustomEndpoint;
@@ -1916,15 +1900,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder cloudBuildCustomEndpoint(String cloudBuildCustomEndpoint) {
             return cloudBuildCustomEndpoint(Output.of(cloudBuildCustomEndpoint));
-        }
-
-        public Builder cloudBuildWorkerPoolCustomEndpoint(@Nullable Output<String> cloudBuildWorkerPoolCustomEndpoint) {
-            $.cloudBuildWorkerPoolCustomEndpoint = cloudBuildWorkerPoolCustomEndpoint;
-            return this;
-        }
-
-        public Builder cloudBuildWorkerPoolCustomEndpoint(String cloudBuildWorkerPoolCustomEndpoint) {
-            return cloudBuildWorkerPoolCustomEndpoint(Output.of(cloudBuildWorkerPoolCustomEndpoint));
         }
 
         public Builder cloudFunctionsCustomEndpoint(@Nullable Output<String> cloudFunctionsCustomEndpoint) {
@@ -2519,15 +2494,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder gkeHubCustomEndpoint(String gkeHubCustomEndpoint) {
             return gkeHubCustomEndpoint(Output.of(gkeHubCustomEndpoint));
-        }
-
-        public Builder gkehubFeatureCustomEndpoint(@Nullable Output<String> gkehubFeatureCustomEndpoint) {
-            $.gkehubFeatureCustomEndpoint = gkehubFeatureCustomEndpoint;
-            return this;
-        }
-
-        public Builder gkehubFeatureCustomEndpoint(String gkehubFeatureCustomEndpoint) {
-            return gkehubFeatureCustomEndpoint(Output.of(gkehubFeatureCustomEndpoint));
         }
 
         public Builder gkeonpremCustomEndpoint(@Nullable Output<String> gkeonpremCustomEndpoint) {

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeployPolicySelectorDeliveryPipeline {
     /**
-     * @return Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+     * @return ID of the DeliveryPipeline. The value of this field could be one of the following:
      * - The last segment of a pipeline name
      * - &#34;*&#34;, all delivery pipelines in a location
      * 
@@ -27,7 +27,7 @@ public final class DeployPolicySelectorDeliveryPipeline {
 
     private DeployPolicySelectorDeliveryPipeline() {}
     /**
-     * @return Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+     * @return ID of the DeliveryPipeline. The value of this field could be one of the following:
      * - The last segment of a pipeline name
      * - &#34;*&#34;, all delivery pipelines in a location
      * 

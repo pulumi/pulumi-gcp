@@ -6,11 +6,19 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigSoleTenantConfig {
+    /**
+     * @return Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+     * 
+     */
+    private @Nullable Integer minNodeCpus;
     /**
      * @return .
      * 
@@ -18,6 +26,13 @@ public final class NodePoolNodeConfigSoleTenantConfig {
     private List<NodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities;
 
     private NodePoolNodeConfigSoleTenantConfig() {}
+    /**
+     * @return Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+     * 
+     */
+    public Optional<Integer> minNodeCpus() {
+        return Optional.ofNullable(this.minNodeCpus);
+    }
     /**
      * @return .
      * 
@@ -35,13 +50,21 @@ public final class NodePoolNodeConfigSoleTenantConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer minNodeCpus;
         private List<NodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities;
         public Builder() {}
         public Builder(NodePoolNodeConfigSoleTenantConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
         }
 
+        @CustomType.Setter
+        public Builder minNodeCpus(@Nullable Integer minNodeCpus) {
+
+            this.minNodeCpus = minNodeCpus;
+            return this;
+        }
         @CustomType.Setter
         public Builder nodeAffinities(List<NodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities) {
             if (nodeAffinities == null) {
@@ -55,6 +78,7 @@ public final class NodePoolNodeConfigSoleTenantConfig {
         }
         public NodePoolNodeConfigSoleTenantConfig build() {
             final var _resultValue = new NodePoolNodeConfigSoleTenantConfig();
+            _resultValue.minNodeCpus = minNodeCpus;
             _resultValue.nodeAffinities = nodeAffinities;
             return _resultValue;
         }

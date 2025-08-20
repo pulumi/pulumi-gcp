@@ -6,11 +6,17 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigSoleTenantConfig {
+    /**
+     * @return Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+     * 
+     */
+    private Integer minNodeCpus;
     /**
      * @return .
      * 
@@ -18,6 +24,13 @@ public final class GetClusterNodePoolNodeConfigSoleTenantConfig {
     private List<GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities;
 
     private GetClusterNodePoolNodeConfigSoleTenantConfig() {}
+    /**
+     * @return Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+     * 
+     */
+    public Integer minNodeCpus() {
+        return this.minNodeCpus;
+    }
     /**
      * @return .
      * 
@@ -35,13 +48,23 @@ public final class GetClusterNodePoolNodeConfigSoleTenantConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer minNodeCpus;
         private List<GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigSoleTenantConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
         }
 
+        @CustomType.Setter
+        public Builder minNodeCpus(Integer minNodeCpus) {
+            if (minNodeCpus == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigSoleTenantConfig", "minNodeCpus");
+            }
+            this.minNodeCpus = minNodeCpus;
+            return this;
+        }
         @CustomType.Setter
         public Builder nodeAffinities(List<GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities) {
             if (nodeAffinities == null) {
@@ -55,6 +78,7 @@ public final class GetClusterNodePoolNodeConfigSoleTenantConfig {
         }
         public GetClusterNodePoolNodeConfigSoleTenantConfig build() {
             final var _resultValue = new GetClusterNodePoolNodeConfigSoleTenantConfig();
+            _resultValue.minNodeCpus = minNodeCpus;
             _resultValue.nodeAffinities = nodeAffinities;
             return _resultValue;
         }

@@ -76,12 +76,44 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfigArgs extends com.pulu
         return Optional.ofNullable(this.sysctls);
     }
 
+    /**
+     * The Linux kernel transparent hugepage defrag setting.
+     * 
+     */
+    @Import(name="transparentHugepageDefrag")
+    private @Nullable Output<String> transparentHugepageDefrag;
+
+    /**
+     * @return The Linux kernel transparent hugepage defrag setting.
+     * 
+     */
+    public Optional<Output<String>> transparentHugepageDefrag() {
+        return Optional.ofNullable(this.transparentHugepageDefrag);
+    }
+
+    /**
+     * The Linux kernel transparent hugepage setting.
+     * 
+     */
+    @Import(name="transparentHugepageEnabled")
+    private @Nullable Output<String> transparentHugepageEnabled;
+
+    /**
+     * @return The Linux kernel transparent hugepage setting.
+     * 
+     */
+    public Optional<Output<String>> transparentHugepageEnabled() {
+        return Optional.ofNullable(this.transparentHugepageEnabled);
+    }
+
     private ClusterNodePoolNodeConfigLinuxNodeConfigArgs() {}
 
     private ClusterNodePoolNodeConfigLinuxNodeConfigArgs(ClusterNodePoolNodeConfigLinuxNodeConfigArgs $) {
         this.cgroupMode = $.cgroupMode;
         this.hugepagesConfig = $.hugepagesConfig;
         this.sysctls = $.sysctls;
+        this.transparentHugepageDefrag = $.transparentHugepageDefrag;
+        this.transparentHugepageEnabled = $.transparentHugepageEnabled;
     }
 
     public static Builder builder() {
@@ -177,6 +209,48 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfigArgs extends com.pulu
          */
         public Builder sysctls(Map<String,String> sysctls) {
             return sysctls(Output.of(sysctls));
+        }
+
+        /**
+         * @param transparentHugepageDefrag The Linux kernel transparent hugepage defrag setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transparentHugepageDefrag(@Nullable Output<String> transparentHugepageDefrag) {
+            $.transparentHugepageDefrag = transparentHugepageDefrag;
+            return this;
+        }
+
+        /**
+         * @param transparentHugepageDefrag The Linux kernel transparent hugepage defrag setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transparentHugepageDefrag(String transparentHugepageDefrag) {
+            return transparentHugepageDefrag(Output.of(transparentHugepageDefrag));
+        }
+
+        /**
+         * @param transparentHugepageEnabled The Linux kernel transparent hugepage setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transparentHugepageEnabled(@Nullable Output<String> transparentHugepageEnabled) {
+            $.transparentHugepageEnabled = transparentHugepageEnabled;
+            return this;
+        }
+
+        /**
+         * @param transparentHugepageEnabled The Linux kernel transparent hugepage setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transparentHugepageEnabled(String transparentHugepageEnabled) {
+            return transparentHugepageEnabled(Output.of(transparentHugepageEnabled));
         }
 
         public ClusterNodePoolNodeConfigLinuxNodeConfigArgs build() {
