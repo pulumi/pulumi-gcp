@@ -18,7 +18,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
     public static final DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs Empty = new DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs();
 
     /**
-     * Required. End date.
+     * End date.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
     private Output<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs> endDate;
 
     /**
-     * @return Required. End date.
+     * @return End date.
      * Structure is documented below.
      * 
      */
@@ -35,7 +35,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
     }
 
     /**
-     * Required. End time (exclusive). You may use 24:00 for the end of the day.
+     * End time (exclusive). You may use 24:00 for the end of the day.
      * Structure is documented below.
      * 
      */
@@ -43,7 +43,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
     private Output<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs> endTime;
 
     /**
-     * @return Required. End time (exclusive). You may use 24:00 for the end of the day.
+     * @return End time (exclusive). You may use 24:00 for the end of the day.
      * Structure is documented below.
      * 
      */
@@ -52,7 +52,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
     }
 
     /**
-     * Required. Start date.
+     * Start date.
      * Structure is documented below.
      * 
      */
@@ -60,7 +60,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
     private Output<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs> startDate;
 
     /**
-     * @return Required. Start date.
+     * @return Start date.
      * Structure is documented below.
      * 
      */
@@ -69,7 +69,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
     }
 
     /**
-     * Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+     * Start time (inclusive). Use 00:00 for the beginning of the day.
      * Structure is documented below.
      * 
      */
@@ -77,7 +77,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
     private Output<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs> startTime;
 
     /**
-     * @return Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+     * @return Start time (inclusive). Use 00:00 for the beginning of the day.
      * Structure is documented below.
      * 
      */
@@ -113,7 +113,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
         }
 
         /**
-         * @param endDate Required. End date.
+         * @param endDate End date.
          * Structure is documented below.
          * 
          * @return builder
@@ -125,7 +125,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
         }
 
         /**
-         * @param endDate Required. End date.
+         * @param endDate End date.
          * Structure is documented below.
          * 
          * @return builder
@@ -136,7 +136,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
         }
 
         /**
-         * @param endTime Required. End time (exclusive). You may use 24:00 for the end of the day.
+         * @param endTime End time (exclusive). You may use 24:00 for the end of the day.
          * Structure is documented below.
          * 
          * @return builder
@@ -148,7 +148,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
         }
 
         /**
-         * @param endTime Required. End time (exclusive). You may use 24:00 for the end of the day.
+         * @param endTime End time (exclusive). You may use 24:00 for the end of the day.
          * Structure is documented below.
          * 
          * @return builder
@@ -159,7 +159,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
         }
 
         /**
-         * @param startDate Required. Start date.
+         * @param startDate Start date.
          * Structure is documented below.
          * 
          * @return builder
@@ -171,7 +171,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
         }
 
         /**
-         * @param startDate Required. Start date.
+         * @param startDate Start date.
          * Structure is documented below.
          * 
          * @return builder
@@ -182,7 +182,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
         }
 
         /**
-         * @param startTime Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+         * @param startTime Start time (inclusive). Use 00:00 for the beginning of the day.
          * Structure is documented below.
          * 
          * @return builder
@@ -194,7 +194,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArg
         }
 
         /**
-         * @param startTime Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+         * @param startTime Start time (inclusive). Use 00:00 for the beginning of the day.
          * Structure is documented below.
          * 
          * @return builder

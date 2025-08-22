@@ -66,6 +66,7 @@ class CryptoKeyArgs:
         :param pulumi.Input[_builtins.bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
                or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+               This field is only applicable during initial CryptoKey creation.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -226,6 +227,7 @@ class CryptoKeyArgs:
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
         or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        This field is only applicable during initial CryptoKey creation.
         """
         return pulumi.get(self, "skip_initial_version_creation")
 
@@ -304,6 +306,7 @@ class _CryptoKeyState:
         :param pulumi.Input[_builtins.bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
                or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+               This field is only applicable during initial CryptoKey creation.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -510,6 +513,7 @@ class _CryptoKeyState:
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
         or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        This field is only applicable during initial CryptoKey creation.
         """
         return pulumi.get(self, "skip_initial_version_creation")
 
@@ -651,6 +655,7 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
                or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+               This field is only applicable during initial CryptoKey creation.
         :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -850,6 +855,7 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
                or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+               This field is only applicable during initial CryptoKey creation.
         :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
@@ -999,6 +1005,7 @@ class CryptoKey(pulumi.CustomResource):
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
         You must use the `kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
         or `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+        This field is only applicable during initial CryptoKey creation.
         """
         return pulumi.get(self, "skip_initial_version_creation")
 

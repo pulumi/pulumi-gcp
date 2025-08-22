@@ -325,6 +325,7 @@ class DnsManagedZoneIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud DNS ManagedZone
+
         Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
 
         * `dns.DnsManagedZoneIamPolicy`: Authoritative. Sets the IAM policy for the managedzone and replaces any existing policy already attached.
@@ -505,6 +506,7 @@ class DnsManagedZoneIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud DNS ManagedZone
+
         Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
 
         * `dns.DnsManagedZoneIamPolicy`: Authoritative. Sets the IAM policy for the managedzone and replaces any existing policy already attached.

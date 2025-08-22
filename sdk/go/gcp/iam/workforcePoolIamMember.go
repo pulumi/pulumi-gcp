@@ -134,6 +134,7 @@ import (
 // ---
 //
 // # IAM policy for Cloud IAM WorkforcePool
+//
 // Three different resources help you manage your IAM policy for Cloud IAM WorkforcePool. Each of these resources serves a different use case:
 //
 // * `iam.WorkforcePoolIamPolicy`: Authoritative. Sets the IAM policy for the workforcepool and replaces any existing policy already attached.

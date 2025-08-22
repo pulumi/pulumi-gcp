@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// - 
     /// 
     /// # IAM policy for Artifact Registry Repository
+    /// 
     /// Three different resources help you manage your IAM policy for Artifact Registry Repository. Each of these resources serves a different use case:
     /// 
     /// * `gcp.artifactregistry.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.

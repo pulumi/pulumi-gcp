@@ -107,6 +107,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// ---
     /// 
     /// # IAM policy for Service Directory Namespace
+    /// 
     /// Three different resources help you manage your IAM policy for Service Directory Namespace. Each of these resources serves a different use case:
     /// 
     /// * `gcp.servicedirectory.NamespaceIamPolicy`: Authoritative. Sets the IAM policy for the namespace and replaces any existing policy already attached.

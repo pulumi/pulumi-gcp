@@ -22,6 +22,11 @@ import java.util.concurrent.CompletableFuture;
 
 public final class TpuFunctions {
     /**
+     * &gt; **Warning:**
+     * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+     *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+     *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+     * 
      * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
      * 
      * ## Example Usage
@@ -107,6 +112,11 @@ public final class TpuFunctions {
         return getTensorflowVersions(GetTensorflowVersionsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:**
+     * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+     *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+     *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+     * 
      * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
      * 
      * ## Example Usage
@@ -192,6 +202,11 @@ public final class TpuFunctions {
         return getTensorflowVersionsPlain(GetTensorflowVersionsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:**
+     * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+     *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+     *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+     * 
      * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
      * 
      * ## Example Usage
@@ -277,6 +292,11 @@ public final class TpuFunctions {
         return getTensorflowVersions(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:**
+     * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+     *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+     *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+     * 
      * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
      * 
      * ## Example Usage
@@ -362,6 +382,11 @@ public final class TpuFunctions {
         return getTensorflowVersionsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:**
+     * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+     *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+     *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+     * 
      * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
      * 
      * ## Example Usage
@@ -447,6 +472,11 @@ public final class TpuFunctions {
         return Deployment.getInstance().invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", TypeShape.of(GetTensorflowVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:**
+     * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+     *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+     *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+     * 
      * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
      * 
      * ## Example Usage
@@ -532,6 +562,11 @@ public final class TpuFunctions {
         return Deployment.getInstance().invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", TypeShape.of(GetTensorflowVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:**
+     * `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+     *   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+     *   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+     * 
      * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
      * 
      * ## Example Usage

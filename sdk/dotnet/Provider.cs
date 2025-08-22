@@ -114,9 +114,6 @@ namespace Pulumi.Gcp
         [Output("cloudBuildCustomEndpoint")]
         public Output<string?> CloudBuildCustomEndpoint { get; private set; } = null!;
 
-        [Output("cloudBuildWorkerPoolCustomEndpoint")]
-        public Output<string?> CloudBuildWorkerPoolCustomEndpoint { get; private set; } = null!;
-
         [Output("cloudFunctionsCustomEndpoint")]
         public Output<string?> CloudFunctionsCustomEndpoint { get; private set; } = null!;
 
@@ -305,9 +302,6 @@ namespace Pulumi.Gcp
 
         [Output("gkeHubCustomEndpoint")]
         public Output<string?> GkeHubCustomEndpoint { get; private set; } = null!;
-
-        [Output("gkehubFeatureCustomEndpoint")]
-        public Output<string?> GkehubFeatureCustomEndpoint { get; private set; } = null!;
 
         [Output("gkeonpremCustomEndpoint")]
         public Output<string?> GkeonpremCustomEndpoint { get; private set; } = null!;
@@ -731,9 +725,6 @@ namespace Pulumi.Gcp
         [Input("cloudBuildCustomEndpoint")]
         public Input<string>? CloudBuildCustomEndpoint { get; set; }
 
-        [Input("cloudBuildWorkerPoolCustomEndpoint")]
-        public Input<string>? CloudBuildWorkerPoolCustomEndpoint { get; set; }
-
         [Input("cloudFunctionsCustomEndpoint")]
         public Input<string>? CloudFunctionsCustomEndpoint { get; set; }
 
@@ -936,9 +927,6 @@ namespace Pulumi.Gcp
 
         [Input("gkeHubCustomEndpoint")]
         public Input<string>? GkeHubCustomEndpoint { get; set; }
-
-        [Input("gkehubFeatureCustomEndpoint")]
-        public Input<string>? GkehubFeatureCustomEndpoint { get; set; }
 
         [Input("gkeonpremCustomEndpoint")]
         public Input<string>? GkeonpremCustomEndpoint { get; set; }

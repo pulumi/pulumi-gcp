@@ -265,10 +265,16 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
- *         var cryptoKeyMember = new CryptoKeyIAMMember("cryptoKeyMember", CryptoKeyIAMMemberArgs.builder()
+ *         var cryptoKeyMemberCdfSa = new CryptoKeyIAMMember("cryptoKeyMemberCdfSa", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-datafusion.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var cryptoKeyMemberGcsSa = new CryptoKeyIAMMember("cryptoKeyMemberGcsSa", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gs-project-accounts.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var cmek = new Instance("cmek", InstanceArgs.builder()
@@ -279,7 +285,9 @@ import javax.annotation.Nullable;
  *                 .keyReference(cryptoKey.id())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(cryptoKeyMember)
+ *                 .dependsOn(                
+ *                     cryptoKeyMemberCdfSa,
+ *                     cryptoKeyMemberGcsSa)
  *                 .build());
  * 
  *     }}{@code

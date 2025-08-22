@@ -370,6 +370,7 @@ class QueueIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud Tasks Queue
+
         Three different resources help you manage your IAM policy for Cloud Tasks Queue. Each of these resources serves a different use case:
 
         * `cloudtasks.QueueIamPolicy`: Authoritative. Sets the IAM policy for the queue and replaces any existing policy already attached.
@@ -561,6 +562,7 @@ class QueueIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud Tasks Queue
+
         Three different resources help you manage your IAM policy for Cloud Tasks Queue. Each of these resources serves a different use case:
 
         * `cloudtasks.QueueIamPolicy`: Authoritative. Sets the IAM policy for the queue and replaces any existing policy already attached.

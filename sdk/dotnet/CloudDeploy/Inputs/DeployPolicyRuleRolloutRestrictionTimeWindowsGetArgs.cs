@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         private InputList<Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowGetArgs>? _oneTimeWindows;
 
         /// <summary>
-        /// Optional. One-time windows within which actions are restricted.
+        /// One-time windows within which actions are restricted.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowGetArgs> OneTimeWindows
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         }
 
         /// <summary>
-        /// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+        /// The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
         /// </summary>
         [Input("timeZone", required: true)]
         public Input<string> TimeZone { get; set; } = null!;
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         private InputList<Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowGetArgs>? _weeklyWindows;
 
         /// <summary>
-        /// Optional. Recurring weekly windows within which actions are restricted.
+        /// Recurring weekly windows within which actions are restricted.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowGetArgs> WeeklyWindows

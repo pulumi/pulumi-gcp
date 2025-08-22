@@ -14,17 +14,17 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow
     {
         /// <summary>
-        /// Optional. Days of week. If left empty, all days of the week will be included.
+        /// Days of week. If left empty, all days of the week will be included.
         /// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         /// </summary>
         public readonly ImmutableArray<string> DaysOfWeeks;
         /// <summary>
-        /// Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+        /// End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime? EndTime;
         /// <summary>
-        /// Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+        /// Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime? StartTime;

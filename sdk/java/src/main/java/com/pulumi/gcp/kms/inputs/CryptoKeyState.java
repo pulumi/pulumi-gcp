@@ -251,6 +251,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
      * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * This field is only applicable during initial CryptoKey creation.
      * 
      */
     @Import(name="skipInitialVersionCreation")
@@ -260,6 +261,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
      * @return If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
      * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+     * This field is only applicable during initial CryptoKey creation.
      * 
      */
     public Optional<Output<Boolean>> skipInitialVersionCreation() {
@@ -634,6 +636,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
          * @param skipInitialVersionCreation If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
          * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
          * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+         * This field is only applicable during initial CryptoKey creation.
          * 
          * @return builder
          * 
@@ -647,6 +650,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
          * @param skipInitialVersionCreation If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
          * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
          * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
+         * This field is only applicable during initial CryptoKey creation.
          * 
          * @return builder
          * 

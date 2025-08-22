@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     public sealed class DeployPolicySelectorDeliveryPipelineGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+        /// ID of the DeliveryPipeline. The value of this field could be one of the following:
         /// - The last segment of a pipeline name
         /// - "*", all delivery pipelines in a location
         /// </summary>

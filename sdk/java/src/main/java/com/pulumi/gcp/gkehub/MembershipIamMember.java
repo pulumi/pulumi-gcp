@@ -160,6 +160,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for GKEHub Membership
+ * 
  * Three different resources help you manage your IAM policy for GKEHub Membership. Each of these resources serves a different use case:
  * 
  * * `gcp.gkehub.MembershipIamPolicy`: Authoritative. Sets the IAM policy for the membership and replaces any existing policy already attached.

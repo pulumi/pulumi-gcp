@@ -161,6 +161,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for Colab Enterprise RuntimeTemplate
+ * 
  * Three different resources help you manage your IAM policy for Colab Enterprise RuntimeTemplate. Each of these resources serves a different use case:
  * 
  * * `gcp.colab.RuntimeTemplateIamPolicy`: Authoritative. Sets the IAM policy for the runtimetemplate and replaces any existing policy already attached.

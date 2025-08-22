@@ -13,6 +13,8 @@ from .get_package import *
 from .get_repositories import *
 from .get_repository import *
 from .get_repository_iam_policy import *
+from .get_tag import *
+from .get_tags import *
 from .get_version import *
 from .repository import *
 from .repository_iam_binding import *

@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Tpu
     public static class GetTensorflowVersions
     {
         /// <summary>
+        /// &gt; **Warning:** 
+        /// `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+        ///   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+        ///   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+        /// 
         /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
         /// 
         /// ## Example Usage
@@ -58,6 +63,11 @@ namespace Pulumi.Gcp.Tpu
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** 
+        /// `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+        ///   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+        ///   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+        /// 
         /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
         /// 
         /// ## Example Usage
@@ -104,6 +114,11 @@ namespace Pulumi.Gcp.Tpu
             => global::Pulumi.Deployment.Instance.Invoke<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Warning:** 
+        /// `gcp.tpu.getTensorflowVersions` is deprecated and will be removed in a future major release.
+        ///   Use `gcp.tpu.getV2RuntimeVersions` instead. For moving from TPU Node to TPU VM architecture, see
+        ///   https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+        /// 
         /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
         /// 
         /// ## Example Usage

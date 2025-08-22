@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.BigQuery
     /// - 
     /// 
     /// # IAM policy for BigQuery Table
+    /// 
     /// Three different resources help you manage your IAM policy for BigQuery Table. Each of these resources serves a different use case:
     /// 
     /// * `gcp.bigquery.IamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.

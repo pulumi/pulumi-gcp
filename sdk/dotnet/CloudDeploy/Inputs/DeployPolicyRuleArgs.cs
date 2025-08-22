@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     public sealed class DeployPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Rollout restrictions.
+        /// Rollout restrictions.
         /// Structure is documented below.
         /// </summary>
         [Input("rolloutRestriction")]

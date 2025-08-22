@@ -26,7 +26,10 @@ class GetFolderResult:
     """
     A collection of values returned by getFolder.
     """
-    def __init__(__self__, create_time=None, deletion_protection=None, display_name=None, folder=None, folder_id=None, id=None, lifecycle_state=None, lookup_organization=None, name=None, organization=None, parent=None):
+    def __init__(__self__, configured_capabilities=None, create_time=None, deletion_protection=None, display_name=None, folder=None, folder_id=None, id=None, lifecycle_state=None, lookup_organization=None, management_project=None, name=None, organization=None, parent=None):
+        if configured_capabilities and not isinstance(configured_capabilities, list):
+            raise TypeError("Expected argument 'configured_capabilities' to be a list")
+        pulumi.set(__self__, "configured_capabilities", configured_capabilities)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -51,6 +54,9 @@ class GetFolderResult:
         if lookup_organization and not isinstance(lookup_organization, bool):
             raise TypeError("Expected argument 'lookup_organization' to be a bool")
         pulumi.set(__self__, "lookup_organization", lookup_organization)
+        if management_project and not isinstance(management_project, str):
+            raise TypeError("Expected argument 'management_project' to be a str")
+        pulumi.set(__self__, "management_project", management_project)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -60,6 +66,14 @@ class GetFolderResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+
+    @_builtins.property
+    @pulumi.getter(name="configuredCapabilities")
+    def configured_capabilities(self) -> Sequence[_builtins.str]:
+        """
+        Optional capabilities configured for this folder.
+        """
+        return pulumi.get(self, "configured_capabilities")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -114,6 +128,14 @@ class GetFolderResult:
         return pulumi.get(self, "lookup_organization")
 
     @_builtins.property
+    @pulumi.getter(name="managementProject")
+    def management_project(self) -> _builtins.str:
+        """
+        Management Project associated with this folder (if capability is enabled).
+        """
+        return pulumi.get(self, "management_project")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -144,6 +166,7 @@ class AwaitableGetFolderResult(GetFolderResult):
         if False:
             yield self
         return GetFolderResult(
+            configured_capabilities=self.configured_capabilities,
             create_time=self.create_time,
             deletion_protection=self.deletion_protection,
             display_name=self.display_name,
@@ -152,6 +175,7 @@ class AwaitableGetFolderResult(GetFolderResult):
             id=self.id,
             lifecycle_state=self.lifecycle_state,
             lookup_organization=self.lookup_organization,
+            management_project=self.management_project,
             name=self.name,
             organization=self.organization,
             parent=self.parent)
@@ -185,6 +209,7 @@ def get_folder(folder: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getFolder:getFolder', __args__, opts=opts, typ=GetFolderResult).value
 
     return AwaitableGetFolderResult(
+        configured_capabilities=pulumi.get(__ret__, 'configured_capabilities'),
         create_time=pulumi.get(__ret__, 'create_time'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -193,6 +218,7 @@ def get_folder(folder: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
         lookup_organization=pulumi.get(__ret__, 'lookup_organization'),
+        management_project=pulumi.get(__ret__, 'management_project'),
         name=pulumi.get(__ret__, 'name'),
         organization=pulumi.get(__ret__, 'organization'),
         parent=pulumi.get(__ret__, 'parent'))
@@ -223,6 +249,7 @@ def get_folder_output(folder: Optional[pulumi.Input[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getFolder:getFolder', __args__, opts=opts, typ=GetFolderResult)
     return __ret__.apply(lambda __response__: GetFolderResult(
+        configured_capabilities=pulumi.get(__response__, 'configured_capabilities'),
         create_time=pulumi.get(__response__, 'create_time'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         display_name=pulumi.get(__response__, 'display_name'),
@@ -231,6 +258,7 @@ def get_folder_output(folder: Optional[pulumi.Input[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         lifecycle_state=pulumi.get(__response__, 'lifecycle_state'),
         lookup_organization=pulumi.get(__response__, 'lookup_organization'),
+        management_project=pulumi.get(__response__, 'management_project'),
         name=pulumi.get(__response__, 'name'),
         organization=pulumi.get(__response__, 'organization'),
         parent=pulumi.get(__response__, 'parent')))

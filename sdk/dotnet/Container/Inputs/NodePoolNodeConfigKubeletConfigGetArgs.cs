@@ -55,6 +55,30 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? CpuManagerPolicy { get; set; }
 
         /// <summary>
+        /// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+        /// </summary>
+        [Input("evictionMaxPodGracePeriodSeconds")]
+        public Input<int>? EvictionMaxPodGracePeriodSeconds { get; set; }
+
+        /// <summary>
+        /// Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+        /// </summary>
+        [Input("evictionMinimumReclaim")]
+        public Input<Inputs.NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimGetArgs>? EvictionMinimumReclaim { get; set; }
+
+        /// <summary>
+        /// Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+        /// </summary>
+        [Input("evictionSoft")]
+        public Input<Inputs.NodePoolNodeConfigKubeletConfigEvictionSoftGetArgs>? EvictionSoft { get; set; }
+
+        /// <summary>
+        /// Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+        /// </summary>
+        [Input("evictionSoftGracePeriod")]
+        public Input<Inputs.NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodGetArgs>? EvictionSoftGracePeriod { get; set; }
+
+        /// <summary>
         /// Defines the percent of disk usage after which image garbage collection is always run.
         /// </summary>
         [Input("imageGcHighThresholdPercent")]
@@ -83,6 +107,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("insecureKubeletReadonlyPortEnabled")]
         public Input<string>? InsecureKubeletReadonlyPortEnabled { get; set; }
+
+        /// <summary>
+        /// Set the maximum number of image pulls in parallel.
+        /// </summary>
+        [Input("maxParallelImagePulls")]
+        public Input<int>? MaxParallelImagePulls { get; set; }
 
         /// <summary>
         /// Controls the maximum number of processes allowed to run in a pod.

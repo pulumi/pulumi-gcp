@@ -136,6 +136,7 @@ import (
 // -
 //
 // # IAM policy for BigQuery Connection Connection
+//
 // Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
 //
 // * `bigquery.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.

@@ -215,12 +215,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> cloudBuildCustomEndpoint() {
         return Codegen.optional(this.cloudBuildCustomEndpoint);
     }
-    @Export(name="cloudBuildWorkerPoolCustomEndpoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> cloudBuildWorkerPoolCustomEndpoint;
-
-    public Output<Optional<String>> cloudBuildWorkerPoolCustomEndpoint() {
-        return Codegen.optional(this.cloudBuildWorkerPoolCustomEndpoint);
-    }
     @Export(name="cloudFunctionsCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudFunctionsCustomEndpoint;
 
@@ -598,12 +592,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> gkeHubCustomEndpoint() {
         return Codegen.optional(this.gkeHubCustomEndpoint);
-    }
-    @Export(name="gkehubFeatureCustomEndpoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> gkehubFeatureCustomEndpoint;
-
-    public Output<Optional<String>> gkehubFeatureCustomEndpoint() {
-        return Codegen.optional(this.gkehubFeatureCustomEndpoint);
     }
     @Export(name="gkeonpremCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gkeonpremCustomEndpoint;

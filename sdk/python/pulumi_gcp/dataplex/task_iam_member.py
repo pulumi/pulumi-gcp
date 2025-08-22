@@ -412,6 +412,7 @@ class TaskIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataplex Task
+
         Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
 
         * `dataplex.TaskIamPolicy`: Authoritative. Sets the IAM policy for the task and replaces any existing policy already attached.
@@ -612,6 +613,7 @@ class TaskIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataplex Task
+
         Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
 
         * `dataplex.TaskIamPolicy`: Authoritative. Sets the IAM policy for the task and replaces any existing policy already attached.

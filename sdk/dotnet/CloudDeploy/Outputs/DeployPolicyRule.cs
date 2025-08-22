@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeployPolicyRule
     {
         /// <summary>
-        /// Optional. Rollout restrictions.
+        /// Rollout restrictions.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeployPolicyRuleRolloutRestriction? RolloutRestriction;

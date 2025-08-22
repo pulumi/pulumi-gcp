@@ -77,6 +77,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for Dataproc Metastore Database
+ *
  * Three different resources help you manage your IAM policy for Dataproc Metastore Database. Each of these resources serves a different use case:
  *
  * * `gcp.dataproc.MetastoreDatabaseIamPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.

@@ -158,6 +158,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for Cloud AI Notebooks Runtime
+ * 
  * Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
  * 
  * * `gcp.notebooks.RuntimeIamPolicy`: Authoritative. Sets the IAM policy for the runtime and replaces any existing policy already attached.

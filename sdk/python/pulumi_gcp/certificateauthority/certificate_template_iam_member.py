@@ -429,6 +429,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Certificate Authority Service CertificateTemplate
+
         Three different resources help you manage your IAM policy for Certificate Authority Service CertificateTemplate. Each of these resources serves a different use case:
 
         * `certificateauthority.CertificateTemplateIamPolicy`: Authoritative. Sets the IAM policy for the certificatetemplate and replaces any existing policy already attached.
@@ -716,6 +717,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Certificate Authority Service CertificateTemplate
+
         Three different resources help you manage your IAM policy for Certificate Authority Service CertificateTemplate. Each of these resources serves a different use case:
 
         * `certificateauthority.CertificateTemplateIamPolicy`: Authoritative. Sets the IAM policy for the certificatetemplate and replaces any existing policy already attached.

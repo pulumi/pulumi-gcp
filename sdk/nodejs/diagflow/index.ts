@@ -10,6 +10,11 @@ export type Agent = import("./agent").Agent;
 export const Agent: typeof import("./agent").Agent = null as any;
 utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
 
+export { ConversationProfileArgs, ConversationProfileState } from "./conversationProfile";
+export type ConversationProfile = import("./conversationProfile").ConversationProfile;
+export const ConversationProfile: typeof import("./conversationProfile").ConversationProfile = null as any;
+utilities.lazyLoad(exports, ["ConversationProfile"], () => require("./conversationProfile"));
+
 export { CxAgentArgs, CxAgentState } from "./cxAgent";
 export type CxAgent = import("./cxAgent").CxAgent;
 export const CxAgent: typeof import("./cxAgent").CxAgent = null as any;
@@ -107,6 +112,8 @@ const _module = {
         switch (type) {
             case "gcp:diagflow/agent:Agent":
                 return new Agent(name, <any>undefined, { urn })
+            case "gcp:diagflow/conversationProfile:ConversationProfile":
+                return new ConversationProfile(name, <any>undefined, { urn })
             case "gcp:diagflow/cxAgent:CxAgent":
                 return new CxAgent(name, <any>undefined, { urn })
             case "gcp:diagflow/cxEntityType:CxEntityType":
@@ -149,6 +156,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "diagflow/agent", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/conversationProfile", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxAgent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxEntityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxEnvironment", _module)

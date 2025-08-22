@@ -12,6 +12,7 @@ import com.pulumi.gcp.organizations.FolderArgs;
 import com.pulumi.gcp.organizations.inputs.FolderState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -54,6 +55,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:organizations/folder:Folder")
 public class Folder extends com.pulumi.resources.CustomResource {
+    /**
+     * Optional capabilities configured for this folder.
+     * 
+     */
+    @Export(name="configuredCapabilities", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> configuredCapabilities;
+
+    /**
+     * @return Optional capabilities configured for this folder.
+     * 
+     */
+    public Output<List<String>> configuredCapabilities() {
+        return this.configuredCapabilities;
+    }
     /**
      * Timestamp when the Folder was created. Assigned by the server.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
@@ -119,6 +134,20 @@ public class Folder extends com.pulumi.resources.CustomResource {
      */
     public Output<String> lifecycleState() {
         return this.lifecycleState;
+    }
+    /**
+     * Management Project associated with this folder (if capability is enabled).
+     * 
+     */
+    @Export(name="managementProject", refs={String.class}, tree="[0]")
+    private Output<String> managementProject;
+
+    /**
+     * @return Management Project associated with this folder (if capability is enabled).
+     * 
+     */
+    public Output<String> managementProject() {
+        return this.managementProject;
     }
     /**
      * The resource name of the Folder. Its format is folders/{folder_id}.

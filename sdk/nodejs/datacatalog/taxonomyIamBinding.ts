@@ -70,6 +70,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for Data Catalog Taxonomy
+ *
  * Three different resources help you manage your IAM policy for Data Catalog Taxonomy. Each of these resources serves a different use case:
  *
  * * `gcp.datacatalog.TaxonomyIamPolicy`: Authoritative. Sets the IAM policy for the taxonomy and replaces any existing policy already attached.

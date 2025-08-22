@@ -129,6 +129,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for Certificate Authority Service CaPool
+ *
  * Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
  *
  * * `gcp.certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.

@@ -439,6 +439,7 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataproc Metastore Table
+
         Three different resources help you manage your IAM policy for Dataproc Metastore Table. Each of these resources serves a different use case:
 
         * `dataproc.MetastoreTableIamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.
@@ -644,6 +645,7 @@ class MetastoreTableIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataproc Metastore Table
+
         Three different resources help you manage your IAM policy for Dataproc Metastore Table. Each of these resources serves a different use case:
 
         * `dataproc.MetastoreTableIamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.

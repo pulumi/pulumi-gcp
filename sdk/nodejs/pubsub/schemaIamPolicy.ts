@@ -71,6 +71,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for Cloud Pub/Sub Schema
+ *
  * Three different resources help you manage your IAM policy for Cloud Pub/Sub Schema. Each of these resources serves a different use case:
  *
  * * `gcp.pubsub.SchemaIamPolicy`: Authoritative. Sets the IAM policy for the schema and replaces any existing policy already attached.

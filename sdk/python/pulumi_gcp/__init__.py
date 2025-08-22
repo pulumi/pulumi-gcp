@@ -5038,6 +5038,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/conversationProfile",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/conversationProfile:ConversationProfile": "ConversationProfile"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/cxAgent",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {

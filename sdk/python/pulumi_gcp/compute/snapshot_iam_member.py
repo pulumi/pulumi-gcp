@@ -326,6 +326,7 @@ class SnapshotIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Compute Engine Snapshot
+
         Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
 
         * `compute.SnapshotIamPolicy`: Authoritative. Sets the IAM policy for the snapshot and replaces any existing policy already attached.
@@ -506,6 +507,7 @@ class SnapshotIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Compute Engine Snapshot
+
         Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
 
         * `compute.SnapshotIamPolicy`: Authoritative. Sets the IAM policy for the snapshot and replaces any existing policy already attached.

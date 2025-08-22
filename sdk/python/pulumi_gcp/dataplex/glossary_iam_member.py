@@ -373,6 +373,7 @@ class GlossaryIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataplex Glossary
+
         Three different resources help you manage your IAM policy for Dataplex Glossary. Each of these resources serves a different use case:
 
         * `dataplex.GlossaryIamPolicy`: Authoritative. Sets the IAM policy for the glossary and replaces any existing policy already attached.
@@ -565,6 +566,7 @@ class GlossaryIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataplex Glossary
+
         Three different resources help you manage your IAM policy for Dataplex Glossary. Each of these resources serves a different use case:
 
         * `dataplex.GlossaryIamPolicy`: Authoritative. Sets the IAM policy for the glossary and replaces any existing policy already attached.

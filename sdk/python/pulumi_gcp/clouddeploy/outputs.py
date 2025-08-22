@@ -2260,7 +2260,7 @@ class DeployPolicyRule(dict):
     def __init__(__self__, *,
                  rollout_restriction: Optional['outputs.DeployPolicyRuleRolloutRestriction'] = None):
         """
-        :param 'DeployPolicyRuleRolloutRestrictionArgs' rollout_restriction: Optional. Rollout restrictions.
+        :param 'DeployPolicyRuleRolloutRestrictionArgs' rollout_restriction: Rollout restrictions.
                Structure is documented below.
         """
         if rollout_restriction is not None:
@@ -2270,7 +2270,7 @@ class DeployPolicyRule(dict):
     @pulumi.getter(name="rolloutRestriction")
     def rollout_restriction(self) -> Optional['outputs.DeployPolicyRuleRolloutRestriction']:
         """
-        Optional. Rollout restrictions.
+        Rollout restrictions.
         Structure is documented below.
         """
         return pulumi.get(self, "rollout_restriction")
@@ -2301,12 +2301,12 @@ class DeployPolicyRuleRolloutRestriction(dict):
                  invokers: Optional[Sequence[_builtins.str]] = None,
                  time_windows: Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindows'] = None):
         """
-        :param _builtins.str id: Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
-        :param Sequence[_builtins.str] actions: Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+        :param _builtins.str id: ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param Sequence[_builtins.str] actions: Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
                Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
-        :param Sequence[_builtins.str] invokers: Optional. What invoked the action. If left empty, all invoker types will be restricted.
+        :param Sequence[_builtins.str] invokers: What invoked the action. If left empty, all invoker types will be restricted.
                Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
-        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsArgs' time_windows: Required. Time window within which actions are restricted.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsArgs' time_windows: Time window within which actions are restricted.
                Structure is documented below.
         """
         pulumi.set(__self__, "id", id)
@@ -2321,7 +2321,7 @@ class DeployPolicyRuleRolloutRestriction(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+        ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
         """
         return pulumi.get(self, "id")
 
@@ -2329,7 +2329,7 @@ class DeployPolicyRuleRolloutRestriction(dict):
     @pulumi.getter
     def actions(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+        Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
         Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
         """
         return pulumi.get(self, "actions")
@@ -2338,7 +2338,7 @@ class DeployPolicyRuleRolloutRestriction(dict):
     @pulumi.getter
     def invokers(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Optional. What invoked the action. If left empty, all invoker types will be restricted.
+        What invoked the action. If left empty, all invoker types will be restricted.
         Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
         """
         return pulumi.get(self, "invokers")
@@ -2347,7 +2347,7 @@ class DeployPolicyRuleRolloutRestriction(dict):
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindows']:
         """
-        Required. Time window within which actions are restricted.
+        Time window within which actions are restricted.
         Structure is documented below.
         """
         return pulumi.get(self, "time_windows")
@@ -2381,10 +2381,10 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows(dict):
                  one_time_windows: Optional[Sequence['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow']] = None,
                  weekly_windows: Optional[Sequence['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow']] = None):
         """
-        :param _builtins.str time_zone: Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
-        :param Sequence['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs'] one_time_windows: Optional. One-time windows within which actions are restricted.
+        :param _builtins.str time_zone: The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+        :param Sequence['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs'] one_time_windows: One-time windows within which actions are restricted.
                Structure is documented below.
-        :param Sequence['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs'] weekly_windows: Optional. Recurring weekly windows within which actions are restricted.
+        :param Sequence['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs'] weekly_windows: Recurring weekly windows within which actions are restricted.
                Structure is documented below.
         """
         pulumi.set(__self__, "time_zone", time_zone)
@@ -2397,7 +2397,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows(dict):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> _builtins.str:
         """
-        Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+        The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
         """
         return pulumi.get(self, "time_zone")
 
@@ -2405,7 +2405,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows(dict):
     @pulumi.getter(name="oneTimeWindows")
     def one_time_windows(self) -> Optional[Sequence['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow']]:
         """
-        Optional. One-time windows within which actions are restricted.
+        One-time windows within which actions are restricted.
         Structure is documented below.
         """
         return pulumi.get(self, "one_time_windows")
@@ -2414,7 +2414,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows(dict):
     @pulumi.getter(name="weeklyWindows")
     def weekly_windows(self) -> Optional[Sequence['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow']]:
         """
-        Optional. Recurring weekly windows within which actions are restricted.
+        Recurring weekly windows within which actions are restricted.
         Structure is documented below.
         """
         return pulumi.get(self, "weekly_windows")
@@ -2451,13 +2451,13 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow(dict):
                  start_date: 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate',
                  start_time: 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime'):
         """
-        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs' end_date: Required. End date.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs' end_date: End date.
                Structure is documented below.
-        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs' end_time: Required. End time (exclusive). You may use 24:00 for the end of the day.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs' end_time: End time (exclusive). You may use 24:00 for the end of the day.
                Structure is documented below.
-        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs' start_date: Required. Start date.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs' start_date: Start date.
                Structure is documented below.
-        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs' start_time: Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs' start_time: Start time (inclusive). Use 00:00 for the beginning of the day.
                Structure is documented below.
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -2469,7 +2469,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow(dict):
     @pulumi.getter(name="endDate")
     def end_date(self) -> 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate':
         """
-        Required. End date.
+        End date.
         Structure is documented below.
         """
         return pulumi.get(self, "end_date")
@@ -2478,7 +2478,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime':
         """
-        Required. End time (exclusive). You may use 24:00 for the end of the day.
+        End time (exclusive). You may use 24:00 for the end of the day.
         Structure is documented below.
         """
         return pulumi.get(self, "end_time")
@@ -2487,7 +2487,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow(dict):
     @pulumi.getter(name="startDate")
     def start_date(self) -> 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate':
         """
-        Required. Start date.
+        Start date.
         Structure is documented below.
         """
         return pulumi.get(self, "start_date")
@@ -2496,7 +2496,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime':
         """
-        Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+        Start time (inclusive). Use 00:00 for the beginning of the day.
         Structure is documented below.
         """
         return pulumi.get(self, "start_time")
@@ -2726,11 +2726,11 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow(dict):
                  end_time: Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime'] = None,
                  start_time: Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime'] = None):
         """
-        :param Sequence[_builtins.str] days_of_weeks: Optional. Days of week. If left empty, all days of the week will be included.
+        :param Sequence[_builtins.str] days_of_weeks: Days of week. If left empty, all days of the week will be included.
                Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs' end_time: Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs' end_time: End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
                Structure is documented below.
-        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs' start_time: Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs' start_time: Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
                Structure is documented below.
         """
         if days_of_weeks is not None:
@@ -2744,7 +2744,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow(dict):
     @pulumi.getter(name="daysOfWeeks")
     def days_of_weeks(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Optional. Days of week. If left empty, all days of the week will be included.
+        Days of week. If left empty, all days of the week will be included.
         Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "days_of_weeks")
@@ -2753,7 +2753,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime']:
         """
-        Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+        End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
         Structure is documented below.
         """
         return pulumi.get(self, "end_time")
@@ -2762,7 +2762,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime']:
         """
-        Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+        Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
         Structure is documented below.
         """
         return pulumi.get(self, "start_time")
@@ -2936,7 +2936,7 @@ class DeployPolicySelectorDeliveryPipeline(dict):
                  id: Optional[_builtins.str] = None,
                  labels: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str id: Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+        :param _builtins.str id: ID of the DeliveryPipeline. The value of this field could be one of the following:
                - The last segment of a pipeline name
                - "*", all delivery pipelines in a location
         :param Mapping[str, _builtins.str] labels: DeliveryPipeline labels.
@@ -2950,7 +2950,7 @@ class DeployPolicySelectorDeliveryPipeline(dict):
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
         """
-        Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+        ID of the DeliveryPipeline. The value of this field could be one of the following:
         - The last segment of a pipeline name
         - "*", all delivery pipelines in a location
         """

@@ -60,12 +60,12 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                             {
     ///                                 StartTime = new Gcp.CloudDeploy.Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs
     ///                                 {
-    ///                                     Hours = 12,
+    ///                                     Hours = 0,
     ///                                     Minutes = 0,
     ///                                 },
     ///                                 EndTime = new Gcp.CloudDeploy.Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs
     ///                                 {
-    ///                                     Hours = 13,
+    ///                                     Hours = 24,
     ///                                     Minutes = 0,
     ///                                 },
     ///                             },
@@ -145,17 +145,13 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                             {
     ///                                 StartTime = new Gcp.CloudDeploy.Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs
     ///                                 {
-    ///                                     Hours = 12,
+    ///                                     Hours = 0,
     ///                                     Minutes = 0,
-    ///                                     Seconds = 0,
-    ///                                     Nanos = 0,
     ///                                 },
     ///                                 EndTime = new Gcp.CloudDeploy.Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs
     ///                                 {
     ///                                     Hours = 13,
     ///                                     Minutes = 0,
-    ///                                     Seconds = 0,
-    ///                                     Nanos = 0,
     ///                                 },
     ///                             },
     ///                         },
@@ -186,8 +182,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                                 {
     ///                                     Hours = 13,
     ///                                     Minutes = 0,
-    ///                                     Seconds = 0,
-    ///                                     Nanos = 0,
     ///                                 },
     ///                                 EndTime = new Gcp.CloudDeploy.Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs
     ///                                 {
@@ -208,17 +202,13 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                             {
     ///                                 StartTime = new Gcp.CloudDeploy.Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs
     ///                                 {
-    ///                                     Hours = 15,
+    ///                                     Hours = 0,
     ///                                     Minutes = 0,
-    ///                                     Seconds = 0,
-    ///                                     Nanos = 0,
     ///                                 },
     ///                                 EndTime = new Gcp.CloudDeploy.Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs
     ///                                 {
     ///                                     Hours = 16,
     ///                                     Minutes = 0,
-    ///                                     Seconds = 0,
-    ///                                     Nanos = 0,
     ///                                 },
     ///                                 StartDate = new Gcp.CloudDeploy.Inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs
     ///                                 {
@@ -271,7 +261,7 @@ namespace Pulumi.Gcp.CloudDeploy
     public partial class DeployPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -285,7 +275,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+        /// Description of the `DeployPolicy`. Max length is 255 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -300,13 +290,13 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -340,21 +330,21 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Rules to apply. At least one rule must be present.
+        /// Rules to apply. At least one rule must be present.
         /// Structure is documented below.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.DeployPolicyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+        /// Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
         /// Structure is documented below.
         /// </summary>
         [Output("selectors")]
         public Output<ImmutableArray<Outputs.DeployPolicySelector>> Selectors { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+        /// When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
         /// </summary>
         [Output("suspended")]
         public Output<bool?> Suspended { get; private set; } = null!;
@@ -426,7 +416,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -437,7 +427,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
 
         /// <summary>
-        /// Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+        /// Description of the `DeployPolicy`. Max length is 255 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -446,7 +436,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -479,7 +469,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputList<Inputs.DeployPolicyRuleArgs>? _rules;
 
         /// <summary>
-        /// Required. Rules to apply. At least one rule must be present.
+        /// Rules to apply. At least one rule must be present.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeployPolicyRuleArgs> Rules
@@ -492,7 +482,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputList<Inputs.DeployPolicySelectorArgs>? _selectors;
 
         /// <summary>
-        /// Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+        /// Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeployPolicySelectorArgs> Selectors
@@ -502,7 +492,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
 
         /// <summary>
-        /// Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+        /// When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
@@ -519,7 +509,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -536,7 +526,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+        /// Description of the `DeployPolicy`. Max length is 255 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -566,7 +556,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
 
         /// <summary>
-        /// Optional. The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -575,7 +565,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -625,7 +615,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputList<Inputs.DeployPolicyRuleGetArgs>? _rules;
 
         /// <summary>
-        /// Required. Rules to apply. At least one rule must be present.
+        /// Rules to apply. At least one rule must be present.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeployPolicyRuleGetArgs> Rules
@@ -638,7 +628,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputList<Inputs.DeployPolicySelectorGetArgs>? _selectors;
 
         /// <summary>
-        /// Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
+        /// Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeployPolicySelectorGetArgs> Selectors
@@ -648,7 +638,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
 
         /// <summary>
-        /// Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
+        /// When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }

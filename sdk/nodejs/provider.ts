@@ -59,7 +59,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudAssetCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudBillingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudBuildCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly cloudBuildWorkerPoolCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudFunctionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdentityCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdsCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -123,7 +122,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly gkeBackupCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHub2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly gkehubFeatureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeonpremCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly googlePartnerName!: pulumi.Output<string | undefined>;
     public readonly healthcareCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -261,7 +259,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cloudAssetCustomEndpoint"] = args ? args.cloudAssetCustomEndpoint : undefined;
             resourceInputs["cloudBillingCustomEndpoint"] = args ? args.cloudBillingCustomEndpoint : undefined;
             resourceInputs["cloudBuildCustomEndpoint"] = args ? args.cloudBuildCustomEndpoint : undefined;
-            resourceInputs["cloudBuildWorkerPoolCustomEndpoint"] = args ? args.cloudBuildWorkerPoolCustomEndpoint : undefined;
             resourceInputs["cloudFunctionsCustomEndpoint"] = args ? args.cloudFunctionsCustomEndpoint : undefined;
             resourceInputs["cloudIdentityCustomEndpoint"] = args ? args.cloudIdentityCustomEndpoint : undefined;
             resourceInputs["cloudIdsCustomEndpoint"] = args ? args.cloudIdsCustomEndpoint : undefined;
@@ -328,7 +325,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["gkeBackupCustomEndpoint"] = args ? args.gkeBackupCustomEndpoint : undefined;
             resourceInputs["gkeHub2CustomEndpoint"] = args ? args.gkeHub2CustomEndpoint : undefined;
             resourceInputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
-            resourceInputs["gkehubFeatureCustomEndpoint"] = args ? args.gkehubFeatureCustomEndpoint : undefined;
             resourceInputs["gkeonpremCustomEndpoint"] = args ? args.gkeonpremCustomEndpoint : undefined;
             resourceInputs["googlePartnerName"] = args ? args.googlePartnerName : undefined;
             resourceInputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
@@ -478,7 +474,6 @@ export interface ProviderArgs {
     cloudAssetCustomEndpoint?: pulumi.Input<string>;
     cloudBillingCustomEndpoint?: pulumi.Input<string>;
     cloudBuildCustomEndpoint?: pulumi.Input<string>;
-    cloudBuildWorkerPoolCustomEndpoint?: pulumi.Input<string>;
     cloudFunctionsCustomEndpoint?: pulumi.Input<string>;
     cloudIdentityCustomEndpoint?: pulumi.Input<string>;
     cloudIdsCustomEndpoint?: pulumi.Input<string>;
@@ -545,7 +540,6 @@ export interface ProviderArgs {
     gkeBackupCustomEndpoint?: pulumi.Input<string>;
     gkeHub2CustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;
-    gkehubFeatureCustomEndpoint?: pulumi.Input<string>;
     gkeonpremCustomEndpoint?: pulumi.Input<string>;
     googlePartnerName?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;

@@ -83,8 +83,6 @@ cloudBillingCustomEndpoint: Optional[str]
 
 cloudBuildCustomEndpoint: Optional[str]
 
-cloudBuildWorkerPoolCustomEndpoint: Optional[str]
-
 cloudFunctionsCustomEndpoint: Optional[str]
 
 cloudIdentityCustomEndpoint: Optional[str]
@@ -218,8 +216,6 @@ gkeBackupCustomEndpoint: Optional[str]
 gkeHub2CustomEndpoint: Optional[str]
 
 gkeHubCustomEndpoint: Optional[str]
-
-gkehubFeatureCustomEndpoint: Optional[str]
 
 gkeonpremCustomEndpoint: Optional[str]
 

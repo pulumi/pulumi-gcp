@@ -373,6 +373,7 @@ class AspectTypeIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataplex AspectType
+
         Three different resources help you manage your IAM policy for Dataplex AspectType. Each of these resources serves a different use case:
 
         * `dataplex.AspectTypeIamPolicy`: Authoritative. Sets the IAM policy for the aspecttype and replaces any existing policy already attached.
@@ -565,6 +566,7 @@ class AspectTypeIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Dataplex AspectType
+
         Three different resources help you manage your IAM policy for Dataplex AspectType. Each of these resources serves a different use case:
 
         * `dataplex.AspectTypeIamPolicy`: Authoritative. Sets the IAM policy for the aspecttype and replaces any existing policy already attached.

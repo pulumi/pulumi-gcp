@@ -32,14 +32,14 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
     }
 
     /**
-     * The password write-only version.
+     * Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
     @Import(name="passwordWoVersion")
     private @Nullable Output<String> passwordWoVersion;
 
     /**
-     * @return The password write-only version.
+     * @return Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      * 
      */
     public Optional<Output<String>> passwordWoVersion() {
@@ -109,7 +109,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
         }
 
         /**
-         * @param passwordWoVersion The password write-only version.
+         * @param passwordWoVersion Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
         }
 
         /**
-         * @param passwordWoVersion The password write-only version.
+         * @param passwordWoVersion Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
          * 
          * @return builder
          * 

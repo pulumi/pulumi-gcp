@@ -48,6 +48,8 @@ import (
 type Folder struct {
 	pulumi.CustomResourceState
 
+	// Optional capabilities configured for this folder.
+	ConfiguredCapabilities pulumi.StringArrayOutput `pulumi:"configuredCapabilities"`
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
@@ -59,6 +61,8 @@ type Folder struct {
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
+	// Management Project associated with this folder (if capability is enabled).
+	ManagementProject pulumi.StringOutput `pulumi:"managementProject"`
 	// The resource name of the Folder. Its format is folders/{folder_id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the parent Folder or Organization.
@@ -104,6 +108,8 @@ func GetFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Folder resources.
 type folderState struct {
+	// Optional capabilities configured for this folder.
+	ConfiguredCapabilities []string `pulumi:"configuredCapabilities"`
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime         *string `pulumi:"createTime"`
@@ -115,6 +121,8 @@ type folderState struct {
 	FolderId *string `pulumi:"folderId"`
 	// The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
 	LifecycleState *string `pulumi:"lifecycleState"`
+	// Management Project associated with this folder (if capability is enabled).
+	ManagementProject *string `pulumi:"managementProject"`
 	// The resource name of the Folder. Its format is folders/{folder_id}.
 	Name *string `pulumi:"name"`
 	// The resource name of the parent Folder or Organization.
@@ -125,6 +133,8 @@ type folderState struct {
 }
 
 type FolderState struct {
+	// Optional capabilities configured for this folder.
+	ConfiguredCapabilities pulumi.StringArrayInput
 	// Timestamp when the Folder was created. Assigned by the server.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime         pulumi.StringPtrInput
@@ -136,6 +146,8 @@ type FolderState struct {
 	FolderId pulumi.StringPtrInput
 	// The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
 	LifecycleState pulumi.StringPtrInput
+	// Management Project associated with this folder (if capability is enabled).
+	ManagementProject pulumi.StringPtrInput
 	// The resource name of the Folder. Its format is folders/{folder_id}.
 	Name pulumi.StringPtrInput
 	// The resource name of the parent Folder or Organization.
@@ -261,6 +273,11 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
+// Optional capabilities configured for this folder.
+func (o FolderOutput) ConfiguredCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringArrayOutput { return v.ConfiguredCapabilities }).(pulumi.StringArrayOutput)
+}
+
 // Timestamp when the Folder was created. Assigned by the server.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o FolderOutput) CreateTime() pulumi.StringOutput {
@@ -285,6 +302,11 @@ func (o FolderOutput) FolderId() pulumi.StringOutput {
 // The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
 func (o FolderOutput) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.LifecycleState }).(pulumi.StringOutput)
+}
+
+// Management Project associated with this folder (if capability is enabled).
+func (o FolderOutput) ManagementProject() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.ManagementProject }).(pulumi.StringOutput)
 }
 
 // The resource name of the Folder. Its format is folders/{folder_id}.

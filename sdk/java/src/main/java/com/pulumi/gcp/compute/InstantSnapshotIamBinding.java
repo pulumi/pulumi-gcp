@@ -303,6 +303,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for Compute Engine InstantSnapshot
+ * 
  * Three different resources help you manage your IAM policy for Compute Engine InstantSnapshot. Each of these resources serves a different use case:
  * 
  * * `gcp.compute.InstantSnapshotIamPolicy`: Authoritative. Sets the IAM policy for the instantsnapshot and replaces any existing policy already attached.

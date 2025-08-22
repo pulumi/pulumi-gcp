@@ -136,6 +136,7 @@ import (
 // -
 //
 // # IAM policy for Dataplex EntryType
+//
 // Three different resources help you manage your IAM policy for Dataplex EntryType. Each of these resources serves a different use case:
 //
 // * `dataplex.EntryTypeIamPolicy`: Authoritative. Sets the IAM policy for the entrytype and replaces any existing policy already attached.

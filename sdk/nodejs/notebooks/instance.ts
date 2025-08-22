@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  *     location: "us-west1-a",
  *     machineType: "e2-medium",
  *     vmImage: {
- *         project: "deeplearning-platform-release",
- *         imageFamily: "pytorch-latest-cu124",
+ *         project: "cloud-notebooks-managed",
+ *         imageFamily: "workbench-instances",
  *     },
  * });
  * ```
@@ -50,8 +50,8 @@ import * as utilities from "../utilities";
  *     location: "us-west1-a",
  *     machineType: "e2-medium",
  *     vmImage: {
- *         project: "deeplearning-platform-release",
- *         imageFamily: "pytorch-latest-cu124",
+ *         project: "cloud-notebooks-managed",
+ *         imageFamily: "workbench-instances",
  *     },
  *     desiredState: "STOPPED",
  * });
@@ -91,8 +91,8 @@ import * as utilities from "../utilities";
  *         coreCount: 1,
  *     },
  *     vmImage: {
- *         project: "deeplearning-platform-release",
- *         imageFamily: "pytorch-latest-cu124",
+ *         project: "cloud-notebooks-managed",
+ *         imageFamily: "workbench-instances",
  *     },
  * });
  * ```
@@ -114,14 +114,14 @@ import * as utilities from "../utilities";
  *     location: "us-central1-a",
  *     machineType: "e2-medium",
  *     vmImage: {
- *         project: "deeplearning-platform-release",
- *         imageFamily: "pytorch-latest-cu124",
+ *         project: "cloud-notebooks-managed",
+ *         imageFamily: "workbench-instances",
  *     },
  *     instanceOwners: ["my@service-account.com"],
  *     serviceAccount: "my@service-account.com",
  *     installGpuDriver: true,
  *     bootDiskType: "PD_SSD",
- *     bootDiskSizeGb: 110,
+ *     bootDiskSizeGb: 150,
  *     noPublicIp: true,
  *     noProxyAccess: true,
  *     network: myNetwork.then(myNetwork => myNetwork.id),

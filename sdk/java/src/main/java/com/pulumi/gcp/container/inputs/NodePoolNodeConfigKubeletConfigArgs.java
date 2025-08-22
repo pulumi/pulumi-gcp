@@ -5,6 +5,9 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigEvictionSoftArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -109,6 +112,66 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
     }
 
     /**
+     * Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+     * 
+     */
+    @Import(name="evictionMaxPodGracePeriodSeconds")
+    private @Nullable Output<Integer> evictionMaxPodGracePeriodSeconds;
+
+    /**
+     * @return Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+     * 
+     */
+    public Optional<Output<Integer>> evictionMaxPodGracePeriodSeconds() {
+        return Optional.ofNullable(this.evictionMaxPodGracePeriodSeconds);
+    }
+
+    /**
+     * Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+     * 
+     */
+    @Import(name="evictionMinimumReclaim")
+    private @Nullable Output<NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs> evictionMinimumReclaim;
+
+    /**
+     * @return Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs>> evictionMinimumReclaim() {
+        return Optional.ofNullable(this.evictionMinimumReclaim);
+    }
+
+    /**
+     * Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+     * 
+     */
+    @Import(name="evictionSoft")
+    private @Nullable Output<NodePoolNodeConfigKubeletConfigEvictionSoftArgs> evictionSoft;
+
+    /**
+     * @return Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigKubeletConfigEvictionSoftArgs>> evictionSoft() {
+        return Optional.ofNullable(this.evictionSoft);
+    }
+
+    /**
+     * Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+     * 
+     */
+    @Import(name="evictionSoftGracePeriod")
+    private @Nullable Output<NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs> evictionSoftGracePeriod;
+
+    /**
+     * @return Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs>> evictionSoftGracePeriod() {
+        return Optional.ofNullable(this.evictionSoftGracePeriod);
+    }
+
+    /**
      * Defines the percent of disk usage after which image garbage collection is always run.
      * 
      */
@@ -184,6 +247,21 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
     }
 
     /**
+     * Set the maximum number of image pulls in parallel.
+     * 
+     */
+    @Import(name="maxParallelImagePulls")
+    private @Nullable Output<Integer> maxParallelImagePulls;
+
+    /**
+     * @return Set the maximum number of image pulls in parallel.
+     * 
+     */
+    public Optional<Output<Integer>> maxParallelImagePulls() {
+        return Optional.ofNullable(this.maxParallelImagePulls);
+    }
+
+    /**
      * Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -222,11 +300,16 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         this.cpuCfsQuota = $.cpuCfsQuota;
         this.cpuCfsQuotaPeriod = $.cpuCfsQuotaPeriod;
         this.cpuManagerPolicy = $.cpuManagerPolicy;
+        this.evictionMaxPodGracePeriodSeconds = $.evictionMaxPodGracePeriodSeconds;
+        this.evictionMinimumReclaim = $.evictionMinimumReclaim;
+        this.evictionSoft = $.evictionSoft;
+        this.evictionSoftGracePeriod = $.evictionSoftGracePeriod;
         this.imageGcHighThresholdPercent = $.imageGcHighThresholdPercent;
         this.imageGcLowThresholdPercent = $.imageGcLowThresholdPercent;
         this.imageMaximumGcAge = $.imageMaximumGcAge;
         this.imageMinimumGcAge = $.imageMinimumGcAge;
         this.insecureKubeletReadonlyPortEnabled = $.insecureKubeletReadonlyPortEnabled;
+        this.maxParallelImagePulls = $.maxParallelImagePulls;
         this.podPidsLimit = $.podPidsLimit;
         this.singleProcessOomKill = $.singleProcessOomKill;
     }
@@ -386,6 +469,90 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         }
 
         /**
+         * @param evictionMaxPodGracePeriodSeconds Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionMaxPodGracePeriodSeconds(@Nullable Output<Integer> evictionMaxPodGracePeriodSeconds) {
+            $.evictionMaxPodGracePeriodSeconds = evictionMaxPodGracePeriodSeconds;
+            return this;
+        }
+
+        /**
+         * @param evictionMaxPodGracePeriodSeconds Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionMaxPodGracePeriodSeconds(Integer evictionMaxPodGracePeriodSeconds) {
+            return evictionMaxPodGracePeriodSeconds(Output.of(evictionMaxPodGracePeriodSeconds));
+        }
+
+        /**
+         * @param evictionMinimumReclaim Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionMinimumReclaim(@Nullable Output<NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs> evictionMinimumReclaim) {
+            $.evictionMinimumReclaim = evictionMinimumReclaim;
+            return this;
+        }
+
+        /**
+         * @param evictionMinimumReclaim Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionMinimumReclaim(NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs evictionMinimumReclaim) {
+            return evictionMinimumReclaim(Output.of(evictionMinimumReclaim));
+        }
+
+        /**
+         * @param evictionSoft Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionSoft(@Nullable Output<NodePoolNodeConfigKubeletConfigEvictionSoftArgs> evictionSoft) {
+            $.evictionSoft = evictionSoft;
+            return this;
+        }
+
+        /**
+         * @param evictionSoft Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionSoft(NodePoolNodeConfigKubeletConfigEvictionSoftArgs evictionSoft) {
+            return evictionSoft(Output.of(evictionSoft));
+        }
+
+        /**
+         * @param evictionSoftGracePeriod Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionSoftGracePeriod(@Nullable Output<NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs> evictionSoftGracePeriod) {
+            $.evictionSoftGracePeriod = evictionSoftGracePeriod;
+            return this;
+        }
+
+        /**
+         * @param evictionSoftGracePeriod Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionSoftGracePeriod(NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs evictionSoftGracePeriod) {
+            return evictionSoftGracePeriod(Output.of(evictionSoftGracePeriod));
+        }
+
+        /**
          * @param imageGcHighThresholdPercent Defines the percent of disk usage after which image garbage collection is always run.
          * 
          * @return builder
@@ -488,6 +655,27 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
          */
         public Builder insecureKubeletReadonlyPortEnabled(String insecureKubeletReadonlyPortEnabled) {
             return insecureKubeletReadonlyPortEnabled(Output.of(insecureKubeletReadonlyPortEnabled));
+        }
+
+        /**
+         * @param maxParallelImagePulls Set the maximum number of image pulls in parallel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxParallelImagePulls(@Nullable Output<Integer> maxParallelImagePulls) {
+            $.maxParallelImagePulls = maxParallelImagePulls;
+            return this;
+        }
+
+        /**
+         * @param maxParallelImagePulls Set the maximum number of image pulls in parallel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxParallelImagePulls(Integer maxParallelImagePulls) {
+            return maxParallelImagePulls(Output.of(maxParallelImagePulls));
         }
 
         /**

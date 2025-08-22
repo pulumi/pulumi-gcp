@@ -28,6 +28,16 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
      * 
      */
     private Map<String,String> sysctls;
+    /**
+     * @return The Linux kernel transparent hugepage defrag setting.
+     * 
+     */
+    private String transparentHugepageDefrag;
+    /**
+     * @return The Linux kernel transparent hugepage setting.
+     * 
+     */
+    private String transparentHugepageEnabled;
 
     private GetClusterNodeConfigLinuxNodeConfig() {}
     /**
@@ -51,6 +61,20 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
     public Map<String,String> sysctls() {
         return this.sysctls;
     }
+    /**
+     * @return The Linux kernel transparent hugepage defrag setting.
+     * 
+     */
+    public String transparentHugepageDefrag() {
+        return this.transparentHugepageDefrag;
+    }
+    /**
+     * @return The Linux kernel transparent hugepage setting.
+     * 
+     */
+    public String transparentHugepageEnabled() {
+        return this.transparentHugepageEnabled;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +88,16 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
         private String cgroupMode;
         private List<GetClusterNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
         private Map<String,String> sysctls;
+        private String transparentHugepageDefrag;
+        private String transparentHugepageEnabled;
         public Builder() {}
         public Builder(GetClusterNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfigs = defaults.hugepagesConfigs;
     	      this.sysctls = defaults.sysctls;
+    	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
+    	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
         }
 
         @CustomType.Setter
@@ -99,11 +127,29 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
             this.sysctls = sysctls;
             return this;
         }
+        @CustomType.Setter
+        public Builder transparentHugepageDefrag(String transparentHugepageDefrag) {
+            if (transparentHugepageDefrag == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "transparentHugepageDefrag");
+            }
+            this.transparentHugepageDefrag = transparentHugepageDefrag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transparentHugepageEnabled(String transparentHugepageEnabled) {
+            if (transparentHugepageEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "transparentHugepageEnabled");
+            }
+            this.transparentHugepageEnabled = transparentHugepageEnabled;
+            return this;
+        }
         public GetClusterNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new GetClusterNodeConfigLinuxNodeConfig();
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfigs = hugepagesConfigs;
             _resultValue.sysctls = sysctls;
+            _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
+            _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;
             return _resultValue;
         }
     }

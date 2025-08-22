@@ -256,6 +256,7 @@ import (
 // -
 //
 // # IAM policy for Secret Manager RegionalSecret
+//
 // Three different resources help you manage your IAM policy for Secret Manager RegionalSecret. Each of these resources serves a different use case:
 //
 // * `secretmanager.RegionalSecretIamPolicy`: Authoritative. Sets the IAM policy for the regionalsecret and replaces any existing policy already attached.

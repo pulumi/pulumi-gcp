@@ -1396,8 +1396,8 @@ class Instance(pulumi.CustomResource):
             location="us-west1-a",
             machine_type="e2-medium",
             vm_image={
-                "project": "deeplearning-platform-release",
-                "image_family": "pytorch-latest-cu124",
+                "project": "cloud-notebooks-managed",
+                "image_family": "workbench-instances",
             })
         ```
         ### Notebook Instance Basic Stopped
@@ -1411,8 +1411,8 @@ class Instance(pulumi.CustomResource):
             location="us-west1-a",
             machine_type="e2-medium",
             vm_image={
-                "project": "deeplearning-platform-release",
-                "image_family": "pytorch-latest-cu124",
+                "project": "cloud-notebooks-managed",
+                "image_family": "workbench-instances",
             },
             desired_state="STOPPED")
         ```
@@ -1450,8 +1450,8 @@ class Instance(pulumi.CustomResource):
                 "core_count": 1,
             },
             vm_image={
-                "project": "deeplearning-platform-release",
-                "image_family": "pytorch-latest-cu124",
+                "project": "cloud-notebooks-managed",
+                "image_family": "workbench-instances",
             })
         ```
         ### Notebook Instance Full
@@ -1468,14 +1468,14 @@ class Instance(pulumi.CustomResource):
             location="us-central1-a",
             machine_type="e2-medium",
             vm_image={
-                "project": "deeplearning-platform-release",
-                "image_family": "pytorch-latest-cu124",
+                "project": "cloud-notebooks-managed",
+                "image_family": "workbench-instances",
             },
             instance_owners=["my@service-account.com"],
             service_account="my@service-account.com",
             install_gpu_driver=True,
             boot_disk_type="PD_SSD",
-            boot_disk_size_gb=110,
+            boot_disk_size_gb=150,
             no_public_ip=True,
             no_proxy_access=True,
             network=my_network.id,
@@ -1637,8 +1637,8 @@ class Instance(pulumi.CustomResource):
             location="us-west1-a",
             machine_type="e2-medium",
             vm_image={
-                "project": "deeplearning-platform-release",
-                "image_family": "pytorch-latest-cu124",
+                "project": "cloud-notebooks-managed",
+                "image_family": "workbench-instances",
             })
         ```
         ### Notebook Instance Basic Stopped
@@ -1652,8 +1652,8 @@ class Instance(pulumi.CustomResource):
             location="us-west1-a",
             machine_type="e2-medium",
             vm_image={
-                "project": "deeplearning-platform-release",
-                "image_family": "pytorch-latest-cu124",
+                "project": "cloud-notebooks-managed",
+                "image_family": "workbench-instances",
             },
             desired_state="STOPPED")
         ```
@@ -1691,8 +1691,8 @@ class Instance(pulumi.CustomResource):
                 "core_count": 1,
             },
             vm_image={
-                "project": "deeplearning-platform-release",
-                "image_family": "pytorch-latest-cu124",
+                "project": "cloud-notebooks-managed",
+                "image_family": "workbench-instances",
             })
         ```
         ### Notebook Instance Full
@@ -1709,14 +1709,14 @@ class Instance(pulumi.CustomResource):
             location="us-central1-a",
             machine_type="e2-medium",
             vm_image={
-                "project": "deeplearning-platform-release",
-                "image_family": "pytorch-latest-cu124",
+                "project": "cloud-notebooks-managed",
+                "image_family": "workbench-instances",
             },
             instance_owners=["my@service-account.com"],
             service_account="my@service-account.com",
             install_gpu_driver=True,
             boot_disk_type="PD_SSD",
-            boot_disk_size_gb=110,
+            boot_disk_size_gb=150,
             no_public_ip=True,
             no_proxy_access=True,
             network=my_network.id,

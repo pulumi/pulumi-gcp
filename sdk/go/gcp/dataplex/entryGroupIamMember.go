@@ -136,6 +136,7 @@ import (
 // -
 //
 // # IAM policy for Dataplex EntryGroup
+//
 // Three different resources help you manage your IAM policy for Dataplex EntryGroup. Each of these resources serves a different use case:
 //
 // * `dataplex.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.

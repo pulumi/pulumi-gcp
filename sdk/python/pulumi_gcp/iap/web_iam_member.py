@@ -356,6 +356,7 @@ class WebIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Identity-Aware Proxy Web
+
         Three different resources help you manage your IAM policy for Identity-Aware Proxy Web. Each of these resources serves a different use case:
 
         * `iap.WebIamPolicy`: Authoritative. Sets the IAM policy for the web and replaces any existing policy already attached.
@@ -637,6 +638,7 @@ class WebIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Identity-Aware Proxy Web
+
         Three different resources help you manage your IAM policy for Identity-Aware Proxy Web. Each of these resources serves a different use case:
 
         * `iap.WebIamPolicy`: Authoritative. Sets the IAM policy for the web and replaces any existing policy already attached.

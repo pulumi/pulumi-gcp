@@ -133,6 +133,7 @@ import (
 // -
 //
 // # IAM policy for Container Registry Note
+//
 // Three different resources help you manage your IAM policy for Container Registry Note. Each of these resources serves a different use case:
 //
 // * `containeranalysis.NoteIamPolicy`: Authoritative. Sets the IAM policy for the note and replaces any existing policy already attached.
