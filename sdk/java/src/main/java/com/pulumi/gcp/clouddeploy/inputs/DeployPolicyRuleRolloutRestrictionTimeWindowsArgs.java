@@ -20,7 +20,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
     public static final DeployPolicyRuleRolloutRestrictionTimeWindowsArgs Empty = new DeployPolicyRuleRolloutRestrictionTimeWindowsArgs();
 
     /**
-     * Optional. One-time windows within which actions are restricted.
+     * One-time windows within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
     private @Nullable Output<List<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs>> oneTimeWindows;
 
     /**
-     * @return Optional. One-time windows within which actions are restricted.
+     * @return One-time windows within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -37,14 +37,14 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
     }
 
     /**
-     * Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+     * The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
      * 
      */
     @Import(name="timeZone", required=true)
     private Output<String> timeZone;
 
     /**
-     * @return Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+     * @return The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
      * 
      */
     public Output<String> timeZone() {
@@ -52,7 +52,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
     }
 
     /**
-     * Optional. Recurring weekly windows within which actions are restricted.
+     * Recurring weekly windows within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -60,7 +60,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
     private @Nullable Output<List<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs>> weeklyWindows;
 
     /**
-     * @return Optional. Recurring weekly windows within which actions are restricted.
+     * @return Recurring weekly windows within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -95,7 +95,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
         }
 
         /**
-         * @param oneTimeWindows Optional. One-time windows within which actions are restricted.
+         * @param oneTimeWindows One-time windows within which actions are restricted.
          * Structure is documented below.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
         }
 
         /**
-         * @param oneTimeWindows Optional. One-time windows within which actions are restricted.
+         * @param oneTimeWindows One-time windows within which actions are restricted.
          * Structure is documented below.
          * 
          * @return builder
@@ -118,7 +118,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
         }
 
         /**
-         * @param oneTimeWindows Optional. One-time windows within which actions are restricted.
+         * @param oneTimeWindows One-time windows within which actions are restricted.
          * Structure is documented below.
          * 
          * @return builder
@@ -129,7 +129,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
         }
 
         /**
-         * @param timeZone Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+         * @param timeZone The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
         }
 
         /**
-         * @param timeZone Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+         * @param timeZone The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
         }
 
         /**
-         * @param weeklyWindows Optional. Recurring weekly windows within which actions are restricted.
+         * @param weeklyWindows Recurring weekly windows within which actions are restricted.
          * Structure is documented below.
          * 
          * @return builder
@@ -162,7 +162,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
         }
 
         /**
-         * @param weeklyWindows Optional. Recurring weekly windows within which actions are restricted.
+         * @param weeklyWindows Recurring weekly windows within which actions are restricted.
          * Structure is documented below.
          * 
          * @return builder
@@ -173,7 +173,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsArgs extends com
         }
 
         /**
-         * @param weeklyWindows Optional. Recurring weekly windows within which actions are restricted.
+         * @param weeklyWindows Recurring weekly windows within which actions are restricted.
          * Structure is documented below.
          * 
          * @return builder

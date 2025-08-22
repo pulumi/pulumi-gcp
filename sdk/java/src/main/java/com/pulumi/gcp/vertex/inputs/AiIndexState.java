@@ -168,7 +168,9 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An additional information about the Index
+     * Additional information about the Index.
+     * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+     * Attempts to create an Index without this field will result in an API error.
      * Structure is documented below.
      * 
      */
@@ -176,7 +178,9 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<AiIndexMetadataArgs> metadata;
 
     /**
-     * @return An additional information about the Index
+     * @return Additional information about the Index.
+     * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+     * Attempts to create an Index without this field will result in an API error.
      * Structure is documented below.
      * 
      */
@@ -541,7 +545,9 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata An additional information about the Index
+         * @param metadata Additional information about the Index.
+         * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+         * Attempts to create an Index without this field will result in an API error.
          * Structure is documented below.
          * 
          * @return builder
@@ -553,7 +559,9 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata An additional information about the Index
+         * @param metadata Additional information about the Index.
+         * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+         * Attempts to create an Index without this field will result in an API error.
          * Structure is documented below.
          * 
          * @return builder

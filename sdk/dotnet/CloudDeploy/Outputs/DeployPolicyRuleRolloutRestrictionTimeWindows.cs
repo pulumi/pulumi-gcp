@@ -14,16 +14,16 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeployPolicyRuleRolloutRestrictionTimeWindows
     {
         /// <summary>
-        /// Optional. One-time windows within which actions are restricted.
+        /// One-time windows within which actions are restricted.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow> OneTimeWindows;
         /// <summary>
-        /// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+        /// The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
         /// </summary>
         public readonly string TimeZone;
         /// <summary>
-        /// Optional. Recurring weekly windows within which actions are restricted.
+        /// Recurring weekly windows within which actions are restricted.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow> WeeklyWindows;

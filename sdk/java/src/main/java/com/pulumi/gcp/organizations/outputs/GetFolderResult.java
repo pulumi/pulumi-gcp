@@ -7,12 +7,18 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFolderResult {
+    /**
+     * @return Optional capabilities configured for this folder.
+     * 
+     */
+    private List<String> configuredCapabilities;
     /**
      * @return Timestamp when the Organization was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -38,6 +44,11 @@ public final class GetFolderResult {
     private String lifecycleState;
     private @Nullable Boolean lookupOrganization;
     /**
+     * @return Management Project associated with this folder (if capability is enabled).
+     * 
+     */
+    private String managementProject;
+    /**
      * @return The resource name of the Folder in the form `folders/{folder_id}`.
      * 
      */
@@ -54,6 +65,13 @@ public final class GetFolderResult {
     private String parent;
 
     private GetFolderResult() {}
+    /**
+     * @return Optional capabilities configured for this folder.
+     * 
+     */
+    public List<String> configuredCapabilities() {
+        return this.configuredCapabilities;
+    }
     /**
      * @return Timestamp when the Organization was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -95,6 +113,13 @@ public final class GetFolderResult {
         return Optional.ofNullable(this.lookupOrganization);
     }
     /**
+     * @return Management Project associated with this folder (if capability is enabled).
+     * 
+     */
+    public String managementProject() {
+        return this.managementProject;
+    }
+    /**
      * @return The resource name of the Folder in the form `folders/{folder_id}`.
      * 
      */
@@ -125,6 +150,7 @@ public final class GetFolderResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> configuredCapabilities;
         private String createTime;
         private Boolean deletionProtection;
         private String displayName;
@@ -133,12 +159,14 @@ public final class GetFolderResult {
         private String id;
         private String lifecycleState;
         private @Nullable Boolean lookupOrganization;
+        private String managementProject;
         private String name;
         private String organization;
         private String parent;
         public Builder() {}
         public Builder(GetFolderResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.configuredCapabilities = defaults.configuredCapabilities;
     	      this.createTime = defaults.createTime;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
@@ -147,11 +175,23 @@ public final class GetFolderResult {
     	      this.id = defaults.id;
     	      this.lifecycleState = defaults.lifecycleState;
     	      this.lookupOrganization = defaults.lookupOrganization;
+    	      this.managementProject = defaults.managementProject;
     	      this.name = defaults.name;
     	      this.organization = defaults.organization;
     	      this.parent = defaults.parent;
         }
 
+        @CustomType.Setter
+        public Builder configuredCapabilities(List<String> configuredCapabilities) {
+            if (configuredCapabilities == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "configuredCapabilities");
+            }
+            this.configuredCapabilities = configuredCapabilities;
+            return this;
+        }
+        public Builder configuredCapabilities(String... configuredCapabilities) {
+            return configuredCapabilities(List.of(configuredCapabilities));
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -215,6 +255,14 @@ public final class GetFolderResult {
             return this;
         }
         @CustomType.Setter
+        public Builder managementProject(String managementProject) {
+            if (managementProject == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "managementProject");
+            }
+            this.managementProject = managementProject;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetFolderResult", "name");
@@ -240,6 +288,7 @@ public final class GetFolderResult {
         }
         public GetFolderResult build() {
             final var _resultValue = new GetFolderResult();
+            _resultValue.configuredCapabilities = configuredCapabilities;
             _resultValue.createTime = createTime;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
@@ -248,6 +297,7 @@ public final class GetFolderResult {
             _resultValue.id = id;
             _resultValue.lifecycleState = lifecycleState;
             _resultValue.lookupOrganization = lookupOrganization;
+            _resultValue.managementProject = managementProject;
             _resultValue.name = name;
             _resultValue.organization = organization;
             _resultValue.parent = parent;

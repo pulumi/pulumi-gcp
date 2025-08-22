@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// - 
     /// 
     /// # IAM policy for Cloud Functions CloudFunction
+    /// 
     /// Three different resources help you manage your IAM policy for Cloud Functions CloudFunction. Each of these resources serves a different use case:
     /// 
     /// * `gcp.cloudfunctions.FunctionIamPolicy`: Authoritative. Sets the IAM policy for the cloudfunction and replaces any existing policy already attached.

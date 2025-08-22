@@ -180,11 +180,18 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var cryptoKeyMember = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_member", new()
+    ///     var cryptoKeyMemberCdfSa = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_member_cdf_sa", new()
     ///     {
     ///         CryptoKeyId = cryptoKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datafusion.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var cryptoKeyMemberGcsSa = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gs-project-accounts.iam.gserviceaccount.com",
     ///     });
     /// 
     ///     var cmek = new Gcp.DataFusion.Instance("cmek", new()
@@ -200,7 +207,8 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     {
     ///         DependsOn =
     ///         {
-    ///             cryptoKeyMember,
+    ///             cryptoKeyMemberCdfSa,
+    ///             cryptoKeyMemberGcsSa,
     ///         },
     ///     });
     /// 

@@ -243,6 +243,59 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Service_account_key
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.ApiKey;
+ * import com.pulumi.gcp.projects.ApiKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("app")
+ *             .name("app")
+ *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var keyServiceAccount = new Account("keyServiceAccount", AccountArgs.builder()
+ *             .accountId("app")
+ *             .project(project.projectId())
+ *             .displayName("Test Service Account")
+ *             .build());
+ * 
+ *         var primary = new ApiKey("primary", ApiKeyArgs.builder()
+ *             .name("key")
+ *             .displayName("sample-key")
+ *             .project(project.projectId())
+ *             .serviceAccountEmail(keyServiceAccount.email())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -344,6 +397,20 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ApiKeyRestrictions>> restrictions() {
         return Codegen.optional(this.restrictions);
+    }
+    /**
+     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     * 
+     */
+    @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serviceAccountEmail;
+
+    /**
+     * @return The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     * 
+     */
+    public Output<Optional<String>> serviceAccountEmail() {
+        return Codegen.optional(this.serviceAccountEmail);
     }
     /**
      * Output only. Unique id in UUID4 format.

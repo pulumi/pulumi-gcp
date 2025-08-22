@@ -14,6 +14,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+ * 
  * Three different resources help you manage your IAM policy for BeyondCorp Application. Each of these resources serves a different use case:
  * 
  * * `gcp.beyondcorp.ApplicationIamPolicy`: Authoritative. Sets the IAM policy for the application and replaces any existing policy already attached.
@@ -300,6 +302,8 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for BeyondCorp Application
+ * &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+ * 
  * Three different resources help you manage your IAM policy for BeyondCorp Application. Each of these resources serves a different use case:
  * 
  * * `gcp.beyondcorp.ApplicationIamPolicy`: Authoritative. Sets the IAM policy for the application and replaces any existing policy already attached.

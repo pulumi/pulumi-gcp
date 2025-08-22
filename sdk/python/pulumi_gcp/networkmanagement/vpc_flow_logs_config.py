@@ -29,8 +29,10 @@ class VpcFlowLogsConfigArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcFlowLogsConfig resource.
@@ -39,7 +41,7 @@ class VpcFlowLogsConfigArgs:
                for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
         :param pulumi.Input[_builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
-               INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+               INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[_builtins.str] filter_expr: Optional. Export filter used to define which VPC Flow Logs should be logged.
@@ -57,10 +59,13 @@ class VpcFlowLogsConfigArgs:
                Possible values:  METADATA_UNSPECIFIED INCLUDE_ALL_METADATA EXCLUDE_ALL_METADATA CUSTOM_METADATA
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] metadata_fields: Optional. Custom metadata fields to include in the reported VPC flow
                logs. Can only be specified if \\"metadata\\" was set to CUSTOM_METADATA.
+        :param pulumi.Input[_builtins.str] network: Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: Optional. The state of the VPC Flow Log configuration. Default value
-               is ENABLED. When creating a new configuration, it must be enabled.   Possible
+               is ENABLED. When creating a new configuration, it must be enabled.
+               Possible values: STATE_UNSPECIFIED ENABLED DISABLED
+        :param pulumi.Input[_builtins.str] subnet: Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
         :param pulumi.Input[_builtins.str] vpn_tunnel: Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
         """
         pulumi.set(__self__, "location", location)
@@ -81,10 +86,14 @@ class VpcFlowLogsConfigArgs:
             pulumi.set(__self__, "metadata", metadata)
         if metadata_fields is not None:
             pulumi.set(__self__, "metadata_fields", metadata_fields)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
         if vpn_tunnel is not None:
             pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
 
@@ -119,7 +128,7 @@ class VpcFlowLogsConfigArgs:
     def aggregation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional. The aggregation interval for the logs. Default value is
-        INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+        INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -223,6 +232,18 @@ class VpcFlowLogsConfigArgs:
 
     @_builtins.property
     @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -239,13 +260,26 @@ class VpcFlowLogsConfigArgs:
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional. The state of the VPC Flow Log configuration. Default value
-        is ENABLED. When creating a new configuration, it must be enabled.   Possible
+        is ENABLED. When creating a new configuration, it must be enabled.
+        Possible values: STATE_UNSPECIFIED ENABLED DISABLED
         """
         return pulumi.get(self, "state")
 
     @state.setter
     def state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnTunnel")
@@ -275,16 +309,19 @@ class _VpcFlowLogsConfigState:
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 network: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_resource_state: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_flow_logs_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcFlowLogsConfig resources.
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
-               INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+               INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the config was created.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
@@ -308,12 +345,21 @@ class _VpcFlowLogsConfigState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] metadata_fields: Optional. Custom metadata fields to include in the reported VPC flow
                logs. Can only be specified if \\"metadata\\" was set to CUSTOM_METADATA.
         :param pulumi.Input[_builtins.str] name: Identifier. Unique name of the configuration using the form:     `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+        :param pulumi.Input[_builtins.str] network: Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Optional. The state of the VPC Flow Log configuration. Default value
-               is ENABLED. When creating a new configuration, it must be enabled.   Possible
+               is ENABLED. When creating a new configuration, it must be enabled.
+               Possible values: STATE_UNSPECIFIED ENABLED DISABLED
+        :param pulumi.Input[_builtins.str] subnet: Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+        :param pulumi.Input[_builtins.str] target_resource_state: Describes the state of the configured target resource for diagnostic
+               purposes.
+               Possible values:
+               TARGET_RESOURCE_STATE_UNSPECIFIED
+               TARGET_RESOURCE_EXISTS
+               TARGET_RESOURCE_DOES_NOT_EXIST
         :param pulumi.Input[_builtins.str] update_time: Output only. The time the config was updated.
         :param pulumi.Input[_builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
         :param pulumi.Input[_builtins.str] vpn_tunnel: Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
@@ -342,12 +388,18 @@ class _VpcFlowLogsConfigState:
             pulumi.set(__self__, "metadata_fields", metadata_fields)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+        if target_resource_state is not None:
+            pulumi.set(__self__, "target_resource_state", target_resource_state)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if vpc_flow_logs_config_id is not None:
@@ -360,7 +412,7 @@ class _VpcFlowLogsConfigState:
     def aggregation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional. The aggregation interval for the logs. Default value is
-        INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+        INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -514,6 +566,18 @@ class _VpcFlowLogsConfigState:
 
     @_builtins.property
     @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -543,13 +607,43 @@ class _VpcFlowLogsConfigState:
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional. The state of the VPC Flow Log configuration. Default value
-        is ENABLED. When creating a new configuration, it must be enabled.   Possible
+        is ENABLED. When creating a new configuration, it must be enabled.
+        Possible values: STATE_UNSPECIFIED ENABLED DISABLED
         """
         return pulumi.get(self, "state")
 
     @state.setter
     def state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetResourceState")
+    def target_resource_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Describes the state of the configured target resource for diagnostic
+        purposes.
+        Possible values:
+        TARGET_RESOURCE_STATE_UNSPECIFIED
+        TARGET_RESOURCE_EXISTS
+        TARGET_RESOURCE_DOES_NOT_EXIST
+        """
+        return pulumi.get(self, "target_resource_state")
+
+    @target_resource_state.setter
+    def target_resource_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "target_resource_state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
@@ -603,46 +697,18 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_flow_logs_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+        VPC Flow Logs Config is a resource that lets you configure Flow Logs for Networks, Subnets, Interconnect attachments or VPN Tunnels.
 
         ## Example Usage
 
-        ### Network Management Vpc Flow Logs Config Interconnect Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        network = gcp.compute.Network("network", name="full-interconnect-test-network")
-        router = gcp.compute.Router("router",
-            name="full-interconnect-test-router",
-            network=network.name,
-            bgp={
-                "asn": 16550,
-            })
-        attachment = gcp.compute.InterconnectAttachment("attachment",
-            name="full-interconnect-test-id",
-            edge_availability_domain="AVAILABILITY_DOMAIN_1",
-            type="PARTNER",
-            router=router.id,
-            mtu="1500")
-        interconnect_test = gcp.networkmanagement.VpcFlowLogsConfig("interconnect-test",
-            vpc_flow_logs_config_id="full-interconnect-test-id",
-            location="global",
-            interconnect_attachment=attachment.name.apply(lambda name: f"projects/{project.number}/regions/us-east4/interconnectAttachments/{name}"),
-            state="ENABLED",
-            aggregation_interval="INTERVAL_5_SEC",
-            description="VPC Flow Logs over a VPN Gateway.",
-            flow_sampling=0.5,
-            metadata="INCLUDE_ALL_METADATA")
-        ```
         ### Network Management Vpc Flow Logs Config Interconnect Basic
 
         ```python
@@ -718,60 +784,38 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel.id)
         ```
-        ### Network Management Vpc Flow Logs Config Vpn Full
+        ### Network Management Vpc Flow Logs Config Network Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        network = gcp.compute.Network("network", name="full-test-network")
-        target_gateway = gcp.compute.VPNGateway("target_gateway",
-            name="full-test-gateway",
-            network=network.id)
-        vpn_static_ip = gcp.compute.Address("vpn_static_ip", name="full-test-address")
-        fr_esp = gcp.compute.ForwardingRule("fr_esp",
-            name="full-test-fresp",
-            ip_protocol="ESP",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        fr_udp500 = gcp.compute.ForwardingRule("fr_udp500",
-            name="full-test-fr500",
-            ip_protocol="UDP",
-            port_range="500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        fr_udp4500 = gcp.compute.ForwardingRule("fr_udp4500",
-            name="full-test-fr4500",
-            ip_protocol="UDP",
-            port_range="4500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        tunnel = gcp.compute.VPNTunnel("tunnel",
-            name="full-test-tunnel",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            opts = pulumi.ResourceOptions(depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
-        vpn_test = gcp.networkmanagement.VpcFlowLogsConfig("vpn-test",
-            vpc_flow_logs_config_id="full-test-id",
+        network = gcp.compute.Network("network", name="basic-network-test-network")
+        network_test = gcp.networkmanagement.VpcFlowLogsConfig("network-test",
+            vpc_flow_logs_config_id="basic-network-test-id",
             location="global",
-            vpn_tunnel=tunnel.name.apply(lambda name: f"projects/{project.number}/regions/us-central1/vpnTunnels/{name}"),
-            state="ENABLED",
-            aggregation_interval="INTERVAL_5_SEC",
-            description="VPC Flow Logs over a VPN Gateway.",
-            flow_sampling=0.5,
-            metadata="INCLUDE_ALL_METADATA")
-        route = gcp.compute.Route("route",
-            name="full-test-route",
-            network=network.name,
-            dest_range="15.0.0.0/24",
-            priority=1000,
-            next_hop_vpn_tunnel=tunnel.id)
+            network=network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
+        ```
+        ### Network Management Vpc Flow Logs Config Subnet Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        network = gcp.compute.Network("network",
+            name="basic-subnet-test-network",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="basic-subnet-test-subnetwork",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=network.id)
+        subnet_test = gcp.networkmanagement.VpcFlowLogsConfig("subnet-test",
+            vpc_flow_logs_config_id="basic-subnet-test-id",
+            location="global",
+            subnet=subnetwork.name.apply(lambda name: f"projects/{project.number}/regions/us-central1/subnetworks/{name}"))
         ```
 
         ## Import
@@ -801,7 +845,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
-               INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+               INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[_builtins.str] filter_expr: Optional. Export filter used to define which VPC Flow Logs should be logged.
@@ -822,10 +866,13 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                Possible values:  METADATA_UNSPECIFIED INCLUDE_ALL_METADATA EXCLUDE_ALL_METADATA CUSTOM_METADATA
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] metadata_fields: Optional. Custom metadata fields to include in the reported VPC flow
                logs. Can only be specified if \\"metadata\\" was set to CUSTOM_METADATA.
+        :param pulumi.Input[_builtins.str] network: Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: Optional. The state of the VPC Flow Log configuration. Default value
-               is ENABLED. When creating a new configuration, it must be enabled.   Possible
+               is ENABLED. When creating a new configuration, it must be enabled.
+               Possible values: STATE_UNSPECIFIED ENABLED DISABLED
+        :param pulumi.Input[_builtins.str] subnet: Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
         :param pulumi.Input[_builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
         :param pulumi.Input[_builtins.str] vpn_tunnel: Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
         """
@@ -836,40 +883,10 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                  args: VpcFlowLogsConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+        VPC Flow Logs Config is a resource that lets you configure Flow Logs for Networks, Subnets, Interconnect attachments or VPN Tunnels.
 
         ## Example Usage
 
-        ### Network Management Vpc Flow Logs Config Interconnect Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        network = gcp.compute.Network("network", name="full-interconnect-test-network")
-        router = gcp.compute.Router("router",
-            name="full-interconnect-test-router",
-            network=network.name,
-            bgp={
-                "asn": 16550,
-            })
-        attachment = gcp.compute.InterconnectAttachment("attachment",
-            name="full-interconnect-test-id",
-            edge_availability_domain="AVAILABILITY_DOMAIN_1",
-            type="PARTNER",
-            router=router.id,
-            mtu="1500")
-        interconnect_test = gcp.networkmanagement.VpcFlowLogsConfig("interconnect-test",
-            vpc_flow_logs_config_id="full-interconnect-test-id",
-            location="global",
-            interconnect_attachment=attachment.name.apply(lambda name: f"projects/{project.number}/regions/us-east4/interconnectAttachments/{name}"),
-            state="ENABLED",
-            aggregation_interval="INTERVAL_5_SEC",
-            description="VPC Flow Logs over a VPN Gateway.",
-            flow_sampling=0.5,
-            metadata="INCLUDE_ALL_METADATA")
-        ```
         ### Network Management Vpc Flow Logs Config Interconnect Basic
 
         ```python
@@ -945,60 +962,38 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel.id)
         ```
-        ### Network Management Vpc Flow Logs Config Vpn Full
+        ### Network Management Vpc Flow Logs Config Network Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        network = gcp.compute.Network("network", name="full-test-network")
-        target_gateway = gcp.compute.VPNGateway("target_gateway",
-            name="full-test-gateway",
-            network=network.id)
-        vpn_static_ip = gcp.compute.Address("vpn_static_ip", name="full-test-address")
-        fr_esp = gcp.compute.ForwardingRule("fr_esp",
-            name="full-test-fresp",
-            ip_protocol="ESP",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        fr_udp500 = gcp.compute.ForwardingRule("fr_udp500",
-            name="full-test-fr500",
-            ip_protocol="UDP",
-            port_range="500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        fr_udp4500 = gcp.compute.ForwardingRule("fr_udp4500",
-            name="full-test-fr4500",
-            ip_protocol="UDP",
-            port_range="4500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id)
-        tunnel = gcp.compute.VPNTunnel("tunnel",
-            name="full-test-tunnel",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            opts = pulumi.ResourceOptions(depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
-        vpn_test = gcp.networkmanagement.VpcFlowLogsConfig("vpn-test",
-            vpc_flow_logs_config_id="full-test-id",
+        network = gcp.compute.Network("network", name="basic-network-test-network")
+        network_test = gcp.networkmanagement.VpcFlowLogsConfig("network-test",
+            vpc_flow_logs_config_id="basic-network-test-id",
             location="global",
-            vpn_tunnel=tunnel.name.apply(lambda name: f"projects/{project.number}/regions/us-central1/vpnTunnels/{name}"),
-            state="ENABLED",
-            aggregation_interval="INTERVAL_5_SEC",
-            description="VPC Flow Logs over a VPN Gateway.",
-            flow_sampling=0.5,
-            metadata="INCLUDE_ALL_METADATA")
-        route = gcp.compute.Route("route",
-            name="full-test-route",
-            network=network.name,
-            dest_range="15.0.0.0/24",
-            priority=1000,
-            next_hop_vpn_tunnel=tunnel.id)
+            network=network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
+        ```
+        ### Network Management Vpc Flow Logs Config Subnet Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        network = gcp.compute.Network("network",
+            name="basic-subnet-test-network",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="basic-subnet-test-subnetwork",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=network.id)
+        subnet_test = gcp.networkmanagement.VpcFlowLogsConfig("subnet-test",
+            vpc_flow_logs_config_id="basic-subnet-test-id",
+            location="global",
+            subnet=subnetwork.name.apply(lambda name: f"projects/{project.number}/regions/us-central1/subnetworks/{name}"))
         ```
 
         ## Import
@@ -1049,8 +1044,10 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_flow_logs_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -1073,8 +1070,10 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["metadata_fields"] = metadata_fields
+            __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
+            __props__.__dict__["subnet"] = subnet
             if vpc_flow_logs_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_flow_logs_config_id'")
             __props__.__dict__["vpc_flow_logs_config_id"] = vpc_flow_logs_config_id
@@ -1083,6 +1082,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["target_resource_state"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1108,9 +1108,12 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[_builtins.str]] = None,
             metadata_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            network: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            subnet: Optional[pulumi.Input[_builtins.str]] = None,
+            target_resource_state: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
             vpc_flow_logs_config_id: Optional[pulumi.Input[_builtins.str]] = None,
             vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcFlowLogsConfig':
@@ -1122,7 +1125,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
-               INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+               INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the config was created.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
@@ -1146,12 +1149,21 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] metadata_fields: Optional. Custom metadata fields to include in the reported VPC flow
                logs. Can only be specified if \\"metadata\\" was set to CUSTOM_METADATA.
         :param pulumi.Input[_builtins.str] name: Identifier. Unique name of the configuration using the form:     `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+        :param pulumi.Input[_builtins.str] network: Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: Optional. The state of the VPC Flow Log configuration. Default value
-               is ENABLED. When creating a new configuration, it must be enabled.   Possible
+               is ENABLED. When creating a new configuration, it must be enabled.
+               Possible values: STATE_UNSPECIFIED ENABLED DISABLED
+        :param pulumi.Input[_builtins.str] subnet: Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+        :param pulumi.Input[_builtins.str] target_resource_state: Describes the state of the configured target resource for diagnostic
+               purposes.
+               Possible values:
+               TARGET_RESOURCE_STATE_UNSPECIFIED
+               TARGET_RESOURCE_EXISTS
+               TARGET_RESOURCE_DOES_NOT_EXIST
         :param pulumi.Input[_builtins.str] update_time: Output only. The time the config was updated.
         :param pulumi.Input[_builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
         :param pulumi.Input[_builtins.str] vpn_tunnel: Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
@@ -1172,9 +1184,12 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["metadata_fields"] = metadata_fields
         __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
+        __props__.__dict__["subnet"] = subnet
+        __props__.__dict__["target_resource_state"] = target_resource_state
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["vpc_flow_logs_config_id"] = vpc_flow_logs_config_id
         __props__.__dict__["vpn_tunnel"] = vpn_tunnel
@@ -1185,7 +1200,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
     def aggregation_interval(self) -> pulumi.Output[_builtins.str]:
         """
         Optional. The aggregation interval for the logs. Default value is
-        INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
+        INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -1291,6 +1306,14 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def network(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the project in which the resource belongs.
@@ -1312,9 +1335,31 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
     def state(self) -> pulumi.Output[_builtins.str]:
         """
         Optional. The state of the VPC Flow Log configuration. Default value
-        is ENABLED. When creating a new configuration, it must be enabled.   Possible
+        is ENABLED. When creating a new configuration, it must be enabled.
+        Possible values: STATE_UNSPECIFIED ENABLED DISABLED
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+        """
+        return pulumi.get(self, "subnet")
+
+    @_builtins.property
+    @pulumi.getter(name="targetResourceState")
+    def target_resource_state(self) -> pulumi.Output[_builtins.str]:
+        """
+        Describes the state of the configured target resource for diagnostic
+        purposes.
+        Possible values:
+        TARGET_RESOURCE_STATE_UNSPECIFIED
+        TARGET_RESOURCE_EXISTS
+        TARGET_RESOURCE_DOES_NOT_EXIST
+        """
+        return pulumi.get(self, "target_resource_state")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

@@ -664,6 +664,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invokeAsync("gcp:beyondcorp/getAppGateway:getAppGateway", TypeShape.of(GetAppGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Retrieves the current IAM policy data for application
      * 
      * ## Example Usage
@@ -708,6 +710,8 @@ public final class BeyondcorpFunctions {
         return getApplicationIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Retrieves the current IAM policy data for application
      * 
      * ## Example Usage
@@ -752,6 +756,8 @@ public final class BeyondcorpFunctions {
         return getApplicationIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Retrieves the current IAM policy data for application
      * 
      * ## Example Usage
@@ -796,6 +802,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy", TypeShape.of(GetApplicationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Retrieves the current IAM policy data for application
      * 
      * ## Example Usage
@@ -840,6 +848,8 @@ public final class BeyondcorpFunctions {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getApplicationIamPolicy:getApplicationIamPolicy", TypeShape.of(GetApplicationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** `gcp.beyondcorp.Application` and associated IAM resources are deprecated. Use `gcp.beyondcorp.SecurityGatewayApplication` instead.
+     * 
      * Retrieves the current IAM policy data for application
      * 
      * ## Example Usage

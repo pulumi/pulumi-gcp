@@ -99,6 +99,7 @@ public final class GetCryptoKeysKey {
      * @return If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the &#39;google_kms_crypto_key_version&#39; resource to create a new CryptoKeyVersion
      * or &#39;google_kms_key_ring_import_job&#39; resource to import the CryptoKeyVersion.
+     * This field is only applicable during initial CryptoKey creation.
      * 
      */
     private Boolean skipInitialVersionCreation;
@@ -216,6 +217,7 @@ public final class GetCryptoKeysKey {
      * @return If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the &#39;google_kms_crypto_key_version&#39; resource to create a new CryptoKeyVersion
      * or &#39;google_kms_key_ring_import_job&#39; resource to import the CryptoKeyVersion.
+     * This field is only applicable during initial CryptoKey creation.
      * 
      */
     public Boolean skipInitialVersionCreation() {

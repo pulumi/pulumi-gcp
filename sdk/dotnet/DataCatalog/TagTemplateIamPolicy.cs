@@ -106,6 +106,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// - 
     /// 
     /// # IAM policy for Data Catalog TagTemplate
+    /// 
     /// Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
     /// 
     /// * `gcp.datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.

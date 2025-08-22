@@ -294,6 +294,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for Secret Manager Secret
+ * 
  * Three different resources help you manage your IAM policy for Secret Manager Secret. Each of these resources serves a different use case:
  * 
  * * `gcp.secretmanager.SecretIamPolicy`: Authoritative. Sets the IAM policy for the secret and replaces any existing policy already attached.

@@ -89,27 +89,33 @@ class FolderArgs:
 @pulumi.input_type
 class _FolderState:
     def __init__(__self__, *,
+                 configured_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  folder_id: Optional[pulumi.Input[_builtins.str]] = None,
                  lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 management_project: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] configured_capabilities: Optional capabilities configured for this folder.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the Folder was created. Assigned by the server.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[_builtins.str] folder_id: The folder id from the name "folders/{folder_id}"
         :param pulumi.Input[_builtins.str] lifecycle_state: The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
+        :param pulumi.Input[_builtins.str] management_project: Management Project associated with this folder (if capability is enabled).
         :param pulumi.Input[_builtins.str] name: The resource name of the Folder. Its format is folders/{folder_id}.
         :param pulumi.Input[_builtins.str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
+        if configured_capabilities is not None:
+            pulumi.set(__self__, "configured_capabilities", configured_capabilities)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_protection is not None:
@@ -120,12 +126,26 @@ class _FolderState:
             pulumi.set(__self__, "folder_id", folder_id)
         if lifecycle_state is not None:
             pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        if management_project is not None:
+            pulumi.set(__self__, "management_project", management_project)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="configuredCapabilities")
+    def configured_capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional capabilities configured for this folder.
+        """
+        return pulumi.get(self, "configured_capabilities")
+
+    @configured_capabilities.setter
+    def configured_capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "configured_capabilities", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -185,6 +205,18 @@ class _FolderState:
     @lifecycle_state.setter
     def lifecycle_state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "lifecycle_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managementProject")
+    def management_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Management Project associated with this folder (if capability is enabled).
+        """
+        return pulumi.get(self, "management_project")
+
+    @management_project.setter
+    def management_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "management_project", value)
 
     @_builtins.property
     @pulumi.getter
@@ -355,9 +387,11 @@ class Folder(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["configured_capabilities"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["folder_id"] = None
             __props__.__dict__["lifecycle_state"] = None
+            __props__.__dict__["management_project"] = None
             __props__.__dict__["name"] = None
         super(Folder, __self__).__init__(
             'gcp:organizations/folder:Folder',
@@ -369,11 +403,13 @@ class Folder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            configured_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             folder_id: Optional[pulumi.Input[_builtins.str]] = None,
             lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
+            management_project: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Folder':
@@ -384,12 +420,14 @@ class Folder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] configured_capabilities: Optional capabilities configured for this folder.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the Folder was created. Assigned by the server.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[_builtins.str] folder_id: The folder id from the name "folders/{folder_id}"
         :param pulumi.Input[_builtins.str] lifecycle_state: The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
+        :param pulumi.Input[_builtins.str] management_project: Management Project associated with this folder (if capability is enabled).
         :param pulumi.Input[_builtins.str] name: The resource name of the Folder. Its format is folders/{folder_id}.
         :param pulumi.Input[_builtins.str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
@@ -399,15 +437,25 @@ class Folder(pulumi.CustomResource):
 
         __props__ = _FolderState.__new__(_FolderState)
 
+        __props__.__dict__["configured_capabilities"] = configured_capabilities
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["lifecycle_state"] = lifecycle_state
+        __props__.__dict__["management_project"] = management_project
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["tags"] = tags
         return Folder(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="configuredCapabilities")
+    def configured_capabilities(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Optional capabilities configured for this folder.
+        """
+        return pulumi.get(self, "configured_capabilities")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -447,6 +495,14 @@ class Folder(pulumi.CustomResource):
         The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
         """
         return pulumi.get(self, "lifecycle_state")
+
+    @_builtins.property
+    @pulumi.getter(name="managementProject")
+    def management_project(self) -> pulumi.Output[_builtins.str]:
+        """
+        Management Project associated with this folder (if capability is enabled).
+        """
+        return pulumi.get(self, "management_project")
 
     @_builtins.property
     @pulumi.getter

@@ -25,6 +25,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Sysctls;
+        /// <summary>
+        /// The Linux kernel transparent hugepage defrag setting.
+        /// </summary>
+        public readonly string TransparentHugepageDefrag;
+        /// <summary>
+        /// The Linux kernel transparent hugepage setting.
+        /// </summary>
+        public readonly string TransparentHugepageEnabled;
 
         [OutputConstructor]
         private GetClusterNodeConfigLinuxNodeConfigResult(
@@ -32,11 +40,17 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult> hugepagesConfigs,
 
-            ImmutableDictionary<string, string> sysctls)
+            ImmutableDictionary<string, string> sysctls,
+
+            string transparentHugepageDefrag,
+
+            string transparentHugepageEnabled)
         {
             CgroupMode = cgroupMode;
             HugepagesConfigs = hugepagesConfigs;
             Sysctls = sysctls;
+            TransparentHugepageDefrag = transparentHugepageDefrag;
+            TransparentHugepageEnabled = transparentHugepageEnabled;
         }
     }
 }

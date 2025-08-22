@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.DataPlex
     /// - 
     /// 
     /// # IAM policy for Dataplex Lake
+    /// 
     /// Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
     /// 
     /// * `gcp.dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.

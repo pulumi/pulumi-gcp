@@ -35,6 +35,16 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
      * 
      */
     private @Nullable Map<String,String> sysctls;
+    /**
+     * @return The Linux kernel transparent hugepage defrag setting.
+     * 
+     */
+    private @Nullable String transparentHugepageDefrag;
+    /**
+     * @return The Linux kernel transparent hugepage setting.
+     * 
+     */
+    private @Nullable String transparentHugepageEnabled;
 
     private ClusterNodePoolNodeConfigLinuxNodeConfig() {}
     /**
@@ -65,6 +75,20 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
     public Map<String,String> sysctls() {
         return this.sysctls == null ? Map.of() : this.sysctls;
     }
+    /**
+     * @return The Linux kernel transparent hugepage defrag setting.
+     * 
+     */
+    public Optional<String> transparentHugepageDefrag() {
+        return Optional.ofNullable(this.transparentHugepageDefrag);
+    }
+    /**
+     * @return The Linux kernel transparent hugepage setting.
+     * 
+     */
+    public Optional<String> transparentHugepageEnabled() {
+        return Optional.ofNullable(this.transparentHugepageEnabled);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -78,12 +102,16 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
         private @Nullable String cgroupMode;
         private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
         private @Nullable Map<String,String> sysctls;
+        private @Nullable String transparentHugepageDefrag;
+        private @Nullable String transparentHugepageEnabled;
         public Builder() {}
         public Builder(ClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfig = defaults.hugepagesConfig;
     	      this.sysctls = defaults.sysctls;
+    	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
+    	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
         }
 
         @CustomType.Setter
@@ -104,11 +132,25 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
             this.sysctls = sysctls;
             return this;
         }
+        @CustomType.Setter
+        public Builder transparentHugepageDefrag(@Nullable String transparentHugepageDefrag) {
+
+            this.transparentHugepageDefrag = transparentHugepageDefrag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transparentHugepageEnabled(@Nullable String transparentHugepageEnabled) {
+
+            this.transparentHugepageEnabled = transparentHugepageEnabled;
+            return this;
+        }
         public ClusterNodePoolNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new ClusterNodePoolNodeConfigLinuxNodeConfig();
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfig = hugepagesConfig;
             _resultValue.sysctls = sysctls;
+            _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
+            _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;
             return _resultValue;
         }
     }

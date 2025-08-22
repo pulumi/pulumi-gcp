@@ -136,6 +136,7 @@ import (
 // -
 //
 // # IAM policy for Dataproc Metastore Federation
+//
 // Three different resources help you manage your IAM policy for Dataproc Metastore Federation. Each of these resources serves a different use case:
 //
 // * `dataproc.MetastoreFederationIamPolicy`: Authoritative. Sets the IAM policy for the federation and replaces any existing policy already attached.

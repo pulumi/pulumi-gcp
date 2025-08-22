@@ -157,6 +157,10 @@ namespace Pulumi.Gcp.Organizations
     public sealed class GetFolderResult
     {
         /// <summary>
+        /// Optional capabilities configured for this folder.
+        /// </summary>
+        public readonly ImmutableArray<string> ConfiguredCapabilities;
+        /// <summary>
         /// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         public readonly string CreateTime;
@@ -177,6 +181,10 @@ namespace Pulumi.Gcp.Organizations
         public readonly string LifecycleState;
         public readonly bool? LookupOrganization;
         /// <summary>
+        /// Management Project associated with this folder (if capability is enabled).
+        /// </summary>
+        public readonly string ManagementProject;
+        /// <summary>
         /// The resource name of the Folder in the form `folders/{folder_id}`.
         /// </summary>
         public readonly string Name;
@@ -191,6 +199,8 @@ namespace Pulumi.Gcp.Organizations
 
         [OutputConstructor]
         private GetFolderResult(
+            ImmutableArray<string> configuredCapabilities,
+
             string createTime,
 
             bool deletionProtection,
@@ -207,12 +217,15 @@ namespace Pulumi.Gcp.Organizations
 
             bool? lookupOrganization,
 
+            string managementProject,
+
             string name,
 
             string organization,
 
             string parent)
         {
+            ConfiguredCapabilities = configuredCapabilities;
             CreateTime = createTime;
             DeletionProtection = deletionProtection;
             DisplayName = displayName;
@@ -221,6 +234,7 @@ namespace Pulumi.Gcp.Organizations
             Id = id;
             LifecycleState = lifecycleState;
             LookupOrganization = lookupOrganization;
+            ManagementProject = managementProject;
             Name = name;
             Organization = organization;
             Parent = parent;

@@ -139,6 +139,7 @@ import (
 // -
 //
 // # IAM policy for Gemini for Google Cloud RepositoryGroup
+//
 // Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
 //
 // * `gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.

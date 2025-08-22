@@ -7,13 +7,31 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NodePoolNodeConfigSoleTenantConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolNodeConfigSoleTenantConfigArgs Empty = new NodePoolNodeConfigSoleTenantConfigArgs();
+
+    /**
+     * Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+     * 
+     */
+    @Import(name="minNodeCpus")
+    private @Nullable Output<Integer> minNodeCpus;
+
+    /**
+     * @return Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+     * 
+     */
+    public Optional<Output<Integer>> minNodeCpus() {
+        return Optional.ofNullable(this.minNodeCpus);
+    }
 
     /**
      * .
@@ -33,6 +51,7 @@ public final class NodePoolNodeConfigSoleTenantConfigArgs extends com.pulumi.res
     private NodePoolNodeConfigSoleTenantConfigArgs() {}
 
     private NodePoolNodeConfigSoleTenantConfigArgs(NodePoolNodeConfigSoleTenantConfigArgs $) {
+        this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
     }
 
@@ -52,6 +71,27 @@ public final class NodePoolNodeConfigSoleTenantConfigArgs extends com.pulumi.res
 
         public Builder(NodePoolNodeConfigSoleTenantConfigArgs defaults) {
             $ = new NodePoolNodeConfigSoleTenantConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param minNodeCpus Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodeCpus(@Nullable Output<Integer> minNodeCpus) {
+            $.minNodeCpus = minNodeCpus;
+            return this;
+        }
+
+        /**
+         * @param minNodeCpus Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodeCpus(Integer minNodeCpus) {
+            return minNodeCpus(Output.of(minNodeCpus));
         }
 
         /**

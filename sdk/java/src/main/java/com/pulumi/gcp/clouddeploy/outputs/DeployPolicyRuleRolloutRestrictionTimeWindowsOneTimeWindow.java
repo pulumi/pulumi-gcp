@@ -14,25 +14,25 @@ import java.util.Objects;
 @CustomType
 public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
     /**
-     * @return Required. End date.
+     * @return End date.
      * Structure is documented below.
      * 
      */
     private DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate endDate;
     /**
-     * @return Required. End time (exclusive). You may use 24:00 for the end of the day.
+     * @return End time (exclusive). You may use 24:00 for the end of the day.
      * Structure is documented below.
      * 
      */
     private DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime endTime;
     /**
-     * @return Required. Start date.
+     * @return Start date.
      * Structure is documented below.
      * 
      */
     private DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate startDate;
     /**
-     * @return Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+     * @return Start time (inclusive). Use 00:00 for the beginning of the day.
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
 
     private DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow() {}
     /**
-     * @return Required. End date.
+     * @return End date.
      * Structure is documented below.
      * 
      */
@@ -48,7 +48,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
         return this.endDate;
     }
     /**
-     * @return Required. End time (exclusive). You may use 24:00 for the end of the day.
+     * @return End time (exclusive). You may use 24:00 for the end of the day.
      * Structure is documented below.
      * 
      */
@@ -56,7 +56,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
         return this.endTime;
     }
     /**
-     * @return Required. Start date.
+     * @return Start date.
      * Structure is documented below.
      * 
      */
@@ -64,7 +64,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
         return this.startDate;
     }
     /**
-     * @return Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+     * @return Start time (inclusive). Use 00:00 for the beginning of the day.
      * Structure is documented below.
      * 
      */

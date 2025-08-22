@@ -50,7 +50,6 @@ type Provider struct {
 	CloudAssetCustomEndpoint               pulumi.StringPtrOutput `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudBillingCustomEndpoint"`
 	CloudBuildCustomEndpoint               pulumi.StringPtrOutput `pulumi:"cloudBuildCustomEndpoint"`
-	CloudBuildWorkerPoolCustomEndpoint     pulumi.StringPtrOutput `pulumi:"cloudBuildWorkerPoolCustomEndpoint"`
 	CloudFunctionsCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint            pulumi.StringPtrOutput `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIdsCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"cloudIdsCustomEndpoint"`
@@ -114,7 +113,6 @@ type Provider struct {
 	GkeBackupCustomEndpoint                pulumi.StringPtrOutput `pulumi:"gkeBackupCustomEndpoint"`
 	GkeHub2CustomEndpoint                  pulumi.StringPtrOutput `pulumi:"gkeHub2CustomEndpoint"`
 	GkeHubCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"gkeHubCustomEndpoint"`
-	GkehubFeatureCustomEndpoint            pulumi.StringPtrOutput `pulumi:"gkehubFeatureCustomEndpoint"`
 	GkeonpremCustomEndpoint                pulumi.StringPtrOutput `pulumi:"gkeonpremCustomEndpoint"`
 	GooglePartnerName                      pulumi.StringPtrOutput `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint               pulumi.StringPtrOutput `pulumi:"healthcareCustomEndpoint"`
@@ -281,7 +279,6 @@ type providerArgs struct {
 	CloudAssetCustomEndpoint               *string                      `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint             *string                      `pulumi:"cloudBillingCustomEndpoint"`
 	CloudBuildCustomEndpoint               *string                      `pulumi:"cloudBuildCustomEndpoint"`
-	CloudBuildWorkerPoolCustomEndpoint     *string                      `pulumi:"cloudBuildWorkerPoolCustomEndpoint"`
 	CloudFunctionsCustomEndpoint           *string                      `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint            *string                      `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIdsCustomEndpoint                 *string                      `pulumi:"cloudIdsCustomEndpoint"`
@@ -348,7 +345,6 @@ type providerArgs struct {
 	GkeBackupCustomEndpoint                *string                      `pulumi:"gkeBackupCustomEndpoint"`
 	GkeHub2CustomEndpoint                  *string                      `pulumi:"gkeHub2CustomEndpoint"`
 	GkeHubCustomEndpoint                   *string                      `pulumi:"gkeHubCustomEndpoint"`
-	GkehubFeatureCustomEndpoint            *string                      `pulumi:"gkehubFeatureCustomEndpoint"`
 	GkeonpremCustomEndpoint                *string                      `pulumi:"gkeonpremCustomEndpoint"`
 	GooglePartnerName                      *string                      `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint               *string                      `pulumi:"healthcareCustomEndpoint"`
@@ -481,7 +477,6 @@ type ProviderArgs struct {
 	CloudAssetCustomEndpoint               pulumi.StringPtrInput
 	CloudBillingCustomEndpoint             pulumi.StringPtrInput
 	CloudBuildCustomEndpoint               pulumi.StringPtrInput
-	CloudBuildWorkerPoolCustomEndpoint     pulumi.StringPtrInput
 	CloudFunctionsCustomEndpoint           pulumi.StringPtrInput
 	CloudIdentityCustomEndpoint            pulumi.StringPtrInput
 	CloudIdsCustomEndpoint                 pulumi.StringPtrInput
@@ -548,7 +543,6 @@ type ProviderArgs struct {
 	GkeBackupCustomEndpoint                pulumi.StringPtrInput
 	GkeHub2CustomEndpoint                  pulumi.StringPtrInput
 	GkeHubCustomEndpoint                   pulumi.StringPtrInput
-	GkehubFeatureCustomEndpoint            pulumi.StringPtrInput
 	GkeonpremCustomEndpoint                pulumi.StringPtrInput
 	GooglePartnerName                      pulumi.StringPtrInput
 	HealthcareCustomEndpoint               pulumi.StringPtrInput
@@ -833,10 +827,6 @@ func (o ProviderOutput) CloudBuildCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudBuildCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) CloudBuildWorkerPoolCustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudBuildWorkerPoolCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
 func (o ProviderOutput) CloudFunctionsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudFunctionsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1087,10 +1077,6 @@ func (o ProviderOutput) GkeHub2CustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) GkeHubCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GkeHubCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderOutput) GkehubFeatureCustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GkehubFeatureCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) GkeonpremCustomEndpoint() pulumi.StringPtrOutput {

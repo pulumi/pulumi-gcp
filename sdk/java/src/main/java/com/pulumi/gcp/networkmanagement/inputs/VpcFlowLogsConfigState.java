@@ -20,7 +20,7 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
     /**
      * Optional. The aggregation interval for the logs. Default value is
-     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN&#34;
+     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
      * 
      */
     @Import(name="aggregationInterval")
@@ -28,7 +28,7 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Optional. The aggregation interval for the logs. Default value is
-     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN&#34;
+     * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
      * 
      */
     public Optional<Output<String>> aggregationInterval() {
@@ -225,6 +225,21 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+     * 
+     */
+    @Import(name="network")
+    private @Nullable Output<String> network;
+
+    /**
+     * @return Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+     * 
+     */
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -260,7 +275,8 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
     /**
      * Optional. The state of the VPC Flow Log configuration. Default value
-     * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+     * is ENABLED. When creating a new configuration, it must be enabled.
+     * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
      * 
      */
     @Import(name="state")
@@ -268,11 +284,52 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Optional. The state of the VPC Flow Log configuration. Default value
-     * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+     * is ENABLED. When creating a new configuration, it must be enabled.
+     * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
      * 
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+     * 
+     */
+    @Import(name="subnet")
+    private @Nullable Output<String> subnet;
+
+    /**
+     * @return Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+     * 
+     */
+    public Optional<Output<String>> subnet() {
+        return Optional.ofNullable(this.subnet);
+    }
+
+    /**
+     * Describes the state of the configured target resource for diagnostic
+     * purposes.
+     * Possible values:
+     * TARGET_RESOURCE_STATE_UNSPECIFIED
+     * TARGET_RESOURCE_EXISTS
+     * TARGET_RESOURCE_DOES_NOT_EXIST
+     * 
+     */
+    @Import(name="targetResourceState")
+    private @Nullable Output<String> targetResourceState;
+
+    /**
+     * @return Describes the state of the configured target resource for diagnostic
+     * purposes.
+     * Possible values:
+     * TARGET_RESOURCE_STATE_UNSPECIFIED
+     * TARGET_RESOURCE_EXISTS
+     * TARGET_RESOURCE_DOES_NOT_EXIST
+     * 
+     */
+    public Optional<Output<String>> targetResourceState() {
+        return Optional.ofNullable(this.targetResourceState);
     }
 
     /**
@@ -335,9 +392,12 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
         this.metadata = $.metadata;
         this.metadataFields = $.metadataFields;
         this.name = $.name;
+        this.network = $.network;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.state = $.state;
+        this.subnet = $.subnet;
+        this.targetResourceState = $.targetResourceState;
         this.updateTime = $.updateTime;
         this.vpcFlowLogsConfigId = $.vpcFlowLogsConfigId;
         this.vpnTunnel = $.vpnTunnel;
@@ -363,7 +423,7 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param aggregationInterval Optional. The aggregation interval for the logs. Default value is
-         * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN&#34;
+         * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
          * 
          * @return builder
          * 
@@ -375,7 +435,7 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param aggregationInterval Optional. The aggregation interval for the logs. Default value is
-         * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN&#34;
+         * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
          * 
          * @return builder
          * 
@@ -651,6 +711,27 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param network Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(@Nullable Output<String> network) {
+            $.network = network;
+            return this;
+        }
+
+        /**
+         * @param network Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(String network) {
+            return network(Output.of(network));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -698,7 +779,8 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param state Optional. The state of the VPC Flow Log configuration. Default value
-         * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+         * is ENABLED. When creating a new configuration, it must be enabled.
+         * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
          * 
          * @return builder
          * 
@@ -710,13 +792,66 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param state Optional. The state of the VPC Flow Log configuration. Default value
-         * is ENABLED. When creating a new configuration, it must be enabled.   Possible
+         * is ENABLED. When creating a new configuration, it must be enabled.
+         * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
          * 
          * @return builder
          * 
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param subnet Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnet(@Nullable Output<String> subnet) {
+            $.subnet = subnet;
+            return this;
+        }
+
+        /**
+         * @param subnet Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnet(String subnet) {
+            return subnet(Output.of(subnet));
+        }
+
+        /**
+         * @param targetResourceState Describes the state of the configured target resource for diagnostic
+         * purposes.
+         * Possible values:
+         * TARGET_RESOURCE_STATE_UNSPECIFIED
+         * TARGET_RESOURCE_EXISTS
+         * TARGET_RESOURCE_DOES_NOT_EXIST
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetResourceState(@Nullable Output<String> targetResourceState) {
+            $.targetResourceState = targetResourceState;
+            return this;
+        }
+
+        /**
+         * @param targetResourceState Describes the state of the configured target resource for diagnostic
+         * purposes.
+         * Possible values:
+         * TARGET_RESOURCE_STATE_UNSPECIFIED
+         * TARGET_RESOURCE_EXISTS
+         * TARGET_RESOURCE_DOES_NOT_EXIST
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetResourceState(String targetResourceState) {
+            return targetResourceState(Output.of(targetResourceState));
         }
 
         /**

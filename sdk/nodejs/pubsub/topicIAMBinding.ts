@@ -73,6 +73,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for Cloud Pub/Sub Topic
+ *
  * Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
  *
  * * `gcp.pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.

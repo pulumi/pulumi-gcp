@@ -279,6 +279,7 @@ class ImageIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Compute Engine Image
+
         Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
 
         * `compute.ImageIamPolicy`: Authoritative. Sets the IAM policy for the image and replaces any existing policy already attached.
@@ -561,6 +562,7 @@ class ImageIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Compute Engine Image
+
         Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
 
         * `compute.ImageIamPolicy`: Authoritative. Sets the IAM policy for the image and replaces any existing policy already attached.

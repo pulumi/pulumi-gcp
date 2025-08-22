@@ -27,8 +27,10 @@ class ReservationArgs:
                  edition: Optional[pulumi.Input[_builtins.str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_slots: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
@@ -43,9 +45,74 @@ class ReservationArgs:
                capacity specified above at most.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[_builtins.int] max_slots: The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+               (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
+               more than the specified number of slots, even if there is demand and supply (from idle
+               slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
+               exceed the maxSlots value. However, in terms of autoscale.current_slots (which accounts
+               for the additional added slots), it will never exceed the maxSlots - baseline.
+               This field must be set together with the scalingMode enum value, otherwise the request
+               will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               If the maxSlots and scalingMode are set, the autoscale or autoscale.max_slots field
+               must be unset. Otherwise the request will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT. However, the autoscale field may still be in the
+               output. The autopscale.max_slots will always show as 0 and the autoscaler.current_slots
+               will represent the current slots from autoscaler excluding idle slots. For example,
+               if the maxSlots is 1000 and scalingMode is AUTOSCALE_ONLY, then in the output, the
+               autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any value
+               between 0 and 1000.
+               If the maxSlots is 1000, scalingMode is ALL_SLOTS, the baseline is 100 and idle slots
+               usage is 200, then in the output, the autoscaler.max_slots will be 0 and the
+               autoscaler.current_slots will not be higher than 700.
+               If the maxSlots is 1000, scalingMode is IDLE_SLOTS_ONLY, then in the output, the
+               autoscaler field will be null.
+               If the maxSlots and scalingMode are set, then the ignoreIdleSlots field must be
+               aligned with the scalingMode enum value.(See details in ScalingMode comments).
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Please note, the maxSlots is for user to manage the part of slots greater than the
+               baseline. Therefore, we don't allow users to set maxSlots smaller or equal to the
+               baseline as it will not be meaningful. If the field is present and
+               slotCapacity>=maxSlots, requests will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT.
+               Please note that if maxSlots is set to 0, we will treat it as unset. Customers can set
+               maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
+               feature.
         :param pulumi.Input[_builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] scaling_mode: The scaling mode for the reservation. If the field is present but maxSlots is not present,
+               requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Enum values:
+               `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
+               `AUTOSCALE_ONLY`: The reservation will scale up only using slots from autoscaling. It will
+               not use any idle slots even if there may be some available. The upper limit that autoscaling
+               can scale up to will be maxSlots - baseline. For example, if maxSlots is 1000, baseline is 200
+               and customer sets ScalingMode to AUTOSCALE_ONLY, then autoscalerg will scale up to 800 slots
+               and no idle slots will be used. Please note, in this mode, the ignoreIdleSlots field must be
+               set to true. Otherwise the request will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT.
+               `IDLE_SLOTS_ONLY`: The reservation will scale up using only idle slots contributed by other
+               reservations or from unassigned commitments. If no idle slots are available it will not scale
+               up further. If the idle slots which it is using are reclaimed by the contributing reservation(s)
+               it may be forced to scale down. The max idle slots the reservation can be maxSlots - baseline
+               capacity. For example, if maxSlots is 1000, baseline is 200 and customer sets ScalingMode to
+               IDLE_SLOTS_ONLY, 1. if there are 1000 idle slots available in other reservations, the
+               reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there are
+               500 idle slots available in other reservations, the reservation will scale up to 700 slots with
+               200 baseline and 300 idle slots. Please note, in this mode, the reservation might not be able to
+               scale up to maxSlots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT
+               `ALL_SLOTS`: The reservation will scale up using all slots available to it. It will use idle slots
+               contributed by other reservations or from unassigned commitments first. If no idle slots are
+               available it will scale up using autoscaling. For example, if maxSlots is 1000, baseline is 200
+               and customer sets ScalingMode to ALL_SLOTS, 1. if there are 800 idle slots available in other
+               reservations, the reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2.
+               if there are 500 idle slots available in other reservations, the reservation will scale up to 1000
+               slots with 200 baseline, 500 idle slots and 300 autoscaling slots. 3. if there are no idle slots
+               available in other reservations, it will scale up to 1000 slots with 200 baseline and 800
+               autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
         :param pulumi.Input[_builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
                reservations using the managed disaster recovery feature. Users can set this in create
                reservation calls to create a failover reservation or in update reservation calls to convert
@@ -62,10 +129,14 @@ class ReservationArgs:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if max_slots is not None:
+            pulumi.set(__self__, "max_slots", max_slots)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scaling_mode is not None:
+            pulumi.set(__self__, "scaling_mode", scaling_mode)
         if secondary_location is not None:
             pulumi.set(__self__, "secondary_location", secondary_location)
 
@@ -147,6 +218,49 @@ class ReservationArgs:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxSlots")
+    def max_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+        (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
+        more than the specified number of slots, even if there is demand and supply (from idle
+        slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
+        exceed the maxSlots value. However, in terms of autoscale.current_slots (which accounts
+        for the additional added slots), it will never exceed the maxSlots - baseline.
+        This field must be set together with the scalingMode enum value, otherwise the request
+        will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        If the maxSlots and scalingMode are set, the autoscale or autoscale.max_slots field
+        must be unset. Otherwise the request will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT. However, the autoscale field may still be in the
+        output. The autopscale.max_slots will always show as 0 and the autoscaler.current_slots
+        will represent the current slots from autoscaler excluding idle slots. For example,
+        if the maxSlots is 1000 and scalingMode is AUTOSCALE_ONLY, then in the output, the
+        autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any value
+        between 0 and 1000.
+        If the maxSlots is 1000, scalingMode is ALL_SLOTS, the baseline is 100 and idle slots
+        usage is 200, then in the output, the autoscaler.max_slots will be 0 and the
+        autoscaler.current_slots will not be higher than 700.
+        If the maxSlots is 1000, scalingMode is IDLE_SLOTS_ONLY, then in the output, the
+        autoscaler field will be null.
+        If the maxSlots and scalingMode are set, then the ignoreIdleSlots field must be
+        aligned with the scalingMode enum value.(See details in ScalingMode comments).
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Please note, the maxSlots is for user to manage the part of slots greater than the
+        baseline. Therefore, we don't allow users to set maxSlots smaller or equal to the
+        baseline as it will not be meaningful. If the field is present and
+        slotCapacity>=maxSlots, requests will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT.
+        Please note that if maxSlots is set to 0, we will treat it as unset. Customers can set
+        maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
+        feature.
+        """
+        return pulumi.get(self, "max_slots")
+
+    @max_slots.setter
+    def max_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_slots", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -172,6 +286,50 @@ class ReservationArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="scalingMode")
+    def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The scaling mode for the reservation. If the field is present but maxSlots is not present,
+        requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Enum values:
+        `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
+        `AUTOSCALE_ONLY`: The reservation will scale up only using slots from autoscaling. It will
+        not use any idle slots even if there may be some available. The upper limit that autoscaling
+        can scale up to will be maxSlots - baseline. For example, if maxSlots is 1000, baseline is 200
+        and customer sets ScalingMode to AUTOSCALE_ONLY, then autoscalerg will scale up to 800 slots
+        and no idle slots will be used. Please note, in this mode, the ignoreIdleSlots field must be
+        set to true. Otherwise the request will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT.
+        `IDLE_SLOTS_ONLY`: The reservation will scale up using only idle slots contributed by other
+        reservations or from unassigned commitments. If no idle slots are available it will not scale
+        up further. If the idle slots which it is using are reclaimed by the contributing reservation(s)
+        it may be forced to scale down. The max idle slots the reservation can be maxSlots - baseline
+        capacity. For example, if maxSlots is 1000, baseline is 200 and customer sets ScalingMode to
+        IDLE_SLOTS_ONLY, 1. if there are 1000 idle slots available in other reservations, the
+        reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there are
+        500 idle slots available in other reservations, the reservation will scale up to 700 slots with
+        200 baseline and 300 idle slots. Please note, in this mode, the reservation might not be able to
+        scale up to maxSlots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT
+        `ALL_SLOTS`: The reservation will scale up using all slots available to it. It will use idle slots
+        contributed by other reservations or from unassigned commitments first. If no idle slots are
+        available it will scale up using autoscaling. For example, if maxSlots is 1000, baseline is 200
+        and customer sets ScalingMode to ALL_SLOTS, 1. if there are 800 idle slots available in other
+        reservations, the reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2.
+        if there are 500 idle slots available in other reservations, the reservation will scale up to 1000
+        slots with 200 baseline, 500 idle slots and 300 autoscaling slots. 3. if there are no idle slots
+        available in other reservations, it will scale up to 1000 slots with 200 baseline and 800
+        autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
+        """
+        return pulumi.get(self, "scaling_mode")
+
+    @scaling_mode.setter
+    def scaling_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scaling_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="secondaryLocation")
     def secondary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -195,11 +353,13 @@ class _ReservationState:
                  edition: Optional[pulumi.Input[_builtins.str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_slots: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  original_primary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]] = None,
+                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  slot_capacity: Optional[pulumi.Input[_builtins.int]] = None):
         """
@@ -213,6 +373,38 @@ class _ReservationState:
                capacity specified above at most.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[_builtins.int] max_slots: The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+               (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
+               more than the specified number of slots, even if there is demand and supply (from idle
+               slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
+               exceed the maxSlots value. However, in terms of autoscale.current_slots (which accounts
+               for the additional added slots), it will never exceed the maxSlots - baseline.
+               This field must be set together with the scalingMode enum value, otherwise the request
+               will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               If the maxSlots and scalingMode are set, the autoscale or autoscale.max_slots field
+               must be unset. Otherwise the request will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT. However, the autoscale field may still be in the
+               output. The autopscale.max_slots will always show as 0 and the autoscaler.current_slots
+               will represent the current slots from autoscaler excluding idle slots. For example,
+               if the maxSlots is 1000 and scalingMode is AUTOSCALE_ONLY, then in the output, the
+               autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any value
+               between 0 and 1000.
+               If the maxSlots is 1000, scalingMode is ALL_SLOTS, the baseline is 100 and idle slots
+               usage is 200, then in the output, the autoscaler.max_slots will be 0 and the
+               autoscaler.current_slots will not be higher than 700.
+               If the maxSlots is 1000, scalingMode is IDLE_SLOTS_ONLY, then in the output, the
+               autoscaler field will be null.
+               If the maxSlots and scalingMode are set, then the ignoreIdleSlots field must be
+               aligned with the scalingMode enum value.(See details in ScalingMode comments).
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Please note, the maxSlots is for user to manage the part of slots greater than the
+               baseline. Therefore, we don't allow users to set maxSlots smaller or equal to the
+               baseline as it will not be meaningful. If the field is present and
+               slotCapacity>=maxSlots, requests will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT.
+               Please note that if maxSlots is set to 0, we will treat it as unset. Customers can set
+               maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
+               feature.
         :param pulumi.Input[_builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[_builtins.str] original_primary_location: The location where the reservation was originally created. This is set only during the
                failover reservation's creation. All billing charges for the failover reservation will be
@@ -228,6 +420,39 @@ class _ReservationState:
                either not a DR reservation or the reservation is a DR secondary or that any replication
                operations on the reservation have succeeded.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] scaling_mode: The scaling mode for the reservation. If the field is present but maxSlots is not present,
+               requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Enum values:
+               `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
+               `AUTOSCALE_ONLY`: The reservation will scale up only using slots from autoscaling. It will
+               not use any idle slots even if there may be some available. The upper limit that autoscaling
+               can scale up to will be maxSlots - baseline. For example, if maxSlots is 1000, baseline is 200
+               and customer sets ScalingMode to AUTOSCALE_ONLY, then autoscalerg will scale up to 800 slots
+               and no idle slots will be used. Please note, in this mode, the ignoreIdleSlots field must be
+               set to true. Otherwise the request will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT.
+               `IDLE_SLOTS_ONLY`: The reservation will scale up using only idle slots contributed by other
+               reservations or from unassigned commitments. If no idle slots are available it will not scale
+               up further. If the idle slots which it is using are reclaimed by the contributing reservation(s)
+               it may be forced to scale down. The max idle slots the reservation can be maxSlots - baseline
+               capacity. For example, if maxSlots is 1000, baseline is 200 and customer sets ScalingMode to
+               IDLE_SLOTS_ONLY, 1. if there are 1000 idle slots available in other reservations, the
+               reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there are
+               500 idle slots available in other reservations, the reservation will scale up to 700 slots with
+               200 baseline and 300 idle slots. Please note, in this mode, the reservation might not be able to
+               scale up to maxSlots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT
+               `ALL_SLOTS`: The reservation will scale up using all slots available to it. It will use idle slots
+               contributed by other reservations or from unassigned commitments first. If no idle slots are
+               available it will scale up using autoscaling. For example, if maxSlots is 1000, baseline is 200
+               and customer sets ScalingMode to ALL_SLOTS, 1. if there are 800 idle slots available in other
+               reservations, the reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2.
+               if there are 500 idle slots available in other reservations, the reservation will scale up to 1000
+               slots with 200 baseline, 500 idle slots and 300 autoscaling slots. 3. if there are no idle slots
+               available in other reservations, it will scale up to 1000 slots with 200 baseline and 800
+               autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
         :param pulumi.Input[_builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
                reservations using the managed disaster recovery feature. Users can set this in create
                reservation calls to create a failover reservation or in update reservation calls to convert
@@ -245,6 +470,8 @@ class _ReservationState:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if max_slots is not None:
+            pulumi.set(__self__, "max_slots", max_slots)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if original_primary_location is not None:
@@ -255,6 +482,8 @@ class _ReservationState:
             pulumi.set(__self__, "project", project)
         if replication_statuses is not None:
             pulumi.set(__self__, "replication_statuses", replication_statuses)
+        if scaling_mode is not None:
+            pulumi.set(__self__, "scaling_mode", scaling_mode)
         if secondary_location is not None:
             pulumi.set(__self__, "secondary_location", secondary_location)
         if slot_capacity is not None:
@@ -323,6 +552,49 @@ class _ReservationState:
     @location.setter
     def location(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxSlots")
+    def max_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+        (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
+        more than the specified number of slots, even if there is demand and supply (from idle
+        slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
+        exceed the maxSlots value. However, in terms of autoscale.current_slots (which accounts
+        for the additional added slots), it will never exceed the maxSlots - baseline.
+        This field must be set together with the scalingMode enum value, otherwise the request
+        will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        If the maxSlots and scalingMode are set, the autoscale or autoscale.max_slots field
+        must be unset. Otherwise the request will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT. However, the autoscale field may still be in the
+        output. The autopscale.max_slots will always show as 0 and the autoscaler.current_slots
+        will represent the current slots from autoscaler excluding idle slots. For example,
+        if the maxSlots is 1000 and scalingMode is AUTOSCALE_ONLY, then in the output, the
+        autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any value
+        between 0 and 1000.
+        If the maxSlots is 1000, scalingMode is ALL_SLOTS, the baseline is 100 and idle slots
+        usage is 200, then in the output, the autoscaler.max_slots will be 0 and the
+        autoscaler.current_slots will not be higher than 700.
+        If the maxSlots is 1000, scalingMode is IDLE_SLOTS_ONLY, then in the output, the
+        autoscaler field will be null.
+        If the maxSlots and scalingMode are set, then the ignoreIdleSlots field must be
+        aligned with the scalingMode enum value.(See details in ScalingMode comments).
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Please note, the maxSlots is for user to manage the part of slots greater than the
+        baseline. Therefore, we don't allow users to set maxSlots smaller or equal to the
+        baseline as it will not be meaningful. If the field is present and
+        slotCapacity>=maxSlots, requests will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT.
+        Please note that if maxSlots is set to 0, we will treat it as unset. Customers can set
+        maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
+        feature.
+        """
+        return pulumi.get(self, "max_slots")
+
+    @max_slots.setter
+    def max_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_slots", value)
 
     @_builtins.property
     @pulumi.getter
@@ -395,6 +667,50 @@ class _ReservationState:
         pulumi.set(self, "replication_statuses", value)
 
     @_builtins.property
+    @pulumi.getter(name="scalingMode")
+    def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The scaling mode for the reservation. If the field is present but maxSlots is not present,
+        requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Enum values:
+        `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
+        `AUTOSCALE_ONLY`: The reservation will scale up only using slots from autoscaling. It will
+        not use any idle slots even if there may be some available. The upper limit that autoscaling
+        can scale up to will be maxSlots - baseline. For example, if maxSlots is 1000, baseline is 200
+        and customer sets ScalingMode to AUTOSCALE_ONLY, then autoscalerg will scale up to 800 slots
+        and no idle slots will be used. Please note, in this mode, the ignoreIdleSlots field must be
+        set to true. Otherwise the request will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT.
+        `IDLE_SLOTS_ONLY`: The reservation will scale up using only idle slots contributed by other
+        reservations or from unassigned commitments. If no idle slots are available it will not scale
+        up further. If the idle slots which it is using are reclaimed by the contributing reservation(s)
+        it may be forced to scale down. The max idle slots the reservation can be maxSlots - baseline
+        capacity. For example, if maxSlots is 1000, baseline is 200 and customer sets ScalingMode to
+        IDLE_SLOTS_ONLY, 1. if there are 1000 idle slots available in other reservations, the
+        reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there are
+        500 idle slots available in other reservations, the reservation will scale up to 700 slots with
+        200 baseline and 300 idle slots. Please note, in this mode, the reservation might not be able to
+        scale up to maxSlots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT
+        `ALL_SLOTS`: The reservation will scale up using all slots available to it. It will use idle slots
+        contributed by other reservations or from unassigned commitments first. If no idle slots are
+        available it will scale up using autoscaling. For example, if maxSlots is 1000, baseline is 200
+        and customer sets ScalingMode to ALL_SLOTS, 1. if there are 800 idle slots available in other
+        reservations, the reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2.
+        if there are 500 idle slots available in other reservations, the reservation will scale up to 1000
+        slots with 200 baseline, 500 idle slots and 300 autoscaling slots. 3. if there are no idle slots
+        available in other reservations, it will scale up to 1000 slots with 200 baseline and 800
+        autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
+        """
+        return pulumi.get(self, "scaling_mode")
+
+    @scaling_mode.setter
+    def scaling_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scaling_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="secondaryLocation")
     def secondary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -434,8 +750,10 @@ class Reservation(pulumi.CustomResource):
                  edition: Optional[pulumi.Input[_builtins.str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_slots: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  slot_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -503,9 +821,74 @@ class Reservation(pulumi.CustomResource):
                capacity specified above at most.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[_builtins.int] max_slots: The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+               (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
+               more than the specified number of slots, even if there is demand and supply (from idle
+               slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
+               exceed the maxSlots value. However, in terms of autoscale.current_slots (which accounts
+               for the additional added slots), it will never exceed the maxSlots - baseline.
+               This field must be set together with the scalingMode enum value, otherwise the request
+               will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               If the maxSlots and scalingMode are set, the autoscale or autoscale.max_slots field
+               must be unset. Otherwise the request will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT. However, the autoscale field may still be in the
+               output. The autopscale.max_slots will always show as 0 and the autoscaler.current_slots
+               will represent the current slots from autoscaler excluding idle slots. For example,
+               if the maxSlots is 1000 and scalingMode is AUTOSCALE_ONLY, then in the output, the
+               autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any value
+               between 0 and 1000.
+               If the maxSlots is 1000, scalingMode is ALL_SLOTS, the baseline is 100 and idle slots
+               usage is 200, then in the output, the autoscaler.max_slots will be 0 and the
+               autoscaler.current_slots will not be higher than 700.
+               If the maxSlots is 1000, scalingMode is IDLE_SLOTS_ONLY, then in the output, the
+               autoscaler field will be null.
+               If the maxSlots and scalingMode are set, then the ignoreIdleSlots field must be
+               aligned with the scalingMode enum value.(See details in ScalingMode comments).
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Please note, the maxSlots is for user to manage the part of slots greater than the
+               baseline. Therefore, we don't allow users to set maxSlots smaller or equal to the
+               baseline as it will not be meaningful. If the field is present and
+               slotCapacity>=maxSlots, requests will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT.
+               Please note that if maxSlots is set to 0, we will treat it as unset. Customers can set
+               maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
+               feature.
         :param pulumi.Input[_builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] scaling_mode: The scaling mode for the reservation. If the field is present but maxSlots is not present,
+               requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Enum values:
+               `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
+               `AUTOSCALE_ONLY`: The reservation will scale up only using slots from autoscaling. It will
+               not use any idle slots even if there may be some available. The upper limit that autoscaling
+               can scale up to will be maxSlots - baseline. For example, if maxSlots is 1000, baseline is 200
+               and customer sets ScalingMode to AUTOSCALE_ONLY, then autoscalerg will scale up to 800 slots
+               and no idle slots will be used. Please note, in this mode, the ignoreIdleSlots field must be
+               set to true. Otherwise the request will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT.
+               `IDLE_SLOTS_ONLY`: The reservation will scale up using only idle slots contributed by other
+               reservations or from unassigned commitments. If no idle slots are available it will not scale
+               up further. If the idle slots which it is using are reclaimed by the contributing reservation(s)
+               it may be forced to scale down. The max idle slots the reservation can be maxSlots - baseline
+               capacity. For example, if maxSlots is 1000, baseline is 200 and customer sets ScalingMode to
+               IDLE_SLOTS_ONLY, 1. if there are 1000 idle slots available in other reservations, the
+               reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there are
+               500 idle slots available in other reservations, the reservation will scale up to 700 slots with
+               200 baseline and 300 idle slots. Please note, in this mode, the reservation might not be able to
+               scale up to maxSlots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT
+               `ALL_SLOTS`: The reservation will scale up using all slots available to it. It will use idle slots
+               contributed by other reservations or from unassigned commitments first. If no idle slots are
+               available it will scale up using autoscaling. For example, if maxSlots is 1000, baseline is 200
+               and customer sets ScalingMode to ALL_SLOTS, 1. if there are 800 idle slots available in other
+               reservations, the reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2.
+               if there are 500 idle slots available in other reservations, the reservation will scale up to 1000
+               slots with 200 baseline, 500 idle slots and 300 autoscaling slots. 3. if there are no idle slots
+               available in other reservations, it will scale up to 1000 slots with 200 baseline and 800
+               autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
         :param pulumi.Input[_builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
                reservations using the managed disaster recovery feature. Users can set this in create
                reservation calls to create a failover reservation or in update reservation calls to convert
@@ -592,8 +975,10 @@ class Reservation(pulumi.CustomResource):
                  edition: Optional[pulumi.Input[_builtins.str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_slots: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
                  slot_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -610,8 +995,10 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["edition"] = edition
             __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
             __props__.__dict__["location"] = location
+            __props__.__dict__["max_slots"] = max_slots
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["scaling_mode"] = scaling_mode
             __props__.__dict__["secondary_location"] = secondary_location
             if slot_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'slot_capacity'")
@@ -634,11 +1021,13 @@ class Reservation(pulumi.CustomResource):
             edition: Optional[pulumi.Input[_builtins.str]] = None,
             ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            max_slots: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             original_primary_location: Optional[pulumi.Input[_builtins.str]] = None,
             primary_location: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             replication_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]]] = None,
+            scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
             secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
             slot_capacity: Optional[pulumi.Input[_builtins.int]] = None) -> 'Reservation':
         """
@@ -657,6 +1046,38 @@ class Reservation(pulumi.CustomResource):
                capacity specified above at most.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[_builtins.int] max_slots: The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+               (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
+               more than the specified number of slots, even if there is demand and supply (from idle
+               slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
+               exceed the maxSlots value. However, in terms of autoscale.current_slots (which accounts
+               for the additional added slots), it will never exceed the maxSlots - baseline.
+               This field must be set together with the scalingMode enum value, otherwise the request
+               will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               If the maxSlots and scalingMode are set, the autoscale or autoscale.max_slots field
+               must be unset. Otherwise the request will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT. However, the autoscale field may still be in the
+               output. The autopscale.max_slots will always show as 0 and the autoscaler.current_slots
+               will represent the current slots from autoscaler excluding idle slots. For example,
+               if the maxSlots is 1000 and scalingMode is AUTOSCALE_ONLY, then in the output, the
+               autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any value
+               between 0 and 1000.
+               If the maxSlots is 1000, scalingMode is ALL_SLOTS, the baseline is 100 and idle slots
+               usage is 200, then in the output, the autoscaler.max_slots will be 0 and the
+               autoscaler.current_slots will not be higher than 700.
+               If the maxSlots is 1000, scalingMode is IDLE_SLOTS_ONLY, then in the output, the
+               autoscaler field will be null.
+               If the maxSlots and scalingMode are set, then the ignoreIdleSlots field must be
+               aligned with the scalingMode enum value.(See details in ScalingMode comments).
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Please note, the maxSlots is for user to manage the part of slots greater than the
+               baseline. Therefore, we don't allow users to set maxSlots smaller or equal to the
+               baseline as it will not be meaningful. If the field is present and
+               slotCapacity>=maxSlots, requests will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT.
+               Please note that if maxSlots is set to 0, we will treat it as unset. Customers can set
+               maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
+               feature.
         :param pulumi.Input[_builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[_builtins.str] original_primary_location: The location where the reservation was originally created. This is set only during the
                failover reservation's creation. All billing charges for the failover reservation will be
@@ -672,6 +1093,39 @@ class Reservation(pulumi.CustomResource):
                either not a DR reservation or the reservation is a DR secondary or that any replication
                operations on the reservation have succeeded.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] scaling_mode: The scaling mode for the reservation. If the field is present but maxSlots is not present,
+               requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Enum values:
+               `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
+               `AUTOSCALE_ONLY`: The reservation will scale up only using slots from autoscaling. It will
+               not use any idle slots even if there may be some available. The upper limit that autoscaling
+               can scale up to will be maxSlots - baseline. For example, if maxSlots is 1000, baseline is 200
+               and customer sets ScalingMode to AUTOSCALE_ONLY, then autoscalerg will scale up to 800 slots
+               and no idle slots will be used. Please note, in this mode, the ignoreIdleSlots field must be
+               set to true. Otherwise the request will be rejected with error code
+               google.rpc.Code.INVALID_ARGUMENT.
+               `IDLE_SLOTS_ONLY`: The reservation will scale up using only idle slots contributed by other
+               reservations or from unassigned commitments. If no idle slots are available it will not scale
+               up further. If the idle slots which it is using are reclaimed by the contributing reservation(s)
+               it may be forced to scale down. The max idle slots the reservation can be maxSlots - baseline
+               capacity. For example, if maxSlots is 1000, baseline is 200 and customer sets ScalingMode to
+               IDLE_SLOTS_ONLY, 1. if there are 1000 idle slots available in other reservations, the
+               reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there are
+               500 idle slots available in other reservations, the reservation will scale up to 700 slots with
+               200 baseline and 300 idle slots. Please note, in this mode, the reservation might not be able to
+               scale up to maxSlots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT
+               `ALL_SLOTS`: The reservation will scale up using all slots available to it. It will use idle slots
+               contributed by other reservations or from unassigned commitments first. If no idle slots are
+               available it will scale up using autoscaling. For example, if maxSlots is 1000, baseline is 200
+               and customer sets ScalingMode to ALL_SLOTS, 1. if there are 800 idle slots available in other
+               reservations, the reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2.
+               if there are 500 idle slots available in other reservations, the reservation will scale up to 1000
+               slots with 200 baseline, 500 idle slots and 300 autoscaling slots. 3. if there are no idle slots
+               available in other reservations, it will scale up to 1000 slots with 200 baseline and 800
+               autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+               Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+               Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
         :param pulumi.Input[_builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
                reservations using the managed disaster recovery feature. Users can set this in create
                reservation calls to create a failover reservation or in update reservation calls to convert
@@ -688,11 +1142,13 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["edition"] = edition
         __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
         __props__.__dict__["location"] = location
+        __props__.__dict__["max_slots"] = max_slots
         __props__.__dict__["name"] = name
         __props__.__dict__["original_primary_location"] = original_primary_location
         __props__.__dict__["primary_location"] = primary_location
         __props__.__dict__["project"] = project
         __props__.__dict__["replication_statuses"] = replication_statuses
+        __props__.__dict__["scaling_mode"] = scaling_mode
         __props__.__dict__["secondary_location"] = secondary_location
         __props__.__dict__["slot_capacity"] = slot_capacity
         return Reservation(resource_name, opts=opts, __props__=__props__)
@@ -740,6 +1196,45 @@ class Reservation(pulumi.CustomResource):
         Examples: US, EU, asia-northeast1. The default value is US.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSlots")
+    def max_slots(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+        (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
+        more than the specified number of slots, even if there is demand and supply (from idle
+        slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
+        exceed the maxSlots value. However, in terms of autoscale.current_slots (which accounts
+        for the additional added slots), it will never exceed the maxSlots - baseline.
+        This field must be set together with the scalingMode enum value, otherwise the request
+        will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        If the maxSlots and scalingMode are set, the autoscale or autoscale.max_slots field
+        must be unset. Otherwise the request will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT. However, the autoscale field may still be in the
+        output. The autopscale.max_slots will always show as 0 and the autoscaler.current_slots
+        will represent the current slots from autoscaler excluding idle slots. For example,
+        if the maxSlots is 1000 and scalingMode is AUTOSCALE_ONLY, then in the output, the
+        autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any value
+        between 0 and 1000.
+        If the maxSlots is 1000, scalingMode is ALL_SLOTS, the baseline is 100 and idle slots
+        usage is 200, then in the output, the autoscaler.max_slots will be 0 and the
+        autoscaler.current_slots will not be higher than 700.
+        If the maxSlots is 1000, scalingMode is IDLE_SLOTS_ONLY, then in the output, the
+        autoscaler field will be null.
+        If the maxSlots and scalingMode are set, then the ignoreIdleSlots field must be
+        aligned with the scalingMode enum value.(See details in ScalingMode comments).
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Please note, the maxSlots is for user to manage the part of slots greater than the
+        baseline. Therefore, we don't allow users to set maxSlots smaller or equal to the
+        baseline as it will not be meaningful. If the field is present and
+        slotCapacity>=maxSlots, requests will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT.
+        Please note that if maxSlots is set to 0, we will treat it as unset. Customers can set
+        maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
+        feature.
+        """
+        return pulumi.get(self, "max_slots")
 
     @_builtins.property
     @pulumi.getter
@@ -790,6 +1285,46 @@ class Reservation(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "replication_statuses")
+
+    @_builtins.property
+    @pulumi.getter(name="scalingMode")
+    def scaling_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The scaling mode for the reservation. If the field is present but maxSlots is not present,
+        requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Enum values:
+        `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
+        `AUTOSCALE_ONLY`: The reservation will scale up only using slots from autoscaling. It will
+        not use any idle slots even if there may be some available. The upper limit that autoscaling
+        can scale up to will be maxSlots - baseline. For example, if maxSlots is 1000, baseline is 200
+        and customer sets ScalingMode to AUTOSCALE_ONLY, then autoscalerg will scale up to 800 slots
+        and no idle slots will be used. Please note, in this mode, the ignoreIdleSlots field must be
+        set to true. Otherwise the request will be rejected with error code
+        google.rpc.Code.INVALID_ARGUMENT.
+        `IDLE_SLOTS_ONLY`: The reservation will scale up using only idle slots contributed by other
+        reservations or from unassigned commitments. If no idle slots are available it will not scale
+        up further. If the idle slots which it is using are reclaimed by the contributing reservation(s)
+        it may be forced to scale down. The max idle slots the reservation can be maxSlots - baseline
+        capacity. For example, if maxSlots is 1000, baseline is 200 and customer sets ScalingMode to
+        IDLE_SLOTS_ONLY, 1. if there are 1000 idle slots available in other reservations, the
+        reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2. if there are
+        500 idle slots available in other reservations, the reservation will scale up to 700 slots with
+        200 baseline and 300 idle slots. Please note, in this mode, the reservation might not be able to
+        scale up to maxSlots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT
+        `ALL_SLOTS`: The reservation will scale up using all slots available to it. It will use idle slots
+        contributed by other reservations or from unassigned commitments first. If no idle slots are
+        available it will scale up using autoscaling. For example, if maxSlots is 1000, baseline is 200
+        and customer sets ScalingMode to ALL_SLOTS, 1. if there are 800 idle slots available in other
+        reservations, the reservation will scale up to 1000 slots with 200 baseline and 800 idle slots. 2.
+        if there are 500 idle slots available in other reservations, the reservation will scale up to 1000
+        slots with 200 baseline, 500 idle slots and 300 autoscaling slots. 3. if there are no idle slots
+        available in other reservations, it will scale up to 1000 slots with 200 baseline and 800
+        autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
+        Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
+        Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
+        """
+        return pulumi.get(self, "scaling_mode")
 
     @_builtins.property
     @pulumi.getter(name="secondaryLocation")

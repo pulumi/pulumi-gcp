@@ -136,6 +136,7 @@ import (
 // -
 //
 // # IAM policy for Dataplex Datascan
+//
 // Three different resources help you manage your IAM policy for Dataplex Datascan. Each of these resources serves a different use case:
 //
 // * `dataplex.DatascanIamPolicy`: Authoritative. Sets the IAM policy for the datascan and replaces any existing policy already attached.

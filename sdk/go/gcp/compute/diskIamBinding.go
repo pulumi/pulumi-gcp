@@ -136,6 +136,7 @@ import (
 // -
 //
 // # IAM policy for Compute Engine Disk
+//
 // Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
 //
 // * `compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.

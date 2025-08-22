@@ -7266,6 +7266,112 @@ func (o GetRepositoryVulnerabilityScanningConfigArrayOutput) Index(i pulumi.IntI
 	}).(GetRepositoryVulnerabilityScanningConfigOutput)
 }
 
+type GetTagsTag struct {
+	// The name of the tag, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1`. If the package part contains slashes, the slashes are escaped.
+	Name string `pulumi:"name"`
+	// The version of the tag.
+	Version string `pulumi:"version"`
+}
+
+// GetTagsTagInput is an input type that accepts GetTagsTagArgs and GetTagsTagOutput values.
+// You can construct a concrete instance of `GetTagsTagInput` via:
+//
+//	GetTagsTagArgs{...}
+type GetTagsTagInput interface {
+	pulumi.Input
+
+	ToGetTagsTagOutput() GetTagsTagOutput
+	ToGetTagsTagOutputWithContext(context.Context) GetTagsTagOutput
+}
+
+type GetTagsTagArgs struct {
+	// The name of the tag, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1`. If the package part contains slashes, the slashes are escaped.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The version of the tag.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetTagsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsTag)(nil)).Elem()
+}
+
+func (i GetTagsTagArgs) ToGetTagsTagOutput() GetTagsTagOutput {
+	return i.ToGetTagsTagOutputWithContext(context.Background())
+}
+
+func (i GetTagsTagArgs) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagOutput)
+}
+
+// GetTagsTagArrayInput is an input type that accepts GetTagsTagArray and GetTagsTagArrayOutput values.
+// You can construct a concrete instance of `GetTagsTagArrayInput` via:
+//
+//	GetTagsTagArray{ GetTagsTagArgs{...} }
+type GetTagsTagArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsTagArrayOutput() GetTagsTagArrayOutput
+	ToGetTagsTagArrayOutputWithContext(context.Context) GetTagsTagArrayOutput
+}
+
+type GetTagsTagArray []GetTagsTagInput
+
+func (GetTagsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsTag)(nil)).Elem()
+}
+
+func (i GetTagsTagArray) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
+	return i.ToGetTagsTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsTagArray) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagArrayOutput)
+}
+
+type GetTagsTagOutput struct{ *pulumi.OutputState }
+
+func (GetTagsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsTag)(nil)).Elem()
+}
+
+func (o GetTagsTagOutput) ToGetTagsTagOutput() GetTagsTagOutput {
+	return o
+}
+
+func (o GetTagsTagOutput) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
+	return o
+}
+
+// The name of the tag, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1`. If the package part contains slashes, the slashes are escaped.
+func (o GetTagsTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The version of the tag.
+func (o GetTagsTagOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsTag) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetTagsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsTag)(nil)).Elem()
+}
+
+func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
+	return o
+}
+
+func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
+	return o
+}
+
+func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsTag {
+		return vs[0].([]GetTagsTag)[vs[1].(int)]
+	}).(GetTagsTagOutput)
+}
+
 type GetVersionRelatedTag struct {
 	// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
 	Name    string `pulumi:"name"`
@@ -7474,6 +7580,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVulnerabilityScanningConfigInput)(nil)).Elem(), GetRepositoryVulnerabilityScanningConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVulnerabilityScanningConfigArrayInput)(nil)).Elem(), GetRepositoryVulnerabilityScanningConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionRelatedTagInput)(nil)).Elem(), GetVersionRelatedTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionRelatedTagArrayInput)(nil)).Elem(), GetVersionRelatedTagArray{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyOutput{})
@@ -7580,6 +7688,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryVulnerabilityScanningConfigOutput{})
 	pulumi.RegisterOutputType(GetRepositoryVulnerabilityScanningConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsTagOutput{})
+	pulumi.RegisterOutputType(GetTagsTagArrayOutput{})
 	pulumi.RegisterOutputType(GetVersionRelatedTagOutput{})
 	pulumi.RegisterOutputType(GetVersionRelatedTagArrayOutput{})
 }

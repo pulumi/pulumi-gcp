@@ -136,6 +136,7 @@ import (
 // -
 //
 // # IAM policy for BigQuery Analytics Hub DataExchange
+//
 // Three different resources help you manage your IAM policy for BigQuery Analytics Hub DataExchange. Each of these resources serves a different use case:
 //
 // * `bigqueryanalyticshub.DataExchangeIamPolicy`: Authoritative. Sets the IAM policy for the dataexchange and replaces any existing policy already attached.

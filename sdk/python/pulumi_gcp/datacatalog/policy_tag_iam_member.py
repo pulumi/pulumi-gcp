@@ -286,6 +286,7 @@ class PolicyTagIamMember(pulumi.CustomResource):
         ---
 
         # IAM policy for Data Catalog PolicyTag
+
         Three different resources help you manage your IAM policy for Data Catalog PolicyTag. Each of these resources serves a different use case:
 
         * `datacatalog.PolicyTagIamPolicy`: Authoritative. Sets the IAM policy for the policytag and replaces any existing policy already attached.
@@ -455,6 +456,7 @@ class PolicyTagIamMember(pulumi.CustomResource):
         ---
 
         # IAM policy for Data Catalog PolicyTag
+
         Three different resources help you manage your IAM policy for Data Catalog PolicyTag. Each of these resources serves a different use case:
 
         * `datacatalog.PolicyTagIamPolicy`: Authoritative. Sets the IAM policy for the policytag and replaces any existing policy already attached.

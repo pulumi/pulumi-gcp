@@ -3223,6 +3223,7 @@ type GetCryptoKeysKey struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
 	// or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+	// This field is only applicable during initial CryptoKey creation.
 	SkipInitialVersionCreation bool `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	VersionTemplates []GetCryptoKeysKeyVersionTemplate `pulumi:"versionTemplates"`
@@ -3287,6 +3288,7 @@ type GetCryptoKeysKeyArgs struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
 	// or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+	// This field is only applicable during initial CryptoKey creation.
 	SkipInitialVersionCreation pulumi.BoolInput `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new crypto key versions.
 	VersionTemplates GetCryptoKeysKeyVersionTemplateArrayInput `pulumi:"versionTemplates"`
@@ -3432,6 +3434,7 @@ func (o GetCryptoKeysKeyOutput) RotationPeriod() pulumi.StringOutput {
 // If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 // You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
 // or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+// This field is only applicable during initial CryptoKey creation.
 func (o GetCryptoKeysKeyOutput) SkipInitialVersionCreation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCryptoKeysKey) bool { return v.SkipInitialVersionCreation }).(pulumi.BoolOutput)
 }

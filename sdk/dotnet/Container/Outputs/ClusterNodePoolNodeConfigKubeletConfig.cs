@@ -50,6 +50,22 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? CpuManagerPolicy;
         /// <summary>
+        /// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+        /// </summary>
+        public readonly int? EvictionMaxPodGracePeriodSeconds;
+        /// <summary>
+        /// Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim? EvictionMinimumReclaim;
+        /// <summary>
+        /// Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionSoft? EvictionSoft;
+        /// <summary>
+        /// Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod? EvictionSoftGracePeriod;
+        /// <summary>
         /// Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
         /// </summary>
         public readonly int? ImageGcHighThresholdPercent;
@@ -69,6 +85,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         /// </summary>
         public readonly string? InsecureKubeletReadonlyPortEnabled;
+        /// <summary>
+        /// Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+        /// </summary>
+        public readonly int? MaxParallelImagePulls;
         /// <summary>
         /// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         /// </summary>
@@ -92,6 +112,14 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? cpuManagerPolicy,
 
+            int? evictionMaxPodGracePeriodSeconds,
+
+            Outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim? evictionMinimumReclaim,
+
+            Outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionSoft? evictionSoft,
+
+            Outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod? evictionSoftGracePeriod,
+
             int? imageGcHighThresholdPercent,
 
             int? imageGcLowThresholdPercent,
@@ -101,6 +129,8 @@ namespace Pulumi.Gcp.Container.Outputs
             string? imageMinimumGcAge,
 
             string? insecureKubeletReadonlyPortEnabled,
+
+            int? maxParallelImagePulls,
 
             int? podPidsLimit,
 
@@ -112,11 +142,16 @@ namespace Pulumi.Gcp.Container.Outputs
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            EvictionMaxPodGracePeriodSeconds = evictionMaxPodGracePeriodSeconds;
+            EvictionMinimumReclaim = evictionMinimumReclaim;
+            EvictionSoft = evictionSoft;
+            EvictionSoftGracePeriod = evictionSoftGracePeriod;
             ImageGcHighThresholdPercent = imageGcHighThresholdPercent;
             ImageGcLowThresholdPercent = imageGcLowThresholdPercent;
             ImageMaximumGcAge = imageMaximumGcAge;
             ImageMinimumGcAge = imageMinimumGcAge;
             InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
+            MaxParallelImagePulls = maxParallelImagePulls;
             PodPidsLimit = podPidsLimit;
             SingleProcessOomKill = singleProcessOomKill;
         }

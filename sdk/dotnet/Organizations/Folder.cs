@@ -48,6 +48,12 @@ namespace Pulumi.Gcp.Organizations
     public partial class Folder : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional capabilities configured for this folder.
+        /// </summary>
+        [Output("configuredCapabilities")]
+        public Output<ImmutableArray<string>> ConfiguredCapabilities { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp when the Folder was created. Assigned by the server.
         /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
@@ -75,6 +81,12 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
+
+        /// <summary>
+        /// Management Project associated with this folder (if capability is enabled).
+        /// </summary>
+        [Output("managementProject")]
+        public Output<string> ManagementProject { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the Folder. Its format is folders/{folder_id}.
@@ -178,6 +190,18 @@ namespace Pulumi.Gcp.Organizations
 
     public sealed class FolderState : global::Pulumi.ResourceArgs
     {
+        [Input("configuredCapabilities")]
+        private InputList<string>? _configuredCapabilities;
+
+        /// <summary>
+        /// Optional capabilities configured for this folder.
+        /// </summary>
+        public InputList<string> ConfiguredCapabilities
+        {
+            get => _configuredCapabilities ?? (_configuredCapabilities = new InputList<string>());
+            set => _configuredCapabilities = value;
+        }
+
         /// <summary>
         /// Timestamp when the Folder was created. Assigned by the server.
         /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -206,6 +230,12 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Input("lifecycleState")]
         public Input<string>? LifecycleState { get; set; }
+
+        /// <summary>
+        /// Management Project associated with this folder (if capability is enabled).
+        /// </summary>
+        [Input("managementProject")]
+        public Input<string>? ManagementProject { get; set; }
 
         /// <summary>
         /// The resource name of the Folder. Its format is folders/{folder_id}.

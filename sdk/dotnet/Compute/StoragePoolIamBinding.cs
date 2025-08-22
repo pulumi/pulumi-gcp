@@ -213,6 +213,7 @@ namespace Pulumi.Gcp.Compute
     /// - 
     /// 
     /// # IAM policy for Compute Engine StoragePool
+    /// 
     /// Three different resources help you manage your IAM policy for Compute Engine StoragePool. Each of these resources serves a different use case:
     /// 
     /// * `gcp.compute.StoragePoolIamPolicy`: Authoritative. Sets the IAM policy for the storagepool and replaces any existing policy already attached.

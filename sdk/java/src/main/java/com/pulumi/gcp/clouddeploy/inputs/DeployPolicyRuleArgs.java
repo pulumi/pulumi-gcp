@@ -16,7 +16,7 @@ public final class DeployPolicyRuleArgs extends com.pulumi.resources.ResourceArg
     public static final DeployPolicyRuleArgs Empty = new DeployPolicyRuleArgs();
 
     /**
-     * Optional. Rollout restrictions.
+     * Rollout restrictions.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class DeployPolicyRuleArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<DeployPolicyRuleRolloutRestrictionArgs> rolloutRestriction;
 
     /**
-     * @return Optional. Rollout restrictions.
+     * @return Rollout restrictions.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class DeployPolicyRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rolloutRestriction Optional. Rollout restrictions.
+         * @param rolloutRestriction Rollout restrictions.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class DeployPolicyRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rolloutRestriction Optional. Rollout restrictions.
+         * @param rolloutRestriction Rollout restrictions.
          * Structure is documented below.
          * 
          * @return builder

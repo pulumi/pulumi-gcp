@@ -146,6 +146,7 @@ import * as utilities from "../utilities";
  * ---
  *
  * # IAM policy for Cloud (Stackdriver) Logging LogView
+ *
  * Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
  *
  * * `gcp.logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.

@@ -19,7 +19,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
     public static final DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs Empty = new DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs();
 
     /**
-     * Optional. Days of week. If left empty, all days of the week will be included.
+     * Days of week. If left empty, all days of the week will be included.
      * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
@@ -27,7 +27,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
     private @Nullable Output<List<String>> daysOfWeeks;
 
     /**
-     * @return Optional. Days of week. If left empty, all days of the week will be included.
+     * @return Days of week. If left empty, all days of the week will be included.
      * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
@@ -36,7 +36,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
     }
 
     /**
-     * Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+     * End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
      * Structure is documented below.
      * 
      */
@@ -44,7 +44,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
     private @Nullable Output<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs> endTime;
 
     /**
-     * @return Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+     * @return End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
      * Structure is documented below.
      * 
      */
@@ -53,7 +53,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
     }
 
     /**
-     * Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+     * Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
      * Structure is documented below.
      * 
      */
@@ -61,7 +61,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
     private @Nullable Output<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs> startTime;
 
     /**
-     * @return Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+     * @return Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
      * Structure is documented below.
      * 
      */
@@ -96,7 +96,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
         }
 
         /**
-         * @param daysOfWeeks Optional. Days of week. If left empty, all days of the week will be included.
+         * @param daysOfWeeks Days of week. If left empty, all days of the week will be included.
          * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
@@ -108,7 +108,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
         }
 
         /**
-         * @param daysOfWeeks Optional. Days of week. If left empty, all days of the week will be included.
+         * @param daysOfWeeks Days of week. If left empty, all days of the week will be included.
          * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
@@ -119,7 +119,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
         }
 
         /**
-         * @param daysOfWeeks Optional. Days of week. If left empty, all days of the week will be included.
+         * @param daysOfWeeks Days of week. If left empty, all days of the week will be included.
          * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
@@ -130,7 +130,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
         }
 
         /**
-         * @param endTime Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+         * @param endTime End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
          * Structure is documented below.
          * 
          * @return builder
@@ -142,7 +142,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
         }
 
         /**
-         * @param endTime Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+         * @param endTime End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
          * Structure is documented below.
          * 
          * @return builder
@@ -153,7 +153,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
         }
 
         /**
-         * @param startTime Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+         * @param startTime Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
          * Structure is documented below.
          * 
          * @return builder
@@ -165,7 +165,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs
         }
 
         /**
-         * @param startTime Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+         * @param startTime Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
          * Structure is documented below.
          * 
          * @return builder

@@ -15,18 +15,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeployPolicyRuleRolloutRestrictionTimeWindows {
     /**
-     * @return Optional. One-time windows within which actions are restricted.
+     * @return One-time windows within which actions are restricted.
      * Structure is documented below.
      * 
      */
     private @Nullable List<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow> oneTimeWindows;
     /**
-     * @return Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+     * @return The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
      * 
      */
     private String timeZone;
     /**
-     * @return Optional. Recurring weekly windows within which actions are restricted.
+     * @return Recurring weekly windows within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindows {
 
     private DeployPolicyRuleRolloutRestrictionTimeWindows() {}
     /**
-     * @return Optional. One-time windows within which actions are restricted.
+     * @return One-time windows within which actions are restricted.
      * Structure is documented below.
      * 
      */
@@ -42,14 +42,14 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindows {
         return this.oneTimeWindows == null ? List.of() : this.oneTimeWindows;
     }
     /**
-     * @return Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+     * @return The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
      * 
      */
     public String timeZone() {
         return this.timeZone;
     }
     /**
-     * @return Optional. Recurring weekly windows within which actions are restricted.
+     * @return Recurring weekly windows within which actions are restricted.
      * Structure is documented below.
      * 
      */

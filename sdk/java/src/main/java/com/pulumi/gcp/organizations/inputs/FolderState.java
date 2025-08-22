@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class FolderState extends com.pulumi.resources.ResourceArgs {
 
     public static final FolderState Empty = new FolderState();
+
+    /**
+     * Optional capabilities configured for this folder.
+     * 
+     */
+    @Import(name="configuredCapabilities")
+    private @Nullable Output<List<String>> configuredCapabilities;
+
+    /**
+     * @return Optional capabilities configured for this folder.
+     * 
+     */
+    public Optional<Output<List<String>>> configuredCapabilities() {
+        return Optional.ofNullable(this.configuredCapabilities);
+    }
 
     /**
      * Timestamp when the Folder was created. Assigned by the server.
@@ -89,6 +105,21 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Management Project associated with this folder (if capability is enabled).
+     * 
+     */
+    @Import(name="managementProject")
+    private @Nullable Output<String> managementProject;
+
+    /**
+     * @return Management Project associated with this folder (if capability is enabled).
+     * 
+     */
+    public Optional<Output<String>> managementProject() {
+        return Optional.ofNullable(this.managementProject);
+    }
+
+    /**
      * The resource name of the Folder. Its format is folders/{folder_id}.
      * 
      */
@@ -138,11 +169,13 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
     private FolderState() {}
 
     private FolderState(FolderState $) {
+        this.configuredCapabilities = $.configuredCapabilities;
         this.createTime = $.createTime;
         this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.folderId = $.folderId;
         this.lifecycleState = $.lifecycleState;
+        this.managementProject = $.managementProject;
         this.name = $.name;
         this.parent = $.parent;
         this.tags = $.tags;
@@ -164,6 +197,37 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FolderState defaults) {
             $ = new FolderState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param configuredCapabilities Optional capabilities configured for this folder.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configuredCapabilities(@Nullable Output<List<String>> configuredCapabilities) {
+            $.configuredCapabilities = configuredCapabilities;
+            return this;
+        }
+
+        /**
+         * @param configuredCapabilities Optional capabilities configured for this folder.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configuredCapabilities(List<String> configuredCapabilities) {
+            return configuredCapabilities(Output.of(configuredCapabilities));
+        }
+
+        /**
+         * @param configuredCapabilities Optional capabilities configured for this folder.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configuredCapabilities(String... configuredCapabilities) {
+            return configuredCapabilities(List.of(configuredCapabilities));
         }
 
         /**
@@ -261,6 +325,27 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lifecycleState(String lifecycleState) {
             return lifecycleState(Output.of(lifecycleState));
+        }
+
+        /**
+         * @param managementProject Management Project associated with this folder (if capability is enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managementProject(@Nullable Output<String> managementProject) {
+            $.managementProject = managementProject;
+            return this;
+        }
+
+        /**
+         * @param managementProject Management Project associated with this folder (if capability is enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managementProject(String managementProject) {
+            return managementProject(Output.of(managementProject));
         }
 
         /**

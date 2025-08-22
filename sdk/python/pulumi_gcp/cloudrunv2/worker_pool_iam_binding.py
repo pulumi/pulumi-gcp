@@ -370,6 +370,7 @@ class WorkerPoolIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud Run (v2 API) WorkerPool
+
         Three different resources help you manage your IAM policy for Cloud Run (v2 API) WorkerPool. Each of these resources serves a different use case:
 
         * `cloudrunv2.WorkerPoolIamPolicy`: Authoritative. Sets the IAM policy for the workerpool and replaces any existing policy already attached.
@@ -561,6 +562,7 @@ class WorkerPoolIamBinding(pulumi.CustomResource):
         - 
 
         # IAM policy for Cloud Run (v2 API) WorkerPool
+
         Three different resources help you manage your IAM policy for Cloud Run (v2 API) WorkerPool. Each of these resources serves a different use case:
 
         * `cloudrunv2.WorkerPoolIamPolicy`: Authoritative. Sets the IAM policy for the workerpool and replaces any existing policy already attached.

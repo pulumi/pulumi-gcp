@@ -74,6 +74,7 @@ import * as utilities from "../utilities";
  * - 
  *
  * # IAM policy for Secure Source Manager Repository
+ *
  * Three different resources help you manage your IAM policy for Secure Source Manager Repository. Each of these resources serves a different use case:
  *
  * * `gcp.securesourcemanager.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.

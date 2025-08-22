@@ -5,6 +5,9 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -44,6 +47,26 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
      */
     private String cpuManagerPolicy;
     /**
+     * @return Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+     * 
+     */
+    private Integer evictionMaxPodGracePeriodSeconds;
+    /**
+     * @return Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim> evictionMinimumReclaims;
+    /**
+     * @return Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod> evictionSoftGracePeriods;
+    /**
+     * @return Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft> evictionSofts;
+    /**
      * @return Defines the percent of disk usage after which image garbage collection is always run.
      * 
      */
@@ -68,6 +91,11 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
      * 
      */
     private String insecureKubeletReadonlyPortEnabled;
+    /**
+     * @return Set the maximum number of image pulls in parallel.
+     * 
+     */
+    private Integer maxParallelImagePulls;
     /**
      * @return Controls the maximum number of processes allowed to run in a pod.
      * 
@@ -123,6 +151,34 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         return this.cpuManagerPolicy;
     }
     /**
+     * @return Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+     * 
+     */
+    public Integer evictionMaxPodGracePeriodSeconds() {
+        return this.evictionMaxPodGracePeriodSeconds;
+    }
+    /**
+     * @return Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim> evictionMinimumReclaims() {
+        return this.evictionMinimumReclaims;
+    }
+    /**
+     * @return Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod> evictionSoftGracePeriods() {
+        return this.evictionSoftGracePeriods;
+    }
+    /**
+     * @return Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft> evictionSofts() {
+        return this.evictionSofts;
+    }
+    /**
      * @return Defines the percent of disk usage after which image garbage collection is always run.
      * 
      */
@@ -158,6 +214,13 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         return this.insecureKubeletReadonlyPortEnabled;
     }
     /**
+     * @return Set the maximum number of image pulls in parallel.
+     * 
+     */
+    public Integer maxParallelImagePulls() {
+        return this.maxParallelImagePulls;
+    }
+    /**
      * @return Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -187,11 +250,16 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         private Boolean cpuCfsQuota;
         private String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
+        private Integer evictionMaxPodGracePeriodSeconds;
+        private List<GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim> evictionMinimumReclaims;
+        private List<GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod> evictionSoftGracePeriods;
+        private List<GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft> evictionSofts;
         private Integer imageGcHighThresholdPercent;
         private Integer imageGcLowThresholdPercent;
         private String imageMaximumGcAge;
         private String imageMinimumGcAge;
         private String insecureKubeletReadonlyPortEnabled;
+        private Integer maxParallelImagePulls;
         private Integer podPidsLimit;
         private Boolean singleProcessOomKill;
         public Builder() {}
@@ -203,11 +271,16 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
     	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
+    	      this.evictionMaxPodGracePeriodSeconds = defaults.evictionMaxPodGracePeriodSeconds;
+    	      this.evictionMinimumReclaims = defaults.evictionMinimumReclaims;
+    	      this.evictionSoftGracePeriods = defaults.evictionSoftGracePeriods;
+    	      this.evictionSofts = defaults.evictionSofts;
     	      this.imageGcHighThresholdPercent = defaults.imageGcHighThresholdPercent;
     	      this.imageGcLowThresholdPercent = defaults.imageGcLowThresholdPercent;
     	      this.imageMaximumGcAge = defaults.imageMaximumGcAge;
     	      this.imageMinimumGcAge = defaults.imageMinimumGcAge;
     	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
+    	      this.maxParallelImagePulls = defaults.maxParallelImagePulls;
     	      this.podPidsLimit = defaults.podPidsLimit;
     	      this.singleProcessOomKill = defaults.singleProcessOomKill;
         }
@@ -264,6 +337,47 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder evictionMaxPodGracePeriodSeconds(Integer evictionMaxPodGracePeriodSeconds) {
+            if (evictionMaxPodGracePeriodSeconds == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "evictionMaxPodGracePeriodSeconds");
+            }
+            this.evictionMaxPodGracePeriodSeconds = evictionMaxPodGracePeriodSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder evictionMinimumReclaims(List<GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim> evictionMinimumReclaims) {
+            if (evictionMinimumReclaims == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "evictionMinimumReclaims");
+            }
+            this.evictionMinimumReclaims = evictionMinimumReclaims;
+            return this;
+        }
+        public Builder evictionMinimumReclaims(GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim... evictionMinimumReclaims) {
+            return evictionMinimumReclaims(List.of(evictionMinimumReclaims));
+        }
+        @CustomType.Setter
+        public Builder evictionSoftGracePeriods(List<GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod> evictionSoftGracePeriods) {
+            if (evictionSoftGracePeriods == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "evictionSoftGracePeriods");
+            }
+            this.evictionSoftGracePeriods = evictionSoftGracePeriods;
+            return this;
+        }
+        public Builder evictionSoftGracePeriods(GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod... evictionSoftGracePeriods) {
+            return evictionSoftGracePeriods(List.of(evictionSoftGracePeriods));
+        }
+        @CustomType.Setter
+        public Builder evictionSofts(List<GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft> evictionSofts) {
+            if (evictionSofts == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "evictionSofts");
+            }
+            this.evictionSofts = evictionSofts;
+            return this;
+        }
+        public Builder evictionSofts(GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft... evictionSofts) {
+            return evictionSofts(List.of(evictionSofts));
+        }
+        @CustomType.Setter
         public Builder imageGcHighThresholdPercent(Integer imageGcHighThresholdPercent) {
             if (imageGcHighThresholdPercent == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "imageGcHighThresholdPercent");
@@ -304,6 +418,14 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder maxParallelImagePulls(Integer maxParallelImagePulls) {
+            if (maxParallelImagePulls == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "maxParallelImagePulls");
+            }
+            this.maxParallelImagePulls = maxParallelImagePulls;
+            return this;
+        }
+        @CustomType.Setter
         public Builder podPidsLimit(Integer podPidsLimit) {
             if (podPidsLimit == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "podPidsLimit");
@@ -327,11 +449,16 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             _resultValue.cpuCfsQuota = cpuCfsQuota;
             _resultValue.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             _resultValue.cpuManagerPolicy = cpuManagerPolicy;
+            _resultValue.evictionMaxPodGracePeriodSeconds = evictionMaxPodGracePeriodSeconds;
+            _resultValue.evictionMinimumReclaims = evictionMinimumReclaims;
+            _resultValue.evictionSoftGracePeriods = evictionSoftGracePeriods;
+            _resultValue.evictionSofts = evictionSofts;
             _resultValue.imageGcHighThresholdPercent = imageGcHighThresholdPercent;
             _resultValue.imageGcLowThresholdPercent = imageGcLowThresholdPercent;
             _resultValue.imageMaximumGcAge = imageMaximumGcAge;
             _resultValue.imageMinimumGcAge = imageMinimumGcAge;
             _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
+            _resultValue.maxParallelImagePulls = maxParallelImagePulls;
             _resultValue.podPidsLimit = podPidsLimit;
             _resultValue.singleProcessOomKill = singleProcessOomKill;
             return _resultValue;

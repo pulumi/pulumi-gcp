@@ -184,6 +184,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
         ---
 
         # IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy
+
         Three different resources help you manage your IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy. Each of these resources serves a different use case:
 
         * `accesscontextmanager.AccessPolicyIamPolicy`: Authoritative. Sets the IAM policy for the accesspolicy and replaces any existing policy already attached.
@@ -343,6 +344,7 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
         ---
 
         # IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy
+
         Three different resources help you manage your IAM policy for Access Context Manager (VPC Service Controls) AccessPolicy. Each of these resources serves a different use case:
 
         * `accesscontextmanager.AccessPolicyIamPolicy`: Authoritative. Sets the IAM policy for the accesspolicy and replaces any existing policy already attached.

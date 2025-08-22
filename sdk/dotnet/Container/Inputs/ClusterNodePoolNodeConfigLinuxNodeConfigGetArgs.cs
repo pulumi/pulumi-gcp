@@ -43,6 +43,18 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _sysctls = value;
         }
 
+        /// <summary>
+        /// The Linux kernel transparent hugepage defrag setting.
+        /// </summary>
+        [Input("transparentHugepageDefrag")]
+        public Input<string>? TransparentHugepageDefrag { get; set; }
+
+        /// <summary>
+        /// The Linux kernel transparent hugepage setting.
+        /// </summary>
+        [Input("transparentHugepageEnabled")]
+        public Input<string>? TransparentHugepageEnabled { get; set; }
+
         public ClusterNodePoolNodeConfigLinuxNodeConfigGetArgs()
         {
         }

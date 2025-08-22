@@ -43,8 +43,8 @@ namespace Pulumi.Gcp.Notebooks
     ///         MachineType = "e2-medium",
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
-    ///             Project = "deeplearning-platform-release",
-    ///             ImageFamily = "pytorch-latest-cu124",
+    ///             Project = "cloud-notebooks-managed",
+    ///             ImageFamily = "workbench-instances",
     ///         },
     ///     });
     /// 
@@ -67,8 +67,8 @@ namespace Pulumi.Gcp.Notebooks
     ///         MachineType = "e2-medium",
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
-    ///             Project = "deeplearning-platform-release",
-    ///             ImageFamily = "pytorch-latest-cu124",
+    ///             Project = "cloud-notebooks-managed",
+    ///             ImageFamily = "workbench-instances",
     ///         },
     ///         DesiredState = "STOPPED",
     ///     });
@@ -126,8 +126,8 @@ namespace Pulumi.Gcp.Notebooks
     ///         },
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
-    ///             Project = "deeplearning-platform-release",
-    ///             ImageFamily = "pytorch-latest-cu124",
+    ///             Project = "cloud-notebooks-managed",
+    ///             ImageFamily = "workbench-instances",
     ///         },
     ///     });
     /// 
@@ -161,8 +161,8 @@ namespace Pulumi.Gcp.Notebooks
     ///         MachineType = "e2-medium",
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///         {
-    ///             Project = "deeplearning-platform-release",
-    ///             ImageFamily = "pytorch-latest-cu124",
+    ///             Project = "cloud-notebooks-managed",
+    ///             ImageFamily = "workbench-instances",
     ///         },
     ///         InstanceOwners = new[]
     ///         {
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Notebooks
     ///         ServiceAccount = "my@service-account.com",
     ///         InstallGpuDriver = true,
     ///         BootDiskType = "PD_SSD",
-    ///         BootDiskSizeGb = 110,
+    ///         BootDiskSizeGb = 150,
     ///         NoPublicIp = true,
     ///         NoProxyAccess = true,
     ///         Network = myNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),

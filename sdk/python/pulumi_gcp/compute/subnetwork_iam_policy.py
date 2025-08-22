@@ -330,6 +330,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Compute Engine Subnetwork
+
         Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 
         * `compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
@@ -630,6 +631,7 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Compute Engine Subnetwork
+
         Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 
         * `compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.

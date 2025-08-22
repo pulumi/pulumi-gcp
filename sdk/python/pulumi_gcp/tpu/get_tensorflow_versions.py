@@ -83,6 +83,11 @@ def get_tensorflow_versions(project: Optional[_builtins.str] = None,
                             zone: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTensorflowVersionsResult:
     """
+    > **Warning:**
+    `tpu_get_tensorflow_versions` is deprecated and will be removed in a future major release.
+      Use `tpu_get_v2_runtime_versions` instead. For moving from TPU Node to TPU VM architecture, see
+      https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+
     Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
 
     ## Example Usage
@@ -130,6 +135,11 @@ def get_tensorflow_versions_output(project: Optional[pulumi.Input[Optional[_buil
                                    zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTensorflowVersionsResult]:
     """
+    > **Warning:**
+    `tpu_get_tensorflow_versions` is deprecated and will be removed in a future major release.
+      Use `tpu_get_v2_runtime_versions` instead. For moving from TPU Node to TPU VM architecture, see
+      https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+
     Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
 
     ## Example Usage

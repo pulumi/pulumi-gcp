@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNodeConfigSoleTenantConfig
     {
         /// <summary>
+        /// Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+        /// </summary>
+        public readonly int? MinNodeCpus;
+        /// <summary>
         /// .
         /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity> NodeAffinities;
 
         [OutputConstructor]
-        private NodePoolNodeConfigSoleTenantConfig(ImmutableArray<Outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities)
+        private NodePoolNodeConfigSoleTenantConfig(
+            int? minNodeCpus,
+
+            ImmutableArray<Outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities)
         {
+            MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
         }
     }

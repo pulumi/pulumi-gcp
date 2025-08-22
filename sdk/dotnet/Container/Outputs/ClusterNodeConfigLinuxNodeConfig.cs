@@ -32,6 +32,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Note that validations happen all server side. All attributes are optional.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Sysctls;
+        /// <summary>
+        /// The Linux kernel transparent hugepage defrag setting.
+        /// </summary>
+        public readonly string? TransparentHugepageDefrag;
+        /// <summary>
+        /// The Linux kernel transparent hugepage setting.
+        /// </summary>
+        public readonly string? TransparentHugepageEnabled;
 
         [OutputConstructor]
         private ClusterNodeConfigLinuxNodeConfig(
@@ -39,11 +47,17 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfig? hugepagesConfig,
 
-            ImmutableDictionary<string, string>? sysctls)
+            ImmutableDictionary<string, string>? sysctls,
+
+            string? transparentHugepageDefrag,
+
+            string? transparentHugepageEnabled)
         {
             CgroupMode = cgroupMode;
             HugepagesConfig = hugepagesConfig;
             Sysctls = sysctls;
+            TransparentHugepageDefrag = transparentHugepageDefrag;
+            TransparentHugepageEnabled = transparentHugepageEnabled;
         }
     }
 }

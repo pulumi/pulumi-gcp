@@ -445,6 +445,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Identity-Aware Proxy TunnelDestGroup
+
         Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelDestGroup. Each of these resources serves a different use case:
 
         * `iap.TunnelDestGroupIamPolicy`: Authoritative. Sets the IAM policy for the tunneldestgroup and replaces any existing policy already attached.
@@ -761,6 +762,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
         - 
 
         # IAM policy for Identity-Aware Proxy TunnelDestGroup
+
         Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelDestGroup. Each of these resources serves a different use case:
 
         * `iap.TunnelDestGroupIamPolicy`: Authoritative. Sets the IAM policy for the tunneldestgroup and replaces any existing policy already attached.

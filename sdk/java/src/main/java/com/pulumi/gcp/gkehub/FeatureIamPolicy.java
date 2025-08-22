@@ -158,6 +158,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for GKEHub Feature
+ * 
  * Three different resources help you manage your IAM policy for GKEHub Feature. Each of these resources serves a different use case:
  * 
  * * `gcp.gkehub.FeatureIamPolicy`: Authoritative. Sets the IAM policy for the feature and replaces any existing policy already attached.

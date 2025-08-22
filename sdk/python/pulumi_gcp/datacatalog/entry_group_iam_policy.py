@@ -264,6 +264,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Data Catalog EntryGroup
+
         Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
 
         * `datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.
@@ -432,6 +433,7 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for Data Catalog EntryGroup
+
         Three different resources help you manage your IAM policy for Data Catalog EntryGroup. Each of these resources serves a different use case:
 
         * `datacatalog.EntryGroupIamPolicy`: Authoritative. Sets the IAM policy for the entrygroup and replaces any existing policy already attached.

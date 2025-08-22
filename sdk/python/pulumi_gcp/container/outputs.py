@@ -171,6 +171,9 @@ __all__ = [
     'ClusterNodeConfigGvnic',
     'ClusterNodeConfigHostMaintenancePolicy',
     'ClusterNodeConfigKubeletConfig',
+    'ClusterNodeConfigKubeletConfigEvictionMinimumReclaim',
+    'ClusterNodeConfigKubeletConfigEvictionSoft',
+    'ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod',
     'ClusterNodeConfigLinuxNodeConfig',
     'ClusterNodeConfigLinuxNodeConfigHugepagesConfig',
     'ClusterNodeConfigLocalNvmeSsdBlockConfig',
@@ -221,6 +224,9 @@ __all__ = [
     'ClusterNodePoolNodeConfigGvnic',
     'ClusterNodePoolNodeConfigHostMaintenancePolicy',
     'ClusterNodePoolNodeConfigKubeletConfig',
+    'ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim',
+    'ClusterNodePoolNodeConfigKubeletConfigEvictionSoft',
+    'ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod',
     'ClusterNodePoolNodeConfigLinuxNodeConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig',
@@ -286,6 +292,9 @@ __all__ = [
     'NodePoolNodeConfigGvnic',
     'NodePoolNodeConfigHostMaintenancePolicy',
     'NodePoolNodeConfigKubeletConfig',
+    'NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim',
+    'NodePoolNodeConfigKubeletConfigEvictionSoft',
+    'NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod',
     'NodePoolNodeConfigLinuxNodeConfig',
     'NodePoolNodeConfigLinuxNodeConfigHugepagesConfig',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfig',
@@ -389,6 +398,9 @@ __all__ = [
     'GetClusterNodeConfigGvnicResult',
     'GetClusterNodeConfigHostMaintenancePolicyResult',
     'GetClusterNodeConfigKubeletConfigResult',
+    'GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimResult',
+    'GetClusterNodeConfigKubeletConfigEvictionSoftResult',
+    'GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodResult',
     'GetClusterNodeConfigLinuxNodeConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult',
     'GetClusterNodeConfigLocalNvmeSsdBlockConfigResult',
@@ -439,6 +451,9 @@ __all__ = [
     'GetClusterNodePoolNodeConfigGvnicResult',
     'GetClusterNodePoolNodeConfigHostMaintenancePolicyResult',
     'GetClusterNodePoolNodeConfigKubeletConfigResult',
+    'GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimResult',
+    'GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftResult',
+    'GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigResult',
     'GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult',
@@ -7479,7 +7494,7 @@ class ClusterNodeConfig(dict):
         :param _builtins.str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param 'ClusterNodeConfigSoleTenantConfigArgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        :param 'ClusterNodeConfigSoleTenantConfigArgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
         :param _builtins.bool spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -7958,7 +7973,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="soleTenantConfig")
     def sole_tenant_config(self) -> Optional['outputs.ClusterNodeConfigSoleTenantConfig']:
         """
-        Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
         """
         return pulumi.get(self, "sole_tenant_config")
 
@@ -8800,6 +8815,14 @@ class ClusterNodeConfigKubeletConfig(dict):
             suggest = "cpu_cfs_quota_period"
         elif key == "cpuManagerPolicy":
             suggest = "cpu_manager_policy"
+        elif key == "evictionMaxPodGracePeriodSeconds":
+            suggest = "eviction_max_pod_grace_period_seconds"
+        elif key == "evictionMinimumReclaim":
+            suggest = "eviction_minimum_reclaim"
+        elif key == "evictionSoft":
+            suggest = "eviction_soft"
+        elif key == "evictionSoftGracePeriod":
+            suggest = "eviction_soft_grace_period"
         elif key == "imageGcHighThresholdPercent":
             suggest = "image_gc_high_threshold_percent"
         elif key == "imageGcLowThresholdPercent":
@@ -8810,6 +8833,8 @@ class ClusterNodeConfigKubeletConfig(dict):
             suggest = "image_minimum_gc_age"
         elif key == "insecureKubeletReadonlyPortEnabled":
             suggest = "insecure_kubelet_readonly_port_enabled"
+        elif key == "maxParallelImagePulls":
+            suggest = "max_parallel_image_pulls"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
         elif key == "singleProcessOomKill":
@@ -8833,11 +8858,16 @@ class ClusterNodeConfigKubeletConfig(dict):
                  cpu_cfs_quota: Optional[_builtins.bool] = None,
                  cpu_cfs_quota_period: Optional[_builtins.str] = None,
                  cpu_manager_policy: Optional[_builtins.str] = None,
+                 eviction_max_pod_grace_period_seconds: Optional[_builtins.int] = None,
+                 eviction_minimum_reclaim: Optional['outputs.ClusterNodeConfigKubeletConfigEvictionMinimumReclaim'] = None,
+                 eviction_soft: Optional['outputs.ClusterNodeConfigKubeletConfigEvictionSoft'] = None,
+                 eviction_soft_grace_period: Optional['outputs.ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod'] = None,
                  image_gc_high_threshold_percent: Optional[_builtins.int] = None,
                  image_gc_low_threshold_percent: Optional[_builtins.int] = None,
                  image_maximum_gc_age: Optional[_builtins.str] = None,
                  image_minimum_gc_age: Optional[_builtins.str] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[_builtins.str] = None,
+                 max_parallel_image_pulls: Optional[_builtins.int] = None,
                  pod_pids_limit: Optional[_builtins.int] = None,
                  single_process_oom_kill: Optional[_builtins.bool] = None):
         """
@@ -8859,11 +8889,16 @@ class ClusterNodeConfigKubeletConfig(dict):
                One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
                Prior to the 6.4.0 this field was marked as required. The workaround for the required field
                is setting the empty string `""`, which will function identically to not setting this field.
+        :param _builtins.int eviction_max_pod_grace_period_seconds: Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+        :param 'ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs' eviction_minimum_reclaim: Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+        :param 'ClusterNodeConfigKubeletConfigEvictionSoftArgs' eviction_soft: Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+        :param 'ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs' eviction_soft_grace_period: Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
         :param _builtins.int image_gc_high_threshold_percent: Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
         :param _builtins.int image_gc_low_threshold_percent: Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
         :param _builtins.str image_maximum_gc_age: Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        :param _builtins.int max_parallel_image_pulls: Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         """
@@ -8879,6 +8914,14 @@ class ClusterNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if eviction_max_pod_grace_period_seconds is not None:
+            pulumi.set(__self__, "eviction_max_pod_grace_period_seconds", eviction_max_pod_grace_period_seconds)
+        if eviction_minimum_reclaim is not None:
+            pulumi.set(__self__, "eviction_minimum_reclaim", eviction_minimum_reclaim)
+        if eviction_soft is not None:
+            pulumi.set(__self__, "eviction_soft", eviction_soft)
+        if eviction_soft_grace_period is not None:
+            pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
         if image_gc_high_threshold_percent is not None:
             pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
         if image_gc_low_threshold_percent is not None:
@@ -8889,6 +8932,8 @@ class ClusterNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
+        if max_parallel_image_pulls is not None:
+            pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         if single_process_oom_kill is not None:
@@ -8955,6 +9000,38 @@ class ClusterNodeConfigKubeletConfig(dict):
         return pulumi.get(self, "cpu_manager_policy")
 
     @_builtins.property
+    @pulumi.getter(name="evictionMaxPodGracePeriodSeconds")
+    def eviction_max_pod_grace_period_seconds(self) -> Optional[_builtins.int]:
+        """
+        Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+        """
+        return pulumi.get(self, "eviction_max_pod_grace_period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionMinimumReclaim")
+    def eviction_minimum_reclaim(self) -> Optional['outputs.ClusterNodeConfigKubeletConfigEvictionMinimumReclaim']:
+        """
+        Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+        """
+        return pulumi.get(self, "eviction_minimum_reclaim")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSoft")
+    def eviction_soft(self) -> Optional['outputs.ClusterNodeConfigKubeletConfigEvictionSoft']:
+        """
+        Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+        """
+        return pulumi.get(self, "eviction_soft")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSoftGracePeriod")
+    def eviction_soft_grace_period(self) -> Optional['outputs.ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod']:
+        """
+        Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
+        """
+        return pulumi.get(self, "eviction_soft_grace_period")
+
+    @_builtins.property
     @pulumi.getter(name="imageGcHighThresholdPercent")
     def image_gc_high_threshold_percent(self) -> Optional[_builtins.int]:
         """
@@ -8995,6 +9072,14 @@ class ClusterNodeConfigKubeletConfig(dict):
         return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="maxParallelImagePulls")
+    def max_parallel_image_pulls(self) -> Optional[_builtins.int]:
+        """
+        Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+        """
+        return pulumi.get(self, "max_parallel_image_pulls")
+
+    @_builtins.property
     @pulumi.getter(name="podPidsLimit")
     def pod_pids_limit(self) -> Optional[_builtins.int]:
         """
@@ -9012,6 +9097,324 @@ class ClusterNodeConfigKubeletConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodeConfigKubeletConfigEvictionMinimumReclaim(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigKubeletConfigEvictionMinimumReclaim. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigKubeletConfigEvictionMinimumReclaim.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigKubeletConfigEvictionMinimumReclaim.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of minimum reclaim for imagefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of minimum reclaim for imagefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str memory_available: Defines percentage of minimum reclaim for memory.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str nodefs_available: Defines percentage of minimum reclaim for nodefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of minimum reclaim for nodefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str pid_available: Defines percentage of minimum reclaim for pid.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for imagefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for imagefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for memory.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for nodefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for nodefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for pid.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class ClusterNodeConfigKubeletConfigEvictionSoft(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigKubeletConfigEvictionSoft. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigKubeletConfigEvictionSoft.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigKubeletConfigEvictionSoft.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of soft eviction threshold for imagefs.available. The value must be a percentage between `15%` and `50%`, such as `"20%"`.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of soft eviction threshold for imagefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
+        :param _builtins.str memory_available: Defines quantity of soft eviction threshold for memory.available. The value must be a quantity, such as `"100Mi"`. The value must be greater than or equal to the GKE default hard eviction threshold of `"100Mi"` and less than 50% of machine memory.
+        :param _builtins.str nodefs_available: Defines percentage of soft eviction threshold for nodefs.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of soft eviction threshold for nodefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
+        :param _builtins.str pid_available: Defines percentage of soft eviction threshold for pid.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for imagefs.available. The value must be a percentage between `15%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for imagefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines quantity of soft eviction threshold for memory.available. The value must be a quantity, such as `"100Mi"`. The value must be greater than or equal to the GKE default hard eviction threshold of `"100Mi"` and less than 50% of machine memory.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for nodefs.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for nodefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for pid.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines grace period for the imagefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        :param _builtins.str imagefs_inodes_free: Defines grace period for the imagefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        :param _builtins.str memory_available: Defines grace period for the memory.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
+        :param _builtins.str nodefs_available: Defines grace period for the nodefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        :param _builtins.str nodefs_inodes_free: Defines grace period for the nodefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        :param _builtins.str pid_available: Defines grace period for the pid.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the imagefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the imagefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the memory.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the nodefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the nodefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the pid.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
 class ClusterNodeConfigLinuxNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9020,6 +9423,10 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
             suggest = "cgroup_mode"
         elif key == "hugepagesConfig":
             suggest = "hugepages_config"
+        elif key == "transparentHugepageDefrag":
+            suggest = "transparent_hugepage_defrag"
+        elif key == "transparentHugepageEnabled":
+            suggest = "transparent_hugepage_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigLinuxNodeConfig. Access the value via the '{suggest}' property getter instead.")
@@ -9035,7 +9442,9 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  cgroup_mode: Optional[_builtins.str] = None,
                  hugepages_config: Optional['outputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
-                 sysctls: Optional[Mapping[str, _builtins.str]] = None):
+                 sysctls: Optional[Mapping[str, _builtins.str]] = None,
+                 transparent_hugepage_defrag: Optional[_builtins.str] = None,
+                 transparent_hugepage_enabled: Optional[_builtins.str] = None):
         """
         :param _builtins.str cgroup_mode: Possible cgroup modes that can be used.
                Accepted values are:
@@ -9047,6 +9456,8 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
+        :param _builtins.str transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
+        :param _builtins.str transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
@@ -9054,6 +9465,10 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
+        if transparent_hugepage_defrag is not None:
+            pulumi.set(__self__, "transparent_hugepage_defrag", transparent_hugepage_defrag)
+        if transparent_hugepage_enabled is not None:
+            pulumi.set(__self__, "transparent_hugepage_enabled", transparent_hugepage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -9085,6 +9500,22 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
         Note that validations happen all server side. All attributes are optional.
         """
         return pulumi.get(self, "sysctls")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageDefrag")
+    def transparent_hugepage_defrag(self) -> Optional[_builtins.str]:
+        """
+        The Linux kernel transparent hugepage defrag setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_defrag")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageEnabled")
+    def transparent_hugepage_enabled(self) -> Optional[_builtins.str]:
+        """
+        The Linux kernel transparent hugepage setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_enabled")
 
 
 @pulumi.output_type
@@ -9398,6 +9829,8 @@ class ClusterNodeConfigSoleTenantConfig(dict):
         suggest = None
         if key == "nodeAffinities":
             suggest = "node_affinities"
+        elif key == "minNodeCpus":
+            suggest = "min_node_cpus"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigSoleTenantConfig. Access the value via the '{suggest}' property getter instead.")
@@ -9411,19 +9844,31 @@ class ClusterNodeConfigSoleTenantConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 node_affinities: Sequence['outputs.ClusterNodeConfigSoleTenantConfigNodeAffinity']):
+                 node_affinities: Sequence['outputs.ClusterNodeConfigSoleTenantConfigNodeAffinity'],
+                 min_node_cpus: Optional[_builtins.int] = None):
         """
-        :param Sequence['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs'] node_affinities: .
+        :param Sequence['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs'] node_affinities: The node affinity settings for the sole tenant node pool. Structure is documented below.
+        :param _builtins.int min_node_cpus: Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type's CPU count.
         """
         pulumi.set(__self__, "node_affinities", node_affinities)
+        if min_node_cpus is not None:
+            pulumi.set(__self__, "min_node_cpus", min_node_cpus)
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinities")
     def node_affinities(self) -> Sequence['outputs.ClusterNodeConfigSoleTenantConfigNodeAffinity']:
         """
-        .
+        The node affinity settings for the sole tenant node pool. Structure is documented below.
         """
         return pulumi.get(self, "node_affinities")
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> Optional[_builtins.int]:
+        """
+        Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type's CPU count.
+        """
+        return pulumi.get(self, "min_node_cpus")
 
 
 @pulumi.output_type
@@ -10991,7 +11436,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param _builtins.str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigSoleTenantConfigArgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        :param 'ClusterNodePoolNodeConfigSoleTenantConfigArgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
         :param _builtins.bool spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -11470,7 +11915,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="soleTenantConfig")
     def sole_tenant_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSoleTenantConfig']:
         """
-        Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
         """
         return pulumi.get(self, "sole_tenant_config")
 
@@ -12312,6 +12757,14 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
             suggest = "cpu_cfs_quota_period"
         elif key == "cpuManagerPolicy":
             suggest = "cpu_manager_policy"
+        elif key == "evictionMaxPodGracePeriodSeconds":
+            suggest = "eviction_max_pod_grace_period_seconds"
+        elif key == "evictionMinimumReclaim":
+            suggest = "eviction_minimum_reclaim"
+        elif key == "evictionSoft":
+            suggest = "eviction_soft"
+        elif key == "evictionSoftGracePeriod":
+            suggest = "eviction_soft_grace_period"
         elif key == "imageGcHighThresholdPercent":
             suggest = "image_gc_high_threshold_percent"
         elif key == "imageGcLowThresholdPercent":
@@ -12322,6 +12775,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
             suggest = "image_minimum_gc_age"
         elif key == "insecureKubeletReadonlyPortEnabled":
             suggest = "insecure_kubelet_readonly_port_enabled"
+        elif key == "maxParallelImagePulls":
+            suggest = "max_parallel_image_pulls"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
         elif key == "singleProcessOomKill":
@@ -12345,11 +12800,16 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
                  cpu_cfs_quota: Optional[_builtins.bool] = None,
                  cpu_cfs_quota_period: Optional[_builtins.str] = None,
                  cpu_manager_policy: Optional[_builtins.str] = None,
+                 eviction_max_pod_grace_period_seconds: Optional[_builtins.int] = None,
+                 eviction_minimum_reclaim: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim'] = None,
+                 eviction_soft: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionSoft'] = None,
+                 eviction_soft_grace_period: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod'] = None,
                  image_gc_high_threshold_percent: Optional[_builtins.int] = None,
                  image_gc_low_threshold_percent: Optional[_builtins.int] = None,
                  image_maximum_gc_age: Optional[_builtins.str] = None,
                  image_minimum_gc_age: Optional[_builtins.str] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[_builtins.str] = None,
+                 max_parallel_image_pulls: Optional[_builtins.int] = None,
                  pod_pids_limit: Optional[_builtins.int] = None,
                  single_process_oom_kill: Optional[_builtins.bool] = None):
         """
@@ -12371,11 +12831,16 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
                One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
                Prior to the 6.4.0 this field was marked as required. The workaround for the required field
                is setting the empty string `""`, which will function identically to not setting this field.
+        :param _builtins.int eviction_max_pod_grace_period_seconds: Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+        :param 'ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs' eviction_minimum_reclaim: Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigKubeletConfigEvictionSoftArgs' eviction_soft: Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs' eviction_soft_grace_period: Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
         :param _builtins.int image_gc_high_threshold_percent: Defines the percent of disk usage after which image garbage collection is always run. The integer must be between 10 and 85, inclusive.
         :param _builtins.int image_gc_low_threshold_percent: Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The integer must be between 10 and 85, inclusive.
         :param _builtins.str image_maximum_gc_age: Defines the maximum age an image can be unused before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        :param _builtins.int max_parallel_image_pulls: Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         """
@@ -12391,6 +12856,14 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if eviction_max_pod_grace_period_seconds is not None:
+            pulumi.set(__self__, "eviction_max_pod_grace_period_seconds", eviction_max_pod_grace_period_seconds)
+        if eviction_minimum_reclaim is not None:
+            pulumi.set(__self__, "eviction_minimum_reclaim", eviction_minimum_reclaim)
+        if eviction_soft is not None:
+            pulumi.set(__self__, "eviction_soft", eviction_soft)
+        if eviction_soft_grace_period is not None:
+            pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
         if image_gc_high_threshold_percent is not None:
             pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
         if image_gc_low_threshold_percent is not None:
@@ -12401,6 +12874,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
+        if max_parallel_image_pulls is not None:
+            pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         if single_process_oom_kill is not None:
@@ -12467,6 +12942,38 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
         return pulumi.get(self, "cpu_manager_policy")
 
     @_builtins.property
+    @pulumi.getter(name="evictionMaxPodGracePeriodSeconds")
+    def eviction_max_pod_grace_period_seconds(self) -> Optional[_builtins.int]:
+        """
+        Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
+        """
+        return pulumi.get(self, "eviction_max_pod_grace_period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionMinimumReclaim")
+    def eviction_minimum_reclaim(self) -> Optional['outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim']:
+        """
+        Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
+        """
+        return pulumi.get(self, "eviction_minimum_reclaim")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSoft")
+    def eviction_soft(self) -> Optional['outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionSoft']:
+        """
+        Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
+        """
+        return pulumi.get(self, "eviction_soft")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSoftGracePeriod")
+    def eviction_soft_grace_period(self) -> Optional['outputs.ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod']:
+        """
+        Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
+        """
+        return pulumi.get(self, "eviction_soft_grace_period")
+
+    @_builtins.property
     @pulumi.getter(name="imageGcHighThresholdPercent")
     def image_gc_high_threshold_percent(self) -> Optional[_builtins.int]:
         """
@@ -12507,6 +13014,14 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
         return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="maxParallelImagePulls")
+    def max_parallel_image_pulls(self) -> Optional[_builtins.int]:
+        """
+        Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+        """
+        return pulumi.get(self, "max_parallel_image_pulls")
+
+    @_builtins.property
     @pulumi.getter(name="podPidsLimit")
     def pod_pids_limit(self) -> Optional[_builtins.int]:
         """
@@ -12524,6 +13039,324 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of minimum reclaim for imagefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of minimum reclaim for imagefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str memory_available: Defines percentage of minimum reclaim for memory.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str nodefs_available: Defines percentage of minimum reclaim for nodefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of minimum reclaim for nodefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        :param _builtins.str pid_available: Defines percentage of minimum reclaim for pid.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for imagefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for imagefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for memory.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for nodefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for nodefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for pid.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigKubeletConfigEvictionSoft(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigKubeletConfigEvictionSoft. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigKubeletConfigEvictionSoft.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigKubeletConfigEvictionSoft.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of soft eviction threshold for imagefs.available. The value must be a percentage between `15%` and `50%`, such as `"20%"`.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of soft eviction threshold for imagefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
+        :param _builtins.str memory_available: Defines quantity of soft eviction threshold for memory.available. The value must be a quantity, such as `"100Mi"`. The value must be greater than or equal to the GKE default hard eviction threshold of `"100Mi"` and less than 50% of machine memory.
+        :param _builtins.str nodefs_available: Defines percentage of soft eviction threshold for nodefs.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of soft eviction threshold for nodefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
+        :param _builtins.str pid_available: Defines percentage of soft eviction threshold for pid.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for imagefs.available. The value must be a percentage between `15%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for imagefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines quantity of soft eviction threshold for memory.available. The value must be a quantity, such as `"100Mi"`. The value must be greater than or equal to the GKE default hard eviction threshold of `"100Mi"` and less than 50% of machine memory.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for nodefs.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for nodefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for pid.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines grace period for the imagefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        :param _builtins.str imagefs_inodes_free: Defines grace period for the imagefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        :param _builtins.str memory_available: Defines grace period for the memory.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
+        :param _builtins.str nodefs_available: Defines grace period for the nodefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        :param _builtins.str nodefs_inodes_free: Defines grace period for the nodefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        :param _builtins.str pid_available: Defines grace period for the pid.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the imagefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the imagefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the memory.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the nodefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the nodefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the pid.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
 class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -12532,6 +13365,10 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
             suggest = "cgroup_mode"
         elif key == "hugepagesConfig":
             suggest = "hugepages_config"
+        elif key == "transparentHugepageDefrag":
+            suggest = "transparent_hugepage_defrag"
+        elif key == "transparentHugepageEnabled":
+            suggest = "transparent_hugepage_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigLinuxNodeConfig. Access the value via the '{suggest}' property getter instead.")
@@ -12547,7 +13384,9 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  cgroup_mode: Optional[_builtins.str] = None,
                  hugepages_config: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
-                 sysctls: Optional[Mapping[str, _builtins.str]] = None):
+                 sysctls: Optional[Mapping[str, _builtins.str]] = None,
+                 transparent_hugepage_defrag: Optional[_builtins.str] = None,
+                 transparent_hugepage_enabled: Optional[_builtins.str] = None):
         """
         :param _builtins.str cgroup_mode: Possible cgroup modes that can be used.
                Accepted values are:
@@ -12559,6 +13398,8 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
+        :param _builtins.str transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
+        :param _builtins.str transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
@@ -12566,6 +13407,10 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
+        if transparent_hugepage_defrag is not None:
+            pulumi.set(__self__, "transparent_hugepage_defrag", transparent_hugepage_defrag)
+        if transparent_hugepage_enabled is not None:
+            pulumi.set(__self__, "transparent_hugepage_enabled", transparent_hugepage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -12597,6 +13442,22 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
         Note that validations happen all server side. All attributes are optional.
         """
         return pulumi.get(self, "sysctls")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageDefrag")
+    def transparent_hugepage_defrag(self) -> Optional[_builtins.str]:
+        """
+        The Linux kernel transparent hugepage defrag setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_defrag")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageEnabled")
+    def transparent_hugepage_enabled(self) -> Optional[_builtins.str]:
+        """
+        The Linux kernel transparent hugepage setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_enabled")
 
 
 @pulumi.output_type
@@ -12910,6 +13771,8 @@ class ClusterNodePoolNodeConfigSoleTenantConfig(dict):
         suggest = None
         if key == "nodeAffinities":
             suggest = "node_affinities"
+        elif key == "minNodeCpus":
+            suggest = "min_node_cpus"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigSoleTenantConfig. Access the value via the '{suggest}' property getter instead.")
@@ -12923,19 +13786,31 @@ class ClusterNodePoolNodeConfigSoleTenantConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 node_affinities: Sequence['outputs.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity']):
+                 node_affinities: Sequence['outputs.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity'],
+                 min_node_cpus: Optional[_builtins.int] = None):
         """
-        :param Sequence['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs'] node_affinities: .
+        :param Sequence['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs'] node_affinities: The node affinity settings for the sole tenant node pool. Structure is documented below.
+        :param _builtins.int min_node_cpus: Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type's CPU count.
         """
         pulumi.set(__self__, "node_affinities", node_affinities)
+        if min_node_cpus is not None:
+            pulumi.set(__self__, "min_node_cpus", min_node_cpus)
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinities")
     def node_affinities(self) -> Sequence['outputs.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity']:
         """
-        .
+        The node affinity settings for the sole tenant node pool. Structure is documented below.
         """
         return pulumi.get(self, "node_affinities")
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> Optional[_builtins.int]:
+        """
+        Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feeature is disabled. The value should be greater than or equal to half of the machine type's CPU count.
+        """
+        return pulumi.get(self, "min_node_cpus")
 
 
 @pulumi.output_type
@@ -16266,6 +17141,14 @@ class NodePoolNodeConfigKubeletConfig(dict):
             suggest = "cpu_cfs_quota_period"
         elif key == "cpuManagerPolicy":
             suggest = "cpu_manager_policy"
+        elif key == "evictionMaxPodGracePeriodSeconds":
+            suggest = "eviction_max_pod_grace_period_seconds"
+        elif key == "evictionMinimumReclaim":
+            suggest = "eviction_minimum_reclaim"
+        elif key == "evictionSoft":
+            suggest = "eviction_soft"
+        elif key == "evictionSoftGracePeriod":
+            suggest = "eviction_soft_grace_period"
         elif key == "imageGcHighThresholdPercent":
             suggest = "image_gc_high_threshold_percent"
         elif key == "imageGcLowThresholdPercent":
@@ -16276,6 +17159,8 @@ class NodePoolNodeConfigKubeletConfig(dict):
             suggest = "image_minimum_gc_age"
         elif key == "insecureKubeletReadonlyPortEnabled":
             suggest = "insecure_kubelet_readonly_port_enabled"
+        elif key == "maxParallelImagePulls":
+            suggest = "max_parallel_image_pulls"
         elif key == "podPidsLimit":
             suggest = "pod_pids_limit"
         elif key == "singleProcessOomKill":
@@ -16299,11 +17184,16 @@ class NodePoolNodeConfigKubeletConfig(dict):
                  cpu_cfs_quota: Optional[_builtins.bool] = None,
                  cpu_cfs_quota_period: Optional[_builtins.str] = None,
                  cpu_manager_policy: Optional[_builtins.str] = None,
+                 eviction_max_pod_grace_period_seconds: Optional[_builtins.int] = None,
+                 eviction_minimum_reclaim: Optional['outputs.NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim'] = None,
+                 eviction_soft: Optional['outputs.NodePoolNodeConfigKubeletConfigEvictionSoft'] = None,
+                 eviction_soft_grace_period: Optional['outputs.NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod'] = None,
                  image_gc_high_threshold_percent: Optional[_builtins.int] = None,
                  image_gc_low_threshold_percent: Optional[_builtins.int] = None,
                  image_maximum_gc_age: Optional[_builtins.str] = None,
                  image_minimum_gc_age: Optional[_builtins.str] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[_builtins.str] = None,
+                 max_parallel_image_pulls: Optional[_builtins.int] = None,
                  pod_pids_limit: Optional[_builtins.int] = None,
                  single_process_oom_kill: Optional[_builtins.bool] = None):
         """
@@ -16313,11 +17203,16 @@ class NodePoolNodeConfigKubeletConfig(dict):
         :param _builtins.bool cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits.
         :param _builtins.str cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'.
         :param _builtins.str cpu_manager_policy: Control the CPU management policy on the node.
+        :param _builtins.int eviction_max_pod_grace_period_seconds: Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+        :param 'NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs' eviction_minimum_reclaim: Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+        :param 'NodePoolNodeConfigKubeletConfigEvictionSoftArgs' eviction_soft: Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+        :param 'NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs' eviction_soft_grace_period: Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
         :param _builtins.int image_gc_high_threshold_percent: Defines the percent of disk usage after which image garbage collection is always run.
         :param _builtins.int image_gc_low_threshold_percent: Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
         :param _builtins.str image_maximum_gc_age: Defines the maximum age an image can be unused before it is garbage collected.
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected.
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        :param _builtins.int max_parallel_image_pulls: Set the maximum number of image pulls in parallel.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         """
@@ -16333,6 +17228,14 @@ class NodePoolNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if eviction_max_pod_grace_period_seconds is not None:
+            pulumi.set(__self__, "eviction_max_pod_grace_period_seconds", eviction_max_pod_grace_period_seconds)
+        if eviction_minimum_reclaim is not None:
+            pulumi.set(__self__, "eviction_minimum_reclaim", eviction_minimum_reclaim)
+        if eviction_soft is not None:
+            pulumi.set(__self__, "eviction_soft", eviction_soft)
+        if eviction_soft_grace_period is not None:
+            pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
         if image_gc_high_threshold_percent is not None:
             pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
         if image_gc_low_threshold_percent is not None:
@@ -16343,6 +17246,8 @@ class NodePoolNodeConfigKubeletConfig(dict):
             pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
+        if max_parallel_image_pulls is not None:
+            pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         if single_process_oom_kill is not None:
@@ -16397,6 +17302,38 @@ class NodePoolNodeConfigKubeletConfig(dict):
         return pulumi.get(self, "cpu_manager_policy")
 
     @_builtins.property
+    @pulumi.getter(name="evictionMaxPodGracePeriodSeconds")
+    def eviction_max_pod_grace_period_seconds(self) -> Optional[_builtins.int]:
+        """
+        Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+        """
+        return pulumi.get(self, "eviction_max_pod_grace_period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionMinimumReclaim")
+    def eviction_minimum_reclaim(self) -> Optional['outputs.NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim']:
+        """
+        Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+        """
+        return pulumi.get(self, "eviction_minimum_reclaim")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSoft")
+    def eviction_soft(self) -> Optional['outputs.NodePoolNodeConfigKubeletConfigEvictionSoft']:
+        """
+        Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+        """
+        return pulumi.get(self, "eviction_soft")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSoftGracePeriod")
+    def eviction_soft_grace_period(self) -> Optional['outputs.NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod']:
+        """
+        Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+        """
+        return pulumi.get(self, "eviction_soft_grace_period")
+
+    @_builtins.property
     @pulumi.getter(name="imageGcHighThresholdPercent")
     def image_gc_high_threshold_percent(self) -> Optional[_builtins.int]:
         """
@@ -16437,6 +17374,14 @@ class NodePoolNodeConfigKubeletConfig(dict):
         return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="maxParallelImagePulls")
+    def max_parallel_image_pulls(self) -> Optional[_builtins.int]:
+        """
+        Set the maximum number of image pulls in parallel.
+        """
+        return pulumi.get(self, "max_parallel_image_pulls")
+
+    @_builtins.property
     @pulumi.getter(name="podPidsLimit")
     def pod_pids_limit(self) -> Optional[_builtins.int]:
         """
@@ -16454,6 +17399,324 @@ class NodePoolNodeConfigKubeletConfig(dict):
 
 
 @pulumi.output_type
+class NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of minimum reclaim for imagefs.available.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of minimum reclaim for imagefs.inodesFree.
+        :param _builtins.str memory_available: Defines percentage of minimum reclaim for memory.available.
+        :param _builtins.str nodefs_available: Defines percentage of minimum reclaim for nodefs.available.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of minimum reclaim for nodefs.inodesFree.
+        :param _builtins.str pid_available: Defines percentage of minimum reclaim for pid.available.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for imagefs.available.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for imagefs.inodesFree.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for memory.available.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for nodefs.available.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for nodefs.inodesFree.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of minimum reclaim for pid.available.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigKubeletConfigEvictionSoft(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigKubeletConfigEvictionSoft. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigKubeletConfigEvictionSoft.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigKubeletConfigEvictionSoft.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of soft eviction threshold for imagefs.available.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of soft eviction threshold for imagefs.inodesFree.
+        :param _builtins.str memory_available: Defines quantity of soft eviction threshold for memory.available.
+        :param _builtins.str nodefs_available: Defines percentage of soft eviction threshold for nodefs.available.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of soft eviction threshold for nodefs.inodesFree.
+        :param _builtins.str pid_available: Defines percentage of soft eviction threshold for pid.available.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for imagefs.available.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for imagefs.inodesFree.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines quantity of soft eviction threshold for memory.available.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for nodefs.available.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for nodefs.inodesFree.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines percentage of soft eviction threshold for pid.available.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imagefsAvailable":
+            suggest = "imagefs_available"
+        elif key == "imagefsInodesFree":
+            suggest = "imagefs_inodes_free"
+        elif key == "memoryAvailable":
+            suggest = "memory_available"
+        elif key == "nodefsAvailable":
+            suggest = "nodefs_available"
+        elif key == "nodefsInodesFree":
+            suggest = "nodefs_inodes_free"
+        elif key == "pidAvailable":
+            suggest = "pid_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 imagefs_available: Optional[_builtins.str] = None,
+                 imagefs_inodes_free: Optional[_builtins.str] = None,
+                 memory_available: Optional[_builtins.str] = None,
+                 nodefs_available: Optional[_builtins.str] = None,
+                 nodefs_inodes_free: Optional[_builtins.str] = None,
+                 pid_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str imagefs_available: Defines grace period for the imagefs.available soft eviction threshold
+        :param _builtins.str imagefs_inodes_free: Defines grace period for the imagefs.inodesFree soft eviction threshold.
+        :param _builtins.str memory_available: Defines grace period for the memory.available soft eviction threshold.
+        :param _builtins.str nodefs_available: Defines grace period for the nodefs.available soft eviction threshold.
+        :param _builtins.str nodefs_inodes_free: Defines grace period for the nodefs.inodesFree soft eviction threshold.
+        :param _builtins.str pid_available: Defines grace period for the pid.available soft eviction threshold.
+        """
+        if imagefs_available is not None:
+            pulumi.set(__self__, "imagefs_available", imagefs_available)
+        if imagefs_inodes_free is not None:
+            pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        if memory_available is not None:
+            pulumi.set(__self__, "memory_available", memory_available)
+        if nodefs_available is not None:
+            pulumi.set(__self__, "nodefs_available", nodefs_available)
+        if nodefs_inodes_free is not None:
+            pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        if pid_available is not None:
+            pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the imagefs.available soft eviction threshold
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the imagefs.inodesFree soft eviction threshold.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the memory.available soft eviction threshold.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the nodefs.available soft eviction threshold.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the nodefs.inodesFree soft eviction threshold.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> Optional[_builtins.str]:
+        """
+        Defines grace period for the pid.available soft eviction threshold.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
 class NodePoolNodeConfigLinuxNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16462,6 +17725,10 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
             suggest = "cgroup_mode"
         elif key == "hugepagesConfig":
             suggest = "hugepages_config"
+        elif key == "transparentHugepageDefrag":
+            suggest = "transparent_hugepage_defrag"
+        elif key == "transparentHugepageEnabled":
+            suggest = "transparent_hugepage_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigLinuxNodeConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16477,11 +17744,15 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  cgroup_mode: Optional[_builtins.str] = None,
                  hugepages_config: Optional['outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
-                 sysctls: Optional[Mapping[str, _builtins.str]] = None):
+                 sysctls: Optional[Mapping[str, _builtins.str]] = None,
+                 transparent_hugepage_defrag: Optional[_builtins.str] = None,
+                 transparent_hugepage_enabled: Optional[_builtins.str] = None):
         """
         :param _builtins.str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
         :param 'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs' hugepages_config: Amounts for 2M and 1G hugepages.
         :param Mapping[str, _builtins.str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+        :param _builtins.str transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
+        :param _builtins.str transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
@@ -16489,6 +17760,10 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
+        if transparent_hugepage_defrag is not None:
+            pulumi.set(__self__, "transparent_hugepage_defrag", transparent_hugepage_defrag)
+        if transparent_hugepage_enabled is not None:
+            pulumi.set(__self__, "transparent_hugepage_enabled", transparent_hugepage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -16513,6 +17788,22 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         return pulumi.get(self, "sysctls")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageDefrag")
+    def transparent_hugepage_defrag(self) -> Optional[_builtins.str]:
+        """
+        The Linux kernel transparent hugepage defrag setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_defrag")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageEnabled")
+    def transparent_hugepage_enabled(self) -> Optional[_builtins.str]:
+        """
+        The Linux kernel transparent hugepage setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_enabled")
 
 
 @pulumi.output_type
@@ -16810,6 +18101,8 @@ class NodePoolNodeConfigSoleTenantConfig(dict):
         suggest = None
         if key == "nodeAffinities":
             suggest = "node_affinities"
+        elif key == "minNodeCpus":
+            suggest = "min_node_cpus"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigSoleTenantConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16823,11 +18116,15 @@ class NodePoolNodeConfigSoleTenantConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 node_affinities: Sequence['outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity']):
+                 node_affinities: Sequence['outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity'],
+                 min_node_cpus: Optional[_builtins.int] = None):
         """
         :param Sequence['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs'] node_affinities: .
+        :param _builtins.int min_node_cpus: Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
         """
         pulumi.set(__self__, "node_affinities", node_affinities)
+        if min_node_cpus is not None:
+            pulumi.set(__self__, "min_node_cpus", min_node_cpus)
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinities")
@@ -16836,6 +18133,14 @@ class NodePoolNodeConfigSoleTenantConfig(dict):
         .
         """
         return pulumi.get(self, "node_affinities")
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> Optional[_builtins.int]:
+        """
+        Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+        """
+        return pulumi.get(self, "min_node_cpus")
 
 
 @pulumi.output_type
@@ -20272,11 +21577,16 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
                  cpu_cfs_quota: _builtins.bool,
                  cpu_cfs_quota_period: _builtins.str,
                  cpu_manager_policy: _builtins.str,
+                 eviction_max_pod_grace_period_seconds: _builtins.int,
+                 eviction_minimum_reclaims: Sequence['outputs.GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimResult'],
+                 eviction_soft_grace_periods: Sequence['outputs.GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodResult'],
+                 eviction_softs: Sequence['outputs.GetClusterNodeConfigKubeletConfigEvictionSoftResult'],
                  image_gc_high_threshold_percent: _builtins.int,
                  image_gc_low_threshold_percent: _builtins.int,
                  image_maximum_gc_age: _builtins.str,
                  image_minimum_gc_age: _builtins.str,
                  insecure_kubelet_readonly_port_enabled: _builtins.str,
+                 max_parallel_image_pulls: _builtins.int,
                  pod_pids_limit: _builtins.int,
                  single_process_oom_kill: _builtins.bool):
         """
@@ -20286,11 +21596,16 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         :param _builtins.bool cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits.
         :param _builtins.str cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'.
         :param _builtins.str cpu_manager_policy: Control the CPU management policy on the node.
+        :param _builtins.int eviction_max_pod_grace_period_seconds: Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+        :param Sequence['GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs'] eviction_minimum_reclaims: Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+        :param Sequence['GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs'] eviction_soft_grace_periods: Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+        :param Sequence['GetClusterNodeConfigKubeletConfigEvictionSoftArgs'] eviction_softs: Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
         :param _builtins.int image_gc_high_threshold_percent: Defines the percent of disk usage after which image garbage collection is always run.
         :param _builtins.int image_gc_low_threshold_percent: Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
         :param _builtins.str image_maximum_gc_age: Defines the maximum age an image can be unused before it is garbage collected.
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected.
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        :param _builtins.int max_parallel_image_pulls: Set the maximum number of image pulls in parallel.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         """
@@ -20300,11 +21615,16 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        pulumi.set(__self__, "eviction_max_pod_grace_period_seconds", eviction_max_pod_grace_period_seconds)
+        pulumi.set(__self__, "eviction_minimum_reclaims", eviction_minimum_reclaims)
+        pulumi.set(__self__, "eviction_soft_grace_periods", eviction_soft_grace_periods)
+        pulumi.set(__self__, "eviction_softs", eviction_softs)
         pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
         pulumi.set(__self__, "image_gc_low_threshold_percent", image_gc_low_threshold_percent)
         pulumi.set(__self__, "image_maximum_gc_age", image_maximum_gc_age)
         pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
+        pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
         pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
 
@@ -20357,6 +21677,38 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         return pulumi.get(self, "cpu_manager_policy")
 
     @_builtins.property
+    @pulumi.getter(name="evictionMaxPodGracePeriodSeconds")
+    def eviction_max_pod_grace_period_seconds(self) -> _builtins.int:
+        """
+        Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+        """
+        return pulumi.get(self, "eviction_max_pod_grace_period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionMinimumReclaims")
+    def eviction_minimum_reclaims(self) -> Sequence['outputs.GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimResult']:
+        """
+        Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+        """
+        return pulumi.get(self, "eviction_minimum_reclaims")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSoftGracePeriods")
+    def eviction_soft_grace_periods(self) -> Sequence['outputs.GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodResult']:
+        """
+        Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+        """
+        return pulumi.get(self, "eviction_soft_grace_periods")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSofts")
+    def eviction_softs(self) -> Sequence['outputs.GetClusterNodeConfigKubeletConfigEvictionSoftResult']:
+        """
+        Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+        """
+        return pulumi.get(self, "eviction_softs")
+
+    @_builtins.property
     @pulumi.getter(name="imageGcHighThresholdPercent")
     def image_gc_high_threshold_percent(self) -> _builtins.int:
         """
@@ -20397,6 +21749,14 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
         return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="maxParallelImagePulls")
+    def max_parallel_image_pulls(self) -> _builtins.int:
+        """
+        Set the maximum number of image pulls in parallel.
+        """
+        return pulumi.get(self, "max_parallel_image_pulls")
+
+    @_builtins.property
     @pulumi.getter(name="podPidsLimit")
     def pod_pids_limit(self) -> _builtins.int:
         """
@@ -20414,19 +21774,244 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimResult(dict):
+    def __init__(__self__, *,
+                 imagefs_available: _builtins.str,
+                 imagefs_inodes_free: _builtins.str,
+                 memory_available: _builtins.str,
+                 nodefs_available: _builtins.str,
+                 nodefs_inodes_free: _builtins.str,
+                 pid_available: _builtins.str):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of minimum reclaim for imagefs.available.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of minimum reclaim for imagefs.inodesFree.
+        :param _builtins.str memory_available: Defines percentage of minimum reclaim for memory.available.
+        :param _builtins.str nodefs_available: Defines percentage of minimum reclaim for nodefs.available.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of minimum reclaim for nodefs.inodesFree.
+        :param _builtins.str pid_available: Defines percentage of minimum reclaim for pid.available.
+        """
+        pulumi.set(__self__, "imagefs_available", imagefs_available)
+        pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        pulumi.set(__self__, "memory_available", memory_available)
+        pulumi.set(__self__, "nodefs_available", nodefs_available)
+        pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for imagefs.available.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for imagefs.inodesFree.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for memory.available.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for nodefs.available.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for nodefs.inodesFree.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for pid.available.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigKubeletConfigEvictionSoftResult(dict):
+    def __init__(__self__, *,
+                 imagefs_available: _builtins.str,
+                 imagefs_inodes_free: _builtins.str,
+                 memory_available: _builtins.str,
+                 nodefs_available: _builtins.str,
+                 nodefs_inodes_free: _builtins.str,
+                 pid_available: _builtins.str):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of soft eviction threshold for imagefs.available.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of soft eviction threshold for imagefs.inodesFree.
+        :param _builtins.str memory_available: Defines quantity of soft eviction threshold for memory.available.
+        :param _builtins.str nodefs_available: Defines percentage of soft eviction threshold for nodefs.available.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of soft eviction threshold for nodefs.inodesFree.
+        :param _builtins.str pid_available: Defines percentage of soft eviction threshold for pid.available.
+        """
+        pulumi.set(__self__, "imagefs_available", imagefs_available)
+        pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        pulumi.set(__self__, "memory_available", memory_available)
+        pulumi.set(__self__, "nodefs_available", nodefs_available)
+        pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for imagefs.available.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for imagefs.inodesFree.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> _builtins.str:
+        """
+        Defines quantity of soft eviction threshold for memory.available.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for nodefs.available.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for nodefs.inodesFree.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for pid.available.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodResult(dict):
+    def __init__(__self__, *,
+                 imagefs_available: _builtins.str,
+                 imagefs_inodes_free: _builtins.str,
+                 memory_available: _builtins.str,
+                 nodefs_available: _builtins.str,
+                 nodefs_inodes_free: _builtins.str,
+                 pid_available: _builtins.str):
+        """
+        :param _builtins.str imagefs_available: Defines grace period for the imagefs.available soft eviction threshold
+        :param _builtins.str imagefs_inodes_free: Defines grace period for the imagefs.inodesFree soft eviction threshold.
+        :param _builtins.str memory_available: Defines grace period for the memory.available soft eviction threshold.
+        :param _builtins.str nodefs_available: Defines grace period for the nodefs.available soft eviction threshold.
+        :param _builtins.str nodefs_inodes_free: Defines grace period for the nodefs.inodesFree soft eviction threshold.
+        :param _builtins.str pid_available: Defines grace period for the pid.available soft eviction threshold.
+        """
+        pulumi.set(__self__, "imagefs_available", imagefs_available)
+        pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        pulumi.set(__self__, "memory_available", memory_available)
+        pulumi.set(__self__, "nodefs_available", nodefs_available)
+        pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> _builtins.str:
+        """
+        Defines grace period for the imagefs.available soft eviction threshold
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines grace period for the imagefs.inodesFree soft eviction threshold.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> _builtins.str:
+        """
+        Defines grace period for the memory.available soft eviction threshold.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> _builtins.str:
+        """
+        Defines grace period for the nodefs.available soft eviction threshold.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines grace period for the nodefs.inodesFree soft eviction threshold.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> _builtins.str:
+        """
+        Defines grace period for the pid.available soft eviction threshold.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
 class GetClusterNodeConfigLinuxNodeConfigResult(dict):
     def __init__(__self__, *,
                  cgroup_mode: _builtins.str,
                  hugepages_configs: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult'],
-                 sysctls: Mapping[str, _builtins.str]):
+                 sysctls: Mapping[str, _builtins.str],
+                 transparent_hugepage_defrag: _builtins.str,
+                 transparent_hugepage_enabled: _builtins.str):
         """
         :param _builtins.str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
         :param Sequence['GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_configs: Amounts for 2M and 1G hugepages.
         :param Mapping[str, _builtins.str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+        :param _builtins.str transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
+        :param _builtins.str transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
         """
         pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         pulumi.set(__self__, "hugepages_configs", hugepages_configs)
         pulumi.set(__self__, "sysctls", sysctls)
+        pulumi.set(__self__, "transparent_hugepage_defrag", transparent_hugepage_defrag)
+        pulumi.set(__self__, "transparent_hugepage_enabled", transparent_hugepage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -20451,6 +22036,22 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         return pulumi.get(self, "sysctls")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageDefrag")
+    def transparent_hugepage_defrag(self) -> _builtins.str:
+        """
+        The Linux kernel transparent hugepage defrag setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_defrag")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageEnabled")
+    def transparent_hugepage_enabled(self) -> _builtins.str:
+        """
+        The Linux kernel transparent hugepage setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_enabled")
 
 
 @pulumi.output_type
@@ -20619,11 +22220,22 @@ class GetClusterNodeConfigShieldedInstanceConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodeConfigSoleTenantConfigResult(dict):
     def __init__(__self__, *,
+                 min_node_cpus: _builtins.int,
                  node_affinities: Sequence['outputs.GetClusterNodeConfigSoleTenantConfigNodeAffinityResult']):
         """
+        :param _builtins.int min_node_cpus: Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
         :param Sequence['GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs'] node_affinities: .
         """
+        pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> _builtins.int:
+        """
+        Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+        """
+        return pulumi.get(self, "min_node_cpus")
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinities")
@@ -22515,11 +24127,16 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
                  cpu_cfs_quota: _builtins.bool,
                  cpu_cfs_quota_period: _builtins.str,
                  cpu_manager_policy: _builtins.str,
+                 eviction_max_pod_grace_period_seconds: _builtins.int,
+                 eviction_minimum_reclaims: Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimResult'],
+                 eviction_soft_grace_periods: Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodResult'],
+                 eviction_softs: Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftResult'],
                  image_gc_high_threshold_percent: _builtins.int,
                  image_gc_low_threshold_percent: _builtins.int,
                  image_maximum_gc_age: _builtins.str,
                  image_minimum_gc_age: _builtins.str,
                  insecure_kubelet_readonly_port_enabled: _builtins.str,
+                 max_parallel_image_pulls: _builtins.int,
                  pod_pids_limit: _builtins.int,
                  single_process_oom_kill: _builtins.bool):
         """
@@ -22529,11 +24146,16 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         :param _builtins.bool cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits.
         :param _builtins.str cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'.
         :param _builtins.str cpu_manager_policy: Control the CPU management policy on the node.
+        :param _builtins.int eviction_max_pod_grace_period_seconds: Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+        :param Sequence['GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs'] eviction_minimum_reclaims: Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+        :param Sequence['GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs'] eviction_soft_grace_periods: Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+        :param Sequence['GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftArgs'] eviction_softs: Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
         :param _builtins.int image_gc_high_threshold_percent: Defines the percent of disk usage after which image garbage collection is always run.
         :param _builtins.int image_gc_low_threshold_percent: Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
         :param _builtins.str image_maximum_gc_age: Defines the maximum age an image can be unused before it is garbage collected.
         :param _builtins.str image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected.
         :param _builtins.str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        :param _builtins.int max_parallel_image_pulls: Set the maximum number of image pulls in parallel.
         :param _builtins.int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
         :param _builtins.bool single_process_oom_kill: Defines whether to enable single process OOM killer.
         """
@@ -22543,11 +24165,16 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        pulumi.set(__self__, "eviction_max_pod_grace_period_seconds", eviction_max_pod_grace_period_seconds)
+        pulumi.set(__self__, "eviction_minimum_reclaims", eviction_minimum_reclaims)
+        pulumi.set(__self__, "eviction_soft_grace_periods", eviction_soft_grace_periods)
+        pulumi.set(__self__, "eviction_softs", eviction_softs)
         pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
         pulumi.set(__self__, "image_gc_low_threshold_percent", image_gc_low_threshold_percent)
         pulumi.set(__self__, "image_maximum_gc_age", image_maximum_gc_age)
         pulumi.set(__self__, "image_minimum_gc_age", image_minimum_gc_age)
         pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
+        pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
         pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
 
@@ -22600,6 +24227,38 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         return pulumi.get(self, "cpu_manager_policy")
 
     @_builtins.property
+    @pulumi.getter(name="evictionMaxPodGracePeriodSeconds")
+    def eviction_max_pod_grace_period_seconds(self) -> _builtins.int:
+        """
+        Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+        """
+        return pulumi.get(self, "eviction_max_pod_grace_period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionMinimumReclaims")
+    def eviction_minimum_reclaims(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimResult']:
+        """
+        Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+        """
+        return pulumi.get(self, "eviction_minimum_reclaims")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSoftGracePeriods")
+    def eviction_soft_grace_periods(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodResult']:
+        """
+        Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+        """
+        return pulumi.get(self, "eviction_soft_grace_periods")
+
+    @_builtins.property
+    @pulumi.getter(name="evictionSofts")
+    def eviction_softs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftResult']:
+        """
+        Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+        """
+        return pulumi.get(self, "eviction_softs")
+
+    @_builtins.property
     @pulumi.getter(name="imageGcHighThresholdPercent")
     def image_gc_high_threshold_percent(self) -> _builtins.int:
         """
@@ -22640,6 +24299,14 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
         return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="maxParallelImagePulls")
+    def max_parallel_image_pulls(self) -> _builtins.int:
+        """
+        Set the maximum number of image pulls in parallel.
+        """
+        return pulumi.get(self, "max_parallel_image_pulls")
+
+    @_builtins.property
     @pulumi.getter(name="podPidsLimit")
     def pod_pids_limit(self) -> _builtins.int:
         """
@@ -22657,19 +24324,244 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimResult(dict):
+    def __init__(__self__, *,
+                 imagefs_available: _builtins.str,
+                 imagefs_inodes_free: _builtins.str,
+                 memory_available: _builtins.str,
+                 nodefs_available: _builtins.str,
+                 nodefs_inodes_free: _builtins.str,
+                 pid_available: _builtins.str):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of minimum reclaim for imagefs.available.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of minimum reclaim for imagefs.inodesFree.
+        :param _builtins.str memory_available: Defines percentage of minimum reclaim for memory.available.
+        :param _builtins.str nodefs_available: Defines percentage of minimum reclaim for nodefs.available.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of minimum reclaim for nodefs.inodesFree.
+        :param _builtins.str pid_available: Defines percentage of minimum reclaim for pid.available.
+        """
+        pulumi.set(__self__, "imagefs_available", imagefs_available)
+        pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        pulumi.set(__self__, "memory_available", memory_available)
+        pulumi.set(__self__, "nodefs_available", nodefs_available)
+        pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for imagefs.available.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for imagefs.inodesFree.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for memory.available.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for nodefs.available.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for nodefs.inodesFree.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> _builtins.str:
+        """
+        Defines percentage of minimum reclaim for pid.available.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftResult(dict):
+    def __init__(__self__, *,
+                 imagefs_available: _builtins.str,
+                 imagefs_inodes_free: _builtins.str,
+                 memory_available: _builtins.str,
+                 nodefs_available: _builtins.str,
+                 nodefs_inodes_free: _builtins.str,
+                 pid_available: _builtins.str):
+        """
+        :param _builtins.str imagefs_available: Defines percentage of soft eviction threshold for imagefs.available.
+        :param _builtins.str imagefs_inodes_free: Defines percentage of soft eviction threshold for imagefs.inodesFree.
+        :param _builtins.str memory_available: Defines quantity of soft eviction threshold for memory.available.
+        :param _builtins.str nodefs_available: Defines percentage of soft eviction threshold for nodefs.available.
+        :param _builtins.str nodefs_inodes_free: Defines percentage of soft eviction threshold for nodefs.inodesFree.
+        :param _builtins.str pid_available: Defines percentage of soft eviction threshold for pid.available.
+        """
+        pulumi.set(__self__, "imagefs_available", imagefs_available)
+        pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        pulumi.set(__self__, "memory_available", memory_available)
+        pulumi.set(__self__, "nodefs_available", nodefs_available)
+        pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for imagefs.available.
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for imagefs.inodesFree.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> _builtins.str:
+        """
+        Defines quantity of soft eviction threshold for memory.available.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for nodefs.available.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for nodefs.inodesFree.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> _builtins.str:
+        """
+        Defines percentage of soft eviction threshold for pid.available.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodResult(dict):
+    def __init__(__self__, *,
+                 imagefs_available: _builtins.str,
+                 imagefs_inodes_free: _builtins.str,
+                 memory_available: _builtins.str,
+                 nodefs_available: _builtins.str,
+                 nodefs_inodes_free: _builtins.str,
+                 pid_available: _builtins.str):
+        """
+        :param _builtins.str imagefs_available: Defines grace period for the imagefs.available soft eviction threshold
+        :param _builtins.str imagefs_inodes_free: Defines grace period for the imagefs.inodesFree soft eviction threshold.
+        :param _builtins.str memory_available: Defines grace period for the memory.available soft eviction threshold.
+        :param _builtins.str nodefs_available: Defines grace period for the nodefs.available soft eviction threshold.
+        :param _builtins.str nodefs_inodes_free: Defines grace period for the nodefs.inodesFree soft eviction threshold.
+        :param _builtins.str pid_available: Defines grace period for the pid.available soft eviction threshold.
+        """
+        pulumi.set(__self__, "imagefs_available", imagefs_available)
+        pulumi.set(__self__, "imagefs_inodes_free", imagefs_inodes_free)
+        pulumi.set(__self__, "memory_available", memory_available)
+        pulumi.set(__self__, "nodefs_available", nodefs_available)
+        pulumi.set(__self__, "nodefs_inodes_free", nodefs_inodes_free)
+        pulumi.set(__self__, "pid_available", pid_available)
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsAvailable")
+    def imagefs_available(self) -> _builtins.str:
+        """
+        Defines grace period for the imagefs.available soft eviction threshold
+        """
+        return pulumi.get(self, "imagefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="imagefsInodesFree")
+    def imagefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines grace period for the imagefs.inodesFree soft eviction threshold.
+        """
+        return pulumi.get(self, "imagefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryAvailable")
+    def memory_available(self) -> _builtins.str:
+        """
+        Defines grace period for the memory.available soft eviction threshold.
+        """
+        return pulumi.get(self, "memory_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsAvailable")
+    def nodefs_available(self) -> _builtins.str:
+        """
+        Defines grace period for the nodefs.available soft eviction threshold.
+        """
+        return pulumi.get(self, "nodefs_available")
+
+    @_builtins.property
+    @pulumi.getter(name="nodefsInodesFree")
+    def nodefs_inodes_free(self) -> _builtins.str:
+        """
+        Defines grace period for the nodefs.inodesFree soft eviction threshold.
+        """
+        return pulumi.get(self, "nodefs_inodes_free")
+
+    @_builtins.property
+    @pulumi.getter(name="pidAvailable")
+    def pid_available(self) -> _builtins.str:
+        """
+        Defines grace period for the pid.available soft eviction threshold.
+        """
+        return pulumi.get(self, "pid_available")
+
+
+@pulumi.output_type
 class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
     def __init__(__self__, *,
                  cgroup_mode: _builtins.str,
                  hugepages_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigResult'],
-                 sysctls: Mapping[str, _builtins.str]):
+                 sysctls: Mapping[str, _builtins.str],
+                 transparent_hugepage_defrag: _builtins.str,
+                 transparent_hugepage_enabled: _builtins.str):
         """
         :param _builtins.str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
         :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_configs: Amounts for 2M and 1G hugepages.
         :param Mapping[str, _builtins.str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+        :param _builtins.str transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
+        :param _builtins.str transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
         """
         pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         pulumi.set(__self__, "hugepages_configs", hugepages_configs)
         pulumi.set(__self__, "sysctls", sysctls)
+        pulumi.set(__self__, "transparent_hugepage_defrag", transparent_hugepage_defrag)
+        pulumi.set(__self__, "transparent_hugepage_enabled", transparent_hugepage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -22694,6 +24586,22 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         return pulumi.get(self, "sysctls")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageDefrag")
+    def transparent_hugepage_defrag(self) -> _builtins.str:
+        """
+        The Linux kernel transparent hugepage defrag setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_defrag")
+
+    @_builtins.property
+    @pulumi.getter(name="transparentHugepageEnabled")
+    def transparent_hugepage_enabled(self) -> _builtins.str:
+        """
+        The Linux kernel transparent hugepage setting.
+        """
+        return pulumi.get(self, "transparent_hugepage_enabled")
 
 
 @pulumi.output_type
@@ -22862,11 +24770,22 @@ class GetClusterNodePoolNodeConfigShieldedInstanceConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigSoleTenantConfigResult(dict):
     def __init__(__self__, *,
+                 min_node_cpus: _builtins.int,
                  node_affinities: Sequence['outputs.GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult']):
         """
+        :param _builtins.int min_node_cpus: Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
         :param Sequence['GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs'] node_affinities: .
         """
+        pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> _builtins.int:
+        """
+        Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
+        """
+        return pulumi.get(self, "min_node_cpus")
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinities")

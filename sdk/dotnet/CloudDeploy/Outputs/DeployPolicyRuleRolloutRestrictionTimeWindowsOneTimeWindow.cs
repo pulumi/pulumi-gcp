@@ -14,22 +14,22 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow
     {
         /// <summary>
-        /// Required. End date.
+        /// End date.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate EndDate;
         /// <summary>
-        /// Required. End time (exclusive). You may use 24:00 for the end of the day.
+        /// End time (exclusive). You may use 24:00 for the end of the day.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime EndTime;
         /// <summary>
-        /// Required. Start date.
+        /// Start date.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate StartDate;
         /// <summary>
-        /// Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+        /// Start time (inclusive). Use 00:00 for the beginning of the day.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime StartTime;

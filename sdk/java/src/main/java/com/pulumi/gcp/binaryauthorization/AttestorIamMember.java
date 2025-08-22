@@ -157,6 +157,7 @@ import javax.annotation.Nullable;
  * - 
  * 
  * # IAM policy for Binary Authorization Attestor
+ * 
  * Three different resources help you manage your IAM policy for Binary Authorization Attestor. Each of these resources serves a different use case:
  * 
  * * `gcp.binaryauthorization.AttestorIamPolicy`: Authoritative. Sets the IAM policy for the attestor and replaces any existing policy already attached.

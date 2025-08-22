@@ -136,6 +136,7 @@ import (
 // -
 //
 // # IAM policy for Cloud AI Notebooks Instance
+//
 // Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
 //
 // * `notebooks.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.

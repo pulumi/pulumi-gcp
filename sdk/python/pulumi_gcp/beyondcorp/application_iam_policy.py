@@ -193,6 +193,8 @@ class ApplicationIamPolicy(pulumi.CustomResource):
                  security_gateways_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** `beyondcorp.Application` and associated IAM resources are deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
+
         Three different resources help you manage your IAM policy for BeyondCorp Application. Each of these resources serves a different use case:
 
         * `beyondcorp.ApplicationIamPolicy`: Authoritative. Sets the IAM policy for the application and replaces any existing policy already attached.
@@ -317,6 +319,8 @@ class ApplicationIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for BeyondCorp Application
+        > **Warning:** `beyondcorp.Application` and associated IAM resources are deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
+
         Three different resources help you manage your IAM policy for BeyondCorp Application. Each of these resources serves a different use case:
 
         * `beyondcorp.ApplicationIamPolicy`: Authoritative. Sets the IAM policy for the application and replaces any existing policy already attached.
@@ -490,6 +494,8 @@ class ApplicationIamPolicy(pulumi.CustomResource):
                  args: ApplicationIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `beyondcorp.Application` and associated IAM resources are deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
+
         Three different resources help you manage your IAM policy for BeyondCorp Application. Each of these resources serves a different use case:
 
         * `beyondcorp.ApplicationIamPolicy`: Authoritative. Sets the IAM policy for the application and replaces any existing policy already attached.
@@ -614,6 +620,8 @@ class ApplicationIamPolicy(pulumi.CustomResource):
         - 
 
         # IAM policy for BeyondCorp Application
+        > **Warning:** `beyondcorp.Application` and associated IAM resources are deprecated. Use `beyondcorp.SecurityGatewayApplication` instead.
+
         Three different resources help you manage your IAM policy for BeyondCorp Application. Each of these resources serves a different use case:
 
         * `beyondcorp.ApplicationIamPolicy`: Authoritative. Sets the IAM policy for the application and replaces any existing policy already attached.

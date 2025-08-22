@@ -105,6 +105,29 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Service_account_key
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "app",
+ *     name: "app",
+ *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const keyServiceAccount = new gcp.serviceaccount.Account("key_service_account", {
+ *     accountId: "app",
+ *     project: project.projectId,
+ *     displayName: "Test Service Account",
+ * });
+ * const primary = new gcp.projects.ApiKey("primary", {
+ *     name: "key",
+ *     displayName: "sample-key",
+ *     project: project.projectId,
+ *     serviceAccountEmail: keyServiceAccount.email,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -183,6 +206,10 @@ export class ApiKey extends pulumi.CustomResource {
      */
     public readonly restrictions!: pulumi.Output<outputs.projects.ApiKeyRestrictions | undefined>;
     /**
+     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     */
+    public readonly serviceAccountEmail!: pulumi.Output<string | undefined>;
+    /**
      * Output only. Unique id in UUID4 format.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -205,6 +232,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["restrictions"] = state ? state.restrictions : undefined;
+            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as ApiKeyArgs | undefined;
@@ -212,6 +240,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["restrictions"] = args ? args.restrictions : undefined;
+            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
             resourceInputs["keyString"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
@@ -251,6 +280,10 @@ export interface ApiKeyState {
      */
     restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions>;
     /**
+     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     */
+    serviceAccountEmail?: pulumi.Input<string>;
+    /**
      * Output only. Unique id in UUID4 format.
      */
     uid?: pulumi.Input<string>;
@@ -280,4 +313,8 @@ export interface ApiKeyArgs {
      * Key restrictions.
      */
     restrictions?: pulumi.Input<inputs.projects.ApiKeyRestrictions>;
+    /**
+     * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+     */
+    serviceAccountEmail?: pulumi.Input<string>;
 }

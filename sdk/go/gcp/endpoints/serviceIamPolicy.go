@@ -131,6 +131,7 @@ import (
 // ---
 //
 // # IAM policy for Cloud Endpoints Service
+//
 // Three different resources help you manage your IAM policy for Cloud Endpoints Service. Each of these resources serves a different use case:
 //
 // * `endpoints.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
