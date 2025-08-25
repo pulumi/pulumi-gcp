@@ -6230,7 +6230,7 @@ if not MYPY:
         """
         password_wo_version: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        The password write-only version.
         """
 elif False:
     UptimeCheckConfigHttpCheckAuthInfoArgsDict: TypeAlias = Mapping[str, Any]
@@ -6244,7 +6244,7 @@ class UptimeCheckConfigHttpCheckAuthInfoArgs:
         """
         :param pulumi.Input[_builtins.str] username: The username to authenticate.
         :param pulumi.Input[_builtins.str] password: The password to authenticate.
-        :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        :param pulumi.Input[_builtins.str] password_wo_version: The password write-only version.
         """
         pulumi.set(__self__, "username", username)
         if password is not None:
@@ -6280,7 +6280,7 @@ class UptimeCheckConfigHttpCheckAuthInfoArgs:
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        The password write-only version.
         """
         return pulumi.get(self, "password_wo_version")
 

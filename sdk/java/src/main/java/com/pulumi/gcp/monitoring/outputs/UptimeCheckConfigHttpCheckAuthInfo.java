@@ -18,7 +18,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
      */
     private @Nullable String password;
     /**
-     * @return Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * @return The password write-only version.
      * 
      */
     private @Nullable String passwordWoVersion;
@@ -37,7 +37,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Triggers update of password_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * @return The password write-only version.
      * 
      */
     public Optional<String> passwordWoVersion() {

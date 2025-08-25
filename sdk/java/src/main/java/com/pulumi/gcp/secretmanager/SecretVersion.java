@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 import com.pulumi.gcp.secretmanager.inputs.SecretVersionState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -250,14 +251,14 @@ import javax.annotation.Nullable;
  * 
  * * `secret_data_wo` -
  *   (Optional)
- *   The secret data. Must be no larger than 64KiB. Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+ *   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
  *   **Note**: This property is write-only and will not be read from the API.
  * 
  * &lt;a name=&#34;nested_payload&#34;&gt;&lt;/a&gt;The `payload` block supports:
  * 
  * * `secret_data_wo` -
  *   (Optional)
- *   The secret data. Must be no larger than 64KiB. Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+ *   The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
  *   **Note**: This property is write-only and will not be read from the API.
  * 
  * ## Import
@@ -400,6 +401,20 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> secretData() {
         return Codegen.optional(this.secretData);
+    }
+    /**
+     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Export(name="secretDataWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> secretDataWoVersion;
+
+    /**
+     * @return Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Output<Optional<Integer>> secretDataWoVersion() {
+        return Codegen.optional(this.secretDataWoVersion);
     }
     /**
      * The version of the Secret.

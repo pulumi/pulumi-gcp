@@ -6,6 +6,7 @@ package com.pulumi.gcp.secretmanager.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -151,6 +152,21 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Import(name="secretDataWoVersion")
+    private @Nullable Output<Integer> secretDataWoVersion;
+
+    /**
+     * @return Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Optional<Output<Integer>> secretDataWoVersion() {
+        return Optional.ofNullable(this.secretDataWoVersion);
+    }
+
+    /**
      * The version of the Secret.
      * 
      */
@@ -176,6 +192,7 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.secret = $.secret;
         this.secretData = $.secretData;
+        this.secretDataWoVersion = $.secretDataWoVersion;
         this.version = $.version;
     }
 
@@ -377,6 +394,27 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder secretData(String secretData) {
             return secretData(Output.of(secretData));
+        }
+
+        /**
+         * @param secretDataWoVersion Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWoVersion(@Nullable Output<Integer> secretDataWoVersion) {
+            $.secretDataWoVersion = secretDataWoVersion;
+            return this;
+        }
+
+        /**
+         * @param secretDataWoVersion Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWoVersion(Integer secretDataWoVersion) {
+            return secretDataWoVersion(Output.of(secretDataWoVersion));
         }
 
         /**

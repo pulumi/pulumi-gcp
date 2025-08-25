@@ -3391,7 +3391,7 @@ index 23e80dcb3..18f441852 100644
    depends_on = [google_service_networking_connection.private_service_connection]
  
 diff --git a/website/docs/r/secret_manager_secret_version.html.markdown b/website/docs/r/secret_manager_secret_version.html.markdown
-index 0dbcc6ad1..de55eef8e 100644
+index 8b0d0f579..01a877d8d 100644
 --- a/website/docs/r/secret_manager_secret_version.html.markdown
 +++ b/website/docs/r/secret_manager_secret_version.html.markdown
 @@ -30,15 +30,8 @@ To get more information about SecretVersion, see:

@@ -5,7 +5,7 @@ Subject: [PATCH] Remove _wo attributes
 
 
 diff --git a/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go b/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
-index 0753447a6..c0bb1f9f5 100644
+index d7f27c107..c0bb1f9f5 100644
 --- a/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
 +++ b/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
 @@ -29,7 +29,6 @@ import (
@@ -43,39 +43,32 @@ index 0753447a6..c0bb1f9f5 100644
  	return nil
  }
  
-@@ -287,25 +273,12 @@ to a different credential configuration in the config will require an apply to u
- 				Elem: &schema.Resource{
- 					Schema: map[string]*schema.Schema{
- 						"secret_access_key": {
--							Type:        schema.TypeString,
--							Optional:    true,
--							Description: `The Secret Access Key of the AWS account transferring data from.`,
--							Sensitive:   true,
+@@ -291,22 +277,8 @@ to a different credential configuration in the config will require an apply to u
+ 							Optional:      true,
+ 							Description:   `The Secret Access Key of the AWS account transferring data from.`,
+ 							Sensitive:     true,
+-							ConflictsWith: []string{"sensitive_params.0.secret_access_key_wo"},
+-							AtLeastOneOf:  []string{"sensitive_params.0.secret_access_key", "sensitive_params.0.secret_access_key_wo"},
 -						},
 -						"secret_access_key_wo": {
--							Type:     schema.TypeString,
--							Optional: true,
--							Description: `The Secret Access Key of the AWS account transferring data from.
-- Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)`,
--							WriteOnly:    true,
--							ExactlyOneOf: []string{"sensitive_params.0.secret_access_key", "sensitive_params.0.secret_access_key_wo"},
--							RequiredWith: []string{"sensitive_params.0.secret_access_key_wo_version"},
+-							Type:          schema.TypeString,
+-							Optional:      true,
+-							Description:   `The Secret Access Key of the AWS account transferring data from.`,
+-							WriteOnly:     true,
+-							ConflictsWith: []string{"sensitive_params.0.secret_access_key"},
+-							AtLeastOneOf:  []string{"sensitive_params.0.secret_access_key_wo", "sensitive_params.0.secret_access_key"},
 -						},
 -						"secret_access_key_wo_version": {
--							Type:         schema.TypeString,
+-							Type:         schema.TypeInt,
 -							Optional:     true,
--							Description:  `Triggers update of secret_access_key_wo write-only. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)`,
+-							Description:  `The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)`,
 -							RequiredWith: []string{"sensitive_params.0.secret_access_key_wo"},
-+							Type:          schema.TypeString,
-+							Optional:      true,
-+							Description:   `The Secret Access Key of the AWS account transferring data from.`,
-+							Sensitive:     true,
 +							ConflictsWith: []string{},
 +							AtLeastOneOf:  []string{"sensitive_params.0.secret_access_key"},
  						},
  					},
  				},
-@@ -1085,12 +1058,6 @@ func resourceBigqueryDataTransferConfigEncoder(d *schema.ResourceData, meta inte
+@@ -1086,12 +1058,6 @@ func resourceBigqueryDataTransferConfigEncoder(d *schema.ResourceData, meta inte
  			params[sp] = auth.(string)
  		}
  	}
@@ -88,7 +81,7 @@ index 0753447a6..c0bb1f9f5 100644
  
  	obj["params"] = params
  
-@@ -1104,8 +1071,6 @@ func resourceBigqueryDataTransferConfigDecoder(d *schema.ResourceData, meta inte
+@@ -1105,8 +1071,6 @@ func resourceBigqueryDataTransferConfigDecoder(d *schema.ResourceData, meta inte
  			if _, apiOk := params[sp]; apiOk {
  				if _, exists := d.GetOkExists("sensitive_params.0." + sp); exists {
  					delete(params, sp)
@@ -112,7 +105,7 @@ index 5336d0218..827d90369 100644
    - field: 'service_account_name'
      provider_only: true
 diff --git a/google-beta/services/secretmanager/resource_secret_manager_secret_version.go b/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
-index c50c9b477..f5b49525c 100644
+index dbe9abfc3..bfee43be7 100644
 --- a/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
 +++ b/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
 @@ -29,7 +29,6 @@ import (
@@ -123,30 +116,23 @@ index c50c9b477..f5b49525c 100644
  	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
  
  	"github.com/hashicorp/terraform-provider-google-beta/google-beta/tpgresource"
-@@ -97,22 +96,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
- 				Description: `The secret data. Must be no larger than 64KiB.`,
- 				Sensitive:   true,
+@@ -105,15 +104,6 @@ func ResourceSecretManagerSecretVersion() *schema.Resource {
+ 				Sensitive:     true,
+ 				ConflictsWith: []string{},
  			},
 -			"secret_data_wo": {
 -				Type:          schema.TypeString,
 -				Optional:      true,
--				Description:   `The secret data. Must be no larger than 64KiB. Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)`,
+-				Description:   `The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)`,
 -				WriteOnly:     true,
 -				ConflictsWith: []string{"secret_data"},
--				RequiredWith:  []string{"secret_data_wo_version"},
--			},
--			"secret_data_wo_version": {
--				Type:         schema.TypeString,
--				Optional:     true,
--				ForceNew:     true,
--				Description:  `Triggers update of secret_data_wo write-only. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)`,
--				RequiredWith: []string{"secret_data_wo"},
+-				RequiredWith:  []string{},
 -			},
 -
  			"secret": {
  				Type:             schema.TypeString,
  				Required:         true,
-@@ -532,12 +515,6 @@ func expandSecretManagerSecretVersionPayload(v interface{}, d tpgresource.Terraf
+@@ -533,12 +523,6 @@ func expandSecretManagerSecretVersionPayload(v interface{}, d tpgresource.Terraf
  	} else if val := reflect.ValueOf(transformedSecretData); val.IsValid() && !tpgresource.IsEmptyValue(val) {
  		transformed["data"] = transformedSecretData
  	}
@@ -159,7 +145,7 @@ index c50c9b477..f5b49525c 100644
  	return transformed, nil
  }
  
-@@ -551,17 +528,6 @@ func expandSecretManagerSecretVersionPayloadSecretData(v interface{}, d tpgresou
+@@ -552,17 +536,6 @@ func expandSecretManagerSecretVersionPayloadSecretData(v interface{}, d tpgresou
  	}
  	return base64.StdEncoding.EncodeToString([]byte(v.(string))), nil
  }
