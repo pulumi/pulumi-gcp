@@ -3818,16 +3818,3 @@ index b2b089dd9..03ce6cc14 100644
  ## Attributes Reference
  
  Only the arguments listed above are exposed as attributes.
-diff --git a/website/docs/r/tpu_node.html.markdown b/website/docs/r/tpu_node.html.markdown
-index 564a2d3c2..6c8d9f001 100644
---- a/website/docs/r/tpu_node.html.markdown
-+++ b/website/docs/r/tpu_node.html.markdown
-@@ -62,7 +62,7 @@ resource "google_tpu_node" "tpu" {
- 
-   tensorflow_version = data.google_tpu_tensorflow_versions.available.versions[0]
- 
--  description = "Terraform Google Provider test TPU"
-+  description = "Google Provider test TPU"
-   use_service_networking = true
- network = google_service_networking_connection.private_service_connection.network
- 
