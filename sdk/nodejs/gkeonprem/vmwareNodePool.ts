@@ -231,25 +231,25 @@ export class VMwareNodePool extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The node configuration of the node pool.
      * Structure is documented below.
      */
-    public readonly config!: pulumi.Output<outputs.gkeonprem.VMwareNodePoolConfig>;
+    declare public readonly config: pulumi.Output<outputs.gkeonprem.VMwareNodePoolConfig>;
     /**
      * The time the cluster was created, in RFC3339 text format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The time the cluster was deleted, in RFC3339 text format.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * The display name for the node pool.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
@@ -257,55 +257,55 @@ export class VMwareNodePool extends pulumi.CustomResource {
      * Allows clients to perform consistent read-modify-writes
      * through optimistic concurrency control.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The vmware node pool name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Node Pool autoscaling config for the node pool.
      * Structure is documented below.
      */
-    public readonly nodePoolAutoscaling!: pulumi.Output<outputs.gkeonprem.VMwareNodePoolNodePoolAutoscaling | undefined>;
+    declare public readonly nodePoolAutoscaling: pulumi.Output<outputs.gkeonprem.VMwareNodePoolNodePoolAutoscaling | undefined>;
     /**
      * Anthos version for the node pool. Defaults to the user cluster version.
      */
-    public /*out*/ readonly onPremVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly onPremVersion: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * If set, there are currently changes in flight to the node pool.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * (Output)
      * The lifecycle state of the condition.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * ResourceStatus representing detailed cluster state.
      * Structure is documented below.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.gkeonprem.VMwareNodePoolStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.gkeonprem.VMwareNodePoolStatus[]>;
     /**
      * The unique identifier of the node pool.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The time the cluster was last updated, in RFC3339 text format.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The cluster this node pool belongs to.
      */
-    public readonly vmwareCluster!: pulumi.Output<string>;
+    declare public readonly vmwareCluster: pulumi.Output<string>;
 
     /**
      * Create a VMwareNodePool resource with the given unique name, arguments, and options.
@@ -320,43 +320,43 @@ export class VMwareNodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VMwareNodePoolState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodePoolAutoscaling"] = state ? state.nodePoolAutoscaling : undefined;
-            resourceInputs["onPremVersion"] = state ? state.onPremVersion : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["vmwareCluster"] = state ? state.vmwareCluster : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodePoolAutoscaling"] = state?.nodePoolAutoscaling;
+            resourceInputs["onPremVersion"] = state?.onPremVersion;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["vmwareCluster"] = state?.vmwareCluster;
         } else {
             const args = argsOrState as VMwareNodePoolArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.vmwareCluster === undefined) && !opts.urn) {
+            if (args?.vmwareCluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmwareCluster'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodePoolAutoscaling"] = args ? args.nodePoolAutoscaling : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["vmwareCluster"] = args ? args.vmwareCluster : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodePoolAutoscaling"] = args?.nodePoolAutoscaling;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["vmwareCluster"] = args?.vmwareCluster;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;

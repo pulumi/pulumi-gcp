@@ -159,107 +159,107 @@ export class StandardAppVersion extends pulumi.CustomResource {
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
      */
-    public readonly appEngineApis!: pulumi.Output<boolean | undefined>;
+    declare public readonly appEngineApis: pulumi.Output<boolean | undefined>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
      */
-    public readonly automaticScaling!: pulumi.Output<outputs.appengine.StandardAppVersionAutomaticScaling | undefined>;
+    declare public readonly automaticScaling: pulumi.Output<outputs.appengine.StandardAppVersionAutomaticScaling | undefined>;
     /**
      * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
      * Structure is documented below.
      */
-    public readonly basicScaling!: pulumi.Output<outputs.appengine.StandardAppVersionBasicScaling | undefined>;
+    declare public readonly basicScaling: pulumi.Output<outputs.appengine.StandardAppVersionBasicScaling | undefined>;
     /**
      * If set to `true`, the service will be deleted if it is the last version.
      */
-    public readonly deleteServiceOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteServiceOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
      */
-    public readonly deployment!: pulumi.Output<outputs.appengine.StandardAppVersionDeployment>;
+    declare public readonly deployment: pulumi.Output<outputs.appengine.StandardAppVersionDeployment>;
     /**
      * The entrypoint for the application.
      * Structure is documented below.
      */
-    public readonly entrypoint!: pulumi.Output<outputs.appengine.StandardAppVersionEntrypoint>;
+    declare public readonly entrypoint: pulumi.Output<outputs.appengine.StandardAppVersionEntrypoint>;
     /**
      * Environment variables available to the application.
      */
-    public readonly envVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly envVariables: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests.
      * The first matching URL handles the request and other request handlers are not attempted.
      * Structure is documented below.
      */
-    public readonly handlers!: pulumi.Output<outputs.appengine.StandardAppVersionHandler[]>;
+    declare public readonly handlers: pulumi.Output<outputs.appengine.StandardAppVersionHandler[]>;
     /**
      * A list of the types of messages that this application is able to receive.
      * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      */
-    public readonly inboundServices!: pulumi.Output<string[] | undefined>;
+    declare public readonly inboundServices: pulumi.Output<string[] | undefined>;
     /**
      * Instance class that is used to run this version. Valid values are
      * AutomaticScaling: F1, F2, F4, F4_1G
      * BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
      * Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
      */
-    public readonly instanceClass!: pulumi.Output<string>;
+    declare public readonly instanceClass: pulumi.Output<string>;
     /**
      * Configuration for third-party Python runtime libraries that are required by the application.
      * Structure is documented below.
      */
-    public readonly libraries!: pulumi.Output<outputs.appengine.StandardAppVersionLibrary[] | undefined>;
+    declare public readonly libraries: pulumi.Output<outputs.appengine.StandardAppVersionLibrary[] | undefined>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    public readonly manualScaling!: pulumi.Output<outputs.appengine.StandardAppVersionManualScaling | undefined>;
+    declare public readonly manualScaling: pulumi.Output<outputs.appengine.StandardAppVersionManualScaling | undefined>;
     /**
      * Full path to the Version resource in the API. Example, "v1".
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * If set to `true`, the application version will not be deleted.
      */
-    public readonly noopOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly noopOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Desired runtime. Example python27.
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * The version of the API in the given runtime environment.
      * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
      * Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      */
-    public readonly runtimeApiVersion!: pulumi.Output<string | undefined>;
+    declare public readonly runtimeApiVersion: pulumi.Output<string | undefined>;
     /**
      * AppEngine service resource
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
      */
-    public readonly serviceAccount!: pulumi.Output<string>;
+    declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * Whether multiple requests can be dispatched to this version at once.
      */
-    public readonly threadsafe!: pulumi.Output<boolean | undefined>;
+    declare public readonly threadsafe: pulumi.Output<boolean | undefined>;
     /**
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
      */
-    public readonly versionId!: pulumi.Output<string | undefined>;
+    declare public readonly versionId: pulumi.Output<string | undefined>;
     /**
      * Enables VPC connectivity for standard apps.
      * Structure is documented below.
      */
-    public readonly vpcAccessConnector!: pulumi.Output<outputs.appengine.StandardAppVersionVpcAccessConnector | undefined>;
+    declare public readonly vpcAccessConnector: pulumi.Output<outputs.appengine.StandardAppVersionVpcAccessConnector | undefined>;
 
     /**
      * Create a StandardAppVersion resource with the given unique name, arguments, and options.
@@ -274,63 +274,63 @@ export class StandardAppVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StandardAppVersionState | undefined;
-            resourceInputs["appEngineApis"] = state ? state.appEngineApis : undefined;
-            resourceInputs["automaticScaling"] = state ? state.automaticScaling : undefined;
-            resourceInputs["basicScaling"] = state ? state.basicScaling : undefined;
-            resourceInputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
-            resourceInputs["deployment"] = state ? state.deployment : undefined;
-            resourceInputs["entrypoint"] = state ? state.entrypoint : undefined;
-            resourceInputs["envVariables"] = state ? state.envVariables : undefined;
-            resourceInputs["handlers"] = state ? state.handlers : undefined;
-            resourceInputs["inboundServices"] = state ? state.inboundServices : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["libraries"] = state ? state.libraries : undefined;
-            resourceInputs["manualScaling"] = state ? state.manualScaling : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["noopOnDestroy"] = state ? state.noopOnDestroy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["runtimeApiVersion"] = state ? state.runtimeApiVersion : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["threadsafe"] = state ? state.threadsafe : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
-            resourceInputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
+            resourceInputs["appEngineApis"] = state?.appEngineApis;
+            resourceInputs["automaticScaling"] = state?.automaticScaling;
+            resourceInputs["basicScaling"] = state?.basicScaling;
+            resourceInputs["deleteServiceOnDestroy"] = state?.deleteServiceOnDestroy;
+            resourceInputs["deployment"] = state?.deployment;
+            resourceInputs["entrypoint"] = state?.entrypoint;
+            resourceInputs["envVariables"] = state?.envVariables;
+            resourceInputs["handlers"] = state?.handlers;
+            resourceInputs["inboundServices"] = state?.inboundServices;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["libraries"] = state?.libraries;
+            resourceInputs["manualScaling"] = state?.manualScaling;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["noopOnDestroy"] = state?.noopOnDestroy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["runtimeApiVersion"] = state?.runtimeApiVersion;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["threadsafe"] = state?.threadsafe;
+            resourceInputs["versionId"] = state?.versionId;
+            resourceInputs["vpcAccessConnector"] = state?.vpcAccessConnector;
         } else {
             const args = argsOrState as StandardAppVersionArgs | undefined;
-            if ((!args || args.deployment === undefined) && !opts.urn) {
+            if (args?.deployment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deployment'");
             }
-            if ((!args || args.entrypoint === undefined) && !opts.urn) {
+            if (args?.entrypoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entrypoint'");
             }
-            if ((!args || args.runtime === undefined) && !opts.urn) {
+            if (args?.runtime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["appEngineApis"] = args ? args.appEngineApis : undefined;
-            resourceInputs["automaticScaling"] = args ? args.automaticScaling : undefined;
-            resourceInputs["basicScaling"] = args ? args.basicScaling : undefined;
-            resourceInputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
-            resourceInputs["deployment"] = args ? args.deployment : undefined;
-            resourceInputs["entrypoint"] = args ? args.entrypoint : undefined;
-            resourceInputs["envVariables"] = args ? args.envVariables : undefined;
-            resourceInputs["handlers"] = args ? args.handlers : undefined;
-            resourceInputs["inboundServices"] = args ? args.inboundServices : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["libraries"] = args ? args.libraries : undefined;
-            resourceInputs["manualScaling"] = args ? args.manualScaling : undefined;
-            resourceInputs["noopOnDestroy"] = args ? args.noopOnDestroy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["runtimeApiVersion"] = args ? args.runtimeApiVersion : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["threadsafe"] = args ? args.threadsafe : undefined;
-            resourceInputs["versionId"] = args ? args.versionId : undefined;
-            resourceInputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
+            resourceInputs["appEngineApis"] = args?.appEngineApis;
+            resourceInputs["automaticScaling"] = args?.automaticScaling;
+            resourceInputs["basicScaling"] = args?.basicScaling;
+            resourceInputs["deleteServiceOnDestroy"] = args?.deleteServiceOnDestroy;
+            resourceInputs["deployment"] = args?.deployment;
+            resourceInputs["entrypoint"] = args?.entrypoint;
+            resourceInputs["envVariables"] = args?.envVariables;
+            resourceInputs["handlers"] = args?.handlers;
+            resourceInputs["inboundServices"] = args?.inboundServices;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["libraries"] = args?.libraries;
+            resourceInputs["manualScaling"] = args?.manualScaling;
+            resourceInputs["noopOnDestroy"] = args?.noopOnDestroy;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["runtimeApiVersion"] = args?.runtimeApiVersion;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["threadsafe"] = args?.threadsafe;
+            resourceInputs["versionId"] = args?.versionId;
+            resourceInputs["vpcAccessConnector"] = args?.vpcAccessConnector;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

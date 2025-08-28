@@ -505,33 +505,33 @@ export class BackendService extends pulumi.CustomResource {
      * maximum allowed value for TTL is one day.
      * When the load balancing scheme is INTERNAL, this field is not used.
      */
-    public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
+    declare public readonly affinityCookieTtlSec: pulumi.Output<number | undefined>;
     /**
      * The set of backends that serve this BackendService.
      * Structure is documented below.
      */
-    public readonly backends!: pulumi.Output<outputs.compute.BackendServiceBackend[] | undefined>;
+    declare public readonly backends: pulumi.Output<outputs.compute.BackendServiceBackend[] | undefined>;
     /**
      * Cloud CDN configuration for this BackendService.
      * Structure is documented below.
      */
-    public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendServiceCdnPolicy>;
+    declare public readonly cdnPolicy: pulumi.Output<outputs.compute.BackendServiceCdnPolicy>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      */
-    public readonly circuitBreakers!: pulumi.Output<outputs.compute.BackendServiceCircuitBreakers | undefined>;
+    declare public readonly circuitBreakers: pulumi.Output<outputs.compute.BackendServiceCircuitBreakers | undefined>;
     /**
      * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
      * Possible values are: `AUTOMATIC`, `DISABLED`.
      */
-    public readonly compressionMode!: pulumi.Output<string | undefined>;
+    declare public readonly compressionMode: pulumi.Output<string | undefined>;
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
      */
-    public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -543,44 +543,44 @@ export class BackendService extends pulumi.CustomResource {
      * set to MAGLEV or RING_HASH.
      * Structure is documented below.
      */
-    public readonly consistentHash!: pulumi.Output<outputs.compute.BackendServiceConsistentHash | undefined>;
+    declare public readonly consistentHash: pulumi.Output<outputs.compute.BackendServiceConsistentHash | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
      * Structure is documented below.
      */
-    public readonly customMetrics!: pulumi.Output<outputs.compute.BackendServiceCustomMetric[] | undefined>;
+    declare public readonly customMetrics: pulumi.Output<outputs.compute.BackendServiceCustomMetric[] | undefined>;
     /**
      * Headers that the HTTP/S load balancer should add to proxied
      * requests.
      */
-    public readonly customRequestHeaders!: pulumi.Output<string[] | undefined>;
+    declare public readonly customRequestHeaders: pulumi.Output<string[] | undefined>;
     /**
      * Headers that the HTTP/S load balancer should add to proxied
      * responses.
      */
-    public readonly customResponseHeaders!: pulumi.Output<string[] | undefined>;
+    declare public readonly customResponseHeaders: pulumi.Output<string[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
      */
-    public readonly dynamicForwarding!: pulumi.Output<outputs.compute.BackendServiceDynamicForwarding | undefined>;
+    declare public readonly dynamicForwarding: pulumi.Output<outputs.compute.BackendServiceDynamicForwarding | undefined>;
     /**
      * The resource URL for the edge security policy associated with this backend service.
      */
-    public readonly edgeSecurityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly edgeSecurityPolicy: pulumi.Output<string | undefined>;
     /**
      * If true, enable Cloud CDN for this BackendService.
      */
-    public readonly enableCdn!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableCdn: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
      * TEST_ALL_TRAFFIC.
@@ -594,7 +594,7 @@ export class BackendService extends pulumi.CustomResource {
      * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
      * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
      */
-    public readonly externalManagedMigrationState!: pulumi.Output<string | undefined>;
+    declare public readonly externalManagedMigrationState: pulumi.Output<string | undefined>;
     /**
      * Determines the fraction of requests that should be processed by the Global external
      * Application Load Balancer.
@@ -604,16 +604,16 @@ export class BackendService extends pulumi.CustomResource {
      * This value can only be set if the loadBalancingScheme in the backend service is set to
      * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
      */
-    public readonly externalManagedMigrationTestingPercentage!: pulumi.Output<number | undefined>;
+    declare public readonly externalManagedMigrationTestingPercentage: pulumi.Output<number | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this
      * object. This field is used in optimistic locking.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly generatedId!: pulumi.Output<number>;
+    declare public /*out*/ readonly generatedId: pulumi.Output<number>;
     /**
      * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
      * for health checking this BackendService. Currently at most one health
@@ -622,18 +622,18 @@ export class BackendService extends pulumi.CustomResource {
      * or serverless NEG as a backend.
      * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      */
-    public readonly healthChecks!: pulumi.Output<string | undefined>;
+    declare public readonly healthChecks: pulumi.Output<string | undefined>;
     /**
      * Settings for enabling Cloud Identity Aware Proxy.
      * If OAuth client is not set, the Google-managed OAuth client is used.
      * Structure is documented below.
      */
-    public readonly iap!: pulumi.Output<outputs.compute.BackendServiceIap>;
+    declare public readonly iap: pulumi.Output<outputs.compute.BackendServiceIap>;
     /**
      * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
      * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
      */
-    public readonly ipAddressSelectionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly ipAddressSelectionPolicy: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the backend service will be used with internal or
      * external load balancing. A backend service created for one type of
@@ -642,7 +642,7 @@ export class BackendService extends pulumi.CustomResource {
      * Default value is `EXTERNAL`.
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
      * A list of locality load balancing policies to be used in order of
      * preference. Either the policy or the customPolicy field should be set.
@@ -652,7 +652,7 @@ export class BackendService extends pulumi.CustomResource {
      * validateForProxyless field set to true.
      * Structure is documented below.
      */
-    public readonly localityLbPolicies!: pulumi.Output<outputs.compute.BackendServiceLocalityLbPolicy[] | undefined>;
+    declare public readonly localityLbPolicies: pulumi.Output<outputs.compute.BackendServiceLocalityLbPolicy[] | undefined>;
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
@@ -707,13 +707,13 @@ export class BackendService extends pulumi.CustomResource {
      * field set to true.
      * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      */
-    public readonly localityLbPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly localityLbPolicy: pulumi.Output<string | undefined>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
      * If logging is enabled, logs will be exported to Stackdriver.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.BackendServiceLogConfig>;
+    declare public readonly logConfig: pulumi.Output<outputs.compute.BackendServiceLogConfig>;
     /**
      * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
      * beginning of the stream until the response has been completely processed, including all retries. A stream that
@@ -723,7 +723,7 @@ export class BackendService extends pulumi.CustomResource {
      * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      */
-    public readonly maxStreamDuration!: pulumi.Output<outputs.compute.BackendServiceMaxStreamDuration | undefined>;
+    declare public readonly maxStreamDuration: pulumi.Output<outputs.compute.BackendServiceMaxStreamDuration | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -733,30 +733,30 @@ export class BackendService extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */
-    public readonly networkPassThroughLbTrafficPolicy!: pulumi.Output<outputs.compute.BackendServiceNetworkPassThroughLbTrafficPolicy | undefined>;
+    declare public readonly networkPassThroughLbTrafficPolicy: pulumi.Output<outputs.compute.BackendServiceNetworkPassThroughLbTrafficPolicy | undefined>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * Applicable backend service types can be a global backend service with the
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
      * Structure is documented below.
      */
-    public readonly outlierDetection!: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
+    declare public readonly outlierDetection: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
     /**
      * Name of backend port. The same name should appear in the instance
      * groups referenced by this service. Required when the load balancing
      * scheme is EXTERNAL.
      */
-    public readonly portName!: pulumi.Output<string>;
+    declare public readonly portName: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
@@ -765,11 +765,11 @@ export class BackendService extends pulumi.CustomResource {
      * by a URL map that is bound to target gRPC proxy.
      * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The security policy associated with this backend service.
      */
-    public readonly securityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly securityPolicy: pulumi.Output<string | undefined>;
     /**
      * The security settings that apply to this backend service. This field is applicable to either
      * a regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C, and
@@ -777,39 +777,39 @@ export class BackendService extends pulumi.CustomResource {
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      */
-    public readonly securitySettings!: pulumi.Output<outputs.compute.BackendServiceSecuritySettings | undefined>;
+    declare public readonly securitySettings: pulumi.Output<outputs.compute.BackendServiceSecuritySettings | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * URL to networkservices.ServiceLbPolicy resource.
      * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
      */
-    public readonly serviceLbPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly serviceLbPolicy: pulumi.Output<string | undefined>;
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
      */
-    public readonly sessionAffinity!: pulumi.Output<string>;
+    declare public readonly sessionAffinity: pulumi.Output<string>;
     /**
      * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
      * Structure is documented below.
      */
-    public readonly strongSessionAffinityCookie!: pulumi.Output<outputs.compute.BackendServiceStrongSessionAffinityCookie | undefined>;
+    declare public readonly strongSessionAffinityCookie: pulumi.Output<outputs.compute.BackendServiceStrongSessionAffinityCookie | undefined>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer.
      * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
      * The default is 30 seconds.
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
-    public readonly timeoutSec!: pulumi.Output<number>;
+    declare public readonly timeoutSec: pulumi.Output<number>;
     /**
      * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
      * Structure is documented below.
      */
-    public readonly tlsSettings!: pulumi.Output<outputs.compute.BackendServiceTlsSettings | undefined>;
+    declare public readonly tlsSettings: pulumi.Output<outputs.compute.BackendServiceTlsSettings | undefined>;
 
     /**
      * Create a BackendService resource with the given unique name, arguments, and options.
@@ -824,86 +824,86 @@ export class BackendService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendServiceState | undefined;
-            resourceInputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
-            resourceInputs["backends"] = state ? state.backends : undefined;
-            resourceInputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
-            resourceInputs["circuitBreakers"] = state ? state.circuitBreakers : undefined;
-            resourceInputs["compressionMode"] = state ? state.compressionMode : undefined;
-            resourceInputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
-            resourceInputs["consistentHash"] = state ? state.consistentHash : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["customMetrics"] = state ? state.customMetrics : undefined;
-            resourceInputs["customRequestHeaders"] = state ? state.customRequestHeaders : undefined;
-            resourceInputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dynamicForwarding"] = state ? state.dynamicForwarding : undefined;
-            resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
-            resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
-            resourceInputs["externalManagedMigrationState"] = state ? state.externalManagedMigrationState : undefined;
-            resourceInputs["externalManagedMigrationTestingPercentage"] = state ? state.externalManagedMigrationTestingPercentage : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["generatedId"] = state ? state.generatedId : undefined;
-            resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
-            resourceInputs["iap"] = state ? state.iap : undefined;
-            resourceInputs["ipAddressSelectionPolicy"] = state ? state.ipAddressSelectionPolicy : undefined;
-            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            resourceInputs["localityLbPolicies"] = state ? state.localityLbPolicies : undefined;
-            resourceInputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["maxStreamDuration"] = state ? state.maxStreamDuration : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkPassThroughLbTrafficPolicy"] = state ? state.networkPassThroughLbTrafficPolicy : undefined;
-            resourceInputs["outlierDetection"] = state ? state.outlierDetection : undefined;
-            resourceInputs["portName"] = state ? state.portName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
-            resourceInputs["securitySettings"] = state ? state.securitySettings : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serviceLbPolicy"] = state ? state.serviceLbPolicy : undefined;
-            resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
-            resourceInputs["strongSessionAffinityCookie"] = state ? state.strongSessionAffinityCookie : undefined;
-            resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
-            resourceInputs["tlsSettings"] = state ? state.tlsSettings : undefined;
+            resourceInputs["affinityCookieTtlSec"] = state?.affinityCookieTtlSec;
+            resourceInputs["backends"] = state?.backends;
+            resourceInputs["cdnPolicy"] = state?.cdnPolicy;
+            resourceInputs["circuitBreakers"] = state?.circuitBreakers;
+            resourceInputs["compressionMode"] = state?.compressionMode;
+            resourceInputs["connectionDrainingTimeoutSec"] = state?.connectionDrainingTimeoutSec;
+            resourceInputs["consistentHash"] = state?.consistentHash;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["customMetrics"] = state?.customMetrics;
+            resourceInputs["customRequestHeaders"] = state?.customRequestHeaders;
+            resourceInputs["customResponseHeaders"] = state?.customResponseHeaders;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dynamicForwarding"] = state?.dynamicForwarding;
+            resourceInputs["edgeSecurityPolicy"] = state?.edgeSecurityPolicy;
+            resourceInputs["enableCdn"] = state?.enableCdn;
+            resourceInputs["externalManagedMigrationState"] = state?.externalManagedMigrationState;
+            resourceInputs["externalManagedMigrationTestingPercentage"] = state?.externalManagedMigrationTestingPercentage;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["generatedId"] = state?.generatedId;
+            resourceInputs["healthChecks"] = state?.healthChecks;
+            resourceInputs["iap"] = state?.iap;
+            resourceInputs["ipAddressSelectionPolicy"] = state?.ipAddressSelectionPolicy;
+            resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
+            resourceInputs["localityLbPolicies"] = state?.localityLbPolicies;
+            resourceInputs["localityLbPolicy"] = state?.localityLbPolicy;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["maxStreamDuration"] = state?.maxStreamDuration;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkPassThroughLbTrafficPolicy"] = state?.networkPassThroughLbTrafficPolicy;
+            resourceInputs["outlierDetection"] = state?.outlierDetection;
+            resourceInputs["portName"] = state?.portName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["securityPolicy"] = state?.securityPolicy;
+            resourceInputs["securitySettings"] = state?.securitySettings;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serviceLbPolicy"] = state?.serviceLbPolicy;
+            resourceInputs["sessionAffinity"] = state?.sessionAffinity;
+            resourceInputs["strongSessionAffinityCookie"] = state?.strongSessionAffinityCookie;
+            resourceInputs["timeoutSec"] = state?.timeoutSec;
+            resourceInputs["tlsSettings"] = state?.tlsSettings;
         } else {
             const args = argsOrState as BackendServiceArgs | undefined;
-            resourceInputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
-            resourceInputs["backends"] = args ? args.backends : undefined;
-            resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
-            resourceInputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
-            resourceInputs["compressionMode"] = args ? args.compressionMode : undefined;
-            resourceInputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
-            resourceInputs["consistentHash"] = args ? args.consistentHash : undefined;
-            resourceInputs["customMetrics"] = args ? args.customMetrics : undefined;
-            resourceInputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
-            resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dynamicForwarding"] = args ? args.dynamicForwarding : undefined;
-            resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
-            resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
-            resourceInputs["externalManagedMigrationState"] = args ? args.externalManagedMigrationState : undefined;
-            resourceInputs["externalManagedMigrationTestingPercentage"] = args ? args.externalManagedMigrationTestingPercentage : undefined;
-            resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
-            resourceInputs["iap"] = args ? args.iap : undefined;
-            resourceInputs["ipAddressSelectionPolicy"] = args ? args.ipAddressSelectionPolicy : undefined;
-            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            resourceInputs["localityLbPolicies"] = args ? args.localityLbPolicies : undefined;
-            resourceInputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["maxStreamDuration"] = args ? args.maxStreamDuration : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkPassThroughLbTrafficPolicy"] = args ? args.networkPassThroughLbTrafficPolicy : undefined;
-            resourceInputs["outlierDetection"] = args ? args.outlierDetection : undefined;
-            resourceInputs["portName"] = args ? args.portName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
-            resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
-            resourceInputs["serviceLbPolicy"] = args ? args.serviceLbPolicy : undefined;
-            resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
-            resourceInputs["strongSessionAffinityCookie"] = args ? args.strongSessionAffinityCookie : undefined;
-            resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
-            resourceInputs["tlsSettings"] = args ? args.tlsSettings : undefined;
+            resourceInputs["affinityCookieTtlSec"] = args?.affinityCookieTtlSec;
+            resourceInputs["backends"] = args?.backends;
+            resourceInputs["cdnPolicy"] = args?.cdnPolicy;
+            resourceInputs["circuitBreakers"] = args?.circuitBreakers;
+            resourceInputs["compressionMode"] = args?.compressionMode;
+            resourceInputs["connectionDrainingTimeoutSec"] = args?.connectionDrainingTimeoutSec;
+            resourceInputs["consistentHash"] = args?.consistentHash;
+            resourceInputs["customMetrics"] = args?.customMetrics;
+            resourceInputs["customRequestHeaders"] = args?.customRequestHeaders;
+            resourceInputs["customResponseHeaders"] = args?.customResponseHeaders;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dynamicForwarding"] = args?.dynamicForwarding;
+            resourceInputs["edgeSecurityPolicy"] = args?.edgeSecurityPolicy;
+            resourceInputs["enableCdn"] = args?.enableCdn;
+            resourceInputs["externalManagedMigrationState"] = args?.externalManagedMigrationState;
+            resourceInputs["externalManagedMigrationTestingPercentage"] = args?.externalManagedMigrationTestingPercentage;
+            resourceInputs["healthChecks"] = args?.healthChecks;
+            resourceInputs["iap"] = args?.iap;
+            resourceInputs["ipAddressSelectionPolicy"] = args?.ipAddressSelectionPolicy;
+            resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
+            resourceInputs["localityLbPolicies"] = args?.localityLbPolicies;
+            resourceInputs["localityLbPolicy"] = args?.localityLbPolicy;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["maxStreamDuration"] = args?.maxStreamDuration;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkPassThroughLbTrafficPolicy"] = args?.networkPassThroughLbTrafficPolicy;
+            resourceInputs["outlierDetection"] = args?.outlierDetection;
+            resourceInputs["portName"] = args?.portName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["securityPolicy"] = args?.securityPolicy;
+            resourceInputs["securitySettings"] = args?.securitySettings;
+            resourceInputs["serviceLbPolicy"] = args?.serviceLbPolicy;
+            resourceInputs["sessionAffinity"] = args?.sessionAffinity;
+            resourceInputs["strongSessionAffinityCookie"] = args?.strongSessionAffinityCookie;
+            resourceInputs["timeoutSec"] = args?.timeoutSec;
+            resourceInputs["tlsSettings"] = args?.tlsSettings;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["generatedId"] = undefined /*out*/;

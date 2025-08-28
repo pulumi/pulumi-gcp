@@ -156,21 +156,21 @@ export class Attestor extends pulumi.CustomResource {
      * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
      * Structure is documented below.
      */
-    public readonly attestationAuthorityNote!: pulumi.Output<outputs.binaryauthorization.AttestorAttestationAuthorityNote>;
+    declare public readonly attestationAuthorityNote: pulumi.Output<outputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
      * A descriptive comment. This field may be updated. The field may be
      * displayed in chooser dialogs.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The resource name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a Attestor resource with the given unique name, arguments, and options.
@@ -185,19 +185,19 @@ export class Attestor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttestorState | undefined;
-            resourceInputs["attestationAuthorityNote"] = state ? state.attestationAuthorityNote : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["attestationAuthorityNote"] = state?.attestationAuthorityNote;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as AttestorArgs | undefined;
-            if ((!args || args.attestationAuthorityNote === undefined) && !opts.urn) {
+            if (args?.attestationAuthorityNote === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attestationAuthorityNote'");
             }
-            resourceInputs["attestationAuthorityNote"] = args ? args.attestationAuthorityNote : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["attestationAuthorityNote"] = args?.attestationAuthorityNote;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Attestor.__pulumiType, name, resourceInputs, opts);

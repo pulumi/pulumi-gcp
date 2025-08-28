@@ -84,36 +84,36 @@ export class NotificationConfig extends pulumi.CustomResource {
     /**
      * This must be unique within the organization.
      */
-    public readonly configId!: pulumi.Output<string>;
+    declare public readonly configId: pulumi.Output<string>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The resource name of this notification config, in the format
      * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The organization whose Cloud Security Command Center the Notification
      * Config lives in.
      */
-    public readonly organization!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is
      * "projects/[projectId]/topics/[topic]".
      */
-    public readonly pubsubTopic!: pulumi.Output<string>;
+    declare public readonly pubsubTopic: pulumi.Output<string>;
     /**
      * The service account that needs "pubsub.topics.publish" permission to
      * publish to the Pub/Sub topic.
      */
-    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccount: pulumi.Output<string>;
     /**
      * The config for triggering streaming-based notifications.
      * Structure is documented below.
      */
-    public readonly streamingConfig!: pulumi.Output<outputs.securitycenter.NotificationConfigStreamingConfig>;
+    declare public readonly streamingConfig: pulumi.Output<outputs.securitycenter.NotificationConfigStreamingConfig>;
 
     /**
      * Create a NotificationConfig resource with the given unique name, arguments, and options.
@@ -128,32 +128,32 @@ export class NotificationConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationConfigState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["streamingConfig"] = state ? state.streamingConfig : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["pubsubTopic"] = state?.pubsubTopic;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["streamingConfig"] = state?.streamingConfig;
         } else {
             const args = argsOrState as NotificationConfigArgs | undefined;
-            if ((!args || args.configId === undefined) && !opts.urn) {
+            if (args?.configId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            if ((!args || args.pubsubTopic === undefined) && !opts.urn) {
+            if (args?.pubsubTopic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pubsubTopic'");
             }
-            if ((!args || args.streamingConfig === undefined) && !opts.urn) {
+            if (args?.streamingConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'streamingConfig'");
             }
-            resourceInputs["configId"] = args ? args.configId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["organization"] = args ? args.organization : undefined;
-            resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
-            resourceInputs["streamingConfig"] = args ? args.streamingConfig : undefined;
+            resourceInputs["configId"] = args?.configId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["organization"] = args?.organization;
+            resourceInputs["pubsubTopic"] = args?.pubsubTopic;
+            resourceInputs["streamingConfig"] = args?.streamingConfig;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
         }

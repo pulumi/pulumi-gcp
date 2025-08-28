@@ -71,13 +71,13 @@ export class DiskAsyncReplication extends pulumi.CustomResource {
     /**
      * The primary disk (source of replication).
      */
-    public readonly primaryDisk!: pulumi.Output<string>;
+    declare public readonly primaryDisk: pulumi.Output<string>;
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
      *
      * The `secondaryDisk` block includes:
      */
-    public readonly secondaryDisk!: pulumi.Output<outputs.compute.DiskAsyncReplicationSecondaryDisk>;
+    declare public readonly secondaryDisk: pulumi.Output<outputs.compute.DiskAsyncReplicationSecondaryDisk>;
 
     /**
      * Create a DiskAsyncReplication resource with the given unique name, arguments, and options.
@@ -92,18 +92,18 @@ export class DiskAsyncReplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskAsyncReplicationState | undefined;
-            resourceInputs["primaryDisk"] = state ? state.primaryDisk : undefined;
-            resourceInputs["secondaryDisk"] = state ? state.secondaryDisk : undefined;
+            resourceInputs["primaryDisk"] = state?.primaryDisk;
+            resourceInputs["secondaryDisk"] = state?.secondaryDisk;
         } else {
             const args = argsOrState as DiskAsyncReplicationArgs | undefined;
-            if ((!args || args.primaryDisk === undefined) && !opts.urn) {
+            if (args?.primaryDisk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'primaryDisk'");
             }
-            if ((!args || args.secondaryDisk === undefined) && !opts.urn) {
+            if (args?.secondaryDisk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secondaryDisk'");
             }
-            resourceInputs["primaryDisk"] = args ? args.primaryDisk : undefined;
-            resourceInputs["secondaryDisk"] = args ? args.secondaryDisk : undefined;
+            resourceInputs["primaryDisk"] = args?.primaryDisk;
+            resourceInputs["secondaryDisk"] = args?.secondaryDisk;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DiskAsyncReplication.__pulumiType, name, resourceInputs, opts);

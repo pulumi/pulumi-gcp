@@ -194,63 +194,63 @@ export class AutonomousDatabase extends pulumi.CustomResource {
     /**
      * The password for the default ADMIN user.
      */
-    public readonly adminPassword!: pulumi.Output<string | undefined>;
+    declare public readonly adminPassword: pulumi.Output<string | undefined>;
     /**
      * The ID of the Autonomous Database to create. This value is restricted
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      */
-    public readonly autonomousDatabaseId!: pulumi.Output<string>;
+    declare public readonly autonomousDatabaseId: pulumi.Output<string>;
     /**
      * The subnet CIDR range for the Autonmous Database.
      */
-    public readonly cidr!: pulumi.Output<string | undefined>;
+    declare public readonly cidr: pulumi.Output<string | undefined>;
     /**
      * The date and time that the Autonomous Database was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The name of the Autonomous Database. The database name must be unique in
      * the project. The name must begin with a letter and can
      * contain a maximum of 30 alphanumeric characters.
      */
-    public readonly database!: pulumi.Output<string>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly database: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The display name for the Autonomous Database. The name does not have to
      * be unique within your project.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the subscription entitlement associated with the Autonomous
      * Database.
      */
-    public /*out*/ readonly entitlementId!: pulumi.Output<string>;
+    declare public /*out*/ readonly entitlementId: pulumi.Output<string>;
     /**
      * The labels or tags associated with the Autonomous Database.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The name of the Autonomous Database resource in the following format:
      * projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The name of the VPC network used by the Autonomous Database.
      * Format: projects/{project}/global/networks/{network}
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * The name of the OdbNetwork associated with the Autonomous Database.
      * Format:
@@ -258,28 +258,28 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      * It is optional but if specified, this should match the parent ODBNetwork of
      * the odbSubnet and backup_odb_subnet.
      */
-    public readonly odbNetwork!: pulumi.Output<string | undefined>;
+    declare public readonly odbNetwork: pulumi.Output<string | undefined>;
     /**
      * The name of the OdbSubnet associated with the Autonomous Database for
      * IP allocation. Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    public readonly odbSubnet!: pulumi.Output<string | undefined>;
+    declare public readonly odbSubnet: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The properties of an Autonomous Database.
      * Structure is documented below.
      */
-    public readonly properties!: pulumi.Output<outputs.oracledatabase.AutonomousDatabaseProperties>;
+    declare public readonly properties: pulumi.Output<outputs.oracledatabase.AutonomousDatabaseProperties>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a AutonomousDatabase resource with the given unique name, arguments, and options.
@@ -294,51 +294,51 @@ export class AutonomousDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutonomousDatabaseState | undefined;
-            resourceInputs["adminPassword"] = state ? state.adminPassword : undefined;
-            resourceInputs["autonomousDatabaseId"] = state ? state.autonomousDatabaseId : undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["entitlementId"] = state ? state.entitlementId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["odbNetwork"] = state ? state.odbNetwork : undefined;
-            resourceInputs["odbSubnet"] = state ? state.odbSubnet : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["adminPassword"] = state?.adminPassword;
+            resourceInputs["autonomousDatabaseId"] = state?.autonomousDatabaseId;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["entitlementId"] = state?.entitlementId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["odbNetwork"] = state?.odbNetwork;
+            resourceInputs["odbSubnet"] = state?.odbSubnet;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
         } else {
             const args = argsOrState as AutonomousDatabaseArgs | undefined;
-            if ((!args || args.autonomousDatabaseId === undefined) && !opts.urn) {
+            if (args?.autonomousDatabaseId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autonomousDatabaseId'");
             }
-            if ((!args || args.database === undefined) && !opts.urn) {
+            if (args?.database === undefined && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            resourceInputs["adminPassword"] = args ? args.adminPassword : undefined;
-            resourceInputs["autonomousDatabaseId"] = args ? args.autonomousDatabaseId : undefined;
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["odbNetwork"] = args ? args.odbNetwork : undefined;
-            resourceInputs["odbSubnet"] = args ? args.odbSubnet : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["adminPassword"] = args?.adminPassword;
+            resourceInputs["autonomousDatabaseId"] = args?.autonomousDatabaseId;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["odbNetwork"] = args?.odbNetwork;
+            resourceInputs["odbSubnet"] = args?.odbSubnet;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["entitlementId"] = undefined /*out*/;

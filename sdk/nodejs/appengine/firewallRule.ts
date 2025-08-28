@@ -97,11 +97,11 @@ export class FirewallRule extends pulumi.CustomResource {
      * The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * An optional string description of this rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A positive integer that defines the order of rule evaluation.
      * Rules with the lowest priority are evaluated first.
@@ -109,16 +109,16 @@ export class FirewallRule extends pulumi.CustomResource {
      * IPv6 traffic when no previous rule matches. Only the action of
      * this rule can be modified by the user.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * IP address or range, defined using CIDR notation, of requests that this rule applies to.
      */
-    public readonly sourceRange!: pulumi.Output<string>;
+    declare public readonly sourceRange: pulumi.Output<string>;
 
     /**
      * Create a FirewallRule resource with the given unique name, arguments, and options.
@@ -133,24 +133,24 @@ export class FirewallRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sourceRange"] = state ? state.sourceRange : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["sourceRange"] = state?.sourceRange;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.sourceRange === undefined) && !opts.urn) {
+            if (args?.sourceRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceRange'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceRange"] = args ? args.sourceRange : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceRange"] = args?.sourceRange;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FirewallRule.__pulumiType, name, resourceInputs, opts);

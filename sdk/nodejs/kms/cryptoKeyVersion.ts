@@ -80,41 +80,41 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
     /**
      * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
      */
-    public /*out*/ readonly algorithm!: pulumi.Output<string>;
+    declare public /*out*/ readonly algorithm: pulumi.Output<string>;
     /**
      * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
      * Only provided for key versions with protectionLevel HSM.
      * Structure is documented below.
      */
-    public /*out*/ readonly attestations!: pulumi.Output<outputs.kms.CryptoKeyVersionAttestation[]>;
+    declare public /*out*/ readonly attestations: pulumi.Output<outputs.kms.CryptoKeyVersionAttestation[]>;
     /**
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
      */
-    public readonly cryptoKey!: pulumi.Output<string>;
+    declare public readonly cryptoKey: pulumi.Output<string>;
     /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      * Structure is documented below.
      */
-    public readonly externalProtectionLevelOptions!: pulumi.Output<outputs.kms.CryptoKeyVersionExternalProtectionLevelOptions | undefined>;
+    declare public readonly externalProtectionLevelOptions: pulumi.Output<outputs.kms.CryptoKeyVersionExternalProtectionLevelOptions | undefined>;
     /**
      * The time this CryptoKeyVersion key material was generated
      */
-    public /*out*/ readonly generateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly generateTime: pulumi.Output<string>;
     /**
      * The resource name for this CryptoKeyVersion.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
      */
-    public /*out*/ readonly protectionLevel!: pulumi.Output<string>;
+    declare public /*out*/ readonly protectionLevel: pulumi.Output<string>;
     /**
      * The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
      * otherwise the value of this field is always retrieved automatically.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
 
     /**
      * Create a CryptoKeyVersion resource with the given unique name, arguments, and options.
@@ -129,22 +129,22 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CryptoKeyVersionState | undefined;
-            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
-            resourceInputs["attestations"] = state ? state.attestations : undefined;
-            resourceInputs["cryptoKey"] = state ? state.cryptoKey : undefined;
-            resourceInputs["externalProtectionLevelOptions"] = state ? state.externalProtectionLevelOptions : undefined;
-            resourceInputs["generateTime"] = state ? state.generateTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["algorithm"] = state?.algorithm;
+            resourceInputs["attestations"] = state?.attestations;
+            resourceInputs["cryptoKey"] = state?.cryptoKey;
+            resourceInputs["externalProtectionLevelOptions"] = state?.externalProtectionLevelOptions;
+            resourceInputs["generateTime"] = state?.generateTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["protectionLevel"] = state?.protectionLevel;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as CryptoKeyVersionArgs | undefined;
-            if ((!args || args.cryptoKey === undefined) && !opts.urn) {
+            if (args?.cryptoKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKey'");
             }
-            resourceInputs["cryptoKey"] = args ? args.cryptoKey : undefined;
-            resourceInputs["externalProtectionLevelOptions"] = args ? args.externalProtectionLevelOptions : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["cryptoKey"] = args?.cryptoKey;
+            resourceInputs["externalProtectionLevelOptions"] = args?.externalProtectionLevelOptions;
+            resourceInputs["state"] = args?.state;
             resourceInputs["algorithm"] = undefined /*out*/;
             resourceInputs["attestations"] = undefined /*out*/;
             resourceInputs["generateTime"] = undefined /*out*/;

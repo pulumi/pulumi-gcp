@@ -167,63 +167,63 @@ export class Target extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Information specifying an Anthos Cluster.
      */
-    public readonly anthosCluster!: pulumi.Output<outputs.clouddeploy.TargetAnthosCluster | undefined>;
+    declare public readonly anthosCluster: pulumi.Output<outputs.clouddeploy.TargetAnthosCluster | undefined>;
     /**
      * Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
      */
-    public readonly associatedEntities!: pulumi.Output<outputs.clouddeploy.TargetAssociatedEntity[] | undefined>;
+    declare public readonly associatedEntities: pulumi.Output<outputs.clouddeploy.TargetAssociatedEntity[] | undefined>;
     /**
      * Output only. Time at which the `Target` was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. Information specifying a Custom Target.
      */
-    public readonly customTarget!: pulumi.Output<outputs.clouddeploy.TargetCustomTarget | undefined>;
+    declare public readonly customTarget: pulumi.Output<outputs.clouddeploy.TargetCustomTarget | undefined>;
     /**
      * Optional. The deploy parameters to use for this target.
      */
-    public readonly deployParameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly deployParameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
      */
-    public readonly executionConfigs!: pulumi.Output<outputs.clouddeploy.TargetExecutionConfig[]>;
+    declare public readonly executionConfigs: pulumi.Output<outputs.clouddeploy.TargetExecutionConfig[]>;
     /**
      * Information specifying a GKE Cluster.
      */
-    public readonly gke!: pulumi.Output<outputs.clouddeploy.TargetGke | undefined>;
+    declare public readonly gke: pulumi.Output<outputs.clouddeploy.TargetGke | undefined>;
     /**
      * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Information specifying a multiTarget.
      */
-    public readonly multiTarget!: pulumi.Output<outputs.clouddeploy.TargetMultiTarget | undefined>;
+    declare public readonly multiTarget: pulumi.Output<outputs.clouddeploy.TargetMultiTarget | undefined>;
     /**
      * Name of the `Target`. Format is `a-z?`.
      *
@@ -231,35 +231,35 @@ export class Target extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Whether or not the `Target` requires approval.
      */
-    public readonly requireApproval!: pulumi.Output<boolean | undefined>;
+    declare public readonly requireApproval: pulumi.Output<boolean | undefined>;
     /**
      * Information specifying a Cloud Run deployment target.
      */
-    public readonly run!: pulumi.Output<outputs.clouddeploy.TargetRun | undefined>;
+    declare public readonly run: pulumi.Output<outputs.clouddeploy.TargetRun | undefined>;
     /**
      * Output only. Resource id of the `Target`.
      */
-    public /*out*/ readonly targetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly targetId: pulumi.Output<string>;
     /**
      * Output only. Unique identifier of the `Target`.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. Most recent time at which the `Target` was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Target resource with the given unique name, arguments, and options.
@@ -274,49 +274,49 @@ export class Target extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["anthosCluster"] = state ? state.anthosCluster : undefined;
-            resourceInputs["associatedEntities"] = state ? state.associatedEntities : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customTarget"] = state ? state.customTarget : undefined;
-            resourceInputs["deployParameters"] = state ? state.deployParameters : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["executionConfigs"] = state ? state.executionConfigs : undefined;
-            resourceInputs["gke"] = state ? state.gke : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["multiTarget"] = state ? state.multiTarget : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["requireApproval"] = state ? state.requireApproval : undefined;
-            resourceInputs["run"] = state ? state.run : undefined;
-            resourceInputs["targetId"] = state ? state.targetId : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["anthosCluster"] = state?.anthosCluster;
+            resourceInputs["associatedEntities"] = state?.associatedEntities;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customTarget"] = state?.customTarget;
+            resourceInputs["deployParameters"] = state?.deployParameters;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["executionConfigs"] = state?.executionConfigs;
+            resourceInputs["gke"] = state?.gke;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["multiTarget"] = state?.multiTarget;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["requireApproval"] = state?.requireApproval;
+            resourceInputs["run"] = state?.run;
+            resourceInputs["targetId"] = state?.targetId;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TargetArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["anthosCluster"] = args ? args.anthosCluster : undefined;
-            resourceInputs["associatedEntities"] = args ? args.associatedEntities : undefined;
-            resourceInputs["customTarget"] = args ? args.customTarget : undefined;
-            resourceInputs["deployParameters"] = args ? args.deployParameters : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executionConfigs"] = args ? args.executionConfigs : undefined;
-            resourceInputs["gke"] = args ? args.gke : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["multiTarget"] = args ? args.multiTarget : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["requireApproval"] = args ? args.requireApproval : undefined;
-            resourceInputs["run"] = args ? args.run : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["anthosCluster"] = args?.anthosCluster;
+            resourceInputs["associatedEntities"] = args?.associatedEntities;
+            resourceInputs["customTarget"] = args?.customTarget;
+            resourceInputs["deployParameters"] = args?.deployParameters;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executionConfigs"] = args?.executionConfigs;
+            resourceInputs["gke"] = args?.gke;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["multiTarget"] = args?.multiTarget;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["requireApproval"] = args?.requireApproval;
+            resourceInputs["run"] = args?.run;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

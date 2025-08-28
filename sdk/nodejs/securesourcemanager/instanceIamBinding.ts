@@ -34,13 +34,13 @@ export class InstanceIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.securesourcemanager.InstanceIamBindingCondition | undefined>;
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly instanceId!: pulumi.Output<string>;
-    public readonly location!: pulumi.Output<string>;
-    public readonly members!: pulumi.Output<string[]>;
-    public readonly project!: pulumi.Output<string>;
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly condition: pulumi.Output<outputs.securesourcemanager.InstanceIamBindingCondition | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
+    declare public readonly members: pulumi.Output<string[]>;
+    declare public readonly project: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a InstanceIamBinding resource with the given unique name, arguments, and options.
@@ -55,30 +55,30 @@ export class InstanceIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as InstanceIamBindingArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

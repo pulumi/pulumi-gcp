@@ -324,20 +324,20 @@ export class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
      * A list of desired user endpoints
      * Structure is documented below.
      */
-    public readonly desiredUserCreatedEndpoints!: pulumi.Output<outputs.memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint[] | undefined>;
+    declare public readonly desiredUserCreatedEndpoints: pulumi.Output<outputs.memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint[] | undefined>;
     /**
      * The name of the Memorystore instance these endpoints should be added to.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the region of the Memorystore instance these endpoints should be added to.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a InstanceDesiredUserCreatedEndpoints resource with the given unique name, arguments, and options.
@@ -352,19 +352,19 @@ export class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceDesiredUserCreatedEndpointsState | undefined;
-            resourceInputs["desiredUserCreatedEndpoints"] = state ? state.desiredUserCreatedEndpoints : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["desiredUserCreatedEndpoints"] = state?.desiredUserCreatedEndpoints;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as InstanceDesiredUserCreatedEndpointsArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["desiredUserCreatedEndpoints"] = args ? args.desiredUserCreatedEndpoints : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["desiredUserCreatedEndpoints"] = args?.desiredUserCreatedEndpoints;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceDesiredUserCreatedEndpoints.__pulumiType, name, resourceInputs, opts);

@@ -242,41 +242,41 @@ export class CxTool extends pulumi.CustomResource {
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    public readonly dataStoreSpec!: pulumi.Output<outputs.diagflow.CxToolDataStoreSpec | undefined>;
+    declare public readonly dataStoreSpec: pulumi.Output<outputs.diagflow.CxToolDataStoreSpec | undefined>;
     /**
      * High level description of the Tool and its usage.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The human-readable name of the tool, unique within the agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Client side executed function specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    public readonly functionSpec!: pulumi.Output<outputs.diagflow.CxToolFunctionSpec | undefined>;
+    declare public readonly functionSpec: pulumi.Output<outputs.diagflow.CxToolFunctionSpec | undefined>;
     /**
      * The unique identifier of the Tool.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * OpenAPI specification of the Tool.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    public readonly openApiSpec!: pulumi.Output<outputs.diagflow.CxToolOpenApiSpec | undefined>;
+    declare public readonly openApiSpec: pulumi.Output<outputs.diagflow.CxToolOpenApiSpec | undefined>;
     /**
      * The agent to create a Tool for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * The tool type.
      */
-    public /*out*/ readonly toolType!: pulumi.Output<string>;
+    declare public /*out*/ readonly toolType: pulumi.Output<string>;
 
     /**
      * Create a CxTool resource with the given unique name, arguments, and options.
@@ -291,28 +291,28 @@ export class CxTool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxToolState | undefined;
-            resourceInputs["dataStoreSpec"] = state ? state.dataStoreSpec : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["functionSpec"] = state ? state.functionSpec : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["openApiSpec"] = state ? state.openApiSpec : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["toolType"] = state ? state.toolType : undefined;
+            resourceInputs["dataStoreSpec"] = state?.dataStoreSpec;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["functionSpec"] = state?.functionSpec;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["openApiSpec"] = state?.openApiSpec;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["toolType"] = state?.toolType;
         } else {
             const args = argsOrState as CxToolArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["dataStoreSpec"] = args ? args.dataStoreSpec : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["functionSpec"] = args ? args.functionSpec : undefined;
-            resourceInputs["openApiSpec"] = args ? args.openApiSpec : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["dataStoreSpec"] = args?.dataStoreSpec;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["functionSpec"] = args?.functionSpec;
+            resourceInputs["openApiSpec"] = args?.openApiSpec;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["toolType"] = undefined /*out*/;
         }

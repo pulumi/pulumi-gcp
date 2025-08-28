@@ -178,66 +178,66 @@ export class Cluster extends pulumi.CustomResource {
      * A capacity configuration of a Kafka cluster.
      * Structure is documented below.
      */
-    public readonly capacityConfig!: pulumi.Output<outputs.managedkafka.ClusterCapacityConfig>;
+    declare public readonly capacityConfig: pulumi.Output<outputs.managedkafka.ClusterCapacityConfig>;
     /**
      * The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The time when the cluster was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
      * Structure is documented below.
      */
-    public readonly gcpConfig!: pulumi.Output<outputs.managedkafka.ClusterGcpConfig>;
+    declare public readonly gcpConfig: pulumi.Output<outputs.managedkafka.ClusterGcpConfig>;
     /**
      * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Defines rebalancing behavior of a Kafka cluster.
      * Structure is documented below.
      */
-    public readonly rebalanceConfig!: pulumi.Output<outputs.managedkafka.ClusterRebalanceConfig | undefined>;
+    declare public readonly rebalanceConfig: pulumi.Output<outputs.managedkafka.ClusterRebalanceConfig | undefined>;
     /**
      * The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
      * Structure is documented below.
      */
-    public readonly tlsConfig!: pulumi.Output<outputs.managedkafka.ClusterTlsConfig>;
+    declare public readonly tlsConfig: pulumi.Output<outputs.managedkafka.ClusterTlsConfig>;
     /**
      * The time when the cluster was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -252,42 +252,42 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["capacityConfig"] = state ? state.capacityConfig : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["gcpConfig"] = state ? state.gcpConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["rebalanceConfig"] = state ? state.rebalanceConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tlsConfig"] = state ? state.tlsConfig : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["capacityConfig"] = state?.capacityConfig;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["gcpConfig"] = state?.gcpConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["rebalanceConfig"] = state?.rebalanceConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tlsConfig"] = state?.tlsConfig;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.capacityConfig === undefined) && !opts.urn) {
+            if (args?.capacityConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capacityConfig'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.gcpConfig === undefined) && !opts.urn) {
+            if (args?.gcpConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcpConfig'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["capacityConfig"] = args ? args.capacityConfig : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["gcpConfig"] = args ? args.gcpConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rebalanceConfig"] = args ? args.rebalanceConfig : undefined;
-            resourceInputs["tlsConfig"] = args ? args.tlsConfig : undefined;
+            resourceInputs["capacityConfig"] = args?.capacityConfig;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["gcpConfig"] = args?.gcpConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rebalanceConfig"] = args?.rebalanceConfig;
+            resourceInputs["tlsConfig"] = args?.tlsConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

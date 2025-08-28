@@ -214,108 +214,108 @@ export class AppHostingBackend extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The [ID of a Web
      * App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the backend.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
      */
-    public readonly backendId!: pulumi.Output<string>;
+    declare public readonly backendId: pulumi.Output<string>;
     /**
      * The connection to an external source repository to watch for event-driven
      * updates to the backend.
      * Structure is documented below.
      */
-    public readonly codebase!: pulumi.Output<outputs.firebase.AppHostingBackendCodebase | undefined>;
+    declare public readonly codebase: pulumi.Output<outputs.firebase.AppHostingBackendCodebase | undefined>;
     /**
      * Time at which the backend was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Time at which the backend was deleted.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * Human-readable name. 63 character limit.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The environment name of the backend, used to load environment variables
      * from environment specific configuration.
      */
-    public readonly environment!: pulumi.Output<string | undefined>;
+    declare public readonly environment: pulumi.Output<string | undefined>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Unstructured key value map that can be used to organize and categorize
      * objects.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The canonical IDs of a Google Cloud location such as "us-east1".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * A list of the resources managed by this backend.
      * Structure is documented below.
      */
-    public /*out*/ readonly managedResources!: pulumi.Output<outputs.firebase.AppHostingBackendManagedResource[]>;
+    declare public /*out*/ readonly managedResources: pulumi.Output<outputs.firebase.AppHostingBackendManagedResource[]>;
     /**
      * Identifier. The resource name of the backend.
      * Format:
      * `projects/{project}/locations/{locationId}/backends/{backendId}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the service account used for Cloud Build and Cloud Run.
      * Should have the role roles/firebaseapphosting.computeRunner
      * or equivalent permissions.
      */
-    public readonly serviceAccount!: pulumi.Output<string>;
+    declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * Immutable. Specifies how App Hosting will serve the content for this backend. It will
      * either be contained to a single region (REGIONAL_STRICT) or allowed to use
      * App Hosting's global-replicated serving infrastructure (GLOBAL_ACCESS).
      * Possible values are: `REGIONAL_STRICT`, `GLOBAL_ACCESS`.
      */
-    public readonly servingLocality!: pulumi.Output<string>;
+    declare public readonly servingLocality: pulumi.Output<string>;
     /**
      * System-assigned, unique identifier.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time at which the backend was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The primary URI to communicate with the backend.
      */
-    public /*out*/ readonly uri!: pulumi.Output<string>;
+    declare public /*out*/ readonly uri: pulumi.Output<string>;
 
     /**
      * Create a AppHostingBackend resource with the given unique name, arguments, and options.
@@ -330,56 +330,56 @@ export class AppHostingBackend extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppHostingBackendState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["backendId"] = state ? state.backendId : undefined;
-            resourceInputs["codebase"] = state ? state.codebase : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["managedResources"] = state ? state.managedResources : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["servingLocality"] = state ? state.servingLocality : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["backendId"] = state?.backendId;
+            resourceInputs["codebase"] = state?.codebase;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["managedResources"] = state?.managedResources;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["servingLocality"] = state?.servingLocality;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["uri"] = state?.uri;
         } else {
             const args = argsOrState as AppHostingBackendArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.backendId === undefined) && !opts.urn) {
+            if (args?.backendId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backendId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.serviceAccount === undefined) && !opts.urn) {
+            if (args?.serviceAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccount'");
             }
-            if ((!args || args.servingLocality === undefined) && !opts.urn) {
+            if (args?.servingLocality === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servingLocality'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["backendId"] = args ? args.backendId : undefined;
-            resourceInputs["codebase"] = args ? args.codebase : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["servingLocality"] = args ? args.servingLocality : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["backendId"] = args?.backendId;
+            resourceInputs["codebase"] = args?.codebase;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["servingLocality"] = args?.servingLocality;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;

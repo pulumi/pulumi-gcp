@@ -262,18 +262,18 @@ export class Dataset extends pulumi.CustomResource {
      * An array of objects that define dataset access for one or more entities.
      * Structure is documented below.
      */
-    public readonly accesses!: pulumi.Output<outputs.bigquery.DatasetAccess[]>;
+    declare public readonly accesses: pulumi.Output<outputs.bigquery.DatasetAccess[]>;
     /**
      * The time when this dataset was created, in milliseconds since the
      * epoch.
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<number>;
     /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
      */
-    public readonly datasetId!: pulumi.Output<string>;
+    declare public readonly datasetId: pulumi.Output<string>;
     /**
      * Defines the default collation specification of future tables created
      * in the dataset. If a table is created in this dataset without table-level
@@ -285,14 +285,14 @@ export class Dataset extends pulumi.CustomResource {
      * - 'und:ci': undetermined locale, case insensitive.
      * - '': empty string. Default to case-sensitive behavior.
      */
-    public readonly defaultCollation!: pulumi.Output<string>;
+    declare public readonly defaultCollation: pulumi.Output<string>;
     /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
      * Structure is documented below.
      */
-    public readonly defaultEncryptionConfiguration!: pulumi.Output<outputs.bigquery.DatasetDefaultEncryptionConfiguration | undefined>;
+    declare public readonly defaultEncryptionConfiguration: pulumi.Output<outputs.bigquery.DatasetDefaultEncryptionConfiguration | undefined>;
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
@@ -308,7 +308,7 @@ export class Dataset extends pulumi.CustomResource {
      * creating or updating a partitioned table, that value takes precedence
      * over the default partition expiration time indicated by this property.
      */
-    public readonly defaultPartitionExpirationMs!: pulumi.Output<number | undefined>;
+    declare public readonly defaultPartitionExpirationMs: pulumi.Output<number | undefined>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
@@ -322,46 +322,46 @@ export class Dataset extends pulumi.CustomResource {
      * creating a table, that value takes precedence over the default
      * expiration time indicated by this property.
      */
-    public readonly defaultTableExpirationMs!: pulumi.Output<number | undefined>;
+    declare public readonly defaultTableExpirationMs: pulumi.Output<number | undefined>;
     /**
      * If set to `true`, delete all the tables in the
      * dataset when destroying the resource; otherwise,
      * destroying the resource will fail if tables are present.
      */
-    public readonly deleteContentsOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteContentsOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * A user-friendly description of the dataset
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A hash of the resource.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Options defining open source compatible datasets living in the BigQuery catalog. Contains
      * metadata of open source database, schema or namespace represented by the current dataset.
      * Structure is documented below.
      */
-    public readonly externalCatalogDatasetOptions!: pulumi.Output<outputs.bigquery.DatasetExternalCatalogDatasetOptions | undefined>;
+    declare public readonly externalCatalogDatasetOptions: pulumi.Output<outputs.bigquery.DatasetExternalCatalogDatasetOptions | undefined>;
     /**
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      */
-    public readonly externalDatasetReference!: pulumi.Output<outputs.bigquery.DatasetExternalDatasetReference | undefined>;
+    declare public readonly externalDatasetReference: pulumi.Output<outputs.bigquery.DatasetExternalDatasetReference | undefined>;
     /**
      * A descriptive name for the dataset
      */
-    public readonly friendlyName!: pulumi.Output<string | undefined>;
+    declare public readonly friendlyName: pulumi.Output<string | undefined>;
     /**
      * TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
      * By default, this is FALSE, which means the dataset and its table names are
      * case-sensitive. This field does not affect routine references.
      */
-    public readonly isCaseInsensitive!: pulumi.Output<boolean>;
+    declare public readonly isCaseInsensitive: pulumi.Output<boolean>;
     /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets.
@@ -369,12 +369,12 @@ export class Dataset extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The date when this dataset or any of its tables was last modified, in
      * milliseconds since the epoch.
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<number>;
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -385,21 +385,21 @@ export class Dataset extends pulumi.CustomResource {
      * The default value is multi-regional location `US`.
      * Changing this forces a new resource to be created.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
      */
-    public readonly maxTimeTravelHours!: pulumi.Output<string>;
+    declare public readonly maxTimeTravelHours: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
      * in the namespaced format, for example "123456789012/environment" where 123456789012 is the
@@ -407,18 +407,18 @@ export class Dataset extends pulumi.CustomResource {
      * to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
      * for more details.
      */
-    public readonly resourceTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly resourceTags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Specifies the storage billing model for the dataset.
      * Set this flag value to LOGICAL to use logical bytes for storage billing,
      * or to PHYSICAL to use physical bytes instead.
      * LOGICAL is the default if this flag isn't specified.
      */
-    public readonly storageBillingModel!: pulumi.Output<string>;
+    declare public readonly storageBillingModel: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -433,53 +433,53 @@ export class Dataset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetState | undefined;
-            resourceInputs["accesses"] = state ? state.accesses : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
-            resourceInputs["defaultCollation"] = state ? state.defaultCollation : undefined;
-            resourceInputs["defaultEncryptionConfiguration"] = state ? state.defaultEncryptionConfiguration : undefined;
-            resourceInputs["defaultPartitionExpirationMs"] = state ? state.defaultPartitionExpirationMs : undefined;
-            resourceInputs["defaultTableExpirationMs"] = state ? state.defaultTableExpirationMs : undefined;
-            resourceInputs["deleteContentsOnDestroy"] = state ? state.deleteContentsOnDestroy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["externalCatalogDatasetOptions"] = state ? state.externalCatalogDatasetOptions : undefined;
-            resourceInputs["externalDatasetReference"] = state ? state.externalDatasetReference : undefined;
-            resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
-            resourceInputs["isCaseInsensitive"] = state ? state.isCaseInsensitive : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maxTimeTravelHours"] = state ? state.maxTimeTravelHours : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["resourceTags"] = state ? state.resourceTags : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["storageBillingModel"] = state ? state.storageBillingModel : undefined;
+            resourceInputs["accesses"] = state?.accesses;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["defaultCollation"] = state?.defaultCollation;
+            resourceInputs["defaultEncryptionConfiguration"] = state?.defaultEncryptionConfiguration;
+            resourceInputs["defaultPartitionExpirationMs"] = state?.defaultPartitionExpirationMs;
+            resourceInputs["defaultTableExpirationMs"] = state?.defaultTableExpirationMs;
+            resourceInputs["deleteContentsOnDestroy"] = state?.deleteContentsOnDestroy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["externalCatalogDatasetOptions"] = state?.externalCatalogDatasetOptions;
+            resourceInputs["externalDatasetReference"] = state?.externalDatasetReference;
+            resourceInputs["friendlyName"] = state?.friendlyName;
+            resourceInputs["isCaseInsensitive"] = state?.isCaseInsensitive;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maxTimeTravelHours"] = state?.maxTimeTravelHours;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["resourceTags"] = state?.resourceTags;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["storageBillingModel"] = state?.storageBillingModel;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !opts.urn) {
+            if (args?.datasetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            resourceInputs["accesses"] = args ? args.accesses : undefined;
-            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
-            resourceInputs["defaultCollation"] = args ? args.defaultCollation : undefined;
-            resourceInputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
-            resourceInputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
-            resourceInputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
-            resourceInputs["deleteContentsOnDestroy"] = args ? args.deleteContentsOnDestroy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["externalCatalogDatasetOptions"] = args ? args.externalCatalogDatasetOptions : undefined;
-            resourceInputs["externalDatasetReference"] = args ? args.externalDatasetReference : undefined;
-            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
-            resourceInputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maxTimeTravelHours"] = args ? args.maxTimeTravelHours : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourceTags"] = args ? args.resourceTags : undefined;
-            resourceInputs["storageBillingModel"] = args ? args.storageBillingModel : undefined;
+            resourceInputs["accesses"] = args?.accesses;
+            resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["defaultCollation"] = args?.defaultCollation;
+            resourceInputs["defaultEncryptionConfiguration"] = args?.defaultEncryptionConfiguration;
+            resourceInputs["defaultPartitionExpirationMs"] = args?.defaultPartitionExpirationMs;
+            resourceInputs["defaultTableExpirationMs"] = args?.defaultTableExpirationMs;
+            resourceInputs["deleteContentsOnDestroy"] = args?.deleteContentsOnDestroy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["externalCatalogDatasetOptions"] = args?.externalCatalogDatasetOptions;
+            resourceInputs["externalDatasetReference"] = args?.externalDatasetReference;
+            resourceInputs["friendlyName"] = args?.friendlyName;
+            resourceInputs["isCaseInsensitive"] = args?.isCaseInsensitive;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maxTimeTravelHours"] = args?.maxTimeTravelHours;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourceTags"] = args?.resourceTags;
+            resourceInputs["storageBillingModel"] = args?.storageBillingModel;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

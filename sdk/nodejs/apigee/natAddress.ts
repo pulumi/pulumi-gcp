@@ -192,24 +192,24 @@ export class NatAddress extends pulumi.CustomResource {
     /**
      * Flag that specifies whether the reserved NAT address should be activate.
      */
-    public readonly activate!: pulumi.Output<boolean | undefined>;
+    declare public readonly activate: pulumi.Output<boolean | undefined>;
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The allocated NAT IP address.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * Resource ID of the NAT address.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * State of the NAT IP address.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a NatAddress resource with the given unique name, arguments, and options.
@@ -224,19 +224,19 @@ export class NatAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatAddressState | undefined;
-            resourceInputs["activate"] = state ? state.activate : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["activate"] = state?.activate;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as NatAddressArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["activate"] = args ? args.activate : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["activate"] = args?.activate;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

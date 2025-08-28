@@ -198,15 +198,15 @@ export class EnvironmentIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === EnvironmentIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.apigee.EnvironmentIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.apigee.EnvironmentIamMemberCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -220,19 +220,19 @@ export class EnvironmentIamMember extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a EnvironmentIamMember resource with the given unique name, arguments, and options.
@@ -247,31 +247,31 @@ export class EnvironmentIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentIamMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as EnvironmentIamMemberArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

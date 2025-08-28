@@ -105,28 +105,28 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
     /**
      * The target that the firewall policy is attached to.
      */
-    public readonly attachmentTarget!: pulumi.Output<string>;
+    declare public readonly attachmentTarget: pulumi.Output<string>;
     /**
      * The firewall policy of the resource.
      */
-    public readonly firewallPolicy!: pulumi.Output<string>;
+    declare public readonly firewallPolicy: pulumi.Output<string>;
     /**
      * The name for an association.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The location of this resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The short name of the firewall policy of the association.
      */
-    public /*out*/ readonly shortName!: pulumi.Output<string>;
+    declare public /*out*/ readonly shortName: pulumi.Output<string>;
 
     /**
      * Create a RegionNetworkFirewallPolicyAssociation resource with the given unique name, arguments, and options.
@@ -141,25 +141,25 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionNetworkFirewallPolicyAssociationState | undefined;
-            resourceInputs["attachmentTarget"] = state ? state.attachmentTarget : undefined;
-            resourceInputs["firewallPolicy"] = state ? state.firewallPolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["shortName"] = state ? state.shortName : undefined;
+            resourceInputs["attachmentTarget"] = state?.attachmentTarget;
+            resourceInputs["firewallPolicy"] = state?.firewallPolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["shortName"] = state?.shortName;
         } else {
             const args = argsOrState as RegionNetworkFirewallPolicyAssociationArgs | undefined;
-            if ((!args || args.attachmentTarget === undefined) && !opts.urn) {
+            if (args?.attachmentTarget === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attachmentTarget'");
             }
-            if ((!args || args.firewallPolicy === undefined) && !opts.urn) {
+            if (args?.firewallPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firewallPolicy'");
             }
-            resourceInputs["attachmentTarget"] = args ? args.attachmentTarget : undefined;
-            resourceInputs["firewallPolicy"] = args ? args.firewallPolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["attachmentTarget"] = args?.attachmentTarget;
+            resourceInputs["firewallPolicy"] = args?.firewallPolicy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["shortName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

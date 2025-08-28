@@ -102,30 +102,30 @@ export class Instance extends pulumi.CustomResource {
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `18000` to `954000`, in increments of 9000.
      */
-    public readonly capacityGib!: pulumi.Output<string>;
+    declare public readonly capacityGib: pulumi.Output<string>;
     /**
      * Timestamp when the instance was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A user-readable description of the instance.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The filesystem name for this instance. This name is used by client-side
      * tools, including when mounting the instance. Must be eight characters or
      * less and can only contain letters and numbers.
      */
-    public readonly filesystem!: pulumi.Output<string>;
+    declare public readonly filesystem: pulumi.Output<string>;
     /**
      * Indicates whether you want to enable support for GKE clients. By default,
      * GKE clients are not supported.
      */
-    public readonly gkeSupportEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly gkeSupportEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Managed Lustre instance.
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -133,46 +133,46 @@ export class Instance extends pulumi.CustomResource {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.
      */
-    public /*out*/ readonly mountPoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly mountPoint: pulumi.Output<string>;
     /**
      * Identifier. The name of the instance.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The full name of the VPC network to which the instance is connected.
      * Must be in the format
      * `projects/{project_id}/global/networks/{network_name}`.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The throughput of the instance in MB/s/TiB.
      * Valid values are 125, 250, 500, 1000.
      */
-    public readonly perUnitStorageThroughput!: pulumi.Output<string>;
+    declare public readonly perUnitStorageThroughput: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The state of the instance.
      * Possible values:
@@ -184,11 +184,11 @@ export class Instance extends pulumi.CustomResource {
      * REPAIRING
      * STOPPED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Timestamp when the instance was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -203,53 +203,53 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["filesystem"] = state ? state.filesystem : undefined;
-            resourceInputs["gkeSupportEnabled"] = state ? state.gkeSupportEnabled : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mountPoint"] = state ? state.mountPoint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["perUnitStorageThroughput"] = state ? state.perUnitStorageThroughput : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["capacityGib"] = state?.capacityGib;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["filesystem"] = state?.filesystem;
+            resourceInputs["gkeSupportEnabled"] = state?.gkeSupportEnabled;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mountPoint"] = state?.mountPoint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["perUnitStorageThroughput"] = state?.perUnitStorageThroughput;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.capacityGib === undefined) && !opts.urn) {
+            if (args?.capacityGib === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capacityGib'");
             }
-            if ((!args || args.filesystem === undefined) && !opts.urn) {
+            if (args?.filesystem === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filesystem'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.perUnitStorageThroughput === undefined) && !opts.urn) {
+            if (args?.perUnitStorageThroughput === undefined && !opts.urn) {
                 throw new Error("Missing required property 'perUnitStorageThroughput'");
             }
-            resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["filesystem"] = args ? args.filesystem : undefined;
-            resourceInputs["gkeSupportEnabled"] = args ? args.gkeSupportEnabled : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["perUnitStorageThroughput"] = args ? args.perUnitStorageThroughput : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["capacityGib"] = args?.capacityGib;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["filesystem"] = args?.filesystem;
+            resourceInputs["gkeSupportEnabled"] = args?.gkeSupportEnabled;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["perUnitStorageThroughput"] = args?.perUnitStorageThroughput;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["mountPoint"] = undefined /*out*/;

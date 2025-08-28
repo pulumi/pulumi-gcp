@@ -111,7 +111,7 @@ export class OrganizationFeed extends pulumi.CustomResource {
      * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
      * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      */
-    public readonly assetNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly assetNames: pulumi.Output<string[] | undefined>;
     /**
      * A list of types of the assets to receive updates. You must specify either or both of assetNames
      * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
@@ -119,13 +119,13 @@ export class OrganizationFeed extends pulumi.CustomResource {
      * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      */
-    public readonly assetTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly assetTypes: pulumi.Output<string[] | undefined>;
     /**
      * The project whose identity will be used when sending messages to the
      * destination pubsub topic. It also specifies the project for API
      * enablement check, quota, and billing.
      */
-    public readonly billingProject!: pulumi.Output<string>;
+    declare public readonly billingProject: pulumi.Output<string>;
     /**
      * A condition which determines whether an asset update should be published. If specified, an asset
      * will be returned only when the expression evaluates to true. When set, expression field
@@ -134,29 +134,29 @@ export class OrganizationFeed extends pulumi.CustomResource {
      * condition are optional.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.cloudasset.OrganizationFeedCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.cloudasset.OrganizationFeedCondition | undefined>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
-    public readonly contentType!: pulumi.Output<string | undefined>;
+    declare public readonly contentType: pulumi.Output<string | undefined>;
     /**
      * This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
      */
-    public readonly feedId!: pulumi.Output<string>;
+    declare public readonly feedId: pulumi.Output<string>;
     /**
      * Output configuration for asset feed destination.
      * Structure is documented below.
      */
-    public readonly feedOutputConfig!: pulumi.Output<outputs.cloudasset.OrganizationFeedFeedOutputConfig>;
+    declare public readonly feedOutputConfig: pulumi.Output<outputs.cloudasset.OrganizationFeedFeedOutputConfig>;
     /**
      * The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The organization this feed should be created in.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationFeed resource with the given unique name, arguments, and options.
@@ -171,37 +171,37 @@ export class OrganizationFeed extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationFeedState | undefined;
-            resourceInputs["assetNames"] = state ? state.assetNames : undefined;
-            resourceInputs["assetTypes"] = state ? state.assetTypes : undefined;
-            resourceInputs["billingProject"] = state ? state.billingProject : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["feedId"] = state ? state.feedId : undefined;
-            resourceInputs["feedOutputConfig"] = state ? state.feedOutputConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["assetNames"] = state?.assetNames;
+            resourceInputs["assetTypes"] = state?.assetTypes;
+            resourceInputs["billingProject"] = state?.billingProject;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["feedId"] = state?.feedId;
+            resourceInputs["feedOutputConfig"] = state?.feedOutputConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
         } else {
             const args = argsOrState as OrganizationFeedArgs | undefined;
-            if ((!args || args.billingProject === undefined) && !opts.urn) {
+            if (args?.billingProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingProject'");
             }
-            if ((!args || args.feedId === undefined) && !opts.urn) {
+            if (args?.feedId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'feedId'");
             }
-            if ((!args || args.feedOutputConfig === undefined) && !opts.urn) {
+            if (args?.feedOutputConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'feedOutputConfig'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["assetNames"] = args ? args.assetNames : undefined;
-            resourceInputs["assetTypes"] = args ? args.assetTypes : undefined;
-            resourceInputs["billingProject"] = args ? args.billingProject : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["feedId"] = args ? args.feedId : undefined;
-            resourceInputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["assetNames"] = args?.assetNames;
+            resourceInputs["assetTypes"] = args?.assetTypes;
+            resourceInputs["billingProject"] = args?.billingProject;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["feedId"] = args?.feedId;
+            resourceInputs["feedOutputConfig"] = args?.feedOutputConfig;
+            resourceInputs["orgId"] = args?.orgId;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

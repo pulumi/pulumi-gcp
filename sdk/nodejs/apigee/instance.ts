@@ -229,31 +229,31 @@ export class Instance extends pulumi.CustomResource {
      * Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
      * Structure is documented below.
      */
-    public readonly accessLoggingConfig!: pulumi.Output<outputs.apigee.InstanceAccessLoggingConfig | undefined>;
+    declare public readonly accessLoggingConfig: pulumi.Output<outputs.apigee.InstanceAccessLoggingConfig | undefined>;
     /**
      * Optional. Customer accept list represents the list of projects (id/number) on customer
      * side that can privately connect to the service attachment. It is an optional field
      * which the customers can provide during the instance creation. By default, the customer
      * project associated with the Apigee organization will be included to the list.
      */
-    public readonly consumerAcceptLists!: pulumi.Output<string[]>;
+    declare public readonly consumerAcceptLists: pulumi.Output<string[]>;
     /**
      * Description of the instance.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
      * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
      */
-    public readonly diskEncryptionKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly diskEncryptionKeyName: pulumi.Output<string | undefined>;
     /**
      * Display name of the instance.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * IP range represents the customer-provided CIDR block of length 22 that will be used for
      * the Apigee instance creation. This optional range, if provided, should be freely
@@ -263,35 +263,35 @@ export class Instance extends pulumi.CustomResource {
      * for configuring their firewall needs to allow traffic from Apigee.
      * Input format: "a.b.c.d/22"
      */
-    public readonly ipRange!: pulumi.Output<string | undefined>;
+    declare public readonly ipRange: pulumi.Output<string | undefined>;
     /**
      * Required. Compute Engine location where the instance resides.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource ID of the instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The size of the CIDR block range that will be reserved by the instance. For valid values,
      * see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
      */
-    public readonly peeringCidrRange!: pulumi.Output<string>;
+    declare public readonly peeringCidrRange: pulumi.Output<string>;
     /**
      * Output only. Port number of the exposed Apigee endpoint.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * Output only. Resource name of the service attachment created for the instance in
      * the format: projects/*&#47;regions/*&#47;serviceAttachments/* Apigee customers can privately
      * forward traffic to this service attachment using the PSC endpoints.
      */
-    public /*out*/ readonly serviceAttachment!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAttachment: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -306,37 +306,37 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["accessLoggingConfig"] = state ? state.accessLoggingConfig : undefined;
-            resourceInputs["consumerAcceptLists"] = state ? state.consumerAcceptLists : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskEncryptionKeyName"] = state ? state.diskEncryptionKeyName : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["peeringCidrRange"] = state ? state.peeringCidrRange : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["serviceAttachment"] = state ? state.serviceAttachment : undefined;
+            resourceInputs["accessLoggingConfig"] = state?.accessLoggingConfig;
+            resourceInputs["consumerAcceptLists"] = state?.consumerAcceptLists;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskEncryptionKeyName"] = state?.diskEncryptionKeyName;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["peeringCidrRange"] = state?.peeringCidrRange;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["serviceAttachment"] = state?.serviceAttachment;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["accessLoggingConfig"] = args ? args.accessLoggingConfig : undefined;
-            resourceInputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["peeringCidrRange"] = args ? args.peeringCidrRange : undefined;
+            resourceInputs["accessLoggingConfig"] = args?.accessLoggingConfig;
+            resourceInputs["consumerAcceptLists"] = args?.consumerAcceptLists;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskEncryptionKeyName"] = args?.diskEncryptionKeyName;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["peeringCidrRange"] = args?.peeringCidrRange;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["serviceAttachment"] = undefined /*out*/;

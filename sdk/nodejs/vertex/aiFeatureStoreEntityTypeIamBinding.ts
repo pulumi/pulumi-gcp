@@ -69,19 +69,19 @@ export class AiFeatureStoreEntityTypeIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiFeatureStoreEntityTypeIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.vertex.AiFeatureStoreEntityTypeIamBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.vertex.AiFeatureStoreEntityTypeIamBindingCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly entitytype!: pulumi.Output<string>;
+    declare public readonly entitytype: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
      */
-    public readonly featurestore!: pulumi.Output<string>;
+    declare public readonly featurestore: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -95,13 +95,13 @@ export class AiFeatureStoreEntityTypeIamBinding extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.vertex.AiFeatureStoreEntityTypeIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a AiFeatureStoreEntityTypeIamBinding resource with the given unique name, arguments, and options.
@@ -116,31 +116,31 @@ export class AiFeatureStoreEntityTypeIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreEntityTypeIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["entitytype"] = state ? state.entitytype : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["featurestore"] = state ? state.featurestore : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["entitytype"] = state?.entitytype;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["featurestore"] = state?.featurestore;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as AiFeatureStoreEntityTypeIamBindingArgs | undefined;
-            if ((!args || args.entitytype === undefined) && !opts.urn) {
+            if (args?.entitytype === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entitytype'");
             }
-            if ((!args || args.featurestore === undefined) && !opts.urn) {
+            if (args?.featurestore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featurestore'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["entitytype"] = args ? args.entitytype : undefined;
-            resourceInputs["featurestore"] = args ? args.featurestore : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["entitytype"] = args?.entitytype;
+            resourceInputs["featurestore"] = args?.featurestore;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

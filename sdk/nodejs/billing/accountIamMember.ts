@@ -164,12 +164,12 @@ export class AccountIamMember extends pulumi.CustomResource {
      *
      * For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
      */
-    public readonly billingAccountId!: pulumi.Output<string>;
-    public readonly condition!: pulumi.Output<outputs.billing.AccountIamMemberCondition | undefined>;
+    declare public readonly billingAccountId: pulumi.Output<string>;
+    declare public readonly condition: pulumi.Output<outputs.billing.AccountIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the billing account's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -178,7 +178,7 @@ export class AccountIamMember extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
@@ -186,7 +186,7 @@ export class AccountIamMember extends pulumi.CustomResource {
      *
      * `gcp.billing.AccountIamPolicy` only:
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a AccountIamMember resource with the given unique name, arguments, and options.
@@ -201,26 +201,26 @@ export class AccountIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountIamMemberState | undefined;
-            resourceInputs["billingAccountId"] = state ? state.billingAccountId : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["billingAccountId"] = state?.billingAccountId;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as AccountIamMemberArgs | undefined;
-            if ((!args || args.billingAccountId === undefined) && !opts.urn) {
+            if (args?.billingAccountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["billingAccountId"] = args ? args.billingAccountId : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["billingAccountId"] = args?.billingAccountId;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

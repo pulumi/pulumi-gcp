@@ -84,30 +84,30 @@ export class ControlFolderIntelligenceConfig extends pulumi.CustomResource {
     /**
      * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      */
-    public readonly editionConfig!: pulumi.Output<string>;
+    declare public readonly editionConfig: pulumi.Output<string>;
     /**
      * The Intelligence config that is effective for the resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly effectiveIntelligenceConfigs!: pulumi.Output<outputs.storage.ControlFolderIntelligenceConfigEffectiveIntelligenceConfig[]>;
+    declare public /*out*/ readonly effectiveIntelligenceConfigs: pulumi.Output<outputs.storage.ControlFolderIntelligenceConfigEffectiveIntelligenceConfig[]>;
     /**
      * Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
      * Structure is documented below.
      */
-    public readonly filter!: pulumi.Output<outputs.storage.ControlFolderIntelligenceConfigFilter | undefined>;
+    declare public readonly filter: pulumi.Output<outputs.storage.ControlFolderIntelligenceConfigFilter | undefined>;
     /**
      * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The trial configuration of the Storage Intelligence resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly trialConfigs!: pulumi.Output<outputs.storage.ControlFolderIntelligenceConfigTrialConfig[]>;
+    declare public /*out*/ readonly trialConfigs: pulumi.Output<outputs.storage.ControlFolderIntelligenceConfigTrialConfig[]>;
     /**
      * The time at which the Storage Intelligence Config resource is last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ControlFolderIntelligenceConfig resource with the given unique name, arguments, and options.
@@ -122,17 +122,17 @@ export class ControlFolderIntelligenceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlFolderIntelligenceConfigState | undefined;
-            resourceInputs["editionConfig"] = state ? state.editionConfig : undefined;
-            resourceInputs["effectiveIntelligenceConfigs"] = state ? state.effectiveIntelligenceConfigs : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["trialConfigs"] = state ? state.trialConfigs : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["editionConfig"] = state?.editionConfig;
+            resourceInputs["effectiveIntelligenceConfigs"] = state?.effectiveIntelligenceConfigs;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["trialConfigs"] = state?.trialConfigs;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ControlFolderIntelligenceConfigArgs | undefined;
-            resourceInputs["editionConfig"] = args ? args.editionConfig : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["editionConfig"] = args?.editionConfig;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["name"] = args?.name;
             resourceInputs["effectiveIntelligenceConfigs"] = undefined /*out*/;
             resourceInputs["trialConfigs"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

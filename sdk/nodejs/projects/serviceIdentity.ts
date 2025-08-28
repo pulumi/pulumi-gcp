@@ -73,22 +73,22 @@ export class ServiceIdentity extends pulumi.CustomResource {
     /**
      * The email address of the Google managed service account.
      */
-    public /*out*/ readonly email!: pulumi.Output<string>;
+    declare public /*out*/ readonly email: pulumi.Output<string>;
     /**
      * The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
      */
-    public /*out*/ readonly member!: pulumi.Output<string>;
+    declare public /*out*/ readonly member: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The service to generate identity for.
      *
      * - - -
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a ServiceIdentity resource with the given unique name, arguments, and options.
@@ -103,17 +103,17 @@ export class ServiceIdentity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIdentityState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as ServiceIdentityArgs | undefined;
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["member"] = undefined /*out*/;
         }

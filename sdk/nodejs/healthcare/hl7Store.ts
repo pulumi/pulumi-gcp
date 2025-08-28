@@ -210,11 +210,11 @@ export class Hl7Store extends pulumi.CustomResource {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -228,12 +228,12 @@ export class Hl7Store extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name for the Hl7V2Store.
      * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (Optional, Deprecated)
      * A nested object resource.
@@ -243,32 +243,32 @@ export class Hl7Store extends pulumi.CustomResource {
      *
      * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
-    public readonly notificationConfig!: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfig | undefined>;
+    declare public readonly notificationConfig: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfig | undefined>;
     /**
      * A list of notification configs. Each configuration uses a filter to determine whether to publish a
      * message (both Ingest & Create) on the corresponding notification destination. Only the message name
      * is sent as part of the notification. Supplied by the client.
      * Structure is documented below.
      */
-    public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfigs[] | undefined>;
+    declare public readonly notificationConfigs: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfigs[] | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly parserConfig!: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig>;
+    declare public readonly parserConfig: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Determines whether duplicate messages are allowed.
      */
-    public readonly rejectDuplicateMessage!: pulumi.Output<boolean | undefined>;
+    declare public readonly rejectDuplicateMessage: pulumi.Output<boolean | undefined>;
     /**
      * The fully qualified name of this dataset
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a Hl7Store resource with the given unique name, arguments, and options.
@@ -283,28 +283,28 @@ export class Hl7Store extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Hl7StoreState | undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
-            resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
-            resourceInputs["parserConfig"] = state ? state.parserConfig : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["rejectDuplicateMessage"] = state ? state.rejectDuplicateMessage : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationConfig"] = state?.notificationConfig;
+            resourceInputs["notificationConfigs"] = state?.notificationConfigs;
+            resourceInputs["parserConfig"] = state?.parserConfig;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["rejectDuplicateMessage"] = state?.rejectDuplicateMessage;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as Hl7StoreArgs | undefined;
-            if ((!args || args.dataset === undefined) && !opts.urn) {
+            if (args?.dataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
-            resourceInputs["parserConfig"] = args ? args.parserConfig : undefined;
-            resourceInputs["rejectDuplicateMessage"] = args ? args.rejectDuplicateMessage : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationConfig"] = args?.notificationConfig;
+            resourceInputs["notificationConfigs"] = args?.notificationConfigs;
+            resourceInputs["parserConfig"] = args?.parserConfig;
+            resourceInputs["rejectDuplicateMessage"] = args?.rejectDuplicateMessage;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

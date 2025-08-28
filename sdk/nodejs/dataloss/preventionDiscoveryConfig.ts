@@ -67,61 +67,61 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
      * Actions to execute at the completion of scanning
      * Structure is documented below.
      */
-    public readonly actions!: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigAction[] | undefined>;
+    declare public readonly actions: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigAction[] | undefined>;
     /**
      * Output only. The creation timestamp of a DiscoveryConfig.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Display Name (max 1000 Chars)
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
      * Structure is documented below.
      */
-    public /*out*/ readonly errors!: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigError[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigError[]>;
     /**
      * Detection logic for profile generation
      */
-    public readonly inspectTemplates!: pulumi.Output<string[] | undefined>;
+    declare public readonly inspectTemplates: pulumi.Output<string[] | undefined>;
     /**
      * Output only. The timestamp of the last time this config was executed
      */
-    public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastRunTime: pulumi.Output<string>;
     /**
      * Location to create the discovery config in.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly orgConfig!: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigOrgConfig | undefined>;
+    declare public readonly orgConfig: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigOrgConfig | undefined>;
     /**
      * The parent of the discovery config in any of the following formats:
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Required. A status for this configuration
      * Possible values are: `RUNNING`, `PAUSED`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * Target to match against for determining what to scan and how frequently
      * Structure is documented below.
      */
-    public readonly targets!: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigTarget[] | undefined>;
+    declare public readonly targets: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigTarget[] | undefined>;
     /**
      * Output only. The last update timestamp of a DiscoveryConfig.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a PreventionDiscoveryConfig resource with the given unique name, arguments, and options.
@@ -136,35 +136,35 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionDiscoveryConfigState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["inspectTemplates"] = state ? state.inspectTemplates : undefined;
-            resourceInputs["lastRunTime"] = state ? state.lastRunTime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgConfig"] = state ? state.orgConfig : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targets"] = state ? state.targets : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["inspectTemplates"] = state?.inspectTemplates;
+            resourceInputs["lastRunTime"] = state?.lastRunTime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgConfig"] = state?.orgConfig;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targets"] = state?.targets;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PreventionDiscoveryConfigArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["inspectTemplates"] = args ? args.inspectTemplates : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["orgConfig"] = args ? args.orgConfig : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["targets"] = args ? args.targets : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["inspectTemplates"] = args?.inspectTemplates;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["orgConfig"] = args?.orgConfig;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["targets"] = args?.targets;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["lastRunTime"] = undefined /*out*/;

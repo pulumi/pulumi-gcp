@@ -127,25 +127,25 @@ export class Router extends pulumi.CustomResource {
      * BGP information specific to this router.
      * Structure is documented below.
      */
-    public readonly bgp!: pulumi.Output<outputs.compute.RouterBgp | undefined>;
+    declare public readonly bgp: pulumi.Output<outputs.compute.RouterBgp | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates if a router is dedicated for use with encrypted VLAN
      * attachments (interconnectAttachments).
      */
-    public readonly encryptedInterconnectRouter!: pulumi.Output<boolean | undefined>;
+    declare public readonly encryptedInterconnectRouter: pulumi.Output<boolean | undefined>;
     /**
      * Keys used for MD5 authentication.
      * Structure is documented below.
      */
-    public readonly md5AuthenticationKeys!: pulumi.Output<outputs.compute.RouterMd5AuthenticationKeys | undefined>;
+    declare public readonly md5AuthenticationKeys: pulumi.Output<outputs.compute.RouterMd5AuthenticationKeys | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -154,29 +154,29 @@ export class Router extends pulumi.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A reference to the network to which this router belongs.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    public readonly params!: pulumi.Output<outputs.compute.RouterParams | undefined>;
+    declare public readonly params: pulumi.Output<outputs.compute.RouterParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where the router resides.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a Router resource with the given unique name, arguments, and options.
@@ -191,31 +191,31 @@ export class Router extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterState | undefined;
-            resourceInputs["bgp"] = state ? state.bgp : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptedInterconnectRouter"] = state ? state.encryptedInterconnectRouter : undefined;
-            resourceInputs["md5AuthenticationKeys"] = state ? state.md5AuthenticationKeys : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["bgp"] = state?.bgp;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptedInterconnectRouter"] = state?.encryptedInterconnectRouter;
+            resourceInputs["md5AuthenticationKeys"] = state?.md5AuthenticationKeys;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as RouterArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["bgp"] = args ? args.bgp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
-            resourceInputs["md5AuthenticationKeys"] = args ? args.md5AuthenticationKeys : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["bgp"] = args?.bgp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encryptedInterconnectRouter"] = args?.encryptedInterconnectRouter;
+            resourceInputs["md5AuthenticationKeys"] = args?.md5AuthenticationKeys;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }

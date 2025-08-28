@@ -164,44 +164,44 @@ export class Developer extends pulumi.CustomResource {
      * Developer attributes (name/value pairs). The custom attribute limit is 18.
      * Structure is documented below.
      */
-    public readonly attributes!: pulumi.Output<outputs.apigee.DeveloperAttribute[] | undefined>;
+    declare public readonly attributes: pulumi.Output<outputs.apigee.DeveloperAttribute[] | undefined>;
     /**
      * Time at which the developer was created in milliseconds since epoch.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * First name of the developer.
      */
-    public readonly firstName!: pulumi.Output<string>;
+    declare public readonly firstName: pulumi.Output<string>;
     /**
      * Time at which the developer was last modified in milliseconds since epoch.
      */
-    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedAt: pulumi.Output<string>;
     /**
      * Last name of the developer.
      */
-    public readonly lastName!: pulumi.Output<string>;
+    declare public readonly lastName: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Name of the Apigee organization in which the developer resides.
      */
-    public /*out*/ readonly organizatioName!: pulumi.Output<string>;
+    declare public /*out*/ readonly organizatioName: pulumi.Output<string>;
     /**
      * Status of the developer. Valid values are active and inactive.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * User name of the developer. Not used by Apigee hybrid.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a Developer resource with the given unique name, arguments, and options.
@@ -216,39 +216,39 @@ export class Developer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeveloperState | undefined;
-            resourceInputs["attributes"] = state ? state.attributes : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["lastModifiedAt"] = state ? state.lastModifiedAt : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["organizatioName"] = state ? state.organizatioName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["attributes"] = state?.attributes;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["lastModifiedAt"] = state?.lastModifiedAt;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["organizatioName"] = state?.organizatioName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as DeveloperArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.firstName === undefined) && !opts.urn) {
+            if (args?.firstName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firstName'");
             }
-            if ((!args || args.lastName === undefined) && !opts.urn) {
+            if (args?.lastName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lastName'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["attributes"] = args ? args.attributes : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["lastName"] = args?.lastName;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["userName"] = args?.userName;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["organizatioName"] = undefined /*out*/;

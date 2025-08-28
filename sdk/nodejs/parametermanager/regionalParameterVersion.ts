@@ -151,42 +151,42 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
     /**
      * The time at which the Regional Parameter Version was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
      * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
      */
-    public /*out*/ readonly kmsKeyVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly kmsKeyVersion: pulumi.Output<string>;
     /**
      * Location of Parameter Manager Regional parameter resource.
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
      * The resource name of the Regional Parameter Version. Format:
      * `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Parameter Manager Regional Parameter resource.
      */
-    public readonly parameter!: pulumi.Output<string>;
+    declare public readonly parameter: pulumi.Output<string>;
     /**
      * The Regional Parameter data.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly parameterData!: pulumi.Output<string>;
+    declare public readonly parameterData: pulumi.Output<string>;
     /**
      * Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
      */
-    public readonly parameterVersionId!: pulumi.Output<string>;
+    declare public readonly parameterVersionId: pulumi.Output<string>;
     /**
      * The time at which the Regional Parameter Version was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a RegionalParameterVersion resource with the given unique name, arguments, and options.
@@ -201,30 +201,30 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionalParameterVersionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["kmsKeyVersion"] = state ? state.kmsKeyVersion : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameter"] = state ? state.parameter : undefined;
-            resourceInputs["parameterData"] = state ? state.parameterData : undefined;
-            resourceInputs["parameterVersionId"] = state ? state.parameterVersionId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["kmsKeyVersion"] = state?.kmsKeyVersion;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameter"] = state?.parameter;
+            resourceInputs["parameterData"] = state?.parameterData;
+            resourceInputs["parameterVersionId"] = state?.parameterVersionId;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as RegionalParameterVersionArgs | undefined;
-            if ((!args || args.parameter === undefined) && !opts.urn) {
+            if (args?.parameter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameter'");
             }
-            if ((!args || args.parameterData === undefined) && !opts.urn) {
+            if (args?.parameterData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterData'");
             }
-            if ((!args || args.parameterVersionId === undefined) && !opts.urn) {
+            if (args?.parameterVersionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterVersionId'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["parameter"] = args ? args.parameter : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["parameter"] = args?.parameter;
             resourceInputs["parameterData"] = args?.parameterData ? pulumi.secret(args.parameterData) : undefined;
-            resourceInputs["parameterVersionId"] = args ? args.parameterVersionId : undefined;
+            resourceInputs["parameterVersionId"] = args?.parameterVersionId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kmsKeyVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

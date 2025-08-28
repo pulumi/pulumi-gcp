@@ -194,45 +194,45 @@ export class CxTestCase extends pulumi.CustomResource {
     /**
      * When the test was created. A timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The latest test result.
      * Structure is documented below.
      */
-    public /*out*/ readonly lastTestResults!: pulumi.Output<outputs.diagflow.CxTestCaseLastTestResult[]>;
+    declare public /*out*/ readonly lastTestResults: pulumi.Output<outputs.diagflow.CxTestCaseLastTestResult[]>;
     /**
      * The unique identifier of the page.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Additional freeform notes about the test case. Limit of 400 characters.
      */
-    public readonly notes!: pulumi.Output<string | undefined>;
+    declare public readonly notes: pulumi.Output<string | undefined>;
     /**
      * The agent to create the test case for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
      * Each tag should start with "#" and has a limit of 30 characters
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
      * Structure is documented below.
      */
-    public readonly testCaseConversationTurns!: pulumi.Output<outputs.diagflow.CxTestCaseTestCaseConversationTurn[] | undefined>;
+    declare public readonly testCaseConversationTurns: pulumi.Output<outputs.diagflow.CxTestCaseTestCaseConversationTurn[] | undefined>;
     /**
      * Config for the test case.
      * Structure is documented below.
      */
-    public readonly testConfig!: pulumi.Output<outputs.diagflow.CxTestCaseTestConfig | undefined>;
+    declare public readonly testConfig: pulumi.Output<outputs.diagflow.CxTestCaseTestConfig | undefined>;
 
     /**
      * Create a CxTestCase resource with the given unique name, arguments, and options.
@@ -247,26 +247,26 @@ export class CxTestCase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxTestCaseState | undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["lastTestResults"] = state ? state.lastTestResults : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["testCaseConversationTurns"] = state ? state.testCaseConversationTurns : undefined;
-            resourceInputs["testConfig"] = state ? state.testConfig : undefined;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["lastTestResults"] = state?.lastTestResults;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["testCaseConversationTurns"] = state?.testCaseConversationTurns;
+            resourceInputs["testConfig"] = state?.testConfig;
         } else {
             const args = argsOrState as CxTestCaseArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["testCaseConversationTurns"] = args ? args.testCaseConversationTurns : undefined;
-            resourceInputs["testConfig"] = args ? args.testConfig : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["testCaseConversationTurns"] = args?.testCaseConversationTurns;
+            resourceInputs["testConfig"] = args?.testConfig;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["lastTestResults"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

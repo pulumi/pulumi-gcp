@@ -126,81 +126,81 @@ export class PolicyBasedRoute extends pulumi.CustomResource {
     /**
      * Time when the policy-based route was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The filter to match L4 traffic.
      * Structure is documented below.
      */
-    public readonly filter!: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteFilter>;
+    declare public readonly filter: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteFilter>;
     /**
      * The interconnect attachments that this policy-based route applies to.
      * Structure is documented below.
      */
-    public readonly interconnectAttachment!: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment | undefined>;
+    declare public readonly interconnectAttachment: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment | undefined>;
     /**
      * Type of this resource.
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the policy based route.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
      */
-    public readonly nextHopIlbIp!: pulumi.Output<string | undefined>;
+    declare public readonly nextHopIlbIp: pulumi.Output<string | undefined>;
     /**
      * Other routes that will be referenced to determine the next hop of the packet.
      * Possible values are: `DEFAULT_ROUTING`.
      */
-    public readonly nextHopOtherRoutes!: pulumi.Output<string | undefined>;
+    declare public readonly nextHopOtherRoutes: pulumi.Output<string | undefined>;
     /**
      * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Time when the policy-based route was created.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * VM instances to which this policy-based route applies to.
      * Structure is documented below.
      */
-    public readonly virtualMachine!: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteVirtualMachine | undefined>;
+    declare public readonly virtualMachine: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteVirtualMachine | undefined>;
     /**
      * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      * Structure is documented below.
      */
-    public /*out*/ readonly warnings!: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteWarning[]>;
+    declare public /*out*/ readonly warnings: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteWarning[]>;
 
     /**
      * Create a PolicyBasedRoute resource with the given unique name, arguments, and options.
@@ -215,42 +215,42 @@ export class PolicyBasedRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyBasedRouteState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["nextHopIlbIp"] = state ? state.nextHopIlbIp : undefined;
-            resourceInputs["nextHopOtherRoutes"] = state ? state.nextHopOtherRoutes : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["virtualMachine"] = state ? state.virtualMachine : undefined;
-            resourceInputs["warnings"] = state ? state.warnings : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["interconnectAttachment"] = state?.interconnectAttachment;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["nextHopIlbIp"] = state?.nextHopIlbIp;
+            resourceInputs["nextHopOtherRoutes"] = state?.nextHopOtherRoutes;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["virtualMachine"] = state?.virtualMachine;
+            resourceInputs["warnings"] = state?.warnings;
         } else {
             const args = argsOrState as PolicyBasedRouteArgs | undefined;
-            if ((!args || args.filter === undefined) && !opts.urn) {
+            if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["nextHopIlbIp"] = args ? args.nextHopIlbIp : undefined;
-            resourceInputs["nextHopOtherRoutes"] = args ? args.nextHopOtherRoutes : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["virtualMachine"] = args ? args.virtualMachine : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["interconnectAttachment"] = args?.interconnectAttachment;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["nextHopIlbIp"] = args?.nextHopIlbIp;
+            resourceInputs["nextHopOtherRoutes"] = args?.nextHopOtherRoutes;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["virtualMachine"] = args?.virtualMachine;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

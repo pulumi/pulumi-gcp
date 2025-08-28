@@ -72,7 +72,7 @@ export class Retrohunt extends pulumi.CustomResource {
     /**
      * The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
      */
-    public readonly RetrohuntId!: pulumi.Output<string>;
+    declare public readonly RetrohuntId: pulumi.Output<string>;
     /**
      * Represents a time interval, encoded as a Timestamp start (inclusive) and a
      * Timestamp end (exclusive).
@@ -81,15 +81,15 @@ export class Retrohunt extends pulumi.CustomResource {
      * When both start and end are unspecified, the interval matches any time.
      * Structure is documented below.
      */
-    public /*out*/ readonly executionIntervals!: pulumi.Output<outputs.chronicle.RetrohuntExecutionInterval[]>;
+    declare public /*out*/ readonly executionIntervals: pulumi.Output<outputs.chronicle.RetrohuntExecutionInterval[]>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the retrohunt.
      * Retrohunt is the child of a rule revision. {rule} in the format below is
@@ -97,7 +97,7 @@ export class Retrohunt extends pulumi.CustomResource {
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/retrohunts/{retrohunt}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Represents a time interval, encoded as a Timestamp start (inclusive) and a
      * Timestamp end (exclusive).
@@ -106,20 +106,20 @@ export class Retrohunt extends pulumi.CustomResource {
      * When both start and end are unspecified, the interval matches any time.
      * Structure is documented below.
      */
-    public readonly processInterval!: pulumi.Output<outputs.chronicle.RetrohuntProcessInterval>;
+    declare public readonly processInterval: pulumi.Output<outputs.chronicle.RetrohuntProcessInterval>;
     /**
      * Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
      */
-    public /*out*/ readonly progressPercentage!: pulumi.Output<number>;
+    declare public /*out*/ readonly progressPercentage: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Rule ID of the rule.
      */
-    public readonly rule!: pulumi.Output<string>;
+    declare public readonly rule: pulumi.Output<string>;
     /**
      * Output only. The state of the retrohunt.
      * Possible values:
@@ -128,7 +128,7 @@ export class Retrohunt extends pulumi.CustomResource {
      * CANCELLED
      * FAILED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a Retrohunt resource with the given unique name, arguments, and options.
@@ -143,36 +143,36 @@ export class Retrohunt extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RetrohuntState | undefined;
-            resourceInputs["RetrohuntId"] = state ? state.RetrohuntId : undefined;
-            resourceInputs["executionIntervals"] = state ? state.executionIntervals : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["processInterval"] = state ? state.processInterval : undefined;
-            resourceInputs["progressPercentage"] = state ? state.progressPercentage : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["RetrohuntId"] = state?.RetrohuntId;
+            resourceInputs["executionIntervals"] = state?.executionIntervals;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["processInterval"] = state?.processInterval;
+            resourceInputs["progressPercentage"] = state?.progressPercentage;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as RetrohuntArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.processInterval === undefined) && !opts.urn) {
+            if (args?.processInterval === undefined && !opts.urn) {
                 throw new Error("Missing required property 'processInterval'");
             }
-            if ((!args || args.rule === undefined) && !opts.urn) {
+            if (args?.rule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rule'");
             }
-            resourceInputs["RetrohuntId"] = args ? args.RetrohuntId : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["processInterval"] = args ? args.processInterval : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
+            resourceInputs["RetrohuntId"] = args?.RetrohuntId;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["processInterval"] = args?.processInterval;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rule"] = args?.rule;
             resourceInputs["executionIntervals"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["progressPercentage"] = undefined /*out*/;

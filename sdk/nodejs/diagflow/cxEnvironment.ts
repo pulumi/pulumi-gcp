@@ -107,29 +107,29 @@ export class CxEnvironment extends pulumi.CustomResource {
     /**
      * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The name of the environment.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The Agent to create an Environment for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
      * Structure is documented below.
      */
-    public readonly versionConfigs!: pulumi.Output<outputs.diagflow.CxEnvironmentVersionConfig[]>;
+    declare public readonly versionConfigs: pulumi.Output<outputs.diagflow.CxEnvironmentVersionConfig[]>;
 
     /**
      * Create a CxEnvironment resource with the given unique name, arguments, and options.
@@ -144,24 +144,24 @@ export class CxEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxEnvironmentState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["versionConfigs"] = state ? state.versionConfigs : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["versionConfigs"] = state?.versionConfigs;
         } else {
             const args = argsOrState as CxEnvironmentArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.versionConfigs === undefined) && !opts.urn) {
+            if (args?.versionConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'versionConfigs'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["versionConfigs"] = args ? args.versionConfigs : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["versionConfigs"] = args?.versionConfigs;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

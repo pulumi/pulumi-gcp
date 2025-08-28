@@ -357,96 +357,96 @@ export class ApiProduct extends pulumi.CustomResource {
      * Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the proxy.pathsuffix variable.
      * The proxy path suffix is defined as the URI fragment following the ProxyEndpoint base path. For example, if the apiResources element is defined to be /forecastrss and the base path defined for the API proxy is /weather, then only requests to /weather/forecastrss are permitted by the API product.
      */
-    public readonly apiResources!: pulumi.Output<string[] | undefined>;
+    declare public readonly apiResources: pulumi.Output<string[] | undefined>;
     /**
      * Flag that specifies how API keys are approved to access the APIs defined by the API product.
      * Valid values are `auto` or `manual`.
      * Possible values are: `auto`, `manual`.
      */
-    public readonly approvalType!: pulumi.Output<string | undefined>;
+    declare public readonly approvalType: pulumi.Output<string | undefined>;
     /**
      * Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
      * Use this property to specify the access level of the API product as either public, private, or internal.
      * Structure is documented below.
      */
-    public readonly attributes!: pulumi.Output<outputs.apigee.ApiProductAttribute[] | undefined>;
+    declare public readonly attributes: pulumi.Output<outputs.apigee.ApiProductAttribute[] | undefined>;
     /**
      * Response only. Creation time of this environment as milliseconds since epoch.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Description of the API product. Include key information about the API product that is not captured by other fields.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name displayed in the UI or developer portal to developers registering for API access.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
      * By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment.
      */
-    public readonly environments!: pulumi.Output<string[] | undefined>;
+    declare public readonly environments: pulumi.Output<string[] | undefined>;
     /**
      * Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
      * Structure is documented below.
      */
-    public readonly graphqlOperationGroup!: pulumi.Output<outputs.apigee.ApiProductGraphqlOperationGroup | undefined>;
+    declare public readonly graphqlOperationGroup: pulumi.Output<outputs.apigee.ApiProductGraphqlOperationGroup | undefined>;
     /**
      * Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
      * Structure is documented below.
      */
-    public readonly grpcOperationGroup!: pulumi.Output<outputs.apigee.ApiProductGrpcOperationGroup | undefined>;
+    declare public readonly grpcOperationGroup: pulumi.Output<outputs.apigee.ApiProductGrpcOperationGroup | undefined>;
     /**
      * Response only. Modified time of this environment as milliseconds since epoch.
      */
-    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedAt: pulumi.Output<string>;
     /**
      * Internal name of the API product.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the quota setting).
      * Note: The apiResources setting cannot be specified for both the API product and operation group; otherwise the call will fail.
      * Structure is documented below.
      */
-    public readonly operationGroup!: pulumi.Output<outputs.apigee.ApiProductOperationGroup | undefined>;
+    declare public readonly operationGroup: pulumi.Output<outputs.apigee.ApiProductOperationGroup | undefined>;
     /**
      * The Apigee Organization associated with the Apigee API product,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies.
      * Apigee rejects requests to API proxies that are not listed.
      */
-    public readonly proxies!: pulumi.Output<string[] | undefined>;
+    declare public readonly proxies: pulumi.Output<string[] | undefined>;
     /**
      * Number of request messages permitted per app by this API product for the specified quotaInterval and quotaTimeUnit.
      * For example, a quota of 50, for a quotaInterval of 12 and a quotaTimeUnit of hours means 50 requests are allowed every 12 hours.
      */
-    public readonly quota!: pulumi.Output<string | undefined>;
+    declare public readonly quota: pulumi.Output<string | undefined>;
     /**
      * Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
      * Possible values are: `QUOTA_COUNTER_SCOPE_UNSPECIFIED`, `PROXY`, `OPERATION`.
      */
-    public readonly quotaCounterScope!: pulumi.Output<string | undefined>;
+    declare public readonly quotaCounterScope: pulumi.Output<string | undefined>;
     /**
      * Time interval over which the number of request messages is calculated.
      */
-    public readonly quotaInterval!: pulumi.Output<string | undefined>;
+    declare public readonly quotaInterval: pulumi.Output<string | undefined>;
     /**
      * Time unit defined for the quotaInterval. Valid values include second, minute, hour, day, month or year.
      */
-    public readonly quotaTimeUnit!: pulumi.Output<string | undefined>;
+    declare public readonly quotaTimeUnit: pulumi.Output<string | undefined>;
     /**
      * Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
      */
-    public readonly scopes!: pulumi.Output<string[] | undefined>;
+    declare public readonly scopes: pulumi.Output<string[] | undefined>;
     /**
      * Optional. The resource ID of the parent Space. If not set, the parent resource will be the Organization.
      */
-    public readonly space!: pulumi.Output<string | undefined>;
+    declare public readonly space: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApiProduct resource with the given unique name, arguments, and options.
@@ -461,52 +461,52 @@ export class ApiProduct extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiProductState | undefined;
-            resourceInputs["apiResources"] = state ? state.apiResources : undefined;
-            resourceInputs["approvalType"] = state ? state.approvalType : undefined;
-            resourceInputs["attributes"] = state ? state.attributes : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["environments"] = state ? state.environments : undefined;
-            resourceInputs["graphqlOperationGroup"] = state ? state.graphqlOperationGroup : undefined;
-            resourceInputs["grpcOperationGroup"] = state ? state.grpcOperationGroup : undefined;
-            resourceInputs["lastModifiedAt"] = state ? state.lastModifiedAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operationGroup"] = state ? state.operationGroup : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["proxies"] = state ? state.proxies : undefined;
-            resourceInputs["quota"] = state ? state.quota : undefined;
-            resourceInputs["quotaCounterScope"] = state ? state.quotaCounterScope : undefined;
-            resourceInputs["quotaInterval"] = state ? state.quotaInterval : undefined;
-            resourceInputs["quotaTimeUnit"] = state ? state.quotaTimeUnit : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["space"] = state ? state.space : undefined;
+            resourceInputs["apiResources"] = state?.apiResources;
+            resourceInputs["approvalType"] = state?.approvalType;
+            resourceInputs["attributes"] = state?.attributes;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["environments"] = state?.environments;
+            resourceInputs["graphqlOperationGroup"] = state?.graphqlOperationGroup;
+            resourceInputs["grpcOperationGroup"] = state?.grpcOperationGroup;
+            resourceInputs["lastModifiedAt"] = state?.lastModifiedAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["operationGroup"] = state?.operationGroup;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["proxies"] = state?.proxies;
+            resourceInputs["quota"] = state?.quota;
+            resourceInputs["quotaCounterScope"] = state?.quotaCounterScope;
+            resourceInputs["quotaInterval"] = state?.quotaInterval;
+            resourceInputs["quotaTimeUnit"] = state?.quotaTimeUnit;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["space"] = state?.space;
         } else {
             const args = argsOrState as ApiProductArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["apiResources"] = args ? args.apiResources : undefined;
-            resourceInputs["approvalType"] = args ? args.approvalType : undefined;
-            resourceInputs["attributes"] = args ? args.attributes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["environments"] = args ? args.environments : undefined;
-            resourceInputs["graphqlOperationGroup"] = args ? args.graphqlOperationGroup : undefined;
-            resourceInputs["grpcOperationGroup"] = args ? args.grpcOperationGroup : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operationGroup"] = args ? args.operationGroup : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["proxies"] = args ? args.proxies : undefined;
-            resourceInputs["quota"] = args ? args.quota : undefined;
-            resourceInputs["quotaCounterScope"] = args ? args.quotaCounterScope : undefined;
-            resourceInputs["quotaInterval"] = args ? args.quotaInterval : undefined;
-            resourceInputs["quotaTimeUnit"] = args ? args.quotaTimeUnit : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["space"] = args ? args.space : undefined;
+            resourceInputs["apiResources"] = args?.apiResources;
+            resourceInputs["approvalType"] = args?.approvalType;
+            resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["environments"] = args?.environments;
+            resourceInputs["graphqlOperationGroup"] = args?.graphqlOperationGroup;
+            resourceInputs["grpcOperationGroup"] = args?.grpcOperationGroup;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["operationGroup"] = args?.operationGroup;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["proxies"] = args?.proxies;
+            resourceInputs["quota"] = args?.quota;
+            resourceInputs["quotaCounterScope"] = args?.quotaCounterScope;
+            resourceInputs["quotaInterval"] = args?.quotaInterval;
+            resourceInputs["quotaTimeUnit"] = args?.quotaTimeUnit;
+            resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["space"] = args?.space;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
         }

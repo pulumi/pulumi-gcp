@@ -134,69 +134,69 @@ export class Pipeline extends pulumi.CustomResource {
      * The timestamp when the pipeline was initially created. Set by the Data Pipelines service.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Number of jobs.
      */
-    public /*out*/ readonly jobCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly jobCount: pulumi.Output<number>;
     /**
      * The timestamp when the pipeline was last modified. Set by the Data Pipelines service.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly lastUpdateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdateTime: pulumi.Output<string>;
     /**
      * "The pipeline name. For example': 'projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID."
      * "- PROJECT_ID can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see Identifying projects."
      * "LOCATION_ID is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling google.cloud.location.Locations.ListLocations. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in App Engine regions."
      * "PIPELINE_ID is the ID of the pipeline. Must be unique for the selected project and location."
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    public readonly pipelineSources!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly pipelineSources: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A reference to the region
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
      * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
      * Structure is documented below.
      */
-    public readonly scheduleInfo!: pulumi.Output<outputs.dataflow.PipelineScheduleInfo | undefined>;
+    declare public readonly scheduleInfo: pulumi.Output<outputs.dataflow.PipelineScheduleInfo | undefined>;
     /**
      * Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
      */
-    public readonly schedulerServiceAccountEmail!: pulumi.Output<string>;
+    declare public readonly schedulerServiceAccountEmail: pulumi.Output<string>;
     /**
      * The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
      * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
      * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
      * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
      * Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Workload information for creating new jobs.
      * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
      * Structure is documented below.
      */
-    public readonly workload!: pulumi.Output<outputs.dataflow.PipelineWorkload | undefined>;
+    declare public readonly workload: pulumi.Output<outputs.dataflow.PipelineWorkload | undefined>;
 
     /**
      * Create a Pipeline resource with the given unique name, arguments, and options.
@@ -211,37 +211,37 @@ export class Pipeline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["jobCount"] = state ? state.jobCount : undefined;
-            resourceInputs["lastUpdateTime"] = state ? state.lastUpdateTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pipelineSources"] = state ? state.pipelineSources : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["scheduleInfo"] = state ? state.scheduleInfo : undefined;
-            resourceInputs["schedulerServiceAccountEmail"] = state ? state.schedulerServiceAccountEmail : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["workload"] = state ? state.workload : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["jobCount"] = state?.jobCount;
+            resourceInputs["lastUpdateTime"] = state?.lastUpdateTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pipelineSources"] = state?.pipelineSources;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["scheduleInfo"] = state?.scheduleInfo;
+            resourceInputs["schedulerServiceAccountEmail"] = state?.schedulerServiceAccountEmail;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["workload"] = state?.workload;
         } else {
             const args = argsOrState as PipelineArgs | undefined;
-            if ((!args || args.state === undefined) && !opts.urn) {
+            if (args?.state === undefined && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pipelineSources"] = args ? args.pipelineSources : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["scheduleInfo"] = args ? args.scheduleInfo : undefined;
-            resourceInputs["schedulerServiceAccountEmail"] = args ? args.schedulerServiceAccountEmail : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["workload"] = args ? args.workload : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pipelineSources"] = args?.pipelineSources;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["scheduleInfo"] = args?.scheduleInfo;
+            resourceInputs["schedulerServiceAccountEmail"] = args?.schedulerServiceAccountEmail;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["workload"] = args?.workload;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["jobCount"] = undefined /*out*/;
             resourceInputs["lastUpdateTime"] = undefined /*out*/;

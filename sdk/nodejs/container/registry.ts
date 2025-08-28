@@ -75,15 +75,15 @@ export class Registry extends pulumi.CustomResource {
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly bucketSelfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly bucketSelfLink: pulumi.Output<string>;
     /**
      * The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a Registry resource with the given unique name, arguments, and options.
@@ -98,13 +98,13 @@ export class Registry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryState | undefined;
-            resourceInputs["bucketSelfLink"] = state ? state.bucketSelfLink : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["bucketSelfLink"] = state?.bucketSelfLink;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as RegistryArgs | undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["bucketSelfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

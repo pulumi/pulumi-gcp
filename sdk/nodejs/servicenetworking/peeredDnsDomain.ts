@@ -77,27 +77,27 @@ export class PeeredDnsDomain extends pulumi.CustomResource {
     /**
      * The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
      */
-    public readonly dnsSuffix!: pulumi.Output<string>;
+    declare public readonly dnsSuffix: pulumi.Output<string>;
     /**
      * Internal name used for the peered DNS domain.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network in the consumer project.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * an identifier for the resource with format `services/{{service}}/projects/{{project}}/global/networks/{{network}}`
      */
-    public /*out*/ readonly parent!: pulumi.Output<string>;
+    declare public /*out*/ readonly parent: pulumi.Output<string>;
     /**
      * The producer project number. If not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
      */
-    public readonly service!: pulumi.Output<string | undefined>;
+    declare public readonly service: pulumi.Output<string | undefined>;
 
     /**
      * Create a PeeredDnsDomain resource with the given unique name, arguments, and options.
@@ -112,25 +112,25 @@ export class PeeredDnsDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeeredDnsDomainState | undefined;
-            resourceInputs["dnsSuffix"] = state ? state.dnsSuffix : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["dnsSuffix"] = state?.dnsSuffix;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as PeeredDnsDomainArgs | undefined;
-            if ((!args || args.dnsSuffix === undefined) && !opts.urn) {
+            if (args?.dnsSuffix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsSuffix'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["dnsSuffix"] = args ? args.dnsSuffix : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["dnsSuffix"] = args?.dnsSuffix;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
             resourceInputs["parent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -96,28 +96,28 @@ export class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
     /**
      * Name of the schema given by the user.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Tells whether the document is a folder or a typical document.
      */
-    public readonly documentIsFolder!: pulumi.Output<boolean | undefined>;
+    declare public readonly documentIsFolder: pulumi.Output<boolean | undefined>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the document schema.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The unique identifier of the project.
      */
-    public readonly projectNumber!: pulumi.Output<string>;
+    declare public readonly projectNumber: pulumi.Output<string>;
     /**
      * Defines the metadata for a schema property.
      * Structure is documented below.
      */
-    public readonly propertyDefinitions!: pulumi.Output<outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinition[]>;
+    declare public readonly propertyDefinitions: pulumi.Output<outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinition[]>;
 
     /**
      * Create a DocumentAiWarehouseDocumentSchema resource with the given unique name, arguments, and options.
@@ -132,31 +132,31 @@ export class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DocumentAiWarehouseDocumentSchemaState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["documentIsFolder"] = state ? state.documentIsFolder : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectNumber"] = state ? state.projectNumber : undefined;
-            resourceInputs["propertyDefinitions"] = state ? state.propertyDefinitions : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["documentIsFolder"] = state?.documentIsFolder;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectNumber"] = state?.projectNumber;
+            resourceInputs["propertyDefinitions"] = state?.propertyDefinitions;
         } else {
             const args = argsOrState as DocumentAiWarehouseDocumentSchemaArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectNumber === undefined) && !opts.urn) {
+            if (args?.projectNumber === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectNumber'");
             }
-            if ((!args || args.propertyDefinitions === undefined) && !opts.urn) {
+            if (args?.propertyDefinitions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'propertyDefinitions'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["documentIsFolder"] = args ? args.documentIsFolder : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["projectNumber"] = args ? args.projectNumber : undefined;
-            resourceInputs["propertyDefinitions"] = args ? args.propertyDefinitions : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["documentIsFolder"] = args?.documentIsFolder;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["projectNumber"] = args?.projectNumber;
+            resourceInputs["propertyDefinitions"] = args?.propertyDefinitions;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

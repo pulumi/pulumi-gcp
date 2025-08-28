@@ -102,71 +102,71 @@ export class ServiceConnectionPolicy extends pulumi.CustomResource {
     /**
      * The timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Free-text description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The type of underlying resources used to create the connection.
      */
-    public /*out*/ readonly infrastructure!: pulumi.Output<string>;
+    declare public /*out*/ readonly infrastructure: pulumi.Output<string>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the ServiceConnectionPolicy.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
      * Structure is documented below.
      */
-    public readonly pscConfig!: pulumi.Output<outputs.networkconnectivity.ServiceConnectionPolicyPscConfig | undefined>;
+    declare public readonly pscConfig: pulumi.Output<outputs.networkconnectivity.ServiceConnectionPolicyPscConfig | undefined>;
     /**
      * Information about each Private Service Connect connection.
      * Structure is documented below.
      */
-    public /*out*/ readonly pscConnections!: pulumi.Output<outputs.networkconnectivity.ServiceConnectionPolicyPscConnection[]>;
+    declare public /*out*/ readonly pscConnections: pulumi.Output<outputs.networkconnectivity.ServiceConnectionPolicyPscConnection[]>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
      * It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
      */
-    public readonly serviceClass!: pulumi.Output<string>;
+    declare public readonly serviceClass: pulumi.Output<string>;
     /**
      * The timestamp when the resource was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ServiceConnectionPolicy resource with the given unique name, arguments, and options.
@@ -181,40 +181,40 @@ export class ServiceConnectionPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceConnectionPolicyState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["infrastructure"] = state ? state.infrastructure : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscConfig"] = state ? state.pscConfig : undefined;
-            resourceInputs["pscConnections"] = state ? state.pscConnections : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceClass"] = state ? state.serviceClass : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["infrastructure"] = state?.infrastructure;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscConfig"] = state?.pscConfig;
+            resourceInputs["pscConnections"] = state?.pscConnections;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceClass"] = state?.serviceClass;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ServiceConnectionPolicyArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.serviceClass === undefined) && !opts.urn) {
+            if (args?.serviceClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceClass'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pscConfig"] = args ? args.pscConfig : undefined;
-            resourceInputs["serviceClass"] = args ? args.serviceClass : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pscConfig"] = args?.pscConfig;
+            resourceInputs["serviceClass"] = args?.serviceClass;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

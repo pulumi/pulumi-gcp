@@ -324,47 +324,47 @@ export class Pipeline extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The creation time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
      * to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to
      * encrypt/decrypt the event data. If not set, an internal Google-owned key
      * will be used to encrypt messages. It must match the pattern
      * "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
      */
-    public readonly cryptoKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly cryptoKeyName: pulumi.Output<string | undefined>;
     /**
      * List of destinations to which messages will be forwarded. Currently,
      * exactly one destination is supported per Pipeline.
      * Structure is documented below.
      */
-    public readonly destinations!: pulumi.Output<outputs.eventarc.PipelineDestination[]>;
+    declare public readonly destinations: pulumi.Output<outputs.eventarc.PipelineDestination[]>;
     /**
      * Display name of resource.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of
      * other fields, and might be sent only on create requests to ensure that the
      * client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Represents the format of message data.
      * Structure is documented below.
      */
-    public readonly inputPayloadFormat!: pulumi.Output<outputs.eventarc.PipelineInputPayloadFormat | undefined>;
+    declare public readonly inputPayloadFormat: pulumi.Output<outputs.eventarc.PipelineInputPayloadFormat | undefined>;
     /**
      * User labels attached to the Pipeline that can be used to group
      * resources. An object containing a list of "key": value pairs. Example: {
@@ -372,44 +372,44 @@ export class Pipeline extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The configuration for Platform Telemetry logging for Eventarc Advanced
      * resources.
      * Structure is documented below.
      */
-    public readonly loggingConfig!: pulumi.Output<outputs.eventarc.PipelineLoggingConfig>;
+    declare public readonly loggingConfig: pulumi.Output<outputs.eventarc.PipelineLoggingConfig>;
     /**
      * List of mediation operations to be performed on the message. Currently,
      * only one Transformation operation is allowed in each Pipeline.
      * Structure is documented below.
      */
-    public readonly mediations!: pulumi.Output<outputs.eventarc.PipelineMediation[] | undefined>;
+    declare public readonly mediations: pulumi.Output<outputs.eventarc.PipelineMediation[] | undefined>;
     /**
      * The resource name of the Pipeline. Must be unique within the
      * location of the project and must be in
      * `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The user-provided ID to be assigned to the Pipeline. It should match the
      * format `^a-z?$`.
      */
-    public readonly pipelineId!: pulumi.Output<string>;
+    declare public readonly pipelineId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The retry policy configuration for the Pipeline. The pipeline
      * exponentially backs off in case the destination is non responsive or
@@ -421,20 +421,20 @@ export class Pipeline extends pulumi.CustomResource {
      * to the same value this will make the duration between retries constant.
      * Structure is documented below.
      */
-    public readonly retryPolicy!: pulumi.Output<outputs.eventarc.PipelineRetryPolicy>;
+    declare public readonly retryPolicy: pulumi.Output<outputs.eventarc.PipelineRetryPolicy>;
     /**
      * Server-assigned unique identifier for the Pipeline. The value
      * is a UUID4 string and guaranteed to remain unchanged until the resource is
      * deleted.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The last-modified time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
      * to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Pipeline resource with the given unique name, arguments, and options.
@@ -449,49 +449,49 @@ export class Pipeline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["cryptoKeyName"] = state ? state.cryptoKeyName : undefined;
-            resourceInputs["destinations"] = state ? state.destinations : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["inputPayloadFormat"] = state ? state.inputPayloadFormat : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
-            resourceInputs["mediations"] = state ? state.mediations : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pipelineId"] = state ? state.pipelineId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["retryPolicy"] = state ? state.retryPolicy : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["cryptoKeyName"] = state?.cryptoKeyName;
+            resourceInputs["destinations"] = state?.destinations;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["inputPayloadFormat"] = state?.inputPayloadFormat;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["loggingConfig"] = state?.loggingConfig;
+            resourceInputs["mediations"] = state?.mediations;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pipelineId"] = state?.pipelineId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["retryPolicy"] = state?.retryPolicy;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PipelineArgs | undefined;
-            if ((!args || args.destinations === undefined) && !opts.urn) {
+            if (args?.destinations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinations'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.pipelineId === undefined) && !opts.urn) {
+            if (args?.pipelineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pipelineId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
-            resourceInputs["destinations"] = args ? args.destinations : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["inputPayloadFormat"] = args ? args.inputPayloadFormat : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            resourceInputs["mediations"] = args ? args.mediations : undefined;
-            resourceInputs["pipelineId"] = args ? args.pipelineId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["retryPolicy"] = args ? args.retryPolicy : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["cryptoKeyName"] = args?.cryptoKeyName;
+            resourceInputs["destinations"] = args?.destinations;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["inputPayloadFormat"] = args?.inputPayloadFormat;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["loggingConfig"] = args?.loggingConfig;
+            resourceInputs["mediations"] = args?.mediations;
+            resourceInputs["pipelineId"] = args?.pipelineId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["retryPolicy"] = args?.retryPolicy;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

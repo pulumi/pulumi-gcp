@@ -96,24 +96,24 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
     /**
      * A map of the secret data.
      */
-    public readonly data!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly data: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Environment where the Kubernetes Secret will be stored and used.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * Name of the Kubernetes Secret.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The location or Compute Engine region for the environment.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a UserWorkloadsSecret resource with the given unique name, arguments, and options.
@@ -128,21 +128,21 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserWorkloadsSecretState | undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as UserWorkloadsSecretArgs | undefined;
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
             resourceInputs["data"] = args?.data ? pulumi.secret(args.data) : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["data"] };

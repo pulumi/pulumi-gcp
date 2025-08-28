@@ -251,54 +251,54 @@ export class Database extends pulumi.CustomResource {
      * The App Engine integration mode to use for this database.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    public readonly appEngineIntegrationMode!: pulumi.Output<string>;
+    declare public readonly appEngineIntegrationMode: pulumi.Output<string>;
     /**
      * The CMEK (Customer Managed Encryption Key) configuration for a Firestore
      * database. If not present, the database is secured by the default Google
      * encryption key.
      * Structure is documented below.
      */
-    public readonly cmekConfig!: pulumi.Output<outputs.firestore.DatabaseCmekConfig | undefined>;
+    declare public readonly cmekConfig: pulumi.Output<outputs.firestore.DatabaseCmekConfig | undefined>;
     /**
      * The concurrency control mode to use for this database.
      * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      */
-    public readonly concurrencyMode!: pulumi.Output<string>;
+    declare public readonly concurrencyMode: pulumi.Output<string>;
     /**
      * Output only. The timestamp at which this database was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The database edition.
      * Possible values are: `STANDARD`, `ENTERPRISE`.
      */
-    public readonly databaseEdition!: pulumi.Output<string>;
-    public readonly deleteProtectionState!: pulumi.Output<string>;
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly databaseEdition: pulumi.Output<string>;
+    declare public readonly deleteProtectionState: pulumi.Output<string>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
      * This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly earliestVersionTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly earliestVersionTime: pulumi.Output<string>;
     /**
      * Output only. This checksum is computed by the server based on the value of other fields,
      * and may be sent on update and delete requests to ensure the client has an
      * up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Output only. The keyPrefix for this database.
      * This keyPrefix is used, in combination with the project id ("~") to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
      * This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
      */
-    public /*out*/ readonly keyPrefix!: pulumi.Output<string>;
+    declare public /*out*/ readonly keyPrefix: pulumi.Output<string>;
     /**
      * The location of the database. Available locations are listed at
      * https://cloud.google.com/firestore/docs/locations.
      */
-    public readonly locationId!: pulumi.Output<string>;
+    declare public readonly locationId: pulumi.Output<string>;
     /**
      * The ID to use for the database, which will become the final
      * component of the database's resource name. This value should be 4-63
@@ -307,7 +307,7 @@ export class Database extends pulumi.CustomResource {
      * UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
      * "(default)" database id is also valid.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether to enable the PITR feature on this database.
      * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
@@ -317,12 +317,12 @@ export class Database extends pulumi.CustomResource {
      * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
      * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
      */
-    public readonly pointInTimeRecoveryEnablement!: pulumi.Output<string | undefined>;
+    declare public readonly pointInTimeRecoveryEnablement: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Input only. A map of resource manager tags. Resource manager tag keys
      * and values have the same definition as resource manager tags.
@@ -331,29 +331,29 @@ export class Database extends pulumi.CustomResource {
      * resource replacement when mutated. To apply tags to an existing resource, see
      * the `gcp.tags.TagValue` resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Output only. The system-generated UUID4 for this Database.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The timestamp at which this database was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Output only. The period during which past versions of data are retained in the database.
      * Any read or query can specify a readTime within this window, and will read the state of the database at that time.
      * If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public /*out*/ readonly versionRetentionPeriod!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionRetentionPeriod: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -368,45 +368,45 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["appEngineIntegrationMode"] = state ? state.appEngineIntegrationMode : undefined;
-            resourceInputs["cmekConfig"] = state ? state.cmekConfig : undefined;
-            resourceInputs["concurrencyMode"] = state ? state.concurrencyMode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["databaseEdition"] = state ? state.databaseEdition : undefined;
-            resourceInputs["deleteProtectionState"] = state ? state.deleteProtectionState : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["earliestVersionTime"] = state ? state.earliestVersionTime : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["keyPrefix"] = state ? state.keyPrefix : undefined;
-            resourceInputs["locationId"] = state ? state.locationId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pointInTimeRecoveryEnablement"] = state ? state.pointInTimeRecoveryEnablement : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["versionRetentionPeriod"] = state ? state.versionRetentionPeriod : undefined;
+            resourceInputs["appEngineIntegrationMode"] = state?.appEngineIntegrationMode;
+            resourceInputs["cmekConfig"] = state?.cmekConfig;
+            resourceInputs["concurrencyMode"] = state?.concurrencyMode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["databaseEdition"] = state?.databaseEdition;
+            resourceInputs["deleteProtectionState"] = state?.deleteProtectionState;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["earliestVersionTime"] = state?.earliestVersionTime;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["keyPrefix"] = state?.keyPrefix;
+            resourceInputs["locationId"] = state?.locationId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pointInTimeRecoveryEnablement"] = state?.pointInTimeRecoveryEnablement;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["versionRetentionPeriod"] = state?.versionRetentionPeriod;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.locationId === undefined) && !opts.urn) {
+            if (args?.locationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'locationId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["appEngineIntegrationMode"] = args ? args.appEngineIntegrationMode : undefined;
-            resourceInputs["cmekConfig"] = args ? args.cmekConfig : undefined;
-            resourceInputs["concurrencyMode"] = args ? args.concurrencyMode : undefined;
-            resourceInputs["databaseEdition"] = args ? args.databaseEdition : undefined;
-            resourceInputs["deleteProtectionState"] = args ? args.deleteProtectionState : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["locationId"] = args ? args.locationId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pointInTimeRecoveryEnablement"] = args ? args.pointInTimeRecoveryEnablement : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["appEngineIntegrationMode"] = args?.appEngineIntegrationMode;
+            resourceInputs["cmekConfig"] = args?.cmekConfig;
+            resourceInputs["concurrencyMode"] = args?.concurrencyMode;
+            resourceInputs["databaseEdition"] = args?.databaseEdition;
+            resourceInputs["deleteProtectionState"] = args?.deleteProtectionState;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["locationId"] = args?.locationId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pointInTimeRecoveryEnablement"] = args?.pointInTimeRecoveryEnablement;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["earliestVersionTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

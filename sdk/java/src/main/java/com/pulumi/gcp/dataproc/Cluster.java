@@ -258,8 +258,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * 
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -267,8 +268,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * 
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

@@ -93,26 +93,26 @@ export class Scope extends pulumi.CustomResource {
     /**
      * Time the Scope was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Time the Scope was deleted in UTC.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Labels for this Scope.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The unique identifier of the scope
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Scope-level cluster namespace labels. For the member clusters bound
      * to the Scope, these labels are applied to each namespace under the
@@ -120,34 +120,34 @@ export class Scope extends pulumi.CustomResource {
      * labels (`namespaceLabels` in the Fleet Namespace resource) if they
      * share a key. Keys and values must be Kubernetes-conformant.
      */
-    public readonly namespaceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly namespaceLabels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The client-provided identifier of the scope.
      */
-    public readonly scopeId!: pulumi.Output<string>;
+    declare public readonly scopeId: pulumi.Output<string>;
     /**
      * State of the scope resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.ScopeState[]>;
+    declare public /*out*/ readonly states: pulumi.Output<outputs.gkehub.ScopeState[]>;
     /**
      * Google-generated UUID for this resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time the Scope was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Scope resource with the given unique name, arguments, and options.
@@ -162,27 +162,27 @@ export class Scope extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScopeState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespaceLabels"] = state ? state.namespaceLabels : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["scopeId"] = state ? state.scopeId : undefined;
-            resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespaceLabels"] = state?.namespaceLabels;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["scopeId"] = state?.scopeId;
+            resourceInputs["states"] = state?.states;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ScopeArgs | undefined;
-            if ((!args || args.scopeId === undefined) && !opts.urn) {
+            if (args?.scopeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopeId'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["namespaceLabels"] = args ? args.namespaceLabels : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["scopeId"] = args ? args.scopeId : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["namespaceLabels"] = args?.namespaceLabels;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["scopeId"] = args?.scopeId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

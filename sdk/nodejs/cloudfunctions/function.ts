@@ -148,163 +148,162 @@ export class Function extends pulumi.CustomResource {
     /**
      * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
      */
-    public readonly automaticUpdatePolicy!: pulumi.Output<outputs.cloudfunctions.FunctionAutomaticUpdatePolicy>;
+    declare public readonly automaticUpdatePolicy: pulumi.Output<outputs.cloudfunctions.FunctionAutomaticUpdatePolicy>;
     /**
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      */
-    public readonly availableMemoryMb!: pulumi.Output<number | undefined>;
+    declare public readonly availableMemoryMb: pulumi.Output<number | undefined>;
     /**
      * A set of key/value environment variable pairs available during build time.
      */
-    public readonly buildEnvironmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly buildEnvironmentVariables: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
      */
-    public readonly buildServiceAccount!: pulumi.Output<string>;
+    declare public readonly buildServiceAccount: pulumi.Output<string>;
     /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      */
-    public readonly buildWorkerPool!: pulumi.Output<string | undefined>;
+    declare public readonly buildWorkerPool: pulumi.Output<string | undefined>;
     /**
      * Description of the function.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
      */
-    public readonly dockerRegistry!: pulumi.Output<string>;
+    declare public readonly dockerRegistry: pulumi.Output<string>;
     /**
      * User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `dockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
      */
-    public readonly dockerRepository!: pulumi.Output<string | undefined>;
+    declare public readonly dockerRepository: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      */
-    public readonly entryPoint!: pulumi.Output<string | undefined>;
+    declare public readonly entryPoint: pulumi.Output<string | undefined>;
     /**
      * A set of key/value environment variable pairs to assign to the function.
      */
-    public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly environmentVariables: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      */
-    public readonly eventTrigger!: pulumi.Output<outputs.cloudfunctions.FunctionEventTrigger>;
+    declare public readonly eventTrigger: pulumi.Output<outputs.cloudfunctions.FunctionEventTrigger>;
     /**
      * The security level for the function. The following options are available:
      *
      * * `SECURE_ALWAYS` Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
      * * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
      */
-    public readonly httpsTriggerSecurityLevel!: pulumi.Output<string>;
+    declare public readonly httpsTriggerSecurityLevel: pulumi.Output<string>;
     /**
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
-    public readonly httpsTriggerUrl!: pulumi.Output<string>;
+    declare public readonly httpsTriggerUrl: pulumi.Output<string>;
     /**
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
      */
-    public readonly ingressSettings!: pulumi.Output<string | undefined>;
+    declare public readonly ingressSettings: pulumi.Output<string | undefined>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
      * If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
-    public readonly maxInstances!: pulumi.Output<number>;
+    declare public readonly maxInstances: pulumi.Output<number>;
     /**
      * The limit on the minimum number of function instances that may coexist at a given time.
      */
-    public readonly minInstances!: pulumi.Output<number | undefined>;
+    declare public readonly minInstances: pulumi.Output<number | undefined>;
     /**
      * A user-defined name of the function. Function names must be unique globally.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
      */
-    public readonly onDeployUpdatePolicy!: pulumi.Output<outputs.cloudfunctions.FunctionOnDeployUpdatePolicy | undefined>;
+    declare public readonly onDeployUpdatePolicy: pulumi.Output<outputs.cloudfunctions.FunctionOnDeployUpdatePolicy | undefined>;
     /**
      * Project of the function. If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Region of function. If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The runtime in which the function is going to run.
      * Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      *
      * - - -
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * Secret environment variables configuration. Structure is documented below.
      */
-    public readonly secretEnvironmentVariables!: pulumi.Output<outputs.cloudfunctions.FunctionSecretEnvironmentVariable[] | undefined>;
+    declare public readonly secretEnvironmentVariables: pulumi.Output<outputs.cloudfunctions.FunctionSecretEnvironmentVariable[] | undefined>;
     /**
      * Secret volumes configuration. Structure is documented below.
      */
-    public readonly secretVolumes!: pulumi.Output<outputs.cloudfunctions.FunctionSecretVolume[] | undefined>;
+    declare public readonly secretVolumes: pulumi.Output<outputs.cloudfunctions.FunctionSecretVolume[] | undefined>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string>;
     /**
      * The GCS bucket containing the zip archive which contains the function.
      */
-    public readonly sourceArchiveBucket!: pulumi.Output<string | undefined>;
+    declare public readonly sourceArchiveBucket: pulumi.Output<string | undefined>;
     /**
      * The source archive object (file) in archive bucket.
      */
-    public readonly sourceArchiveObject!: pulumi.Output<string | undefined>;
+    declare public readonly sourceArchiveObject: pulumi.Output<string | undefined>;
     /**
      * Represents parameters related to source repository where a function is hosted.
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      */
-    public readonly sourceRepository!: pulumi.Output<outputs.cloudfunctions.FunctionSourceRepository | undefined>;
+    declare public readonly sourceRepository: pulumi.Output<outputs.cloudfunctions.FunctionSourceRepository | undefined>;
     /**
      * Describes the current stage of a deployment.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
-    public readonly timeout!: pulumi.Output<number | undefined>;
+    declare public readonly timeout: pulumi.Output<number | undefined>;
     /**
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
      */
-    public readonly triggerHttp!: pulumi.Output<boolean | undefined>;
+    declare public readonly triggerHttp: pulumi.Output<boolean | undefined>;
     /**
-     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-     * created.
+     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
      */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
     /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
-    public readonly vpcConnector!: pulumi.Output<string | undefined>;
+    declare public readonly vpcConnector: pulumi.Output<string | undefined>;
     /**
      * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
      */
-    public readonly vpcConnectorEgressSettings!: pulumi.Output<string>;
+    declare public readonly vpcConnectorEgressSettings: pulumi.Output<string>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -319,81 +318,81 @@ export class Function extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
-            resourceInputs["automaticUpdatePolicy"] = state ? state.automaticUpdatePolicy : undefined;
-            resourceInputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
-            resourceInputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
-            resourceInputs["buildServiceAccount"] = state ? state.buildServiceAccount : undefined;
-            resourceInputs["buildWorkerPool"] = state ? state.buildWorkerPool : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dockerRegistry"] = state ? state.dockerRegistry : undefined;
-            resourceInputs["dockerRepository"] = state ? state.dockerRepository : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["entryPoint"] = state ? state.entryPoint : undefined;
-            resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
-            resourceInputs["eventTrigger"] = state ? state.eventTrigger : undefined;
-            resourceInputs["httpsTriggerSecurityLevel"] = state ? state.httpsTriggerSecurityLevel : undefined;
-            resourceInputs["httpsTriggerUrl"] = state ? state.httpsTriggerUrl : undefined;
-            resourceInputs["ingressSettings"] = state ? state.ingressSettings : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["maxInstances"] = state ? state.maxInstances : undefined;
-            resourceInputs["minInstances"] = state ? state.minInstances : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["onDeployUpdatePolicy"] = state ? state.onDeployUpdatePolicy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["secretEnvironmentVariables"] = state ? state.secretEnvironmentVariables : undefined;
-            resourceInputs["secretVolumes"] = state ? state.secretVolumes : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            resourceInputs["sourceArchiveBucket"] = state ? state.sourceArchiveBucket : undefined;
-            resourceInputs["sourceArchiveObject"] = state ? state.sourceArchiveObject : undefined;
-            resourceInputs["sourceRepository"] = state ? state.sourceRepository : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["triggerHttp"] = state ? state.triggerHttp : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
-            resourceInputs["vpcConnector"] = state ? state.vpcConnector : undefined;
-            resourceInputs["vpcConnectorEgressSettings"] = state ? state.vpcConnectorEgressSettings : undefined;
+            resourceInputs["automaticUpdatePolicy"] = state?.automaticUpdatePolicy;
+            resourceInputs["availableMemoryMb"] = state?.availableMemoryMb;
+            resourceInputs["buildEnvironmentVariables"] = state?.buildEnvironmentVariables;
+            resourceInputs["buildServiceAccount"] = state?.buildServiceAccount;
+            resourceInputs["buildWorkerPool"] = state?.buildWorkerPool;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dockerRegistry"] = state?.dockerRegistry;
+            resourceInputs["dockerRepository"] = state?.dockerRepository;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["entryPoint"] = state?.entryPoint;
+            resourceInputs["environmentVariables"] = state?.environmentVariables;
+            resourceInputs["eventTrigger"] = state?.eventTrigger;
+            resourceInputs["httpsTriggerSecurityLevel"] = state?.httpsTriggerSecurityLevel;
+            resourceInputs["httpsTriggerUrl"] = state?.httpsTriggerUrl;
+            resourceInputs["ingressSettings"] = state?.ingressSettings;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["maxInstances"] = state?.maxInstances;
+            resourceInputs["minInstances"] = state?.minInstances;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["onDeployUpdatePolicy"] = state?.onDeployUpdatePolicy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["secretEnvironmentVariables"] = state?.secretEnvironmentVariables;
+            resourceInputs["secretVolumes"] = state?.secretVolumes;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
+            resourceInputs["sourceArchiveBucket"] = state?.sourceArchiveBucket;
+            resourceInputs["sourceArchiveObject"] = state?.sourceArchiveObject;
+            resourceInputs["sourceRepository"] = state?.sourceRepository;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["triggerHttp"] = state?.triggerHttp;
+            resourceInputs["versionId"] = state?.versionId;
+            resourceInputs["vpcConnector"] = state?.vpcConnector;
+            resourceInputs["vpcConnectorEgressSettings"] = state?.vpcConnectorEgressSettings;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
-            if ((!args || args.runtime === undefined) && !opts.urn) {
+            if (args?.runtime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            resourceInputs["automaticUpdatePolicy"] = args ? args.automaticUpdatePolicy : undefined;
-            resourceInputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
-            resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
-            resourceInputs["buildServiceAccount"] = args ? args.buildServiceAccount : undefined;
-            resourceInputs["buildWorkerPool"] = args ? args.buildWorkerPool : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dockerRegistry"] = args ? args.dockerRegistry : undefined;
-            resourceInputs["dockerRepository"] = args ? args.dockerRepository : undefined;
-            resourceInputs["entryPoint"] = args ? args.entryPoint : undefined;
-            resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
-            resourceInputs["eventTrigger"] = args ? args.eventTrigger : undefined;
-            resourceInputs["httpsTriggerSecurityLevel"] = args ? args.httpsTriggerSecurityLevel : undefined;
-            resourceInputs["httpsTriggerUrl"] = args ? args.httpsTriggerUrl : undefined;
-            resourceInputs["ingressSettings"] = args ? args.ingressSettings : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["maxInstances"] = args ? args.maxInstances : undefined;
-            resourceInputs["minInstances"] = args ? args.minInstances : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["onDeployUpdatePolicy"] = args ? args.onDeployUpdatePolicy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["secretEnvironmentVariables"] = args ? args.secretEnvironmentVariables : undefined;
-            resourceInputs["secretVolumes"] = args ? args.secretVolumes : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            resourceInputs["sourceArchiveBucket"] = args ? args.sourceArchiveBucket : undefined;
-            resourceInputs["sourceArchiveObject"] = args ? args.sourceArchiveObject : undefined;
-            resourceInputs["sourceRepository"] = args ? args.sourceRepository : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["triggerHttp"] = args ? args.triggerHttp : undefined;
-            resourceInputs["vpcConnector"] = args ? args.vpcConnector : undefined;
-            resourceInputs["vpcConnectorEgressSettings"] = args ? args.vpcConnectorEgressSettings : undefined;
+            resourceInputs["automaticUpdatePolicy"] = args?.automaticUpdatePolicy;
+            resourceInputs["availableMemoryMb"] = args?.availableMemoryMb;
+            resourceInputs["buildEnvironmentVariables"] = args?.buildEnvironmentVariables;
+            resourceInputs["buildServiceAccount"] = args?.buildServiceAccount;
+            resourceInputs["buildWorkerPool"] = args?.buildWorkerPool;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dockerRegistry"] = args?.dockerRegistry;
+            resourceInputs["dockerRepository"] = args?.dockerRepository;
+            resourceInputs["entryPoint"] = args?.entryPoint;
+            resourceInputs["environmentVariables"] = args?.environmentVariables;
+            resourceInputs["eventTrigger"] = args?.eventTrigger;
+            resourceInputs["httpsTriggerSecurityLevel"] = args?.httpsTriggerSecurityLevel;
+            resourceInputs["httpsTriggerUrl"] = args?.httpsTriggerUrl;
+            resourceInputs["ingressSettings"] = args?.ingressSettings;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["maxInstances"] = args?.maxInstances;
+            resourceInputs["minInstances"] = args?.minInstances;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["onDeployUpdatePolicy"] = args?.onDeployUpdatePolicy;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["secretEnvironmentVariables"] = args?.secretEnvironmentVariables;
+            resourceInputs["secretVolumes"] = args?.secretVolumes;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
+            resourceInputs["sourceArchiveBucket"] = args?.sourceArchiveBucket;
+            resourceInputs["sourceArchiveObject"] = args?.sourceArchiveObject;
+            resourceInputs["sourceRepository"] = args?.sourceRepository;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["triggerHttp"] = args?.triggerHttp;
+            resourceInputs["vpcConnector"] = args?.vpcConnector;
+            resourceInputs["vpcConnectorEgressSettings"] = args?.vpcConnectorEgressSettings;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -558,8 +557,7 @@ export interface FunctionState {
      */
     triggerHttp?: pulumi.Input<boolean>;
     /**
-     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-     * created.
+     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
      */
     versionId?: pulumi.Input<string>;
     /**

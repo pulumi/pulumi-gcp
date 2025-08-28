@@ -216,45 +216,45 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      */
-    public readonly adaptiveProtectionConfig!: pulumi.Output<outputs.compute.SecurityPolicyAdaptiveProtectionConfig | undefined>;
+    declare public readonly adaptiveProtectionConfig: pulumi.Output<outputs.compute.SecurityPolicyAdaptiveProtectionConfig | undefined>;
     /**
      * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
      * Structure is documented below.
      */
-    public readonly advancedOptionsConfig!: pulumi.Output<outputs.compute.SecurityPolicyAdvancedOptionsConfig>;
+    declare public readonly advancedOptionsConfig: pulumi.Output<outputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**
      * An optional description of this security policy. Max size is 2048.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The name of the security policy.
      *
      * - - -
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
      */
-    public readonly recaptchaOptionsConfig!: pulumi.Output<outputs.compute.SecurityPolicyRecaptchaOptionsConfig | undefined>;
+    declare public readonly recaptchaOptionsConfig: pulumi.Output<outputs.compute.SecurityPolicyRecaptchaOptionsConfig | undefined>;
     /**
      * The set of rules that belong to this policy. There must always be a default
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
      */
-    public readonly rules!: pulumi.Output<outputs.compute.SecurityPolicyRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.compute.SecurityPolicyRule[]>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -265,7 +265,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
      * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -280,26 +280,26 @@ export class SecurityPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityPolicyState | undefined;
-            resourceInputs["adaptiveProtectionConfig"] = state ? state.adaptiveProtectionConfig : undefined;
-            resourceInputs["advancedOptionsConfig"] = state ? state.advancedOptionsConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["recaptchaOptionsConfig"] = state ? state.recaptchaOptionsConfig : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["adaptiveProtectionConfig"] = state?.adaptiveProtectionConfig;
+            resourceInputs["advancedOptionsConfig"] = state?.advancedOptionsConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["recaptchaOptionsConfig"] = state?.recaptchaOptionsConfig;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as SecurityPolicyArgs | undefined;
-            resourceInputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
-            resourceInputs["advancedOptionsConfig"] = args ? args.advancedOptionsConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["recaptchaOptionsConfig"] = args ? args.recaptchaOptionsConfig : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["adaptiveProtectionConfig"] = args?.adaptiveProtectionConfig;
+            resourceInputs["advancedOptionsConfig"] = args?.advancedOptionsConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["recaptchaOptionsConfig"] = args?.recaptchaOptionsConfig;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["type"] = args?.type;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }

@@ -135,12 +135,12 @@ export class RegionalSecretVersion extends pulumi.CustomResource {
     /**
      * The time at which the regional secret version was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The customer-managed encryption configuration of the regional secret.
      * Structure is documented below.
      */
-    public /*out*/ readonly customerManagedEncryptions!: pulumi.Output<outputs.secretmanager.RegionalSecretVersionCustomerManagedEncryption[]>;
+    declare public /*out*/ readonly customerManagedEncryptions: pulumi.Output<outputs.secretmanager.RegionalSecretVersionCustomerManagedEncryption[]>;
     /**
      * The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -149,41 +149,41 @@ export class RegionalSecretVersion extends pulumi.CustomResource {
      * * DISABLE
      * * ABANDON
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
      */
-    public /*out*/ readonly destroyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly destroyTime: pulumi.Output<string>;
     /**
      * The current state of the regional secret version.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
      */
-    public readonly isSecretDataBase64!: pulumi.Output<boolean | undefined>;
+    declare public readonly isSecretDataBase64: pulumi.Output<boolean | undefined>;
     /**
      * Location of Secret Manager regional secret resource.
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
      * The resource name of the regional secret version. Format:
      * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Secret Manager regional secret resource.
      */
-    public readonly secret!: pulumi.Output<string>;
+    declare public readonly secret: pulumi.Output<string>;
     /**
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly secretData!: pulumi.Output<string>;
+    declare public readonly secretData: pulumi.Output<string>;
     /**
      * The version of the Regional Secret.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a RegionalSecretVersion resource with the given unique name, arguments, and options.
@@ -198,29 +198,29 @@ export class RegionalSecretVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionalSecretVersionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customerManagedEncryptions"] = state ? state.customerManagedEncryptions : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["destroyTime"] = state ? state.destroyTime : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["isSecretDataBase64"] = state ? state.isSecretDataBase64 : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["secretData"] = state ? state.secretData : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customerManagedEncryptions"] = state?.customerManagedEncryptions;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["destroyTime"] = state?.destroyTime;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["isSecretDataBase64"] = state?.isSecretDataBase64;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["secretData"] = state?.secretData;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as RegionalSecretVersionArgs | undefined;
-            if ((!args || args.secret === undefined) && !opts.urn) {
+            if (args?.secret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
-            if ((!args || args.secretData === undefined) && !opts.urn) {
+            if (args?.secretData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretData'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["isSecretDataBase64"] = args ? args.isSecretDataBase64 : undefined;
-            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["isSecretDataBase64"] = args?.isSecretDataBase64;
+            resourceInputs["secret"] = args?.secret;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["customerManagedEncryptions"] = undefined /*out*/;

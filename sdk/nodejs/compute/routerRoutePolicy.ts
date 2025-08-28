@@ -154,34 +154,34 @@ export class RouterRoutePolicy extends pulumi.CustomResource {
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where the router and NAT reside.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which this route policy will be configured.
      */
-    public readonly router!: pulumi.Output<string>;
+    declare public readonly router: pulumi.Output<string>;
     /**
      * List of terms (the order in the list is not important, they are evaluated in order of priority).
      * Structure is documented below.
      */
-    public readonly terms!: pulumi.Output<outputs.compute.RouterRoutePolicyTerm[]>;
+    declare public readonly terms: pulumi.Output<outputs.compute.RouterRoutePolicyTerm[]>;
     /**
      * This is policy's type, which is one of IMPORT or EXPORT
      * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a RouterRoutePolicy resource with the given unique name, arguments, and options.
@@ -196,27 +196,27 @@ export class RouterRoutePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterRoutePolicyState | undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["router"] = state ? state.router : undefined;
-            resourceInputs["terms"] = state ? state.terms : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["router"] = state?.router;
+            resourceInputs["terms"] = state?.terms;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as RouterRoutePolicyArgs | undefined;
-            if ((!args || args.router === undefined) && !opts.urn) {
+            if (args?.router === undefined && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            if ((!args || args.terms === undefined) && !opts.urn) {
+            if (args?.terms === undefined && !opts.urn) {
                 throw new Error("Missing required property 'terms'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["terms"] = args ? args.terms : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["router"] = args?.router;
+            resourceInputs["terms"] = args?.terms;
+            resourceInputs["type"] = args?.type;
             resourceInputs["fingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

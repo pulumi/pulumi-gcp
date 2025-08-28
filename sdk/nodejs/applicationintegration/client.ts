@@ -120,20 +120,20 @@ export class Client extends pulumi.CustomResource {
      * Cloud KMS config for AuthModule to encrypt/decrypt credentials.
      * Structure is documented below.
      */
-    public readonly cloudKmsConfig!: pulumi.Output<outputs.applicationintegration.ClientCloudKmsConfig | undefined>;
+    declare public readonly cloudKmsConfig: pulumi.Output<outputs.applicationintegration.ClientCloudKmsConfig | undefined>;
     /**
      * Indicates if sample integrations should be created along with provisioning.
      */
-    public readonly createSampleIntegrations!: pulumi.Output<boolean | undefined>;
+    declare public readonly createSampleIntegrations: pulumi.Output<boolean | undefined>;
     /**
      * Location in which client needs to be provisioned.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
@@ -142,7 +142,7 @@ export class Client extends pulumi.CustomResource {
      *
      * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
      */
-    public readonly runAsServiceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly runAsServiceAccount: pulumi.Output<string | undefined>;
 
     /**
      * Create a Client resource with the given unique name, arguments, and options.
@@ -157,21 +157,21 @@ export class Client extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientState | undefined;
-            resourceInputs["cloudKmsConfig"] = state ? state.cloudKmsConfig : undefined;
-            resourceInputs["createSampleIntegrations"] = state ? state.createSampleIntegrations : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["runAsServiceAccount"] = state ? state.runAsServiceAccount : undefined;
+            resourceInputs["cloudKmsConfig"] = state?.cloudKmsConfig;
+            resourceInputs["createSampleIntegrations"] = state?.createSampleIntegrations;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["runAsServiceAccount"] = state?.runAsServiceAccount;
         } else {
             const args = argsOrState as ClientArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["cloudKmsConfig"] = args ? args.cloudKmsConfig : undefined;
-            resourceInputs["createSampleIntegrations"] = args ? args.createSampleIntegrations : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["runAsServiceAccount"] = args ? args.runAsServiceAccount : undefined;
+            resourceInputs["cloudKmsConfig"] = args?.cloudKmsConfig;
+            resourceInputs["createSampleIntegrations"] = args?.createSampleIntegrations;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["runAsServiceAccount"] = args?.runAsServiceAccount;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Client.__pulumiType, name, resourceInputs, opts);

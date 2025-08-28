@@ -367,139 +367,139 @@ export class MetastoreService extends pulumi.CustomResource {
     /**
      * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
      */
-    public /*out*/ readonly artifactGcsUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly artifactGcsUri: pulumi.Output<string>;
     /**
      * Output only. The time when the metastore service was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
      * Possible values are: `MYSQL`, `SPANNER`.
      */
-    public readonly databaseType!: pulumi.Output<string | undefined>;
+    declare public readonly databaseType: pulumi.Output<string | undefined>;
     /**
      * Indicates if the dataproc metastore should be protected against accidental deletions.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
      * Structure is documented below.
      */
-    public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceEncryptionConfig | undefined>;
+    declare public readonly encryptionConfig: pulumi.Output<outputs.dataproc.MetastoreServiceEncryptionConfig | undefined>;
     /**
      * The URI of the endpoint used to access the metastore service.
      */
-    public /*out*/ readonly endpointUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointUri: pulumi.Output<string>;
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      * Structure is documented below.
      */
-    public readonly hiveMetastoreConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceHiveMetastoreConfig | undefined>;
+    declare public readonly hiveMetastoreConfig: pulumi.Output<outputs.dataproc.MetastoreServiceHiveMetastoreConfig | undefined>;
     /**
      * User-defined labels for the metastore service.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the metastore service should reside.
      * The default value is `global`.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The one hour maintenance window of the metastore service.
      * This specifies when the service can be restarted for maintenance purposes in UTC time.
      * Maintenance window is not needed for services with the `SPANNER` database type.
      * Structure is documented below.
      */
-    public readonly maintenanceWindow!: pulumi.Output<outputs.dataproc.MetastoreServiceMaintenanceWindow | undefined>;
+    declare public readonly maintenanceWindow: pulumi.Output<outputs.dataproc.MetastoreServiceMaintenanceWindow | undefined>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
      * Structure is documented below.
      */
-    public readonly metadataIntegration!: pulumi.Output<outputs.dataproc.MetastoreServiceMetadataIntegration | undefined>;
+    declare public readonly metadataIntegration: pulumi.Output<outputs.dataproc.MetastoreServiceMetadataIntegration | undefined>;
     /**
      * The relative resource name of the metastore service.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The configuration specifying the network settings for the Dataproc Metastore service.
      * Structure is documented below.
      */
-    public readonly networkConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceNetworkConfig | undefined>;
+    declare public readonly networkConfig: pulumi.Output<outputs.dataproc.MetastoreServiceNetworkConfig | undefined>;
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
      * Possible values are: `CANARY`, `STABLE`.
      */
-    public readonly releaseChannel!: pulumi.Output<string | undefined>;
+    declare public readonly releaseChannel: pulumi.Output<string | undefined>;
     /**
      * Represents the scaling configuration of a metastore service.
      * Structure is documented below.
      */
-    public readonly scalingConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceScalingConfig | undefined>;
+    declare public readonly scalingConfig: pulumi.Output<outputs.dataproc.MetastoreServiceScalingConfig | undefined>;
     /**
      * The configuration of scheduled backup for the metastore service.
      * Structure is documented below.
      */
-    public readonly scheduledBackup!: pulumi.Output<outputs.dataproc.MetastoreServiceScheduledBackup | undefined>;
+    declare public readonly scheduledBackup: pulumi.Output<outputs.dataproc.MetastoreServiceScheduledBackup | undefined>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * The current state of the metastore service.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Additional information about the current state of the metastore service, if available.
      */
-    public /*out*/ readonly stateMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateMessage: pulumi.Output<string>;
     /**
      * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
      * Structure is documented below.
      */
-    public readonly telemetryConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceTelemetryConfig>;
+    declare public readonly telemetryConfig: pulumi.Output<outputs.dataproc.MetastoreServiceTelemetryConfig>;
     /**
      * The tier of the service.
      * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      */
-    public readonly tier!: pulumi.Output<string>;
+    declare public readonly tier: pulumi.Output<string>;
     /**
      * The globally unique resource identifier of the metastore service.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time when the metastore service was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a MetastoreService resource with the given unique name, arguments, and options.
@@ -514,54 +514,54 @@ export class MetastoreService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreServiceState | undefined;
-            resourceInputs["artifactGcsUri"] = state ? state.artifactGcsUri : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["databaseType"] = state ? state.databaseType : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
-            resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
-            resourceInputs["hiveMetastoreConfig"] = state ? state.hiveMetastoreConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            resourceInputs["metadataIntegration"] = state ? state.metadataIntegration : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
-            resourceInputs["scalingConfig"] = state ? state.scalingConfig : undefined;
-            resourceInputs["scheduledBackup"] = state ? state.scheduledBackup : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
-            resourceInputs["telemetryConfig"] = state ? state.telemetryConfig : undefined;
-            resourceInputs["tier"] = state ? state.tier : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["artifactGcsUri"] = state?.artifactGcsUri;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["databaseType"] = state?.databaseType;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
+            resourceInputs["endpointUri"] = state?.endpointUri;
+            resourceInputs["hiveMetastoreConfig"] = state?.hiveMetastoreConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maintenanceWindow"] = state?.maintenanceWindow;
+            resourceInputs["metadataIntegration"] = state?.metadataIntegration;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["releaseChannel"] = state?.releaseChannel;
+            resourceInputs["scalingConfig"] = state?.scalingConfig;
+            resourceInputs["scheduledBackup"] = state?.scheduledBackup;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateMessage"] = state?.stateMessage;
+            resourceInputs["telemetryConfig"] = state?.telemetryConfig;
+            resourceInputs["tier"] = state?.tier;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as MetastoreServiceArgs | undefined;
-            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            resourceInputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            resourceInputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
-            resourceInputs["scalingConfig"] = args ? args.scalingConfig : undefined;
-            resourceInputs["scheduledBackup"] = args ? args.scheduledBackup : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["telemetryConfig"] = args ? args.telemetryConfig : undefined;
-            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["databaseType"] = args?.databaseType;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
+            resourceInputs["hiveMetastoreConfig"] = args?.hiveMetastoreConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
+            resourceInputs["metadataIntegration"] = args?.metadataIntegration;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["releaseChannel"] = args?.releaseChannel;
+            resourceInputs["scalingConfig"] = args?.scalingConfig;
+            resourceInputs["scheduledBackup"] = args?.scheduledBackup;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["telemetryConfig"] = args?.telemetryConfig;
+            resourceInputs["tier"] = args?.tier;
             resourceInputs["artifactGcsUri"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

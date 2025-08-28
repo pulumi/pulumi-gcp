@@ -100,16 +100,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     @Import(name="confidentialInstanceConfig")
     private @Nullable Output<InstanceFromTemplateConfidentialInstanceConfigArgs> confidentialInstanceConfig;
 
     /**
-     * @return The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * @return The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     public Optional<Output<InstanceFromTemplateConfidentialInstanceConfigArgs>> confidentialInstanceConfig() {
@@ -147,18 +145,18 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+     * Current status of the instance.
+     * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+     * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     @Import(name="currentStatus")
     private @Nullable Output<String> currentStatus;
 
     /**
-     * @return Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+     * @return Current status of the instance.
+     * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+     * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     public Optional<Output<String>> currentStatus() {
@@ -248,18 +246,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-     * exceed 253 characters. Changing this forces a new resource to be created.
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-     * exceed 253 characters. Changing this forces a new resource to be created.
+     * @return A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -297,16 +291,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
-     * default.
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the default.
      * 
      */
     @Import(name="keyRevocationActionType")
     private @Nullable Output<String> keyRevocationActionType;
 
     /**
-     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
-     * default.
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the default.
      * 
      */
     public Optional<Output<String>> keyRevocationActionType() {
@@ -329,18 +321,20 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * A set of key/value label pairs assigned to the instance.
+     * 
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * @return A set of key/value label pairs assigned to the instance.
+     * 
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -455,16 +449,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configures network performance settings for the instance. If not specified, the instance will be created with its
-     * default network performance configuration.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      * 
      */
     @Import(name="networkPerformanceConfig")
     private @Nullable Output<InstanceFromTemplateNetworkPerformanceConfigArgs> networkPerformanceConfig;
 
     /**
-     * @return Configures network performance settings for the instance. If not specified, the instance will be created with its
-     * default network performance configuration.
+     * @return Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      * 
      */
     public Optional<Output<InstanceFromTemplateNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
@@ -502,16 +494,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-     * self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-     * self_link nor project are provided, the provider project is used.
+     * @return The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -887,8 +877,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param confidentialInstanceConfig The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-         * to create.
+         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
          * 
          * @return builder
          * 
@@ -899,8 +888,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param confidentialInstanceConfig The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-         * to create.
+         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
          * 
          * @return builder
          * 
@@ -952,9 +940,9 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param currentStatus Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-         * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-         * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+         * @param currentStatus Current status of the instance.
+         * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+         * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
          * 
          * @return builder
          * 
@@ -965,9 +953,9 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param currentStatus Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-         * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-         * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+         * @param currentStatus Current status of the instance.
+         * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+         * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
          * 
          * @return builder
          * 
@@ -1101,9 +1089,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param hostname A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-         * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-         * exceed 253 characters. Changing this forces a new resource to be created.
+         * @param hostname A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -1114,9 +1100,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param hostname A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-         * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-         * exceed 253 characters. Changing this forces a new resource to be created.
+         * @param hostname A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -1168,8 +1152,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
-         * default.
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the default.
          * 
          * @return builder
          * 
@@ -1180,8 +1163,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
-         * default.
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the default.
          * 
          * @return builder
          * 
@@ -1212,9 +1194,10 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-         * the resource.
+         * @param labels A set of key/value label pairs assigned to the instance.
+         * 
+         *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1225,9 +1208,10 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-         * the resource.
+         * @param labels A set of key/value label pairs assigned to the instance.
+         * 
+         *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1396,8 +1380,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networkPerformanceConfig Configures network performance settings for the instance. If not specified, the instance will be created with its
-         * default network performance configuration.
+         * @param networkPerformanceConfig Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
          * 
          * @return builder
          * 
@@ -1408,8 +1391,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networkPerformanceConfig Configures network performance settings for the instance. If not specified, the instance will be created with its
-         * default network performance configuration.
+         * @param networkPerformanceConfig Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
          * 
          * @return builder
          * 
@@ -1461,8 +1443,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-         * self_link nor project are provided, the provider project is used.
+         * @param project The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -1473,8 +1454,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-         * self_link nor project are provided, the provider project is used.
+         * @param project The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
          * 
          * @return builder
          * 

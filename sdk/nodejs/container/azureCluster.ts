@@ -170,102 +170,97 @@ export class AzureCluster extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      */
-    public readonly authorization!: pulumi.Output<outputs.container.AzureClusterAuthorization>;
+    declare public readonly authorization: pulumi.Output<outputs.container.AzureClusterAuthorization>;
     /**
      * The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
      */
-    public readonly azureRegion!: pulumi.Output<string>;
+    declare public readonly azureRegion: pulumi.Output<string>;
     /**
      * Azure authentication configuration for management of Azure resources
      */
-    public readonly azureServicesAuthentication!: pulumi.Output<outputs.container.AzureClusterAzureServicesAuthentication | undefined>;
+    declare public readonly azureServicesAuthentication: pulumi.Output<outputs.container.AzureClusterAzureServicesAuthentication | undefined>;
     /**
-     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
-     * `AzureCluster`. `AzureClient` names are formatted as
-     * `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
-     * (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      */
-    public readonly client!: pulumi.Output<string | undefined>;
+    declare public readonly client: pulumi.Output<string | undefined>;
     /**
      * Configuration related to the cluster control plane.
      */
-    public readonly controlPlane!: pulumi.Output<outputs.container.AzureClusterControlPlane>;
+    declare public readonly controlPlane: pulumi.Output<outputs.container.AzureClusterControlPlane>;
     /**
      * Output only. The time at which this cluster was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The endpoint of the cluster's API server.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Fleet configuration.
      */
-    public readonly fleet!: pulumi.Output<outputs.container.AzureClusterFleet>;
+    declare public readonly fleet: pulumi.Output<outputs.container.AzureClusterFleet>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Logging configuration.
      */
-    public readonly loggingConfig!: pulumi.Output<outputs.container.AzureClusterLoggingConfig>;
+    declare public readonly loggingConfig: pulumi.Output<outputs.container.AzureClusterLoggingConfig>;
     /**
      * The name of this resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Cluster-wide networking configuration.
      */
-    public readonly networking!: pulumi.Output<outputs.container.AzureClusterNetworking>;
+    declare public readonly networking: pulumi.Output<outputs.container.AzureClusterNetworking>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. If set, there are currently changes in flight to the cluster.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. A globally unique identifier for the cluster.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time at which this cluster was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Output only. Workload Identity settings.
      */
-    public /*out*/ readonly workloadIdentityConfigs!: pulumi.Output<outputs.container.AzureClusterWorkloadIdentityConfig[]>;
+    declare public /*out*/ readonly workloadIdentityConfigs: pulumi.Output<outputs.container.AzureClusterWorkloadIdentityConfig[]>;
 
     /**
      * Create a AzureCluster resource with the given unique name, arguments, and options.
@@ -280,66 +275,66 @@ export class AzureCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureClusterState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["authorization"] = state ? state.authorization : undefined;
-            resourceInputs["azureRegion"] = state ? state.azureRegion : undefined;
-            resourceInputs["azureServicesAuthentication"] = state ? state.azureServicesAuthentication : undefined;
-            resourceInputs["client"] = state ? state.client : undefined;
-            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["fleet"] = state ? state.fleet : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networking"] = state ? state.networking : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["workloadIdentityConfigs"] = state ? state.workloadIdentityConfigs : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["authorization"] = state?.authorization;
+            resourceInputs["azureRegion"] = state?.azureRegion;
+            resourceInputs["azureServicesAuthentication"] = state?.azureServicesAuthentication;
+            resourceInputs["client"] = state?.client;
+            resourceInputs["controlPlane"] = state?.controlPlane;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["fleet"] = state?.fleet;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["loggingConfig"] = state?.loggingConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networking"] = state?.networking;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["workloadIdentityConfigs"] = state?.workloadIdentityConfigs;
         } else {
             const args = argsOrState as AzureClusterArgs | undefined;
-            if ((!args || args.authorization === undefined) && !opts.urn) {
+            if (args?.authorization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authorization'");
             }
-            if ((!args || args.azureRegion === undefined) && !opts.urn) {
+            if (args?.azureRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'azureRegion'");
             }
-            if ((!args || args.controlPlane === undefined) && !opts.urn) {
+            if (args?.controlPlane === undefined && !opts.urn) {
                 throw new Error("Missing required property 'controlPlane'");
             }
-            if ((!args || args.fleet === undefined) && !opts.urn) {
+            if (args?.fleet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fleet'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.networking === undefined) && !opts.urn) {
+            if (args?.networking === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networking'");
             }
-            if ((!args || args.resourceGroupId === undefined) && !opts.urn) {
+            if (args?.resourceGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["authorization"] = args ? args.authorization : undefined;
-            resourceInputs["azureRegion"] = args ? args.azureRegion : undefined;
-            resourceInputs["azureServicesAuthentication"] = args ? args.azureServicesAuthentication : undefined;
-            resourceInputs["client"] = args ? args.client : undefined;
-            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fleet"] = args ? args.fleet : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networking"] = args ? args.networking : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["authorization"] = args?.authorization;
+            resourceInputs["azureRegion"] = args?.azureRegion;
+            resourceInputs["azureServicesAuthentication"] = args?.azureServicesAuthentication;
+            resourceInputs["client"] = args?.client;
+            resourceInputs["controlPlane"] = args?.controlPlane;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fleet"] = args?.fleet;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["loggingConfig"] = args?.loggingConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networking"] = args?.networking;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
@@ -360,12 +355,10 @@ export class AzureCluster extends pulumi.CustomResource {
  */
 export interface AzureClusterState {
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -381,10 +374,7 @@ export interface AzureClusterState {
      */
     azureServicesAuthentication?: pulumi.Input<inputs.container.AzureClusterAzureServicesAuthentication>;
     /**
-     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
-     * `AzureCluster`. `AzureClient` names are formatted as
-     * `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
-     * (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      */
     client?: pulumi.Input<string>;
     /**
@@ -463,12 +453,10 @@ export interface AzureClusterState {
  */
 export interface AzureClusterArgs {
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -484,10 +472,7 @@ export interface AzureClusterArgs {
      */
     azureServicesAuthentication?: pulumi.Input<inputs.container.AzureClusterAzureServicesAuthentication>;
     /**
-     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
-     * `AzureCluster`. `AzureClient` names are formatted as
-     * `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
-     * (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      */
     client?: pulumi.Input<string>;
     /**

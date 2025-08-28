@@ -342,20 +342,20 @@ export class IAMAuditConfig extends pulumi.CustomResource {
     /**
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      */
-    public readonly auditLogConfigs!: pulumi.Output<outputs.projects.IAMAuditConfigAuditLogConfig[]>;
+    declare public readonly auditLogConfigs: pulumi.Output<outputs.projects.IAMAuditConfigAuditLogConfig[]>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The project id of the target project. This is not
      * inferred from the provider.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a IAMAuditConfig resource with the given unique name, arguments, and options.
@@ -370,24 +370,24 @@ export class IAMAuditConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IAMAuditConfigState | undefined;
-            resourceInputs["auditLogConfigs"] = state ? state.auditLogConfigs : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["auditLogConfigs"] = state?.auditLogConfigs;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as IAMAuditConfigArgs | undefined;
-            if ((!args || args.auditLogConfigs === undefined) && !opts.urn) {
+            if (args?.auditLogConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'auditLogConfigs'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["auditLogConfigs"] = args ? args.auditLogConfigs : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["auditLogConfigs"] = args?.auditLogConfigs;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

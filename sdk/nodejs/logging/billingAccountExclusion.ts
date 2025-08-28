@@ -62,26 +62,26 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
     /**
      * The billing account to create the exclusion for.
      */
-    public readonly billingAccount!: pulumi.Output<string>;
+    declare public readonly billingAccount: pulumi.Output<string>;
     /**
      * A human-readable description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    public readonly filter!: pulumi.Output<string>;
+    declare public readonly filter: pulumi.Output<string>;
     /**
      * The name of the logging exclusion.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a BillingAccountExclusion resource with the given unique name, arguments, and options.
@@ -96,24 +96,24 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BillingAccountExclusionState | undefined;
-            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["billingAccount"] = state?.billingAccount;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as BillingAccountExclusionArgs | undefined;
-            if ((!args || args.billingAccount === undefined) && !opts.urn) {
+            if (args?.billingAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if ((!args || args.filter === undefined) && !opts.urn) {
+            if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["billingAccount"] = args?.billingAccount;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BillingAccountExclusion.__pulumiType, name, resourceInputs, opts);

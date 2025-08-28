@@ -101,35 +101,35 @@ export class HostProjectRegistration extends pulumi.CustomResource {
     /**
      * Output only. The time at which the host project registration was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
      * As input, project name with either project id or number are accepted.
      * As output, this field will contain project number.
      */
-    public readonly gcpProject!: pulumi.Output<string>;
+    declare public readonly gcpProject: pulumi.Output<string>;
     /**
      * Required. The ID to use for the Host Project Registration, which will become the
      * final component of the host project registration's resource name. The ID
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
      */
-    public readonly hostProjectRegistrationId!: pulumi.Output<string>;
+    declare public readonly hostProjectRegistrationId: pulumi.Output<string>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The name of the host project registration.
      * Format:
      * "projects/{project}/locations/{location}/hostProjectRegistrations/{host_project_registration}".
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a HostProjectRegistration resource with the given unique name, arguments, and options.
@@ -144,27 +144,27 @@ export class HostProjectRegistration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostProjectRegistrationState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["gcpProject"] = state ? state.gcpProject : undefined;
-            resourceInputs["hostProjectRegistrationId"] = state ? state.hostProjectRegistrationId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["gcpProject"] = state?.gcpProject;
+            resourceInputs["hostProjectRegistrationId"] = state?.hostProjectRegistrationId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as HostProjectRegistrationArgs | undefined;
-            if ((!args || args.gcpProject === undefined) && !opts.urn) {
+            if (args?.gcpProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcpProject'");
             }
-            if ((!args || args.hostProjectRegistrationId === undefined) && !opts.urn) {
+            if (args?.hostProjectRegistrationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostProjectRegistrationId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["gcpProject"] = args ? args.gcpProject : undefined;
-            resourceInputs["hostProjectRegistrationId"] = args ? args.hostProjectRegistrationId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["gcpProject"] = args?.gcpProject;
+            resourceInputs["hostProjectRegistrationId"] = args?.hostProjectRegistrationId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

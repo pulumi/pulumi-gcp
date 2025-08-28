@@ -373,109 +373,109 @@ export class MigrationJob extends pulumi.CustomResource {
     /**
      * Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      */
-    public readonly destination!: pulumi.Output<string>;
+    declare public readonly destination: pulumi.Output<string>;
     /**
      * The migration job display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The initial dump flags.
      * Structure is documented below.
      */
-    public readonly dumpFlags!: pulumi.Output<outputs.databasemigrationservice.MigrationJobDumpFlags | undefined>;
+    declare public readonly dumpFlags: pulumi.Output<outputs.databasemigrationservice.MigrationJobDumpFlags | undefined>;
     /**
      * The path to the dump file in Google Cloud Storage,
      * in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
      * This field and the "dumpFlags" field are mutually exclusive.
      */
-    public readonly dumpPath!: pulumi.Output<string | undefined>;
+    declare public readonly dumpPath: pulumi.Output<string | undefined>;
     /**
      * The type of the data dump. Supported for MySQL to CloudSQL for MySQL
      * migrations only.
      * Possible values are: `LOGICAL`, `PHYSICAL`.
      */
-    public readonly dumpType!: pulumi.Output<string | undefined>;
+    declare public readonly dumpType: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The error details in case of state FAILED.
      * Structure is documented below.
      */
-    public /*out*/ readonly errors!: pulumi.Output<outputs.databasemigrationservice.MigrationJobError[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<outputs.databasemigrationservice.MigrationJobError[]>;
     /**
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the migration job should reside.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The ID of the migration job.
      */
-    public readonly migrationJobId!: pulumi.Output<string>;
+    declare public readonly migrationJobId: pulumi.Output<string>;
     /**
      * The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Data dump parallelism settings used by the migration.
      * Structure is documented below.
      */
-    public readonly performanceConfig!: pulumi.Output<outputs.databasemigrationservice.MigrationJobPerformanceConfig | undefined>;
+    declare public readonly performanceConfig: pulumi.Output<outputs.databasemigrationservice.MigrationJobPerformanceConfig | undefined>;
     /**
      * The current migration job phase.
      */
-    public /*out*/ readonly phase!: pulumi.Output<string>;
+    declare public /*out*/ readonly phase: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The details of the VPC network that the source database is located in.
      * Structure is documented below.
      */
-    public readonly reverseSshConnectivity!: pulumi.Output<outputs.databasemigrationservice.MigrationJobReverseSshConnectivity | undefined>;
+    declare public readonly reverseSshConnectivity: pulumi.Output<outputs.databasemigrationservice.MigrationJobReverseSshConnectivity | undefined>;
     /**
      * The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
     /**
      * The current migration job state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * If set to an empty object (`{}`), the source database will allow incoming
      * connections from the public IP of the destination database.
      * You can retrieve the public IP of the Cloud SQL instance from the
      * Cloud SQL console or using Cloud SQL APIs.
      */
-    public readonly staticIpConnectivity!: pulumi.Output<outputs.databasemigrationservice.MigrationJobStaticIpConnectivity | undefined>;
+    declare public readonly staticIpConnectivity: pulumi.Output<outputs.databasemigrationservice.MigrationJobStaticIpConnectivity | undefined>;
     /**
      * The type of the migration job.
      * Possible values are: `ONE_TIME`, `CONTINUOUS`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The details of the VPC network that the source database is located in.
      * Structure is documented below.
      */
-    public readonly vpcPeeringConnectivity!: pulumi.Output<outputs.databasemigrationservice.MigrationJobVpcPeeringConnectivity | undefined>;
+    declare public readonly vpcPeeringConnectivity: pulumi.Output<outputs.databasemigrationservice.MigrationJobVpcPeeringConnectivity | undefined>;
 
     /**
      * Create a MigrationJob resource with the given unique name, arguments, and options.
@@ -490,57 +490,57 @@ export class MigrationJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MigrationJobState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["dumpFlags"] = state ? state.dumpFlags : undefined;
-            resourceInputs["dumpPath"] = state ? state.dumpPath : undefined;
-            resourceInputs["dumpType"] = state ? state.dumpType : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["migrationJobId"] = state ? state.migrationJobId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["performanceConfig"] = state ? state.performanceConfig : undefined;
-            resourceInputs["phase"] = state ? state.phase : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reverseSshConnectivity"] = state ? state.reverseSshConnectivity : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["staticIpConnectivity"] = state ? state.staticIpConnectivity : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vpcPeeringConnectivity"] = state ? state.vpcPeeringConnectivity : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["dumpFlags"] = state?.dumpFlags;
+            resourceInputs["dumpPath"] = state?.dumpPath;
+            resourceInputs["dumpType"] = state?.dumpType;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["migrationJobId"] = state?.migrationJobId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["performanceConfig"] = state?.performanceConfig;
+            resourceInputs["phase"] = state?.phase;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reverseSshConnectivity"] = state?.reverseSshConnectivity;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["staticIpConnectivity"] = state?.staticIpConnectivity;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vpcPeeringConnectivity"] = state?.vpcPeeringConnectivity;
         } else {
             const args = argsOrState as MigrationJobArgs | undefined;
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.migrationJobId === undefined) && !opts.urn) {
+            if (args?.migrationJobId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'migrationJobId'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["dumpFlags"] = args ? args.dumpFlags : undefined;
-            resourceInputs["dumpPath"] = args ? args.dumpPath : undefined;
-            resourceInputs["dumpType"] = args ? args.dumpType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["migrationJobId"] = args ? args.migrationJobId : undefined;
-            resourceInputs["performanceConfig"] = args ? args.performanceConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["staticIpConnectivity"] = args ? args.staticIpConnectivity : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vpcPeeringConnectivity"] = args ? args.vpcPeeringConnectivity : undefined;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["dumpFlags"] = args?.dumpFlags;
+            resourceInputs["dumpPath"] = args?.dumpPath;
+            resourceInputs["dumpType"] = args?.dumpType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["migrationJobId"] = args?.migrationJobId;
+            resourceInputs["performanceConfig"] = args?.performanceConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reverseSshConnectivity"] = args?.reverseSshConnectivity;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["staticIpConnectivity"] = args?.staticIpConnectivity;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vpcPeeringConnectivity"] = args?.vpcPeeringConnectivity;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;

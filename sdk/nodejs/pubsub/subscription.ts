@@ -473,21 +473,21 @@ export class Subscription extends pulumi.CustomResource {
      * If the subscriber never acknowledges the message, the Pub/Sub system
      * will eventually redeliver the message.
      */
-    public readonly ackDeadlineSeconds!: pulumi.Output<number>;
+    declare public readonly ackDeadlineSeconds: pulumi.Output<number>;
     /**
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
      * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
      * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      */
-    public readonly bigqueryConfig!: pulumi.Output<outputs.pubsub.SubscriptionBigqueryConfig | undefined>;
+    declare public readonly bigqueryConfig: pulumi.Output<outputs.pubsub.SubscriptionBigqueryConfig | undefined>;
     /**
      * If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
      * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
      * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      */
-    public readonly cloudStorageConfig!: pulumi.Output<outputs.pubsub.SubscriptionCloudStorageConfig | undefined>;
+    declare public readonly cloudStorageConfig: pulumi.Output<outputs.pubsub.SubscriptionCloudStorageConfig | undefined>;
     /**
      * A policy that specifies the conditions for dead lettering messages in
      * this subscription. If deadLetterPolicy is not set, dead lettering
@@ -498,11 +498,11 @@ export class Subscription extends pulumi.CustomResource {
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      */
-    public readonly deadLetterPolicy!: pulumi.Output<outputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
+    declare public readonly deadLetterPolicy: pulumi.Output<outputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * If `true`, Pub/Sub provides the following guarantees for the delivery
      * of a message with a given value of messageId on this Subscriptions':
@@ -511,13 +511,13 @@ export class Subscription extends pulumi.CustomResource {
      * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
      * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      */
-    public readonly enableExactlyOnceDelivery!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableExactlyOnceDelivery: pulumi.Output<boolean | undefined>;
     /**
      * If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
      * the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
      * may be delivered in any order.
      */
-    public readonly enableMessageOrdering!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableMessageOrdering: pulumi.Output<boolean | undefined>;
     /**
      * A policy that specifies the conditions for this subscription's expiration.
      * A subscription is considered active as long as any connected subscriber
@@ -528,21 +528,21 @@ export class Subscription extends pulumi.CustomResource {
      * is 1 day.
      * Structure is documented below.
      */
-    public readonly expirationPolicy!: pulumi.Output<outputs.pubsub.SubscriptionExpirationPolicy>;
+    declare public readonly expirationPolicy: pulumi.Output<outputs.pubsub.SubscriptionExpirationPolicy>;
     /**
      * The subscription only delivers the messages that match the filter.
      * Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
      * by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
      * you can't modify the filter.
      */
-    public readonly filter!: pulumi.Output<string | undefined>;
+    declare public readonly filter: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Subscription.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * How long to retain unacknowledged messages in the subscription's
      * backlog, from the moment a message is published. If
@@ -553,54 +553,54 @@ export class Subscription extends pulumi.CustomResource {
      * A duration in seconds with up to nine fractional digits, terminated
      * by 's'. Example: `"600.5s"`.
      */
-    public readonly messageRetentionDuration!: pulumi.Output<string | undefined>;
+    declare public readonly messageRetentionDuration: pulumi.Output<string | undefined>;
     /**
      * Transforms to be applied to messages published to the topic. Transforms are applied in the
      * order specified.
      * Structure is documented below.
      */
-    public readonly messageTransforms!: pulumi.Output<outputs.pubsub.SubscriptionMessageTransform[] | undefined>;
+    declare public readonly messageTransforms: pulumi.Output<outputs.pubsub.SubscriptionMessageTransform[] | undefined>;
     /**
      * Name of the subscription.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * If push delivery is used with this subscription, this field is used to
      * configure it. An empty pushConfig signifies that the subscriber will
      * pull and ack messages using API methods.
      * Structure is documented below.
      */
-    public readonly pushConfig!: pulumi.Output<outputs.pubsub.SubscriptionPushConfig | undefined>;
+    declare public readonly pushConfig: pulumi.Output<outputs.pubsub.SubscriptionPushConfig | undefined>;
     /**
      * Indicates whether to retain acknowledged messages. If `true`, then
      * messages are not expunged from the subscription's backlog, even if
      * they are acknowledged, until they fall out of the
      * messageRetentionDuration window.
      */
-    public readonly retainAckedMessages!: pulumi.Output<boolean | undefined>;
+    declare public readonly retainAckedMessages: pulumi.Output<boolean | undefined>;
     /**
      * A policy that specifies how Pub/Sub retries message delivery for this subscription.
      * If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
      * RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
      * Structure is documented below.
      */
-    public readonly retryPolicy!: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
+    declare public readonly retryPolicy: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
     /**
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
      */
-    public readonly topic!: pulumi.Output<string>;
+    declare public readonly topic: pulumi.Output<string>;
 
     /**
      * Create a Subscription resource with the given unique name, arguments, and options.
@@ -615,47 +615,47 @@ export class Subscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
-            resourceInputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
-            resourceInputs["bigqueryConfig"] = state ? state.bigqueryConfig : undefined;
-            resourceInputs["cloudStorageConfig"] = state ? state.cloudStorageConfig : undefined;
-            resourceInputs["deadLetterPolicy"] = state ? state.deadLetterPolicy : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableExactlyOnceDelivery"] = state ? state.enableExactlyOnceDelivery : undefined;
-            resourceInputs["enableMessageOrdering"] = state ? state.enableMessageOrdering : undefined;
-            resourceInputs["expirationPolicy"] = state ? state.expirationPolicy : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
-            resourceInputs["messageTransforms"] = state ? state.messageTransforms : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["pushConfig"] = state ? state.pushConfig : undefined;
-            resourceInputs["retainAckedMessages"] = state ? state.retainAckedMessages : undefined;
-            resourceInputs["retryPolicy"] = state ? state.retryPolicy : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["ackDeadlineSeconds"] = state?.ackDeadlineSeconds;
+            resourceInputs["bigqueryConfig"] = state?.bigqueryConfig;
+            resourceInputs["cloudStorageConfig"] = state?.cloudStorageConfig;
+            resourceInputs["deadLetterPolicy"] = state?.deadLetterPolicy;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableExactlyOnceDelivery"] = state?.enableExactlyOnceDelivery;
+            resourceInputs["enableMessageOrdering"] = state?.enableMessageOrdering;
+            resourceInputs["expirationPolicy"] = state?.expirationPolicy;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["messageRetentionDuration"] = state?.messageRetentionDuration;
+            resourceInputs["messageTransforms"] = state?.messageTransforms;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["pushConfig"] = state?.pushConfig;
+            resourceInputs["retainAckedMessages"] = state?.retainAckedMessages;
+            resourceInputs["retryPolicy"] = state?.retryPolicy;
+            resourceInputs["topic"] = state?.topic;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
-            if ((!args || args.topic === undefined) && !opts.urn) {
+            if (args?.topic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
-            resourceInputs["bigqueryConfig"] = args ? args.bigqueryConfig : undefined;
-            resourceInputs["cloudStorageConfig"] = args ? args.cloudStorageConfig : undefined;
-            resourceInputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
-            resourceInputs["enableExactlyOnceDelivery"] = args ? args.enableExactlyOnceDelivery : undefined;
-            resourceInputs["enableMessageOrdering"] = args ? args.enableMessageOrdering : undefined;
-            resourceInputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
-            resourceInputs["messageTransforms"] = args ? args.messageTransforms : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pushConfig"] = args ? args.pushConfig : undefined;
-            resourceInputs["retainAckedMessages"] = args ? args.retainAckedMessages : undefined;
-            resourceInputs["retryPolicy"] = args ? args.retryPolicy : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["ackDeadlineSeconds"] = args?.ackDeadlineSeconds;
+            resourceInputs["bigqueryConfig"] = args?.bigqueryConfig;
+            resourceInputs["cloudStorageConfig"] = args?.cloudStorageConfig;
+            resourceInputs["deadLetterPolicy"] = args?.deadLetterPolicy;
+            resourceInputs["enableExactlyOnceDelivery"] = args?.enableExactlyOnceDelivery;
+            resourceInputs["enableMessageOrdering"] = args?.enableMessageOrdering;
+            resourceInputs["expirationPolicy"] = args?.expirationPolicy;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["messageRetentionDuration"] = args?.messageRetentionDuration;
+            resourceInputs["messageTransforms"] = args?.messageTransforms;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pushConfig"] = args?.pushConfig;
+            resourceInputs["retainAckedMessages"] = args?.retainAckedMessages;
+            resourceInputs["retryPolicy"] = args?.retryPolicy;
+            resourceInputs["topic"] = args?.topic;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

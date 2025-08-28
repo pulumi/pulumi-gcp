@@ -230,12 +230,12 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
      */
-    public readonly allInstancesConfig!: pulumi.Output<outputs.compute.InstanceGroupManagerAllInstancesConfig | undefined>;
+    declare public readonly allInstancesConfig: pulumi.Output<outputs.compute.InstanceGroupManagerAllInstancesConfig | undefined>;
     /**
      * The autohealing policies for this managed instance
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      */
-    public readonly autoHealingPolicies!: pulumi.Output<outputs.compute.InstanceGroupManagerAutoHealingPolicies | undefined>;
+    declare public readonly autoHealingPolicies: pulumi.Output<outputs.compute.InstanceGroupManagerAutoHealingPolicies | undefined>;
     /**
      * The base instance name to use for
      * instances in this group. The value must be a valid
@@ -244,32 +244,32 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * appending a hyphen and a random four-character string to the base instance
      * name.
      */
-    public readonly baseInstanceName!: pulumi.Output<string>;
+    declare public readonly baseInstanceName: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional textual description of the instance
      * group manager.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The fingerprint of the instance group manager.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The full URL of the instance group created by the manager.
      */
-    public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceGroup: pulumi.Output<string>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly instanceGroupManagerId!: pulumi.Output<number>;
+    declare public /*out*/ readonly instanceGroupManagerId: pulumi.Output<number>;
     /**
      * The instance lifecycle policy for this managed instance group.
      */
-    public readonly instanceLifecyclePolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerInstanceLifecyclePolicy>;
+    declare public readonly instanceLifecyclePolicy: pulumi.Output<outputs.compute.InstanceGroupManagerInstanceLifecyclePolicy>;
     /**
      * Pagination behavior of the `listManagedInstances` API
      * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -278,108 +278,107 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
      * respected.
      */
-    public readonly listManagedInstancesResults!: pulumi.Output<string | undefined>;
+    declare public readonly listManagedInstancesResults: pulumi.Output<string | undefined>;
     /**
      * The name of the instance group manager. Must be 1-63
      * characters long and comply with
      * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
      * include lowercase letters, numbers, and hyphens.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The named port configuration. See the section below
      * for details on configuration.
      */
-    public readonly namedPorts!: pulumi.Output<outputs.compute.InstanceGroupManagerNamedPort[] | undefined>;
-    public /*out*/ readonly operation!: pulumi.Output<string>;
+    declare public readonly namedPorts: pulumi.Output<outputs.compute.InstanceGroupManagerNamedPort[] | undefined>;
+    declare public /*out*/ readonly operation: pulumi.Output<string>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
-    public readonly params!: pulumi.Output<outputs.compute.InstanceGroupManagerParams | undefined>;
+    declare public readonly params: pulumi.Output<outputs.compute.InstanceGroupManagerParams | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      *
      * - - -
      */
-    public readonly resourcePolicies!: pulumi.Output<outputs.compute.InstanceGroupManagerResourcePolicies | undefined>;
+    declare public readonly resourcePolicies: pulumi.Output<outputs.compute.InstanceGroupManagerResourcePolicies | undefined>;
     /**
      * The URL of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
-    public readonly standbyPolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerStandbyPolicy>;
+    declare public readonly standbyPolicy: pulumi.Output<outputs.compute.InstanceGroupManagerStandbyPolicy>;
     /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
-    public readonly statefulDisks!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulDisk[] | undefined>;
+    declare public readonly statefulDisks: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulDisk[] | undefined>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
-    public readonly statefulExternalIps!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulExternalIp[] | undefined>;
+    declare public readonly statefulExternalIps: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulExternalIp[] | undefined>;
     /**
      * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
-    public readonly statefulInternalIps!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulInternalIp[] | undefined>;
+    declare public readonly statefulInternalIps: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulInternalIp[] | undefined>;
     /**
      * The status of this managed instance group.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.compute.InstanceGroupManagerStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.compute.InstanceGroupManagerStatus[]>;
     /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
      */
-    public readonly targetPools!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetPools: pulumi.Output<string[] | undefined>;
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set
-     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
-    public readonly targetSize!: pulumi.Output<number>;
+    declare public readonly targetSize: pulumi.Output<number>;
     /**
      * The target number of stopped instances for this managed instance group.
      */
-    public readonly targetStoppedSize!: pulumi.Output<number>;
+    declare public readonly targetStoppedSize: pulumi.Output<number>;
     /**
      * The target number of suspended instances for this managed instance group.
      */
-    public readonly targetSuspendedSize!: pulumi.Output<number>;
+    declare public readonly targetSuspendedSize: pulumi.Output<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      */
-    public readonly updatePolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerUpdatePolicy>;
+    declare public readonly updatePolicy: pulumi.Output<outputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
      */
-    public readonly versions!: pulumi.Output<outputs.compute.InstanceGroupManagerVersion[]>;
+    declare public readonly versions: pulumi.Output<outputs.compute.InstanceGroupManagerVersion[]>;
     /**
      * Whether to wait for all instances to be created/updated before
      * returning. Note that if this is set to true and the operation does not succeed, this provider will
      * continue trying until it times out.
      */
-    public readonly waitForInstances!: pulumi.Output<boolean | undefined>;
+    declare public readonly waitForInstances: pulumi.Output<boolean | undefined>;
     /**
      * When used with `waitForInstances` it specifies the status to wait for.
      * When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
      * set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
      * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
      */
-    public readonly waitForInstancesStatus!: pulumi.Output<string | undefined>;
+    declare public readonly waitForInstancesStatus: pulumi.Output<string | undefined>;
     /**
      * The zone that instances in this group should be created
      * in.
      *
      * - - -
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a InstanceGroupManager resource with the given unique name, arguments, and options.
@@ -394,69 +393,69 @@ export class InstanceGroupManager extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupManagerState | undefined;
-            resourceInputs["allInstancesConfig"] = state ? state.allInstancesConfig : undefined;
-            resourceInputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
-            resourceInputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["instanceGroup"] = state ? state.instanceGroup : undefined;
-            resourceInputs["instanceGroupManagerId"] = state ? state.instanceGroupManagerId : undefined;
-            resourceInputs["instanceLifecyclePolicy"] = state ? state.instanceLifecyclePolicy : undefined;
-            resourceInputs["listManagedInstancesResults"] = state ? state.listManagedInstancesResults : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namedPorts"] = state ? state.namedPorts : undefined;
-            resourceInputs["operation"] = state ? state.operation : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["standbyPolicy"] = state ? state.standbyPolicy : undefined;
-            resourceInputs["statefulDisks"] = state ? state.statefulDisks : undefined;
-            resourceInputs["statefulExternalIps"] = state ? state.statefulExternalIps : undefined;
-            resourceInputs["statefulInternalIps"] = state ? state.statefulInternalIps : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["targetPools"] = state ? state.targetPools : undefined;
-            resourceInputs["targetSize"] = state ? state.targetSize : undefined;
-            resourceInputs["targetStoppedSize"] = state ? state.targetStoppedSize : undefined;
-            resourceInputs["targetSuspendedSize"] = state ? state.targetSuspendedSize : undefined;
-            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            resourceInputs["versions"] = state ? state.versions : undefined;
-            resourceInputs["waitForInstances"] = state ? state.waitForInstances : undefined;
-            resourceInputs["waitForInstancesStatus"] = state ? state.waitForInstancesStatus : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["allInstancesConfig"] = state?.allInstancesConfig;
+            resourceInputs["autoHealingPolicies"] = state?.autoHealingPolicies;
+            resourceInputs["baseInstanceName"] = state?.baseInstanceName;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["instanceGroup"] = state?.instanceGroup;
+            resourceInputs["instanceGroupManagerId"] = state?.instanceGroupManagerId;
+            resourceInputs["instanceLifecyclePolicy"] = state?.instanceLifecyclePolicy;
+            resourceInputs["listManagedInstancesResults"] = state?.listManagedInstancesResults;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namedPorts"] = state?.namedPorts;
+            resourceInputs["operation"] = state?.operation;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resourcePolicies"] = state?.resourcePolicies;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["standbyPolicy"] = state?.standbyPolicy;
+            resourceInputs["statefulDisks"] = state?.statefulDisks;
+            resourceInputs["statefulExternalIps"] = state?.statefulExternalIps;
+            resourceInputs["statefulInternalIps"] = state?.statefulInternalIps;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["targetPools"] = state?.targetPools;
+            resourceInputs["targetSize"] = state?.targetSize;
+            resourceInputs["targetStoppedSize"] = state?.targetStoppedSize;
+            resourceInputs["targetSuspendedSize"] = state?.targetSuspendedSize;
+            resourceInputs["updatePolicy"] = state?.updatePolicy;
+            resourceInputs["versions"] = state?.versions;
+            resourceInputs["waitForInstances"] = state?.waitForInstances;
+            resourceInputs["waitForInstancesStatus"] = state?.waitForInstancesStatus;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceGroupManagerArgs | undefined;
-            if ((!args || args.baseInstanceName === undefined) && !opts.urn) {
+            if (args?.baseInstanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'baseInstanceName'");
             }
-            if ((!args || args.versions === undefined) && !opts.urn) {
+            if (args?.versions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'versions'");
             }
-            resourceInputs["allInstancesConfig"] = args ? args.allInstancesConfig : undefined;
-            resourceInputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
-            resourceInputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
-            resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
-            resourceInputs["standbyPolicy"] = args ? args.standbyPolicy : undefined;
-            resourceInputs["statefulDisks"] = args ? args.statefulDisks : undefined;
-            resourceInputs["statefulExternalIps"] = args ? args.statefulExternalIps : undefined;
-            resourceInputs["statefulInternalIps"] = args ? args.statefulInternalIps : undefined;
-            resourceInputs["targetPools"] = args ? args.targetPools : undefined;
-            resourceInputs["targetSize"] = args ? args.targetSize : undefined;
-            resourceInputs["targetStoppedSize"] = args ? args.targetStoppedSize : undefined;
-            resourceInputs["targetSuspendedSize"] = args ? args.targetSuspendedSize : undefined;
-            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            resourceInputs["versions"] = args ? args.versions : undefined;
-            resourceInputs["waitForInstances"] = args ? args.waitForInstances : undefined;
-            resourceInputs["waitForInstancesStatus"] = args ? args.waitForInstancesStatus : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["allInstancesConfig"] = args?.allInstancesConfig;
+            resourceInputs["autoHealingPolicies"] = args?.autoHealingPolicies;
+            resourceInputs["baseInstanceName"] = args?.baseInstanceName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceLifecyclePolicy"] = args?.instanceLifecyclePolicy;
+            resourceInputs["listManagedInstancesResults"] = args?.listManagedInstancesResults;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namedPorts"] = args?.namedPorts;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourcePolicies"] = args?.resourcePolicies;
+            resourceInputs["standbyPolicy"] = args?.standbyPolicy;
+            resourceInputs["statefulDisks"] = args?.statefulDisks;
+            resourceInputs["statefulExternalIps"] = args?.statefulExternalIps;
+            resourceInputs["statefulInternalIps"] = args?.statefulInternalIps;
+            resourceInputs["targetPools"] = args?.targetPools;
+            resourceInputs["targetSize"] = args?.targetSize;
+            resourceInputs["targetStoppedSize"] = args?.targetStoppedSize;
+            resourceInputs["targetSuspendedSize"] = args?.targetSuspendedSize;
+            resourceInputs["updatePolicy"] = args?.updatePolicy;
+            resourceInputs["versions"] = args?.versions;
+            resourceInputs["waitForInstances"] = args?.waitForInstances;
+            resourceInputs["waitForInstancesStatus"] = args?.waitForInstancesStatus;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
@@ -587,8 +586,7 @@ export interface InstanceGroupManagerState {
      */
     targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set
-     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     targetSize?: pulumi.Input<number>;
     /**
@@ -723,8 +721,7 @@ export interface InstanceGroupManagerArgs {
      */
     targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set
-     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     targetSize?: pulumi.Input<number>;
     /**

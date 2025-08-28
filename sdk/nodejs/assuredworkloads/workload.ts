@@ -171,62 +171,62 @@ export class Workload extends pulumi.CustomResource {
     /**
      * Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      */
-    public readonly billingAccount!: pulumi.Output<string | undefined>;
+    declare public readonly billingAccount: pulumi.Output<string | undefined>;
     /**
      * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_US_SUPPORT, IRS_1075
      */
-    public readonly complianceRegime!: pulumi.Output<string>;
+    declare public readonly complianceRegime: pulumi.Output<string>;
     /**
      * Output only. Count of active Violations in the Workload.
      */
-    public /*out*/ readonly complianceStatuses!: pulumi.Output<outputs.assuredworkloads.WorkloadComplianceStatus[]>;
+    declare public /*out*/ readonly complianceStatuses: pulumi.Output<outputs.assuredworkloads.WorkloadComplianceStatus[]>;
     /**
      * Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
      */
-    public /*out*/ readonly compliantButDisallowedServices!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly compliantButDisallowedServices: pulumi.Output<string[]>;
     /**
      * Output only. Immutable. The Workload creation timestamp.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Represents the Ekm Provisioning State of the given workload.
      */
-    public /*out*/ readonly ekmProvisioningResponses!: pulumi.Output<outputs.assuredworkloads.WorkloadEkmProvisioningResponse[]>;
+    declare public /*out*/ readonly ekmProvisioningResponses: pulumi.Output<outputs.assuredworkloads.WorkloadEkmProvisioningResponse[]>;
     /**
      * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
      */
-    public readonly enableSovereignControls!: pulumi.Output<boolean>;
+    declare public readonly enableSovereignControls: pulumi.Output<boolean>;
     /**
      * Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
      */
-    public /*out*/ readonly kajEnrollmentState!: pulumi.Output<string>;
+    declare public /*out*/ readonly kajEnrollmentState: pulumi.Output<string>;
     /**
      * **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
      */
-    public readonly kmsSettings!: pulumi.Output<outputs.assuredworkloads.WorkloadKmsSettings | undefined>;
+    declare public readonly kmsSettings: pulumi.Output<outputs.assuredworkloads.WorkloadKmsSettings | undefined>;
     /**
      * Optional. Labels applied to the workload.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. The resource name of the workload.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The organization for the resource
      *
@@ -234,47 +234,47 @@ export class Workload extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly organization!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
     /**
      * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
      */
-    public readonly partner!: pulumi.Output<string | undefined>;
+    declare public readonly partner: pulumi.Output<string | undefined>;
     /**
      * Optional. Permissions granted to the AW Partner SA account for the customer workload
      */
-    public readonly partnerPermissions!: pulumi.Output<outputs.assuredworkloads.WorkloadPartnerPermissions | undefined>;
+    declare public readonly partnerPermissions: pulumi.Output<outputs.assuredworkloads.WorkloadPartnerPermissions | undefined>;
     /**
      * Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
      */
-    public readonly partnerServicesBillingAccount!: pulumi.Output<string | undefined>;
+    declare public readonly partnerServicesBillingAccount: pulumi.Output<string | undefined>;
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */
-    public readonly provisionedResourcesParent!: pulumi.Output<string | undefined>;
+    declare public readonly provisionedResourcesParent: pulumi.Output<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
-    public readonly resourceSettings!: pulumi.Output<outputs.assuredworkloads.WorkloadResourceSetting[] | undefined>;
+    declare public readonly resourceSettings: pulumi.Output<outputs.assuredworkloads.WorkloadResourceSetting[] | undefined>;
     /**
      * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
-    public /*out*/ readonly resources!: pulumi.Output<outputs.assuredworkloads.WorkloadResource[]>;
+    declare public /*out*/ readonly resources: pulumi.Output<outputs.assuredworkloads.WorkloadResource[]>;
     /**
      * Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
      */
-    public /*out*/ readonly saaEnrollmentResponses!: pulumi.Output<outputs.assuredworkloads.WorkloadSaaEnrollmentResponse[]>;
+    declare public /*out*/ readonly saaEnrollmentResponses: pulumi.Output<outputs.assuredworkloads.WorkloadSaaEnrollmentResponse[]>;
     /**
      * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
      */
-    public readonly violationNotificationsEnabled!: pulumi.Output<boolean>;
+    declare public readonly violationNotificationsEnabled: pulumi.Output<boolean>;
     /**
      * Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
      */
-    public readonly workloadOptions!: pulumi.Output<outputs.assuredworkloads.WorkloadWorkloadOptions | undefined>;
+    declare public readonly workloadOptions: pulumi.Output<outputs.assuredworkloads.WorkloadWorkloadOptions | undefined>;
 
     /**
      * Create a Workload resource with the given unique name, arguments, and options.
@@ -289,60 +289,60 @@ export class Workload extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadState | undefined;
-            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
-            resourceInputs["complianceRegime"] = state ? state.complianceRegime : undefined;
-            resourceInputs["complianceStatuses"] = state ? state.complianceStatuses : undefined;
-            resourceInputs["compliantButDisallowedServices"] = state ? state.compliantButDisallowedServices : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["ekmProvisioningResponses"] = state ? state.ekmProvisioningResponses : undefined;
-            resourceInputs["enableSovereignControls"] = state ? state.enableSovereignControls : undefined;
-            resourceInputs["kajEnrollmentState"] = state ? state.kajEnrollmentState : undefined;
-            resourceInputs["kmsSettings"] = state ? state.kmsSettings : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["partner"] = state ? state.partner : undefined;
-            resourceInputs["partnerPermissions"] = state ? state.partnerPermissions : undefined;
-            resourceInputs["partnerServicesBillingAccount"] = state ? state.partnerServicesBillingAccount : undefined;
-            resourceInputs["provisionedResourcesParent"] = state ? state.provisionedResourcesParent : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["resourceSettings"] = state ? state.resourceSettings : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["saaEnrollmentResponses"] = state ? state.saaEnrollmentResponses : undefined;
-            resourceInputs["violationNotificationsEnabled"] = state ? state.violationNotificationsEnabled : undefined;
-            resourceInputs["workloadOptions"] = state ? state.workloadOptions : undefined;
+            resourceInputs["billingAccount"] = state?.billingAccount;
+            resourceInputs["complianceRegime"] = state?.complianceRegime;
+            resourceInputs["complianceStatuses"] = state?.complianceStatuses;
+            resourceInputs["compliantButDisallowedServices"] = state?.compliantButDisallowedServices;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["ekmProvisioningResponses"] = state?.ekmProvisioningResponses;
+            resourceInputs["enableSovereignControls"] = state?.enableSovereignControls;
+            resourceInputs["kajEnrollmentState"] = state?.kajEnrollmentState;
+            resourceInputs["kmsSettings"] = state?.kmsSettings;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["partner"] = state?.partner;
+            resourceInputs["partnerPermissions"] = state?.partnerPermissions;
+            resourceInputs["partnerServicesBillingAccount"] = state?.partnerServicesBillingAccount;
+            resourceInputs["provisionedResourcesParent"] = state?.provisionedResourcesParent;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["resourceSettings"] = state?.resourceSettings;
+            resourceInputs["resources"] = state?.resources;
+            resourceInputs["saaEnrollmentResponses"] = state?.saaEnrollmentResponses;
+            resourceInputs["violationNotificationsEnabled"] = state?.violationNotificationsEnabled;
+            resourceInputs["workloadOptions"] = state?.workloadOptions;
         } else {
             const args = argsOrState as WorkloadArgs | undefined;
-            if ((!args || args.complianceRegime === undefined) && !opts.urn) {
+            if (args?.complianceRegime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'complianceRegime'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
-            resourceInputs["complianceRegime"] = args ? args.complianceRegime : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enableSovereignControls"] = args ? args.enableSovereignControls : undefined;
-            resourceInputs["kmsSettings"] = args ? args.kmsSettings : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["organization"] = args ? args.organization : undefined;
-            resourceInputs["partner"] = args ? args.partner : undefined;
-            resourceInputs["partnerPermissions"] = args ? args.partnerPermissions : undefined;
-            resourceInputs["partnerServicesBillingAccount"] = args ? args.partnerServicesBillingAccount : undefined;
-            resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
-            resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
-            resourceInputs["violationNotificationsEnabled"] = args ? args.violationNotificationsEnabled : undefined;
-            resourceInputs["workloadOptions"] = args ? args.workloadOptions : undefined;
+            resourceInputs["billingAccount"] = args?.billingAccount;
+            resourceInputs["complianceRegime"] = args?.complianceRegime;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableSovereignControls"] = args?.enableSovereignControls;
+            resourceInputs["kmsSettings"] = args?.kmsSettings;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["organization"] = args?.organization;
+            resourceInputs["partner"] = args?.partner;
+            resourceInputs["partnerPermissions"] = args?.partnerPermissions;
+            resourceInputs["partnerServicesBillingAccount"] = args?.partnerServicesBillingAccount;
+            resourceInputs["provisionedResourcesParent"] = args?.provisionedResourcesParent;
+            resourceInputs["resourceSettings"] = args?.resourceSettings;
+            resourceInputs["violationNotificationsEnabled"] = args?.violationNotificationsEnabled;
+            resourceInputs["workloadOptions"] = args?.workloadOptions;
             resourceInputs["complianceStatuses"] = undefined /*out*/;
             resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

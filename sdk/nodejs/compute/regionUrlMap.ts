@@ -1080,7 +1080,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
@@ -1088,7 +1088,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
      * defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
      * Structure is documented below.
      */
-    public readonly defaultRouteAction!: pulumi.Output<outputs.compute.RegionUrlMapDefaultRouteAction | undefined>;
+    declare public readonly defaultRouteAction: pulumi.Output<outputs.compute.RegionUrlMapDefaultRouteAction | undefined>;
     /**
      * The full or partial URL of the defaultService resource to which traffic is directed if
      * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
@@ -1098,33 +1098,33 @@ export class RegionUrlMap extends pulumi.CustomResource {
      * weightedBackendServices, service must not be specified.  Only one of defaultService,
      * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
      */
-    public readonly defaultService!: pulumi.Output<string | undefined>;
+    declare public readonly defaultService: pulumi.Output<string | undefined>;
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
      * defaultRouteAction must not be set.
      * Structure is documented below.
      */
-    public readonly defaultUrlRedirect!: pulumi.Output<outputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
+    declare public readonly defaultUrlRedirect: pulumi.Output<outputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource. This field is used internally during
      * updates of this resource.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
      */
-    public readonly hostRules!: pulumi.Output<outputs.compute.RegionUrlMapHostRule[] | undefined>;
+    declare public readonly hostRules: pulumi.Output<outputs.compute.RegionUrlMapHostRule[] | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    public /*out*/ readonly mapId!: pulumi.Output<number>;
+    declare public /*out*/ readonly mapId: pulumi.Output<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -1134,32 +1134,32 @@ export class RegionUrlMap extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The list of named PathMatchers to use against the URL.
      * Structure is documented below.
      */
-    public readonly pathMatchers!: pulumi.Output<outputs.compute.RegionUrlMapPathMatcher[] | undefined>;
+    declare public readonly pathMatchers: pulumi.Output<outputs.compute.RegionUrlMapPathMatcher[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Region in which the url map should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The list of expected URL mappings. Requests to update this UrlMap will
      * succeed only if all of the test cases pass.
      * Structure is documented below.
      */
-    public readonly tests!: pulumi.Output<outputs.compute.RegionUrlMapTest[] | undefined>;
+    declare public readonly tests: pulumi.Output<outputs.compute.RegionUrlMapTest[] | undefined>;
 
     /**
      * Create a RegionUrlMap resource with the given unique name, arguments, and options.
@@ -1174,32 +1174,32 @@ export class RegionUrlMap extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionUrlMapState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["defaultRouteAction"] = state ? state.defaultRouteAction : undefined;
-            resourceInputs["defaultService"] = state ? state.defaultService : undefined;
-            resourceInputs["defaultUrlRedirect"] = state ? state.defaultUrlRedirect : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["hostRules"] = state ? state.hostRules : undefined;
-            resourceInputs["mapId"] = state ? state.mapId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pathMatchers"] = state ? state.pathMatchers : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["tests"] = state ? state.tests : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["defaultRouteAction"] = state?.defaultRouteAction;
+            resourceInputs["defaultService"] = state?.defaultService;
+            resourceInputs["defaultUrlRedirect"] = state?.defaultUrlRedirect;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["hostRules"] = state?.hostRules;
+            resourceInputs["mapId"] = state?.mapId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pathMatchers"] = state?.pathMatchers;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["tests"] = state?.tests;
         } else {
             const args = argsOrState as RegionUrlMapArgs | undefined;
-            resourceInputs["defaultRouteAction"] = args ? args.defaultRouteAction : undefined;
-            resourceInputs["defaultService"] = args ? args.defaultService : undefined;
-            resourceInputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["hostRules"] = args ? args.hostRules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pathMatchers"] = args ? args.pathMatchers : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tests"] = args ? args.tests : undefined;
+            resourceInputs["defaultRouteAction"] = args?.defaultRouteAction;
+            resourceInputs["defaultService"] = args?.defaultService;
+            resourceInputs["defaultUrlRedirect"] = args?.defaultUrlRedirect;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["hostRules"] = args?.hostRules;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pathMatchers"] = args?.pathMatchers;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tests"] = args?.tests;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["mapId"] = undefined /*out*/;

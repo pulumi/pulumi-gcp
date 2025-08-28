@@ -211,45 +211,45 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
-    public readonly analyticsRegion!: pulumi.Output<string | undefined>;
+    declare public readonly analyticsRegion: pulumi.Output<string | undefined>;
     /**
      * Cloud KMS key name used for encrypting API consumer data.
      */
-    public readonly apiConsumerDataEncryptionKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly apiConsumerDataEncryptionKeyName: pulumi.Output<string | undefined>;
     /**
      * This field is needed only for customers using non-default data residency regions.
      * Apigee stores some control plane data only in single region.
      * This field determines which single region Apigee should use.
      */
-    public readonly apiConsumerDataLocation!: pulumi.Output<string | undefined>;
+    declare public readonly apiConsumerDataLocation: pulumi.Output<string | undefined>;
     /**
      * Output only. Project ID of the Apigee Tenant Project.
      */
-    public /*out*/ readonly apigeeProjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly apigeeProjectId: pulumi.Output<string>;
     /**
      * Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
      * See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
      */
-    public readonly authorizedNetwork!: pulumi.Output<string | undefined>;
+    declare public readonly authorizedNetwork: pulumi.Output<string | undefined>;
     /**
      * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
      */
-    public readonly billingType!: pulumi.Output<string>;
+    declare public readonly billingType: pulumi.Output<string>;
     /**
      * Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
      * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      */
-    public /*out*/ readonly caCertificate!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCertificate: pulumi.Output<string>;
     /**
      * Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
      * Only used for the data residency region "US" or "EU".
      */
-    public readonly controlPlaneEncryptionKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly controlPlaneEncryptionKeyName: pulumi.Output<string | undefined>;
     /**
      * Description of the Apigee organization.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Flag that specifies whether the VPC Peering through Private Google Access should be
      * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -257,24 +257,24 @@ export class Organization extends pulumi.CustomResource {
      * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
      * of any Apigee runtime instance and can be updated only when there are no runtime instances.
      */
-    public readonly disableVpcPeering!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableVpcPeering: pulumi.Output<boolean | undefined>;
     /**
      * The display name of the Apigee organization.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Output only. Name of the Apigee organization.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The project ID associated with the Apigee organization.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Properties defined in the Apigee organization profile.
      * Structure is documented below.
      */
-    public readonly properties!: pulumi.Output<outputs.apigee.OrganizationProperties>;
+    declare public readonly properties: pulumi.Output<outputs.apigee.OrganizationProperties>;
     /**
      * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
      * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -283,25 +283,25 @@ export class Organization extends pulumi.CustomResource {
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
      * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      */
-    public readonly retention!: pulumi.Output<string | undefined>;
+    declare public readonly retention: pulumi.Output<string | undefined>;
     /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
      * Update is not allowed after the organization is created.
      * If not specified, a Google-Managed encryption key will be used.
      * Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
      */
-    public readonly runtimeDatabaseEncryptionKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly runtimeDatabaseEncryptionKeyName: pulumi.Output<string | undefined>;
     /**
      * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      * Default value is `CLOUD`.
      * Possible values are: `CLOUD`, `HYBRID`.
      */
-    public readonly runtimeType!: pulumi.Output<string | undefined>;
+    declare public readonly runtimeType: pulumi.Output<string | undefined>;
     /**
      * Output only. Subscription type of the Apigee organization.
      * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      */
-    public /*out*/ readonly subscriptionType!: pulumi.Output<string>;
+    declare public /*out*/ readonly subscriptionType: pulumi.Output<string>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -316,43 +316,43 @@ export class Organization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
-            resourceInputs["analyticsRegion"] = state ? state.analyticsRegion : undefined;
-            resourceInputs["apiConsumerDataEncryptionKeyName"] = state ? state.apiConsumerDataEncryptionKeyName : undefined;
-            resourceInputs["apiConsumerDataLocation"] = state ? state.apiConsumerDataLocation : undefined;
-            resourceInputs["apigeeProjectId"] = state ? state.apigeeProjectId : undefined;
-            resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
-            resourceInputs["billingType"] = state ? state.billingType : undefined;
-            resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
-            resourceInputs["controlPlaneEncryptionKeyName"] = state ? state.controlPlaneEncryptionKeyName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableVpcPeering"] = state ? state.disableVpcPeering : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["retention"] = state ? state.retention : undefined;
-            resourceInputs["runtimeDatabaseEncryptionKeyName"] = state ? state.runtimeDatabaseEncryptionKeyName : undefined;
-            resourceInputs["runtimeType"] = state ? state.runtimeType : undefined;
-            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
+            resourceInputs["analyticsRegion"] = state?.analyticsRegion;
+            resourceInputs["apiConsumerDataEncryptionKeyName"] = state?.apiConsumerDataEncryptionKeyName;
+            resourceInputs["apiConsumerDataLocation"] = state?.apiConsumerDataLocation;
+            resourceInputs["apigeeProjectId"] = state?.apigeeProjectId;
+            resourceInputs["authorizedNetwork"] = state?.authorizedNetwork;
+            resourceInputs["billingType"] = state?.billingType;
+            resourceInputs["caCertificate"] = state?.caCertificate;
+            resourceInputs["controlPlaneEncryptionKeyName"] = state?.controlPlaneEncryptionKeyName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableVpcPeering"] = state?.disableVpcPeering;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["retention"] = state?.retention;
+            resourceInputs["runtimeDatabaseEncryptionKeyName"] = state?.runtimeDatabaseEncryptionKeyName;
+            resourceInputs["runtimeType"] = state?.runtimeType;
+            resourceInputs["subscriptionType"] = state?.subscriptionType;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
-            resourceInputs["apiConsumerDataEncryptionKeyName"] = args ? args.apiConsumerDataEncryptionKeyName : undefined;
-            resourceInputs["apiConsumerDataLocation"] = args ? args.apiConsumerDataLocation : undefined;
-            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            resourceInputs["billingType"] = args ? args.billingType : undefined;
-            resourceInputs["controlPlaneEncryptionKeyName"] = args ? args.controlPlaneEncryptionKeyName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableVpcPeering"] = args ? args.disableVpcPeering : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["retention"] = args ? args.retention : undefined;
-            resourceInputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
-            resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
+            resourceInputs["analyticsRegion"] = args?.analyticsRegion;
+            resourceInputs["apiConsumerDataEncryptionKeyName"] = args?.apiConsumerDataEncryptionKeyName;
+            resourceInputs["apiConsumerDataLocation"] = args?.apiConsumerDataLocation;
+            resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
+            resourceInputs["billingType"] = args?.billingType;
+            resourceInputs["controlPlaneEncryptionKeyName"] = args?.controlPlaneEncryptionKeyName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableVpcPeering"] = args?.disableVpcPeering;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["retention"] = args?.retention;
+            resourceInputs["runtimeDatabaseEncryptionKeyName"] = args?.runtimeDatabaseEncryptionKeyName;
+            resourceInputs["runtimeType"] = args?.runtimeType;
             resourceInputs["apigeeProjectId"] = undefined /*out*/;
             resourceInputs["caCertificate"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

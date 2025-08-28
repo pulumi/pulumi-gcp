@@ -104,19 +104,19 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
     /**
      * The resource that the security policy is attached to.
      */
-    public readonly attachmentId!: pulumi.Output<string>;
+    declare public readonly attachmentId: pulumi.Output<string>;
     /**
      * The display name of the security policy of the association.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * The name for an association.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The security policy ID of the association.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationSecurityPolicyAssociation resource with the given unique name, arguments, and options.
@@ -131,21 +131,21 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyAssociationState | undefined;
-            resourceInputs["attachmentId"] = state ? state.attachmentId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["attachmentId"] = state?.attachmentId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyId"] = state?.policyId;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyAssociationArgs | undefined;
-            if ((!args || args.attachmentId === undefined) && !opts.urn) {
+            if (args?.attachmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attachmentId'");
             }
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            resourceInputs["attachmentId"] = args ? args.attachmentId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["attachmentId"] = args?.attachmentId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyId"] = args?.policyId;
             resourceInputs["displayName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

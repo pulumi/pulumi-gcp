@@ -379,16 +379,14 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instance);
     }
     /**
-     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
-     * clusters are eligible.
+     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
      * 
      */
     @Export(name="multiClusterRoutingClusterIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> multiClusterRoutingClusterIds;
 
     /**
-     * @return The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
-     * clusters are eligible.
+     * @return The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
      * 
      */
     public Output<Optional<List<String>>> multiClusterRoutingClusterIds() {
@@ -443,22 +441,14 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
-     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
-     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
-     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
-     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
      * 
      */
     @Export(name="rowAffinity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> rowAffinity;
 
     /**
-     * @return Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
-     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
-     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
-     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
-     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     * @return Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
      * 
      */
     public Output<Optional<Boolean>> rowAffinity() {

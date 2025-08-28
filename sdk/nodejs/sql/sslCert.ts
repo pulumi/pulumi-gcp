@@ -65,48 +65,48 @@ export class SslCert extends pulumi.CustomResource {
     /**
      * The actual certificate data for this client certificate.
      */
-    public /*out*/ readonly cert!: pulumi.Output<string>;
+    declare public /*out*/ readonly cert: pulumi.Output<string>;
     /**
      * The serial number extracted from the certificate data.
      */
-    public /*out*/ readonly certSerialNumber!: pulumi.Output<string>;
+    declare public /*out*/ readonly certSerialNumber: pulumi.Output<string>;
     /**
      * The common name to be used in the certificate to identify the
      * client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
      */
-    public readonly commonName!: pulumi.Output<string>;
+    declare public readonly commonName: pulumi.Output<string>;
     /**
      * The time when the certificate was created in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The time when the certificate expires in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
-    public /*out*/ readonly expirationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expirationTime: pulumi.Output<string>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * The private key associated with the client certificate.
      */
-    public /*out*/ readonly privateKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateKey: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The CA cert of the server this client cert was generated from.
      */
-    public /*out*/ readonly serverCaCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly serverCaCert: pulumi.Output<string>;
     /**
      * The SHA1 Fingerprint of the certificate.
      */
-    public /*out*/ readonly sha1Fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly sha1Fingerprint: pulumi.Output<string>;
 
     /**
      * Create a SslCert resource with the given unique name, arguments, and options.
@@ -121,27 +121,27 @@ export class SslCert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SslCertState | undefined;
-            resourceInputs["cert"] = state ? state.cert : undefined;
-            resourceInputs["certSerialNumber"] = state ? state.certSerialNumber : undefined;
-            resourceInputs["commonName"] = state ? state.commonName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serverCaCert"] = state ? state.serverCaCert : undefined;
-            resourceInputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
+            resourceInputs["cert"] = state?.cert;
+            resourceInputs["certSerialNumber"] = state?.certSerialNumber;
+            resourceInputs["commonName"] = state?.commonName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["expirationTime"] = state?.expirationTime;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serverCaCert"] = state?.serverCaCert;
+            resourceInputs["sha1Fingerprint"] = state?.sha1Fingerprint;
         } else {
             const args = argsOrState as SslCertArgs | undefined;
-            if ((!args || args.commonName === undefined) && !opts.urn) {
+            if (args?.commonName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'commonName'");
             }
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            resourceInputs["commonName"] = args ? args.commonName : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["commonName"] = args?.commonName;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["project"] = args?.project;
             resourceInputs["cert"] = undefined /*out*/;
             resourceInputs["certSerialNumber"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

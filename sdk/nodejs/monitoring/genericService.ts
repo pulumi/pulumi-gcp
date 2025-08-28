@@ -102,31 +102,31 @@ export class GenericService extends pulumi.CustomResource {
      * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
      * Structure is documented below.
      */
-    public readonly basicService!: pulumi.Output<outputs.monitoring.GenericServiceBasicService | undefined>;
+    declare public readonly basicService: pulumi.Output<outputs.monitoring.GenericServiceBasicService | undefined>;
     /**
      * Name used for UI elements listing this Service.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The full resource name for this service. The syntax is:
      * projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * Configuration for how to query telemetry on a Service.
      * Structure is documented below.
      */
-    public /*out*/ readonly telemetries!: pulumi.Output<outputs.monitoring.GenericServiceTelemetry[]>;
+    declare public /*out*/ readonly telemetries: pulumi.Output<outputs.monitoring.GenericServiceTelemetry[]>;
     /**
      * Labels which have been used to annotate the service. Label keys must start
      * with a letter. Label keys and values may contain lowercase letters,
@@ -135,7 +135,7 @@ export class GenericService extends pulumi.CustomResource {
      * label entries may be stored. For labels which do not have a semantic value,
      * the empty string may be supplied for the label value.
      */
-    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a GenericService resource with the given unique name, arguments, and options.
@@ -150,23 +150,23 @@ export class GenericService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GenericServiceState | undefined;
-            resourceInputs["basicService"] = state ? state.basicService : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["telemetries"] = state ? state.telemetries : undefined;
-            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
+            resourceInputs["basicService"] = state?.basicService;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["telemetries"] = state?.telemetries;
+            resourceInputs["userLabels"] = state?.userLabels;
         } else {
             const args = argsOrState as GenericServiceArgs | undefined;
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            resourceInputs["basicService"] = args ? args.basicService : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["basicService"] = args?.basicService;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["userLabels"] = args?.userLabels;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["telemetries"] = undefined /*out*/;
         }

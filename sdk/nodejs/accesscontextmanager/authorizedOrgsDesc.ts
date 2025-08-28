@@ -94,7 +94,7 @@ export class AuthorizedOrgsDesc extends pulumi.CustomResource {
      * "ASSET_TYPE_CREDENTIAL_STRENGTH".
      * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      */
-    public readonly assetType!: pulumi.Output<string | undefined>;
+    declare public readonly assetType: pulumi.Output<string | undefined>;
     /**
      * The direction of the authorization relationship between this organization
      * and the organizations listed in the "orgs" field. The valid values for this
@@ -112,16 +112,16 @@ export class AuthorizedOrgsDesc extends pulumi.CustomResource {
      * "AuthorizedOrgsDesc" resource.
      * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      */
-    public readonly authorizationDirection!: pulumi.Output<string | undefined>;
+    declare public readonly authorizationDirection: pulumi.Output<string | undefined>;
     /**
      * A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
      * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      */
-    public readonly authorizationType!: pulumi.Output<string | undefined>;
+    declare public readonly authorizationType: pulumi.Output<string | undefined>;
     /**
      * Time the AuthorizedOrgsDesc was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Resource name for the `AuthorizedOrgsDesc`. Format:
      * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -129,21 +129,21 @@ export class AuthorizedOrgsDesc extends pulumi.CustomResource {
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The list of organization ids in this AuthorizedOrgsDesc.
      * Format: `organizations/<org_number>`
      * Example: `organizations/123456`
      */
-    public readonly orgs!: pulumi.Output<string[] | undefined>;
+    declare public readonly orgs: pulumi.Output<string[] | undefined>;
     /**
      * Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Time the AuthorizedOrgsDesc was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AuthorizedOrgsDesc resource with the given unique name, arguments, and options.
@@ -158,25 +158,25 @@ export class AuthorizedOrgsDesc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthorizedOrgsDescState | undefined;
-            resourceInputs["assetType"] = state ? state.assetType : undefined;
-            resourceInputs["authorizationDirection"] = state ? state.authorizationDirection : undefined;
-            resourceInputs["authorizationType"] = state ? state.authorizationType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgs"] = state ? state.orgs : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["assetType"] = state?.assetType;
+            resourceInputs["authorizationDirection"] = state?.authorizationDirection;
+            resourceInputs["authorizationType"] = state?.authorizationType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgs"] = state?.orgs;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AuthorizedOrgsDescArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["assetType"] = args ? args.assetType : undefined;
-            resourceInputs["authorizationDirection"] = args ? args.authorizationDirection : undefined;
-            resourceInputs["authorizationType"] = args ? args.authorizationType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgs"] = args ? args.orgs : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["assetType"] = args?.assetType;
+            resourceInputs["authorizationDirection"] = args?.authorizationDirection;
+            resourceInputs["authorizationType"] = args?.authorizationType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgs"] = args?.orgs;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

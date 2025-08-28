@@ -74,22 +74,22 @@ export class VpcscConfig extends pulumi.CustomResource {
     /**
      * The name of the location this config is located in.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the project's VPC SC Config.
      * Always of the form: projects/{project}/location/{location}/vpcscConfig
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The VPC SC policy for project and location.
      * Possible values are: `DENY`, `ALLOW`.
      */
-    public readonly vpcscPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly vpcscPolicy: pulumi.Output<string | undefined>;
 
     /**
      * Create a VpcscConfig resource with the given unique name, arguments, and options.
@@ -104,15 +104,15 @@ export class VpcscConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcscConfigState | undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["vpcscPolicy"] = state ? state.vpcscPolicy : undefined;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["vpcscPolicy"] = state?.vpcscPolicy;
         } else {
             const args = argsOrState as VpcscConfigArgs | undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["vpcscPolicy"] = args ? args.vpcscPolicy : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["vpcscPolicy"] = args?.vpcscPolicy;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -69,27 +69,27 @@ export class InsightsConfig extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the App Hub Application.
      * Format:
      * projects/{project}/locations/{location}/applications/{application}
      */
-    public readonly appHubApplication!: pulumi.Output<string>;
+    declare public readonly appHubApplication: pulumi.Output<string>;
     /**
      * The artifact configurations of the artifacts that are deployed.
      * Structure is documented below.
      */
-    public readonly artifactConfigs!: pulumi.Output<outputs.developerconnect.InsightsConfigArtifactConfig[] | undefined>;
+    declare public readonly artifactConfigs: pulumi.Output<outputs.developerconnect.InsightsConfigArtifactConfig[] | undefined>;
     /**
      * [Output only] Create timestamp
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Any errors that occurred while setting up the InsightsConfig.
      * Each error will be in the format: `field_name: errorMessage`, e.g.
@@ -97,37 +97,37 @@ export class InsightsConfig extends pulumi.CustomResource {
      * application. Please grant permissions to the P4SA.
      * Structure is documented below.
      */
-    public /*out*/ readonly errors!: pulumi.Output<outputs.developerconnect.InsightsConfigError[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<outputs.developerconnect.InsightsConfigError[]>;
     /**
      * ID of the requesting InsightsConfig.
      */
-    public readonly insightsConfigId!: pulumi.Output<string>;
+    declare public readonly insightsConfigId: pulumi.Output<string>;
     /**
      * Set of labels associated with an InsightsConfig.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The name of the InsightsConfig.
      * Format:
      * projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Reconciling (https://google.aip.dev/128#reconciliation).
      * Set to true if the current state of InsightsConfig does not match the
@@ -135,12 +135,12 @@ export class InsightsConfig extends pulumi.CustomResource {
      * reconcile them. This can happen due to user-triggered updates or
      * system actions like failover or maintenance.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * The runtime configurations where the application is deployed.
      * Structure is documented below.
      */
-    public /*out*/ readonly runtimeConfigs!: pulumi.Output<outputs.developerconnect.InsightsConfigRuntimeConfig[]>;
+    declare public /*out*/ readonly runtimeConfigs: pulumi.Output<outputs.developerconnect.InsightsConfigRuntimeConfig[]>;
     /**
      * (Output)
      * The state of the Runtime.
@@ -149,11 +149,11 @@ export class InsightsConfig extends pulumi.CustomResource {
      * LINKED
      * UNLINKED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * [Output only] Update timestamp
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a InsightsConfig resource with the given unique name, arguments, and options.
@@ -168,41 +168,41 @@ export class InsightsConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InsightsConfigState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["appHubApplication"] = state ? state.appHubApplication : undefined;
-            resourceInputs["artifactConfigs"] = state ? state.artifactConfigs : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["insightsConfigId"] = state ? state.insightsConfigId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["runtimeConfigs"] = state ? state.runtimeConfigs : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["appHubApplication"] = state?.appHubApplication;
+            resourceInputs["artifactConfigs"] = state?.artifactConfigs;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["insightsConfigId"] = state?.insightsConfigId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["runtimeConfigs"] = state?.runtimeConfigs;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InsightsConfigArgs | undefined;
-            if ((!args || args.appHubApplication === undefined) && !opts.urn) {
+            if (args?.appHubApplication === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appHubApplication'");
             }
-            if ((!args || args.insightsConfigId === undefined) && !opts.urn) {
+            if (args?.insightsConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'insightsConfigId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["appHubApplication"] = args ? args.appHubApplication : undefined;
-            resourceInputs["artifactConfigs"] = args ? args.artifactConfigs : undefined;
-            resourceInputs["insightsConfigId"] = args ? args.insightsConfigId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["appHubApplication"] = args?.appHubApplication;
+            resourceInputs["artifactConfigs"] = args?.artifactConfigs;
+            resourceInputs["insightsConfigId"] = args?.insightsConfigId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

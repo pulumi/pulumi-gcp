@@ -186,41 +186,41 @@ export class Repository extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Output only. Server assigned timestamp for when the connection was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the repository.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The connection for the resource
      */
-    public readonly parentConnection!: pulumi.Output<string>;
+    declare public readonly parentConnection: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Required. Git Clone HTTPS URI.
      */
-    public readonly remoteUri!: pulumi.Output<string>;
+    declare public readonly remoteUri: pulumi.Output<string>;
     /**
      * Output only. Server assigned timestamp for when the connection was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -235,30 +235,30 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentConnection"] = state ? state.parentConnection : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["remoteUri"] = state ? state.remoteUri : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentConnection"] = state?.parentConnection;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["remoteUri"] = state?.remoteUri;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
-            if ((!args || args.parentConnection === undefined) && !opts.urn) {
+            if (args?.parentConnection === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentConnection'");
             }
-            if ((!args || args.remoteUri === undefined) && !opts.urn) {
+            if (args?.remoteUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteUri'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentConnection"] = args ? args.parentConnection : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["remoteUri"] = args ? args.remoteUri : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentConnection"] = args?.parentConnection;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["remoteUri"] = args?.remoteUri;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

@@ -189,87 +189,87 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
      * Optional. The aggregation interval for the logs. Default value is
      * INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
      */
-    public readonly aggregationInterval!: pulumi.Output<string>;
+    declare public readonly aggregationInterval: pulumi.Output<string>;
     /**
      * Output only. The time the config was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
      * of 512 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Export filter used to define which VPC Flow Logs should be logged.
      */
-    public readonly filterExpr!: pulumi.Output<string | undefined>;
+    declare public readonly filterExpr: pulumi.Output<string | undefined>;
     /**
      * Optional. The value of the field must be in (0, 1]. The sampling rate
      * of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
      * sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
      * the state field instead. Default value is 1.0.
      */
-    public readonly flowSampling!: pulumi.Output<number>;
+    declare public readonly flowSampling: pulumi.Output<number>;
     /**
      * Traffic will be logged from the Interconnect Attachment. Format: projects/{project_id}/regions/{region}/interconnectAttachments/{name}
      */
-    public readonly interconnectAttachment!: pulumi.Output<string | undefined>;
+    declare public readonly interconnectAttachment: pulumi.Output<string | undefined>;
     /**
      * Optional. Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource
      * within its parent collection as described in https://google.aip.dev/122. See documentation
      * for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Optional. Configures whether all, none or a subset of metadata fields
      * should be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA.
      * Possible values:  METADATA_UNSPECIFIED INCLUDE_ALL_METADATA EXCLUDE_ALL_METADATA CUSTOM_METADATA
      */
-    public readonly metadata!: pulumi.Output<string>;
+    declare public readonly metadata: pulumi.Output<string>;
     /**
      * Optional. Custom metadata fields to include in the reported VPC flow
      * logs. Can only be specified if \"metadata\" was set to CUSTOM_METADATA.
      */
-    public readonly metadataFields!: pulumi.Output<string[] | undefined>;
+    declare public readonly metadataFields: pulumi.Output<string[] | undefined>;
     /**
      * Identifier. Unique name of the configuration using the form:     `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. The state of the VPC Flow Log configuration. Default value
      * is ENABLED. When creating a new configuration, it must be enabled.
      * Possible values: STATE_UNSPECIFIED ENABLED DISABLED
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
      */
-    public readonly subnet!: pulumi.Output<string | undefined>;
+    declare public readonly subnet: pulumi.Output<string | undefined>;
     /**
      * Describes the state of the configured target resource for diagnostic
      * purposes.
@@ -278,19 +278,19 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
      * TARGET_RESOURCE_EXISTS
      * TARGET_RESOURCE_DOES_NOT_EXIST
      */
-    public /*out*/ readonly targetResourceState!: pulumi.Output<string>;
+    declare public /*out*/ readonly targetResourceState: pulumi.Output<string>;
     /**
      * Output only. The time the config was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Required. ID of the `VpcFlowLogsConfig`.
      */
-    public readonly vpcFlowLogsConfigId!: pulumi.Output<string>;
+    declare public readonly vpcFlowLogsConfigId: pulumi.Output<string>;
     /**
      * Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
      */
-    public readonly vpnTunnel!: pulumi.Output<string | undefined>;
+    declare public readonly vpnTunnel: pulumi.Output<string | undefined>;
 
     /**
      * Create a VpcFlowLogsConfig resource with the given unique name, arguments, and options.
@@ -305,50 +305,50 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcFlowLogsConfigState | undefined;
-            resourceInputs["aggregationInterval"] = state ? state.aggregationInterval : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["filterExpr"] = state ? state.filterExpr : undefined;
-            resourceInputs["flowSampling"] = state ? state.flowSampling : undefined;
-            resourceInputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["metadataFields"] = state ? state.metadataFields : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnet"] = state ? state.subnet : undefined;
-            resourceInputs["targetResourceState"] = state ? state.targetResourceState : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["vpcFlowLogsConfigId"] = state ? state.vpcFlowLogsConfigId : undefined;
-            resourceInputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
+            resourceInputs["aggregationInterval"] = state?.aggregationInterval;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["filterExpr"] = state?.filterExpr;
+            resourceInputs["flowSampling"] = state?.flowSampling;
+            resourceInputs["interconnectAttachment"] = state?.interconnectAttachment;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["metadataFields"] = state?.metadataFields;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnet"] = state?.subnet;
+            resourceInputs["targetResourceState"] = state?.targetResourceState;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["vpcFlowLogsConfigId"] = state?.vpcFlowLogsConfigId;
+            resourceInputs["vpnTunnel"] = state?.vpnTunnel;
         } else {
             const args = argsOrState as VpcFlowLogsConfigArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.vpcFlowLogsConfigId === undefined) && !opts.urn) {
+            if (args?.vpcFlowLogsConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcFlowLogsConfigId'");
             }
-            resourceInputs["aggregationInterval"] = args ? args.aggregationInterval : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["filterExpr"] = args ? args.filterExpr : undefined;
-            resourceInputs["flowSampling"] = args ? args.flowSampling : undefined;
-            resourceInputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["metadataFields"] = args ? args.metadataFields : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["subnet"] = args ? args.subnet : undefined;
-            resourceInputs["vpcFlowLogsConfigId"] = args ? args.vpcFlowLogsConfigId : undefined;
-            resourceInputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
+            resourceInputs["aggregationInterval"] = args?.aggregationInterval;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["filterExpr"] = args?.filterExpr;
+            resourceInputs["flowSampling"] = args?.flowSampling;
+            resourceInputs["interconnectAttachment"] = args?.interconnectAttachment;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["metadataFields"] = args?.metadataFields;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["subnet"] = args?.subnet;
+            resourceInputs["vpcFlowLogsConfigId"] = args?.vpcFlowLogsConfigId;
+            resourceInputs["vpnTunnel"] = args?.vpnTunnel;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

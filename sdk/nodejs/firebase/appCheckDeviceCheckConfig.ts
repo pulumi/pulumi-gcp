@@ -104,36 +104,36 @@ export class AppCheckDeviceCheckConfig extends pulumi.CustomResource {
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
      */
-    public readonly keyId!: pulumi.Output<string>;
+    declare public readonly keyId: pulumi.Output<string>;
     /**
      * The relative resource name of the DeviceCheck configuration object
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The contents of the private key (.p8) file associated with the key specified by keyId.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly privateKey!: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string>;
     /**
      * Whether the privateKey field was previously set. Since App Check will never return the
      * privateKey field, this field is the only way to find out whether it was previously set.
      */
-    public /*out*/ readonly privateKeySet!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly privateKeySet: pulumi.Output<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
      * If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public readonly tokenTtl!: pulumi.Output<string>;
+    declare public readonly tokenTtl: pulumi.Output<string>;
 
     /**
      * Create a AppCheckDeviceCheckConfig resource with the given unique name, arguments, and options.
@@ -148,29 +148,29 @@ export class AppCheckDeviceCheckConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppCheckDeviceCheckConfigState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["privateKeySet"] = state ? state.privateKeySet : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tokenTtl"] = state ? state.tokenTtl : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["privateKeySet"] = state?.privateKeySet;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tokenTtl"] = state?.tokenTtl;
         } else {
             const args = argsOrState as AppCheckDeviceCheckConfigArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.keyId === undefined) && !opts.urn) {
+            if (args?.keyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            if ((!args || args.privateKey === undefined) && !opts.urn) {
+            if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["keyId"] = args?.keyId;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tokenTtl"] = args ? args.tokenTtl : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tokenTtl"] = args?.tokenTtl;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateKeySet"] = undefined /*out*/;
         }

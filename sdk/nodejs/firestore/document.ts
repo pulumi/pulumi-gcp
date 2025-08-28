@@ -159,41 +159,41 @@ export class Document extends pulumi.CustomResource {
     /**
      * The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
      */
-    public readonly collection!: pulumi.Output<string>;
+    declare public readonly collection: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    public readonly database!: pulumi.Output<string | undefined>;
+    declare public readonly database: pulumi.Output<string | undefined>;
     /**
      * The client-assigned document ID to use for this document during creation.
      */
-    public readonly documentId!: pulumi.Output<string>;
+    declare public readonly documentId: pulumi.Output<string>;
     /**
      * The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
      */
-    public readonly fields!: pulumi.Output<string>;
+    declare public readonly fields: pulumi.Output<string>;
     /**
      * A server defined name for this document. Format:
      * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * A relative path to the collection this document exists within
      */
-    public /*out*/ readonly path!: pulumi.Output<string>;
+    declare public /*out*/ readonly path: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Last update timestamp in RFC3339 format.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Document resource with the given unique name, arguments, and options.
@@ -208,31 +208,31 @@ export class Document extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DocumentState | undefined;
-            resourceInputs["collection"] = state ? state.collection : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["documentId"] = state ? state.documentId : undefined;
-            resourceInputs["fields"] = state ? state.fields : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["collection"] = state?.collection;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["documentId"] = state?.documentId;
+            resourceInputs["fields"] = state?.fields;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as DocumentArgs | undefined;
-            if ((!args || args.collection === undefined) && !opts.urn) {
+            if (args?.collection === undefined && !opts.urn) {
                 throw new Error("Missing required property 'collection'");
             }
-            if ((!args || args.documentId === undefined) && !opts.urn) {
+            if (args?.documentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'documentId'");
             }
-            if ((!args || args.fields === undefined) && !opts.urn) {
+            if (args?.fields === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
-            resourceInputs["collection"] = args ? args.collection : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["documentId"] = args ? args.documentId : undefined;
-            resourceInputs["fields"] = args ? args.fields : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["collection"] = args?.collection;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["documentId"] = args?.documentId;
+            resourceInputs["fields"] = args?.fields;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["path"] = undefined /*out*/;

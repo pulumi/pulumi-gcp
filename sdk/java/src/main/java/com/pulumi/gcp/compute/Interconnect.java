@@ -701,16 +701,14 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-     * deleted if this list is non-empty.
+     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
      * 
      */
     @Export(name="wireGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> wireGroups;
 
     /**
-     * @return A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-     * deleted if this list is non-empty.
+     * @return A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
      * 
      */
     public Output<List<String>> wireGroups() {

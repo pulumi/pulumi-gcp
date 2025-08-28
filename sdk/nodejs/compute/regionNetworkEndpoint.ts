@@ -177,43 +177,43 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
     /**
      * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
      */
-    public readonly clientDestinationPort!: pulumi.Output<number | undefined>;
+    declare public readonly clientDestinationPort: pulumi.Output<number | undefined>;
     /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
-    public readonly fqdn!: pulumi.Output<string | undefined>;
+    declare public readonly fqdn: pulumi.Output<string | undefined>;
     /**
      * The name for a specific VM instance that the IP address belongs to.
      * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
      */
-    public readonly instance!: pulumi.Output<string | undefined>;
+    declare public readonly instance: pulumi.Output<string | undefined>;
     /**
      * IPv4 address external endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
      */
-    public readonly ipAddress!: pulumi.Output<string | undefined>;
+    declare public readonly ipAddress: pulumi.Output<string | undefined>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly networkEndpointId!: pulumi.Output<number>;
+    declare public /*out*/ readonly networkEndpointId: pulumi.Output<number>;
     /**
      * Port number of network endpoint.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where the containing network endpoint group is located.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The network endpoint group this endpoint is part of.
      */
-    public readonly regionNetworkEndpointGroup!: pulumi.Output<string>;
+    declare public readonly regionNetworkEndpointGroup: pulumi.Output<string>;
 
     /**
      * Create a RegionNetworkEndpoint resource with the given unique name, arguments, and options.
@@ -228,31 +228,31 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionNetworkEndpointState | undefined;
-            resourceInputs["clientDestinationPort"] = state ? state.clientDestinationPort : undefined;
-            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["networkEndpointId"] = state ? state.networkEndpointId : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["regionNetworkEndpointGroup"] = state ? state.regionNetworkEndpointGroup : undefined;
+            resourceInputs["clientDestinationPort"] = state?.clientDestinationPort;
+            resourceInputs["fqdn"] = state?.fqdn;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["networkEndpointId"] = state?.networkEndpointId;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["regionNetworkEndpointGroup"] = state?.regionNetworkEndpointGroup;
         } else {
             const args = argsOrState as RegionNetworkEndpointArgs | undefined;
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.regionNetworkEndpointGroup === undefined) && !opts.urn) {
+            if (args?.regionNetworkEndpointGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionNetworkEndpointGroup'");
             }
-            resourceInputs["clientDestinationPort"] = args ? args.clientDestinationPort : undefined;
-            resourceInputs["fqdn"] = args ? args.fqdn : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["regionNetworkEndpointGroup"] = args ? args.regionNetworkEndpointGroup : undefined;
+            resourceInputs["clientDestinationPort"] = args?.clientDestinationPort;
+            resourceInputs["fqdn"] = args?.fqdn;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["regionNetworkEndpointGroup"] = args?.regionNetworkEndpointGroup;
             resourceInputs["networkEndpointId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

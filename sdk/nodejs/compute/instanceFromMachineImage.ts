@@ -64,187 +64,182 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     /**
      * Controls for advanced machine-related behavior features.
      */
-    public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
-    public readonly allowStoppingForUpdate!: pulumi.Output<boolean>;
+    declare public readonly advancedMachineFeatures: pulumi.Output<outputs.compute.InstanceFromMachineImageAdvancedMachineFeatures>;
+    declare public readonly allowStoppingForUpdate: pulumi.Output<boolean>;
     /**
      * List of disks attached to the instance
      */
-    public /*out*/ readonly attachedDisks!: pulumi.Output<outputs.compute.InstanceFromMachineImageAttachedDisk[]>;
+    declare public /*out*/ readonly attachedDisks: pulumi.Output<outputs.compute.InstanceFromMachineImageAttachedDisk[]>;
     /**
      * The boot disk for the instance.
      */
-    public /*out*/ readonly bootDisks!: pulumi.Output<outputs.compute.InstanceFromMachineImageBootDisk[]>;
+    declare public /*out*/ readonly bootDisks: pulumi.Output<outputs.compute.InstanceFromMachineImageBootDisk[]>;
     /**
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      */
-    public readonly canIpForward!: pulumi.Output<boolean>;
+    declare public readonly canIpForward: pulumi.Output<boolean>;
     /**
-     * The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-     * create.
+     * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      */
-    public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
+    declare public readonly confidentialInstanceConfig: pulumi.Output<outputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
     /**
      * The CPU platform used by this instance.
      */
-    public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
+    declare public /*out*/ readonly cpuPlatform: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
-     * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+     * Current status of the instance.
+     * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+     * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
-    public /*out*/ readonly currentStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly currentStatus: pulumi.Output<string>;
     /**
      * Whether deletion protection is enabled on this instance.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean>;
+    declare public readonly deletionProtection: pulumi.Output<boolean>;
     /**
      * A brief description of the resource.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
      */
-    public readonly desiredStatus!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly desiredStatus: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether the instance has virtual displays enabled.
      */
-    public readonly enableDisplay!: pulumi.Output<boolean>;
+    declare public readonly enableDisplay: pulumi.Output<boolean>;
     /**
      * List of the type and count of accelerator cards attached to the instance.
      */
-    public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceFromMachineImageGuestAccelerator[]>;
+    declare public readonly guestAccelerators: pulumi.Output<outputs.compute.InstanceFromMachineImageGuestAccelerator[]>;
     /**
-     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-     * exceed 253 characters. Changing this forces a new resource to be created.
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
-    public readonly hostname!: pulumi.Output<string>;
+    declare public readonly hostname: pulumi.Output<string>;
     /**
      * Encryption key used to provide data encryption on the given instance.
      */
-    public readonly instanceEncryptionKey!: pulumi.Output<outputs.compute.InstanceFromMachineImageInstanceEncryptionKey>;
+    declare public readonly instanceEncryptionKey: pulumi.Output<outputs.compute.InstanceFromMachineImageInstanceEncryptionKey>;
     /**
      * The server-assigned unique identifier of this instance.
      */
-    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     /**
-     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-     * default.
+     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
      */
-    public readonly keyRevocationActionType!: pulumi.Output<string>;
+    declare public readonly keyRevocationActionType: pulumi.Output<string>;
     /**
      * The unique fingerprint of the labels.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
-     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-     * the resource.
+     * A set of key/value label pairs assigned to the instance.
+     *
+     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The machine type to create.
      */
-    public readonly machineType!: pulumi.Output<string>;
+    declare public readonly machineType: pulumi.Output<string>;
     /**
      * Metadata key/value pairs made available within the instance.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string}>;
     /**
      * The unique fingerprint of the metadata.
      */
-    public /*out*/ readonly metadataFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly metadataFingerprint: pulumi.Output<string>;
     /**
      * Metadata startup scripts made available within the instance.
      */
-    public readonly metadataStartupScript!: pulumi.Output<string>;
+    declare public readonly metadataStartupScript: pulumi.Output<string>;
     /**
      * The minimum CPU platform specified for the VM instance.
      */
-    public readonly minCpuPlatform!: pulumi.Output<string>;
+    declare public readonly minCpuPlatform: pulumi.Output<string>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The networks attached to the instance.
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceFromMachineImageNetworkInterface[]>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.compute.InstanceFromMachineImageNetworkInterface[]>;
     /**
-     * Configures network performance settings for the instance. If not specified, the instance will be created with its
-     * default network performance configuration.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      */
-    public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.InstanceFromMachineImageNetworkPerformanceConfig>;
+    declare public readonly networkPerformanceConfig: pulumi.Output<outputs.compute.InstanceFromMachineImageNetworkPerformanceConfig>;
     /**
      * Stores additional params passed with the request, but not persisted as part of resource payload.
      */
-    public readonly params!: pulumi.Output<outputs.compute.InstanceFromMachineImageParams>;
+    declare public readonly params: pulumi.Output<outputs.compute.InstanceFromMachineImageParams>;
     /**
      * Partner Metadata Map made available within the instance.
      */
-    public readonly partnerMetadata!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly partnerMetadata: pulumi.Output<{[key: string]: string}>;
     /**
-     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-     * nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
-    public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceFromMachineImageReservationAffinity>;
+    declare public readonly reservationAffinity: pulumi.Output<outputs.compute.InstanceFromMachineImageReservationAffinity>;
     /**
      * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      */
-    public readonly resourcePolicies!: pulumi.Output<string>;
+    declare public readonly resourcePolicies: pulumi.Output<string>;
     /**
      * The scheduling strategy being used by the instance.
      */
-    public readonly scheduling!: pulumi.Output<outputs.compute.InstanceFromMachineImageScheduling>;
+    declare public readonly scheduling: pulumi.Output<outputs.compute.InstanceFromMachineImageScheduling>;
     /**
      * The scratch disks attached to the instance.
      */
-    public /*out*/ readonly scratchDisks!: pulumi.Output<outputs.compute.InstanceFromMachineImageScratchDisk[]>;
+    declare public /*out*/ readonly scratchDisks: pulumi.Output<outputs.compute.InstanceFromMachineImageScratchDisk[]>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The service account to attach to the instance.
      */
-    public readonly serviceAccount!: pulumi.Output<outputs.compute.InstanceFromMachineImageServiceAccount>;
+    declare public readonly serviceAccount: pulumi.Output<outputs.compute.InstanceFromMachineImageServiceAccount>;
     /**
      * The shielded vm config being used by the instance.
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceFromMachineImageShieldedInstanceConfig>;
+    declare public readonly shieldedInstanceConfig: pulumi.Output<outputs.compute.InstanceFromMachineImageShieldedInstanceConfig>;
     /**
      * Name or self link of a machine
      * image to create the instance based on.
      *
      * - - -
      */
-    public readonly sourceMachineImage!: pulumi.Output<string>;
+    declare public readonly sourceMachineImage: pulumi.Output<string>;
     /**
      * Encryption key for the source machine image.
      */
-    public readonly sourceMachineImageEncryptionKey!: pulumi.Output<outputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey | undefined>;
+    declare public readonly sourceMachineImageEncryptionKey: pulumi.Output<outputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey | undefined>;
     /**
      * The list of tags attached to the instance.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * The unique fingerprint of the tags.
      */
-    public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
@@ -255,7 +250,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      *
      * > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a InstanceFromMachineImage resource with the given unique name, arguments, and options.
@@ -270,88 +265,88 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceFromMachineImageState | undefined;
-            resourceInputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
-            resourceInputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
-            resourceInputs["attachedDisks"] = state ? state.attachedDisks : undefined;
-            resourceInputs["bootDisks"] = state ? state.bootDisks : undefined;
-            resourceInputs["canIpForward"] = state ? state.canIpForward : undefined;
-            resourceInputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
-            resourceInputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["currentStatus"] = state ? state.currentStatus : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desiredStatus"] = state ? state.desiredStatus : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
-            resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["instanceEncryptionKey"] = state ? state.instanceEncryptionKey : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["keyRevocationActionType"] = state ? state.keyRevocationActionType : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["machineType"] = state ? state.machineType : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["metadataFingerprint"] = state ? state.metadataFingerprint : undefined;
-            resourceInputs["metadataStartupScript"] = state ? state.metadataStartupScript : undefined;
-            resourceInputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["partnerMetadata"] = state ? state.partnerMetadata : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
-            resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
-            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
-            resourceInputs["scratchDisks"] = state ? state.scratchDisks : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            resourceInputs["sourceMachineImage"] = state ? state.sourceMachineImage : undefined;
-            resourceInputs["sourceMachineImageEncryptionKey"] = state ? state.sourceMachineImageEncryptionKey : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["advancedMachineFeatures"] = state?.advancedMachineFeatures;
+            resourceInputs["allowStoppingForUpdate"] = state?.allowStoppingForUpdate;
+            resourceInputs["attachedDisks"] = state?.attachedDisks;
+            resourceInputs["bootDisks"] = state?.bootDisks;
+            resourceInputs["canIpForward"] = state?.canIpForward;
+            resourceInputs["confidentialInstanceConfig"] = state?.confidentialInstanceConfig;
+            resourceInputs["cpuPlatform"] = state?.cpuPlatform;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["currentStatus"] = state?.currentStatus;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desiredStatus"] = state?.desiredStatus;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableDisplay"] = state?.enableDisplay;
+            resourceInputs["guestAccelerators"] = state?.guestAccelerators;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["instanceEncryptionKey"] = state?.instanceEncryptionKey;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["keyRevocationActionType"] = state?.keyRevocationActionType;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["metadataFingerprint"] = state?.metadataFingerprint;
+            resourceInputs["metadataStartupScript"] = state?.metadataStartupScript;
+            resourceInputs["minCpuPlatform"] = state?.minCpuPlatform;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["networkPerformanceConfig"] = state?.networkPerformanceConfig;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["partnerMetadata"] = state?.partnerMetadata;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reservationAffinity"] = state?.reservationAffinity;
+            resourceInputs["resourcePolicies"] = state?.resourcePolicies;
+            resourceInputs["scheduling"] = state?.scheduling;
+            resourceInputs["scratchDisks"] = state?.scratchDisks;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
+            resourceInputs["sourceMachineImage"] = state?.sourceMachineImage;
+            resourceInputs["sourceMachineImageEncryptionKey"] = state?.sourceMachineImageEncryptionKey;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tagsFingerprint"] = state?.tagsFingerprint;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceFromMachineImageArgs | undefined;
-            if ((!args || args.sourceMachineImage === undefined) && !opts.urn) {
+            if (args?.sourceMachineImage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceMachineImage'");
             }
-            resourceInputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
-            resourceInputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
-            resourceInputs["canIpForward"] = args ? args.canIpForward : undefined;
-            resourceInputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desiredStatus"] = args ? args.desiredStatus : undefined;
-            resourceInputs["enableDisplay"] = args ? args.enableDisplay : undefined;
-            resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["instanceEncryptionKey"] = args ? args.instanceEncryptionKey : undefined;
-            resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["machineType"] = args ? args.machineType : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["metadataStartupScript"] = args ? args.metadataStartupScript : undefined;
-            resourceInputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
-            resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
-            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            resourceInputs["sourceMachineImage"] = args ? args.sourceMachineImage : undefined;
-            resourceInputs["sourceMachineImageEncryptionKey"] = args ? args.sourceMachineImageEncryptionKey : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["advancedMachineFeatures"] = args?.advancedMachineFeatures;
+            resourceInputs["allowStoppingForUpdate"] = args?.allowStoppingForUpdate;
+            resourceInputs["canIpForward"] = args?.canIpForward;
+            resourceInputs["confidentialInstanceConfig"] = args?.confidentialInstanceConfig;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desiredStatus"] = args?.desiredStatus;
+            resourceInputs["enableDisplay"] = args?.enableDisplay;
+            resourceInputs["guestAccelerators"] = args?.guestAccelerators;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["instanceEncryptionKey"] = args?.instanceEncryptionKey;
+            resourceInputs["keyRevocationActionType"] = args?.keyRevocationActionType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["metadataStartupScript"] = args?.metadataStartupScript;
+            resourceInputs["minCpuPlatform"] = args?.minCpuPlatform;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["networkPerformanceConfig"] = args?.networkPerformanceConfig;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["partnerMetadata"] = args?.partnerMetadata;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reservationAffinity"] = args?.reservationAffinity;
+            resourceInputs["resourcePolicies"] = args?.resourcePolicies;
+            resourceInputs["scheduling"] = args?.scheduling;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
+            resourceInputs["sourceMachineImage"] = args?.sourceMachineImage;
+            resourceInputs["sourceMachineImageEncryptionKey"] = args?.sourceMachineImageEncryptionKey;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["attachedDisks"] = undefined /*out*/;
             resourceInputs["bootDisks"] = undefined /*out*/;
             resourceInputs["cpuPlatform"] = undefined /*out*/;
@@ -395,8 +390,7 @@ export interface InstanceFromMachineImageState {
      */
     canIpForward?: pulumi.Input<boolean>;
     /**
-     * The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-     * create.
+     * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      */
     confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
     /**
@@ -408,9 +402,9 @@ export interface InstanceFromMachineImageState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+     * Current status of the instance.
+     * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+     * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     currentStatus?: pulumi.Input<string>;
     /**
@@ -435,9 +429,7 @@ export interface InstanceFromMachineImageState {
      */
     guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageGuestAccelerator>[]>;
     /**
-     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-     * exceed 253 characters. Changing this forces a new resource to be created.
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
     /**
@@ -449,8 +441,7 @@ export interface InstanceFromMachineImageState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-     * default.
+     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
      */
     keyRevocationActionType?: pulumi.Input<string>;
     /**
@@ -458,9 +449,10 @@ export interface InstanceFromMachineImageState {
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-     * the resource.
+     * A set of key/value label pairs assigned to the instance.
+     *
+     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -493,8 +485,7 @@ export interface InstanceFromMachineImageState {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterface>[]>;
     /**
-     * Configures network performance settings for the instance. If not specified, the instance will be created with its
-     * default network performance configuration.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkPerformanceConfig>;
     /**
@@ -506,8 +497,7 @@ export interface InstanceFromMachineImageState {
      */
     partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-     * nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -588,8 +578,7 @@ export interface InstanceFromMachineImageArgs {
      */
     canIpForward?: pulumi.Input<boolean>;
     /**
-     * The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-     * create.
+     * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      */
     confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageConfidentialInstanceConfig>;
     /**
@@ -613,9 +602,7 @@ export interface InstanceFromMachineImageArgs {
      */
     guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageGuestAccelerator>[]>;
     /**
-     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-     * exceed 253 characters. Changing this forces a new resource to be created.
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
     /**
@@ -623,14 +610,14 @@ export interface InstanceFromMachineImageArgs {
      */
     instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageInstanceEncryptionKey>;
     /**
-     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-     * default.
+     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
      */
     keyRevocationActionType?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-     * the resource.
+     * A set of key/value label pairs assigned to the instance.
+     *
+     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -659,8 +646,7 @@ export interface InstanceFromMachineImageArgs {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterface>[]>;
     /**
-     * Configures network performance settings for the instance. If not specified, the instance will be created with its
-     * default network performance configuration.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkPerformanceConfig>;
     /**
@@ -672,8 +658,7 @@ export interface InstanceFromMachineImageArgs {
      */
     partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-     * nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

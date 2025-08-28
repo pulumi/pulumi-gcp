@@ -277,51 +277,51 @@ export class CxWebhook extends pulumi.CustomResource {
     /**
      * Indicates whether the webhook is disabled.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The human-readable name of the webhook, unique within the agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      */
-    public readonly enableSpellCorrection!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSpellCorrection: pulumi.Output<boolean | undefined>;
     /**
      * Deprecated. Determines whether this agent should log conversation queries.
      */
-    public readonly enableStackdriverLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableStackdriverLogging: pulumi.Output<boolean | undefined>;
     /**
      * Represents configuration for a generic web service.
      * Structure is documented below.
      */
-    public readonly genericWebService!: pulumi.Output<outputs.diagflow.CxWebhookGenericWebService | undefined>;
+    declare public readonly genericWebService: pulumi.Output<outputs.diagflow.CxWebhookGenericWebService | undefined>;
     /**
      * The unique identifier of the webhook.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The agent to create a webhook for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
-    public readonly securitySettings!: pulumi.Output<string | undefined>;
+    declare public readonly securitySettings: pulumi.Output<string | undefined>;
     /**
      * Configuration for a Service Directory service.
      * Structure is documented below.
      */
-    public readonly serviceDirectory!: pulumi.Output<outputs.diagflow.CxWebhookServiceDirectory | undefined>;
+    declare public readonly serviceDirectory: pulumi.Output<outputs.diagflow.CxWebhookServiceDirectory | undefined>;
     /**
      * Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    public /*out*/ readonly startFlow!: pulumi.Output<string>;
+    declare public /*out*/ readonly startFlow: pulumi.Output<string>;
     /**
      * Webhook execution timeout.
      */
-    public readonly timeout!: pulumi.Output<string | undefined>;
+    declare public readonly timeout: pulumi.Output<string | undefined>;
 
     /**
      * Create a CxWebhook resource with the given unique name, arguments, and options.
@@ -336,31 +336,31 @@ export class CxWebhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxWebhookState | undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enableSpellCorrection"] = state ? state.enableSpellCorrection : undefined;
-            resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
-            resourceInputs["genericWebService"] = state ? state.genericWebService : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["securitySettings"] = state ? state.securitySettings : undefined;
-            resourceInputs["serviceDirectory"] = state ? state.serviceDirectory : undefined;
-            resourceInputs["startFlow"] = state ? state.startFlow : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enableSpellCorrection"] = state?.enableSpellCorrection;
+            resourceInputs["enableStackdriverLogging"] = state?.enableStackdriverLogging;
+            resourceInputs["genericWebService"] = state?.genericWebService;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["securitySettings"] = state?.securitySettings;
+            resourceInputs["serviceDirectory"] = state?.serviceDirectory;
+            resourceInputs["startFlow"] = state?.startFlow;
+            resourceInputs["timeout"] = state?.timeout;
         } else {
             const args = argsOrState as CxWebhookArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
-            resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
-            resourceInputs["genericWebService"] = args ? args.genericWebService : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
-            resourceInputs["serviceDirectory"] = args ? args.serviceDirectory : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableSpellCorrection"] = args?.enableSpellCorrection;
+            resourceInputs["enableStackdriverLogging"] = args?.enableStackdriverLogging;
+            resourceInputs["genericWebService"] = args?.genericWebService;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["securitySettings"] = args?.securitySettings;
+            resourceInputs["serviceDirectory"] = args?.serviceDirectory;
+            resourceInputs["timeout"] = args?.timeout;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["startFlow"] = undefined /*out*/;
         }

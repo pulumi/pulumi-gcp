@@ -114,39 +114,39 @@ export class AppleApp extends pulumi.CustomResource {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    public readonly apiKeyId!: pulumi.Output<string>;
+    declare public readonly apiKeyId: pulumi.Output<string>;
     /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
-    public /*out*/ readonly appId!: pulumi.Output<string>;
+    declare public /*out*/ readonly appId: pulumi.Output<string>;
     /**
      * The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
      */
-    public readonly appStoreId!: pulumi.Output<string | undefined>;
+    declare public readonly appStoreId: pulumi.Output<string | undefined>;
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      */
-    public readonly bundleId!: pulumi.Output<string>;
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly bundleId: pulumi.Output<string>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the App.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The fully qualified resource name of the App, for example:
      * projects/projectId/iosApps/appId
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Apple Developer Team ID associated with the App in the App Store.
      */
-    public readonly teamId!: pulumi.Output<string | undefined>;
+    declare public readonly teamId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AppleApp resource with the given unique name, arguments, and options.
@@ -161,30 +161,30 @@ export class AppleApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppleAppState | undefined;
-            resourceInputs["apiKeyId"] = state ? state.apiKeyId : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["appStoreId"] = state ? state.appStoreId : undefined;
-            resourceInputs["bundleId"] = state ? state.bundleId : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["teamId"] = state ? state.teamId : undefined;
+            resourceInputs["apiKeyId"] = state?.apiKeyId;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["appStoreId"] = state?.appStoreId;
+            resourceInputs["bundleId"] = state?.bundleId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["teamId"] = state?.teamId;
         } else {
             const args = argsOrState as AppleAppArgs | undefined;
-            if ((!args || args.bundleId === undefined) && !opts.urn) {
+            if (args?.bundleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bundleId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
-            resourceInputs["appStoreId"] = args ? args.appStoreId : undefined;
-            resourceInputs["bundleId"] = args ? args.bundleId : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["teamId"] = args ? args.teamId : undefined;
+            resourceInputs["apiKeyId"] = args?.apiKeyId;
+            resourceInputs["appStoreId"] = args?.appStoreId;
+            resourceInputs["bundleId"] = args?.bundleId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["teamId"] = args?.teamId;
             resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
