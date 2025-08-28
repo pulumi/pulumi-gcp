@@ -160,10 +160,10 @@ index be5b80ea5..64eee9cbe 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index 567c69380..55790d062 100644
+index 1ba9d9d4b..991a0a0f6 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
-@@ -757,8 +757,8 @@ The following arguments are supported:
+@@ -779,8 +779,8 @@ The following arguments are supported:
  
  * `null_marker` -
    (Optional)
@@ -175,7 +175,7 @@ index 567c69380..55790d062 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index 4e906bce1..9534e841f 100644
+index 9c4ee8805..3d912d6c5 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -25,7 +25,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -315,7 +315,7 @@ index eb93b2b75..c034b9b3d 100644
  
  * `column_family` - (Optional) A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 diff --git a/website/docs/r/bigtable_table_iam.html.markdown b/website/docs/r/bigtable_table_iam.html.markdown
-index 5f149b073..afe1c9e37 100644
+index 7ddcf65cf..ba72b1e45 100644
 --- a/website/docs/r/bigtable_table_iam.html.markdown
 +++ b/website/docs/r/bigtable_table_iam.html.markdown
 @@ -103,7 +103,7 @@ For `google_bigtable_table_iam_member` or `google_bigtable_table_iam_binding`:
@@ -599,7 +599,7 @@ index 8c5f02037..ead4fc8ea 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index bf3d3d70b..4e9cbf6ba 100644
+index b3e15f257..80b928f4e 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -41,7 +41,6 @@ To get more information about BackendService, see:
@@ -1000,7 +1000,7 @@ index 0b0ddf4e9..9cf71f60b 100644
    maintenance_window {
      start_time = "08:00"
 diff --git a/website/docs/r/compute_organization_security_policy.html.markdown b/website/docs/r/compute_organization_security_policy.html.markdown
-index 0b97b934b..4460d92a4 100644
+index 364e2f7c6..4e93f3398 100644
 --- a/website/docs/r/compute_organization_security_policy.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy.html.markdown
 @@ -23,9 +23,6 @@ description: |-
@@ -1550,7 +1550,7 @@ index f78621541..4052832f2 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index ed7053242..4f2f84e56 100644
+index 8ee438dae..b1171c70a 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -391,9 +391,6 @@ The following arguments are supported:
@@ -1608,7 +1608,7 @@ index d88864517..9095d5782 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 86a68ebf9..da9603b4a 100644
+index b4832d655..28367c492 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -1699,7 +1699,7 @@ index 86a68ebf9..da9603b4a 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -965,10 +983,6 @@ gvnic {
+@@ -967,10 +985,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1710,7 +1710,7 @@ index 86a68ebf9..da9603b4a 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -995,7 +1009,7 @@ gvnic {
+@@ -997,7 +1011,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1719,7 +1719,7 @@ index 86a68ebf9..da9603b4a 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1020,10 +1034,7 @@ gvnic {
+@@ -1022,10 +1036,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1731,7 +1731,7 @@ index 86a68ebf9..da9603b4a 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -1037,13 +1048,14 @@ gvnic {
+@@ -1039,13 +1050,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1753,7 +1753,7 @@ index 86a68ebf9..da9603b4a 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1353,7 +1365,7 @@ for more details. This field only applies to private clusters, when
+@@ -1355,7 +1367,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1762,7 +1762,7 @@ index 86a68ebf9..da9603b4a 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1461,9 +1473,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1463,9 +1475,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2743,10 +2743,10 @@ index 602e15c69..f124e5525 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project_service.html.markdown b/website/docs/r/google_project_service.html.markdown
-index e6f20b8c8..6968f5c3b 100644
+index 903b9b6c9..7e6a4a1d7 100644
 --- a/website/docs/r/google_project_service.html.markdown
 +++ b/website/docs/r/google_project_service.html.markdown
-@@ -69,8 +69,8 @@ that manage the `google_project` resource itself.
+@@ -66,8 +66,8 @@ be `true` or unset in configurations that manage the `google_project` resource i
  
  * `disable_dependent_services` - (Optional) If `true`, services that are enabled
  and which depend on this service should also be disabled when this service is
@@ -3570,7 +3570,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 8a3712588..117dcd9ee 100644
+index 5c1805a10..c9035c670 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3606,7 +3606,7 @@ index 8a3712588..117dcd9ee 100644
      The provided key must be in the same region as the SQL instance.  In order
      to use this feature, a special kind of service account must be created and
      granted permission on this key.  This step can currently only be done
-@@ -336,20 +336,16 @@ includes an up-to-date reference of supported versions.
+@@ -336,16 +336,12 @@ includes an up-to-date reference of supported versions.
      That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
  
@@ -3626,13 +3626,17 @@ index 8a3712588..117dcd9ee 100644
 +    **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
+ *  `backupdr_backup` - (optional) The backupdr_backup needed to restore the database to a backup run. This field will
+@@ -354,7 +350,7 @@ includes an up-to-date reference of supported versions.
+     block during resource creation/update will trigger the restore action after the resource is created/updated.
+ 
  * `clone` - (Optional) The context needed to create this instance as a clone of another instance. When this field is set during
 -    resource creation, Terraform will attempt to clone another instance as indicated in the context. The
 +    resource creation, this provider will attempt to clone another instance as indicated in the context. The
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -619,7 +615,7 @@ The optional `clone` block supports:
+@@ -624,7 +620,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3641,7 +3645,7 @@ index 8a3712588..117dcd9ee 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -685,21 +681,13 @@ instance.
+@@ -690,21 +686,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -3694,7 +3698,7 @@ index d3e4a7bb3..48878d436 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index c1c78fa36..0ff8caf8a 100644
+index 85bd81f3c..5364f85f8 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -143,7 +143,7 @@ The following arguments are supported:
