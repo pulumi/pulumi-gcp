@@ -125,48 +125,48 @@ export class MetricDescriptor extends pulumi.CustomResource {
     /**
      * A detailed description of the metric, which can be used in documentation.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
      * Structure is documented below.
      */
-    public readonly labels!: pulumi.Output<outputs.monitoring.MetricDescriptorLabel[] | undefined>;
+    declare public readonly labels: pulumi.Output<outputs.monitoring.MetricDescriptorLabel[] | undefined>;
     /**
      * The launch stage of the metric definition.
      * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
-    public readonly launchStage!: pulumi.Output<string | undefined>;
+    declare public readonly launchStage: pulumi.Output<string | undefined>;
     /**
      * Metadata which can be used to guide usage of the metric.
      * Structure is documented below.
      */
-    public readonly metadata!: pulumi.Output<outputs.monitoring.MetricDescriptorMetadata | undefined>;
+    declare public readonly metadata: pulumi.Output<outputs.monitoring.MetricDescriptorMetadata | undefined>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      */
-    public readonly metricKind!: pulumi.Output<string>;
+    declare public readonly metricKind: pulumi.Output<string>;
     /**
      * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
      */
-    public /*out*/ readonly monitoredResourceTypes!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly monitoredResourceTypes: pulumi.Output<string[]>;
     /**
      * The resource name of the metric descriptor.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relativeMetricName is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The units in which the metric value is reported. It is only applicable if the
      * valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
@@ -186,12 +186,12 @@ export class MetricDescriptor extends pulumi.CustomResource {
      * More info can be found in the API documentation
      * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
      */
-    public readonly unit!: pulumi.Output<string | undefined>;
+    declare public readonly unit: pulumi.Output<string | undefined>;
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      */
-    public readonly valueType!: pulumi.Output<string>;
+    declare public readonly valueType: pulumi.Output<string>;
 
     /**
      * Create a MetricDescriptor resource with the given unique name, arguments, and options.
@@ -206,39 +206,39 @@ export class MetricDescriptor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricDescriptorState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["launchStage"] = state ? state.launchStage : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["metricKind"] = state ? state.metricKind : undefined;
-            resourceInputs["monitoredResourceTypes"] = state ? state.monitoredResourceTypes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["unit"] = state ? state.unit : undefined;
-            resourceInputs["valueType"] = state ? state.valueType : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["launchStage"] = state?.launchStage;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["metricKind"] = state?.metricKind;
+            resourceInputs["monitoredResourceTypes"] = state?.monitoredResourceTypes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["unit"] = state?.unit;
+            resourceInputs["valueType"] = state?.valueType;
         } else {
             const args = argsOrState as MetricDescriptorArgs | undefined;
-            if ((!args || args.metricKind === undefined) && !opts.urn) {
+            if (args?.metricKind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metricKind'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.valueType === undefined) && !opts.urn) {
+            if (args?.valueType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'valueType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["launchStage"] = args ? args.launchStage : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["metricKind"] = args ? args.metricKind : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["unit"] = args ? args.unit : undefined;
-            resourceInputs["valueType"] = args ? args.valueType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["launchStage"] = args?.launchStage;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["metricKind"] = args?.metricKind;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["unit"] = args?.unit;
+            resourceInputs["valueType"] = args?.valueType;
             resourceInputs["monitoredResourceTypes"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

@@ -558,36 +558,36 @@ export class RegionBackendService extends pulumi.CustomResource {
      * maximum allowed value for TTL is one day.
      * When the load balancing scheme is INTERNAL, this field is not used.
      */
-    public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
+    declare public readonly affinityCookieTtlSec: pulumi.Output<number | undefined>;
     /**
      * The set of backends that serve this RegionBackendService.
      * Structure is documented below.
      */
-    public readonly backends!: pulumi.Output<outputs.compute.RegionBackendServiceBackend[] | undefined>;
+    declare public readonly backends: pulumi.Output<outputs.compute.RegionBackendServiceBackend[] | undefined>;
     /**
      * Cloud CDN configuration for this BackendService.
      * Structure is documented below.
      */
-    public readonly cdnPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceCdnPolicy>;
+    declare public readonly cdnPolicy: pulumi.Output<outputs.compute.RegionBackendServiceCdnPolicy>;
     /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
      * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      */
-    public readonly circuitBreakers!: pulumi.Output<outputs.compute.RegionBackendServiceCircuitBreakers | undefined>;
+    declare public readonly circuitBreakers: pulumi.Output<outputs.compute.RegionBackendServiceCircuitBreakers | undefined>;
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
      */
-    public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
      * Structure is documented below.
      */
-    public readonly connectionTrackingPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceConnectionTrackingPolicy | undefined>;
+    declare public readonly connectionTrackingPolicy: pulumi.Output<outputs.compute.RegionBackendServiceConnectionTrackingPolicy | undefined>;
     /**
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -597,44 +597,44 @@ export class RegionBackendService extends pulumi.CustomResource {
      * hashing.
      * This field only applies when all of the following are true -
      */
-    public readonly consistentHash!: pulumi.Output<outputs.compute.RegionBackendServiceConsistentHash | undefined>;
+    declare public readonly consistentHash: pulumi.Output<outputs.compute.RegionBackendServiceConsistentHash | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
      * Structure is documented below.
      */
-    public readonly customMetrics!: pulumi.Output<outputs.compute.RegionBackendServiceCustomMetric[] | undefined>;
+    declare public readonly customMetrics: pulumi.Output<outputs.compute.RegionBackendServiceCustomMetric[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
      */
-    public readonly dynamicForwarding!: pulumi.Output<outputs.compute.RegionBackendServiceDynamicForwarding | undefined>;
+    declare public readonly dynamicForwarding: pulumi.Output<outputs.compute.RegionBackendServiceDynamicForwarding | undefined>;
     /**
      * If true, enable Cloud CDN for this RegionBackendService.
      */
-    public readonly enableCdn!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableCdn: pulumi.Output<boolean | undefined>;
     /**
      * Policy for failovers.
      * Structure is documented below.
      */
-    public readonly failoverPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceFailoverPolicy | undefined>;
+    declare public readonly failoverPolicy: pulumi.Output<outputs.compute.RegionBackendServiceFailoverPolicy | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this
      * object. This field is used in optimistic locking.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly generatedId!: pulumi.Output<number>;
+    declare public /*out*/ readonly generatedId: pulumi.Output<number>;
     /**
      * Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
      * The backends of this regional backend service must only specify zonal network endpoint groups
@@ -646,7 +646,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * Passthrough Network Load Balancers.
      * Structure is documented below.
      */
-    public readonly haPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceHaPolicy | undefined>;
+    declare public readonly haPolicy: pulumi.Output<outputs.compute.RegionBackendServiceHaPolicy | undefined>;
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
@@ -654,18 +654,18 @@ export class RegionBackendService extends pulumi.CustomResource {
      * A health check must be specified unless the backend service uses an internet
      * or serverless NEG as a backend.
      */
-    public readonly healthChecks!: pulumi.Output<string | undefined>;
+    declare public readonly healthChecks: pulumi.Output<string | undefined>;
     /**
      * Settings for enabling Cloud Identity Aware Proxy.
      * If OAuth client is not set, Google-managed OAuth client is used.
      * Structure is documented below.
      */
-    public readonly iap!: pulumi.Output<outputs.compute.RegionBackendServiceIap>;
+    declare public readonly iap: pulumi.Output<outputs.compute.RegionBackendServiceIap>;
     /**
      * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
      * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
      */
-    public readonly ipAddressSelectionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly ipAddressSelectionPolicy: pulumi.Output<string | undefined>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
@@ -674,7 +674,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * Default value is `INTERNAL`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
      */
-    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
@@ -729,13 +729,13 @@ export class RegionBackendService extends pulumi.CustomResource {
      * field set to true.
      * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      */
-    public readonly localityLbPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly localityLbPolicy: pulumi.Output<string | undefined>;
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service.
      * If logging is enabled, logs will be exported to Stackdriver.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.RegionBackendServiceLogConfig>;
+    declare public readonly logConfig: pulumi.Output<outputs.compute.RegionBackendServiceLogConfig>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -745,19 +745,19 @@ export class RegionBackendService extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL of the network to which this backend service belongs.
      * This field can only be specified when the load balancing scheme is set to INTERNAL.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      */
-    public readonly outlierDetection!: pulumi.Output<outputs.compute.RegionBackendServiceOutlierDetection | undefined>;
+    declare public readonly outlierDetection: pulumi.Output<outputs.compute.RegionBackendServiceOutlierDetection | undefined>;
     /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
@@ -767,12 +767,12 @@ export class RegionBackendService extends pulumi.CustomResource {
      * default of "http" if not given.
      * Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
      */
-    public readonly portName!: pulumi.Output<string>;
+    declare public readonly portName: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
@@ -780,43 +780,43 @@ export class RegionBackendService extends pulumi.CustomResource {
      * for more information.
      * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The Region in which the created backend service should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The security policy associated with this backend service.
      */
-    public readonly securityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly securityPolicy: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
      */
-    public readonly sessionAffinity!: pulumi.Output<string>;
+    declare public readonly sessionAffinity: pulumi.Output<string>;
     /**
      * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
      * Structure is documented below.
      */
-    public readonly strongSessionAffinityCookie!: pulumi.Output<outputs.compute.RegionBackendServiceStrongSessionAffinityCookie | undefined>;
+    declare public readonly strongSessionAffinityCookie: pulumi.Output<outputs.compute.RegionBackendServiceStrongSessionAffinityCookie | undefined>;
     /**
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */
-    public readonly subsetting!: pulumi.Output<outputs.compute.RegionBackendServiceSubsetting | undefined>;
+    declare public readonly subsetting: pulumi.Output<outputs.compute.RegionBackendServiceSubsetting | undefined>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer.
      * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
      * The default is 30 seconds.
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
-    public readonly timeoutSec!: pulumi.Output<number>;
+    declare public readonly timeoutSec: pulumi.Output<number>;
 
     /**
      * Create a RegionBackendService resource with the given unique name, arguments, and options.
@@ -831,74 +831,74 @@ export class RegionBackendService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionBackendServiceState | undefined;
-            resourceInputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
-            resourceInputs["backends"] = state ? state.backends : undefined;
-            resourceInputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
-            resourceInputs["circuitBreakers"] = state ? state.circuitBreakers : undefined;
-            resourceInputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
-            resourceInputs["connectionTrackingPolicy"] = state ? state.connectionTrackingPolicy : undefined;
-            resourceInputs["consistentHash"] = state ? state.consistentHash : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["customMetrics"] = state ? state.customMetrics : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dynamicForwarding"] = state ? state.dynamicForwarding : undefined;
-            resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
-            resourceInputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["generatedId"] = state ? state.generatedId : undefined;
-            resourceInputs["haPolicy"] = state ? state.haPolicy : undefined;
-            resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
-            resourceInputs["iap"] = state ? state.iap : undefined;
-            resourceInputs["ipAddressSelectionPolicy"] = state ? state.ipAddressSelectionPolicy : undefined;
-            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            resourceInputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["outlierDetection"] = state ? state.outlierDetection : undefined;
-            resourceInputs["portName"] = state ? state.portName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
-            resourceInputs["strongSessionAffinityCookie"] = state ? state.strongSessionAffinityCookie : undefined;
-            resourceInputs["subsetting"] = state ? state.subsetting : undefined;
-            resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
+            resourceInputs["affinityCookieTtlSec"] = state?.affinityCookieTtlSec;
+            resourceInputs["backends"] = state?.backends;
+            resourceInputs["cdnPolicy"] = state?.cdnPolicy;
+            resourceInputs["circuitBreakers"] = state?.circuitBreakers;
+            resourceInputs["connectionDrainingTimeoutSec"] = state?.connectionDrainingTimeoutSec;
+            resourceInputs["connectionTrackingPolicy"] = state?.connectionTrackingPolicy;
+            resourceInputs["consistentHash"] = state?.consistentHash;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["customMetrics"] = state?.customMetrics;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dynamicForwarding"] = state?.dynamicForwarding;
+            resourceInputs["enableCdn"] = state?.enableCdn;
+            resourceInputs["failoverPolicy"] = state?.failoverPolicy;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["generatedId"] = state?.generatedId;
+            resourceInputs["haPolicy"] = state?.haPolicy;
+            resourceInputs["healthChecks"] = state?.healthChecks;
+            resourceInputs["iap"] = state?.iap;
+            resourceInputs["ipAddressSelectionPolicy"] = state?.ipAddressSelectionPolicy;
+            resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
+            resourceInputs["localityLbPolicy"] = state?.localityLbPolicy;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["outlierDetection"] = state?.outlierDetection;
+            resourceInputs["portName"] = state?.portName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityPolicy"] = state?.securityPolicy;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sessionAffinity"] = state?.sessionAffinity;
+            resourceInputs["strongSessionAffinityCookie"] = state?.strongSessionAffinityCookie;
+            resourceInputs["subsetting"] = state?.subsetting;
+            resourceInputs["timeoutSec"] = state?.timeoutSec;
         } else {
             const args = argsOrState as RegionBackendServiceArgs | undefined;
-            resourceInputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
-            resourceInputs["backends"] = args ? args.backends : undefined;
-            resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
-            resourceInputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
-            resourceInputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
-            resourceInputs["connectionTrackingPolicy"] = args ? args.connectionTrackingPolicy : undefined;
-            resourceInputs["consistentHash"] = args ? args.consistentHash : undefined;
-            resourceInputs["customMetrics"] = args ? args.customMetrics : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dynamicForwarding"] = args ? args.dynamicForwarding : undefined;
-            resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
-            resourceInputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
-            resourceInputs["haPolicy"] = args ? args.haPolicy : undefined;
-            resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
-            resourceInputs["iap"] = args ? args.iap : undefined;
-            resourceInputs["ipAddressSelectionPolicy"] = args ? args.ipAddressSelectionPolicy : undefined;
-            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            resourceInputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["outlierDetection"] = args ? args.outlierDetection : undefined;
-            resourceInputs["portName"] = args ? args.portName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
-            resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
-            resourceInputs["strongSessionAffinityCookie"] = args ? args.strongSessionAffinityCookie : undefined;
-            resourceInputs["subsetting"] = args ? args.subsetting : undefined;
-            resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            resourceInputs["affinityCookieTtlSec"] = args?.affinityCookieTtlSec;
+            resourceInputs["backends"] = args?.backends;
+            resourceInputs["cdnPolicy"] = args?.cdnPolicy;
+            resourceInputs["circuitBreakers"] = args?.circuitBreakers;
+            resourceInputs["connectionDrainingTimeoutSec"] = args?.connectionDrainingTimeoutSec;
+            resourceInputs["connectionTrackingPolicy"] = args?.connectionTrackingPolicy;
+            resourceInputs["consistentHash"] = args?.consistentHash;
+            resourceInputs["customMetrics"] = args?.customMetrics;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dynamicForwarding"] = args?.dynamicForwarding;
+            resourceInputs["enableCdn"] = args?.enableCdn;
+            resourceInputs["failoverPolicy"] = args?.failoverPolicy;
+            resourceInputs["haPolicy"] = args?.haPolicy;
+            resourceInputs["healthChecks"] = args?.healthChecks;
+            resourceInputs["iap"] = args?.iap;
+            resourceInputs["ipAddressSelectionPolicy"] = args?.ipAddressSelectionPolicy;
+            resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
+            resourceInputs["localityLbPolicy"] = args?.localityLbPolicy;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["outlierDetection"] = args?.outlierDetection;
+            resourceInputs["portName"] = args?.portName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityPolicy"] = args?.securityPolicy;
+            resourceInputs["sessionAffinity"] = args?.sessionAffinity;
+            resourceInputs["strongSessionAffinityCookie"] = args?.strongSessionAffinityCookie;
+            resourceInputs["subsetting"] = args?.subsetting;
+            resourceInputs["timeoutSec"] = args?.timeoutSec;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["generatedId"] = undefined /*out*/;

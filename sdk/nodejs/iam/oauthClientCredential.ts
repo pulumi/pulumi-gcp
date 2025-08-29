@@ -100,43 +100,43 @@ export class OauthClientCredential extends pulumi.CustomResource {
      * mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public /*out*/ readonly clientSecret!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientSecret: pulumi.Output<string>;
     /**
      * Whether the OauthClientCredential is disabled. You cannot use a
      * disabled OauthClientCredential.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * A user-specified display name of the OauthClientCredential.
      * Cannot exceed 32 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Immutable. Identifier. The resource name of the OauthClientCredential.
      * Format:
      * `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Required. The ID to use for the OauthClientCredential, which becomes the
      * final component of the resource name. This value should be 4-32 characters,
      * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
      * reserved for use by Google, and may not be specified.
      */
-    public readonly oauthClientCredentialId!: pulumi.Output<string>;
+    declare public readonly oauthClientCredentialId: pulumi.Output<string>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly oauthclient!: pulumi.Output<string>;
+    declare public readonly oauthclient: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a OauthClientCredential resource with the given unique name, arguments, and options.
@@ -151,31 +151,31 @@ export class OauthClientCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OauthClientCredentialState | undefined;
-            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oauthClientCredentialId"] = state ? state.oauthClientCredentialId : undefined;
-            resourceInputs["oauthclient"] = state ? state.oauthclient : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oauthClientCredentialId"] = state?.oauthClientCredentialId;
+            resourceInputs["oauthclient"] = state?.oauthclient;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as OauthClientCredentialArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.oauthClientCredentialId === undefined) && !opts.urn) {
+            if (args?.oauthClientCredentialId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oauthClientCredentialId'");
             }
-            if ((!args || args.oauthclient === undefined) && !opts.urn) {
+            if (args?.oauthclient === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oauthclient'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["oauthClientCredentialId"] = args ? args.oauthClientCredentialId : undefined;
-            resourceInputs["oauthclient"] = args ? args.oauthclient : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["oauthClientCredentialId"] = args?.oauthClientCredentialId;
+            resourceInputs["oauthclient"] = args?.oauthclient;
+            resourceInputs["project"] = args?.project;
             resourceInputs["clientSecret"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

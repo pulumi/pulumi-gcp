@@ -113,37 +113,37 @@ export class CxGenerativeSettings extends pulumi.CustomResource {
      * Settings for Generative Fallback.
      * Structure is documented below.
      */
-    public readonly fallbackSettings!: pulumi.Output<outputs.diagflow.CxGenerativeSettingsFallbackSettings | undefined>;
+    declare public readonly fallbackSettings: pulumi.Output<outputs.diagflow.CxGenerativeSettingsFallbackSettings | undefined>;
     /**
      * Settings for Generative Safety.
      * w
      * Structure is documented below.
      */
-    public readonly generativeSafetySettings!: pulumi.Output<outputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings | undefined>;
+    declare public readonly generativeSafetySettings: pulumi.Output<outputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings | undefined>;
     /**
      * Settings for knowledge connector.
      * Structure is documented below.
      */
-    public readonly knowledgeConnectorSettings!: pulumi.Output<outputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings | undefined>;
+    declare public readonly knowledgeConnectorSettings: pulumi.Output<outputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings | undefined>;
     /**
      * Language for this settings.
      */
-    public readonly languageCode!: pulumi.Output<string>;
+    declare public readonly languageCode: pulumi.Output<string>;
     /**
      * LLM model settings.
      * Structure is documented below.
      */
-    public readonly llmModelSettings!: pulumi.Output<outputs.diagflow.CxGenerativeSettingsLlmModelSettings | undefined>;
+    declare public readonly llmModelSettings: pulumi.Output<outputs.diagflow.CxGenerativeSettingsLlmModelSettings | undefined>;
     /**
      * The unique identifier of the generativeSettings.
      * Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/generativeSettings.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The agent to create a flow for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
 
     /**
      * Create a CxGenerativeSettings resource with the given unique name, arguments, and options.
@@ -158,24 +158,24 @@ export class CxGenerativeSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxGenerativeSettingsState | undefined;
-            resourceInputs["fallbackSettings"] = state ? state.fallbackSettings : undefined;
-            resourceInputs["generativeSafetySettings"] = state ? state.generativeSafetySettings : undefined;
-            resourceInputs["knowledgeConnectorSettings"] = state ? state.knowledgeConnectorSettings : undefined;
-            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
-            resourceInputs["llmModelSettings"] = state ? state.llmModelSettings : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["fallbackSettings"] = state?.fallbackSettings;
+            resourceInputs["generativeSafetySettings"] = state?.generativeSafetySettings;
+            resourceInputs["knowledgeConnectorSettings"] = state?.knowledgeConnectorSettings;
+            resourceInputs["languageCode"] = state?.languageCode;
+            resourceInputs["llmModelSettings"] = state?.llmModelSettings;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
         } else {
             const args = argsOrState as CxGenerativeSettingsArgs | undefined;
-            if ((!args || args.languageCode === undefined) && !opts.urn) {
+            if (args?.languageCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'languageCode'");
             }
-            resourceInputs["fallbackSettings"] = args ? args.fallbackSettings : undefined;
-            resourceInputs["generativeSafetySettings"] = args ? args.generativeSafetySettings : undefined;
-            resourceInputs["knowledgeConnectorSettings"] = args ? args.knowledgeConnectorSettings : undefined;
-            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
-            resourceInputs["llmModelSettings"] = args ? args.llmModelSettings : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["fallbackSettings"] = args?.fallbackSettings;
+            resourceInputs["generativeSafetySettings"] = args?.generativeSafetySettings;
+            resourceInputs["knowledgeConnectorSettings"] = args?.knowledgeConnectorSettings;
+            resourceInputs["languageCode"] = args?.languageCode;
+            resourceInputs["llmModelSettings"] = args?.llmModelSettings;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

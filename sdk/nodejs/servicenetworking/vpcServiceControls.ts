@@ -133,21 +133,21 @@ export class VpcServiceControls extends pulumi.CustomResource {
      * Desired VPC Service Controls state service producer VPC network, as
      * described at the top of this page.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The network that the consumer is using to connect with services.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The id of the Google Cloud project containing the consumer network.
      */
-    public readonly project!: pulumi.Output<string | undefined>;
+    declare public readonly project: pulumi.Output<string | undefined>;
     /**
      * The service that is managing peering connectivity for a service
      * producer's organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a VpcServiceControls resource with the given unique name, arguments, and options.
@@ -162,25 +162,25 @@ export class VpcServiceControls extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcServiceControlsState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as VpcServiceControlsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcServiceControls.__pulumiType, name, resourceInputs, opts);

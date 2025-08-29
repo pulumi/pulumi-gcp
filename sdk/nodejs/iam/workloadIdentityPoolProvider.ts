@@ -335,7 +335,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
      */
-    public readonly attributeCondition!: pulumi.Output<string | undefined>;
+    declare public readonly attributeCondition: pulumi.Output<string | undefined>;
     /**
      * Maps attributes from authentication credentials issued by an external identity provider
      * to Google Cloud attributes, such as `subject` and `segment`.
@@ -389,45 +389,45 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      * {"google.subject": "assertion.sub"}
      * ```
      */
-    public readonly attributeMapping!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly attributeMapping: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      */
-    public readonly aws!: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderAws | undefined>;
+    declare public readonly aws: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderAws | undefined>;
     /**
      * A description for the provider. Cannot exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * A display name for the provider. Cannot exceed 32 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The resource name of the provider as
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      */
-    public readonly oidc!: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderOidc | undefined>;
+    declare public readonly oidc: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderOidc | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
      * Structure is documented below.
      */
-    public readonly saml!: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderSaml | undefined>;
+    declare public readonly saml: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderSaml | undefined>;
     /**
      * The state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -437,25 +437,25 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      * UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
      * until it is permanently deleted.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ID used for the pool, which is the final component of the pool resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    public readonly workloadIdentityPoolId!: pulumi.Output<string>;
+    declare public readonly workloadIdentityPoolId: pulumi.Output<string>;
     /**
      * The ID for the provider, which becomes the final component of the resource name. This
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    public readonly workloadIdentityPoolProviderId!: pulumi.Output<string>;
+    declare public readonly workloadIdentityPoolProviderId: pulumi.Output<string>;
     /**
      * An X.509-type identity provider represents a CA. It is trusted to assert a
      * client identity if the client has a certificate that chains up to this CA.
      * Structure is documented below.
      */
-    public readonly x509!: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderX509 | undefined>;
+    declare public readonly x509: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderX509 | undefined>;
 
     /**
      * Create a WorkloadIdentityPoolProvider resource with the given unique name, arguments, and options.
@@ -470,40 +470,40 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolProviderState | undefined;
-            resourceInputs["attributeCondition"] = state ? state.attributeCondition : undefined;
-            resourceInputs["attributeMapping"] = state ? state.attributeMapping : undefined;
-            resourceInputs["aws"] = state ? state.aws : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oidc"] = state ? state.oidc : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["saml"] = state ? state.saml : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
-            resourceInputs["workloadIdentityPoolProviderId"] = state ? state.workloadIdentityPoolProviderId : undefined;
-            resourceInputs["x509"] = state ? state.x509 : undefined;
+            resourceInputs["attributeCondition"] = state?.attributeCondition;
+            resourceInputs["attributeMapping"] = state?.attributeMapping;
+            resourceInputs["aws"] = state?.aws;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oidc"] = state?.oidc;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["saml"] = state?.saml;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["workloadIdentityPoolId"] = state?.workloadIdentityPoolId;
+            resourceInputs["workloadIdentityPoolProviderId"] = state?.workloadIdentityPoolProviderId;
+            resourceInputs["x509"] = state?.x509;
         } else {
             const args = argsOrState as WorkloadIdentityPoolProviderArgs | undefined;
-            if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
+            if (args?.workloadIdentityPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
-            if ((!args || args.workloadIdentityPoolProviderId === undefined) && !opts.urn) {
+            if (args?.workloadIdentityPoolProviderId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolProviderId'");
             }
-            resourceInputs["attributeCondition"] = args ? args.attributeCondition : undefined;
-            resourceInputs["attributeMapping"] = args ? args.attributeMapping : undefined;
-            resourceInputs["aws"] = args ? args.aws : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["oidc"] = args ? args.oidc : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["saml"] = args ? args.saml : undefined;
-            resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
-            resourceInputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
-            resourceInputs["x509"] = args ? args.x509 : undefined;
+            resourceInputs["attributeCondition"] = args?.attributeCondition;
+            resourceInputs["attributeMapping"] = args?.attributeMapping;
+            resourceInputs["aws"] = args?.aws;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["oidc"] = args?.oidc;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["saml"] = args?.saml;
+            resourceInputs["workloadIdentityPoolId"] = args?.workloadIdentityPoolId;
+            resourceInputs["workloadIdentityPoolProviderId"] = args?.workloadIdentityPoolProviderId;
+            resourceInputs["x509"] = args?.x509;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

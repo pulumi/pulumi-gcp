@@ -200,11 +200,11 @@ export class EnterpriseKey extends pulumi.CustomResource {
     /**
      * Settings for keys that can be used by Android apps.
      */
-    public readonly androidSettings!: pulumi.Output<outputs.recaptcha.EnterpriseKeyAndroidSettings | undefined>;
+    declare public readonly androidSettings: pulumi.Output<outputs.recaptcha.EnterpriseKeyAndroidSettings | undefined>;
     /**
      * The timestamp corresponding to the creation of this Key.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Human-readable display name of this key. Modifiable by user.
      *
@@ -212,46 +212,46 @@ export class EnterpriseKey extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Settings for keys that can be used by iOS apps.
      */
-    public readonly iosSettings!: pulumi.Output<outputs.recaptcha.EnterpriseKeyIosSettings | undefined>;
+    declare public readonly iosSettings: pulumi.Output<outputs.recaptcha.EnterpriseKeyIosSettings | undefined>;
     /**
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource id for the Key, which is the same as the Site Key itself.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Options for user acceptance testing.
      */
-    public readonly testingOptions!: pulumi.Output<outputs.recaptcha.EnterpriseKeyTestingOptions | undefined>;
+    declare public readonly testingOptions: pulumi.Output<outputs.recaptcha.EnterpriseKeyTestingOptions | undefined>;
     /**
      * Settings specific to keys that can be used for WAF (Web Application Firewall).
      */
-    public readonly wafSettings!: pulumi.Output<outputs.recaptcha.EnterpriseKeyWafSettings | undefined>;
+    declare public readonly wafSettings: pulumi.Output<outputs.recaptcha.EnterpriseKeyWafSettings | undefined>;
     /**
      * Settings for keys that can be used by websites.
      */
-    public readonly webSettings!: pulumi.Output<outputs.recaptcha.EnterpriseKeyWebSettings | undefined>;
+    declare public readonly webSettings: pulumi.Output<outputs.recaptcha.EnterpriseKeyWebSettings | undefined>;
 
     /**
      * Create a EnterpriseKey resource with the given unique name, arguments, and options.
@@ -266,31 +266,31 @@ export class EnterpriseKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseKeyState | undefined;
-            resourceInputs["androidSettings"] = state ? state.androidSettings : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["iosSettings"] = state ? state.iosSettings : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["testingOptions"] = state ? state.testingOptions : undefined;
-            resourceInputs["wafSettings"] = state ? state.wafSettings : undefined;
-            resourceInputs["webSettings"] = state ? state.webSettings : undefined;
+            resourceInputs["androidSettings"] = state?.androidSettings;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["iosSettings"] = state?.iosSettings;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["testingOptions"] = state?.testingOptions;
+            resourceInputs["wafSettings"] = state?.wafSettings;
+            resourceInputs["webSettings"] = state?.webSettings;
         } else {
             const args = argsOrState as EnterpriseKeyArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["androidSettings"] = args ? args.androidSettings : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["iosSettings"] = args ? args.iosSettings : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["testingOptions"] = args ? args.testingOptions : undefined;
-            resourceInputs["wafSettings"] = args ? args.wafSettings : undefined;
-            resourceInputs["webSettings"] = args ? args.webSettings : undefined;
+            resourceInputs["androidSettings"] = args?.androidSettings;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["iosSettings"] = args?.iosSettings;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["testingOptions"] = args?.testingOptions;
+            resourceInputs["wafSettings"] = args?.wafSettings;
+            resourceInputs["webSettings"] = args?.webSettings;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

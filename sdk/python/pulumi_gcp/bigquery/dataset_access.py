@@ -291,8 +291,7 @@ class _DatasetAccessState:
                  view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
         """
         Input properties used for looking up and filtering DatasetAccess resources.
-        :param pulumi.Input[_builtins.bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-               stored in state as a different member type
+        :param pulumi.Input[_builtins.bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
         :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
         :param pulumi.Input['DatasetAccessConditionArgs'] condition: Condition for the binding. If CEL expression in this field is true, this
@@ -365,8 +364,7 @@ class _DatasetAccessState:
     @pulumi.getter(name="apiUpdatedMember")
     def api_updated_member(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-        stored in state as a different member type
+        If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
         """
         return pulumi.get(self, "api_updated_member")
 
@@ -906,8 +904,7 @@ class DatasetAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-               stored in state as a different member type
+        :param pulumi.Input[_builtins.bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
         :param pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
         :param pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']] condition: Condition for the binding. If CEL expression in this field is true, this
@@ -972,8 +969,7 @@ class DatasetAccess(pulumi.CustomResource):
     @pulumi.getter(name="apiUpdatedMember")
     def api_updated_member(self) -> pulumi.Output[_builtins.bool]:
         """
-        If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-        stored in state as a different member type
+        If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
         """
         return pulumi.get(self, "api_updated_member")
 

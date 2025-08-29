@@ -40,13 +40,10 @@ type Environment struct {
 	// Configuration parameters for this environment.
 	Config          EnvironmentConfigOutput `pulumi:"config"`
 	EffectiveLabels pulumi.StringMapOutput  `pulumi:"effectiveLabels"`
-	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
-	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-	// must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
-	// and values must be <= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -98,13 +95,10 @@ type environmentState struct {
 	// Configuration parameters for this environment.
 	Config          *EnvironmentConfig `pulumi:"config"`
 	EffectiveLabels map[string]string  `pulumi:"effectiveLabels"`
-	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
-	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-	// must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
-	// and values must be <= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the environment.
 	Name *string `pulumi:"name"`
@@ -122,13 +116,10 @@ type EnvironmentState struct {
 	// Configuration parameters for this environment.
 	Config          EnvironmentConfigPtrInput
 	EffectiveLabels pulumi.StringMapInput
-	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
-	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-	// must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
-	// and values must be <= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the environment.
 	Name pulumi.StringPtrInput
@@ -149,13 +140,10 @@ func (EnvironmentState) ElementType() reflect.Type {
 type environmentArgs struct {
 	// Configuration parameters for this environment.
 	Config *EnvironmentConfig `pulumi:"config"`
-	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
-	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-	// must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
-	// and values must be <= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the environment.
 	Name *string `pulumi:"name"`
@@ -171,13 +159,10 @@ type environmentArgs struct {
 type EnvironmentArgs struct {
 	// Configuration parameters for this environment.
 	Config EnvironmentConfigPtrInput
-	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
-	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-	// must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
-	// conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
-	// and values must be <= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the environment.
 	Name pulumi.StringPtrInput
@@ -285,13 +270,10 @@ func (o EnvironmentOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
-// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-// must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
-// conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
-// and values must be <= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
-// present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-// resource.
+// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
+//
+//	**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+//	Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o EnvironmentOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

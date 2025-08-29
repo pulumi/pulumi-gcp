@@ -307,41 +307,41 @@ export class PatchDeployment extends pulumi.CustomResource {
      * Time the patch deployment was created. Timestamp is in RFC3339 text format.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the patch deployment. Length of the description is limited to 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Duration of the patch. After the duration ends, the patch times out.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
-    public readonly duration!: pulumi.Output<string | undefined>;
+    declare public readonly duration: pulumi.Output<string | undefined>;
     /**
      * VM instances to patch.
      * Structure is documented below.
      */
-    public readonly instanceFilter!: pulumi.Output<outputs.osconfig.PatchDeploymentInstanceFilter>;
+    declare public readonly instanceFilter: pulumi.Output<outputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
      * The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly lastExecuteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastExecuteTime: pulumi.Output<string>;
     /**
      * Unique name for the patch deployment resource in a project.
      * The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Schedule a one-time execution.
      * Structure is documented below.
      */
-    public readonly oneTimeSchedule!: pulumi.Output<outputs.osconfig.PatchDeploymentOneTimeSchedule | undefined>;
+    declare public readonly oneTimeSchedule: pulumi.Output<outputs.osconfig.PatchDeploymentOneTimeSchedule | undefined>;
     /**
      * Patch configuration that is applied.
      * Structure is documented below.
      */
-    public readonly patchConfig!: pulumi.Output<outputs.osconfig.PatchDeploymentPatchConfig | undefined>;
+    declare public readonly patchConfig: pulumi.Output<outputs.osconfig.PatchDeploymentPatchConfig | undefined>;
     /**
      * A name for the patch deployment in the project. When creating a name the following rules apply:
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -350,27 +350,27 @@ export class PatchDeployment extends pulumi.CustomResource {
      * * Must end with a number or a letter.
      * * Must be unique within the project.
      */
-    public readonly patchDeploymentId!: pulumi.Output<string>;
+    declare public readonly patchDeploymentId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Schedule recurring executions.
      * Structure is documented below.
      */
-    public readonly recurringSchedule!: pulumi.Output<outputs.osconfig.PatchDeploymentRecurringSchedule | undefined>;
+    declare public readonly recurringSchedule: pulumi.Output<outputs.osconfig.PatchDeploymentRecurringSchedule | undefined>;
     /**
      * Rollout strategy of the patch job.
      * Structure is documented below.
      */
-    public readonly rollout!: pulumi.Output<outputs.osconfig.PatchDeploymentRollout | undefined>;
+    declare public readonly rollout: pulumi.Output<outputs.osconfig.PatchDeploymentRollout | undefined>;
     /**
      * Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a PatchDeployment resource with the given unique name, arguments, and options.
@@ -385,36 +385,36 @@ export class PatchDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PatchDeploymentState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["instanceFilter"] = state ? state.instanceFilter : undefined;
-            resourceInputs["lastExecuteTime"] = state ? state.lastExecuteTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oneTimeSchedule"] = state ? state.oneTimeSchedule : undefined;
-            resourceInputs["patchConfig"] = state ? state.patchConfig : undefined;
-            resourceInputs["patchDeploymentId"] = state ? state.patchDeploymentId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["recurringSchedule"] = state ? state.recurringSchedule : undefined;
-            resourceInputs["rollout"] = state ? state.rollout : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["instanceFilter"] = state?.instanceFilter;
+            resourceInputs["lastExecuteTime"] = state?.lastExecuteTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oneTimeSchedule"] = state?.oneTimeSchedule;
+            resourceInputs["patchConfig"] = state?.patchConfig;
+            resourceInputs["patchDeploymentId"] = state?.patchDeploymentId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["recurringSchedule"] = state?.recurringSchedule;
+            resourceInputs["rollout"] = state?.rollout;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PatchDeploymentArgs | undefined;
-            if ((!args || args.instanceFilter === undefined) && !opts.urn) {
+            if (args?.instanceFilter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceFilter'");
             }
-            if ((!args || args.patchDeploymentId === undefined) && !opts.urn) {
+            if (args?.patchDeploymentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'patchDeploymentId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["instanceFilter"] = args ? args.instanceFilter : undefined;
-            resourceInputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
-            resourceInputs["patchConfig"] = args ? args.patchConfig : undefined;
-            resourceInputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
-            resourceInputs["rollout"] = args ? args.rollout : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["instanceFilter"] = args?.instanceFilter;
+            resourceInputs["oneTimeSchedule"] = args?.oneTimeSchedule;
+            resourceInputs["patchConfig"] = args?.patchConfig;
+            resourceInputs["patchDeploymentId"] = args?.patchDeploymentId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["recurringSchedule"] = args?.recurringSchedule;
+            resourceInputs["rollout"] = args?.rollout;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastExecuteTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

@@ -99,60 +99,60 @@ export class BatchOperationsJob extends pulumi.CustomResource {
      * List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
      * Structure is documented below.
      */
-    public readonly bucketList!: pulumi.Output<outputs.storage.BatchOperationsJobBucketList | undefined>;
+    declare public readonly bucketList: pulumi.Output<outputs.storage.BatchOperationsJobBucketList | undefined>;
     /**
      * The time that the job was completed.
      */
-    public /*out*/ readonly completeTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly completeTime: pulumi.Output<string>;
     /**
      * The timestamp at which this storage batch operation was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * allows batch operations to delete objects in bucket
      * Structure is documented below.
      */
-    public readonly deleteObject!: pulumi.Output<outputs.storage.BatchOperationsJobDeleteObject | undefined>;
+    declare public readonly deleteObject: pulumi.Output<outputs.storage.BatchOperationsJobDeleteObject | undefined>;
     /**
      * If set to `true`, the storage batch operation job will not be deleted and new job will be created.
      */
-    public readonly deleteProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteProtection: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the job.
      */
-    public readonly jobId!: pulumi.Output<string | undefined>;
+    declare public readonly jobId: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * allows batch operations to update metadata for objects in bucket
      * Structure is documented below.
      */
-    public readonly putMetadata!: pulumi.Output<outputs.storage.BatchOperationsJobPutMetadata | undefined>;
+    declare public readonly putMetadata: pulumi.Output<outputs.storage.BatchOperationsJobPutMetadata | undefined>;
     /**
      * allows to update temporary hold or eventBased hold for objects in bucket.
      * Structure is documented below.
      */
-    public readonly putObjectHold!: pulumi.Output<outputs.storage.BatchOperationsJobPutObjectHold | undefined>;
+    declare public readonly putObjectHold: pulumi.Output<outputs.storage.BatchOperationsJobPutObjectHold | undefined>;
     /**
      * allows to update encryption key for objects in bucket.
      * Structure is documented below.
      */
-    public readonly rewriteObject!: pulumi.Output<outputs.storage.BatchOperationsJobRewriteObject | undefined>;
+    declare public readonly rewriteObject: pulumi.Output<outputs.storage.BatchOperationsJobRewriteObject | undefined>;
     /**
      * The time that the job was scheduled.
      */
-    public /*out*/ readonly scheduleTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly scheduleTime: pulumi.Output<string>;
     /**
      * State of the job.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The timestamp at which this storage batch operation was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a BatchOperationsJob resource with the given unique name, arguments, and options.
@@ -167,29 +167,29 @@ export class BatchOperationsJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BatchOperationsJobState | undefined;
-            resourceInputs["bucketList"] = state ? state.bucketList : undefined;
-            resourceInputs["completeTime"] = state ? state.completeTime : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteObject"] = state ? state.deleteObject : undefined;
-            resourceInputs["deleteProtection"] = state ? state.deleteProtection : undefined;
-            resourceInputs["jobId"] = state ? state.jobId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["putMetadata"] = state ? state.putMetadata : undefined;
-            resourceInputs["putObjectHold"] = state ? state.putObjectHold : undefined;
-            resourceInputs["rewriteObject"] = state ? state.rewriteObject : undefined;
-            resourceInputs["scheduleTime"] = state ? state.scheduleTime : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["bucketList"] = state?.bucketList;
+            resourceInputs["completeTime"] = state?.completeTime;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteObject"] = state?.deleteObject;
+            resourceInputs["deleteProtection"] = state?.deleteProtection;
+            resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["putMetadata"] = state?.putMetadata;
+            resourceInputs["putObjectHold"] = state?.putObjectHold;
+            resourceInputs["rewriteObject"] = state?.rewriteObject;
+            resourceInputs["scheduleTime"] = state?.scheduleTime;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BatchOperationsJobArgs | undefined;
-            resourceInputs["bucketList"] = args ? args.bucketList : undefined;
-            resourceInputs["deleteObject"] = args ? args.deleteObject : undefined;
-            resourceInputs["deleteProtection"] = args ? args.deleteProtection : undefined;
-            resourceInputs["jobId"] = args ? args.jobId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["putMetadata"] = args ? args.putMetadata : undefined;
-            resourceInputs["putObjectHold"] = args ? args.putObjectHold : undefined;
-            resourceInputs["rewriteObject"] = args ? args.rewriteObject : undefined;
+            resourceInputs["bucketList"] = args?.bucketList;
+            resourceInputs["deleteObject"] = args?.deleteObject;
+            resourceInputs["deleteProtection"] = args?.deleteProtection;
+            resourceInputs["jobId"] = args?.jobId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["putMetadata"] = args?.putMetadata;
+            resourceInputs["putObjectHold"] = args?.putObjectHold;
+            resourceInputs["rewriteObject"] = args?.rewriteObject;
             resourceInputs["completeTime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["scheduleTime"] = undefined /*out*/;

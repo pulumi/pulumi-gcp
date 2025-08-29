@@ -132,12 +132,12 @@ export class MachineImage extends pulumi.CustomResource {
     /**
      * A text description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
      * Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
      */
-    public readonly guestFlush!: pulumi.Output<boolean | undefined>;
+    declare public readonly guestFlush: pulumi.Output<boolean | undefined>;
     /**
      * Encrypts the machine image using a customer-supplied encryption key.
      * After you encrypt a machine image with a customer-supplied key, you must
@@ -145,28 +145,28 @@ export class MachineImage extends pulumi.CustomResource {
      * instance from the image)
      * Structure is documented below.
      */
-    public readonly machineImageEncryptionKey!: pulumi.Output<outputs.compute.MachineImageMachineImageEncryptionKey | undefined>;
+    declare public readonly machineImageEncryptionKey: pulumi.Output<outputs.compute.MachineImageMachineImageEncryptionKey | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
      */
-    public readonly sourceInstance!: pulumi.Output<string>;
+    declare public readonly sourceInstance: pulumi.Output<string>;
     /**
      * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
      */
-    public /*out*/ readonly storageLocations!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly storageLocations: pulumi.Output<string[]>;
 
     /**
      * Create a MachineImage resource with the given unique name, arguments, and options.
@@ -181,25 +181,25 @@ export class MachineImage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MachineImageState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["guestFlush"] = state ? state.guestFlush : undefined;
-            resourceInputs["machineImageEncryptionKey"] = state ? state.machineImageEncryptionKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sourceInstance"] = state ? state.sourceInstance : undefined;
-            resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["guestFlush"] = state?.guestFlush;
+            resourceInputs["machineImageEncryptionKey"] = state?.machineImageEncryptionKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sourceInstance"] = state?.sourceInstance;
+            resourceInputs["storageLocations"] = state?.storageLocations;
         } else {
             const args = argsOrState as MachineImageArgs | undefined;
-            if ((!args || args.sourceInstance === undefined) && !opts.urn) {
+            if (args?.sourceInstance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceInstance'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["guestFlush"] = args ? args.guestFlush : undefined;
-            resourceInputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceInstance"] = args ? args.sourceInstance : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["guestFlush"] = args?.guestFlush;
+            resourceInputs["machineImageEncryptionKey"] = args?.machineImageEncryptionKey;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceInstance"] = args?.sourceInstance;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["storageLocations"] = undefined /*out*/;
         }

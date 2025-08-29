@@ -627,54 +627,54 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
     /**
      * The creation timestamp of an inspectTemplate. Set by the server.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A description of the job trigger.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User set display name of the job trigger.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Controls what and how to inspect for findings.
      * Structure is documented below.
      */
-    public readonly inspectJob!: pulumi.Output<outputs.dataloss.PreventionJobTriggerInspectJob | undefined>;
+    declare public readonly inspectJob: pulumi.Output<outputs.dataloss.PreventionJobTriggerInspectJob | undefined>;
     /**
      * The timestamp of the last time this trigger executed.
      */
-    public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastRunTime: pulumi.Output<string>;
     /**
      * The resource name of the job trigger. Set by the server.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of the trigger, either in the format `projects/{{project}}`
      * or `projects/{{project}}/locations/{{location}}`
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Whether the trigger is currently active.
      * Default value is `HEALTHY`.
      * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+.
      * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    public readonly triggerId!: pulumi.Output<string>;
+    declare public readonly triggerId: pulumi.Output<string>;
     /**
      * What event needs to occur for a new job to be started.
      * Structure is documented below.
      */
-    public readonly triggers!: pulumi.Output<outputs.dataloss.PreventionJobTriggerTrigger[]>;
+    declare public readonly triggers: pulumi.Output<outputs.dataloss.PreventionJobTriggerTrigger[]>;
     /**
      * The last update timestamp of an inspectTemplate. Set by the server.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a PreventionJobTrigger resource with the given unique name, arguments, and options.
@@ -689,32 +689,32 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionJobTriggerState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["inspectJob"] = state ? state.inspectJob : undefined;
-            resourceInputs["lastRunTime"] = state ? state.lastRunTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["inspectJob"] = state?.inspectJob;
+            resourceInputs["lastRunTime"] = state?.lastRunTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["triggerId"] = state?.triggerId;
+            resourceInputs["triggers"] = state?.triggers;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PreventionJobTriggerArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.triggers === undefined) && !opts.urn) {
+            if (args?.triggers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggers'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["inspectJob"] = args ? args.inspectJob : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["triggerId"] = args ? args.triggerId : undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["inspectJob"] = args?.inspectJob;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["triggerId"] = args?.triggerId;
+            resourceInputs["triggers"] = args?.triggers;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastRunTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

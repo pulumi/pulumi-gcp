@@ -296,7 +296,7 @@ export class VMwareCluster extends pulumi.CustomResource {
      * In the future, references to other resource types might be allowed if
      * admin clusters are modeled as their own resources.
      */
-    public readonly adminClusterMembership!: pulumi.Output<string>;
+    declare public readonly adminClusterMembership: pulumi.Output<string>;
     /**
      * Annotations on the VMware User Cluster.
      * This field has the same restrictions as Kubernetes annotations.
@@ -310,62 +310,62 @@ export class VMwareCluster extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * AAGConfig specifies whether to spread VMware User Cluster nodes across at
      * least three physical hosts in the datacenter.
      * Structure is documented below.
      */
-    public readonly antiAffinityGroups!: pulumi.Output<outputs.gkeonprem.VMwareClusterAntiAffinityGroups>;
+    declare public readonly antiAffinityGroups: pulumi.Output<outputs.gkeonprem.VMwareClusterAntiAffinityGroups>;
     /**
      * RBAC policy that will be applied and managed by GKE On-Prem.
      * Structure is documented below.
      */
-    public readonly authorization!: pulumi.Output<outputs.gkeonprem.VMwareClusterAuthorization | undefined>;
+    declare public readonly authorization: pulumi.Output<outputs.gkeonprem.VMwareClusterAuthorization | undefined>;
     /**
      * Configuration for auto repairing.
      * Structure is documented below.
      */
-    public readonly autoRepairConfig!: pulumi.Output<outputs.gkeonprem.VMwareClusterAutoRepairConfig>;
+    declare public readonly autoRepairConfig: pulumi.Output<outputs.gkeonprem.VMwareClusterAutoRepairConfig>;
     /**
      * VMware User Cluster control plane nodes must have either 1 or 3 replicas.
      * Structure is documented below.
      */
-    public readonly controlPlaneNode!: pulumi.Output<outputs.gkeonprem.VMwareClusterControlPlaneNode>;
+    declare public readonly controlPlaneNode: pulumi.Output<outputs.gkeonprem.VMwareClusterControlPlaneNode>;
     /**
      * The time at which VMware User Cluster was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * VmwareDataplaneV2Config specifies configuration for Dataplane V2.
      * Structure is documented below.
      */
-    public readonly dataplaneV2!: pulumi.Output<outputs.gkeonprem.VMwareClusterDataplaneV2>;
+    declare public readonly dataplaneV2: pulumi.Output<outputs.gkeonprem.VMwareClusterDataplaneV2>;
     /**
      * The time at which VMware User Cluster was deleted.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * A human readable description of this VMware User Cluster.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disable bundled ingress.
      */
-    public readonly disableBundledIngress!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly disableBundledIngress: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Enable advanced cluster. Default to false.
      */
-    public readonly enableAdvancedCluster!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAdvancedCluster: pulumi.Output<boolean | undefined>;
     /**
      * Enable control plane V2. Default to false.
      */
-    public readonly enableControlPlaneV2!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableControlPlaneV2: pulumi.Output<boolean | undefined>;
     /**
      * The DNS name of VMware User Cluster's API server.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
@@ -373,17 +373,17 @@ export class VMwareCluster extends pulumi.CustomResource {
      * Allows clients to perform consistent read-modify-writes
      * through optimistic concurrency control.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Fleet configuration for the cluster.
      * Structure is documented below.
      */
-    public /*out*/ readonly fleets!: pulumi.Output<outputs.gkeonprem.VMwareClusterFleet[]>;
+    declare public /*out*/ readonly fleets: pulumi.Output<outputs.gkeonprem.VMwareClusterFleet[]>;
     /**
      * Load Balancer configuration.
      * Structure is documented below.
      */
-    public readonly loadBalancer!: pulumi.Output<outputs.gkeonprem.VMwareClusterLoadBalancer | undefined>;
+    declare public readonly loadBalancer: pulumi.Output<outputs.gkeonprem.VMwareClusterLoadBalancer | undefined>;
     /**
      * The object name of the VMware OnPremUserCluster custom resource on the
      * associated admin cluster. This field is used to support conflicting
@@ -396,77 +396,77 @@ export class VMwareCluster extends pulumi.CustomResource {
      * kubectl and should expect to see the local name when viewing admin
      * cluster controller logs.
      */
-    public /*out*/ readonly localName!: pulumi.Output<string>;
+    declare public /*out*/ readonly localName: pulumi.Output<string>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The VMware cluster name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The VMware User Cluster network configuration.
      * Structure is documented below.
      */
-    public readonly networkConfig!: pulumi.Output<outputs.gkeonprem.VMwareClusterNetworkConfig | undefined>;
+    declare public readonly networkConfig: pulumi.Output<outputs.gkeonprem.VMwareClusterNetworkConfig | undefined>;
     /**
      * The Anthos clusters on the VMware version for your user cluster.
      */
-    public readonly onPremVersion!: pulumi.Output<string>;
+    declare public readonly onPremVersion: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * If set, there are currently changes in flight to the VMware User Cluster.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * (Output)
      * The lifecycle state of the condition.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * (Output)
      * Specifies the detailed validation check status
      * Structure is documented below.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.gkeonprem.VMwareClusterStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.gkeonprem.VMwareClusterStatus[]>;
     /**
      * Storage configuration.
      * Structure is documented below.
      */
-    public readonly storage!: pulumi.Output<outputs.gkeonprem.VMwareClusterStorage>;
+    declare public readonly storage: pulumi.Output<outputs.gkeonprem.VMwareClusterStorage>;
     /**
      * The unique identifier of the VMware User Cluster.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The time at which VMware User Cluster was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Specifies upgrade policy for the cluster.
      * Structure is documented below.
      */
-    public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.VMwareClusterUpgradePolicy | undefined>;
+    declare public readonly upgradePolicy: pulumi.Output<outputs.gkeonprem.VMwareClusterUpgradePolicy | undefined>;
     /**
      * ValidationCheck represents the result of the preflight check job.
      * Structure is documented below.
      */
-    public /*out*/ readonly validationChecks!: pulumi.Output<outputs.gkeonprem.VMwareClusterValidationCheck[]>;
+    declare public /*out*/ readonly validationChecks: pulumi.Output<outputs.gkeonprem.VMwareClusterValidationCheck[]>;
     /**
      * VmwareVCenterConfig specifies vCenter config for the user cluster.
      * Inherited from the admin cluster.
      * Structure is documented below.
      */
-    public readonly vcenter!: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter>;
+    declare public readonly vcenter: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter>;
     /**
      * Enable VM tracking.
      */
-    public readonly vmTrackingEnabled!: pulumi.Output<boolean>;
+    declare public readonly vmTrackingEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a VMwareCluster resource with the given unique name, arguments, and options.
@@ -481,75 +481,75 @@ export class VMwareCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VMwareClusterState | undefined;
-            resourceInputs["adminClusterMembership"] = state ? state.adminClusterMembership : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["antiAffinityGroups"] = state ? state.antiAffinityGroups : undefined;
-            resourceInputs["authorization"] = state ? state.authorization : undefined;
-            resourceInputs["autoRepairConfig"] = state ? state.autoRepairConfig : undefined;
-            resourceInputs["controlPlaneNode"] = state ? state.controlPlaneNode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataplaneV2"] = state ? state.dataplaneV2 : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableBundledIngress"] = state ? state.disableBundledIngress : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["enableAdvancedCluster"] = state ? state.enableAdvancedCluster : undefined;
-            resourceInputs["enableControlPlaneV2"] = state ? state.enableControlPlaneV2 : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["fleets"] = state ? state.fleets : undefined;
-            resourceInputs["loadBalancer"] = state ? state.loadBalancer : undefined;
-            resourceInputs["localName"] = state ? state.localName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["onPremVersion"] = state ? state.onPremVersion : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["upgradePolicy"] = state ? state.upgradePolicy : undefined;
-            resourceInputs["validationChecks"] = state ? state.validationChecks : undefined;
-            resourceInputs["vcenter"] = state ? state.vcenter : undefined;
-            resourceInputs["vmTrackingEnabled"] = state ? state.vmTrackingEnabled : undefined;
+            resourceInputs["adminClusterMembership"] = state?.adminClusterMembership;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["antiAffinityGroups"] = state?.antiAffinityGroups;
+            resourceInputs["authorization"] = state?.authorization;
+            resourceInputs["autoRepairConfig"] = state?.autoRepairConfig;
+            resourceInputs["controlPlaneNode"] = state?.controlPlaneNode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataplaneV2"] = state?.dataplaneV2;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableBundledIngress"] = state?.disableBundledIngress;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["enableAdvancedCluster"] = state?.enableAdvancedCluster;
+            resourceInputs["enableControlPlaneV2"] = state?.enableControlPlaneV2;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["fleets"] = state?.fleets;
+            resourceInputs["loadBalancer"] = state?.loadBalancer;
+            resourceInputs["localName"] = state?.localName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["onPremVersion"] = state?.onPremVersion;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["upgradePolicy"] = state?.upgradePolicy;
+            resourceInputs["validationChecks"] = state?.validationChecks;
+            resourceInputs["vcenter"] = state?.vcenter;
+            resourceInputs["vmTrackingEnabled"] = state?.vmTrackingEnabled;
         } else {
             const args = argsOrState as VMwareClusterArgs | undefined;
-            if ((!args || args.adminClusterMembership === undefined) && !opts.urn) {
+            if (args?.adminClusterMembership === undefined && !opts.urn) {
                 throw new Error("Missing required property 'adminClusterMembership'");
             }
-            if ((!args || args.controlPlaneNode === undefined) && !opts.urn) {
+            if (args?.controlPlaneNode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'controlPlaneNode'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.onPremVersion === undefined) && !opts.urn) {
+            if (args?.onPremVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'onPremVersion'");
             }
-            resourceInputs["adminClusterMembership"] = args ? args.adminClusterMembership : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["antiAffinityGroups"] = args ? args.antiAffinityGroups : undefined;
-            resourceInputs["authorization"] = args ? args.authorization : undefined;
-            resourceInputs["autoRepairConfig"] = args ? args.autoRepairConfig : undefined;
-            resourceInputs["controlPlaneNode"] = args ? args.controlPlaneNode : undefined;
-            resourceInputs["dataplaneV2"] = args ? args.dataplaneV2 : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableBundledIngress"] = args ? args.disableBundledIngress : undefined;
-            resourceInputs["enableAdvancedCluster"] = args ? args.enableAdvancedCluster : undefined;
-            resourceInputs["enableControlPlaneV2"] = args ? args.enableControlPlaneV2 : undefined;
-            resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["onPremVersion"] = args ? args.onPremVersion : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
-            resourceInputs["vcenter"] = args ? args.vcenter : undefined;
-            resourceInputs["vmTrackingEnabled"] = args ? args.vmTrackingEnabled : undefined;
+            resourceInputs["adminClusterMembership"] = args?.adminClusterMembership;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["antiAffinityGroups"] = args?.antiAffinityGroups;
+            resourceInputs["authorization"] = args?.authorization;
+            resourceInputs["autoRepairConfig"] = args?.autoRepairConfig;
+            resourceInputs["controlPlaneNode"] = args?.controlPlaneNode;
+            resourceInputs["dataplaneV2"] = args?.dataplaneV2;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableBundledIngress"] = args?.disableBundledIngress;
+            resourceInputs["enableAdvancedCluster"] = args?.enableAdvancedCluster;
+            resourceInputs["enableControlPlaneV2"] = args?.enableControlPlaneV2;
+            resourceInputs["loadBalancer"] = args?.loadBalancer;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["onPremVersion"] = args?.onPremVersion;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["upgradePolicy"] = args?.upgradePolicy;
+            resourceInputs["vcenter"] = args?.vcenter;
+            resourceInputs["vmTrackingEnabled"] = args?.vmTrackingEnabled;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;

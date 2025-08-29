@@ -408,7 +408,7 @@ export class RouterPeer extends pulumi.CustomResource {
      * Default value is `DEFAULT`.
      * Possible values are: `DEFAULT`, `CUSTOM`.
      */
-    public readonly advertiseMode!: pulumi.Output<string | undefined>;
+    declare public readonly advertiseMode: pulumi.Output<string | undefined>;
     /**
      * User-specified list of prefix groups to advertise in custom
      * mode, which currently supports the following option:
@@ -421,7 +421,7 @@ export class RouterPeer extends pulumi.CustomResource {
      * These groups are advertised in addition to any specified prefixes.
      * Leave this field blank to advertise no custom groups.
      */
-    public readonly advertisedGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly advertisedGroups: pulumi.Output<string[] | undefined>;
     /**
      * User-specified list of individual IP ranges to advertise in
      * custom mode. This field can only be populated if advertiseMode
@@ -430,85 +430,85 @@ export class RouterPeer extends pulumi.CustomResource {
      * Leave this field blank to advertise no custom IP ranges.
      * Structure is documented below.
      */
-    public readonly advertisedIpRanges!: pulumi.Output<outputs.compute.RouterPeerAdvertisedIpRange[] | undefined>;
+    declare public readonly advertisedIpRanges: pulumi.Output<outputs.compute.RouterPeerAdvertisedIpRange[] | undefined>;
     /**
      * The priority of routes advertised to this BGP peer.
      * Where there is more than one matching route of maximum
      * length, the routes with the lowest priority value win.
      */
-    public readonly advertisedRoutePriority!: pulumi.Output<number | undefined>;
+    declare public readonly advertisedRoutePriority: pulumi.Output<number | undefined>;
     /**
      * BFD configuration for the BGP peering.
      * Structure is documented below.
      */
-    public readonly bfd!: pulumi.Output<outputs.compute.RouterPeerBfd>;
+    declare public readonly bfd: pulumi.Output<outputs.compute.RouterPeerBfd>;
     /**
      * The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
      * If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
      * a /32 singular IP address range, and, for IPv6, /128.
      * Structure is documented below.
      */
-    public readonly customLearnedIpRanges!: pulumi.Output<outputs.compute.RouterPeerCustomLearnedIpRange[] | undefined>;
+    declare public readonly customLearnedIpRanges: pulumi.Output<outputs.compute.RouterPeerCustomLearnedIpRange[] | undefined>;
     /**
      * The user-defined custom learned route priority for a BGP session.
      * This value is applied to all custom learned route ranges for the session.
      * You can choose a value from 0 to 65335. If you don't provide a value,
      * Google Cloud assigns a priority of 100 to the ranges.
      */
-    public readonly customLearnedRoutePriority!: pulumi.Output<number | undefined>;
+    declare public readonly customLearnedRoutePriority: pulumi.Output<number | undefined>;
     /**
      * The status of the BGP peer connection. If set to false, any active session
      * with the peer is terminated and all associated routing information is removed.
      * If set to true, the peer connection can be established with routing information.
      * The default is true.
      */
-    public readonly enable!: pulumi.Output<boolean | undefined>;
+    declare public readonly enable: pulumi.Output<boolean | undefined>;
     /**
      * Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
      */
-    public readonly enableIpv4!: pulumi.Output<boolean>;
+    declare public readonly enableIpv4: pulumi.Output<boolean>;
     /**
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      */
-    public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableIpv6: pulumi.Output<boolean | undefined>;
     /**
      * routers.list of export policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
      */
-    public readonly exportPolicies!: pulumi.Output<string[] | undefined>;
+    declare public readonly exportPolicies: pulumi.Output<string[] | undefined>;
     /**
      * routers.list of import policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
      */
-    public readonly importPolicies!: pulumi.Output<string[] | undefined>;
+    declare public readonly importPolicies: pulumi.Output<string[] | undefined>;
     /**
      * Name of the interface the BGP peer is associated with.
      */
-    public readonly interface!: pulumi.Output<string>;
+    declare public readonly interface: pulumi.Output<string>;
     /**
      * IP address of the interface inside Google Cloud Platform.
      * Only IPv4 is supported.
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * IPv4 address of the interface inside Google Cloud Platform.
      */
-    public readonly ipv4NexthopAddress!: pulumi.Output<string>;
+    declare public readonly ipv4NexthopAddress: pulumi.Output<string>;
     /**
      * IPv6 address of the interface inside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
      * If you do not specify the next hop addresses, Google Cloud automatically
      * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
      */
-    public readonly ipv6NexthopAddress!: pulumi.Output<string>;
+    declare public readonly ipv6NexthopAddress: pulumi.Output<string>;
     /**
      * An internal boolean field for provider use for zero_advertised_route_priority.
      */
-    public /*out*/ readonly isAdvertisedRoutePrioritySet!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isAdvertisedRoutePrioritySet: pulumi.Output<boolean>;
     /**
      * An internal boolean field for provider use.
      */
-    public /*out*/ readonly isCustomLearnedPrioritySet!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isCustomLearnedPrioritySet: pulumi.Output<boolean>;
     /**
      * The resource that configures and manages this BGP peer.
      * * `MANAGED_BY_USER` is the default value and can be managed by
@@ -520,12 +520,12 @@ export class RouterPeer extends pulumi.CustomResource {
      * PARTNER InterconnectAttachment is created, updated,
      * or deleted.
      */
-    public /*out*/ readonly managementType!: pulumi.Output<string>;
+    declare public /*out*/ readonly managementType: pulumi.Output<string>;
     /**
      * Configuration for MD5 authentication on the BGP session.
      * Structure is documented below.
      */
-    public readonly md5AuthenticationKey!: pulumi.Output<outputs.compute.RouterPeerMd5AuthenticationKey | undefined>;
+    declare public readonly md5AuthenticationKey: pulumi.Output<outputs.compute.RouterPeerMd5AuthenticationKey | undefined>;
     /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -534,62 +534,62 @@ export class RouterPeer extends pulumi.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Peer BGP Autonomous System Number (ASN).
      * Each BGP interface may use a different value.
      */
-    public readonly peerAsn!: pulumi.Output<number>;
+    declare public readonly peerAsn: pulumi.Output<number>;
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
      * Only IPv4 is supported. Required if `ipAddress` is set.
      */
-    public readonly peerIpAddress!: pulumi.Output<string>;
+    declare public readonly peerIpAddress: pulumi.Output<string>;
     /**
      * IPv4 address of the BGP interface outside Google Cloud Platform.
      */
-    public readonly peerIpv4NexthopAddress!: pulumi.Output<string>;
+    declare public readonly peerIpv4NexthopAddress: pulumi.Output<string>;
     /**
      * IPv6 address of the BGP interface outside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
      * If you do not specify the next hop addresses, Google Cloud automatically
      * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
      */
-    public readonly peerIpv6NexthopAddress!: pulumi.Output<string>;
+    declare public readonly peerIpv6NexthopAddress: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where the router and BgpPeer reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
      *
      *
      * - - -
      */
-    public readonly router!: pulumi.Output<string>;
+    declare public readonly router: pulumi.Output<string>;
     /**
      * The URI of the VM instance that is used as third-party router appliances
      * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
      * The VM instance must be located in zones contained in the same region as
      * this Cloud Router. The VM instance is the peer side of the BGP session.
      */
-    public readonly routerApplianceInstance!: pulumi.Output<string | undefined>;
+    declare public readonly routerApplianceInstance: pulumi.Output<string | undefined>;
     /**
      * The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
      * This value has to be set true to force the advertisedRoutePriority to be 0.
      */
-    public readonly zeroAdvertisedRoutePriority!: pulumi.Output<boolean | undefined>;
+    declare public readonly zeroAdvertisedRoutePriority: pulumi.Output<boolean | undefined>;
     /**
      * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
      * This value has to be set true to force the customLearnedRoutePriority to be 0.
      */
-    public readonly zeroCustomLearnedRoutePriority!: pulumi.Output<boolean | undefined>;
+    declare public readonly zeroCustomLearnedRoutePriority: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RouterPeer resource with the given unique name, arguments, and options.
@@ -604,76 +604,76 @@ export class RouterPeer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterPeerState | undefined;
-            resourceInputs["advertiseMode"] = state ? state.advertiseMode : undefined;
-            resourceInputs["advertisedGroups"] = state ? state.advertisedGroups : undefined;
-            resourceInputs["advertisedIpRanges"] = state ? state.advertisedIpRanges : undefined;
-            resourceInputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
-            resourceInputs["bfd"] = state ? state.bfd : undefined;
-            resourceInputs["customLearnedIpRanges"] = state ? state.customLearnedIpRanges : undefined;
-            resourceInputs["customLearnedRoutePriority"] = state ? state.customLearnedRoutePriority : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["enableIpv4"] = state ? state.enableIpv4 : undefined;
-            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
-            resourceInputs["exportPolicies"] = state ? state.exportPolicies : undefined;
-            resourceInputs["importPolicies"] = state ? state.importPolicies : undefined;
-            resourceInputs["interface"] = state ? state.interface : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["ipv4NexthopAddress"] = state ? state.ipv4NexthopAddress : undefined;
-            resourceInputs["ipv6NexthopAddress"] = state ? state.ipv6NexthopAddress : undefined;
-            resourceInputs["isAdvertisedRoutePrioritySet"] = state ? state.isAdvertisedRoutePrioritySet : undefined;
-            resourceInputs["isCustomLearnedPrioritySet"] = state ? state.isCustomLearnedPrioritySet : undefined;
-            resourceInputs["managementType"] = state ? state.managementType : undefined;
-            resourceInputs["md5AuthenticationKey"] = state ? state.md5AuthenticationKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["peerAsn"] = state ? state.peerAsn : undefined;
-            resourceInputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
-            resourceInputs["peerIpv4NexthopAddress"] = state ? state.peerIpv4NexthopAddress : undefined;
-            resourceInputs["peerIpv6NexthopAddress"] = state ? state.peerIpv6NexthopAddress : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["router"] = state ? state.router : undefined;
-            resourceInputs["routerApplianceInstance"] = state ? state.routerApplianceInstance : undefined;
-            resourceInputs["zeroAdvertisedRoutePriority"] = state ? state.zeroAdvertisedRoutePriority : undefined;
-            resourceInputs["zeroCustomLearnedRoutePriority"] = state ? state.zeroCustomLearnedRoutePriority : undefined;
+            resourceInputs["advertiseMode"] = state?.advertiseMode;
+            resourceInputs["advertisedGroups"] = state?.advertisedGroups;
+            resourceInputs["advertisedIpRanges"] = state?.advertisedIpRanges;
+            resourceInputs["advertisedRoutePriority"] = state?.advertisedRoutePriority;
+            resourceInputs["bfd"] = state?.bfd;
+            resourceInputs["customLearnedIpRanges"] = state?.customLearnedIpRanges;
+            resourceInputs["customLearnedRoutePriority"] = state?.customLearnedRoutePriority;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["enableIpv4"] = state?.enableIpv4;
+            resourceInputs["enableIpv6"] = state?.enableIpv6;
+            resourceInputs["exportPolicies"] = state?.exportPolicies;
+            resourceInputs["importPolicies"] = state?.importPolicies;
+            resourceInputs["interface"] = state?.interface;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["ipv4NexthopAddress"] = state?.ipv4NexthopAddress;
+            resourceInputs["ipv6NexthopAddress"] = state?.ipv6NexthopAddress;
+            resourceInputs["isAdvertisedRoutePrioritySet"] = state?.isAdvertisedRoutePrioritySet;
+            resourceInputs["isCustomLearnedPrioritySet"] = state?.isCustomLearnedPrioritySet;
+            resourceInputs["managementType"] = state?.managementType;
+            resourceInputs["md5AuthenticationKey"] = state?.md5AuthenticationKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["peerAsn"] = state?.peerAsn;
+            resourceInputs["peerIpAddress"] = state?.peerIpAddress;
+            resourceInputs["peerIpv4NexthopAddress"] = state?.peerIpv4NexthopAddress;
+            resourceInputs["peerIpv6NexthopAddress"] = state?.peerIpv6NexthopAddress;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["router"] = state?.router;
+            resourceInputs["routerApplianceInstance"] = state?.routerApplianceInstance;
+            resourceInputs["zeroAdvertisedRoutePriority"] = state?.zeroAdvertisedRoutePriority;
+            resourceInputs["zeroCustomLearnedRoutePriority"] = state?.zeroCustomLearnedRoutePriority;
         } else {
             const args = argsOrState as RouterPeerArgs | undefined;
-            if ((!args || args.interface === undefined) && !opts.urn) {
+            if (args?.interface === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interface'");
             }
-            if ((!args || args.peerAsn === undefined) && !opts.urn) {
+            if (args?.peerAsn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerAsn'");
             }
-            if ((!args || args.router === undefined) && !opts.urn) {
+            if (args?.router === undefined && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            resourceInputs["advertiseMode"] = args ? args.advertiseMode : undefined;
-            resourceInputs["advertisedGroups"] = args ? args.advertisedGroups : undefined;
-            resourceInputs["advertisedIpRanges"] = args ? args.advertisedIpRanges : undefined;
-            resourceInputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
-            resourceInputs["bfd"] = args ? args.bfd : undefined;
-            resourceInputs["customLearnedIpRanges"] = args ? args.customLearnedIpRanges : undefined;
-            resourceInputs["customLearnedRoutePriority"] = args ? args.customLearnedRoutePriority : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["enableIpv4"] = args ? args.enableIpv4 : undefined;
-            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
-            resourceInputs["exportPolicies"] = args ? args.exportPolicies : undefined;
-            resourceInputs["importPolicies"] = args ? args.importPolicies : undefined;
-            resourceInputs["interface"] = args ? args.interface : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["ipv4NexthopAddress"] = args ? args.ipv4NexthopAddress : undefined;
-            resourceInputs["ipv6NexthopAddress"] = args ? args.ipv6NexthopAddress : undefined;
-            resourceInputs["md5AuthenticationKey"] = args ? args.md5AuthenticationKey : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
-            resourceInputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
-            resourceInputs["peerIpv4NexthopAddress"] = args ? args.peerIpv4NexthopAddress : undefined;
-            resourceInputs["peerIpv6NexthopAddress"] = args ? args.peerIpv6NexthopAddress : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["routerApplianceInstance"] = args ? args.routerApplianceInstance : undefined;
-            resourceInputs["zeroAdvertisedRoutePriority"] = args ? args.zeroAdvertisedRoutePriority : undefined;
-            resourceInputs["zeroCustomLearnedRoutePriority"] = args ? args.zeroCustomLearnedRoutePriority : undefined;
+            resourceInputs["advertiseMode"] = args?.advertiseMode;
+            resourceInputs["advertisedGroups"] = args?.advertisedGroups;
+            resourceInputs["advertisedIpRanges"] = args?.advertisedIpRanges;
+            resourceInputs["advertisedRoutePriority"] = args?.advertisedRoutePriority;
+            resourceInputs["bfd"] = args?.bfd;
+            resourceInputs["customLearnedIpRanges"] = args?.customLearnedIpRanges;
+            resourceInputs["customLearnedRoutePriority"] = args?.customLearnedRoutePriority;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["enableIpv4"] = args?.enableIpv4;
+            resourceInputs["enableIpv6"] = args?.enableIpv6;
+            resourceInputs["exportPolicies"] = args?.exportPolicies;
+            resourceInputs["importPolicies"] = args?.importPolicies;
+            resourceInputs["interface"] = args?.interface;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["ipv4NexthopAddress"] = args?.ipv4NexthopAddress;
+            resourceInputs["ipv6NexthopAddress"] = args?.ipv6NexthopAddress;
+            resourceInputs["md5AuthenticationKey"] = args?.md5AuthenticationKey;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["peerAsn"] = args?.peerAsn;
+            resourceInputs["peerIpAddress"] = args?.peerIpAddress;
+            resourceInputs["peerIpv4NexthopAddress"] = args?.peerIpv4NexthopAddress;
+            resourceInputs["peerIpv6NexthopAddress"] = args?.peerIpv6NexthopAddress;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["router"] = args?.router;
+            resourceInputs["routerApplianceInstance"] = args?.routerApplianceInstance;
+            resourceInputs["zeroAdvertisedRoutePriority"] = args?.zeroAdvertisedRoutePriority;
+            resourceInputs["zeroCustomLearnedRoutePriority"] = args?.zeroCustomLearnedRoutePriority;
             resourceInputs["isAdvertisedRoutePrioritySet"] = undefined /*out*/;
             resourceInputs["isCustomLearnedPrioritySet"] = undefined /*out*/;
             resourceInputs["managementType"] = undefined /*out*/;

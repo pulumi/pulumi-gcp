@@ -421,51 +421,51 @@ export class HealthCheck extends pulumi.CustomResource {
      * How often (in seconds) to send a health check. The default value is 5
      * seconds.
      */
-    public readonly checkIntervalSec!: pulumi.Output<number | undefined>;
+    declare public readonly checkIntervalSec: pulumi.Output<number | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.HealthCheckGrpcHealthCheck | undefined>;
+    declare public readonly grpcHealthCheck: pulumi.Output<outputs.compute.HealthCheckGrpcHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly grpcTlsHealthCheck!: pulumi.Output<outputs.compute.HealthCheckGrpcTlsHealthCheck | undefined>;
+    declare public readonly grpcTlsHealthCheck: pulumi.Output<outputs.compute.HealthCheckGrpcTlsHealthCheck | undefined>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      */
-    public readonly healthyThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly healthyThreshold: pulumi.Output<number | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly http2HealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttp2HealthCheck | undefined>;
+    declare public readonly http2HealthCheck: pulumi.Output<outputs.compute.HealthCheckHttp2HealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly httpHealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttpHealthCheck | undefined>;
+    declare public readonly httpHealthCheck: pulumi.Output<outputs.compute.HealthCheckHttpHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttpsHealthCheck | undefined>;
+    declare public readonly httpsHealthCheck: pulumi.Output<outputs.compute.HealthCheckHttpsHealthCheck | undefined>;
     /**
      * Configure logging on this health check.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.HealthCheckLogConfig>;
+    declare public readonly logConfig: pulumi.Output<outputs.compute.HealthCheckLogConfig>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -475,16 +475,16 @@ export class HealthCheck extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The list of cloud regions from which health checks are performed. If
      * any regions are specified, then exactly 3 regions should be specified.
@@ -499,32 +499,32 @@ export class HealthCheck extends pulumi.CustomResource {
      * * The health check cannot be used with BackendService nor with managed
      * instance group auto-healing.
      */
-    public readonly sourceRegions!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceRegions: pulumi.Output<string[] | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly sslHealthCheck!: pulumi.Output<outputs.compute.HealthCheckSslHealthCheck | undefined>;
+    declare public readonly sslHealthCheck: pulumi.Output<outputs.compute.HealthCheckSslHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly tcpHealthCheck!: pulumi.Output<outputs.compute.HealthCheckTcpHealthCheck | undefined>;
+    declare public readonly tcpHealthCheck: pulumi.Output<outputs.compute.HealthCheckTcpHealthCheck | undefined>;
     /**
      * How long (in seconds) to wait before claiming failure.
      * The default value is 5 seconds.  It is invalid for timeoutSec to have
      * greater value than checkIntervalSec.
      */
-    public readonly timeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutSec: pulumi.Output<number | undefined>;
     /**
      * The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * A so-far healthy instance will be marked unhealthy after this many
      * consecutive failures. The default value is 2.
      */
-    public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly unhealthyThreshold: pulumi.Output<number | undefined>;
 
     /**
      * Create a HealthCheck resource with the given unique name, arguments, and options.
@@ -539,43 +539,43 @@ export class HealthCheck extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HealthCheckState | undefined;
-            resourceInputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["grpcHealthCheck"] = state ? state.grpcHealthCheck : undefined;
-            resourceInputs["grpcTlsHealthCheck"] = state ? state.grpcTlsHealthCheck : undefined;
-            resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
-            resourceInputs["http2HealthCheck"] = state ? state.http2HealthCheck : undefined;
-            resourceInputs["httpHealthCheck"] = state ? state.httpHealthCheck : undefined;
-            resourceInputs["httpsHealthCheck"] = state ? state.httpsHealthCheck : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sourceRegions"] = state ? state.sourceRegions : undefined;
-            resourceInputs["sslHealthCheck"] = state ? state.sslHealthCheck : undefined;
-            resourceInputs["tcpHealthCheck"] = state ? state.tcpHealthCheck : undefined;
-            resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
+            resourceInputs["checkIntervalSec"] = state?.checkIntervalSec;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["grpcHealthCheck"] = state?.grpcHealthCheck;
+            resourceInputs["grpcTlsHealthCheck"] = state?.grpcTlsHealthCheck;
+            resourceInputs["healthyThreshold"] = state?.healthyThreshold;
+            resourceInputs["http2HealthCheck"] = state?.http2HealthCheck;
+            resourceInputs["httpHealthCheck"] = state?.httpHealthCheck;
+            resourceInputs["httpsHealthCheck"] = state?.httpsHealthCheck;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sourceRegions"] = state?.sourceRegions;
+            resourceInputs["sslHealthCheck"] = state?.sslHealthCheck;
+            resourceInputs["tcpHealthCheck"] = state?.tcpHealthCheck;
+            resourceInputs["timeoutSec"] = state?.timeoutSec;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["unhealthyThreshold"] = state?.unhealthyThreshold;
         } else {
             const args = argsOrState as HealthCheckArgs | undefined;
-            resourceInputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
-            resourceInputs["grpcTlsHealthCheck"] = args ? args.grpcTlsHealthCheck : undefined;
-            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            resourceInputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
-            resourceInputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
-            resourceInputs["httpsHealthCheck"] = args ? args.httpsHealthCheck : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceRegions"] = args ? args.sourceRegions : undefined;
-            resourceInputs["sslHealthCheck"] = args ? args.sslHealthCheck : undefined;
-            resourceInputs["tcpHealthCheck"] = args ? args.tcpHealthCheck : undefined;
-            resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
-            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            resourceInputs["checkIntervalSec"] = args?.checkIntervalSec;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["grpcHealthCheck"] = args?.grpcHealthCheck;
+            resourceInputs["grpcTlsHealthCheck"] = args?.grpcTlsHealthCheck;
+            resourceInputs["healthyThreshold"] = args?.healthyThreshold;
+            resourceInputs["http2HealthCheck"] = args?.http2HealthCheck;
+            resourceInputs["httpHealthCheck"] = args?.httpHealthCheck;
+            resourceInputs["httpsHealthCheck"] = args?.httpsHealthCheck;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceRegions"] = args?.sourceRegions;
+            resourceInputs["sslHealthCheck"] = args?.sslHealthCheck;
+            resourceInputs["tcpHealthCheck"] = args?.tcpHealthCheck;
+            resourceInputs["timeoutSec"] = args?.timeoutSec;
+            resourceInputs["unhealthyThreshold"] = args?.unhealthyThreshold;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

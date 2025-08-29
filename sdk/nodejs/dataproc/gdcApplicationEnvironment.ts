@@ -116,69 +116,69 @@ export class GdcApplicationEnvironment extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The id of the application environment
      */
-    public readonly applicationEnvironmentId!: pulumi.Output<string | undefined>;
+    declare public readonly applicationEnvironmentId: pulumi.Output<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-provided human-readable name to be used in user interfaces.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the application environment
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The name of the application environment. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/applicationEnvironments/{application_environment_id}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The name of the namespace in which to create this ApplicationEnvironment. This namespace must already exist in the cluster
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The id of the service instance to which this application environment belongs.
      */
-    public readonly serviceinstance!: pulumi.Output<string>;
+    declare public readonly serviceinstance: pulumi.Output<string>;
     /**
      * Represents the SparkApplicationEnvironmentConfig.
      * Structure is documented below.
      */
-    public readonly sparkApplicationEnvironmentConfig!: pulumi.Output<outputs.dataproc.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig | undefined>;
+    declare public readonly sparkApplicationEnvironmentConfig: pulumi.Output<outputs.dataproc.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig | undefined>;
     /**
      * System generated unique identifier for this application environment, formatted as UUID4.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The timestamp when the resource was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a GdcApplicationEnvironment resource with the given unique name, arguments, and options.
@@ -193,39 +193,39 @@ export class GdcApplicationEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GdcApplicationEnvironmentState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["applicationEnvironmentId"] = state ? state.applicationEnvironmentId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceinstance"] = state ? state.serviceinstance : undefined;
-            resourceInputs["sparkApplicationEnvironmentConfig"] = state ? state.sparkApplicationEnvironmentConfig : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["applicationEnvironmentId"] = state?.applicationEnvironmentId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceinstance"] = state?.serviceinstance;
+            resourceInputs["sparkApplicationEnvironmentConfig"] = state?.sparkApplicationEnvironmentConfig;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GdcApplicationEnvironmentArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.serviceinstance === undefined) && !opts.urn) {
+            if (args?.serviceinstance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceinstance'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["applicationEnvironmentId"] = args ? args.applicationEnvironmentId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceinstance"] = args ? args.serviceinstance : undefined;
-            resourceInputs["sparkApplicationEnvironmentConfig"] = args ? args.sparkApplicationEnvironmentConfig : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["applicationEnvironmentId"] = args?.applicationEnvironmentId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceinstance"] = args?.serviceinstance;
+            resourceInputs["sparkApplicationEnvironmentConfig"] = args?.sparkApplicationEnvironmentConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

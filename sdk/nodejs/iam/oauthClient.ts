@@ -91,12 +91,12 @@ export class OauthClient extends pulumi.CustomResource {
     /**
      * Required. The list of OAuth grant types is allowed for the OauthClient.
      */
-    public readonly allowedGrantTypes!: pulumi.Output<string[]>;
+    declare public readonly allowedGrantTypes: pulumi.Output<string[]>;
     /**
      * Required. The list of redirect uris that is allowed to redirect back
      * when authorization process is completed.
      */
-    public readonly allowedRedirectUris!: pulumi.Output<string[]>;
+    declare public readonly allowedRedirectUris: pulumi.Output<string[]>;
     /**
      * Required. The list of scopes that the OauthClient is allowed to request during
      * OAuth flows.
@@ -105,11 +105,11 @@ export class OauthClient extends pulumi.CustomResource {
      * and delete your Google Cloud data and see the email address for your Google
      * Account.
      */
-    public readonly allowedScopes!: pulumi.Output<string[]>;
+    declare public readonly allowedScopes: pulumi.Output<string[]>;
     /**
      * Output only. The system-generated OauthClient id.
      */
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
     /**
      * Immutable. The type of OauthClient. Either public or private.
      * For private clients, the client secret can be managed using the dedicated
@@ -119,36 +119,36 @@ export class OauthClient extends pulumi.CustomResource {
      * PUBLIC_CLIENT
      * CONFIDENTIAL_CLIENT
      */
-    public readonly clientType!: pulumi.Output<string | undefined>;
+    declare public readonly clientType: pulumi.Output<string | undefined>;
     /**
      * A user-specified description of the OauthClient.
      * Cannot exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the OauthClient is disabled. You cannot use a disabled OAuth
      * client.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * A user-specified display name of the OauthClient.
      * Cannot exceed 32 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Time after which the OauthClient will be permanently purged and cannot
      * be recovered.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Immutable. Identifier. The resource name of the OauthClient.
      * Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Required. The ID to use for the OauthClient, which becomes the final component of
      * the resource name. This value should be a string of 6 to 63 lowercase
@@ -156,12 +156,12 @@ export class OauthClient extends pulumi.CustomResource {
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
      */
-    public readonly oauthClientId!: pulumi.Output<string>;
+    declare public readonly oauthClientId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The state of the OauthClient.
      * Possible values:
@@ -169,7 +169,7 @@ export class OauthClient extends pulumi.CustomResource {
      * ACTIVE
      * DELETED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a OauthClient resource with the given unique name, arguments, and options.
@@ -184,47 +184,47 @@ export class OauthClient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OauthClientState | undefined;
-            resourceInputs["allowedGrantTypes"] = state ? state.allowedGrantTypes : undefined;
-            resourceInputs["allowedRedirectUris"] = state ? state.allowedRedirectUris : undefined;
-            resourceInputs["allowedScopes"] = state ? state.allowedScopes : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientType"] = state ? state.clientType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oauthClientId"] = state ? state.oauthClientId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["allowedGrantTypes"] = state?.allowedGrantTypes;
+            resourceInputs["allowedRedirectUris"] = state?.allowedRedirectUris;
+            resourceInputs["allowedScopes"] = state?.allowedScopes;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientType"] = state?.clientType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oauthClientId"] = state?.oauthClientId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as OauthClientArgs | undefined;
-            if ((!args || args.allowedGrantTypes === undefined) && !opts.urn) {
+            if (args?.allowedGrantTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowedGrantTypes'");
             }
-            if ((!args || args.allowedRedirectUris === undefined) && !opts.urn) {
+            if (args?.allowedRedirectUris === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowedRedirectUris'");
             }
-            if ((!args || args.allowedScopes === undefined) && !opts.urn) {
+            if (args?.allowedScopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowedScopes'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.oauthClientId === undefined) && !opts.urn) {
+            if (args?.oauthClientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oauthClientId'");
             }
-            resourceInputs["allowedGrantTypes"] = args ? args.allowedGrantTypes : undefined;
-            resourceInputs["allowedRedirectUris"] = args ? args.allowedRedirectUris : undefined;
-            resourceInputs["allowedScopes"] = args ? args.allowedScopes : undefined;
-            resourceInputs["clientType"] = args ? args.clientType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["oauthClientId"] = args ? args.oauthClientId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["allowedGrantTypes"] = args?.allowedGrantTypes;
+            resourceInputs["allowedRedirectUris"] = args?.allowedRedirectUris;
+            resourceInputs["allowedScopes"] = args?.allowedScopes;
+            resourceInputs["clientType"] = args?.clientType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["oauthClientId"] = args?.oauthClientId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

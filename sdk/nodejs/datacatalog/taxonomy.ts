@@ -73,13 +73,13 @@ export class Taxonomy extends pulumi.CustomResource {
      * defaults to an empty list.
      * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      */
-    public readonly activatedPolicyTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly activatedPolicyTypes: pulumi.Output<string[] | undefined>;
     /**
      * Description of this taxonomy. It must: contain only unicode characters,
      * tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
      * long when encoded in UTF-8. If not set, defaults to an empty description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User defined name of this taxonomy.
      * The taxonomy display name must be unique within an organization.
@@ -87,21 +87,21 @@ export class Taxonomy extends pulumi.CustomResource {
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Resource name of this taxonomy, whose format is:
      * "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Taxonomy location region.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a Taxonomy resource with the given unique name, arguments, and options.
@@ -116,22 +116,22 @@ export class Taxonomy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TaxonomyState | undefined;
-            resourceInputs["activatedPolicyTypes"] = state ? state.activatedPolicyTypes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["activatedPolicyTypes"] = state?.activatedPolicyTypes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as TaxonomyArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["activatedPolicyTypes"] = args?.activatedPolicyTypes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

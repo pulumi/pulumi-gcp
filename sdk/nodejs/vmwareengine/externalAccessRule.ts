@@ -150,69 +150,69 @@ export class ExternalAccessRule extends pulumi.CustomResource {
      * The action that the external access rule performs.
      * Possible values are: `ALLOW`, `DENY`.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Creation time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-provided description for the external access rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If destination ranges are specified, the external access rule applies only to
      * traffic that has a destination IP address in these ranges.
      * Structure is documented below.
      */
-    public readonly destinationIpRanges!: pulumi.Output<outputs.vmwareengine.ExternalAccessRuleDestinationIpRange[]>;
+    declare public readonly destinationIpRanges: pulumi.Output<outputs.vmwareengine.ExternalAccessRuleDestinationIpRange[]>;
     /**
      * A list of destination ports to which the external access rule applies.
      */
-    public readonly destinationPorts!: pulumi.Output<string[]>;
+    declare public readonly destinationPorts: pulumi.Output<string[]>;
     /**
      * The IP protocol to which the external access rule applies.
      */
-    public readonly ipProtocol!: pulumi.Output<string>;
+    declare public readonly ipProtocol: pulumi.Output<string>;
     /**
      * The ID of the external access rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The resource name of the network policy.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * External access rule priority, which determines the external access rule to use when multiple rules apply.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * If source ranges are specified, the external access rule applies only to
      * traffic that has a source IP address in these ranges.
      * Structure is documented below.
      */
-    public readonly sourceIpRanges!: pulumi.Output<outputs.vmwareengine.ExternalAccessRuleSourceIpRange[]>;
+    declare public readonly sourceIpRanges: pulumi.Output<outputs.vmwareengine.ExternalAccessRuleSourceIpRange[]>;
     /**
      * A list of source ports to which the external access rule applies.
      */
-    public readonly sourcePorts!: pulumi.Output<string[]>;
+    declare public readonly sourcePorts: pulumi.Output<string[]>;
     /**
      * State of the Cluster.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * System-generated unique identifier for the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ExternalAccessRule resource with the given unique name, arguments, and options.
@@ -227,56 +227,56 @@ export class ExternalAccessRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalAccessRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationIpRanges"] = state ? state.destinationIpRanges : undefined;
-            resourceInputs["destinationPorts"] = state ? state.destinationPorts : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["sourceIpRanges"] = state ? state.sourceIpRanges : undefined;
-            resourceInputs["sourcePorts"] = state ? state.sourcePorts : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationIpRanges"] = state?.destinationIpRanges;
+            resourceInputs["destinationPorts"] = state?.destinationPorts;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["sourceIpRanges"] = state?.sourceIpRanges;
+            resourceInputs["sourcePorts"] = state?.sourcePorts;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ExternalAccessRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.destinationIpRanges === undefined) && !opts.urn) {
+            if (args?.destinationIpRanges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationIpRanges'");
             }
-            if ((!args || args.destinationPorts === undefined) && !opts.urn) {
+            if (args?.destinationPorts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationPorts'");
             }
-            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
+            if (args?.ipProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.sourceIpRanges === undefined) && !opts.urn) {
+            if (args?.sourceIpRanges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceIpRanges'");
             }
-            if ((!args || args.sourcePorts === undefined) && !opts.urn) {
+            if (args?.sourcePorts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourcePorts'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationIpRanges"] = args ? args.destinationIpRanges : undefined;
-            resourceInputs["destinationPorts"] = args ? args.destinationPorts : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
-            resourceInputs["sourcePorts"] = args ? args.sourcePorts : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationIpRanges"] = args?.destinationIpRanges;
+            resourceInputs["destinationPorts"] = args?.destinationPorts;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["sourceIpRanges"] = args?.sourceIpRanges;
+            resourceInputs["sourcePorts"] = args?.sourcePorts;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;

@@ -110,28 +110,28 @@ export class LiteSubscription extends pulumi.CustomResource {
      * The settings for this subscription's message delivery.
      * Structure is documented below.
      */
-    public readonly deliveryConfig!: pulumi.Output<outputs.pubsub.LiteSubscriptionDeliveryConfig | undefined>;
+    declare public readonly deliveryConfig: pulumi.Output<outputs.pubsub.LiteSubscriptionDeliveryConfig | undefined>;
     /**
      * Name of the subscription.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The region of the pubsub lite topic.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * A reference to a Topic resource.
      */
-    public readonly topic!: pulumi.Output<string>;
+    declare public readonly topic: pulumi.Output<string>;
     /**
      * The zone of the pubsub lite topic.
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    declare public readonly zone: pulumi.Output<string | undefined>;
 
     /**
      * Create a LiteSubscription resource with the given unique name, arguments, and options.
@@ -146,23 +146,23 @@ export class LiteSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LiteSubscriptionState | undefined;
-            resourceInputs["deliveryConfig"] = state ? state.deliveryConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["deliveryConfig"] = state?.deliveryConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["topic"] = state?.topic;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as LiteSubscriptionArgs | undefined;
-            if ((!args || args.topic === undefined) && !opts.urn) {
+            if (args?.topic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            resourceInputs["deliveryConfig"] = args ? args.deliveryConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["deliveryConfig"] = args?.deliveryConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["topic"] = args?.topic;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LiteSubscription.__pulumiType, name, resourceInputs, opts);

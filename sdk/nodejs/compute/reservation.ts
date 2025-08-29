@@ -234,29 +234,29 @@ export class Reservation extends pulumi.CustomResource {
      * Full or partial URL to a parent commitment. This field displays for
      * reservations that are tied to a commitment.
      */
-    public /*out*/ readonly commitment!: pulumi.Output<string>;
+    declare public /*out*/ readonly commitment: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
      * Structure is documented below.
      */
-    public readonly deleteAfterDuration!: pulumi.Output<outputs.compute.ReservationDeleteAfterDuration | undefined>;
+    declare public readonly deleteAfterDuration: pulumi.Output<outputs.compute.ReservationDeleteAfterDuration | undefined>;
     /**
      * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
      * Cannot be used with delete_after_duration.
      */
-    public readonly deleteAtTime!: pulumi.Output<string>;
+    declare public readonly deleteAtTime: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates if this group of VMs have emergent maintenance enabled.
      */
-    public readonly enableEmergentMaintenance!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableEmergentMaintenance: pulumi.Output<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -266,45 +266,45 @@ export class Reservation extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Sharing policy for reservations with Google Cloud managed services.
      * Structure is documented below.
      */
-    public readonly reservationSharingPolicy!: pulumi.Output<outputs.compute.ReservationReservationSharingPolicy>;
+    declare public readonly reservationSharingPolicy: pulumi.Output<outputs.compute.ReservationReservationSharingPolicy>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The share setting for reservations.
      * Structure is documented below.
      */
-    public readonly shareSettings!: pulumi.Output<outputs.compute.ReservationShareSettings>;
+    declare public readonly shareSettings: pulumi.Output<outputs.compute.ReservationShareSettings>;
     /**
      * Reservation for instances with specific machine shapes.
      * Structure is documented below.
      */
-    public readonly specificReservation!: pulumi.Output<outputs.compute.ReservationSpecificReservation>;
+    declare public readonly specificReservation: pulumi.Output<outputs.compute.ReservationSpecificReservation>;
     /**
      * When set to true, only VMs that target this reservation by name can
      * consume this reservation. Otherwise, it can be consumed by VMs with
      * affinity for any reservation. Defaults to false.
      */
-    public readonly specificReservationRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly specificReservationRequired: pulumi.Output<boolean | undefined>;
     /**
      * The status of the reservation.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The zone where the reservation is made.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a Reservation resource with the given unique name, arguments, and options.
@@ -319,40 +319,40 @@ export class Reservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
-            resourceInputs["commitment"] = state ? state.commitment : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["deleteAfterDuration"] = state ? state.deleteAfterDuration : undefined;
-            resourceInputs["deleteAtTime"] = state ? state.deleteAtTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableEmergentMaintenance"] = state ? state.enableEmergentMaintenance : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reservationSharingPolicy"] = state ? state.reservationSharingPolicy : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["shareSettings"] = state ? state.shareSettings : undefined;
-            resourceInputs["specificReservation"] = state ? state.specificReservation : undefined;
-            resourceInputs["specificReservationRequired"] = state ? state.specificReservationRequired : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["commitment"] = state?.commitment;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deleteAfterDuration"] = state?.deleteAfterDuration;
+            resourceInputs["deleteAtTime"] = state?.deleteAtTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableEmergentMaintenance"] = state?.enableEmergentMaintenance;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reservationSharingPolicy"] = state?.reservationSharingPolicy;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["shareSettings"] = state?.shareSettings;
+            resourceInputs["specificReservation"] = state?.specificReservation;
+            resourceInputs["specificReservationRequired"] = state?.specificReservationRequired;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as ReservationArgs | undefined;
-            if ((!args || args.specificReservation === undefined) && !opts.urn) {
+            if (args?.specificReservation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'specificReservation'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["deleteAfterDuration"] = args ? args.deleteAfterDuration : undefined;
-            resourceInputs["deleteAtTime"] = args ? args.deleteAtTime : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableEmergentMaintenance"] = args ? args.enableEmergentMaintenance : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reservationSharingPolicy"] = args ? args.reservationSharingPolicy : undefined;
-            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
-            resourceInputs["specificReservation"] = args ? args.specificReservation : undefined;
-            resourceInputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["deleteAfterDuration"] = args?.deleteAfterDuration;
+            resourceInputs["deleteAtTime"] = args?.deleteAtTime;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableEmergentMaintenance"] = args?.enableEmergentMaintenance;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reservationSharingPolicy"] = args?.reservationSharingPolicy;
+            resourceInputs["shareSettings"] = args?.shareSettings;
+            resourceInputs["specificReservation"] = args?.specificReservation;
+            resourceInputs["specificReservationRequired"] = args?.specificReservationRequired;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["commitment"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

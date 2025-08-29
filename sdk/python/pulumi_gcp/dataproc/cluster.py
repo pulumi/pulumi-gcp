@@ -33,8 +33,9 @@ class ClusterArgs:
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-               to the field 'effective_labels' for all of the labels present on the resource.
+               
+               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                zone.
                
@@ -88,8 +89,9 @@ class ClusterArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        to the field 'effective_labels' for all of the labels present on the resource.
+
+        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -172,8 +174,9 @@ class _ClusterState:
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-               to the field 'effective_labels' for all of the labels present on the resource.
+               
+               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                zone.
                
@@ -246,8 +249,9 @@ class _ClusterState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        to the field 'effective_labels' for all of the labels present on the resource.
+
+        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -451,8 +455,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-               to the field 'effective_labels' for all of the labels present on the resource.
+               
+               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                zone.
                
@@ -654,8 +659,9 @@ class Cluster(pulumi.CustomResource):
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-               to the field 'effective_labels' for all of the labels present on the resource.
+               
+               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                zone.
                
@@ -712,8 +718,9 @@ class Cluster(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        to the field 'effective_labels' for all of the labels present on the resource.
+
+        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 

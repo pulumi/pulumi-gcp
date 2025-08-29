@@ -50,18 +50,18 @@ export class ProjectSink extends pulumi.CustomResource {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.ProjectSinkBigqueryOptions>;
+    declare public readonly bigqueryOptions: pulumi.Output<outputs.logging.ProjectSinkBigqueryOptions>;
     /**
      * A user managed service account that will be used to write
      * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
      * routing logs to a destination outside this sink's project. If not specified, a Logging service account
      * will automatically be generated.
      */
-    public readonly customWriterIdentity!: pulumi.Output<string | undefined>;
+    declare public readonly customWriterIdentity: pulumi.Output<string | undefined>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
      *
@@ -73,41 +73,41 @@ export class ProjectSink extends pulumi.CustomResource {
      *
      * The writer associated with the sink must have access to write to the above resource.
      */
-    public readonly destination!: pulumi.Output<string>;
+    declare public readonly destination: pulumi.Output<string>;
     /**
      * If set to True, then this sink is disabled and it does not export any log entries.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
-    public readonly exclusions!: pulumi.Output<outputs.logging.ProjectSinkExclusion[] | undefined>;
+    declare public readonly exclusions: pulumi.Output<outputs.logging.ProjectSinkExclusion[] | undefined>;
     /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
-    public readonly filter!: pulumi.Output<string | undefined>;
+    declare public readonly filter: pulumi.Output<string | undefined>;
     /**
      * The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project to create the sink in. If omitted, the project associated with the provider is
      * used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
      * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      */
-    public readonly uniqueWriterIdentity!: pulumi.Output<boolean | undefined>;
+    declare public readonly uniqueWriterIdentity: pulumi.Output<boolean | undefined>;
     /**
      * The identity associated with this sink. This identity must be granted write access to the
      * configured `destination`.
      */
-    public /*out*/ readonly writerIdentity!: pulumi.Output<string>;
+    declare public /*out*/ readonly writerIdentity: pulumi.Output<string>;
 
     /**
      * Create a ProjectSink resource with the given unique name, arguments, and options.
@@ -122,32 +122,32 @@ export class ProjectSink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectSinkState | undefined;
-            resourceInputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
-            resourceInputs["customWriterIdentity"] = state ? state.customWriterIdentity : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["exclusions"] = state ? state.exclusions : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["uniqueWriterIdentity"] = state ? state.uniqueWriterIdentity : undefined;
-            resourceInputs["writerIdentity"] = state ? state.writerIdentity : undefined;
+            resourceInputs["bigqueryOptions"] = state?.bigqueryOptions;
+            resourceInputs["customWriterIdentity"] = state?.customWriterIdentity;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["exclusions"] = state?.exclusions;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["uniqueWriterIdentity"] = state?.uniqueWriterIdentity;
+            resourceInputs["writerIdentity"] = state?.writerIdentity;
         } else {
             const args = argsOrState as ProjectSinkArgs | undefined;
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            resourceInputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
-            resourceInputs["customWriterIdentity"] = args ? args.customWriterIdentity : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["exclusions"] = args ? args.exclusions : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
+            resourceInputs["bigqueryOptions"] = args?.bigqueryOptions;
+            resourceInputs["customWriterIdentity"] = args?.customWriterIdentity;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["exclusions"] = args?.exclusions;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["uniqueWriterIdentity"] = args?.uniqueWriterIdentity;
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

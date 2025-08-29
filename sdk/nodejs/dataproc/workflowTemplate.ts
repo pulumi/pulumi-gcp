@@ -127,70 +127,61 @@ export class WorkflowTemplate extends pulumi.CustomResource {
     /**
      * Output only. The time template was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
-     * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
-     * minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
-     * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed
-     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
-     * the cluster is deleted.
+     * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
-    public readonly dagTimeout!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly dagTimeout: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. The encryption configuration for the workflow template.
      */
-    public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.WorkflowTemplateEncryptionConfig | undefined>;
+    declare public readonly encryptionConfig: pulumi.Output<outputs.dataproc.WorkflowTemplateEncryptionConfig | undefined>;
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
-    public readonly jobs!: pulumi.Output<outputs.dataproc.WorkflowTemplateJob[]>;
+    declare public readonly jobs: pulumi.Output<outputs.dataproc.WorkflowTemplateJob[]>;
     /**
-     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
-     * by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
-     * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
-     * characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
-     * associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
-     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
-     * when the template is instantiated.
+     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
-    public readonly parameters!: pulumi.Output<outputs.dataproc.WorkflowTemplateParameter[] | undefined>;
+    declare public readonly parameters: pulumi.Output<outputs.dataproc.WorkflowTemplateParameter[] | undefined>;
     /**
      * Required. WorkflowTemplate scheduling information.
      */
-    public readonly placement!: pulumi.Output<outputs.dataproc.WorkflowTemplatePlacement>;
+    declare public readonly placement: pulumi.Output<outputs.dataproc.WorkflowTemplatePlacement>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The time template was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Output only. The current version of this workflow template.
      *
      * @deprecated version is not useful as a configurable field, and will be removed in the future.
      */
-    public readonly version!: pulumi.Output<number>;
+    declare public readonly version: pulumi.Output<number>;
 
     /**
      * Create a WorkflowTemplate resource with the given unique name, arguments, and options.
@@ -205,41 +196,41 @@ export class WorkflowTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTemplateState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dagTimeout"] = state ? state.dagTimeout : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
-            resourceInputs["jobs"] = state ? state.jobs : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["placement"] = state ? state.placement : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dagTimeout"] = state?.dagTimeout;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
+            resourceInputs["jobs"] = state?.jobs;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["placement"] = state?.placement;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as WorkflowTemplateArgs | undefined;
-            if ((!args || args.jobs === undefined) && !opts.urn) {
+            if (args?.jobs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobs'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.placement === undefined) && !opts.urn) {
+            if (args?.placement === undefined && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
-            resourceInputs["dagTimeout"] = args ? args.dagTimeout : undefined;
-            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            resourceInputs["jobs"] = args ? args.jobs : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["placement"] = args ? args.placement : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["dagTimeout"] = args?.dagTimeout;
+            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
+            resourceInputs["jobs"] = args?.jobs;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["placement"] = args?.placement;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["version"] = args?.version;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -261,13 +252,7 @@ export interface WorkflowTemplateState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
-     * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
-     * minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
-     * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed
-     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
-     * the cluster is deleted.
+     * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
     dagTimeout?: pulumi.Input<string>;
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -280,12 +265,10 @@ export interface WorkflowTemplateState {
      */
     jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
     /**
-     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
-     * by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
-     * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
-     * characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
-     * associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -297,8 +280,7 @@ export interface WorkflowTemplateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
-     * when the template is instantiated.
+     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
     /**
@@ -330,13 +312,7 @@ export interface WorkflowTemplateState {
  */
 export interface WorkflowTemplateArgs {
     /**
-     * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
-     * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
-     * minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at
-     * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed
-     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
-     * the cluster is deleted.
+     * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
     dagTimeout?: pulumi.Input<string>;
     /**
@@ -348,12 +324,10 @@ export interface WorkflowTemplateArgs {
      */
     jobs: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
     /**
-     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
-     * by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
-     * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
-     * characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
-     * associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -365,8 +339,7 @@ export interface WorkflowTemplateArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
-     * when the template is instantiated.
+     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
     /**

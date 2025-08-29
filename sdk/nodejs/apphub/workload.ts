@@ -66,67 +66,67 @@ export class Workload extends pulumi.CustomResource {
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * Consumer provided attributes.
      * Structure is documented below.
      */
-    public readonly attributes!: pulumi.Output<outputs.apphub.WorkloadAttributes | undefined>;
+    declare public readonly attributes: pulumi.Output<outputs.apphub.WorkloadAttributes | undefined>;
     /**
      * Output only. Create time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-defined description of a Workload.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Immutable. The resource name of the original discovered workload.
      */
-    public readonly discoveredWorkload!: pulumi.Output<string>;
+    declare public readonly discoveredWorkload: pulumi.Output<string>;
     /**
      * User-defined name for the Workload.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the Workload. Format:"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. Workload state. Possible values:  STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. Update time.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The Workload identifier.
      */
-    public readonly workloadId!: pulumi.Output<string>;
+    declare public readonly workloadId: pulumi.Output<string>;
     /**
      * Properties of an underlying compute resource represented by the Workload.
      * Structure is documented below.
      */
-    public /*out*/ readonly workloadProperties!: pulumi.Output<outputs.apphub.WorkloadWorkloadProperty[]>;
+    declare public /*out*/ readonly workloadProperties: pulumi.Output<outputs.apphub.WorkloadWorkloadProperty[]>;
     /**
      * Reference of an underlying compute resource represented by the Workload.
      * Structure is documented below.
      */
-    public /*out*/ readonly workloadReferences!: pulumi.Output<outputs.apphub.WorkloadWorkloadReference[]>;
+    declare public /*out*/ readonly workloadReferences: pulumi.Output<outputs.apphub.WorkloadWorkloadReference[]>;
 
     /**
      * Create a Workload resource with the given unique name, arguments, and options.
@@ -141,43 +141,43 @@ export class Workload extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["attributes"] = state ? state.attributes : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discoveredWorkload"] = state ? state.discoveredWorkload : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["workloadId"] = state ? state.workloadId : undefined;
-            resourceInputs["workloadProperties"] = state ? state.workloadProperties : undefined;
-            resourceInputs["workloadReferences"] = state ? state.workloadReferences : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["attributes"] = state?.attributes;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discoveredWorkload"] = state?.discoveredWorkload;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["workloadId"] = state?.workloadId;
+            resourceInputs["workloadProperties"] = state?.workloadProperties;
+            resourceInputs["workloadReferences"] = state?.workloadReferences;
         } else {
             const args = argsOrState as WorkloadArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.discoveredWorkload === undefined) && !opts.urn) {
+            if (args?.discoveredWorkload === undefined && !opts.urn) {
                 throw new Error("Missing required property 'discoveredWorkload'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.workloadId === undefined) && !opts.urn) {
+            if (args?.workloadId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadId'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["attributes"] = args ? args.attributes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discoveredWorkload"] = args ? args.discoveredWorkload : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["workloadId"] = args ? args.workloadId : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discoveredWorkload"] = args?.discoveredWorkload;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["workloadId"] = args?.workloadId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

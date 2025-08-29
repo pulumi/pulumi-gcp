@@ -97,33 +97,33 @@ export class InboundSamlConfig extends pulumi.CustomResource {
     /**
      * Human friendly display name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * SAML IdP configuration when the project acts as the relying party
      * Structure is documented below.
      */
-    public readonly idpConfig!: pulumi.Output<outputs.identityplatform.InboundSamlConfigIdpConfig>;
+    declare public readonly idpConfig: pulumi.Output<outputs.identityplatform.InboundSamlConfigIdpConfig>;
     /**
      * The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
      * hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
      * alphanumeric character, and have at least 2 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * SAML SP (Service Provider) configuration when the project acts as the relying party to receive
      * and accept an authentication assertion issued by a SAML identity provider.
      * Structure is documented below.
      */
-    public readonly spConfig!: pulumi.Output<outputs.identityplatform.InboundSamlConfigSpConfig>;
+    declare public readonly spConfig: pulumi.Output<outputs.identityplatform.InboundSamlConfigSpConfig>;
 
     /**
      * Create a InboundSamlConfig resource with the given unique name, arguments, and options.
@@ -138,29 +138,29 @@ export class InboundSamlConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InboundSamlConfigState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["idpConfig"] = state ? state.idpConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["spConfig"] = state ? state.spConfig : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["idpConfig"] = state?.idpConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["spConfig"] = state?.spConfig;
         } else {
             const args = argsOrState as InboundSamlConfigArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.idpConfig === undefined) && !opts.urn) {
+            if (args?.idpConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'idpConfig'");
             }
-            if ((!args || args.spConfig === undefined) && !opts.urn) {
+            if (args?.spConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spConfig'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["idpConfig"] = args ? args.idpConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["spConfig"] = args ? args.spConfig : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["idpConfig"] = args?.idpConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["spConfig"] = args?.spConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InboundSamlConfig.__pulumiType, name, resourceInputs, opts);

@@ -258,119 +258,119 @@ export class Gateway extends pulumi.CustomResource {
      * This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
      */
-    public readonly addresses!: pulumi.Output<string[]>;
+    declare public readonly addresses: pulumi.Output<string[]>;
     /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
      */
-    public readonly certificateUrls!: pulumi.Output<string[] | undefined>;
+    declare public readonly certificateUrls: pulumi.Output<string[] | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
      * If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
      */
-    public readonly deleteSwgAutogenRouterOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteSwgAutogenRouterOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Determines if envoy will insert internal debug headers into upstream requests.
      * Other Envoy headers may still be injected.
      * By default, envoy will not insert any debug headers.
      * Possible values are: `NONE`, `DEBUG_HEADERS`.
      */
-    public readonly envoyHeaders!: pulumi.Output<string | undefined>;
+    declare public readonly envoyHeaders: pulumi.Output<string | undefined>;
     /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
      * For example: 'projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy'.
      * This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
      */
-    public readonly gatewaySecurityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly gatewaySecurityPolicy: pulumi.Output<string | undefined>;
     /**
      * The IP Version that will be used by this gateway.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    declare public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
      * Set of label tags associated with the Gateway resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the gateway.
      * The default value is `global`.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Name of the Gateway resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The relative resource name identifying the VPC network that is using this configuration.
      * For example: 'projects/*&#47;global/networks/network-1'.
      * Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
      * The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
      */
-    public readonly ports!: pulumi.Output<number[]>;
+    declare public readonly ports: pulumi.Output<number[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
      * Possible values are: `NEXT_HOP_ROUTING_MODE`.
      */
-    public readonly routingMode!: pulumi.Output<string | undefined>;
+    declare public readonly routingMode: pulumi.Output<string | undefined>;
     /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL of this resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
      */
-    public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly serverTlsPolicy: pulumi.Output<string | undefined>;
     /**
      * The relative resource name identifying the subnetwork in which this SWG is allocated.
      * For example: projects/*&#47;regions/us-central1/subnetworks/network-1.
      * Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
      */
-    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    declare public readonly subnetwork: pulumi.Output<string | undefined>;
     /**
      * Immutable. The type of the customer managed gateway.
      * Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The timestamp when the resource was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -385,55 +385,55 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            resourceInputs["addresses"] = state ? state.addresses : undefined;
-            resourceInputs["certificateUrls"] = state ? state.certificateUrls : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteSwgAutogenRouterOnDestroy"] = state ? state.deleteSwgAutogenRouterOnDestroy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["envoyHeaders"] = state ? state.envoyHeaders : undefined;
-            resourceInputs["gatewaySecurityPolicy"] = state ? state.gatewaySecurityPolicy : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["ports"] = state ? state.ports : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["routingMode"] = state ? state.routingMode : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["addresses"] = state?.addresses;
+            resourceInputs["certificateUrls"] = state?.certificateUrls;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteSwgAutogenRouterOnDestroy"] = state?.deleteSwgAutogenRouterOnDestroy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["envoyHeaders"] = state?.envoyHeaders;
+            resourceInputs["gatewaySecurityPolicy"] = state?.gatewaySecurityPolicy;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["ports"] = state?.ports;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["routingMode"] = state?.routingMode;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serverTlsPolicy"] = state?.serverTlsPolicy;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if ((!args || args.ports === undefined) && !opts.urn) {
+            if (args?.ports === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ports'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["addresses"] = args ? args.addresses : undefined;
-            resourceInputs["certificateUrls"] = args ? args.certificateUrls : undefined;
-            resourceInputs["deleteSwgAutogenRouterOnDestroy"] = args ? args.deleteSwgAutogenRouterOnDestroy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["envoyHeaders"] = args ? args.envoyHeaders : undefined;
-            resourceInputs["gatewaySecurityPolicy"] = args ? args.gatewaySecurityPolicy : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["ports"] = args ? args.ports : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["routingMode"] = args ? args.routingMode : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["addresses"] = args?.addresses;
+            resourceInputs["certificateUrls"] = args?.certificateUrls;
+            resourceInputs["deleteSwgAutogenRouterOnDestroy"] = args?.deleteSwgAutogenRouterOnDestroy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["envoyHeaders"] = args?.envoyHeaders;
+            resourceInputs["gatewaySecurityPolicy"] = args?.gatewaySecurityPolicy;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["ports"] = args?.ports;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["routingMode"] = args?.routingMode;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["serverTlsPolicy"] = args?.serverTlsPolicy;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

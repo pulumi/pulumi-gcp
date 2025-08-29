@@ -173,54 +173,54 @@ export class Posture extends pulumi.CustomResource {
     /**
      * Time the Posture was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the posture.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Location of the resource, eg: global.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the posture.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * List of policy sets for the posture.
      * Structure is documented below.
      */
-    public readonly policySets!: pulumi.Output<outputs.securityposture.PosturePolicySet[]>;
+    declare public readonly policySets: pulumi.Output<outputs.securityposture.PosturePolicySet[]>;
     /**
      * Id of the posture. It is an immutable field.
      */
-    public readonly postureId!: pulumi.Output<string>;
+    declare public readonly postureId: pulumi.Output<string>;
     /**
      * If set, there are currently changes in flight to the posture.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Revision_id of the posture.
      */
-    public /*out*/ readonly revisionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly revisionId: pulumi.Output<string>;
     /**
      * State of the posture. Update to state field should not be triggered along with
      * with other field updates.
      * Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * Time the Posture was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Posture resource with the given unique name, arguments, and options.
@@ -235,41 +235,41 @@ export class Posture extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PostureState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["policySets"] = state ? state.policySets : undefined;
-            resourceInputs["postureId"] = state ? state.postureId : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["revisionId"] = state ? state.revisionId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["policySets"] = state?.policySets;
+            resourceInputs["postureId"] = state?.postureId;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["revisionId"] = state?.revisionId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PostureArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.policySets === undefined) && !opts.urn) {
+            if (args?.policySets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policySets'");
             }
-            if ((!args || args.postureId === undefined) && !opts.urn) {
+            if (args?.postureId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'postureId'");
             }
-            if ((!args || args.state === undefined) && !opts.urn) {
+            if (args?.state === undefined && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["policySets"] = args ? args.policySets : undefined;
-            resourceInputs["postureId"] = args ? args.postureId : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["policySets"] = args?.policySets;
+            resourceInputs["postureId"] = args?.postureId;
+            resourceInputs["state"] = args?.state;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

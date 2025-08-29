@@ -84,64 +84,64 @@ export class AuthzPolicy extends pulumi.CustomResource {
      * 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
      * Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * The timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
      * Structure is documented below.
      */
-    public readonly customProvider!: pulumi.Output<outputs.networksecurity.AuthzPolicyCustomProvider | undefined>;
+    declare public readonly customProvider: pulumi.Output<outputs.networksecurity.AuthzPolicyCustomProvider | undefined>;
     /**
      * A human-readable description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
      * Limited to 5 rules.
      * Structure is documented below.
      */
-    public readonly httpRules!: pulumi.Output<outputs.networksecurity.AuthzPolicyHttpRule[] | undefined>;
+    declare public readonly httpRules: pulumi.Output<outputs.networksecurity.AuthzPolicyHttpRule[] | undefined>;
     /**
      * Set of labels associated with the AuthzExtension resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. Name of the AuthzPolicy resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the set of resources to which this policy should be applied to.
      * Structure is documented below.
      */
-    public readonly target!: pulumi.Output<outputs.networksecurity.AuthzPolicyTarget>;
+    declare public readonly target: pulumi.Output<outputs.networksecurity.AuthzPolicyTarget>;
     /**
      * The timestamp when the resource was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AuthzPolicy resource with the given unique name, arguments, and options.
@@ -156,39 +156,39 @@ export class AuthzPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthzPolicyState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customProvider"] = state ? state.customProvider : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["httpRules"] = state ? state.httpRules : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customProvider"] = state?.customProvider;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["httpRules"] = state?.httpRules;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AuthzPolicyArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["customProvider"] = args ? args.customProvider : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["httpRules"] = args ? args.httpRules : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["customProvider"] = args?.customProvider;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["httpRules"] = args?.httpRules;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["target"] = args?.target;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

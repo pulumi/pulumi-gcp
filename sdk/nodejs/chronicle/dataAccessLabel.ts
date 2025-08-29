@@ -85,57 +85,57 @@ export class DataAccessLabel extends pulumi.CustomResource {
     /**
      * Output only. The user who created the data access label.
      */
-    public /*out*/ readonly author!: pulumi.Output<string>;
+    declare public /*out*/ readonly author: pulumi.Output<string>;
     /**
      * Output only. The time at which the data access label was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Required. The ID to use for the data access label, which will become the label's
      * display name and the final component of the label's resource name. The
      * maximum number of characters should be 63. Regex pattern is as per AIP:
      * https://google.aip.dev/122#resource-id-segments
      */
-    public readonly dataAccessLabelId!: pulumi.Output<string>;
+    declare public readonly dataAccessLabelId: pulumi.Output<string>;
     /**
      * Optional. A description of the data access label for a human reader.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * Output only. The user who last updated the data access label.
      */
-    public /*out*/ readonly lastEditor!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastEditor: pulumi.Output<string>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique resource name of the data access label. This unique identifier is generated using values provided for the URL parameters.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/dataAccessLabels/{data_access_label_id}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A UDM query over event data.
      */
-    public readonly udmQuery!: pulumi.Output<string>;
+    declare public readonly udmQuery: pulumi.Output<string>;
     /**
      * Output only. The time at which the data access label was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a DataAccessLabel resource with the given unique name, arguments, and options.
@@ -150,38 +150,38 @@ export class DataAccessLabel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataAccessLabelState | undefined;
-            resourceInputs["author"] = state ? state.author : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataAccessLabelId"] = state ? state.dataAccessLabelId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["lastEditor"] = state ? state.lastEditor : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["udmQuery"] = state ? state.udmQuery : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["author"] = state?.author;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataAccessLabelId"] = state?.dataAccessLabelId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["lastEditor"] = state?.lastEditor;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["udmQuery"] = state?.udmQuery;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as DataAccessLabelArgs | undefined;
-            if ((!args || args.dataAccessLabelId === undefined) && !opts.urn) {
+            if (args?.dataAccessLabelId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataAccessLabelId'");
             }
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.udmQuery === undefined) && !opts.urn) {
+            if (args?.udmQuery === undefined && !opts.urn) {
                 throw new Error("Missing required property 'udmQuery'");
             }
-            resourceInputs["dataAccessLabelId"] = args ? args.dataAccessLabelId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["udmQuery"] = args ? args.udmQuery : undefined;
+            resourceInputs["dataAccessLabelId"] = args?.dataAccessLabelId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["udmQuery"] = args?.udmQuery;
             resourceInputs["author"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;

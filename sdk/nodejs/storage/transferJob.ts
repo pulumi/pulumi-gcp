@@ -157,58 +157,58 @@ export class TransferJob extends pulumi.CustomResource {
     /**
      * When the Transfer Job was created.
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
      * When the Transfer Job was deleted.
      */
-    public /*out*/ readonly deletionTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deletionTime: pulumi.Output<string>;
     /**
      * Unique description to identify the Transfer Job.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
      */
-    public readonly eventStream!: pulumi.Output<outputs.storage.TransferJobEventStream | undefined>;
+    declare public readonly eventStream: pulumi.Output<outputs.storage.TransferJobEventStream | undefined>;
     /**
      * When the Transfer Job was last modified.
      */
-    public /*out*/ readonly lastModificationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModificationTime: pulumi.Output<string>;
     /**
      * Logging configuration. Structure documented below.
      */
-    public readonly loggingConfig!: pulumi.Output<outputs.storage.TransferJobLoggingConfig | undefined>;
+    declare public readonly loggingConfig: pulumi.Output<outputs.storage.TransferJobLoggingConfig | undefined>;
     /**
      * The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
      */
-    public readonly notificationConfig!: pulumi.Output<outputs.storage.TransferJobNotificationConfig | undefined>;
+    declare public readonly notificationConfig: pulumi.Output<outputs.storage.TransferJobNotificationConfig | undefined>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
      *
      * - - -
      */
-    public readonly replicationSpec!: pulumi.Output<outputs.storage.TransferJobReplicationSpec | undefined>;
+    declare public readonly replicationSpec: pulumi.Output<outputs.storage.TransferJobReplicationSpec | undefined>;
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
-    public readonly schedule!: pulumi.Output<outputs.storage.TransferJobSchedule | undefined>;
+    declare public readonly schedule: pulumi.Output<outputs.storage.TransferJobSchedule | undefined>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
      */
-    public readonly transferSpec!: pulumi.Output<outputs.storage.TransferJobTransferSpec | undefined>;
+    declare public readonly transferSpec: pulumi.Output<outputs.storage.TransferJobTransferSpec | undefined>;
 
     /**
      * Create a TransferJob resource with the given unique name, arguments, and options.
@@ -223,34 +223,34 @@ export class TransferJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransferJobState | undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["deletionTime"] = state ? state.deletionTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eventStream"] = state ? state.eventStream : undefined;
-            resourceInputs["lastModificationTime"] = state ? state.lastModificationTime : undefined;
-            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["replicationSpec"] = state ? state.replicationSpec : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transferSpec"] = state ? state.transferSpec : undefined;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["deletionTime"] = state?.deletionTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eventStream"] = state?.eventStream;
+            resourceInputs["lastModificationTime"] = state?.lastModificationTime;
+            resourceInputs["loggingConfig"] = state?.loggingConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationConfig"] = state?.notificationConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["replicationSpec"] = state?.replicationSpec;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transferSpec"] = state?.transferSpec;
         } else {
             const args = argsOrState as TransferJobArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eventStream"] = args ? args.eventStream : undefined;
-            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replicationSpec"] = args ? args.replicationSpec : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["transferSpec"] = args ? args.transferSpec : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eventStream"] = args?.eventStream;
+            resourceInputs["loggingConfig"] = args?.loggingConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationConfig"] = args?.notificationConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replicationSpec"] = args?.replicationSpec;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["transferSpec"] = args?.transferSpec;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["deletionTime"] = undefined /*out*/;
             resourceInputs["lastModificationTime"] = undefined /*out*/;

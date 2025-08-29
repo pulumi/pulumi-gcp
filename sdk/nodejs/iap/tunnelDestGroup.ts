@@ -104,28 +104,28 @@ export class TunnelDestGroup extends pulumi.CustomResource {
     /**
      * List of CIDRs that this group applies to.
      */
-    public readonly cidrs!: pulumi.Output<string[] | undefined>;
+    declare public readonly cidrs: pulumi.Output<string[] | undefined>;
     /**
      * List of FQDNs that this group applies to.
      */
-    public readonly fqdns!: pulumi.Output<string[] | undefined>;
+    declare public readonly fqdns: pulumi.Output<string[] | undefined>;
     /**
      * Unique tunnel destination group name.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * Full resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The region of the tunnel group. Must be the same as the network resources in the group.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a TunnelDestGroup resource with the given unique name, arguments, and options.
@@ -140,22 +140,22 @@ export class TunnelDestGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelDestGroupState | undefined;
-            resourceInputs["cidrs"] = state ? state.cidrs : undefined;
-            resourceInputs["fqdns"] = state ? state.fqdns : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["cidrs"] = state?.cidrs;
+            resourceInputs["fqdns"] = state?.fqdns;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as TunnelDestGroupArgs | undefined;
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            resourceInputs["cidrs"] = args ? args.cidrs : undefined;
-            resourceInputs["fqdns"] = args ? args.fqdns : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["cidrs"] = args?.cidrs;
+            resourceInputs["fqdns"] = args?.fqdns;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

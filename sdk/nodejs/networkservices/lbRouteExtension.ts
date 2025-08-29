@@ -72,11 +72,11 @@ export class LbRouteExtension extends pulumi.CustomResource {
     /**
      * A human-readable description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A set of ordered extension chains that contain the match conditions and extensions to execute.
      * Match conditions for each extension chain are evaluated in sequence for a given request.
@@ -84,43 +84,43 @@ export class LbRouteExtension extends pulumi.CustomResource {
      * Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
      * Structure is documented below.
      */
-    public readonly extensionChains!: pulumi.Output<outputs.networkservices.LbRouteExtensionExtensionChain[]>;
+    declare public readonly extensionChains: pulumi.Output<outputs.networkservices.LbRouteExtensionExtensionChain[]>;
     /**
      * A list of references to the forwarding rules to which this service extension is attached to.
      * At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
      */
-    public readonly forwardingRules!: pulumi.Output<string[]>;
+    declare public readonly forwardingRules: pulumi.Output<string[]>;
     /**
      * Set of labels associated with the LbRouteExtension resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
      * For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
      * [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    public readonly loadBalancingScheme!: pulumi.Output<string>;
+    declare public readonly loadBalancingScheme: pulumi.Output<string>;
     /**
      * The location of the route extension
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a LbRouteExtension resource with the given unique name, arguments, and options.
@@ -135,38 +135,38 @@ export class LbRouteExtension extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LbRouteExtensionState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["extensionChains"] = state ? state.extensionChains : undefined;
-            resourceInputs["forwardingRules"] = state ? state.forwardingRules : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["extensionChains"] = state?.extensionChains;
+            resourceInputs["forwardingRules"] = state?.forwardingRules;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
         } else {
             const args = argsOrState as LbRouteExtensionArgs | undefined;
-            if ((!args || args.extensionChains === undefined) && !opts.urn) {
+            if (args?.extensionChains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extensionChains'");
             }
-            if ((!args || args.forwardingRules === undefined) && !opts.urn) {
+            if (args?.forwardingRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'forwardingRules'");
             }
-            if ((!args || args.loadBalancingScheme === undefined) && !opts.urn) {
+            if (args?.loadBalancingScheme === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancingScheme'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["extensionChains"] = args ? args.extensionChains : undefined;
-            resourceInputs["forwardingRules"] = args ? args.forwardingRules : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["extensionChains"] = args?.extensionChains;
+            resourceInputs["forwardingRules"] = args?.forwardingRules;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

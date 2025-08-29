@@ -126,76 +126,76 @@ export class Intent extends pulumi.CustomResource {
      * The name of the action associated with the intent.
      * Note: The action name must not contain whitespaces.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
      * (i.e. default platform).
      * Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
      */
-    public readonly defaultResponsePlatforms!: pulumi.Output<string[] | undefined>;
+    declare public readonly defaultResponsePlatforms: pulumi.Output<string[] | undefined>;
     /**
      * The name of this intent to be displayed on the console.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
      * the contexts must be present in the active user session for an event to trigger this intent. See the
      * [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
      */
-    public readonly events!: pulumi.Output<string[] | undefined>;
+    declare public readonly events: pulumi.Output<string[] | undefined>;
     /**
      * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
      * only in the output.
      * Structure is documented below.
      */
-    public /*out*/ readonly followupIntentInfos!: pulumi.Output<outputs.diagflow.IntentFollowupIntentInfo[]>;
+    declare public /*out*/ readonly followupIntentInfos: pulumi.Output<outputs.diagflow.IntentFollowupIntentInfo[]>;
     /**
      * The list of context names required for this intent to be triggered.
      * Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
      */
-    public readonly inputContextNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly inputContextNames: pulumi.Output<string[] | undefined>;
     /**
      * Indicates whether this is a fallback intent.
      */
-    public readonly isFallback!: pulumi.Output<boolean>;
+    declare public readonly isFallback: pulumi.Output<boolean>;
     /**
      * Indicates whether Machine Learning is disabled for the intent.
      * Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
      * ONLY match mode. Also, auto-markup in the UI is turned off.
      */
-    public readonly mlDisabled!: pulumi.Output<boolean>;
+    declare public readonly mlDisabled: pulumi.Output<boolean>;
     /**
      * The unique identifier of this intent.
      * Format: projects/<Project ID>/agent/intents/<Intent ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The unique identifier of the parent intent in the chain of followup intents.
      * Format: projects/<Project ID>/agent/intents/<Intent ID>.
      */
-    public readonly parentFollowupIntentName!: pulumi.Output<string>;
+    declare public readonly parentFollowupIntentName: pulumi.Output<string>;
     /**
      * The priority of this intent. Higher numbers represent higher priorities.
      * - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
      * to the Normal priority in the console.
      * - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Indicates whether to delete all contexts in the current session when this intent is matched.
      */
-    public readonly resetContexts!: pulumi.Output<boolean>;
+    declare public readonly resetContexts: pulumi.Output<boolean>;
     /**
      * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
      * intents chain for this intent.
      * Format: projects/<Project ID>/agent/intents/<Intent ID>.
      */
-    public /*out*/ readonly rootFollowupIntentName!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootFollowupIntentName: pulumi.Output<string>;
     /**
      * Indicates whether webhooks are enabled for the intent.
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
@@ -203,7 +203,7 @@ export class Intent extends pulumi.CustomResource {
      * filling prompt is forwarded to the webhook.
      * Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      */
-    public readonly webhookState!: pulumi.Output<string>;
+    declare public readonly webhookState: pulumi.Output<string>;
 
     /**
      * Create a Intent resource with the given unique name, arguments, and options.
@@ -218,38 +218,38 @@ export class Intent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntentState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["defaultResponsePlatforms"] = state ? state.defaultResponsePlatforms : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["events"] = state ? state.events : undefined;
-            resourceInputs["followupIntentInfos"] = state ? state.followupIntentInfos : undefined;
-            resourceInputs["inputContextNames"] = state ? state.inputContextNames : undefined;
-            resourceInputs["isFallback"] = state ? state.isFallback : undefined;
-            resourceInputs["mlDisabled"] = state ? state.mlDisabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentFollowupIntentName"] = state ? state.parentFollowupIntentName : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resetContexts"] = state ? state.resetContexts : undefined;
-            resourceInputs["rootFollowupIntentName"] = state ? state.rootFollowupIntentName : undefined;
-            resourceInputs["webhookState"] = state ? state.webhookState : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["defaultResponsePlatforms"] = state?.defaultResponsePlatforms;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["events"] = state?.events;
+            resourceInputs["followupIntentInfos"] = state?.followupIntentInfos;
+            resourceInputs["inputContextNames"] = state?.inputContextNames;
+            resourceInputs["isFallback"] = state?.isFallback;
+            resourceInputs["mlDisabled"] = state?.mlDisabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentFollowupIntentName"] = state?.parentFollowupIntentName;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resetContexts"] = state?.resetContexts;
+            resourceInputs["rootFollowupIntentName"] = state?.rootFollowupIntentName;
+            resourceInputs["webhookState"] = state?.webhookState;
         } else {
             const args = argsOrState as IntentArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["defaultResponsePlatforms"] = args ? args.defaultResponsePlatforms : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["events"] = args ? args.events : undefined;
-            resourceInputs["inputContextNames"] = args ? args.inputContextNames : undefined;
-            resourceInputs["isFallback"] = args ? args.isFallback : undefined;
-            resourceInputs["mlDisabled"] = args ? args.mlDisabled : undefined;
-            resourceInputs["parentFollowupIntentName"] = args ? args.parentFollowupIntentName : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resetContexts"] = args ? args.resetContexts : undefined;
-            resourceInputs["webhookState"] = args ? args.webhookState : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["defaultResponsePlatforms"] = args?.defaultResponsePlatforms;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["events"] = args?.events;
+            resourceInputs["inputContextNames"] = args?.inputContextNames;
+            resourceInputs["isFallback"] = args?.isFallback;
+            resourceInputs["mlDisabled"] = args?.mlDisabled;
+            resourceInputs["parentFollowupIntentName"] = args?.parentFollowupIntentName;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resetContexts"] = args?.resetContexts;
+            resourceInputs["webhookState"] = args?.webhookState;
             resourceInputs["followupIntentInfos"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["rootFollowupIntentName"] = undefined /*out*/;

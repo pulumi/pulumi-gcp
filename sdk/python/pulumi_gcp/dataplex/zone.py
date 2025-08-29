@@ -40,9 +40,10 @@ class ZoneArgs:
         :param pulumi.Input[_builtins.str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the zone.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         """
@@ -150,9 +151,10 @@ class ZoneArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Optional. User defined labels for the zone.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -213,9 +215,10 @@ class _ZoneState:
         :param pulumi.Input['ZoneDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The name of the zone.
@@ -338,9 +341,10 @@ class _ZoneState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Optional. User defined labels for the zone.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -552,9 +556,10 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
         :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The name of the zone.
@@ -732,9 +737,10 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The name of the zone.
@@ -821,9 +827,10 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Optional. User defined labels for the zone.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 

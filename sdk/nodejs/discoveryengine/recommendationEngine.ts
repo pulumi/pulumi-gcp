@@ -138,55 +138,55 @@ export class RecommendationEngine extends pulumi.CustomResource {
      * Common config spec that specifies the metadata of the engine.
      * Structure is documented below.
      */
-    public readonly commonConfig!: pulumi.Output<outputs.discoveryengine.RecommendationEngineCommonConfig | undefined>;
+    declare public readonly commonConfig: pulumi.Output<outputs.discoveryengine.RecommendationEngineCommonConfig | undefined>;
     /**
      * Timestamp the Engine was created at.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
      */
-    public readonly dataStoreIds!: pulumi.Output<string[]>;
+    declare public readonly dataStoreIds: pulumi.Output<string[]>;
     /**
      * Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Unique ID to use for Recommendation Engine.
      */
-    public readonly engineId!: pulumi.Output<string>;
+    declare public readonly engineId: pulumi.Output<string>;
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`, `MEDIA`.
      */
-    public readonly industryVertical!: pulumi.Output<string | undefined>;
+    declare public readonly industryVertical: pulumi.Output<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Configurations for a Media Recommendation Engine. Only applicable on the data stores
      * with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
      * Structure is documented below.
      */
-    public readonly mediaRecommendationEngineConfig!: pulumi.Output<outputs.discoveryengine.RecommendationEngineMediaRecommendationEngineConfig | undefined>;
+    declare public readonly mediaRecommendationEngineConfig: pulumi.Output<outputs.discoveryengine.RecommendationEngineMediaRecommendationEngineConfig | undefined>;
     /**
      * The unique full resource name of the recommendation engine. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024 characters.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Timestamp the Engine was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a RecommendationEngine resource with the given unique name, arguments, and options.
@@ -201,39 +201,39 @@ export class RecommendationEngine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecommendationEngineState | undefined;
-            resourceInputs["commonConfig"] = state ? state.commonConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataStoreIds"] = state ? state.dataStoreIds : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["engineId"] = state ? state.engineId : undefined;
-            resourceInputs["industryVertical"] = state ? state.industryVertical : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mediaRecommendationEngineConfig"] = state ? state.mediaRecommendationEngineConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["commonConfig"] = state?.commonConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataStoreIds"] = state?.dataStoreIds;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["engineId"] = state?.engineId;
+            resourceInputs["industryVertical"] = state?.industryVertical;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mediaRecommendationEngineConfig"] = state?.mediaRecommendationEngineConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as RecommendationEngineArgs | undefined;
-            if ((!args || args.dataStoreIds === undefined) && !opts.urn) {
+            if (args?.dataStoreIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreIds'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.engineId === undefined) && !opts.urn) {
+            if (args?.engineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["commonConfig"] = args ? args.commonConfig : undefined;
-            resourceInputs["dataStoreIds"] = args ? args.dataStoreIds : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["engineId"] = args ? args.engineId : undefined;
-            resourceInputs["industryVertical"] = args ? args.industryVertical : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mediaRecommendationEngineConfig"] = args ? args.mediaRecommendationEngineConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["commonConfig"] = args?.commonConfig;
+            resourceInputs["dataStoreIds"] = args?.dataStoreIds;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["engineId"] = args?.engineId;
+            resourceInputs["industryVertical"] = args?.industryVertical;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mediaRecommendationEngineConfig"] = args?.mediaRecommendationEngineConfig;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

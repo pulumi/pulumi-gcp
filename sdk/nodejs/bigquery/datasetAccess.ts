@@ -147,46 +147,45 @@ export class DatasetAccess extends pulumi.CustomResource {
     }
 
     /**
-     * If true, represents that that the iamMember in the config was translated to a different member type by the API, and is
-     * stored in state as a different member type
+     * If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
      */
-    public /*out*/ readonly apiUpdatedMember!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly apiUpdatedMember: pulumi.Output<boolean>;
     /**
      * Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      */
-    public readonly authorizedDataset!: pulumi.Output<outputs.bigquery.DatasetAccessAuthorizedDataset | undefined>;
+    declare public readonly authorizedDataset: pulumi.Output<outputs.bigquery.DatasetAccessAuthorizedDataset | undefined>;
     /**
      * Condition for the binding. If CEL expression in this field is true, this
      * access binding will be considered.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.bigquery.DatasetAccessCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.bigquery.DatasetAccessCondition | undefined>;
     /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
      */
-    public readonly datasetId!: pulumi.Output<string>;
+    declare public readonly datasetId: pulumi.Output<string>;
     /**
      * A domain to grant access to. Any users signed in with the
      * domain specified will be granted the specified access
      */
-    public readonly domain!: pulumi.Output<string | undefined>;
+    declare public readonly domain: pulumi.Output<string | undefined>;
     /**
      * An email address of a Google Group to grant access to.
      */
-    public readonly groupByEmail!: pulumi.Output<string | undefined>;
+    declare public readonly groupByEmail: pulumi.Output<string | undefined>;
     /**
      * Some other type of member that appears in the IAM Policy but isn't a user,
      * group, domain, or special group. For example: `allUsers`
      */
-    public readonly iamMember!: pulumi.Output<string | undefined>;
+    declare public readonly iamMember: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Describes the rights granted to the user specified by the other
      * member of the access object. Basic, predefined, and custom roles are
@@ -195,7 +194,7 @@ export class DatasetAccess extends pulumi.CustomResource {
      * post-create. See
      * [official docs](https://cloud.google.com/bigquery/docs/access-control).
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * A routine from a different dataset to grant access to. Queries
      * executed against that routine will have read access to tables in
@@ -204,7 +203,7 @@ export class DatasetAccess extends pulumi.CustomResource {
      * needs to be granted again via an update operation.
      * Structure is documented below.
      */
-    public readonly routine!: pulumi.Output<outputs.bigquery.DatasetAccessRoutine | undefined>;
+    declare public readonly routine: pulumi.Output<outputs.bigquery.DatasetAccessRoutine | undefined>;
     /**
      * A special group to grant access to. Possible values include:
      * * `projectOwners`: Owners of the enclosing project.
@@ -212,12 +211,12 @@ export class DatasetAccess extends pulumi.CustomResource {
      * * `projectWriters`: Writers of the enclosing project.
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      */
-    public readonly specialGroup!: pulumi.Output<string | undefined>;
+    declare public readonly specialGroup: pulumi.Output<string | undefined>;
     /**
      * An email address of a user to grant access to. For example:
      * fred@example.com
      */
-    public readonly userByEmail!: pulumi.Output<string | undefined>;
+    declare public readonly userByEmail: pulumi.Output<string | undefined>;
     /**
      * A view from a different dataset to grant access to. Queries
      * executed against that view will have read access to tables in
@@ -226,7 +225,7 @@ export class DatasetAccess extends pulumi.CustomResource {
      * needs to be granted again via an update operation.
      * Structure is documented below.
      */
-    public readonly view!: pulumi.Output<outputs.bigquery.DatasetAccessView | undefined>;
+    declare public readonly view: pulumi.Output<outputs.bigquery.DatasetAccessView | undefined>;
 
     /**
      * Create a DatasetAccess resource with the given unique name, arguments, and options.
@@ -241,36 +240,36 @@ export class DatasetAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetAccessState | undefined;
-            resourceInputs["apiUpdatedMember"] = state ? state.apiUpdatedMember : undefined;
-            resourceInputs["authorizedDataset"] = state ? state.authorizedDataset : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["groupByEmail"] = state ? state.groupByEmail : undefined;
-            resourceInputs["iamMember"] = state ? state.iamMember : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["routine"] = state ? state.routine : undefined;
-            resourceInputs["specialGroup"] = state ? state.specialGroup : undefined;
-            resourceInputs["userByEmail"] = state ? state.userByEmail : undefined;
-            resourceInputs["view"] = state ? state.view : undefined;
+            resourceInputs["apiUpdatedMember"] = state?.apiUpdatedMember;
+            resourceInputs["authorizedDataset"] = state?.authorizedDataset;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["groupByEmail"] = state?.groupByEmail;
+            resourceInputs["iamMember"] = state?.iamMember;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["routine"] = state?.routine;
+            resourceInputs["specialGroup"] = state?.specialGroup;
+            resourceInputs["userByEmail"] = state?.userByEmail;
+            resourceInputs["view"] = state?.view;
         } else {
             const args = argsOrState as DatasetAccessArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !opts.urn) {
+            if (args?.datasetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            resourceInputs["authorizedDataset"] = args ? args.authorizedDataset : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["groupByEmail"] = args ? args.groupByEmail : undefined;
-            resourceInputs["iamMember"] = args ? args.iamMember : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["routine"] = args ? args.routine : undefined;
-            resourceInputs["specialGroup"] = args ? args.specialGroup : undefined;
-            resourceInputs["userByEmail"] = args ? args.userByEmail : undefined;
-            resourceInputs["view"] = args ? args.view : undefined;
+            resourceInputs["authorizedDataset"] = args?.authorizedDataset;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["groupByEmail"] = args?.groupByEmail;
+            resourceInputs["iamMember"] = args?.iamMember;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["routine"] = args?.routine;
+            resourceInputs["specialGroup"] = args?.specialGroup;
+            resourceInputs["userByEmail"] = args?.userByEmail;
+            resourceInputs["view"] = args?.view;
             resourceInputs["apiUpdatedMember"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -283,8 +282,7 @@ export class DatasetAccess extends pulumi.CustomResource {
  */
 export interface DatasetAccessState {
     /**
-     * If true, represents that that the iamMember in the config was translated to a different member type by the API, and is
-     * stored in state as a different member type
+     * If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
      */
     apiUpdatedMember?: pulumi.Input<boolean>;
     /**

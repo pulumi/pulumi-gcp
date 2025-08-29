@@ -89,15 +89,15 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The domain associated with the entity.
      */
-    public /*out*/ readonly domain!: pulumi.Output<string>;
+    declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
      * The email address associated with the entity.
      */
-    public /*out*/ readonly email!: pulumi.Output<string>;
+    declare public /*out*/ readonly email: pulumi.Output<string>;
     /**
      * The entity holding the permission, in one of the following forms:
      * * user-{{userId}}
@@ -109,29 +109,29 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
      * * allUsers
      * * allAuthenticatedUsers
      */
-    public readonly entity!: pulumi.Output<string>;
+    declare public readonly entity: pulumi.Output<string>;
     /**
      * The ID for the entity
      */
-    public /*out*/ readonly entityId!: pulumi.Output<string>;
+    declare public /*out*/ readonly entityId: pulumi.Output<string>;
     /**
      * The content generation of the object, if applied to an object.
      */
-    public /*out*/ readonly generation!: pulumi.Output<number>;
+    declare public /*out*/ readonly generation: pulumi.Output<number>;
     /**
      * The name of the object, if applied to an object.
      */
-    public readonly object!: pulumi.Output<string | undefined>;
+    declare public readonly object: pulumi.Output<string | undefined>;
     /**
      * The project team associated with the entity
      * Structure is documented below.
      */
-    public /*out*/ readonly projectTeams!: pulumi.Output<outputs.storage.DefaultObjectAccessControlProjectTeam[]>;
+    declare public /*out*/ readonly projectTeams: pulumi.Output<outputs.storage.DefaultObjectAccessControlProjectTeam[]>;
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a DefaultObjectAccessControl resource with the given unique name, arguments, and options.
@@ -146,30 +146,30 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultObjectAccessControlState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["entity"] = state ? state.entity : undefined;
-            resourceInputs["entityId"] = state ? state.entityId : undefined;
-            resourceInputs["generation"] = state ? state.generation : undefined;
-            resourceInputs["object"] = state ? state.object : undefined;
-            resourceInputs["projectTeams"] = state ? state.projectTeams : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["entity"] = state?.entity;
+            resourceInputs["entityId"] = state?.entityId;
+            resourceInputs["generation"] = state?.generation;
+            resourceInputs["object"] = state?.object;
+            resourceInputs["projectTeams"] = state?.projectTeams;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as DefaultObjectAccessControlArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.entity === undefined) && !opts.urn) {
+            if (args?.entity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entity'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["entity"] = args ? args.entity : undefined;
-            resourceInputs["object"] = args ? args.object : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["entity"] = args?.entity;
+            resourceInputs["object"] = args?.object;
+            resourceInputs["role"] = args?.role;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["entityId"] = undefined /*out*/;

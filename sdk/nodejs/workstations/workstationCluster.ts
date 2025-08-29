@@ -201,99 +201,99 @@ export class WorkstationCluster extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Status conditions describing the current resource state.
      * Structure is documented below.
      */
-    public /*out*/ readonly conditions!: pulumi.Output<outputs.workstations.WorkstationClusterCondition[]>;
+    declare public /*out*/ readonly conditions: pulumi.Output<outputs.workstations.WorkstationClusterCondition[]>;
     /**
      * The private IP address of the control plane for this workstation cluster.
      * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
      */
-    public /*out*/ readonly controlPlaneIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly controlPlaneIp: pulumi.Output<string>;
     /**
      * Time when this resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
      * Details can be found in the conditions field.
      */
-    public /*out*/ readonly degraded!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly degraded: pulumi.Output<boolean>;
     /**
      * Human-readable name for this resource.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Configuration options for a custom domain.
      * Structure is documented below.
      */
-    public readonly domainConfig!: pulumi.Output<outputs.workstations.WorkstationClusterDomainConfig | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly domainConfig: pulumi.Output<outputs.workstations.WorkstationClusterDomainConfig | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Checksum computed by the server.
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the workstation cluster should reside.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The name of the cluster resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed.
      * It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * Configuration for private cluster.
      * Structure is documented below.
      */
-    public readonly privateClusterConfig!: pulumi.Output<outputs.workstations.WorkstationClusterPrivateClusterConfig | undefined>;
+    declare public readonly privateClusterConfig: pulumi.Output<outputs.workstations.WorkstationClusterPrivateClusterConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
      * Must be part of the subnetwork specified for this cluster.
      */
-    public readonly subnetwork!: pulumi.Output<string>;
+    declare public readonly subnetwork: pulumi.Output<string>;
     /**
      * Resource manager tags bound to this resource.
      * For example:
      * "123/environment": "production",
      * "123/costCenter": "marketing"
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The system-generated UID of the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * ID to use for the workstation cluster.
      */
-    public readonly workstationClusterId!: pulumi.Output<string>;
+    declare public readonly workstationClusterId: pulumi.Output<string>;
 
     /**
      * Create a WorkstationCluster resource with the given unique name, arguments, and options.
@@ -308,49 +308,49 @@ export class WorkstationCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkstationClusterState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["controlPlaneIp"] = state ? state.controlPlaneIp : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["degraded"] = state ? state.degraded : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["domainConfig"] = state ? state.domainConfig : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["controlPlaneIp"] = state?.controlPlaneIp;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["degraded"] = state?.degraded;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["domainConfig"] = state?.domainConfig;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["privateClusterConfig"] = state?.privateClusterConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["workstationClusterId"] = state?.workstationClusterId;
         } else {
             const args = argsOrState as WorkstationClusterArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.subnetwork === undefined) && !opts.urn) {
+            if (args?.subnetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetwork'");
             }
-            if ((!args || args.workstationClusterId === undefined) && !opts.urn) {
+            if (args?.workstationClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workstationClusterId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["domainConfig"] = args ? args.domainConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["domainConfig"] = args?.domainConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["privateClusterConfig"] = args?.privateClusterConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["workstationClusterId"] = args?.workstationClusterId;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["controlPlaneIp"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

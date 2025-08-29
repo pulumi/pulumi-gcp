@@ -119,7 +119,7 @@ export class Database extends pulumi.CustomResource {
      * for more details and supported values. Postgres databases only support
      * a value of `UTF8` at creation time.
      */
-    public readonly charset!: pulumi.Output<string>;
+    declare public readonly charset: pulumi.Output<string>;
     /**
      * The collation value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
@@ -127,33 +127,33 @@ export class Database extends pulumi.CustomResource {
      * for more details and supported values. Postgres databases only support
      * a value of `en_US.UTF8` at creation time.
      */
-    public readonly collation!: pulumi.Output<string>;
+    declare public readonly collation: pulumi.Output<string>;
     /**
      * The deletion policy for the database. Setting ABANDON allows the resource
      * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
      * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
      * values are: "ABANDON", "DELETE". Defaults to "DELETE".
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * The name of the database in the Cloud SQL instance.
      * This does not include the project ID or instance name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -168,24 +168,24 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["charset"] = state ? state.charset : undefined;
-            resourceInputs["collation"] = state ? state.collation : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["charset"] = state?.charset;
+            resourceInputs["collation"] = state?.collation;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            resourceInputs["charset"] = args ? args.charset : undefined;
-            resourceInputs["collation"] = args ? args.collation : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["charset"] = args?.charset;
+            resourceInputs["collation"] = args?.collation;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

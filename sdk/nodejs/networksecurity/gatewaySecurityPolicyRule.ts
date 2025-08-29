@@ -116,67 +116,67 @@ export class GatewaySecurityPolicyRule extends pulumi.CustomResource {
     /**
      * CEL expression for matching on L7/application level criteria.
      */
-    public readonly applicationMatcher!: pulumi.Output<string | undefined>;
+    declare public readonly applicationMatcher: pulumi.Output<string | undefined>;
     /**
      * Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
      * Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
      */
-    public readonly basicProfile!: pulumi.Output<string>;
+    declare public readonly basicProfile: pulumi.Output<string>;
     /**
      * The timestamp when the resource was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Free-text description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the rule is enforced.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The name of the gatewat security policy this rule belongs to.
      */
-    public readonly gatewaySecurityPolicy!: pulumi.Output<string>;
+    declare public readonly gatewaySecurityPolicy: pulumi.Output<string>;
     /**
      * The location of the gateway security policy.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
      * rule should match the pattern: (^a-z?$).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Priority of the rule. Lower number corresponds to higher precedence.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Server-defined URL of this resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * CEL expression for matching on session criteria.
      */
-    public readonly sessionMatcher!: pulumi.Output<string>;
+    declare public readonly sessionMatcher: pulumi.Output<string>;
     /**
      * Flag to enable TLS inspection of traffic matching on. Can only be true if the
      * parent GatewaySecurityPolicy references a TLSInspectionConfig.
      */
-    public readonly tlsInspectionEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly tlsInspectionEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The timestamp when the resource was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a GatewaySecurityPolicyRule resource with the given unique name, arguments, and options.
@@ -191,51 +191,51 @@ export class GatewaySecurityPolicyRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewaySecurityPolicyRuleState | undefined;
-            resourceInputs["applicationMatcher"] = state ? state.applicationMatcher : undefined;
-            resourceInputs["basicProfile"] = state ? state.basicProfile : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["gatewaySecurityPolicy"] = state ? state.gatewaySecurityPolicy : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sessionMatcher"] = state ? state.sessionMatcher : undefined;
-            resourceInputs["tlsInspectionEnabled"] = state ? state.tlsInspectionEnabled : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["applicationMatcher"] = state?.applicationMatcher;
+            resourceInputs["basicProfile"] = state?.basicProfile;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["gatewaySecurityPolicy"] = state?.gatewaySecurityPolicy;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sessionMatcher"] = state?.sessionMatcher;
+            resourceInputs["tlsInspectionEnabled"] = state?.tlsInspectionEnabled;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GatewaySecurityPolicyRuleArgs | undefined;
-            if ((!args || args.basicProfile === undefined) && !opts.urn) {
+            if (args?.basicProfile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'basicProfile'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.gatewaySecurityPolicy === undefined) && !opts.urn) {
+            if (args?.gatewaySecurityPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewaySecurityPolicy'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.sessionMatcher === undefined) && !opts.urn) {
+            if (args?.sessionMatcher === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sessionMatcher'");
             }
-            resourceInputs["applicationMatcher"] = args ? args.applicationMatcher : undefined;
-            resourceInputs["basicProfile"] = args ? args.basicProfile : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["gatewaySecurityPolicy"] = args ? args.gatewaySecurityPolicy : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sessionMatcher"] = args ? args.sessionMatcher : undefined;
-            resourceInputs["tlsInspectionEnabled"] = args ? args.tlsInspectionEnabled : undefined;
+            resourceInputs["applicationMatcher"] = args?.applicationMatcher;
+            resourceInputs["basicProfile"] = args?.basicProfile;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["gatewaySecurityPolicy"] = args?.gatewaySecurityPolicy;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sessionMatcher"] = args?.sessionMatcher;
+            resourceInputs["tlsInspectionEnabled"] = args?.tlsInspectionEnabled;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

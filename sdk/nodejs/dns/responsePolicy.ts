@@ -139,26 +139,26 @@ export class ResponsePolicy extends pulumi.CustomResource {
     /**
      * The description of the response policy, such as `My new response policy`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The list of Google Kubernetes Engine clusters that can see this zone.
      * Structure is documented below.
      */
-    public readonly gkeClusters!: pulumi.Output<outputs.dns.ResponsePolicyGkeCluster[] | undefined>;
+    declare public readonly gkeClusters: pulumi.Output<outputs.dns.ResponsePolicyGkeCluster[] | undefined>;
     /**
      * The list of network names specifying networks to which this policy is applied.
      * Structure is documented below.
      */
-    public readonly networks!: pulumi.Output<outputs.dns.ResponsePolicyNetwork[] | undefined>;
+    declare public readonly networks: pulumi.Output<outputs.dns.ResponsePolicyNetwork[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
      */
-    public readonly responsePolicyName!: pulumi.Output<string>;
+    declare public readonly responsePolicyName: pulumi.Output<string>;
 
     /**
      * Create a ResponsePolicy resource with the given unique name, arguments, and options.
@@ -173,21 +173,21 @@ export class ResponsePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResponsePolicyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["gkeClusters"] = state ? state.gkeClusters : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["responsePolicyName"] = state ? state.responsePolicyName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["gkeClusters"] = state?.gkeClusters;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["responsePolicyName"] = state?.responsePolicyName;
         } else {
             const args = argsOrState as ResponsePolicyArgs | undefined;
-            if ((!args || args.responsePolicyName === undefined) && !opts.urn) {
+            if (args?.responsePolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'responsePolicyName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["gkeClusters"] = args ? args.gkeClusters : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["gkeClusters"] = args?.gkeClusters;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["responsePolicyName"] = args?.responsePolicyName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResponsePolicy.__pulumiType, name, resourceInputs, opts);

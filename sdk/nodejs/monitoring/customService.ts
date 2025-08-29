@@ -96,27 +96,27 @@ export class CustomService extends pulumi.CustomResource {
     /**
      * Name used for UI elements listing this Service.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The full resource name for this service. The syntax is:
      * projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * Configuration for how to query telemetry on a Service.
      * Structure is documented below.
      */
-    public readonly telemetry!: pulumi.Output<outputs.monitoring.CustomServiceTelemetry | undefined>;
+    declare public readonly telemetry: pulumi.Output<outputs.monitoring.CustomServiceTelemetry | undefined>;
     /**
      * Labels which have been used to annotate the service. Label keys must start
      * with a letter. Label keys and values may contain lowercase letters,
@@ -125,7 +125,7 @@ export class CustomService extends pulumi.CustomResource {
      * label entries may be stored. For labels which do not have a semantic value,
      * the empty string may be supplied for the label value.
      */
-    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a CustomService resource with the given unique name, arguments, and options.
@@ -140,19 +140,19 @@ export class CustomService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomServiceState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["telemetry"] = state ? state.telemetry : undefined;
-            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["telemetry"] = state?.telemetry;
+            resourceInputs["userLabels"] = state?.userLabels;
         } else {
             const args = argsOrState as CustomServiceArgs | undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["telemetry"] = args ? args.telemetry : undefined;
-            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["telemetry"] = args?.telemetry;
+            resourceInputs["userLabels"] = args?.userLabels;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

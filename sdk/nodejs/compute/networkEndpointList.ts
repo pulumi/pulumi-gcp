@@ -159,23 +159,23 @@ export class NetworkEndpointList extends pulumi.CustomResource {
     /**
      * The network endpoint group these endpoints are part of.
      */
-    public readonly networkEndpointGroup!: pulumi.Output<string>;
+    declare public readonly networkEndpointGroup: pulumi.Output<string>;
     /**
      * The network endpoints to be added to the enclosing network endpoint group
      * (NEG). Each endpoint specifies an IP address and port, along with
      * additional information depending on the NEG type.
      * Structure is documented below.
      */
-    public readonly networkEndpoints!: pulumi.Output<outputs.compute.NetworkEndpointListNetworkEndpoint[] | undefined>;
+    declare public readonly networkEndpoints: pulumi.Output<outputs.compute.NetworkEndpointListNetworkEndpoint[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Zone where the containing network endpoint group is located.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a NetworkEndpointList resource with the given unique name, arguments, and options.
@@ -190,19 +190,19 @@ export class NetworkEndpointList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkEndpointListState | undefined;
-            resourceInputs["networkEndpointGroup"] = state ? state.networkEndpointGroup : undefined;
-            resourceInputs["networkEndpoints"] = state ? state.networkEndpoints : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["networkEndpointGroup"] = state?.networkEndpointGroup;
+            resourceInputs["networkEndpoints"] = state?.networkEndpoints;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NetworkEndpointListArgs | undefined;
-            if ((!args || args.networkEndpointGroup === undefined) && !opts.urn) {
+            if (args?.networkEndpointGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkEndpointGroup'");
             }
-            resourceInputs["networkEndpointGroup"] = args ? args.networkEndpointGroup : undefined;
-            resourceInputs["networkEndpoints"] = args ? args.networkEndpoints : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["networkEndpointGroup"] = args?.networkEndpointGroup;
+            resourceInputs["networkEndpoints"] = args?.networkEndpoints;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkEndpointList.__pulumiType, name, resourceInputs, opts);

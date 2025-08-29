@@ -146,57 +146,57 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
     /**
      * The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. Description of the EntityType.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
      */
-    public readonly featurestore!: pulumi.Output<string>;
+    declare public readonly featurestore: pulumi.Output<string>;
     /**
      * A set of key/value label pairs to assign to this EntityType.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The default monitoring configuration for all Features under this EntityType.
      * If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
      * Structure is documented below.
      */
-    public readonly monitoringConfig!: pulumi.Output<outputs.vertex.AiFeatureStoreEntityTypeMonitoringConfig | undefined>;
+    declare public readonly monitoringConfig: pulumi.Output<outputs.vertex.AiFeatureStoreEntityTypeMonitoringConfig | undefined>;
     /**
      * The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      */
-    public readonly offlineStorageTtlDays!: pulumi.Output<number | undefined>;
+    declare public readonly offlineStorageTtlDays: pulumi.Output<number | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the EntityType.
      */
-    public /*out*/ readonly region!: pulumi.Output<string>;
+    declare public /*out*/ readonly region: pulumi.Output<string>;
     /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AiFeatureStoreEntityType resource with the given unique name, arguments, and options.
@@ -211,29 +211,29 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreEntityTypeState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["featurestore"] = state ? state.featurestore : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["offlineStorageTtlDays"] = state ? state.offlineStorageTtlDays : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["featurestore"] = state?.featurestore;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["monitoringConfig"] = state?.monitoringConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["offlineStorageTtlDays"] = state?.offlineStorageTtlDays;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AiFeatureStoreEntityTypeArgs | undefined;
-            if ((!args || args.featurestore === undefined) && !opts.urn) {
+            if (args?.featurestore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featurestore'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["featurestore"] = args ? args.featurestore : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["offlineStorageTtlDays"] = args ? args.offlineStorageTtlDays : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["featurestore"] = args?.featurestore;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["monitoringConfig"] = args?.monitoringConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["offlineStorageTtlDays"] = args?.offlineStorageTtlDays;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

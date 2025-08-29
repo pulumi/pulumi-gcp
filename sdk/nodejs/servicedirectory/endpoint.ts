@@ -124,37 +124,37 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * IPv4 or IPv6 address of the endpoint.
      */
-    public readonly address!: pulumi.Output<string | undefined>;
+    declare public readonly address: pulumi.Output<string | undefined>;
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      */
-    public readonly endpointId!: pulumi.Output<string>;
+    declare public readonly endpointId: pulumi.Output<string>;
     /**
      * Metadata for the endpoint. This data can be consumed
      * by service clients. The entire metadata dictionary may contain
      * up to 512 characters, spread across all key-value pairs.
      * Metadata that goes beyond any these limits will be rejected.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name for the endpoint in the format
      * `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * Port that the endpoint is running on, must be in the
      * range of [0, 65535]. If unspecified, the default is 0.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * The resource name of the service that this endpoint provides.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a Endpoint resource with the given unique name, arguments, and options.
@@ -169,27 +169,27 @@ export class Endpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
-            if ((!args || args.endpointId === undefined) && !opts.urn) {
+            if (args?.endpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["endpointId"] = args ? args.endpointId : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["endpointId"] = args?.endpointId;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["service"] = args?.service;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

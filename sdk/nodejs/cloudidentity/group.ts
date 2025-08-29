@@ -86,25 +86,25 @@ export class Group extends pulumi.CustomResource {
      * Additional group keys associated with the Group
      * Structure is documented below.
      */
-    public /*out*/ readonly additionalGroupKeys!: pulumi.Output<outputs.cloudidentity.GroupAdditionalGroupKey[]>;
+    declare public /*out*/ readonly additionalGroupKeys: pulumi.Output<outputs.cloudidentity.GroupAdditionalGroupKey[]>;
     /**
      * The time when the Group was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * An extended description to help users determine the purpose of a Group.
      * Must not be longer than 4,096 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the Group.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * EntityKey of the Group.
      * Structure is documented below.
      */
-    public readonly groupKey!: pulumi.Output<outputs.cloudidentity.GroupGroupKey>;
+    declare public readonly groupKey: pulumi.Output<outputs.cloudidentity.GroupGroupKey>;
     /**
      * The initial configuration options for creating a Group.
      * See the
@@ -113,7 +113,7 @@ export class Group extends pulumi.CustomResource {
      * Default value is `EMPTY`.
      * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      */
-    public readonly initialGroupConfig!: pulumi.Output<string | undefined>;
+    declare public readonly initialGroupConfig: pulumi.Output<string | undefined>;
     /**
      * One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
      * Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -121,23 +121,23 @@ export class Group extends pulumi.CustomResource {
      * Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
      * Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource name of the Group in the format: groups/{group_id}, where groupId
      * is the unique ID assigned to the Group.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource name of the entity under which this Group resides in the
      * Cloud Identity resource hierarchy.
      * Must be of the form identitysources/{identity_source_id} for external-identity-mapped
      * groups or customers/{customer_id} for Google Groups.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The time when the Group was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -152,33 +152,33 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["additionalGroupKeys"] = state ? state.additionalGroupKeys : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["groupKey"] = state ? state.groupKey : undefined;
-            resourceInputs["initialGroupConfig"] = state ? state.initialGroupConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["additionalGroupKeys"] = state?.additionalGroupKeys;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["groupKey"] = state?.groupKey;
+            resourceInputs["initialGroupConfig"] = state?.initialGroupConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.groupKey === undefined) && !opts.urn) {
+            if (args?.groupKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupKey'");
             }
-            if ((!args || args.labels === undefined) && !opts.urn) {
+            if (args?.labels === undefined && !opts.urn) {
                 throw new Error("Missing required property 'labels'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["groupKey"] = args ? args.groupKey : undefined;
-            resourceInputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["groupKey"] = args?.groupKey;
+            resourceInputs["initialGroupConfig"] = args?.initialGroupConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["additionalGroupKeys"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

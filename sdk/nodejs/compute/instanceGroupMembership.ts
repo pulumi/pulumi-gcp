@@ -113,20 +113,20 @@ export class InstanceGroupMembership extends pulumi.CustomResource {
     /**
      * An instance being added to the InstanceGroup
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * Represents an Instance Group resource name that the instance belongs to.
      */
-    public readonly instanceGroup!: pulumi.Output<string>;
+    declare public readonly instanceGroup: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A reference to the zone where the instance group resides.
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    declare public readonly zone: pulumi.Output<string | undefined>;
 
     /**
      * Create a InstanceGroupMembership resource with the given unique name, arguments, and options.
@@ -141,22 +141,22 @@ export class InstanceGroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupMembershipState | undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["instanceGroup"] = state ? state.instanceGroup : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["instanceGroup"] = state?.instanceGroup;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceGroupMembershipArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.instanceGroup === undefined) && !opts.urn) {
+            if (args?.instanceGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroup'");
             }
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["instanceGroup"] = args ? args.instanceGroup : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["instanceGroup"] = args?.instanceGroup;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceGroupMembership.__pulumiType, name, resourceInputs, opts);

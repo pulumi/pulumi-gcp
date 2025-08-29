@@ -109,21 +109,21 @@ export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
     /**
      * The name of the disk in which the resource policies are attached to.
      */
-    public readonly disk!: pulumi.Output<string>;
+    declare public readonly disk: pulumi.Output<string>;
     /**
      * The resource policy to be attached to the disk for scheduling snapshot
      * creation. Do not specify the self link.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A reference to the zone where the disk resides.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a DiskResourcePolicyAttachment resource with the given unique name, arguments, and options.
@@ -138,19 +138,19 @@ export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskResourcePolicyAttachmentState | undefined;
-            resourceInputs["disk"] = state ? state.disk : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["disk"] = state?.disk;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as DiskResourcePolicyAttachmentArgs | undefined;
-            if ((!args || args.disk === undefined) && !opts.urn) {
+            if (args?.disk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'disk'");
             }
-            resourceInputs["disk"] = args ? args.disk : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["disk"] = args?.disk;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DiskResourcePolicyAttachment.__pulumiType, name, resourceInputs, opts);

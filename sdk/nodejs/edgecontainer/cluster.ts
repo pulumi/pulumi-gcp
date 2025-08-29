@@ -170,50 +170,50 @@ export class Cluster extends pulumi.CustomResource {
      * RBAC policy that will be applied and managed by GEC.
      * Structure is documented below.
      */
-    public readonly authorization!: pulumi.Output<outputs.edgecontainer.ClusterAuthorization>;
+    declare public readonly authorization: pulumi.Output<outputs.edgecontainer.ClusterAuthorization>;
     /**
      * The PEM-encoded public certificate of the cluster's CA.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public /*out*/ readonly clusterCaCertificate!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterCaCertificate: pulumi.Output<string>;
     /**
      * The configuration of the cluster control plane.
      * Structure is documented below.
      */
-    public readonly controlPlane!: pulumi.Output<outputs.edgecontainer.ClusterControlPlane | undefined>;
+    declare public readonly controlPlane: pulumi.Output<outputs.edgecontainer.ClusterControlPlane | undefined>;
     /**
      * Remote control plane disk encryption options. This field is only used when
      * enabling CMEK support.
      * Structure is documented below.
      */
-    public readonly controlPlaneEncryption!: pulumi.Output<outputs.edgecontainer.ClusterControlPlaneEncryption>;
+    declare public readonly controlPlaneEncryption: pulumi.Output<outputs.edgecontainer.ClusterControlPlaneEncryption>;
     /**
      * The control plane release version.
      */
-    public /*out*/ readonly controlPlaneVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly controlPlaneVersion: pulumi.Output<string>;
     /**
      * (Output)
      * The time when the maintenance event request was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The default maximum number of pods per node used if a maximum value is not
      * specified explicitly for a node pool in this cluster. If unspecified, the
      * Kubernetes default value will be used.
      */
-    public readonly defaultMaxPodsPerNode!: pulumi.Output<number>;
+    declare public readonly defaultMaxPodsPerNode: pulumi.Output<number>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The IP address of the Kubernetes API server.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * Address pools for cluster data plane external load balancing.
      */
-    public readonly externalLoadBalancerIpv4AddressPools!: pulumi.Output<string[]>;
+    declare public readonly externalLoadBalancerIpv4AddressPools: pulumi.Output<string[]>;
     /**
      * Fleet related configuration.
      * Fleets are a Google Cloud concept for logically organizing clusters,
@@ -221,32 +221,32 @@ export class Cluster extends pulumi.CustomResource {
      * consistent policies across your systems.
      * Structure is documented below.
      */
-    public readonly fleet!: pulumi.Output<outputs.edgecontainer.ClusterFleet>;
+    declare public readonly fleet: pulumi.Output<outputs.edgecontainer.ClusterFleet>;
     /**
      * User-defined labels for the edgecloud cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * All the maintenance events scheduled for the cluster, including the ones
      * ongoing, planned for the future and done in the past (up to 90 days).
      * Structure is documented below.
      */
-    public /*out*/ readonly maintenanceEvents!: pulumi.Output<outputs.edgecontainer.ClusterMaintenanceEvent[]>;
+    declare public /*out*/ readonly maintenanceEvents: pulumi.Output<outputs.edgecontainer.ClusterMaintenanceEvent[]>;
     /**
      * Cluster-wide maintenance policy configuration.
      * Structure is documented below.
      */
-    public readonly maintenancePolicy!: pulumi.Output<outputs.edgecontainer.ClusterMaintenancePolicy>;
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.edgecontainer.ClusterMaintenancePolicy>;
     /**
      * The GDCE cluster name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Fleet related configuration.
      * Fleets are a Google Cloud concept for logically organizing clusters,
@@ -254,49 +254,49 @@ export class Cluster extends pulumi.CustomResource {
      * consistent policies across your systems.
      * Structure is documented below.
      */
-    public readonly networking!: pulumi.Output<outputs.edgecontainer.ClusterNetworking>;
+    declare public readonly networking: pulumi.Output<outputs.edgecontainer.ClusterNetworking>;
     /**
      * The lowest release version among all worker nodes. This field can be empty
      * if the cluster does not have any worker nodes.
      */
-    public /*out*/ readonly nodeVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly nodeVersion: pulumi.Output<string>;
     /**
      * The port number of the Kubernetes API server.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The release channel a cluster is subscribed to.
      * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
      */
-    public readonly releaseChannel!: pulumi.Output<string>;
+    declare public readonly releaseChannel: pulumi.Output<string>;
     /**
      * Indicates the status of the cluster.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Config that customers are allowed to define for GDCE system add-ons.
      * Structure is documented below.
      */
-    public readonly systemAddonsConfig!: pulumi.Output<outputs.edgecontainer.ClusterSystemAddonsConfig>;
+    declare public readonly systemAddonsConfig: pulumi.Output<outputs.edgecontainer.ClusterSystemAddonsConfig>;
     /**
      * The target cluster version. For example: "1.5.0".
      */
-    public readonly targetVersion!: pulumi.Output<string>;
+    declare public readonly targetVersion: pulumi.Output<string>;
     /**
      * (Output)
      * The time when the maintenance event message was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -311,61 +311,61 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["authorization"] = state ? state.authorization : undefined;
-            resourceInputs["clusterCaCertificate"] = state ? state.clusterCaCertificate : undefined;
-            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
-            resourceInputs["controlPlaneEncryption"] = state ? state.controlPlaneEncryption : undefined;
-            resourceInputs["controlPlaneVersion"] = state ? state.controlPlaneVersion : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["externalLoadBalancerIpv4AddressPools"] = state ? state.externalLoadBalancerIpv4AddressPools : undefined;
-            resourceInputs["fleet"] = state ? state.fleet : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maintenanceEvents"] = state ? state.maintenanceEvents : undefined;
-            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networking"] = state ? state.networking : undefined;
-            resourceInputs["nodeVersion"] = state ? state.nodeVersion : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["systemAddonsConfig"] = state ? state.systemAddonsConfig : undefined;
-            resourceInputs["targetVersion"] = state ? state.targetVersion : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["authorization"] = state?.authorization;
+            resourceInputs["clusterCaCertificate"] = state?.clusterCaCertificate;
+            resourceInputs["controlPlane"] = state?.controlPlane;
+            resourceInputs["controlPlaneEncryption"] = state?.controlPlaneEncryption;
+            resourceInputs["controlPlaneVersion"] = state?.controlPlaneVersion;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["defaultMaxPodsPerNode"] = state?.defaultMaxPodsPerNode;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["externalLoadBalancerIpv4AddressPools"] = state?.externalLoadBalancerIpv4AddressPools;
+            resourceInputs["fleet"] = state?.fleet;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maintenanceEvents"] = state?.maintenanceEvents;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networking"] = state?.networking;
+            resourceInputs["nodeVersion"] = state?.nodeVersion;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["releaseChannel"] = state?.releaseChannel;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["systemAddonsConfig"] = state?.systemAddonsConfig;
+            resourceInputs["targetVersion"] = state?.targetVersion;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.authorization === undefined) && !opts.urn) {
+            if (args?.authorization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authorization'");
             }
-            if ((!args || args.fleet === undefined) && !opts.urn) {
+            if (args?.fleet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fleet'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.networking === undefined) && !opts.urn) {
+            if (args?.networking === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networking'");
             }
-            resourceInputs["authorization"] = args ? args.authorization : undefined;
-            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
-            resourceInputs["controlPlaneEncryption"] = args ? args.controlPlaneEncryption : undefined;
-            resourceInputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
-            resourceInputs["externalLoadBalancerIpv4AddressPools"] = args ? args.externalLoadBalancerIpv4AddressPools : undefined;
-            resourceInputs["fleet"] = args ? args.fleet : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networking"] = args ? args.networking : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
-            resourceInputs["systemAddonsConfig"] = args ? args.systemAddonsConfig : undefined;
-            resourceInputs["targetVersion"] = args ? args.targetVersion : undefined;
+            resourceInputs["authorization"] = args?.authorization;
+            resourceInputs["controlPlane"] = args?.controlPlane;
+            resourceInputs["controlPlaneEncryption"] = args?.controlPlaneEncryption;
+            resourceInputs["defaultMaxPodsPerNode"] = args?.defaultMaxPodsPerNode;
+            resourceInputs["externalLoadBalancerIpv4AddressPools"] = args?.externalLoadBalancerIpv4AddressPools;
+            resourceInputs["fleet"] = args?.fleet;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networking"] = args?.networking;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["releaseChannel"] = args?.releaseChannel;
+            resourceInputs["systemAddonsConfig"] = args?.systemAddonsConfig;
+            resourceInputs["targetVersion"] = args?.targetVersion;
             resourceInputs["clusterCaCertificate"] = undefined /*out*/;
             resourceInputs["controlPlaneVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

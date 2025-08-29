@@ -122,7 +122,7 @@ export class Repository extends pulumi.CustomResource {
     /**
      * Time the repository was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The deletion policy for the repository. Setting `ABANDON` allows the resource
      * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
@@ -133,50 +133,50 @@ export class Repository extends pulumi.CustomResource {
      * * PREVENT
      * * ABANDON
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * Description of the repository, which cannot exceed 500 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Initial configurations for the repository.
      * Structure is documented below.
      */
-    public readonly initialConfig!: pulumi.Output<outputs.securesourcemanager.RepositoryInitialConfig | undefined>;
+    declare public readonly initialConfig: pulumi.Output<outputs.securesourcemanager.RepositoryInitialConfig | undefined>;
     /**
      * The name of the instance in which the repository is hosted.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * The location for the Repository.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name for the Repository.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The ID for the Repository.
      */
-    public readonly repositoryId!: pulumi.Output<string>;
+    declare public readonly repositoryId: pulumi.Output<string>;
     /**
      * Unique identifier of the repository.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time the repository was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * URIs for the repository.
      * Structure is documented below.
      */
-    public /*out*/ readonly uris!: pulumi.Output<outputs.securesourcemanager.RepositoryUri[]>;
+    declare public /*out*/ readonly uris: pulumi.Output<outputs.securesourcemanager.RepositoryUri[]>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -191,36 +191,36 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["initialConfig"] = state ? state.initialConfig : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["uris"] = state ? state.uris : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["initialConfig"] = state?.initialConfig;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["repositoryId"] = state?.repositoryId;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["uris"] = state?.uris;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.repositoryId === undefined) && !opts.urn) {
+            if (args?.repositoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryId'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["initialConfig"] = args ? args.initialConfig : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["initialConfig"] = args?.initialConfig;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["repositoryId"] = args?.repositoryId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;

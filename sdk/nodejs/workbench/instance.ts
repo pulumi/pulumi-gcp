@@ -331,51 +331,51 @@ export class Instance extends pulumi.CustomResource {
      * An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
      * The milliseconds portion (".SSS") is optional.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Output only. Email address of entity that sent original CreateInstance request.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */
-    public readonly desiredState!: pulumi.Output<string | undefined>;
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
     /**
      * Optional. If true, the workbench instance will not register with the proxy.
      */
-    public readonly disableProxyAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableProxyAccess: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Flag to enable managed end user credentials for the instance.
      */
-    public readonly enableManagedEuc!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableManagedEuc: pulumi.Output<boolean | undefined>;
     /**
      * Flag that specifies that a notebook can be accessed with third party
      * identity provider.
      */
-    public readonly enableThirdPartyIdentity!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableThirdPartyIdentity: pulumi.Output<boolean | undefined>;
     /**
      * The definition of how to configure a VM instance outside of Resources and Identity.
      * Structure is documented below.
      */
-    public readonly gceSetup!: pulumi.Output<outputs.workbench.InstanceGceSetup>;
+    declare public readonly gceSetup: pulumi.Output<outputs.workbench.InstanceGceSetup>;
     /**
      * 'Output only. Additional information about instance health. Example:
      * healthInfo": { "dockerProxyAgentStatus": "1", "dockerStatus": "1", "jupyterlabApiStatus":
      * "-1", "jupyterlabStatus": "-1", "updated": "2020-10-18 09:40:03.573409" }'
      */
-    public /*out*/ readonly healthInfos!: pulumi.Output<outputs.workbench.InstanceHealthInfo[]>;
+    declare public /*out*/ readonly healthInfos: pulumi.Output<outputs.workbench.InstanceHealthInfo[]>;
     /**
      * Output only. Instance health_state.
      */
-    public /*out*/ readonly healthState!: pulumi.Output<string>;
+    declare public /*out*/ readonly healthState: pulumi.Output<string>;
     /**
      * Required. User-defined unique ID of this instance.
      */
-    public readonly instanceId!: pulumi.Output<string | undefined>;
+    declare public readonly instanceId: pulumi.Output<string | undefined>;
     /**
      * 'Optional. Input only. The owner of this instance after creation. Format:
      * `alias@example.com` Currently supports one owner only. If not specified, all of
@@ -383,7 +383,7 @@ export class Instance extends pulumi.CustomResource {
      * If specified, sets the access mode to `Single user`. For more details, see
      * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
      */
-    public readonly instanceOwners!: pulumi.Output<string[] | undefined>;
+    declare public readonly instanceOwners: pulumi.Output<string[] | undefined>;
     /**
      * Optional. Labels to apply to this instance. These can be later modified
      * by the UpdateInstance method.
@@ -391,44 +391,44 @@ export class Instance extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. The proxy endpoint that is used to access the Jupyter notebook.
      */
-    public /*out*/ readonly proxyUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly proxyUri: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * (Output)
      * Output only. The state of this instance upgrade history entry.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
      * The milliseconds portion (".SSS") is optional.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Output only. The upgrade history of this instance.
      * Structure is documented below.
      */
-    public /*out*/ readonly upgradeHistories!: pulumi.Output<outputs.workbench.InstanceUpgradeHistory[]>;
+    declare public /*out*/ readonly upgradeHistories: pulumi.Output<outputs.workbench.InstanceUpgradeHistory[]>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -443,43 +443,43 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
-            resourceInputs["disableProxyAccess"] = state ? state.disableProxyAccess : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableManagedEuc"] = state ? state.enableManagedEuc : undefined;
-            resourceInputs["enableThirdPartyIdentity"] = state ? state.enableThirdPartyIdentity : undefined;
-            resourceInputs["gceSetup"] = state ? state.gceSetup : undefined;
-            resourceInputs["healthInfos"] = state ? state.healthInfos : undefined;
-            resourceInputs["healthState"] = state ? state.healthState : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceOwners"] = state ? state.instanceOwners : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxyUri"] = state ? state.proxyUri : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["upgradeHistories"] = state ? state.upgradeHistories : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["desiredState"] = state?.desiredState;
+            resourceInputs["disableProxyAccess"] = state?.disableProxyAccess;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableManagedEuc"] = state?.enableManagedEuc;
+            resourceInputs["enableThirdPartyIdentity"] = state?.enableThirdPartyIdentity;
+            resourceInputs["gceSetup"] = state?.gceSetup;
+            resourceInputs["healthInfos"] = state?.healthInfos;
+            resourceInputs["healthState"] = state?.healthState;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceOwners"] = state?.instanceOwners;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxyUri"] = state?.proxyUri;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["upgradeHistories"] = state?.upgradeHistories;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
-            resourceInputs["disableProxyAccess"] = args ? args.disableProxyAccess : undefined;
-            resourceInputs["enableManagedEuc"] = args ? args.enableManagedEuc : undefined;
-            resourceInputs["enableThirdPartyIdentity"] = args ? args.enableThirdPartyIdentity : undefined;
-            resourceInputs["gceSetup"] = args ? args.gceSetup : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceOwners"] = args ? args.instanceOwners : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["desiredState"] = args?.desiredState;
+            resourceInputs["disableProxyAccess"] = args?.disableProxyAccess;
+            resourceInputs["enableManagedEuc"] = args?.enableManagedEuc;
+            resourceInputs["enableThirdPartyIdentity"] = args?.enableThirdPartyIdentity;
+            resourceInputs["gceSetup"] = args?.gceSetup;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceOwners"] = args?.instanceOwners;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

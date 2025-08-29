@@ -198,21 +198,21 @@ export class ConsentStoreIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConsentStoreIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.healthcare.ConsentStoreIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.healthcare.ConsentStoreIamMemberCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly consentStoreId!: pulumi.Output<string>;
+    declare public readonly consentStoreId: pulumi.Output<string>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -226,13 +226,13 @@ export class ConsentStoreIamMember extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.ConsentStoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a ConsentStoreIamMember resource with the given unique name, arguments, and options.
@@ -247,31 +247,31 @@ export class ConsentStoreIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsentStoreIamMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["consentStoreId"] = state ? state.consentStoreId : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["consentStoreId"] = state?.consentStoreId;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as ConsentStoreIamMemberArgs | undefined;
-            if ((!args || args.consentStoreId === undefined) && !opts.urn) {
+            if (args?.consentStoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'consentStoreId'");
             }
-            if ((!args || args.dataset === undefined) && !opts.urn) {
+            if (args?.dataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["consentStoreId"] = args ? args.consentStoreId : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["consentStoreId"] = args?.consentStoreId;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

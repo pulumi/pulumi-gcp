@@ -77,29 +77,29 @@ export class Lien extends pulumi.CustomResource {
     /**
      * Time of creation
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A system-generated unique identifier for this Lien.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * A stable, user-visible/meaningful string identifying the origin
      * of the Lien, intended to be inspected programmatically. Maximum length of
      * 200 characters.
      */
-    public readonly origin!: pulumi.Output<string>;
+    declare public readonly origin: pulumi.Output<string>;
     /**
      * A reference to the resource this Lien is attached to.
      * The server will validate the parent against those for which Liens are supported.
      * Since a variety of objects can have Liens against them, you must provide the type
      * prefix (e.g. "projects/my-project-name").
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Concise user-visible strings indicating why an action cannot be performed
      * on a resource. Maximum length of 200 characters.
      */
-    public readonly reason!: pulumi.Output<string>;
+    declare public readonly reason: pulumi.Output<string>;
     /**
      * The types of operations which should be blocked as a result of this Lien.
      * Each value should correspond to an IAM permission. The server will validate
@@ -107,7 +107,7 @@ export class Lien extends pulumi.CustomResource {
      * list is meaningless and will be rejected.
      * e.g. ['resourcemanager.projects.delete']
      */
-    public readonly restrictions!: pulumi.Output<string[]>;
+    declare public readonly restrictions: pulumi.Output<string[]>;
 
     /**
      * Create a Lien resource with the given unique name, arguments, and options.
@@ -122,30 +122,30 @@ export class Lien extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LienState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["reason"] = state ? state.reason : undefined;
-            resourceInputs["restrictions"] = state ? state.restrictions : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["origin"] = state?.origin;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["reason"] = state?.reason;
+            resourceInputs["restrictions"] = state?.restrictions;
         } else {
             const args = argsOrState as LienArgs | undefined;
-            if ((!args || args.origin === undefined) && !opts.urn) {
+            if (args?.origin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'origin'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.reason === undefined) && !opts.urn) {
+            if (args?.reason === undefined && !opts.urn) {
                 throw new Error("Missing required property 'reason'");
             }
-            if ((!args || args.restrictions === undefined) && !opts.urn) {
+            if (args?.restrictions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'restrictions'");
             }
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["reason"] = args ? args.reason : undefined;
-            resourceInputs["restrictions"] = args ? args.restrictions : undefined;
+            resourceInputs["origin"] = args?.origin;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["reason"] = args?.reason;
+            resourceInputs["restrictions"] = args?.restrictions;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

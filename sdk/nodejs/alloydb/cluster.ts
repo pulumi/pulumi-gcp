@@ -251,168 +251,168 @@ export class Cluster extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      */
-    public readonly automatedBackupPolicy!: pulumi.Output<outputs.alloydb.ClusterAutomatedBackupPolicy>;
+    declare public readonly automatedBackupPolicy: pulumi.Output<outputs.alloydb.ClusterAutomatedBackupPolicy>;
     /**
      * Cluster created from backup.
      * Structure is documented below.
      */
-    public /*out*/ readonly backupSources!: pulumi.Output<outputs.alloydb.ClusterBackupSource[]>;
+    declare public /*out*/ readonly backupSources: pulumi.Output<outputs.alloydb.ClusterBackupSource[]>;
     /**
      * The ID of the alloydb cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The type of cluster. If not set, defaults to PRIMARY.
      * Default value is `PRIMARY`.
      * Possible values are: `PRIMARY`, `SECONDARY`.
      */
-    public readonly clusterType!: pulumi.Output<string | undefined>;
+    declare public readonly clusterType: pulumi.Output<string | undefined>;
     /**
      * The continuous backup config for this cluster.
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
      * Structure is documented below.
      */
-    public readonly continuousBackupConfig!: pulumi.Output<outputs.alloydb.ClusterContinuousBackupConfig>;
+    declare public readonly continuousBackupConfig: pulumi.Output<outputs.alloydb.ClusterContinuousBackupConfig>;
     /**
      * ContinuousBackupInfo describes the continuous backup properties of a cluster.
      * Structure is documented below.
      */
-    public /*out*/ readonly continuousBackupInfos!: pulumi.Output<outputs.alloydb.ClusterContinuousBackupInfo[]>;
+    declare public /*out*/ readonly continuousBackupInfos: pulumi.Output<outputs.alloydb.ClusterContinuousBackupInfo[]>;
     /**
      * The database engine major version. This is an optional field and it's populated at the Cluster creation time.
      * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      */
-    public readonly databaseVersion!: pulumi.Output<string>;
+    declare public readonly databaseVersion: pulumi.Output<string>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
      * Possible values: DEFAULT, FORCE
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      */
-    public readonly encryptionConfig!: pulumi.Output<outputs.alloydb.ClusterEncryptionConfig | undefined>;
+    declare public readonly encryptionConfig: pulumi.Output<outputs.alloydb.ClusterEncryptionConfig | undefined>;
     /**
      * (Output)
      * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
      * Structure is documented below.
      */
-    public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.ClusterEncryptionInfo[]>;
+    declare public /*out*/ readonly encryptionInfos: pulumi.Output<outputs.alloydb.ClusterEncryptionInfo[]>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    public readonly etag!: pulumi.Output<string | undefined>;
+    declare public readonly etag: pulumi.Output<string | undefined>;
     /**
      * Initial user to setup during cluster creation.
      * Structure is documented below.
      */
-    public readonly initialUser!: pulumi.Output<outputs.alloydb.ClusterInitialUser | undefined>;
+    declare public readonly initialUser: pulumi.Output<outputs.alloydb.ClusterInitialUser | undefined>;
     /**
      * User-defined labels for the alloydb cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the alloydb cluster should reside.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * MaintenanceUpdatePolicy defines the policy for system updates.
      * Structure is documented below.
      */
-    public readonly maintenanceUpdatePolicy!: pulumi.Output<outputs.alloydb.ClusterMaintenanceUpdatePolicy | undefined>;
+    declare public readonly maintenanceUpdatePolicy: pulumi.Output<outputs.alloydb.ClusterMaintenanceUpdatePolicy | undefined>;
     /**
      * Cluster created via DMS migration.
      * Structure is documented below.
      */
-    public /*out*/ readonly migrationSources!: pulumi.Output<outputs.alloydb.ClusterMigrationSource[]>;
+    declare public /*out*/ readonly migrationSources: pulumi.Output<outputs.alloydb.ClusterMigrationSource[]>;
     /**
      * The name of the cluster resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Metadata related to network configuration.
      * Structure is documented below.
      */
-    public readonly networkConfig!: pulumi.Output<outputs.alloydb.ClusterNetworkConfig>;
+    declare public readonly networkConfig: pulumi.Output<outputs.alloydb.ClusterNetworkConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Configuration for Private Service Connect (PSC) for the cluster.
      * Structure is documented below.
      */
-    public readonly pscConfig!: pulumi.Output<outputs.alloydb.ClusterPscConfig | undefined>;
+    declare public readonly pscConfig: pulumi.Output<outputs.alloydb.ClusterPscConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
      * Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
      * Structure is documented below.
      */
-    public readonly restoreBackupSource!: pulumi.Output<outputs.alloydb.ClusterRestoreBackupSource | undefined>;
+    declare public readonly restoreBackupSource: pulumi.Output<outputs.alloydb.ClusterRestoreBackupSource | undefined>;
     /**
      * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
      * Structure is documented below.
      */
-    public readonly restoreContinuousBackupSource!: pulumi.Output<outputs.alloydb.ClusterRestoreContinuousBackupSource | undefined>;
+    declare public readonly restoreContinuousBackupSource: pulumi.Output<outputs.alloydb.ClusterRestoreContinuousBackupSource | undefined>;
     /**
      * Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
      * Structure is documented below.
      */
-    public readonly secondaryConfig!: pulumi.Output<outputs.alloydb.ClusterSecondaryConfig | undefined>;
+    declare public readonly secondaryConfig: pulumi.Output<outputs.alloydb.ClusterSecondaryConfig | undefined>;
     /**
      * Set to true to skip awaiting on the major version upgrade of the cluster.
      * Possible values: true, false
      * Default value: "true"
      */
-    public readonly skipAwaitMajorVersionUpgrade!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipAwaitMajorVersionUpgrade: pulumi.Output<boolean | undefined>;
     /**
      * Output only. The current serving state of the cluster.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The subscrition type of cluster.
      * Possible values are: `TRIAL`, `STANDARD`.
      */
-    public readonly subscriptionType!: pulumi.Output<string>;
+    declare public readonly subscriptionType: pulumi.Output<string>;
     /**
      * Contains information and all metadata related to TRIAL clusters.
      * Structure is documented below.
      */
-    public /*out*/ readonly trialMetadatas!: pulumi.Output<outputs.alloydb.ClusterTrialMetadata[]>;
+    declare public /*out*/ readonly trialMetadatas: pulumi.Output<outputs.alloydb.ClusterTrialMetadata[]>;
     /**
      * The system-generated UID of the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -427,70 +427,70 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["automatedBackupPolicy"] = state ? state.automatedBackupPolicy : undefined;
-            resourceInputs["backupSources"] = state ? state.backupSources : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["continuousBackupConfig"] = state ? state.continuousBackupConfig : undefined;
-            resourceInputs["continuousBackupInfos"] = state ? state.continuousBackupInfos : undefined;
-            resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
-            resourceInputs["encryptionInfos"] = state ? state.encryptionInfos : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["initialUser"] = state ? state.initialUser : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maintenanceUpdatePolicy"] = state ? state.maintenanceUpdatePolicy : undefined;
-            resourceInputs["migrationSources"] = state ? state.migrationSources : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscConfig"] = state ? state.pscConfig : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["restoreBackupSource"] = state ? state.restoreBackupSource : undefined;
-            resourceInputs["restoreContinuousBackupSource"] = state ? state.restoreContinuousBackupSource : undefined;
-            resourceInputs["secondaryConfig"] = state ? state.secondaryConfig : undefined;
-            resourceInputs["skipAwaitMajorVersionUpgrade"] = state ? state.skipAwaitMajorVersionUpgrade : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
-            resourceInputs["trialMetadatas"] = state ? state.trialMetadatas : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["automatedBackupPolicy"] = state?.automatedBackupPolicy;
+            resourceInputs["backupSources"] = state?.backupSources;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["continuousBackupConfig"] = state?.continuousBackupConfig;
+            resourceInputs["continuousBackupInfos"] = state?.continuousBackupInfos;
+            resourceInputs["databaseVersion"] = state?.databaseVersion;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
+            resourceInputs["encryptionInfos"] = state?.encryptionInfos;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["initialUser"] = state?.initialUser;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maintenanceUpdatePolicy"] = state?.maintenanceUpdatePolicy;
+            resourceInputs["migrationSources"] = state?.migrationSources;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscConfig"] = state?.pscConfig;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["restoreBackupSource"] = state?.restoreBackupSource;
+            resourceInputs["restoreContinuousBackupSource"] = state?.restoreContinuousBackupSource;
+            resourceInputs["secondaryConfig"] = state?.secondaryConfig;
+            resourceInputs["skipAwaitMajorVersionUpgrade"] = state?.skipAwaitMajorVersionUpgrade;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subscriptionType"] = state?.subscriptionType;
+            resourceInputs["trialMetadatas"] = state?.trialMetadatas;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
-            resourceInputs["continuousBackupConfig"] = args ? args.continuousBackupConfig : undefined;
-            resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["initialUser"] = args ? args.initialUser : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenanceUpdatePolicy"] = args ? args.maintenanceUpdatePolicy : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pscConfig"] = args ? args.pscConfig : undefined;
-            resourceInputs["restoreBackupSource"] = args ? args.restoreBackupSource : undefined;
-            resourceInputs["restoreContinuousBackupSource"] = args ? args.restoreContinuousBackupSource : undefined;
-            resourceInputs["secondaryConfig"] = args ? args.secondaryConfig : undefined;
-            resourceInputs["skipAwaitMajorVersionUpgrade"] = args ? args.skipAwaitMajorVersionUpgrade : undefined;
-            resourceInputs["subscriptionType"] = args ? args.subscriptionType : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["automatedBackupPolicy"] = args?.automatedBackupPolicy;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["clusterType"] = args?.clusterType;
+            resourceInputs["continuousBackupConfig"] = args?.continuousBackupConfig;
+            resourceInputs["databaseVersion"] = args?.databaseVersion;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["initialUser"] = args?.initialUser;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maintenanceUpdatePolicy"] = args?.maintenanceUpdatePolicy;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pscConfig"] = args?.pscConfig;
+            resourceInputs["restoreBackupSource"] = args?.restoreBackupSource;
+            resourceInputs["restoreContinuousBackupSource"] = args?.restoreContinuousBackupSource;
+            resourceInputs["secondaryConfig"] = args?.secondaryConfig;
+            resourceInputs["skipAwaitMajorVersionUpgrade"] = args?.skipAwaitMajorVersionUpgrade;
+            resourceInputs["subscriptionType"] = args?.subscriptionType;
             resourceInputs["backupSources"] = undefined /*out*/;
             resourceInputs["continuousBackupInfos"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;

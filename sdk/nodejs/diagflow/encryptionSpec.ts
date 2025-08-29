@@ -126,16 +126,16 @@ export class EncryptionSpec extends pulumi.CustomResource {
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly encryptionSpec!: pulumi.Output<outputs.diagflow.EncryptionSpecEncryptionSpec>;
+    declare public readonly encryptionSpec: pulumi.Output<outputs.diagflow.EncryptionSpecEncryptionSpec>;
     /**
      * The location in which the encryptionSpec is to be initialized.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a EncryptionSpec resource with the given unique name, arguments, and options.
@@ -150,20 +150,20 @@ export class EncryptionSpec extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EncryptionSpecState | undefined;
-            resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as EncryptionSpecArgs | undefined;
-            if ((!args || args.encryptionSpec === undefined) && !opts.urn) {
+            if (args?.encryptionSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'encryptionSpec'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EncryptionSpec.__pulumiType, name, resourceInputs, opts);

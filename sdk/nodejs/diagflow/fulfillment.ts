@@ -87,31 +87,31 @@ export class Fulfillment extends pulumi.CustomResource {
     /**
      * The human-readable name of the fulfillment, unique within the agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Whether fulfillment is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The field defines whether the fulfillment is enabled for certain features.
      * Structure is documented below.
      */
-    public readonly features!: pulumi.Output<outputs.diagflow.FulfillmentFeature[] | undefined>;
+    declare public readonly features: pulumi.Output<outputs.diagflow.FulfillmentFeature[] | undefined>;
     /**
      * Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
      * Structure is documented below.
      */
-    public readonly genericWebService!: pulumi.Output<outputs.diagflow.FulfillmentGenericWebService | undefined>;
+    declare public readonly genericWebService: pulumi.Output<outputs.diagflow.FulfillmentGenericWebService | undefined>;
     /**
      * The unique identifier of the fulfillment.
      * Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a Fulfillment resource with the given unique name, arguments, and options.
@@ -126,22 +126,22 @@ export class Fulfillment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FulfillmentState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["features"] = state ? state.features : undefined;
-            resourceInputs["genericWebService"] = state ? state.genericWebService : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["features"] = state?.features;
+            resourceInputs["genericWebService"] = state?.genericWebService;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as FulfillmentArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["features"] = args ? args.features : undefined;
-            resourceInputs["genericWebService"] = args ? args.genericWebService : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["features"] = args?.features;
+            resourceInputs["genericWebService"] = args?.genericWebService;
+            resourceInputs["project"] = args?.project;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

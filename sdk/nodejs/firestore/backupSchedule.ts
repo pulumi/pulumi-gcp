@@ -124,32 +124,32 @@ export class BackupSchedule extends pulumi.CustomResource {
     /**
      * For a schedule that runs daily.
      */
-    public readonly dailyRecurrence!: pulumi.Output<outputs.firestore.BackupScheduleDailyRecurrence | undefined>;
+    declare public readonly dailyRecurrence: pulumi.Output<outputs.firestore.BackupScheduleDailyRecurrence | undefined>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    public readonly database!: pulumi.Output<string | undefined>;
+    declare public readonly database: pulumi.Output<string | undefined>;
     /**
      * The unique backup schedule identifier across all locations and databases for the given project. Format:
      * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      * You can set this to a value up to 14 weeks.
      */
-    public readonly retention!: pulumi.Output<string>;
+    declare public readonly retention: pulumi.Output<string>;
     /**
      * For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      */
-    public readonly weeklyRecurrence!: pulumi.Output<outputs.firestore.BackupScheduleWeeklyRecurrence | undefined>;
+    declare public readonly weeklyRecurrence: pulumi.Output<outputs.firestore.BackupScheduleWeeklyRecurrence | undefined>;
 
     /**
      * Create a BackupSchedule resource with the given unique name, arguments, and options.
@@ -164,22 +164,22 @@ export class BackupSchedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupScheduleState | undefined;
-            resourceInputs["dailyRecurrence"] = state ? state.dailyRecurrence : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["retention"] = state ? state.retention : undefined;
-            resourceInputs["weeklyRecurrence"] = state ? state.weeklyRecurrence : undefined;
+            resourceInputs["dailyRecurrence"] = state?.dailyRecurrence;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["retention"] = state?.retention;
+            resourceInputs["weeklyRecurrence"] = state?.weeklyRecurrence;
         } else {
             const args = argsOrState as BackupScheduleArgs | undefined;
-            if ((!args || args.retention === undefined) && !opts.urn) {
+            if (args?.retention === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retention'");
             }
-            resourceInputs["dailyRecurrence"] = args ? args.dailyRecurrence : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["retention"] = args ? args.retention : undefined;
-            resourceInputs["weeklyRecurrence"] = args ? args.weeklyRecurrence : undefined;
+            resourceInputs["dailyRecurrence"] = args?.dailyRecurrence;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["retention"] = args?.retention;
+            resourceInputs["weeklyRecurrence"] = args?.weeklyRecurrence;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

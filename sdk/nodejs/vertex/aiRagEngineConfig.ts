@@ -72,21 +72,21 @@ export class AiRagEngineConfig extends pulumi.CustomResource {
     /**
      * The resource name of the Dataset. This value is set by Google.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Required. The config of the RagManagedDb used by RagEngine.
      * Structure is documented below.
      */
-    public readonly ragManagedDbConfig!: pulumi.Output<outputs.vertex.AiRagEngineConfigRagManagedDbConfig>;
+    declare public readonly ragManagedDbConfig: pulumi.Output<outputs.vertex.AiRagEngineConfigRagManagedDbConfig>;
     /**
      * The region of the RagEngineConfig. eg us-central1
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a AiRagEngineConfig resource with the given unique name, arguments, and options.
@@ -101,18 +101,18 @@ export class AiRagEngineConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiRagEngineConfigState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["ragManagedDbConfig"] = state ? state.ragManagedDbConfig : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["ragManagedDbConfig"] = state?.ragManagedDbConfig;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as AiRagEngineConfigArgs | undefined;
-            if ((!args || args.ragManagedDbConfig === undefined) && !opts.urn) {
+            if (args?.ragManagedDbConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ragManagedDbConfig'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["ragManagedDbConfig"] = args ? args.ragManagedDbConfig : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["ragManagedDbConfig"] = args?.ragManagedDbConfig;
+            resourceInputs["region"] = args?.region;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

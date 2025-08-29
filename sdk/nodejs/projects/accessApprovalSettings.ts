@@ -125,15 +125,15 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      */
-    public readonly activeKeyVersion!: pulumi.Output<string | undefined>;
+    declare public readonly activeKeyVersion: pulumi.Output<string | undefined>;
     /**
      * If the field is true, that indicates that an ancestor of this Project has set active_key_version.
      */
-    public /*out*/ readonly ancestorHasActiveKeyVersion!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly ancestorHasActiveKeyVersion: pulumi.Output<boolean>;
     /**
      * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
      */
-    public /*out*/ readonly enrolledAncestor!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enrolledAncestor: pulumi.Output<boolean>;
     /**
      * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
      * Access requests for the resource given by name against any of these services contained here will be required
@@ -141,24 +141,24 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      * A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
      * Structure is documented below.
      */
-    public readonly enrolledServices!: pulumi.Output<outputs.projects.AccessApprovalSettingsEnrolledService[]>;
+    declare public readonly enrolledServices: pulumi.Output<outputs.projects.AccessApprovalSettingsEnrolledService[]>;
     /**
      * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
      * configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
      * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
      * as key versions are inherited top-down.
      */
-    public /*out*/ readonly invalidKeyVersion!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly invalidKeyVersion: pulumi.Output<boolean>;
     /**
      * The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * A list of email addresses to which notifications relating to approval requests should be sent.
      * Notifications relating to a resource will be sent to all emails in the settings of ancestor
      * resources of that resource. A maximum of 50 email addresses are allowed.
      */
-    public readonly notificationEmails!: pulumi.Output<string[]>;
+    declare public readonly notificationEmails: pulumi.Output<string[]>;
     /**
      * (Optional, Deprecated)
      * Project id.
@@ -167,11 +167,11 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      *
      * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      */
-    public readonly project!: pulumi.Output<string | undefined>;
+    declare public readonly project: pulumi.Output<string | undefined>;
     /**
      * ID of the project of the access approval settings.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a AccessApprovalSettings resource with the given unique name, arguments, and options.
@@ -186,28 +186,28 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessApprovalSettingsState | undefined;
-            resourceInputs["activeKeyVersion"] = state ? state.activeKeyVersion : undefined;
-            resourceInputs["ancestorHasActiveKeyVersion"] = state ? state.ancestorHasActiveKeyVersion : undefined;
-            resourceInputs["enrolledAncestor"] = state ? state.enrolledAncestor : undefined;
-            resourceInputs["enrolledServices"] = state ? state.enrolledServices : undefined;
-            resourceInputs["invalidKeyVersion"] = state ? state.invalidKeyVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationEmails"] = state ? state.notificationEmails : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["activeKeyVersion"] = state?.activeKeyVersion;
+            resourceInputs["ancestorHasActiveKeyVersion"] = state?.ancestorHasActiveKeyVersion;
+            resourceInputs["enrolledAncestor"] = state?.enrolledAncestor;
+            resourceInputs["enrolledServices"] = state?.enrolledServices;
+            resourceInputs["invalidKeyVersion"] = state?.invalidKeyVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationEmails"] = state?.notificationEmails;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as AccessApprovalSettingsArgs | undefined;
-            if ((!args || args.enrolledServices === undefined) && !opts.urn) {
+            if (args?.enrolledServices === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enrolledServices'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["activeKeyVersion"] = args ? args.activeKeyVersion : undefined;
-            resourceInputs["enrolledServices"] = args ? args.enrolledServices : undefined;
-            resourceInputs["notificationEmails"] = args ? args.notificationEmails : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["activeKeyVersion"] = args?.activeKeyVersion;
+            resourceInputs["enrolledServices"] = args?.enrolledServices;
+            resourceInputs["notificationEmails"] = args?.notificationEmails;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["ancestorHasActiveKeyVersion"] = undefined /*out*/;
             resourceInputs["enrolledAncestor"] = undefined /*out*/;
             resourceInputs["invalidKeyVersion"] = undefined /*out*/;

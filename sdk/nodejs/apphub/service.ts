@@ -277,69 +277,69 @@ export class Service extends pulumi.CustomResource {
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * Consumer provided attributes.
      * Structure is documented below.
      */
-    public readonly attributes!: pulumi.Output<outputs.apphub.ServiceAttributes | undefined>;
+    declare public readonly attributes: pulumi.Output<outputs.apphub.ServiceAttributes | undefined>;
     /**
      * Output only. Create time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-defined description of a Service.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Immutable. The resource name of the original discovered service.
      */
-    public readonly discoveredService!: pulumi.Output<string>;
+    declare public readonly discoveredService: pulumi.Output<string>;
     /**
      * User-defined name for the Service.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of a Service. Format:
      * "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Service identifier.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * Properties of an underlying cloud resource that can comprise a Service.
      * Structure is documented below.
      */
-    public /*out*/ readonly serviceProperties!: pulumi.Output<outputs.apphub.ServiceServiceProperty[]>;
+    declare public /*out*/ readonly serviceProperties: pulumi.Output<outputs.apphub.ServiceServiceProperty[]>;
     /**
      * Reference to an underlying networking resource that can comprise a Service.
      * Structure is documented below.
      */
-    public /*out*/ readonly serviceReferences!: pulumi.Output<outputs.apphub.ServiceServiceReference[]>;
+    declare public /*out*/ readonly serviceReferences: pulumi.Output<outputs.apphub.ServiceServiceReference[]>;
     /**
      * Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. A universally unique identifier (UUID) for the `Service` in the UUID4
      * format.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. Update time.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -354,43 +354,43 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["attributes"] = state ? state.attributes : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discoveredService"] = state ? state.discoveredService : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["serviceProperties"] = state ? state.serviceProperties : undefined;
-            resourceInputs["serviceReferences"] = state ? state.serviceReferences : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["attributes"] = state?.attributes;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discoveredService"] = state?.discoveredService;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["serviceProperties"] = state?.serviceProperties;
+            resourceInputs["serviceReferences"] = state?.serviceReferences;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.discoveredService === undefined) && !opts.urn) {
+            if (args?.discoveredService === undefined && !opts.urn) {
                 throw new Error("Missing required property 'discoveredService'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["attributes"] = args ? args.attributes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discoveredService"] = args ? args.discoveredService : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discoveredService"] = args?.discoveredService;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceId"] = args?.serviceId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceProperties"] = undefined /*out*/;

@@ -84,15 +84,15 @@ export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
     /**
      * OAuth client ID
      */
-    public readonly clientId!: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string>;
     /**
      * OAuth client secret
      */
-    public readonly clientSecret!: pulumi.Output<string>;
+    declare public readonly clientSecret: pulumi.Output<string>;
     /**
      * If this IDP allows the user to sign in
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * ID of the IDP. Possible values include:
      * * `apple.com`
@@ -106,20 +106,20 @@ export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
      * * `twitter.com`
      * * `yahoo.com`
      */
-    public readonly idpId!: pulumi.Output<string>;
+    declare public readonly idpId: pulumi.Output<string>;
     /**
      * The name of the default supported IDP config resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the tenant where this DefaultSupportedIdpConfig resource exists
      */
-    public readonly tenant!: pulumi.Output<string>;
+    declare public readonly tenant: pulumi.Output<string>;
 
     /**
      * Create a TenantDefaultSupportedIdpConfig resource with the given unique name, arguments, and options.
@@ -134,33 +134,33 @@ export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TenantDefaultSupportedIdpConfigState | undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["idpId"] = state ? state.idpId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tenant"] = state ? state.tenant : undefined;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["idpId"] = state?.idpId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tenant"] = state?.tenant;
         } else {
             const args = argsOrState as TenantDefaultSupportedIdpConfigArgs | undefined;
-            if ((!args || args.clientId === undefined) && !opts.urn) {
+            if (args?.clientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if ((!args || args.clientSecret === undefined) && !opts.urn) {
+            if (args?.clientSecret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientSecret'");
             }
-            if ((!args || args.idpId === undefined) && !opts.urn) {
+            if (args?.idpId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'idpId'");
             }
-            if ((!args || args.tenant === undefined) && !opts.urn) {
+            if (args?.tenant === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tenant'");
             }
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["idpId"] = args ? args.idpId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tenant"] = args ? args.tenant : undefined;
+            resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["clientSecret"] = args?.clientSecret;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["idpId"] = args?.idpId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tenant"] = args?.tenant;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

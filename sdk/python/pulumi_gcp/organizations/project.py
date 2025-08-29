@@ -30,9 +30,7 @@ class ProjectArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-               that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-               if you set auto_create_network to false, since the network will exist momentarily.
+        :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
                belongs to. The user or service account performing this operation with the provider
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
@@ -79,9 +77,7 @@ class ProjectArgs:
     @pulumi.getter(name="autoCreateNetwork")
     def auto_create_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-        that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-        if you set auto_create_network to false, since the network will exist momentarily.
+        Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         """
         return pulumi.get(self, "auto_create_network")
 
@@ -215,9 +211,7 @@ class _ProjectState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
-        :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-               that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-               if you set auto_create_network to false, since the network will exist momentarily.
+        :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
                belongs to. The user or service account performing this operation with the provider
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
@@ -273,9 +267,7 @@ class _ProjectState:
     @pulumi.getter(name="autoCreateNetwork")
     def auto_create_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-        that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-        if you set auto_create_network to false, since the network will exist momentarily.
+        Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         """
         return pulumi.get(self, "auto_create_network")
 
@@ -523,9 +515,7 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-               that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-               if you set auto_create_network to false, since the network will exist momentarily.
+        :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
                belongs to. The user or service account performing this operation with the provider
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
@@ -708,9 +698,7 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-               that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-               if you set auto_create_network to false, since the network will exist momentarily.
+        :param pulumi.Input[_builtins.bool] auto_create_network: Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         :param pulumi.Input[_builtins.str] billing_account: The alphanumeric ID of the billing account this project
                belongs to. The user or service account performing this operation with the provider
                must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
@@ -759,9 +747,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="autoCreateNetwork")
     def auto_create_network(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-        that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-        if you set auto_create_network to false, since the network will exist momentarily.
+        Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         """
         return pulumi.get(self, "auto_create_network")
 

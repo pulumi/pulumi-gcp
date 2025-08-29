@@ -219,8 +219,7 @@ type Interconnect struct {
 	//   outage was due to start.
 	// - COMPLETED: The outage associated with this notification is complete.
 	State pulumi.StringOutput `pulumi:"state"`
-	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-	// deleted if this list is non-empty.
+	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
 	WireGroups pulumi.StringArrayOutput `pulumi:"wireGroups"`
 }
 
@@ -403,8 +402,7 @@ type interconnectState struct {
 	//   outage was due to start.
 	// - COMPLETED: The outage associated with this notification is complete.
 	State *string `pulumi:"state"`
-	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-	// deleted if this list is non-empty.
+	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
 	WireGroups []string `pulumi:"wireGroups"`
 }
 
@@ -541,8 +539,7 @@ type InterconnectState struct {
 	//   outage was due to start.
 	// - COMPLETED: The outage associated with this notification is complete.
 	State pulumi.StringPtrInput
-	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-	// deleted if this list is non-empty.
+	// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
 	WireGroups pulumi.StringArrayInput
 }
 
@@ -1021,8 +1018,7 @@ func (o InterconnectOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-// deleted if this list is non-empty.
+// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
 func (o InterconnectOutput) WireGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.WireGroups }).(pulumi.StringArrayOutput)
 }

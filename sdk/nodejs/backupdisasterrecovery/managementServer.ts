@@ -100,36 +100,36 @@ export class ManagementServer extends pulumi.CustomResource {
     /**
      * The location for the management server (management console)
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The management console URI
      * Structure is documented below.
      */
-    public /*out*/ readonly managementUris!: pulumi.Output<outputs.backupdisasterrecovery.ManagementServerManagementUri[]>;
+    declare public /*out*/ readonly managementUris: pulumi.Output<outputs.backupdisasterrecovery.ManagementServerManagementUri[]>;
     /**
      * The name of management server (management console)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Network details to create management server (management console).
      * Structure is documented below.
      */
-    public readonly networks!: pulumi.Output<outputs.backupdisasterrecovery.ManagementServerNetwork[] | undefined>;
+    declare public readonly networks: pulumi.Output<outputs.backupdisasterrecovery.ManagementServerNetwork[] | undefined>;
     /**
      * The oauth2ClientId of management console.
      */
-    public /*out*/ readonly oauth2ClientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly oauth2ClientId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The type of management server (management console).
      * Default value is `BACKUP_RESTORE`.
      * Possible values are: `BACKUP_RESTORE`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a ManagementServer resource with the given unique name, arguments, and options.
@@ -144,23 +144,23 @@ export class ManagementServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagementServerState | undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["managementUris"] = state ? state.managementUris : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["oauth2ClientId"] = state ? state.oauth2ClientId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["managementUris"] = state?.managementUris;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["oauth2ClientId"] = state?.oauth2ClientId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ManagementServerArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["type"] = args?.type;
             resourceInputs["managementUris"] = undefined /*out*/;
             resourceInputs["oauth2ClientId"] = undefined /*out*/;
         }

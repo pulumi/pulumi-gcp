@@ -299,22 +299,22 @@ export class ResourcePolicy extends pulumi.CustomResource {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Replication consistency group for asynchronous disk replication.
      * Structure is documented below.
      */
-    public readonly diskConsistencyGroupPolicy!: pulumi.Output<outputs.compute.ResourcePolicyDiskConsistencyGroupPolicy | undefined>;
+    declare public readonly diskConsistencyGroupPolicy: pulumi.Output<outputs.compute.ResourcePolicyDiskConsistencyGroupPolicy | undefined>;
     /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
-    public readonly groupPlacementPolicy!: pulumi.Output<outputs.compute.ResourcePolicyGroupPlacementPolicy | undefined>;
+    declare public readonly groupPlacementPolicy: pulumi.Output<outputs.compute.ResourcePolicyGroupPlacementPolicy | undefined>;
     /**
      * Resource policy for scheduling instance operations.
      * Structure is documented below.
      */
-    public readonly instanceSchedulePolicy!: pulumi.Output<outputs.compute.ResourcePolicyInstanceSchedulePolicy | undefined>;
+    declare public readonly instanceSchedulePolicy: pulumi.Output<outputs.compute.ResourcePolicyInstanceSchedulePolicy | undefined>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -324,30 +324,30 @@ export class ResourcePolicy extends pulumi.CustomResource {
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where resource policy resides.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Policy for creating snapshots of persistent disks.
      * Structure is documented below.
      */
-    public readonly snapshotSchedulePolicy!: pulumi.Output<outputs.compute.ResourcePolicySnapshotSchedulePolicy | undefined>;
+    declare public readonly snapshotSchedulePolicy: pulumi.Output<outputs.compute.ResourcePolicySnapshotSchedulePolicy | undefined>;
     /**
      * Represents the workload policy.
      * Structure is documented below.
      */
-    public readonly workloadPolicy!: pulumi.Output<outputs.compute.ResourcePolicyWorkloadPolicy | undefined>;
+    declare public readonly workloadPolicy: pulumi.Output<outputs.compute.ResourcePolicyWorkloadPolicy | undefined>;
 
     /**
      * Create a ResourcePolicy resource with the given unique name, arguments, and options.
@@ -362,27 +362,27 @@ export class ResourcePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourcePolicyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskConsistencyGroupPolicy"] = state ? state.diskConsistencyGroupPolicy : undefined;
-            resourceInputs["groupPlacementPolicy"] = state ? state.groupPlacementPolicy : undefined;
-            resourceInputs["instanceSchedulePolicy"] = state ? state.instanceSchedulePolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["snapshotSchedulePolicy"] = state ? state.snapshotSchedulePolicy : undefined;
-            resourceInputs["workloadPolicy"] = state ? state.workloadPolicy : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskConsistencyGroupPolicy"] = state?.diskConsistencyGroupPolicy;
+            resourceInputs["groupPlacementPolicy"] = state?.groupPlacementPolicy;
+            resourceInputs["instanceSchedulePolicy"] = state?.instanceSchedulePolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["snapshotSchedulePolicy"] = state?.snapshotSchedulePolicy;
+            resourceInputs["workloadPolicy"] = state?.workloadPolicy;
         } else {
             const args = argsOrState as ResourcePolicyArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskConsistencyGroupPolicy"] = args ? args.diskConsistencyGroupPolicy : undefined;
-            resourceInputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
-            resourceInputs["instanceSchedulePolicy"] = args ? args.instanceSchedulePolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
-            resourceInputs["workloadPolicy"] = args ? args.workloadPolicy : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskConsistencyGroupPolicy"] = args?.diskConsistencyGroupPolicy;
+            resourceInputs["groupPlacementPolicy"] = args?.groupPlacementPolicy;
+            resourceInputs["instanceSchedulePolicy"] = args?.instanceSchedulePolicy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["snapshotSchedulePolicy"] = args?.snapshotSchedulePolicy;
+            resourceInputs["workloadPolicy"] = args?.workloadPolicy;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

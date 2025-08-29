@@ -89,11 +89,11 @@ export class RowAccessPolicy extends pulumi.CustomResource {
      * The time when this row access policy was created, in milliseconds since
      * the epoch.
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
      * The ID of the dataset containing this row access policy.
      */
-    public readonly datasetId!: pulumi.Output<string>;
+    declare public readonly datasetId: pulumi.Output<string>;
     /**
      * A SQL boolean expression that represents the rows defined by this row
      * access policy, similar to the boolean expression in a WHERE clause of a
@@ -105,7 +105,7 @@ export class RowAccessPolicy extends pulumi.CustomResource {
      * nullableField is not NULL
      * numericField BETWEEN 1.0 AND 5.0
      */
-    public readonly filterPredicate!: pulumi.Output<string>;
+    declare public readonly filterPredicate: pulumi.Output<string>;
     /**
      * Input only. The optional list of iamMember users or groups that specifies the initial
      * members that the row-level access policy should be created with.
@@ -129,27 +129,27 @@ export class RowAccessPolicy extends pulumi.CustomResource {
      * BigQuery requires authentication before a user can access the service,
      * allUsers includes only authenticated users.
      */
-    public readonly grantees!: pulumi.Output<string[] | undefined>;
+    declare public readonly grantees: pulumi.Output<string[] | undefined>;
     /**
      * The time when this row access policy was last modified, in milliseconds
      * since the epoch.
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * The ID of the row access policy. The ID must contain only
      * letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
      * length is 256 characters.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The ID of the table containing this row access policy.
      */
-    public readonly tableId!: pulumi.Output<string>;
+    declare public readonly tableId: pulumi.Output<string>;
 
     /**
      * Create a RowAccessPolicy resource with the given unique name, arguments, and options.
@@ -164,34 +164,34 @@ export class RowAccessPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RowAccessPolicyState | undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
-            resourceInputs["filterPredicate"] = state ? state.filterPredicate : undefined;
-            resourceInputs["grantees"] = state ? state.grantees : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tableId"] = state ? state.tableId : undefined;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["filterPredicate"] = state?.filterPredicate;
+            resourceInputs["grantees"] = state?.grantees;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tableId"] = state?.tableId;
         } else {
             const args = argsOrState as RowAccessPolicyArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !opts.urn) {
+            if (args?.datasetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.filterPredicate === undefined) && !opts.urn) {
+            if (args?.filterPredicate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filterPredicate'");
             }
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            if ((!args || args.tableId === undefined) && !opts.urn) {
+            if (args?.tableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
-            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
-            resourceInputs["filterPredicate"] = args ? args.filterPredicate : undefined;
-            resourceInputs["grantees"] = args ? args.grantees : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tableId"] = args ? args.tableId : undefined;
+            resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["filterPredicate"] = args?.filterPredicate;
+            resourceInputs["grantees"] = args?.grantees;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tableId"] = args?.tableId;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }

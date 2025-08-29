@@ -235,12 +235,12 @@ export class RouterNat extends pulumi.CustomResource {
      * project-level default tier is used.
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    public readonly autoNetworkTier!: pulumi.Output<string>;
+    declare public readonly autoNetworkTier: pulumi.Output<string>;
     /**
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      */
-    public readonly drainNatIps!: pulumi.Output<string[]>;
+    declare public readonly drainNatIps: pulumi.Output<string[]>;
     /**
      * Enable Dynamic Port Allocation.
      * If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
@@ -249,60 +249,60 @@ export class RouterNat extends pulumi.CustomResource {
      * If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
      * Mutually exclusive with enableEndpointIndependentMapping.
      */
-    public readonly enableDynamicPortAllocation!: pulumi.Output<boolean>;
+    declare public readonly enableDynamicPortAllocation: pulumi.Output<boolean>;
     /**
      * Enable endpoint independent mapping.
      * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      */
-    public readonly enableEndpointIndependentMapping!: pulumi.Output<boolean>;
+    declare public readonly enableEndpointIndependentMapping: pulumi.Output<boolean>;
     /**
      * Specifies the endpoint Types supported by the NAT Gateway.
      * Supported values include:
      * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
      * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
      */
-    public readonly endpointTypes!: pulumi.Output<string[]>;
+    declare public readonly endpointTypes: pulumi.Output<string[]>;
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
-    public readonly icmpIdleTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly icmpIdleTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
      * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
      */
-    public readonly initialNatIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly initialNatIps: pulumi.Output<string[] | undefined>;
     /**
      * Configuration for logging on NAT
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.RouterNatLogConfig | undefined>;
+    declare public readonly logConfig: pulumi.Output<outputs.compute.RouterNatLogConfig | undefined>;
     /**
      * Maximum number of ports allocated to a VM from this NAT.
      * This field can only be set when enableDynamicPortAllocation is enabled.
      */
-    public readonly maxPortsPerVm!: pulumi.Output<number | undefined>;
+    declare public readonly maxPortsPerVm: pulumi.Output<number | undefined>;
     /**
      * Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      */
-    public readonly minPortsPerVm!: pulumi.Output<number>;
+    declare public readonly minPortsPerVm: pulumi.Output<number>;
     /**
      * Name of the NAT service. The name must be 1-63 characters long and
      * comply with RFC1035.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
      * Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
      * Structure is documented below.
      */
-    public readonly nat64Subnetworks!: pulumi.Output<outputs.compute.RouterNatNat64Subnetwork[] | undefined>;
+    declare public readonly nat64Subnetworks: pulumi.Output<outputs.compute.RouterNatNat64Subnetwork[] | undefined>;
     /**
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
      * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      */
-    public readonly natIpAllocateOption!: pulumi.Output<string | undefined>;
+    declare public readonly natIpAllocateOption: pulumi.Output<string | undefined>;
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
@@ -310,25 +310,25 @@ export class RouterNat extends pulumi.CustomResource {
      * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
      * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      */
-    public readonly natIps!: pulumi.Output<string[]>;
+    declare public readonly natIps: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where the router and NAT reside.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
      */
-    public readonly router!: pulumi.Output<string>;
+    declare public readonly router: pulumi.Output<string>;
     /**
      * A list of rules associated with this NAT.
      * Structure is documented below.
      */
-    public readonly rules!: pulumi.Output<outputs.compute.RouterNatRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.compute.RouterNatRule[] | undefined>;
     /**
      * How NAT should be configured per Subnetwork.
      * If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -342,7 +342,7 @@ export class RouterNat extends pulumi.CustomResource {
      * other RouterNat section in any Router for this network in this region.
      * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      */
-    public readonly sourceSubnetworkIpRangesToNat!: pulumi.Output<string>;
+    declare public readonly sourceSubnetworkIpRangesToNat: pulumi.Output<string>;
     /**
      * Specify the Nat option for NAT64, which can take one of the following values:
      * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
@@ -351,28 +351,28 @@ export class RouterNat extends pulumi.CustomResource {
      * Other Router.Nat sections can still be present to enable NAT44 only.
      * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
      */
-    public readonly sourceSubnetworkIpRangesToNat64!: pulumi.Output<string | undefined>;
+    declare public readonly sourceSubnetworkIpRangesToNat64: pulumi.Output<string | undefined>;
     /**
      * One or more subnetwork NAT configurations. Only used if
      * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
      * Structure is documented below.
      */
-    public readonly subnetworks!: pulumi.Output<outputs.compute.RouterNatSubnetwork[] | undefined>;
+    declare public readonly subnetworks: pulumi.Output<outputs.compute.RouterNatSubnetwork[] | undefined>;
     /**
      * Timeout (in seconds) for TCP established connections.
      * Defaults to 1200s if not set.
      */
-    public readonly tcpEstablishedIdleTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly tcpEstablishedIdleTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
      * Defaults to 120s if not set.
      */
-    public readonly tcpTimeWaitTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly tcpTimeWaitTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Timeout (in seconds) for TCP transitory connections.
      * Defaults to 30s if not set.
      */
-    public readonly tcpTransitoryIdleTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly tcpTransitoryIdleTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
@@ -381,11 +381,11 @@ export class RouterNat extends pulumi.CustomResource {
      * Default value is `PUBLIC`.
      * Possible values are: `PUBLIC`, `PRIVATE`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
      */
-    public readonly udpIdleTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly udpIdleTimeoutSec: pulumi.Output<number | undefined>;
 
     /**
      * Create a RouterNat resource with the given unique name, arguments, and options.
@@ -400,66 +400,66 @@ export class RouterNat extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterNatState | undefined;
-            resourceInputs["autoNetworkTier"] = state ? state.autoNetworkTier : undefined;
-            resourceInputs["drainNatIps"] = state ? state.drainNatIps : undefined;
-            resourceInputs["enableDynamicPortAllocation"] = state ? state.enableDynamicPortAllocation : undefined;
-            resourceInputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
-            resourceInputs["endpointTypes"] = state ? state.endpointTypes : undefined;
-            resourceInputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
-            resourceInputs["initialNatIps"] = state ? state.initialNatIps : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["maxPortsPerVm"] = state ? state.maxPortsPerVm : undefined;
-            resourceInputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nat64Subnetworks"] = state ? state.nat64Subnetworks : undefined;
-            resourceInputs["natIpAllocateOption"] = state ? state.natIpAllocateOption : undefined;
-            resourceInputs["natIps"] = state ? state.natIps : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["router"] = state ? state.router : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["sourceSubnetworkIpRangesToNat"] = state ? state.sourceSubnetworkIpRangesToNat : undefined;
-            resourceInputs["sourceSubnetworkIpRangesToNat64"] = state ? state.sourceSubnetworkIpRangesToNat64 : undefined;
-            resourceInputs["subnetworks"] = state ? state.subnetworks : undefined;
-            resourceInputs["tcpEstablishedIdleTimeoutSec"] = state ? state.tcpEstablishedIdleTimeoutSec : undefined;
-            resourceInputs["tcpTimeWaitTimeoutSec"] = state ? state.tcpTimeWaitTimeoutSec : undefined;
-            resourceInputs["tcpTransitoryIdleTimeoutSec"] = state ? state.tcpTransitoryIdleTimeoutSec : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["udpIdleTimeoutSec"] = state ? state.udpIdleTimeoutSec : undefined;
+            resourceInputs["autoNetworkTier"] = state?.autoNetworkTier;
+            resourceInputs["drainNatIps"] = state?.drainNatIps;
+            resourceInputs["enableDynamicPortAllocation"] = state?.enableDynamicPortAllocation;
+            resourceInputs["enableEndpointIndependentMapping"] = state?.enableEndpointIndependentMapping;
+            resourceInputs["endpointTypes"] = state?.endpointTypes;
+            resourceInputs["icmpIdleTimeoutSec"] = state?.icmpIdleTimeoutSec;
+            resourceInputs["initialNatIps"] = state?.initialNatIps;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["maxPortsPerVm"] = state?.maxPortsPerVm;
+            resourceInputs["minPortsPerVm"] = state?.minPortsPerVm;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nat64Subnetworks"] = state?.nat64Subnetworks;
+            resourceInputs["natIpAllocateOption"] = state?.natIpAllocateOption;
+            resourceInputs["natIps"] = state?.natIps;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["router"] = state?.router;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["sourceSubnetworkIpRangesToNat"] = state?.sourceSubnetworkIpRangesToNat;
+            resourceInputs["sourceSubnetworkIpRangesToNat64"] = state?.sourceSubnetworkIpRangesToNat64;
+            resourceInputs["subnetworks"] = state?.subnetworks;
+            resourceInputs["tcpEstablishedIdleTimeoutSec"] = state?.tcpEstablishedIdleTimeoutSec;
+            resourceInputs["tcpTimeWaitTimeoutSec"] = state?.tcpTimeWaitTimeoutSec;
+            resourceInputs["tcpTransitoryIdleTimeoutSec"] = state?.tcpTransitoryIdleTimeoutSec;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["udpIdleTimeoutSec"] = state?.udpIdleTimeoutSec;
         } else {
             const args = argsOrState as RouterNatArgs | undefined;
-            if ((!args || args.router === undefined) && !opts.urn) {
+            if (args?.router === undefined && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            if ((!args || args.sourceSubnetworkIpRangesToNat === undefined) && !opts.urn) {
+            if (args?.sourceSubnetworkIpRangesToNat === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceSubnetworkIpRangesToNat'");
             }
-            resourceInputs["autoNetworkTier"] = args ? args.autoNetworkTier : undefined;
-            resourceInputs["drainNatIps"] = args ? args.drainNatIps : undefined;
-            resourceInputs["enableDynamicPortAllocation"] = args ? args.enableDynamicPortAllocation : undefined;
-            resourceInputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
-            resourceInputs["endpointTypes"] = args ? args.endpointTypes : undefined;
-            resourceInputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
-            resourceInputs["initialNatIps"] = args ? args.initialNatIps : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["maxPortsPerVm"] = args ? args.maxPortsPerVm : undefined;
-            resourceInputs["minPortsPerVm"] = args ? args.minPortsPerVm : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nat64Subnetworks"] = args ? args.nat64Subnetworks : undefined;
-            resourceInputs["natIpAllocateOption"] = args ? args.natIpAllocateOption : undefined;
-            resourceInputs["natIps"] = args ? args.natIps : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["sourceSubnetworkIpRangesToNat"] = args ? args.sourceSubnetworkIpRangesToNat : undefined;
-            resourceInputs["sourceSubnetworkIpRangesToNat64"] = args ? args.sourceSubnetworkIpRangesToNat64 : undefined;
-            resourceInputs["subnetworks"] = args ? args.subnetworks : undefined;
-            resourceInputs["tcpEstablishedIdleTimeoutSec"] = args ? args.tcpEstablishedIdleTimeoutSec : undefined;
-            resourceInputs["tcpTimeWaitTimeoutSec"] = args ? args.tcpTimeWaitTimeoutSec : undefined;
-            resourceInputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
+            resourceInputs["autoNetworkTier"] = args?.autoNetworkTier;
+            resourceInputs["drainNatIps"] = args?.drainNatIps;
+            resourceInputs["enableDynamicPortAllocation"] = args?.enableDynamicPortAllocation;
+            resourceInputs["enableEndpointIndependentMapping"] = args?.enableEndpointIndependentMapping;
+            resourceInputs["endpointTypes"] = args?.endpointTypes;
+            resourceInputs["icmpIdleTimeoutSec"] = args?.icmpIdleTimeoutSec;
+            resourceInputs["initialNatIps"] = args?.initialNatIps;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["maxPortsPerVm"] = args?.maxPortsPerVm;
+            resourceInputs["minPortsPerVm"] = args?.minPortsPerVm;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nat64Subnetworks"] = args?.nat64Subnetworks;
+            resourceInputs["natIpAllocateOption"] = args?.natIpAllocateOption;
+            resourceInputs["natIps"] = args?.natIps;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["router"] = args?.router;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["sourceSubnetworkIpRangesToNat"] = args?.sourceSubnetworkIpRangesToNat;
+            resourceInputs["sourceSubnetworkIpRangesToNat64"] = args?.sourceSubnetworkIpRangesToNat64;
+            resourceInputs["subnetworks"] = args?.subnetworks;
+            resourceInputs["tcpEstablishedIdleTimeoutSec"] = args?.tcpEstablishedIdleTimeoutSec;
+            resourceInputs["tcpTimeWaitTimeoutSec"] = args?.tcpTimeWaitTimeoutSec;
+            resourceInputs["tcpTransitoryIdleTimeoutSec"] = args?.tcpTransitoryIdleTimeoutSec;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["udpIdleTimeoutSec"] = args?.udpIdleTimeoutSec;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouterNat.__pulumiType, name, resourceInputs, opts);

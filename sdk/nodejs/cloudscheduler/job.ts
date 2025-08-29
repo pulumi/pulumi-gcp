@@ -233,7 +233,7 @@ export class Job extends pulumi.CustomResource {
      * send a request to the service instance
      * Structure is documented below.
      */
-    public readonly appEngineHttpTarget!: pulumi.Output<outputs.cloudscheduler.JobAppEngineHttpTarget | undefined>;
+    declare public readonly appEngineHttpTarget: pulumi.Output<outputs.cloudscheduler.JobAppEngineHttpTarget | undefined>;
     /**
      * The deadline for job attempts. If the request handler does not respond by this deadline then the request is
      * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
@@ -244,63 +244,63 @@ export class Job extends pulumi.CustomResource {
      * * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
-    public readonly attemptDeadline!: pulumi.Output<string | undefined>;
+    declare public readonly attemptDeadline: pulumi.Output<string | undefined>;
     /**
      * A human-readable description for the job.
      * This string must not contain more than 500 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * HTTP target.
      * If the job providers a httpTarget the cron will
      * send a request to the targeted url
      * Structure is documented below.
      */
-    public readonly httpTarget!: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
+    declare public readonly httpTarget: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
     /**
      * The name of the job.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Sets the job to a paused state. Jobs default to being enabled when this property is not set.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Pub/Sub target
      * If the job providers a Pub/Sub target the cron will publish
      * a message to the provided topic
      * Structure is documented below.
      */
-    public readonly pubsubTarget!: pulumi.Output<outputs.cloudscheduler.JobPubsubTarget | undefined>;
+    declare public readonly pubsubTarget: pulumi.Output<outputs.cloudscheduler.JobPubsubTarget | undefined>;
     /**
      * Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * By default, if a job does not complete successfully,
      * meaning that an acknowledgement is not received from the handler,
      * then it will be retried with exponential backoff according to the settings
      * Structure is documented below.
      */
-    public readonly retryConfig!: pulumi.Output<outputs.cloudscheduler.JobRetryConfig | undefined>;
+    declare public readonly retryConfig: pulumi.Output<outputs.cloudscheduler.JobRetryConfig | undefined>;
     /**
      * Describes the schedule on which the job will be executed.
      */
-    public readonly schedule!: pulumi.Output<string | undefined>;
+    declare public readonly schedule: pulumi.Output<string | undefined>;
     /**
      * State of the job.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Specifies the time zone to be used in interpreting schedule.
      * The value of this field must be a time zone name from the tz database.
      */
-    public readonly timeZone!: pulumi.Output<string | undefined>;
+    declare public readonly timeZone: pulumi.Output<string | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -315,33 +315,33 @@ export class Job extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            resourceInputs["appEngineHttpTarget"] = state ? state.appEngineHttpTarget : undefined;
-            resourceInputs["attemptDeadline"] = state ? state.attemptDeadline : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["httpTarget"] = state ? state.httpTarget : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pubsubTarget"] = state ? state.pubsubTarget : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["retryConfig"] = state ? state.retryConfig : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["appEngineHttpTarget"] = state?.appEngineHttpTarget;
+            resourceInputs["attemptDeadline"] = state?.attemptDeadline;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["httpTarget"] = state?.httpTarget;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pubsubTarget"] = state?.pubsubTarget;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["retryConfig"] = state?.retryConfig;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            resourceInputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
-            resourceInputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["httpTarget"] = args ? args.httpTarget : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["retryConfig"] = args ? args.retryConfig : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["appEngineHttpTarget"] = args?.appEngineHttpTarget;
+            resourceInputs["attemptDeadline"] = args?.attemptDeadline;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["httpTarget"] = args?.httpTarget;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pubsubTarget"] = args?.pubsubTarget;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["retryConfig"] = args?.retryConfig;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

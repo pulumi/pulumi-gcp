@@ -338,8 +338,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-        /// deleted if this list is non-empty.
+        /// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         /// </summary>
         [Output("wireGroups")]
         public Output<ImmutableArray<string>> WireGroups { get; private set; } = null!;
@@ -885,8 +884,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _wireGroups;
 
         /// <summary>
-        /// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-        /// deleted if this list is non-empty.
+        /// A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         /// </summary>
         public InputList<string> WireGroups
         {

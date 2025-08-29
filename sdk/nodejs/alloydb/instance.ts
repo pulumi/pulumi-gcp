@@ -179,13 +179,13 @@ export class Instance extends pulumi.CustomResource {
      * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
      * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
      */
-    public readonly activationPolicy!: pulumi.Output<string>;
+    declare public readonly activationPolicy: pulumi.Output<string>;
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
      * Note that primary and read instances can have different availability types.
@@ -195,120 +195,120 @@ export class Instance extends pulumi.CustomResource {
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      */
-    public readonly availabilityType!: pulumi.Output<string>;
+    declare public readonly availabilityType: pulumi.Output<string>;
     /**
      * Client connection specific configurations.
      * Structure is documented below.
      */
-    public readonly clientConnectionConfig!: pulumi.Output<outputs.alloydb.InstanceClientConnectionConfig>;
+    declare public readonly clientConnectionConfig: pulumi.Output<outputs.alloydb.InstanceClientConnectionConfig>;
     /**
      * Identifies the alloydb cluster. Must be in the format
      * 'projects/{project}/locations/{location}/clusters/{cluster_id}'
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * Time the Instance was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      */
-    public readonly databaseFlags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly databaseFlags: pulumi.Output<{[key: string]: string}>;
     /**
      * User-settable and human-readable display name for the Instance.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      */
-    public readonly gceZone!: pulumi.Output<string | undefined>;
+    declare public readonly gceZone: pulumi.Output<string | undefined>;
     /**
      * The ID of the alloydb instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The IP address for the Instance. This is the connection endpoint for an end-user application.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * User-defined labels for the alloydb instance.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configurations for the machines that host the underlying database engine.
      * Structure is documented below.
      */
-    public readonly machineConfig!: pulumi.Output<outputs.alloydb.InstanceMachineConfig>;
+    declare public readonly machineConfig: pulumi.Output<outputs.alloydb.InstanceMachineConfig>;
     /**
      * The name of the instance resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Instance level network configuration.
      * Structure is documented below.
      */
-    public readonly networkConfig!: pulumi.Output<outputs.alloydb.InstanceNetworkConfig>;
+    declare public readonly networkConfig: pulumi.Output<outputs.alloydb.InstanceNetworkConfig>;
     /**
      * Configuration for enhanced query insights.
      * Structure is documented below.
      */
-    public readonly observabilityConfig!: pulumi.Output<outputs.alloydb.InstanceObservabilityConfig>;
+    declare public readonly observabilityConfig: pulumi.Output<outputs.alloydb.InstanceObservabilityConfig>;
     /**
      * The outbound public IP addresses for the instance. This is available ONLY when
      * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
      * for outbound connections.
      */
-    public /*out*/ readonly outboundPublicIpAddresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly outboundPublicIpAddresses: pulumi.Output<string[]>;
     /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      */
-    public readonly pscInstanceConfig!: pulumi.Output<outputs.alloydb.InstancePscInstanceConfig>;
+    declare public readonly pscInstanceConfig: pulumi.Output<outputs.alloydb.InstancePscInstanceConfig>;
     /**
      * The public IP addresses for the Instance. This is available ONLY when
      * networkConfig.enablePublicIp is set to true. This is the connection
      * endpoint for an end-user application.
      */
-    public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIpAddress: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Configuration for query insights.
      * Structure is documented below.
      */
-    public readonly queryInsightsConfig!: pulumi.Output<outputs.alloydb.InstanceQueryInsightsConfig>;
+    declare public readonly queryInsightsConfig: pulumi.Output<outputs.alloydb.InstanceQueryInsightsConfig>;
     /**
      * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      */
-    public readonly readPoolConfig!: pulumi.Output<outputs.alloydb.InstanceReadPoolConfig | undefined>;
+    declare public readonly readPoolConfig: pulumi.Output<outputs.alloydb.InstanceReadPoolConfig | undefined>;
     /**
      * Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * The current state of the alloydb instance.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The system-generated UID of the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time the Instance was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -323,63 +323,63 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["activationPolicy"] = state ? state.activationPolicy : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["availabilityType"] = state ? state.availabilityType : undefined;
-            resourceInputs["clientConnectionConfig"] = state ? state.clientConnectionConfig : undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["databaseFlags"] = state ? state.databaseFlags : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["gceZone"] = state ? state.gceZone : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["machineConfig"] = state ? state.machineConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["observabilityConfig"] = state ? state.observabilityConfig : undefined;
-            resourceInputs["outboundPublicIpAddresses"] = state ? state.outboundPublicIpAddresses : undefined;
-            resourceInputs["pscInstanceConfig"] = state ? state.pscInstanceConfig : undefined;
-            resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["queryInsightsConfig"] = state ? state.queryInsightsConfig : undefined;
-            resourceInputs["readPoolConfig"] = state ? state.readPoolConfig : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["activationPolicy"] = state?.activationPolicy;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["availabilityType"] = state?.availabilityType;
+            resourceInputs["clientConnectionConfig"] = state?.clientConnectionConfig;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["databaseFlags"] = state?.databaseFlags;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["gceZone"] = state?.gceZone;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["machineConfig"] = state?.machineConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["observabilityConfig"] = state?.observabilityConfig;
+            resourceInputs["outboundPublicIpAddresses"] = state?.outboundPublicIpAddresses;
+            resourceInputs["pscInstanceConfig"] = state?.pscInstanceConfig;
+            resourceInputs["publicIpAddress"] = state?.publicIpAddress;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["queryInsightsConfig"] = state?.queryInsightsConfig;
+            resourceInputs["readPoolConfig"] = state?.readPoolConfig;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            resourceInputs["activationPolicy"] = args ? args.activationPolicy : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["availabilityType"] = args ? args.availabilityType : undefined;
-            resourceInputs["clientConnectionConfig"] = args ? args.clientConnectionConfig : undefined;
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["databaseFlags"] = args ? args.databaseFlags : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["gceZone"] = args ? args.gceZone : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["machineConfig"] = args ? args.machineConfig : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["observabilityConfig"] = args ? args.observabilityConfig : undefined;
-            resourceInputs["pscInstanceConfig"] = args ? args.pscInstanceConfig : undefined;
-            resourceInputs["queryInsightsConfig"] = args ? args.queryInsightsConfig : undefined;
-            resourceInputs["readPoolConfig"] = args ? args.readPoolConfig : undefined;
+            resourceInputs["activationPolicy"] = args?.activationPolicy;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["availabilityType"] = args?.availabilityType;
+            resourceInputs["clientConnectionConfig"] = args?.clientConnectionConfig;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["databaseFlags"] = args?.databaseFlags;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["gceZone"] = args?.gceZone;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["machineConfig"] = args?.machineConfig;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["observabilityConfig"] = args?.observabilityConfig;
+            resourceInputs["pscInstanceConfig"] = args?.pscInstanceConfig;
+            resourceInputs["queryInsightsConfig"] = args?.queryInsightsConfig;
+            resourceInputs["readPoolConfig"] = args?.readPoolConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

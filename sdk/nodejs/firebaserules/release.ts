@@ -93,19 +93,19 @@ export class Release extends pulumi.CustomResource {
     /**
      * Output only. Time the release was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      */
-    public /*out*/ readonly disabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly disabled: pulumi.Output<boolean>;
     /**
      * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      *
@@ -113,11 +113,11 @@ export class Release extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly rulesetName!: pulumi.Output<string>;
+    declare public readonly rulesetName: pulumi.Output<string>;
     /**
      * Output only. Time the release was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Release resource with the given unique name, arguments, and options.
@@ -132,20 +132,20 @@ export class Release extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReleaseState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rulesetName"] = state ? state.rulesetName : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rulesetName"] = state?.rulesetName;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ReleaseArgs | undefined;
-            if ((!args || args.rulesetName === undefined) && !opts.urn) {
+            if (args?.rulesetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulesetName'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rulesetName"] = args ? args.rulesetName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rulesetName"] = args?.rulesetName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

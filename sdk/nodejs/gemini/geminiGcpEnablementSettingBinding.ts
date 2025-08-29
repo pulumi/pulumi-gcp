@@ -91,56 +91,56 @@ export class GeminiGcpEnablementSettingBinding extends pulumi.CustomResource {
     /**
      * Create time stamp.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly geminiGcpEnablementSettingId!: pulumi.Output<string>;
+    declare public readonly geminiGcpEnablementSettingId: pulumi.Output<string>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Identifier. Name of the resource.
      * Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{setting}/settingBindings/{setting_binding}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.
      */
-    public readonly product!: pulumi.Output<string>;
+    declare public readonly product: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Id of the setting binding.
      */
-    public readonly settingBindingId!: pulumi.Output<string>;
+    declare public readonly settingBindingId: pulumi.Output<string>;
     /**
      * Target of the binding.
      */
-    public readonly target!: pulumi.Output<string>;
+    declare public readonly target: pulumi.Output<string>;
     /**
      * Update time stamp.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a GeminiGcpEnablementSettingBinding resource with the given unique name, arguments, and options.
@@ -155,36 +155,36 @@ export class GeminiGcpEnablementSettingBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GeminiGcpEnablementSettingBindingState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["geminiGcpEnablementSettingId"] = state ? state.geminiGcpEnablementSettingId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["product"] = state ? state.product : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["settingBindingId"] = state ? state.settingBindingId : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["geminiGcpEnablementSettingId"] = state?.geminiGcpEnablementSettingId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["product"] = state?.product;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["settingBindingId"] = state?.settingBindingId;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GeminiGcpEnablementSettingBindingArgs | undefined;
-            if ((!args || args.geminiGcpEnablementSettingId === undefined) && !opts.urn) {
+            if (args?.geminiGcpEnablementSettingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'geminiGcpEnablementSettingId'");
             }
-            if ((!args || args.settingBindingId === undefined) && !opts.urn) {
+            if (args?.settingBindingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'settingBindingId'");
             }
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            resourceInputs["geminiGcpEnablementSettingId"] = args ? args.geminiGcpEnablementSettingId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["product"] = args ? args.product : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["settingBindingId"] = args ? args.settingBindingId : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["geminiGcpEnablementSettingId"] = args?.geminiGcpEnablementSettingId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["product"] = args?.product;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["settingBindingId"] = args?.settingBindingId;
+            resourceInputs["target"] = args?.target;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

@@ -98,7 +98,7 @@ export class Acl extends pulumi.CustomResource {
      * The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
      * Structure is documented below.
      */
-    public readonly aclEntries!: pulumi.Output<outputs.managedkafka.AclAclEntry[]>;
+    declare public readonly aclEntries: pulumi.Output<outputs.managedkafka.AclAclEntry[]>;
     /**
      * The ID to use for the acl, which will become the final component of the acl's name. The structure of `aclId` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `aclId` is structured like one of the following:
      * For acls on the cluster: `cluster`
@@ -106,11 +106,11 @@ export class Acl extends pulumi.CustomResource {
      * For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}`
      * For acls on all resources of a given type (i.e. the wildcard literal '*''): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`).
      */
-    public readonly aclId!: pulumi.Output<string>;
+    declare public readonly aclId: pulumi.Output<string>;
     /**
      * The cluster name.
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * `etag` is used for concurrency control. An `etag` is returned in the
      * response to `GetAcl` and `CreateAcl`. Callers are required to put that etag
@@ -119,32 +119,32 @@ export class Acl extends pulumi.CustomResource {
      * A terminal 'T' character in the etag indicates that the AclEntries were
      * truncated due to repeated field limits.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the acl. The `ACL_ID` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/acls/ACL_ID`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The acl pattern type derived from the name. One of: LITERAL, PREFIXED.
      */
-    public /*out*/ readonly patternType!: pulumi.Output<string>;
+    declare public /*out*/ readonly patternType: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
      */
-    public /*out*/ readonly resourceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceName: pulumi.Output<string>;
     /**
      * The acl resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
      */
-    public /*out*/ readonly resourceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceType: pulumi.Output<string>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -159,35 +159,35 @@ export class Acl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["aclEntries"] = state ? state.aclEntries : undefined;
-            resourceInputs["aclId"] = state ? state.aclId : undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["patternType"] = state ? state.patternType : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["aclEntries"] = state?.aclEntries;
+            resourceInputs["aclId"] = state?.aclId;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["patternType"] = state?.patternType;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resourceName"] = state?.resourceName;
+            resourceInputs["resourceType"] = state?.resourceType;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            if ((!args || args.aclEntries === undefined) && !opts.urn) {
+            if (args?.aclEntries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclEntries'");
             }
-            if ((!args || args.aclId === undefined) && !opts.urn) {
+            if (args?.aclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["aclEntries"] = args ? args.aclEntries : undefined;
-            resourceInputs["aclId"] = args ? args.aclId : undefined;
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["aclEntries"] = args?.aclEntries;
+            resourceInputs["aclId"] = args?.aclId;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["patternType"] = undefined /*out*/;

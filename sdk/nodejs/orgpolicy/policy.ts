@@ -219,24 +219,24 @@ export class Policy extends pulumi.CustomResource {
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
      * Structure is documented below.
      */
-    public readonly dryRunSpec!: pulumi.Output<outputs.orgpolicy.PolicyDryRunSpec | undefined>;
+    declare public readonly dryRunSpec: pulumi.Output<outputs.orgpolicy.PolicyDryRunSpec | undefined>;
     /**
      * Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The parent of the resource.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Basic information about the Organization Policy.
      * Structure is documented below.
      */
-    public readonly spec!: pulumi.Output<outputs.orgpolicy.PolicySpec | undefined>;
+    declare public readonly spec: pulumi.Output<outputs.orgpolicy.PolicySpec | undefined>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -251,20 +251,20 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["dryRunSpec"] = state ? state.dryRunSpec : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["dryRunSpec"] = state?.dryRunSpec;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["spec"] = state?.spec;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["dryRunSpec"] = args ? args.dryRunSpec : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["dryRunSpec"] = args?.dryRunSpec;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["spec"] = args?.spec;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

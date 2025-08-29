@@ -134,43 +134,43 @@ export class GroupMembership extends pulumi.CustomResource {
     /**
      * If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
      */
-    public readonly createIgnoreAlreadyExists!: pulumi.Output<boolean | undefined>;
+    declare public readonly createIgnoreAlreadyExists: pulumi.Output<boolean | undefined>;
     /**
      * The time when the Membership was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The name of the Group to create this membership in.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * EntityKey of the member.
      * Structure is documented below.
      */
-    public readonly memberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipMemberKey>;
+    declare public readonly memberKey: pulumi.Output<outputs.cloudidentity.GroupMembershipMemberKey>;
     /**
      * The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * EntityKey of the member.
      * Structure is documented below.
      */
-    public readonly preferredMemberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipPreferredMemberKey>;
+    declare public readonly preferredMemberKey: pulumi.Output<outputs.cloudidentity.GroupMembershipPreferredMemberKey>;
     /**
      * The MembershipRoles that apply to the Membership.
      * Must not contain duplicate MembershipRoles with the same name.
      * Structure is documented below.
      */
-    public readonly roles!: pulumi.Output<outputs.cloudidentity.GroupMembershipRole[]>;
+    declare public readonly roles: pulumi.Output<outputs.cloudidentity.GroupMembershipRole[]>;
     /**
      * The type of the membership.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The time when the Membership was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a GroupMembership resource with the given unique name, arguments, and options.
@@ -185,28 +185,28 @@ export class GroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMembershipState | undefined;
-            resourceInputs["createIgnoreAlreadyExists"] = state ? state.createIgnoreAlreadyExists : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["memberKey"] = state ? state.memberKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["preferredMemberKey"] = state ? state.preferredMemberKey : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = state?.createIgnoreAlreadyExists;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["memberKey"] = state?.memberKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["preferredMemberKey"] = state?.preferredMemberKey;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.roles === undefined) && !opts.urn) {
+            if (args?.roles === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            resourceInputs["createIgnoreAlreadyExists"] = args ? args.createIgnoreAlreadyExists : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["memberKey"] = args ? args.memberKey : undefined;
-            resourceInputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = args?.createIgnoreAlreadyExists;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["memberKey"] = args?.memberKey;
+            resourceInputs["preferredMemberKey"] = args?.preferredMemberKey;
+            resourceInputs["roles"] = args?.roles;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

@@ -67,12 +67,12 @@ export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly networkTier!: pulumi.Output<string>;
+    declare public readonly networkTier: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectDefaultNetworkTier resource with the given unique name, arguments, and options.
@@ -87,15 +87,15 @@ export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectDefaultNetworkTierState | undefined;
-            resourceInputs["networkTier"] = state ? state.networkTier : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["networkTier"] = state?.networkTier;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectDefaultNetworkTierArgs | undefined;
-            if ((!args || args.networkTier === undefined) && !opts.urn) {
+            if (args?.networkTier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkTier'");
             }
-            resourceInputs["networkTier"] = args ? args.networkTier : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["networkTier"] = args?.networkTier;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectDefaultNetworkTier.__pulumiType, name, resourceInputs, opts);
