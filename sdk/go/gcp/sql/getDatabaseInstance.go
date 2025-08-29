@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,6 +59,7 @@ type LookupDatabaseInstanceArgs struct {
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
 	AvailableMaintenanceVersions []string                     `pulumi:"availableMaintenanceVersions"`
+	BackupdrBackup               string                       `pulumi:"backupdrBackup"`
 	Clones                       []GetDatabaseInstanceClone   `pulumi:"clones"`
 	ConnectionName               string                       `pulumi:"connectionName"`
 	DatabaseVersion              string                       `pulumi:"databaseVersion"`
@@ -129,6 +130,10 @@ func (o LookupDatabaseInstanceResultOutput) ToLookupDatabaseInstanceResultOutput
 
 func (o LookupDatabaseInstanceResultOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) BackupdrBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.BackupdrBackup }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) Clones() GetDatabaseInstanceCloneArrayOutput {

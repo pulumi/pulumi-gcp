@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -48,7 +48,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,9 +77,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -100,9 +100,8 @@ import (
 //				return err
 //			}
 //			firebase, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
-//				Project:          _default.ProjectId,
-//				Service:          pulumi.String("firebase.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
+//				Project: _default.ProjectId,
+//				Service: pulumi.String("firebase.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -116,9 +115,8 @@ import (
 //				return err
 //			}
 //			firebaseDatabase, err := projects.NewService(ctx, "firebase_database", &projects.ServiceArgs{
-//				Project:          defaultProject.Project,
-//				Service:          pulumi.String("firebasedatabase.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
+//				Project: defaultProject.Project,
+//				Service: pulumi.String("firebasedatabase.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err

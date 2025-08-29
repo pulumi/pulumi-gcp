@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.LookupTableIamPolicy(ctx, &bigtable.LookupTableIamPolicyArgs{
-//				Instance: instance.Name,
-//				Table:    table.Name,
+//				InstanceName: instance.Name,
+//				Table:        table.Name,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,9 +51,8 @@ func LookupTableIamPolicy(ctx *pulumi.Context, args *LookupTableIamPolicyArgs, o
 
 // A collection of arguments for invoking getTableIamPolicy.
 type LookupTableIamPolicyArgs struct {
-	// The name or relative resource id of the instance that owns the table.
-	Instance string  `pulumi:"instance"`
-	Project  *string `pulumi:"project"`
+	InstanceName string  `pulumi:"instanceName"`
+	Project      *string `pulumi:"project"`
 	// The name or relative resource id of the table to manage IAM policies for.
 	Table string `pulumi:"table"`
 }
@@ -63,8 +62,8 @@ type LookupTableIamPolicyResult struct {
 	// (Computed) The etag of the IAM policy.
 	Etag string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	Instance string `pulumi:"instance"`
+	Id           string `pulumi:"id"`
+	InstanceName string `pulumi:"instanceName"`
 	// (Computed) The policy data
 	PolicyData string `pulumi:"policyData"`
 	Project    string `pulumi:"project"`
@@ -82,9 +81,8 @@ func LookupTableIamPolicyOutput(ctx *pulumi.Context, args LookupTableIamPolicyOu
 
 // A collection of arguments for invoking getTableIamPolicy.
 type LookupTableIamPolicyOutputArgs struct {
-	// The name or relative resource id of the instance that owns the table.
-	Instance pulumi.StringInput    `pulumi:"instance"`
-	Project  pulumi.StringPtrInput `pulumi:"project"`
+	InstanceName pulumi.StringInput    `pulumi:"instanceName"`
+	Project      pulumi.StringPtrInput `pulumi:"project"`
 	// The name or relative resource id of the table to manage IAM policies for.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -118,8 +116,8 @@ func (o LookupTableIamPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupTableIamPolicyResultOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTableIamPolicyResult) string { return v.Instance }).(pulumi.StringOutput)
+func (o LookupTableIamPolicyResultOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableIamPolicyResult) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data

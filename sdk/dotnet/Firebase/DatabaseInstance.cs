@@ -79,7 +79,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = @default.ProjectId,
     ///         ServiceName = "firebase.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var defaultProject = new Gcp.Firebase.Project("default", new()
@@ -97,7 +96,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = defaultProject.ProjectID,
     ///         ServiceName = "firebasedatabase.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()

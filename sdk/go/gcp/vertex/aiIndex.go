@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -98,8 +98,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -216,7 +216,7 @@ type AiIndex struct {
 	// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
 	// Attempts to create an Index without this field will result in an API error.
 	// Structure is documented below.
-	Metadata AiIndexMetadataPtrOutput `pulumi:"metadata"`
+	Metadata AiIndexMetadataOutput `pulumi:"metadata"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
 	MetadataSchemaUri pulumi.StringOutput `pulumi:"metadataSchemaUri"`
 	// The resource name of the Index.
@@ -242,6 +242,9 @@ func NewAiIndex(ctx *pulumi.Context,
 
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Metadata == nil {
+		return nil, errors.New("invalid value for required argument 'Metadata'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
@@ -383,7 +386,7 @@ type aiIndexArgs struct {
 	// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
 	// Attempts to create an Index without this field will result in an API error.
 	// Structure is documented below.
-	Metadata *AiIndexMetadata `pulumi:"metadata"`
+	Metadata AiIndexMetadata `pulumi:"metadata"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -409,7 +412,7 @@ type AiIndexArgs struct {
 	// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
 	// Attempts to create an Index without this field will result in an API error.
 	// Structure is documented below.
-	Metadata AiIndexMetadataPtrInput
+	Metadata AiIndexMetadataInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -559,8 +562,8 @@ func (o AiIndexOutput) Labels() pulumi.StringMapOutput {
 // Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
 // Attempts to create an Index without this field will result in an API error.
 // Structure is documented below.
-func (o AiIndexOutput) Metadata() AiIndexMetadataPtrOutput {
-	return o.ApplyT(func(v *AiIndex) AiIndexMetadataPtrOutput { return v.Metadata }).(AiIndexMetadataPtrOutput)
+func (o AiIndexOutput) Metadata() AiIndexMetadataOutput {
+	return o.ApplyT(func(v *AiIndex) AiIndexMetadataOutput { return v.Metadata }).(AiIndexMetadataOutput)
 }
 
 // Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.

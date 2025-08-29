@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigtable.getTableIamPolicy({
- *     instance: instance.name,
+ *     instanceName: instance.name,
  *     table: table.name,
  * });
  * ```
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
 export function getTableIamPolicy(args: GetTableIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTableIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", {
-        "instance": args.instance,
+        "instanceName": args.instanceName,
         "project": args.project,
         "table": args.table,
     }, opts);
@@ -32,10 +32,7 @@ export function getTableIamPolicy(args: GetTableIamPolicyArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getTableIamPolicy.
  */
 export interface GetTableIamPolicyArgs {
-    /**
-     * The name or relative resource id of the instance that owns the table.
-     */
-    instance: string;
+    instanceName: string;
     project?: string;
     /**
      * The name or relative resource id of the table to manage IAM policies for.
@@ -55,7 +52,7 @@ export interface GetTableIamPolicyResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly instance: string;
+    readonly instanceName: string;
     /**
      * (Computed) The policy data
      */
@@ -73,7 +70,7 @@ export interface GetTableIamPolicyResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = gcp.bigtable.getTableIamPolicy({
- *     instance: instance.name,
+ *     instanceName: instance.name,
  *     table: table.name,
  * });
  * ```
@@ -81,7 +78,7 @@ export interface GetTableIamPolicyResult {
 export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTableIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", {
-        "instance": args.instance,
+        "instanceName": args.instanceName,
         "project": args.project,
         "table": args.table,
     }, opts);
@@ -91,10 +88,7 @@ export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?
  * A collection of arguments for invoking getTableIamPolicy.
  */
 export interface GetTableIamPolicyOutputArgs {
-    /**
-     * The name or relative resource id of the instance that owns the table.
-     */
-    instance: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * The name or relative resource id of the table to manage IAM policies for.

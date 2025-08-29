@@ -237,13 +237,13 @@ class InstanceIamMemberConditionArgs:
 
 if not MYPY:
     class InstancePrivateConfigArgsDict(TypedDict):
-        ca_pool: pulumi.Input[_builtins.str]
-        """
-        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-        """
         is_private: pulumi.Input[_builtins.bool]
         """
         'Indicate if it's private instance.'
+        """
+        ca_pool: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
         """
         http_service_attachment: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -261,36 +261,25 @@ elif False:
 @pulumi.input_type
 class InstancePrivateConfigArgs:
     def __init__(__self__, *,
-                 ca_pool: pulumi.Input[_builtins.str],
                  is_private: pulumi.Input[_builtins.bool],
+                 ca_pool: Optional[pulumi.Input[_builtins.str]] = None,
                  http_service_attachment: Optional[pulumi.Input[_builtins.str]] = None,
                  ssh_service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] ca_pool: CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
         :param pulumi.Input[_builtins.bool] is_private: 'Indicate if it's private instance.'
+        :param pulumi.Input[_builtins.str] ca_pool: CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
         :param pulumi.Input[_builtins.str] http_service_attachment: (Output)
                Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         :param pulumi.Input[_builtins.str] ssh_service_attachment: (Output)
                Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         """
-        pulumi.set(__self__, "ca_pool", ca_pool)
         pulumi.set(__self__, "is_private", is_private)
+        if ca_pool is not None:
+            pulumi.set(__self__, "ca_pool", ca_pool)
         if http_service_attachment is not None:
             pulumi.set(__self__, "http_service_attachment", http_service_attachment)
         if ssh_service_attachment is not None:
             pulumi.set(__self__, "ssh_service_attachment", ssh_service_attachment)
-
-    @_builtins.property
-    @pulumi.getter(name="caPool")
-    def ca_pool(self) -> pulumi.Input[_builtins.str]:
-        """
-        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-        """
-        return pulumi.get(self, "ca_pool")
-
-    @ca_pool.setter
-    def ca_pool(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ca_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="isPrivate")
@@ -303,6 +292,18 @@ class InstancePrivateConfigArgs:
     @is_private.setter
     def is_private(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "is_private", value)
+
+    @_builtins.property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+        """
+        return pulumi.get(self, "ca_pool")
+
+    @ca_pool.setter
+    def ca_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ca_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="httpServiceAttachment")

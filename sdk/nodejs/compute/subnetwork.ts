@@ -315,18 +315,6 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Deprecated)
-     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-     * it will not appear in get listings. If not set the default behavior is determined by the
-     * org policy, if there is no org policy specified, then it will default to disabled.
-     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-     *
-     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     *
-     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     */
-    public readonly enableFlowLogs!: pulumi.Output<boolean>;
-    /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
     public readonly externalIpv6Prefix!: pulumi.Output<string>;
@@ -510,7 +498,6 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["allowSubnetCidrRoutesOverlap"] = state ? state.allowSubnetCidrRoutesOverlap : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableFlowLogs"] = state ? state.enableFlowLogs : undefined;
             resourceInputs["externalIpv6Prefix"] = state ? state.externalIpv6Prefix : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
@@ -544,7 +531,6 @@ export class Subnetwork extends pulumi.CustomResource {
             }
             resourceInputs["allowSubnetCidrRoutesOverlap"] = args ? args.allowSubnetCidrRoutesOverlap : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             resourceInputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["ipCollection"] = args ? args.ipCollection : undefined;
@@ -599,18 +585,6 @@ export interface SubnetworkState {
      * creation time.
      */
     description?: pulumi.Input<string>;
-    /**
-     * (Optional, Deprecated)
-     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-     * it will not appear in get listings. If not set the default behavior is determined by the
-     * org policy, if there is no org policy specified, then it will default to disabled.
-     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-     *
-     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     *
-     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     */
-    enableFlowLogs?: pulumi.Input<boolean>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
@@ -797,18 +771,6 @@ export interface SubnetworkArgs {
      * creation time.
      */
     description?: pulumi.Input<string>;
-    /**
-     * (Optional, Deprecated)
-     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-     * it will not appear in get listings. If not set the default behavior is determined by the
-     * org policy, if there is no org policy specified, then it will default to disabled.
-     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-     *
-     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     *
-     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     */
-    enableFlowLogs?: pulumi.Input<boolean>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */

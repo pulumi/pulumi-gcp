@@ -344,6 +344,7 @@ namespace Pulumi.Gcp.BigTable
                 Aliases =
                 {
                     new global::Pulumi.Alias { Type = "gcp:bigquery/appProfile:AppProfile" },
+                    new global::Pulumi.Alias { Type = "gcp:bigquery/appProfile:AppProfile" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

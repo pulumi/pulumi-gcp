@@ -35,6 +35,7 @@ __all__ = [
     'GetCertificatesCertificateManagedResult',
     'GetCertificatesCertificateManagedAuthorizationAttemptInfoResult',
     'GetCertificatesCertificateManagedProvisioningIssueResult',
+    'GetDnsAuthorizationDnsResourceRecordResult',
 ]
 
 @pulumi.output_type
@@ -1208,5 +1209,45 @@ class GetCertificatesCertificateManagedProvisioningIssueResult(dict):
         Reason for provisioning failures.
         """
         return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class GetDnsAuthorizationDnsResourceRecordResult(dict):
+    def __init__(__self__, *,
+                 data: _builtins.str,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str data: Data of the DNS Resource Record.
+        :param _builtins.str name: The name of the DNS Authorization.
+        :param _builtins.str type: Type of the DNS Resource Record.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> _builtins.str:
+        """
+        Data of the DNS Resource Record.
+        """
+        return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the DNS Authorization.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the DNS Resource Record.
+        """
+        return pulumi.get(self, "type")
 
 

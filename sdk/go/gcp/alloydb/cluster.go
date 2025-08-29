@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,9 +21,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -42,6 +42,7 @@ import (
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: defaultNetwork.ID(),
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -62,8 +63,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,6 +87,7 @@ import (
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster"),
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -113,8 +115,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -137,6 +139,7 @@ import (
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster"),
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -164,9 +167,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -221,6 +224,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"test": pulumi.String("alloydb-cluster-full"),
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -241,10 +245,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -263,6 +267,7 @@ import (
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: _default.ID(),
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -313,6 +318,7 @@ import (
 //				SecondaryConfig: &alloydb.ClusterSecondaryConfigArgs{
 //					PrimaryClusterName: primary.Name,
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				primaryInstance,
 //			}))
@@ -393,7 +399,8 @@ type Cluster struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	DeletionPolicy     pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	DeletionProtection pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
@@ -539,7 +546,8 @@ type clusterState struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	DeletionPolicy     *string `pulumi:"deletionPolicy"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName          *string           `pulumi:"displayName"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
@@ -645,7 +653,8 @@ type ClusterState struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy pulumi.StringPtrInput
+	DeletionPolicy     pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
@@ -749,7 +758,8 @@ type clusterArgs struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	DeletionPolicy     *string `pulumi:"deletionPolicy"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -824,7 +834,8 @@ type ClusterArgs struct {
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
 	// Possible values: DEFAULT, FORCE
-	DeletionPolicy pulumi.StringPtrInput
+	DeletionPolicy     pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -1016,6 +1027,10 @@ func (o ClusterOutput) DatabaseVersion() pulumi.StringOutput {
 // Possible values: DEFAULT, FORCE
 func (o ClusterOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // User-settable and human-readable display name for the Cluster.

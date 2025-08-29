@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -94,7 +94,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -151,8 +151,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -272,7 +272,7 @@ type CloudVmCluster struct {
 	// The name of the backup OdbSubnet associated with the VM Cluster.
 	// Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-	BackupOdbSubnet pulumi.StringPtrOutput `pulumi:"backupOdbSubnet"`
+	BackupOdbSubnet pulumi.StringOutput `pulumi:"backupOdbSubnet"`
 	// CIDR range of the backup subnet.
 	BackupSubnetCidr pulumi.StringPtrOutput `pulumi:"backupSubnetCidr"`
 	// Network settings. CIDR to use for cluster IP allocation.
@@ -313,11 +313,11 @@ type CloudVmCluster struct {
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
 	// It is optional but if specified, this should match the parent ODBNetwork of
 	// the odbSubnet and backup_odb_subnet.
-	OdbNetwork pulumi.StringPtrOutput `pulumi:"odbNetwork"`
+	OdbNetwork pulumi.StringOutput `pulumi:"odbNetwork"`
 	// The name of the OdbSubnet associated with the VM Cluster for
 	// IP allocation. Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-	OdbSubnet pulumi.StringPtrOutput `pulumi:"odbSubnet"`
+	OdbSubnet pulumi.StringOutput `pulumi:"odbSubnet"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -685,8 +685,8 @@ func (o CloudVmClusterOutput) ToCloudVmClusterOutputWithContext(ctx context.Cont
 // The name of the backup OdbSubnet associated with the VM Cluster.
 // Format:
 // projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-func (o CloudVmClusterOutput) BackupOdbSubnet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.BackupOdbSubnet }).(pulumi.StringPtrOutput)
+func (o CloudVmClusterOutput) BackupOdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.BackupOdbSubnet }).(pulumi.StringOutput)
 }
 
 // CIDR range of the backup subnet.
@@ -768,15 +768,15 @@ func (o CloudVmClusterOutput) Network() pulumi.StringPtrOutput {
 // projects/{project}/locations/{location}/odbNetworks/{odb_network}
 // It is optional but if specified, this should match the parent ODBNetwork of
 // the odbSubnet and backup_odb_subnet.
-func (o CloudVmClusterOutput) OdbNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.OdbNetwork }).(pulumi.StringPtrOutput)
+func (o CloudVmClusterOutput) OdbNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.OdbNetwork }).(pulumi.StringOutput)
 }
 
 // The name of the OdbSubnet associated with the VM Cluster for
 // IP allocation. Format:
 // projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-func (o CloudVmClusterOutput) OdbSubnet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.OdbSubnet }).(pulumi.StringPtrOutput)
+func (o CloudVmClusterOutput) OdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

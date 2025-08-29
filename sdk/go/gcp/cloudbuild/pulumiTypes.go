@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -668,9 +668,8 @@ func (o TriggerBitbucketServerTriggerConfigPtrOutput) RepoSlug() pulumi.StringPt
 
 type TriggerBitbucketServerTriggerConfigPullRequest struct {
 	// Regex of branches to match.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch string `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -690,9 +689,8 @@ type TriggerBitbucketServerTriggerConfigPullRequestInput interface {
 
 type TriggerBitbucketServerTriggerConfigPullRequestArgs struct {
 	// Regex of branches to match.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringInput `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -777,12 +775,11 @@ func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) ToTriggerBitbucket
 }
 
 // Regex of branches to match.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPullRequest) string { return v.Branch }).(pulumi.StringOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 // Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
@@ -818,7 +815,6 @@ func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) Elem() TriggerB
 }
 
 // Regex of branches to match.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPullRequest) *string {
 		if v == nil {
@@ -828,7 +824,7 @@ func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) Branch() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 // Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPullRequest) *string {
@@ -850,11 +846,11 @@ func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) InvertRegex() p
 }
 
 type TriggerBitbucketServerTriggerConfigPush struct {
-	// Regex of branches to match.  Specify only one of branch or tag.
+	// Regex of branches to match.
 	Branch *string `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
-	// Regex of tags to match.  Specify only one of branch or tag.
+	// Regex of tags to match.
 	Tag *string `pulumi:"tag"`
 }
 
@@ -870,11 +866,11 @@ type TriggerBitbucketServerTriggerConfigPushInput interface {
 }
 
 type TriggerBitbucketServerTriggerConfigPushArgs struct {
-	// Regex of branches to match.  Specify only one of branch or tag.
+	// Regex of branches to match.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
-	// Regex of tags to match.  Specify only one of branch or tag.
+	// Regex of tags to match.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -955,17 +951,17 @@ func (o TriggerBitbucketServerTriggerConfigPushOutput) ToTriggerBitbucketServerT
 	}).(TriggerBitbucketServerTriggerConfigPushPtrOutput)
 }
 
-// Regex of branches to match.  Specify only one of branch or tag.
+// Regex of branches to match.
 func (o TriggerBitbucketServerTriggerConfigPushOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 func (o TriggerBitbucketServerTriggerConfigPushOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
 
-// Regex of tags to match.  Specify only one of branch or tag.
+// Regex of tags to match.
 func (o TriggerBitbucketServerTriggerConfigPushOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -994,7 +990,7 @@ func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) Elem() TriggerBitbucke
 	}).(TriggerBitbucketServerTriggerConfigPushOutput)
 }
 
-// Regex of branches to match.  Specify only one of branch or tag.
+// Regex of branches to match.
 func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPush) *string {
 		if v == nil {
@@ -1004,7 +1000,7 @@ func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) Branch() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPush) *bool {
 		if v == nil {
@@ -1014,7 +1010,7 @@ func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) InvertRegex() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Regex of tags to match.  Specify only one of branch or tag.
+// Regex of tags to match.
 func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPush) *string {
 		if v == nil {
@@ -4469,6 +4465,568 @@ func (o TriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuild
 	}).(TriggerBuildStepVolumeOutput)
 }
 
+type TriggerDeveloperConnectEventConfig struct {
+	// The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+	GitRepositoryLink string `pulumi:"gitRepositoryLink"`
+	// (Output)
+	// The type of DeveloperConnect GitRepositoryLink.
+	GitRepositoryLinkType *string `pulumi:"gitRepositoryLinkType"`
+	// Filter to match changes in pull requests.
+	// Structure is documented below.
+	PullRequest *TriggerDeveloperConnectEventConfigPullRequest `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches and tags.
+	// Structure is documented below.
+	Push *TriggerDeveloperConnectEventConfigPush `pulumi:"push"`
+}
+
+// TriggerDeveloperConnectEventConfigInput is an input type that accepts TriggerDeveloperConnectEventConfigArgs and TriggerDeveloperConnectEventConfigOutput values.
+// You can construct a concrete instance of `TriggerDeveloperConnectEventConfigInput` via:
+//
+//	TriggerDeveloperConnectEventConfigArgs{...}
+type TriggerDeveloperConnectEventConfigInput interface {
+	pulumi.Input
+
+	ToTriggerDeveloperConnectEventConfigOutput() TriggerDeveloperConnectEventConfigOutput
+	ToTriggerDeveloperConnectEventConfigOutputWithContext(context.Context) TriggerDeveloperConnectEventConfigOutput
+}
+
+type TriggerDeveloperConnectEventConfigArgs struct {
+	// The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+	GitRepositoryLink pulumi.StringInput `pulumi:"gitRepositoryLink"`
+	// (Output)
+	// The type of DeveloperConnect GitRepositoryLink.
+	GitRepositoryLinkType pulumi.StringPtrInput `pulumi:"gitRepositoryLinkType"`
+	// Filter to match changes in pull requests.
+	// Structure is documented below.
+	PullRequest TriggerDeveloperConnectEventConfigPullRequestPtrInput `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches and tags.
+	// Structure is documented below.
+	Push TriggerDeveloperConnectEventConfigPushPtrInput `pulumi:"push"`
+}
+
+func (TriggerDeveloperConnectEventConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDeveloperConnectEventConfig)(nil)).Elem()
+}
+
+func (i TriggerDeveloperConnectEventConfigArgs) ToTriggerDeveloperConnectEventConfigOutput() TriggerDeveloperConnectEventConfigOutput {
+	return i.ToTriggerDeveloperConnectEventConfigOutputWithContext(context.Background())
+}
+
+func (i TriggerDeveloperConnectEventConfigArgs) ToTriggerDeveloperConnectEventConfigOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigOutput)
+}
+
+func (i TriggerDeveloperConnectEventConfigArgs) ToTriggerDeveloperConnectEventConfigPtrOutput() TriggerDeveloperConnectEventConfigPtrOutput {
+	return i.ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerDeveloperConnectEventConfigArgs) ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigOutput).ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(ctx)
+}
+
+// TriggerDeveloperConnectEventConfigPtrInput is an input type that accepts TriggerDeveloperConnectEventConfigArgs, TriggerDeveloperConnectEventConfigPtr and TriggerDeveloperConnectEventConfigPtrOutput values.
+// You can construct a concrete instance of `TriggerDeveloperConnectEventConfigPtrInput` via:
+//
+//	        TriggerDeveloperConnectEventConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerDeveloperConnectEventConfigPtrInput interface {
+	pulumi.Input
+
+	ToTriggerDeveloperConnectEventConfigPtrOutput() TriggerDeveloperConnectEventConfigPtrOutput
+	ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(context.Context) TriggerDeveloperConnectEventConfigPtrOutput
+}
+
+type triggerDeveloperConnectEventConfigPtrType TriggerDeveloperConnectEventConfigArgs
+
+func TriggerDeveloperConnectEventConfigPtr(v *TriggerDeveloperConnectEventConfigArgs) TriggerDeveloperConnectEventConfigPtrInput {
+	return (*triggerDeveloperConnectEventConfigPtrType)(v)
+}
+
+func (*triggerDeveloperConnectEventConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDeveloperConnectEventConfig)(nil)).Elem()
+}
+
+func (i *triggerDeveloperConnectEventConfigPtrType) ToTriggerDeveloperConnectEventConfigPtrOutput() TriggerDeveloperConnectEventConfigPtrOutput {
+	return i.ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerDeveloperConnectEventConfigPtrType) ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigPtrOutput)
+}
+
+type TriggerDeveloperConnectEventConfigOutput struct{ *pulumi.OutputState }
+
+func (TriggerDeveloperConnectEventConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDeveloperConnectEventConfig)(nil)).Elem()
+}
+
+func (o TriggerDeveloperConnectEventConfigOutput) ToTriggerDeveloperConnectEventConfigOutput() TriggerDeveloperConnectEventConfigOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigOutput) ToTriggerDeveloperConnectEventConfigOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigOutput) ToTriggerDeveloperConnectEventConfigPtrOutput() TriggerDeveloperConnectEventConfigPtrOutput {
+	return o.ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerDeveloperConnectEventConfigOutput) ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDeveloperConnectEventConfig) *TriggerDeveloperConnectEventConfig {
+		return &v
+	}).(TriggerDeveloperConnectEventConfigPtrOutput)
+}
+
+// The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+func (o TriggerDeveloperConnectEventConfigOutput) GitRepositoryLink() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfig) string { return v.GitRepositoryLink }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The type of DeveloperConnect GitRepositoryLink.
+func (o TriggerDeveloperConnectEventConfigOutput) GitRepositoryLinkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfig) *string { return v.GitRepositoryLinkType }).(pulumi.StringPtrOutput)
+}
+
+// Filter to match changes in pull requests.
+// Structure is documented below.
+func (o TriggerDeveloperConnectEventConfigOutput) PullRequest() TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfig) *TriggerDeveloperConnectEventConfigPullRequest {
+		return v.PullRequest
+	}).(TriggerDeveloperConnectEventConfigPullRequestPtrOutput)
+}
+
+// Filter to match changes in refs like branches and tags.
+// Structure is documented below.
+func (o TriggerDeveloperConnectEventConfigOutput) Push() TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfig) *TriggerDeveloperConnectEventConfigPush { return v.Push }).(TriggerDeveloperConnectEventConfigPushPtrOutput)
+}
+
+type TriggerDeveloperConnectEventConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerDeveloperConnectEventConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDeveloperConnectEventConfig)(nil)).Elem()
+}
+
+func (o TriggerDeveloperConnectEventConfigPtrOutput) ToTriggerDeveloperConnectEventConfigPtrOutput() TriggerDeveloperConnectEventConfigPtrOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPtrOutput) ToTriggerDeveloperConnectEventConfigPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPtrOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPtrOutput) Elem() TriggerDeveloperConnectEventConfigOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfig) TriggerDeveloperConnectEventConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerDeveloperConnectEventConfig
+		return ret
+	}).(TriggerDeveloperConnectEventConfigOutput)
+}
+
+// The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+func (o TriggerDeveloperConnectEventConfigPtrOutput) GitRepositoryLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GitRepositoryLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The type of DeveloperConnect GitRepositoryLink.
+func (o TriggerDeveloperConnectEventConfigPtrOutput) GitRepositoryLinkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GitRepositoryLinkType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter to match changes in pull requests.
+// Structure is documented below.
+func (o TriggerDeveloperConnectEventConfigPtrOutput) PullRequest() TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfig) *TriggerDeveloperConnectEventConfigPullRequest {
+		if v == nil {
+			return nil
+		}
+		return v.PullRequest
+	}).(TriggerDeveloperConnectEventConfigPullRequestPtrOutput)
+}
+
+// Filter to match changes in refs like branches and tags.
+// Structure is documented below.
+func (o TriggerDeveloperConnectEventConfigPtrOutput) Push() TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfig) *TriggerDeveloperConnectEventConfigPush {
+		if v == nil {
+			return nil
+		}
+		return v.Push
+	}).(TriggerDeveloperConnectEventConfigPushPtrOutput)
+}
+
+type TriggerDeveloperConnectEventConfigPullRequest struct {
+	// Regex of branches to match.
+	Branch *string `pulumi:"branch"`
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	CommentControl *string `pulumi:"commentControl"`
+	// If true, branches that do NOT match the gitRef will trigger a build.
+	InvertRegex *bool `pulumi:"invertRegex"`
+}
+
+// TriggerDeveloperConnectEventConfigPullRequestInput is an input type that accepts TriggerDeveloperConnectEventConfigPullRequestArgs and TriggerDeveloperConnectEventConfigPullRequestOutput values.
+// You can construct a concrete instance of `TriggerDeveloperConnectEventConfigPullRequestInput` via:
+//
+//	TriggerDeveloperConnectEventConfigPullRequestArgs{...}
+type TriggerDeveloperConnectEventConfigPullRequestInput interface {
+	pulumi.Input
+
+	ToTriggerDeveloperConnectEventConfigPullRequestOutput() TriggerDeveloperConnectEventConfigPullRequestOutput
+	ToTriggerDeveloperConnectEventConfigPullRequestOutputWithContext(context.Context) TriggerDeveloperConnectEventConfigPullRequestOutput
+}
+
+type TriggerDeveloperConnectEventConfigPullRequestArgs struct {
+	// Regex of branches to match.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
+	// If true, branches that do NOT match the gitRef will trigger a build.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
+}
+
+func (TriggerDeveloperConnectEventConfigPullRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDeveloperConnectEventConfigPullRequest)(nil)).Elem()
+}
+
+func (i TriggerDeveloperConnectEventConfigPullRequestArgs) ToTriggerDeveloperConnectEventConfigPullRequestOutput() TriggerDeveloperConnectEventConfigPullRequestOutput {
+	return i.ToTriggerDeveloperConnectEventConfigPullRequestOutputWithContext(context.Background())
+}
+
+func (i TriggerDeveloperConnectEventConfigPullRequestArgs) ToTriggerDeveloperConnectEventConfigPullRequestOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPullRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigPullRequestOutput)
+}
+
+func (i TriggerDeveloperConnectEventConfigPullRequestArgs) ToTriggerDeveloperConnectEventConfigPullRequestPtrOutput() TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return i.ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerDeveloperConnectEventConfigPullRequestArgs) ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigPullRequestOutput).ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(ctx)
+}
+
+// TriggerDeveloperConnectEventConfigPullRequestPtrInput is an input type that accepts TriggerDeveloperConnectEventConfigPullRequestArgs, TriggerDeveloperConnectEventConfigPullRequestPtr and TriggerDeveloperConnectEventConfigPullRequestPtrOutput values.
+// You can construct a concrete instance of `TriggerDeveloperConnectEventConfigPullRequestPtrInput` via:
+//
+//	        TriggerDeveloperConnectEventConfigPullRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerDeveloperConnectEventConfigPullRequestPtrInput interface {
+	pulumi.Input
+
+	ToTriggerDeveloperConnectEventConfigPullRequestPtrOutput() TriggerDeveloperConnectEventConfigPullRequestPtrOutput
+	ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(context.Context) TriggerDeveloperConnectEventConfigPullRequestPtrOutput
+}
+
+type triggerDeveloperConnectEventConfigPullRequestPtrType TriggerDeveloperConnectEventConfigPullRequestArgs
+
+func TriggerDeveloperConnectEventConfigPullRequestPtr(v *TriggerDeveloperConnectEventConfigPullRequestArgs) TriggerDeveloperConnectEventConfigPullRequestPtrInput {
+	return (*triggerDeveloperConnectEventConfigPullRequestPtrType)(v)
+}
+
+func (*triggerDeveloperConnectEventConfigPullRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDeveloperConnectEventConfigPullRequest)(nil)).Elem()
+}
+
+func (i *triggerDeveloperConnectEventConfigPullRequestPtrType) ToTriggerDeveloperConnectEventConfigPullRequestPtrOutput() TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return i.ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerDeveloperConnectEventConfigPullRequestPtrType) ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigPullRequestPtrOutput)
+}
+
+type TriggerDeveloperConnectEventConfigPullRequestOutput struct{ *pulumi.OutputState }
+
+func (TriggerDeveloperConnectEventConfigPullRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDeveloperConnectEventConfigPullRequest)(nil)).Elem()
+}
+
+func (o TriggerDeveloperConnectEventConfigPullRequestOutput) ToTriggerDeveloperConnectEventConfigPullRequestOutput() TriggerDeveloperConnectEventConfigPullRequestOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPullRequestOutput) ToTriggerDeveloperConnectEventConfigPullRequestOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPullRequestOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPullRequestOutput) ToTriggerDeveloperConnectEventConfigPullRequestPtrOutput() TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return o.ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerDeveloperConnectEventConfigPullRequestOutput) ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDeveloperConnectEventConfigPullRequest) *TriggerDeveloperConnectEventConfigPullRequest {
+		return &v
+	}).(TriggerDeveloperConnectEventConfigPullRequestPtrOutput)
+}
+
+// Regex of branches to match.
+func (o TriggerDeveloperConnectEventConfigPullRequestOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfigPullRequest) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+func (o TriggerDeveloperConnectEventConfigPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfigPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
+}
+
+// If true, branches that do NOT match the gitRef will trigger a build.
+func (o TriggerDeveloperConnectEventConfigPullRequestOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfigPullRequest) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
+type TriggerDeveloperConnectEventConfigPullRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerDeveloperConnectEventConfigPullRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDeveloperConnectEventConfigPullRequest)(nil)).Elem()
+}
+
+func (o TriggerDeveloperConnectEventConfigPullRequestPtrOutput) ToTriggerDeveloperConnectEventConfigPullRequestPtrOutput() TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPullRequestPtrOutput) ToTriggerDeveloperConnectEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPullRequestPtrOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPullRequestPtrOutput) Elem() TriggerDeveloperConnectEventConfigPullRequestOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfigPullRequest) TriggerDeveloperConnectEventConfigPullRequest {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerDeveloperConnectEventConfigPullRequest
+		return ret
+	}).(TriggerDeveloperConnectEventConfigPullRequestOutput)
+}
+
+// Regex of branches to match.
+func (o TriggerDeveloperConnectEventConfigPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfigPullRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+func (o TriggerDeveloperConnectEventConfigPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfigPullRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommentControl
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, branches that do NOT match the gitRef will trigger a build.
+func (o TriggerDeveloperConnectEventConfigPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfigPullRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TriggerDeveloperConnectEventConfigPush struct {
+	// Regex of branches to match.
+	Branch *string `pulumi:"branch"`
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex *bool `pulumi:"invertRegex"`
+	// Regex of tags to match.
+	Tag *string `pulumi:"tag"`
+}
+
+// TriggerDeveloperConnectEventConfigPushInput is an input type that accepts TriggerDeveloperConnectEventConfigPushArgs and TriggerDeveloperConnectEventConfigPushOutput values.
+// You can construct a concrete instance of `TriggerDeveloperConnectEventConfigPushInput` via:
+//
+//	TriggerDeveloperConnectEventConfigPushArgs{...}
+type TriggerDeveloperConnectEventConfigPushInput interface {
+	pulumi.Input
+
+	ToTriggerDeveloperConnectEventConfigPushOutput() TriggerDeveloperConnectEventConfigPushOutput
+	ToTriggerDeveloperConnectEventConfigPushOutputWithContext(context.Context) TriggerDeveloperConnectEventConfigPushOutput
+}
+
+type TriggerDeveloperConnectEventConfigPushArgs struct {
+	// Regex of branches to match.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
+	// Regex of tags to match.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (TriggerDeveloperConnectEventConfigPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDeveloperConnectEventConfigPush)(nil)).Elem()
+}
+
+func (i TriggerDeveloperConnectEventConfigPushArgs) ToTriggerDeveloperConnectEventConfigPushOutput() TriggerDeveloperConnectEventConfigPushOutput {
+	return i.ToTriggerDeveloperConnectEventConfigPushOutputWithContext(context.Background())
+}
+
+func (i TriggerDeveloperConnectEventConfigPushArgs) ToTriggerDeveloperConnectEventConfigPushOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigPushOutput)
+}
+
+func (i TriggerDeveloperConnectEventConfigPushArgs) ToTriggerDeveloperConnectEventConfigPushPtrOutput() TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return i.ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerDeveloperConnectEventConfigPushArgs) ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigPushOutput).ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(ctx)
+}
+
+// TriggerDeveloperConnectEventConfigPushPtrInput is an input type that accepts TriggerDeveloperConnectEventConfigPushArgs, TriggerDeveloperConnectEventConfigPushPtr and TriggerDeveloperConnectEventConfigPushPtrOutput values.
+// You can construct a concrete instance of `TriggerDeveloperConnectEventConfigPushPtrInput` via:
+//
+//	        TriggerDeveloperConnectEventConfigPushArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerDeveloperConnectEventConfigPushPtrInput interface {
+	pulumi.Input
+
+	ToTriggerDeveloperConnectEventConfigPushPtrOutput() TriggerDeveloperConnectEventConfigPushPtrOutput
+	ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(context.Context) TriggerDeveloperConnectEventConfigPushPtrOutput
+}
+
+type triggerDeveloperConnectEventConfigPushPtrType TriggerDeveloperConnectEventConfigPushArgs
+
+func TriggerDeveloperConnectEventConfigPushPtr(v *TriggerDeveloperConnectEventConfigPushArgs) TriggerDeveloperConnectEventConfigPushPtrInput {
+	return (*triggerDeveloperConnectEventConfigPushPtrType)(v)
+}
+
+func (*triggerDeveloperConnectEventConfigPushPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDeveloperConnectEventConfigPush)(nil)).Elem()
+}
+
+func (i *triggerDeveloperConnectEventConfigPushPtrType) ToTriggerDeveloperConnectEventConfigPushPtrOutput() TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return i.ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerDeveloperConnectEventConfigPushPtrType) ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDeveloperConnectEventConfigPushPtrOutput)
+}
+
+type TriggerDeveloperConnectEventConfigPushOutput struct{ *pulumi.OutputState }
+
+func (TriggerDeveloperConnectEventConfigPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDeveloperConnectEventConfigPush)(nil)).Elem()
+}
+
+func (o TriggerDeveloperConnectEventConfigPushOutput) ToTriggerDeveloperConnectEventConfigPushOutput() TriggerDeveloperConnectEventConfigPushOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPushOutput) ToTriggerDeveloperConnectEventConfigPushOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPushOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPushOutput) ToTriggerDeveloperConnectEventConfigPushPtrOutput() TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return o.ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerDeveloperConnectEventConfigPushOutput) ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDeveloperConnectEventConfigPush) *TriggerDeveloperConnectEventConfigPush {
+		return &v
+	}).(TriggerDeveloperConnectEventConfigPushPtrOutput)
+}
+
+// Regex of branches to match.
+func (o TriggerDeveloperConnectEventConfigPushOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfigPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerDeveloperConnectEventConfigPushOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfigPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
+// Regex of tags to match.
+func (o TriggerDeveloperConnectEventConfigPushOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerDeveloperConnectEventConfigPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type TriggerDeveloperConnectEventConfigPushPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerDeveloperConnectEventConfigPushPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDeveloperConnectEventConfigPush)(nil)).Elem()
+}
+
+func (o TriggerDeveloperConnectEventConfigPushPtrOutput) ToTriggerDeveloperConnectEventConfigPushPtrOutput() TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPushPtrOutput) ToTriggerDeveloperConnectEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerDeveloperConnectEventConfigPushPtrOutput {
+	return o
+}
+
+func (o TriggerDeveloperConnectEventConfigPushPtrOutput) Elem() TriggerDeveloperConnectEventConfigPushOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfigPush) TriggerDeveloperConnectEventConfigPush {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerDeveloperConnectEventConfigPush
+		return ret
+	}).(TriggerDeveloperConnectEventConfigPushOutput)
+}
+
+// Regex of branches to match.
+func (o TriggerDeveloperConnectEventConfigPushPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfigPush) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerDeveloperConnectEventConfigPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfigPush) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Regex of tags to match.
+func (o TriggerDeveloperConnectEventConfigPushPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDeveloperConnectEventConfigPush) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
 type TriggerGitFileSource struct {
 	// The full resource name of the bitbucket server config.
 	// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
@@ -4987,9 +5545,8 @@ func (o TriggerGithubPtrOutput) Push() TriggerGithubPushPtrOutput {
 
 type TriggerGithubPullRequest struct {
 	// Regex of branches to match.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch string `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -5009,9 +5566,8 @@ type TriggerGithubPullRequestInput interface {
 
 type TriggerGithubPullRequestArgs struct {
 	// Regex of branches to match.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringInput `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -5096,12 +5652,11 @@ func (o TriggerGithubPullRequestOutput) ToTriggerGithubPullRequestPtrOutputWithC
 }
 
 // Regex of branches to match.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) string { return v.Branch }).(pulumi.StringOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 // Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
@@ -5137,7 +5692,6 @@ func (o TriggerGithubPullRequestPtrOutput) Elem() TriggerGithubPullRequestOutput
 }
 
 // Regex of branches to match.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *string {
 		if v == nil {
@@ -5147,7 +5701,7 @@ func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 // Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *string {
@@ -5169,11 +5723,11 @@ func (o TriggerGithubPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 }
 
 type TriggerGithubPush struct {
-	// Regex of branches to match.  Specify only one of branch or tag.
+	// Regex of branches to match.
 	Branch *string `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
-	// Regex of tags to match.  Specify only one of branch or tag.
+	// Regex of tags to match.
 	Tag *string `pulumi:"tag"`
 }
 
@@ -5189,11 +5743,11 @@ type TriggerGithubPushInput interface {
 }
 
 type TriggerGithubPushArgs struct {
-	// Regex of branches to match.  Specify only one of branch or tag.
+	// Regex of branches to match.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
-	// Regex of tags to match.  Specify only one of branch or tag.
+	// Regex of tags to match.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -5274,17 +5828,17 @@ func (o TriggerGithubPushOutput) ToTriggerGithubPushPtrOutputWithContext(ctx con
 	}).(TriggerGithubPushPtrOutput)
 }
 
-// Regex of branches to match.  Specify only one of branch or tag.
+// Regex of branches to match.
 func (o TriggerGithubPushOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 func (o TriggerGithubPushOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
 
-// Regex of tags to match.  Specify only one of branch or tag.
+// Regex of tags to match.
 func (o TriggerGithubPushOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -5313,7 +5867,7 @@ func (o TriggerGithubPushPtrOutput) Elem() TriggerGithubPushOutput {
 	}).(TriggerGithubPushOutput)
 }
 
-// Regex of branches to match.  Specify only one of branch or tag.
+// Regex of branches to match.
 func (o TriggerGithubPushPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPush) *string {
 		if v == nil {
@@ -5323,7 +5877,7 @@ func (o TriggerGithubPushPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 func (o TriggerGithubPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPush) *bool {
 		if v == nil {
@@ -5333,7 +5887,7 @@ func (o TriggerGithubPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Regex of tags to match.  Specify only one of branch or tag.
+// Regex of tags to match.
 func (o TriggerGithubPushPtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPush) *string {
 		if v == nil {
@@ -5734,9 +6288,8 @@ func (o TriggerRepositoryEventConfigPtrOutput) Repository() pulumi.StringPtrOutp
 
 type TriggerRepositoryEventConfigPullRequest struct {
 	// Regex of branches to match.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch *string `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -5756,9 +6309,8 @@ type TriggerRepositoryEventConfigPullRequestInput interface {
 
 type TriggerRepositoryEventConfigPullRequestArgs struct {
 	// Regex of branches to match.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -5843,12 +6395,11 @@ func (o TriggerRepositoryEventConfigPullRequestOutput) ToTriggerRepositoryEventC
 }
 
 // Regex of branches to match.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerRepositoryEventConfigPullRequestOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerRepositoryEventConfigPullRequest) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 // Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerRepositoryEventConfigPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerRepositoryEventConfigPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
@@ -5884,7 +6435,6 @@ func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Elem() TriggerReposito
 }
 
 // Regex of branches to match.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) *string {
 		if v == nil {
@@ -5894,7 +6444,7 @@ func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Branch() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
 // Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerRepositoryEventConfigPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) *string {
@@ -5916,11 +6466,11 @@ func (o TriggerRepositoryEventConfigPullRequestPtrOutput) InvertRegex() pulumi.B
 }
 
 type TriggerRepositoryEventConfigPush struct {
-	// Regex of branches to match.  Specify only one of branch or tag.
+	// Regex of branches to match.
 	Branch *string `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
-	// Regex of tags to match.  Specify only one of branch or tag.
+	// Regex of tags to match.
 	Tag *string `pulumi:"tag"`
 }
 
@@ -5936,11 +6486,11 @@ type TriggerRepositoryEventConfigPushInput interface {
 }
 
 type TriggerRepositoryEventConfigPushArgs struct {
-	// Regex of branches to match.  Specify only one of branch or tag.
+	// Regex of branches to match.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
-	// Regex of tags to match.  Specify only one of branch or tag.
+	// Regex of tags to match.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -6021,17 +6571,17 @@ func (o TriggerRepositoryEventConfigPushOutput) ToTriggerRepositoryEventConfigPu
 	}).(TriggerRepositoryEventConfigPushPtrOutput)
 }
 
-// Regex of branches to match.  Specify only one of branch or tag.
+// Regex of branches to match.
 func (o TriggerRepositoryEventConfigPushOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerRepositoryEventConfigPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 func (o TriggerRepositoryEventConfigPushOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerRepositoryEventConfigPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
 
-// Regex of tags to match.  Specify only one of branch or tag.
+// Regex of tags to match.
 func (o TriggerRepositoryEventConfigPushOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerRepositoryEventConfigPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -6060,7 +6610,7 @@ func (o TriggerRepositoryEventConfigPushPtrOutput) Elem() TriggerRepositoryEvent
 	}).(TriggerRepositoryEventConfigPushOutput)
 }
 
-// Regex of branches to match.  Specify only one of branch or tag.
+// Regex of branches to match.
 func (o TriggerRepositoryEventConfigPushPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerRepositoryEventConfigPush) *string {
 		if v == nil {
@@ -6070,7 +6620,7 @@ func (o TriggerRepositoryEventConfigPushPtrOutput) Branch() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
 func (o TriggerRepositoryEventConfigPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TriggerRepositoryEventConfigPush) *bool {
 		if v == nil {
@@ -6080,7 +6630,7 @@ func (o TriggerRepositoryEventConfigPushPtrOutput) InvertRegex() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Regex of tags to match.  Specify only one of branch or tag.
+// Regex of tags to match.
 func (o TriggerRepositoryEventConfigPushPtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerRepositoryEventConfigPush) *string {
 		if v == nil {
@@ -10451,6 +11001,364 @@ func (o GetTriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) GetTrigge
 	}).(GetTriggerBuildStepVolumeOutput)
 }
 
+type GetTriggerDeveloperConnectEventConfig struct {
+	// The Developer Connect Git repository link, formatted as 'projects/*/locations/*/connections/*/gitRepositoryLink/*'.
+	GitRepositoryLink string `pulumi:"gitRepositoryLink"`
+	// The type of DeveloperConnect GitRepositoryLink.
+	GitRepositoryLinkType string `pulumi:"gitRepositoryLinkType"`
+	// Filter to match changes in pull requests.
+	PullRequests []GetTriggerDeveloperConnectEventConfigPullRequest `pulumi:"pullRequests"`
+	// Filter to match changes in refs like branches and tags.
+	Pushes []GetTriggerDeveloperConnectEventConfigPush `pulumi:"pushes"`
+}
+
+// GetTriggerDeveloperConnectEventConfigInput is an input type that accepts GetTriggerDeveloperConnectEventConfigArgs and GetTriggerDeveloperConnectEventConfigOutput values.
+// You can construct a concrete instance of `GetTriggerDeveloperConnectEventConfigInput` via:
+//
+//	GetTriggerDeveloperConnectEventConfigArgs{...}
+type GetTriggerDeveloperConnectEventConfigInput interface {
+	pulumi.Input
+
+	ToGetTriggerDeveloperConnectEventConfigOutput() GetTriggerDeveloperConnectEventConfigOutput
+	ToGetTriggerDeveloperConnectEventConfigOutputWithContext(context.Context) GetTriggerDeveloperConnectEventConfigOutput
+}
+
+type GetTriggerDeveloperConnectEventConfigArgs struct {
+	// The Developer Connect Git repository link, formatted as 'projects/*/locations/*/connections/*/gitRepositoryLink/*'.
+	GitRepositoryLink pulumi.StringInput `pulumi:"gitRepositoryLink"`
+	// The type of DeveloperConnect GitRepositoryLink.
+	GitRepositoryLinkType pulumi.StringInput `pulumi:"gitRepositoryLinkType"`
+	// Filter to match changes in pull requests.
+	PullRequests GetTriggerDeveloperConnectEventConfigPullRequestArrayInput `pulumi:"pullRequests"`
+	// Filter to match changes in refs like branches and tags.
+	Pushes GetTriggerDeveloperConnectEventConfigPushArrayInput `pulumi:"pushes"`
+}
+
+func (GetTriggerDeveloperConnectEventConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerDeveloperConnectEventConfig)(nil)).Elem()
+}
+
+func (i GetTriggerDeveloperConnectEventConfigArgs) ToGetTriggerDeveloperConnectEventConfigOutput() GetTriggerDeveloperConnectEventConfigOutput {
+	return i.ToGetTriggerDeveloperConnectEventConfigOutputWithContext(context.Background())
+}
+
+func (i GetTriggerDeveloperConnectEventConfigArgs) ToGetTriggerDeveloperConnectEventConfigOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerDeveloperConnectEventConfigOutput)
+}
+
+// GetTriggerDeveloperConnectEventConfigArrayInput is an input type that accepts GetTriggerDeveloperConnectEventConfigArray and GetTriggerDeveloperConnectEventConfigArrayOutput values.
+// You can construct a concrete instance of `GetTriggerDeveloperConnectEventConfigArrayInput` via:
+//
+//	GetTriggerDeveloperConnectEventConfigArray{ GetTriggerDeveloperConnectEventConfigArgs{...} }
+type GetTriggerDeveloperConnectEventConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerDeveloperConnectEventConfigArrayOutput() GetTriggerDeveloperConnectEventConfigArrayOutput
+	ToGetTriggerDeveloperConnectEventConfigArrayOutputWithContext(context.Context) GetTriggerDeveloperConnectEventConfigArrayOutput
+}
+
+type GetTriggerDeveloperConnectEventConfigArray []GetTriggerDeveloperConnectEventConfigInput
+
+func (GetTriggerDeveloperConnectEventConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerDeveloperConnectEventConfig)(nil)).Elem()
+}
+
+func (i GetTriggerDeveloperConnectEventConfigArray) ToGetTriggerDeveloperConnectEventConfigArrayOutput() GetTriggerDeveloperConnectEventConfigArrayOutput {
+	return i.ToGetTriggerDeveloperConnectEventConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerDeveloperConnectEventConfigArray) ToGetTriggerDeveloperConnectEventConfigArrayOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerDeveloperConnectEventConfigArrayOutput)
+}
+
+type GetTriggerDeveloperConnectEventConfigOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerDeveloperConnectEventConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerDeveloperConnectEventConfig)(nil)).Elem()
+}
+
+func (o GetTriggerDeveloperConnectEventConfigOutput) ToGetTriggerDeveloperConnectEventConfigOutput() GetTriggerDeveloperConnectEventConfigOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigOutput) ToGetTriggerDeveloperConnectEventConfigOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigOutput {
+	return o
+}
+
+// The Developer Connect Git repository link, formatted as 'projects/*/locations/*/connections/*/gitRepositoryLink/*'.
+func (o GetTriggerDeveloperConnectEventConfigOutput) GitRepositoryLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfig) string { return v.GitRepositoryLink }).(pulumi.StringOutput)
+}
+
+// The type of DeveloperConnect GitRepositoryLink.
+func (o GetTriggerDeveloperConnectEventConfigOutput) GitRepositoryLinkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfig) string { return v.GitRepositoryLinkType }).(pulumi.StringOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o GetTriggerDeveloperConnectEventConfigOutput) PullRequests() GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfig) []GetTriggerDeveloperConnectEventConfigPullRequest {
+		return v.PullRequests
+	}).(GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput)
+}
+
+// Filter to match changes in refs like branches and tags.
+func (o GetTriggerDeveloperConnectEventConfigOutput) Pushes() GetTriggerDeveloperConnectEventConfigPushArrayOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfig) []GetTriggerDeveloperConnectEventConfigPush {
+		return v.Pushes
+	}).(GetTriggerDeveloperConnectEventConfigPushArrayOutput)
+}
+
+type GetTriggerDeveloperConnectEventConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerDeveloperConnectEventConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerDeveloperConnectEventConfig)(nil)).Elem()
+}
+
+func (o GetTriggerDeveloperConnectEventConfigArrayOutput) ToGetTriggerDeveloperConnectEventConfigArrayOutput() GetTriggerDeveloperConnectEventConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigArrayOutput) ToGetTriggerDeveloperConnectEventConfigArrayOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerDeveloperConnectEventConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerDeveloperConnectEventConfig {
+		return vs[0].([]GetTriggerDeveloperConnectEventConfig)[vs[1].(int)]
+	}).(GetTriggerDeveloperConnectEventConfigOutput)
+}
+
+type GetTriggerDeveloperConnectEventConfigPullRequest struct {
+	// Regex of branches to match.
+	Branch string `pulumi:"branch"`
+	// Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+	CommentControl string `pulumi:"commentControl"`
+	// If true, branches that do NOT match the gitRef will trigger a build.
+	InvertRegex bool `pulumi:"invertRegex"`
+}
+
+// GetTriggerDeveloperConnectEventConfigPullRequestInput is an input type that accepts GetTriggerDeveloperConnectEventConfigPullRequestArgs and GetTriggerDeveloperConnectEventConfigPullRequestOutput values.
+// You can construct a concrete instance of `GetTriggerDeveloperConnectEventConfigPullRequestInput` via:
+//
+//	GetTriggerDeveloperConnectEventConfigPullRequestArgs{...}
+type GetTriggerDeveloperConnectEventConfigPullRequestInput interface {
+	pulumi.Input
+
+	ToGetTriggerDeveloperConnectEventConfigPullRequestOutput() GetTriggerDeveloperConnectEventConfigPullRequestOutput
+	ToGetTriggerDeveloperConnectEventConfigPullRequestOutputWithContext(context.Context) GetTriggerDeveloperConnectEventConfigPullRequestOutput
+}
+
+type GetTriggerDeveloperConnectEventConfigPullRequestArgs struct {
+	// Regex of branches to match.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+	CommentControl pulumi.StringInput `pulumi:"commentControl"`
+	// If true, branches that do NOT match the gitRef will trigger a build.
+	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
+}
+
+func (GetTriggerDeveloperConnectEventConfigPullRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigPullRequest)(nil)).Elem()
+}
+
+func (i GetTriggerDeveloperConnectEventConfigPullRequestArgs) ToGetTriggerDeveloperConnectEventConfigPullRequestOutput() GetTriggerDeveloperConnectEventConfigPullRequestOutput {
+	return i.ToGetTriggerDeveloperConnectEventConfigPullRequestOutputWithContext(context.Background())
+}
+
+func (i GetTriggerDeveloperConnectEventConfigPullRequestArgs) ToGetTriggerDeveloperConnectEventConfigPullRequestOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigPullRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerDeveloperConnectEventConfigPullRequestOutput)
+}
+
+// GetTriggerDeveloperConnectEventConfigPullRequestArrayInput is an input type that accepts GetTriggerDeveloperConnectEventConfigPullRequestArray and GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput values.
+// You can construct a concrete instance of `GetTriggerDeveloperConnectEventConfigPullRequestArrayInput` via:
+//
+//	GetTriggerDeveloperConnectEventConfigPullRequestArray{ GetTriggerDeveloperConnectEventConfigPullRequestArgs{...} }
+type GetTriggerDeveloperConnectEventConfigPullRequestArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerDeveloperConnectEventConfigPullRequestArrayOutput() GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput
+	ToGetTriggerDeveloperConnectEventConfigPullRequestArrayOutputWithContext(context.Context) GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput
+}
+
+type GetTriggerDeveloperConnectEventConfigPullRequestArray []GetTriggerDeveloperConnectEventConfigPullRequestInput
+
+func (GetTriggerDeveloperConnectEventConfigPullRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerDeveloperConnectEventConfigPullRequest)(nil)).Elem()
+}
+
+func (i GetTriggerDeveloperConnectEventConfigPullRequestArray) ToGetTriggerDeveloperConnectEventConfigPullRequestArrayOutput() GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput {
+	return i.ToGetTriggerDeveloperConnectEventConfigPullRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerDeveloperConnectEventConfigPullRequestArray) ToGetTriggerDeveloperConnectEventConfigPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput)
+}
+
+type GetTriggerDeveloperConnectEventConfigPullRequestOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerDeveloperConnectEventConfigPullRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigPullRequest)(nil)).Elem()
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPullRequestOutput) ToGetTriggerDeveloperConnectEventConfigPullRequestOutput() GetTriggerDeveloperConnectEventConfigPullRequestOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPullRequestOutput) ToGetTriggerDeveloperConnectEventConfigPullRequestOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigPullRequestOutput {
+	return o
+}
+
+// Regex of branches to match.
+func (o GetTriggerDeveloperConnectEventConfigPullRequestOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfigPullRequest) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+func (o GetTriggerDeveloperConnectEventConfigPullRequestOutput) CommentControl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfigPullRequest) string { return v.CommentControl }).(pulumi.StringOutput)
+}
+
+// If true, branches that do NOT match the gitRef will trigger a build.
+func (o GetTriggerDeveloperConnectEventConfigPullRequestOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfigPullRequest) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+type GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerDeveloperConnectEventConfigPullRequest)(nil)).Elem()
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput) ToGetTriggerDeveloperConnectEventConfigPullRequestArrayOutput() GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput) ToGetTriggerDeveloperConnectEventConfigPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput) Index(i pulumi.IntInput) GetTriggerDeveloperConnectEventConfigPullRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerDeveloperConnectEventConfigPullRequest {
+		return vs[0].([]GetTriggerDeveloperConnectEventConfigPullRequest)[vs[1].(int)]
+	}).(GetTriggerDeveloperConnectEventConfigPullRequestOutput)
+}
+
+type GetTriggerDeveloperConnectEventConfigPush struct {
+	// Regex of branches to match.
+	Branch string `pulumi:"branch"`
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex bool `pulumi:"invertRegex"`
+	// Regex of tags to match.
+	Tag string `pulumi:"tag"`
+}
+
+// GetTriggerDeveloperConnectEventConfigPushInput is an input type that accepts GetTriggerDeveloperConnectEventConfigPushArgs and GetTriggerDeveloperConnectEventConfigPushOutput values.
+// You can construct a concrete instance of `GetTriggerDeveloperConnectEventConfigPushInput` via:
+//
+//	GetTriggerDeveloperConnectEventConfigPushArgs{...}
+type GetTriggerDeveloperConnectEventConfigPushInput interface {
+	pulumi.Input
+
+	ToGetTriggerDeveloperConnectEventConfigPushOutput() GetTriggerDeveloperConnectEventConfigPushOutput
+	ToGetTriggerDeveloperConnectEventConfigPushOutputWithContext(context.Context) GetTriggerDeveloperConnectEventConfigPushOutput
+}
+
+type GetTriggerDeveloperConnectEventConfigPushArgs struct {
+	// Regex of branches to match.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
+	// Regex of tags to match.
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetTriggerDeveloperConnectEventConfigPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigPush)(nil)).Elem()
+}
+
+func (i GetTriggerDeveloperConnectEventConfigPushArgs) ToGetTriggerDeveloperConnectEventConfigPushOutput() GetTriggerDeveloperConnectEventConfigPushOutput {
+	return i.ToGetTriggerDeveloperConnectEventConfigPushOutputWithContext(context.Background())
+}
+
+func (i GetTriggerDeveloperConnectEventConfigPushArgs) ToGetTriggerDeveloperConnectEventConfigPushOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerDeveloperConnectEventConfigPushOutput)
+}
+
+// GetTriggerDeveloperConnectEventConfigPushArrayInput is an input type that accepts GetTriggerDeveloperConnectEventConfigPushArray and GetTriggerDeveloperConnectEventConfigPushArrayOutput values.
+// You can construct a concrete instance of `GetTriggerDeveloperConnectEventConfigPushArrayInput` via:
+//
+//	GetTriggerDeveloperConnectEventConfigPushArray{ GetTriggerDeveloperConnectEventConfigPushArgs{...} }
+type GetTriggerDeveloperConnectEventConfigPushArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerDeveloperConnectEventConfigPushArrayOutput() GetTriggerDeveloperConnectEventConfigPushArrayOutput
+	ToGetTriggerDeveloperConnectEventConfigPushArrayOutputWithContext(context.Context) GetTriggerDeveloperConnectEventConfigPushArrayOutput
+}
+
+type GetTriggerDeveloperConnectEventConfigPushArray []GetTriggerDeveloperConnectEventConfigPushInput
+
+func (GetTriggerDeveloperConnectEventConfigPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerDeveloperConnectEventConfigPush)(nil)).Elem()
+}
+
+func (i GetTriggerDeveloperConnectEventConfigPushArray) ToGetTriggerDeveloperConnectEventConfigPushArrayOutput() GetTriggerDeveloperConnectEventConfigPushArrayOutput {
+	return i.ToGetTriggerDeveloperConnectEventConfigPushArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerDeveloperConnectEventConfigPushArray) ToGetTriggerDeveloperConnectEventConfigPushArrayOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerDeveloperConnectEventConfigPushArrayOutput)
+}
+
+type GetTriggerDeveloperConnectEventConfigPushOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerDeveloperConnectEventConfigPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigPush)(nil)).Elem()
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPushOutput) ToGetTriggerDeveloperConnectEventConfigPushOutput() GetTriggerDeveloperConnectEventConfigPushOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPushOutput) ToGetTriggerDeveloperConnectEventConfigPushOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigPushOutput {
+	return o
+}
+
+// Regex of branches to match.
+func (o GetTriggerDeveloperConnectEventConfigPushOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfigPush) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o GetTriggerDeveloperConnectEventConfigPushOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfigPush) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+// Regex of tags to match.
+func (o GetTriggerDeveloperConnectEventConfigPushOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerDeveloperConnectEventConfigPush) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetTriggerDeveloperConnectEventConfigPushArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerDeveloperConnectEventConfigPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerDeveloperConnectEventConfigPush)(nil)).Elem()
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPushArrayOutput) ToGetTriggerDeveloperConnectEventConfigPushArrayOutput() GetTriggerDeveloperConnectEventConfigPushArrayOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPushArrayOutput) ToGetTriggerDeveloperConnectEventConfigPushArrayOutputWithContext(ctx context.Context) GetTriggerDeveloperConnectEventConfigPushArrayOutput {
+	return o
+}
+
+func (o GetTriggerDeveloperConnectEventConfigPushArrayOutput) Index(i pulumi.IntInput) GetTriggerDeveloperConnectEventConfigPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerDeveloperConnectEventConfigPush {
+		return vs[0].([]GetTriggerDeveloperConnectEventConfigPush)[vs[1].(int)]
+	}).(GetTriggerDeveloperConnectEventConfigPushOutput)
+}
+
 type GetTriggerGitFileSource struct {
 	// The full resource name of the bitbucket server config.
 	// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
@@ -11978,6 +12886,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildStepArrayInput)(nil)).Elem(), TriggerBuildStepArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildStepVolumeInput)(nil)).Elem(), TriggerBuildStepVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildStepVolumeArrayInput)(nil)).Elem(), TriggerBuildStepVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDeveloperConnectEventConfigInput)(nil)).Elem(), TriggerDeveloperConnectEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDeveloperConnectEventConfigPtrInput)(nil)).Elem(), TriggerDeveloperConnectEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDeveloperConnectEventConfigPullRequestInput)(nil)).Elem(), TriggerDeveloperConnectEventConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDeveloperConnectEventConfigPullRequestPtrInput)(nil)).Elem(), TriggerDeveloperConnectEventConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDeveloperConnectEventConfigPushInput)(nil)).Elem(), TriggerDeveloperConnectEventConfigPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDeveloperConnectEventConfigPushPtrInput)(nil)).Elem(), TriggerDeveloperConnectEventConfigPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGitFileSourceInput)(nil)).Elem(), TriggerGitFileSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGitFileSourcePtrInput)(nil)).Elem(), TriggerGitFileSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGithubInput)(nil)).Elem(), TriggerGithubArgs{})
@@ -12048,6 +12962,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildStepArrayInput)(nil)).Elem(), GetTriggerBuildStepArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildStepVolumeInput)(nil)).Elem(), GetTriggerBuildStepVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildStepVolumeArrayInput)(nil)).Elem(), GetTriggerBuildStepVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigInput)(nil)).Elem(), GetTriggerDeveloperConnectEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigArrayInput)(nil)).Elem(), GetTriggerDeveloperConnectEventConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigPullRequestInput)(nil)).Elem(), GetTriggerDeveloperConnectEventConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigPullRequestArrayInput)(nil)).Elem(), GetTriggerDeveloperConnectEventConfigPullRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigPushInput)(nil)).Elem(), GetTriggerDeveloperConnectEventConfigPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerDeveloperConnectEventConfigPushArrayInput)(nil)).Elem(), GetTriggerDeveloperConnectEventConfigPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGitFileSourceInput)(nil)).Elem(), GetTriggerGitFileSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGitFileSourceArrayInput)(nil)).Elem(), GetTriggerGitFileSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGithubInput)(nil)).Elem(), GetTriggerGithubArgs{})
@@ -12116,6 +13036,12 @@ func init() {
 	pulumi.RegisterOutputType(TriggerBuildStepArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildStepVolumeOutput{})
 	pulumi.RegisterOutputType(TriggerBuildStepVolumeArrayOutput{})
+	pulumi.RegisterOutputType(TriggerDeveloperConnectEventConfigOutput{})
+	pulumi.RegisterOutputType(TriggerDeveloperConnectEventConfigPtrOutput{})
+	pulumi.RegisterOutputType(TriggerDeveloperConnectEventConfigPullRequestOutput{})
+	pulumi.RegisterOutputType(TriggerDeveloperConnectEventConfigPullRequestPtrOutput{})
+	pulumi.RegisterOutputType(TriggerDeveloperConnectEventConfigPushOutput{})
+	pulumi.RegisterOutputType(TriggerDeveloperConnectEventConfigPushPtrOutput{})
 	pulumi.RegisterOutputType(TriggerGitFileSourceOutput{})
 	pulumi.RegisterOutputType(TriggerGitFileSourcePtrOutput{})
 	pulumi.RegisterOutputType(TriggerGithubOutput{})
@@ -12186,6 +13112,12 @@ func init() {
 	pulumi.RegisterOutputType(GetTriggerBuildStepArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildStepVolumeOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildStepVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerDeveloperConnectEventConfigOutput{})
+	pulumi.RegisterOutputType(GetTriggerDeveloperConnectEventConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerDeveloperConnectEventConfigPullRequestOutput{})
+	pulumi.RegisterOutputType(GetTriggerDeveloperConnectEventConfigPullRequestArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerDeveloperConnectEventConfigPushOutput{})
+	pulumi.RegisterOutputType(GetTriggerDeveloperConnectEventConfigPushArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerGitFileSourceOutput{})
 	pulumi.RegisterOutputType(GetTriggerGitFileSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerGithubOutput{})

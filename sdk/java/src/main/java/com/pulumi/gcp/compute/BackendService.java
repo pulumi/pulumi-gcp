@@ -22,6 +22,7 @@ import com.pulumi.gcp.compute.outputs.BackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.BackendServiceMaxStreamDuration;
 import com.pulumi.gcp.compute.outputs.BackendServiceNetworkPassThroughLbTrafficPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceOutlierDetection;
+import com.pulumi.gcp.compute.outputs.BackendServiceParams;
 import com.pulumi.gcp.compute.outputs.BackendServiceSecuritySettings;
 import com.pulumi.gcp.compute.outputs.BackendServiceStrongSessionAffinityCookie;
 import com.pulumi.gcp.compute.outputs.BackendServiceTlsSettings;
@@ -1629,6 +1630,22 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<BackendServiceOutlierDetection>> outlierDetection() {
         return Codegen.optional(this.outlierDetection);
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={BackendServiceParams.class}, tree="[0]")
+    private Output</* @Nullable */ BackendServiceParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackendServiceParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * Name of backend port. The same name should appear in the instance

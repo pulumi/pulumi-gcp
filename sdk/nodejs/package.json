@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/gcp",
-    "version": "8.0.0-alpha.0+dev",
+    "version": "9.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing Google Cloud Platform resources.",
     "keywords": [
         "pulumi",
@@ -27,6 +27,6 @@
     "pulumi": {
         "resource": true,
         "name": "gcp",
-        "version": "8.0.0-alpha.0+dev"
+        "version": "9.0.0-alpha.0+dev"
     }
 }

@@ -226,8 +226,7 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         # Enables the reCAPTCHA Enterprise API
         recaptcha_enterprise = gcp.projects.Service("recaptcha_enterprise",
             project="my-project-name",
-            service="recaptchaenterprise.googleapis.com",
-            disable_on_destroy=False)
+            service="recaptchaenterprise.googleapis.com")
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Web App for reCAPTCHA Enterprise")
@@ -306,8 +305,7 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         # Enables the reCAPTCHA Enterprise API
         recaptcha_enterprise = gcp.projects.Service("recaptcha_enterprise",
             project="my-project-name",
-            service="recaptchaenterprise.googleapis.com",
-            disable_on_destroy=False)
+            service="recaptchaenterprise.googleapis.com")
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Web App for reCAPTCHA Enterprise")

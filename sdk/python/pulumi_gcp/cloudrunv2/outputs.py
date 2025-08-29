@@ -2593,6 +2593,8 @@ class ServiceScaling(dict):
         suggest = None
         if key == "manualInstanceCount":
             suggest = "manual_instance_count"
+        elif key == "maxInstanceCount":
+            suggest = "max_instance_count"
         elif key == "minInstanceCount":
             suggest = "min_instance_count"
         elif key == "scalingMode":
@@ -2611,16 +2613,20 @@ class ServiceScaling(dict):
 
     def __init__(__self__, *,
                  manual_instance_count: Optional[_builtins.int] = None,
+                 max_instance_count: Optional[_builtins.int] = None,
                  min_instance_count: Optional[_builtins.int] = None,
                  scaling_mode: Optional[_builtins.str] = None):
         """
         :param _builtins.int manual_instance_count: Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+        :param _builtins.int max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param _builtins.int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         :param _builtins.str scaling_mode: The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
                Possible values are: `AUTOMATIC`, `MANUAL`.
         """
         if manual_instance_count is not None:
             pulumi.set(__self__, "manual_instance_count", manual_instance_count)
+        if max_instance_count is not None:
+            pulumi.set(__self__, "max_instance_count", max_instance_count)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
         if scaling_mode is not None:
@@ -2633,6 +2639,14 @@ class ServiceScaling(dict):
         Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
         """
         return pulumi.get(self, "manual_instance_count")
+
+    @_builtins.property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> Optional[_builtins.int]:
+        """
+        Combined maximum number of instances for all revisions receiving traffic.
+        """
+        return pulumi.get(self, "max_instance_count")
 
     @_builtins.property
     @pulumi.getter(name="minInstanceCount")
@@ -4074,8 +4088,7 @@ class ServiceTemplateScaling(dict):
                  max_instance_count: Optional[_builtins.int] = None,
                  min_instance_count: Optional[_builtins.int] = None):
         """
-        :param _builtins.int max_instance_count: Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-               a default value based on the project's available container instances quota in the region and specified instance size.
+        :param _builtins.int max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param _builtins.int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         if max_instance_count is not None:
@@ -4087,8 +4100,7 @@ class ServiceTemplateScaling(dict):
     @pulumi.getter(name="maxInstanceCount")
     def max_instance_count(self) -> Optional[_builtins.int]:
         """
-        Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-        a default value based on the project's available container instances quota in the region and specified instance size.
+        Combined maximum number of instances for all revisions receiving traffic.
         """
         return pulumi.get(self, "max_instance_count")
 
@@ -5554,9 +5566,7 @@ class WorkerPoolTemplateContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dependsOns":
-            suggest = "depends_ons"
-        elif key == "volumeMounts":
+        if key == "volumeMounts":
             suggest = "volume_mounts"
         elif key == "workingDir":
             suggest = "working_dir"
@@ -5576,7 +5586,6 @@ class WorkerPoolTemplateContainer(dict):
                  image: _builtins.str,
                  args: Optional[Sequence[_builtins.str]] = None,
                  commands: Optional[Sequence[_builtins.str]] = None,
-                 depends_ons: Optional[Sequence[_builtins.str]] = None,
                  envs: Optional[Sequence['outputs.WorkerPoolTemplateContainerEnv']] = None,
                  name: Optional[_builtins.str] = None,
                  resources: Optional['outputs.WorkerPoolTemplateContainerResources'] = None,
@@ -5586,7 +5595,6 @@ class WorkerPoolTemplateContainer(dict):
         :param _builtins.str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param Sequence[_builtins.str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence[_builtins.str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param Sequence[_builtins.str] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param Sequence['WorkerPoolTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param _builtins.str name: Name of the container specified as a DNS_LABEL.
@@ -5601,8 +5609,6 @@ class WorkerPoolTemplateContainer(dict):
             pulumi.set(__self__, "args", args)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
-        if depends_ons is not None:
-            pulumi.set(__self__, "depends_ons", depends_ons)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if name is not None:
@@ -5637,14 +5643,6 @@ class WorkerPoolTemplateContainer(dict):
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
-
-    @_builtins.property
-    @pulumi.getter(name="dependsOns")
-    def depends_ons(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-        """
-        return pulumi.get(self, "depends_ons")
 
     @_builtins.property
     @pulumi.getter
@@ -8196,14 +8194,17 @@ class GetServiceConditionResult(dict):
 class GetServiceScalingResult(dict):
     def __init__(__self__, *,
                  manual_instance_count: _builtins.int,
+                 max_instance_count: _builtins.int,
                  min_instance_count: _builtins.int,
                  scaling_mode: _builtins.str):
         """
         :param _builtins.int manual_instance_count: Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+        :param _builtins.int max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param _builtins.int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         :param _builtins.str scaling_mode: The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
         """
         pulumi.set(__self__, "manual_instance_count", manual_instance_count)
+        pulumi.set(__self__, "max_instance_count", max_instance_count)
         pulumi.set(__self__, "min_instance_count", min_instance_count)
         pulumi.set(__self__, "scaling_mode", scaling_mode)
 
@@ -8214,6 +8215,14 @@ class GetServiceScalingResult(dict):
         Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
         """
         return pulumi.get(self, "manual_instance_count")
+
+    @_builtins.property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> _builtins.int:
+        """
+        Combined maximum number of instances for all revisions receiving traffic.
+        """
+        return pulumi.get(self, "max_instance_count")
 
     @_builtins.property
     @pulumi.getter(name="minInstanceCount")
@@ -10323,7 +10332,6 @@ class GetWorkerPoolTemplateContainerResult(dict):
     def __init__(__self__, *,
                  args: Sequence[_builtins.str],
                  commands: Sequence[_builtins.str],
-                 depends_ons: Sequence[_builtins.str],
                  envs: Sequence['outputs.GetWorkerPoolTemplateContainerEnvResult'],
                  image: _builtins.str,
                  name: _builtins.str,
@@ -10333,7 +10341,6 @@ class GetWorkerPoolTemplateContainerResult(dict):
         """
         :param Sequence[_builtins.str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence[_builtins.str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param Sequence[_builtins.str] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param Sequence['GetWorkerPoolTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
         :param _builtins.str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
@@ -10343,7 +10350,6 @@ class GetWorkerPoolTemplateContainerResult(dict):
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "commands", commands)
-        pulumi.set(__self__, "depends_ons", depends_ons)
         pulumi.set(__self__, "envs", envs)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "name", name)
@@ -10366,14 +10372,6 @@ class GetWorkerPoolTemplateContainerResult(dict):
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
-
-    @_builtins.property
-    @pulumi.getter(name="dependsOns")
-    def depends_ons(self) -> Sequence[_builtins.str]:
-        """
-        Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-        """
-        return pulumi.get(self, "depends_ons")
 
     @_builtins.property
     @pulumi.getter

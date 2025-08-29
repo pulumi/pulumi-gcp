@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
@@ -162,6 +163,7 @@ import javax.annotation.Nullable;
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()

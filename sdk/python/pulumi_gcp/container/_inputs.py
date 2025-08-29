@@ -5811,6 +5811,10 @@ if not MYPY:
         feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
         when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
         """
+        default_compute_class_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+        """
         enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
@@ -5832,6 +5836,7 @@ class ClusterClusterAutoscalingArgs:
                  auto_provisioning_defaults: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs']] = None,
                  auto_provisioning_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_compute_class_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]]] = None):
         """
@@ -5845,6 +5850,7 @@ class ClusterClusterAutoscalingArgs:
                options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
                feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
                when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
+        :param pulumi.Input[_builtins.bool] default_compute_class_enabled: Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
         :param pulumi.Input[_builtins.bool] enabled: Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
                for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]] resource_limits: Global constraints for machine resources in the
@@ -5858,6 +5864,8 @@ class ClusterClusterAutoscalingArgs:
             pulumi.set(__self__, "auto_provisioning_locations", auto_provisioning_locations)
         if autoscaling_profile is not None:
             pulumi.set(__self__, "autoscaling_profile", autoscaling_profile)
+        if default_compute_class_enabled is not None:
+            pulumi.set(__self__, "default_compute_class_enabled", default_compute_class_enabled)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if resource_limits is not None:
@@ -5905,6 +5913,18 @@ class ClusterClusterAutoscalingArgs:
     @autoscaling_profile.setter
     def autoscaling_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "autoscaling_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultComputeClassEnabled")
+    def default_compute_class_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+        """
+        return pulumi.get(self, "default_compute_class_enabled")
+
+    @default_compute_class_enabled.setter
+    def default_compute_class_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "default_compute_class_enabled", value)
 
     @_builtins.property
     @pulumi.getter

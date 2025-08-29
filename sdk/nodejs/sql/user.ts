@@ -190,6 +190,12 @@ export class User extends pulumi.CustomResource {
     public readonly password!: pulumi.Output<string | undefined>;
     public readonly passwordPolicy!: pulumi.Output<outputs.sql.UserPasswordPolicy | undefined>;
     /**
+     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     *
+     * - - -
+     */
+    public readonly passwordWoVersion!: pulumi.Output<number | undefined>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -224,6 +230,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
+            resourceInputs["passwordWoVersion"] = state ? state.passwordWoVersion : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["sqlServerUserDetails"] = state ? state.sqlServerUserDetails : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -238,6 +245,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
+            resourceInputs["passwordWoVersion"] = args ? args.passwordWoVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["sqlServerUserDetails"] = undefined /*out*/;
@@ -285,6 +293,12 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
+    /**
+     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     *
+     * - - -
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -338,6 +352,12 @@ export interface UserArgs {
      */
     password?: pulumi.Input<string>;
     passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
+    /**
+     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     *
+     * - - -
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

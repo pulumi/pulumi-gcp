@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "firebaseapphosting.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var exampleAppHostingBackend = new Gcp.Firebase.AppHostingBackend("example", new()
@@ -121,7 +120,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "firebaseapphosting.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var exampleAppHostingBackend = new Gcp.Firebase.AppHostingBackend("example", new()
@@ -183,7 +181,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "firebaseapphosting.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var exampleAppHostingBackend = new Gcp.Firebase.AppHostingBackend("example", new()

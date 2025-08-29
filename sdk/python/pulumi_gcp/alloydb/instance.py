@@ -911,7 +911,8 @@ class Instance(pulumi.CustomResource):
             },
             initial_user={
                 "password": "alloydb-cluster",
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -944,7 +945,8 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-instance",
             address_type="INTERNAL",
@@ -977,6 +979,7 @@ class Instance(pulumi.CustomResource):
                 "primary_cluster_name": primary.name,
             },
             deletion_policy="FORCE",
+            deletion_protection=False,
             opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         secondary_instance = gcp.alloydb.Instance("secondary",
             cluster=secondary.name,
@@ -1082,7 +1085,8 @@ class Instance(pulumi.CustomResource):
             },
             initial_user={
                 "password": "alloydb-cluster",
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -1115,7 +1119,8 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-instance",
             address_type="INTERNAL",
@@ -1148,6 +1153,7 @@ class Instance(pulumi.CustomResource):
                 "primary_cluster_name": primary.name,
             },
             deletion_policy="FORCE",
+            deletion_protection=False,
             opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         secondary_instance = gcp.alloydb.Instance("secondary",
             cluster=secondary.name,

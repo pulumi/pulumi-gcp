@@ -83,6 +83,9 @@ import * as utilities from "../utilities";
  *         instances: [{
  *             url: mirror.id,
  *         }],
+ *         subnetworks: [{
+ *             url: defaultSubnetwork.id,
+ *         }],
  *     },
  *     filter: {
  *         ipProtocols: ["tcp"],

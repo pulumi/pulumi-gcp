@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,7 +64,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -207,10 +207,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -273,7 +273,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -308,8 +308,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -362,9 +362,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -451,7 +451,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -490,7 +490,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -528,7 +528,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -566,8 +566,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -620,7 +620,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -656,7 +656,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -693,7 +693,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -728,7 +728,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -838,7 +838,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -951,9 +951,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuildv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1013,6 +1013,105 @@ import (
 //	}
 //
 // ```
+// ### Cloudbuild Trigger Developer Connect Pull
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "developer-connect-trigger-pull", &cloudbuild.TriggerArgs{
+//				Location: pulumi.String("us-central1"),
+//				DeveloperConnectEventConfig: &cloudbuild.TriggerDeveloperConnectEventConfigArgs{
+//					GitRepositoryLink: pulumi.String("projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1"),
+//					PullRequest: &cloudbuild.TriggerDeveloperConnectEventConfigPullRequestArgs{
+//						Branch:         pulumi.String("^master$"),
+//						InvertRegex:    pulumi.Bool(false),
+//						CommentControl: pulumi.String("COMMENTS_ENABLED"),
+//					},
+//				},
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudbuild Trigger Developer Connect Push
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "developer-connect-trigger-push", &cloudbuild.TriggerArgs{
+//				Location: pulumi.String("us-central1"),
+//				DeveloperConnectEventConfig: &cloudbuild.TriggerDeveloperConnectEventConfigArgs{
+//					GitRepositoryLink: pulumi.String("projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1"),
+//					Push: &cloudbuild.TriggerDeveloperConnectEventConfigPushArgs{
+//						Tag:         pulumi.String("^0.1.*"),
+//						InvertRegex: pulumi.Bool(true),
+//					},
+//				},
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudbuild Trigger Developer Connect Push Branch
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "dc-trigger-regular-push-branch", &cloudbuild.TriggerArgs{
+//				Location: pulumi.String("us-central1"),
+//				DeveloperConnectEventConfig: &cloudbuild.TriggerDeveloperConnectEventConfigArgs{
+//					GitRepositoryLink: pulumi.String("projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1"),
+//					Push: &cloudbuild.TriggerDeveloperConnectEventConfigPushArgs{
+//						Branch: pulumi.String("main"),
+//					},
+//				},
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -1061,6 +1160,9 @@ type Trigger struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable description of the trigger.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Configuration for triggers that respond to Developer Connect events.
+	// Structure is documented below.
+	DeveloperConnectEventConfig TriggerDeveloperConnectEventConfigPtrOutput `pulumi:"developerConnectEventConfig"`
 	// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Path, from the source root, to a file whose contents is used for the template.
@@ -1193,6 +1295,9 @@ type triggerState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Human-readable description of the trigger.
 	Description *string `pulumi:"description"`
+	// Configuration for triggers that respond to Developer Connect events.
+	// Structure is documented below.
+	DeveloperConnectEventConfig *TriggerDeveloperConnectEventConfig `pulumi:"developerConnectEventConfig"`
 	// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 	Disabled *bool `pulumi:"disabled"`
 	// Path, from the source root, to a file whose contents is used for the template.
@@ -1296,6 +1401,9 @@ type TriggerState struct {
 	CreateTime pulumi.StringPtrInput
 	// Human-readable description of the trigger.
 	Description pulumi.StringPtrInput
+	// Configuration for triggers that respond to Developer Connect events.
+	// Structure is documented below.
+	DeveloperConnectEventConfig TriggerDeveloperConnectEventConfigPtrInput
 	// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 	Disabled pulumi.BoolPtrInput
 	// Path, from the source root, to a file whose contents is used for the template.
@@ -1401,6 +1509,9 @@ type triggerArgs struct {
 	Build *TriggerBuild `pulumi:"build"`
 	// Human-readable description of the trigger.
 	Description *string `pulumi:"description"`
+	// Configuration for triggers that respond to Developer Connect events.
+	// Structure is documented below.
+	DeveloperConnectEventConfig *TriggerDeveloperConnectEventConfig `pulumi:"developerConnectEventConfig"`
 	// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 	Disabled *bool `pulumi:"disabled"`
 	// Path, from the source root, to a file whose contents is used for the template.
@@ -1501,6 +1612,9 @@ type TriggerArgs struct {
 	Build TriggerBuildPtrInput
 	// Human-readable description of the trigger.
 	Description pulumi.StringPtrInput
+	// Configuration for triggers that respond to Developer Connect events.
+	// Structure is documented below.
+	DeveloperConnectEventConfig TriggerDeveloperConnectEventConfigPtrInput
 	// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
 	Disabled pulumi.BoolPtrInput
 	// Path, from the source root, to a file whose contents is used for the template.
@@ -1701,6 +1815,12 @@ func (o TriggerOutput) CreateTime() pulumi.StringOutput {
 // Human-readable description of the trigger.
 func (o TriggerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for triggers that respond to Developer Connect events.
+// Structure is documented below.
+func (o TriggerOutput) DeveloperConnectEventConfig() TriggerDeveloperConnectEventConfigPtrOutput {
+	return o.ApplyT(func(v *Trigger) TriggerDeveloperConnectEventConfigPtrOutput { return v.DeveloperConnectEventConfig }).(TriggerDeveloperConnectEventConfigPtrOutput)
 }
 
 // Whether the trigger is disabled or not. If true, the trigger will never result in a build.

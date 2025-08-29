@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * const recaptchaEnterprise = new gcp.projects.Service("recaptcha_enterprise", {
  *     project: "my-project-name",
  *     service: "recaptchaenterprise.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const _default = new gcp.firebase.WebApp("default", {
  *     project: "my-project-name",

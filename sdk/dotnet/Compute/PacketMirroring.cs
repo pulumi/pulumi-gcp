@@ -129,6 +129,13 @@ namespace Pulumi.Gcp.Compute
     ///                     Url = mirror.Id,
     ///                 },
     ///             },
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.PacketMirroringMirroredResourcesSubnetworkArgs
+    ///                 {
+    ///                     Url = defaultSubnetwork.Id,
+    ///                 },
+    ///             },
     ///         },
     ///         Filter = new Gcp.Compute.Inputs.PacketMirroringFilterArgs
     ///         {

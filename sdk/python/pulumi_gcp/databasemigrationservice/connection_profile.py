@@ -879,7 +879,8 @@ class ConnectionProfile(pulumi.CustomResource):
             initial_user={
                 "user": "destination-alloydb",
                 "password": "destination-alloydb",
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="destination-alloydb",
             address_type="INTERNAL",
@@ -1320,7 +1321,8 @@ class ConnectionProfile(pulumi.CustomResource):
             initial_user={
                 "user": "destination-alloydb",
                 "password": "destination-alloydb",
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="destination-alloydb",
             address_type="INTERNAL",

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1995,7 +1995,6 @@ type RepositoryRemoteRepositoryConfigDockerRepository struct {
 	// Structure is documented below.
 	CustomRepository *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
-	// Default value is `DOCKER_HUB`.
 	// Possible values are: `DOCKER_HUB`.
 	PublicRepository *string `pulumi:"publicRepository"`
 }
@@ -2016,7 +2015,6 @@ type RepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
 	// Structure is documented below.
 	CustomRepository RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
-	// Default value is `DOCKER_HUB`.
 	// Possible values are: `DOCKER_HUB`.
 	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
 }
@@ -2107,7 +2105,6 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) CustomRepository
 }
 
 // Address of the remote repository.
-// Default value is `DOCKER_HUB`.
 // Possible values are: `DOCKER_HUB`.
 func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigDockerRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
@@ -2149,7 +2146,6 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) CustomReposit
 }
 
 // Address of the remote repository.
-// Default value is `DOCKER_HUB`.
 // Possible values are: `DOCKER_HUB`.
 func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigDockerRepository) *string {
@@ -2302,7 +2298,6 @@ type RepositoryRemoteRepositoryConfigMavenRepository struct {
 	// Structure is documented below.
 	CustomRepository *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
-	// Default value is `MAVEN_CENTRAL`.
 	// Possible values are: `MAVEN_CENTRAL`.
 	PublicRepository *string `pulumi:"publicRepository"`
 }
@@ -2323,7 +2318,6 @@ type RepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
 	// Structure is documented below.
 	CustomRepository RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
-	// Default value is `MAVEN_CENTRAL`.
 	// Possible values are: `MAVEN_CENTRAL`.
 	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
 }
@@ -2414,7 +2408,6 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) CustomRepository(
 }
 
 // Address of the remote repository.
-// Default value is `MAVEN_CENTRAL`.
 // Possible values are: `MAVEN_CENTRAL`.
 func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigMavenRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
@@ -2456,7 +2449,6 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) CustomReposito
 }
 
 // Address of the remote repository.
-// Default value is `MAVEN_CENTRAL`.
 // Possible values are: `MAVEN_CENTRAL`.
 func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigMavenRepository) *string {
@@ -2609,7 +2601,6 @@ type RepositoryRemoteRepositoryConfigNpmRepository struct {
 	// Structure is documented below.
 	CustomRepository *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
-	// Default value is `NPMJS`.
 	// Possible values are: `NPMJS`.
 	PublicRepository *string `pulumi:"publicRepository"`
 }
@@ -2630,7 +2621,6 @@ type RepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
 	// Structure is documented below.
 	CustomRepository RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
-	// Default value is `NPMJS`.
 	// Possible values are: `NPMJS`.
 	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
 }
@@ -2721,7 +2711,6 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) CustomRepository() 
 }
 
 // Address of the remote repository.
-// Default value is `NPMJS`.
 // Possible values are: `NPMJS`.
 func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigNpmRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
@@ -2763,7 +2752,6 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) CustomRepository
 }
 
 // Address of the remote repository.
-// Default value is `NPMJS`.
 // Possible values are: `NPMJS`.
 func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNpmRepository) *string {
@@ -2916,7 +2904,6 @@ type RepositoryRemoteRepositoryConfigPythonRepository struct {
 	// Structure is documented below.
 	CustomRepository *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
-	// Default value is `PYPI`.
 	// Possible values are: `PYPI`.
 	PublicRepository *string `pulumi:"publicRepository"`
 }
@@ -2937,7 +2924,6 @@ type RepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
 	// Structure is documented below.
 	CustomRepository RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
-	// Default value is `PYPI`.
 	// Possible values are: `PYPI`.
 	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
 }
@@ -3028,7 +3014,6 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) CustomRepository
 }
 
 // Address of the remote repository.
-// Default value is `PYPI`.
 // Possible values are: `PYPI`.
 func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigPythonRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
@@ -3070,7 +3055,6 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) CustomReposit
 }
 
 // Address of the remote repository.
-// Default value is `PYPI`.
 // Possible values are: `PYPI`.
 func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigPythonRepository) *string {
@@ -5690,7 +5674,7 @@ func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput) Index(i 
 type GetRepositoryRemoteRepositoryConfigDockerRepository struct {
 	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories []GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository `pulumi:"customRepositories"`
-	// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+	// Address of the remote repository. Possible values: ["DOCKER_HUB"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
 
@@ -5708,7 +5692,7 @@ type GetRepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
 type GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
 	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
-	// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+	// Address of the remote repository. Possible values: ["DOCKER_HUB"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
 
@@ -5770,7 +5754,7 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) CustomReposit
 	}).(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput)
 }
 
-// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+// Address of the remote repository. Possible values: ["DOCKER_HUB"]
 func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigDockerRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
 }
@@ -5895,7 +5879,7 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray
 type GetRepositoryRemoteRepositoryConfigMavenRepository struct {
 	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories []GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository `pulumi:"customRepositories"`
-	// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+	// Address of the remote repository. Possible values: ["MAVEN_CENTRAL"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
 
@@ -5913,7 +5897,7 @@ type GetRepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
 type GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
 	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
-	// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+	// Address of the remote repository. Possible values: ["MAVEN_CENTRAL"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
 
@@ -5975,7 +5959,7 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) CustomReposito
 	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput)
 }
 
-// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+// Address of the remote repository. Possible values: ["MAVEN_CENTRAL"]
 func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigMavenRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
 }
@@ -6100,7 +6084,7 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayO
 type GetRepositoryRemoteRepositoryConfigNpmRepository struct {
 	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories []GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository `pulumi:"customRepositories"`
-	// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+	// Address of the remote repository. Possible values: ["NPMJS"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
 
@@ -6118,7 +6102,7 @@ type GetRepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
 type GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
 	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
-	// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+	// Address of the remote repository. Possible values: ["NPMJS"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
 
@@ -6180,7 +6164,7 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) CustomRepositori
 	}).(GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput)
 }
 
-// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+// Address of the remote repository. Possible values: ["NPMJS"]
 func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigNpmRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
 }
@@ -6305,7 +6289,7 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOut
 type GetRepositoryRemoteRepositoryConfigPythonRepository struct {
 	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories []GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository `pulumi:"customRepositories"`
-	// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+	// Address of the remote repository. Possible values: ["PYPI"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
 
@@ -6323,7 +6307,7 @@ type GetRepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
 type GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
 	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
-	// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+	// Address of the remote repository. Possible values: ["PYPI"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
 
@@ -6385,7 +6369,7 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) CustomReposit
 	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput)
 }
 
-// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+// Address of the remote repository. Possible values: ["PYPI"]
 func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigPythonRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
 }

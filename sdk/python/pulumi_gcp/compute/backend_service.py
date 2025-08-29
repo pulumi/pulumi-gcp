@@ -48,6 +48,7 @@ class BackendServiceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_pass_through_lb_traffic_policy: Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']] = None,
                  outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
+                 params: Optional[pulumi.Input['BackendServiceParamsArgs']] = None,
                  port_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -214,6 +215,8 @@ class BackendServiceArgs:
                Applicable backend service types can be a global backend service with the
                loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
                Structure is documented below.
+        :param pulumi.Input['BackendServiceParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -299,6 +302,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "network_pass_through_lb_traffic_policy", network_pass_through_lb_traffic_policy)
         if outlier_detection is not None:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if port_name is not None:
             pulumi.set(__self__, "port_name", port_name)
         if project is not None:
@@ -772,6 +777,19 @@ class BackendServiceArgs:
         pulumi.set(self, "outlier_detection", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['BackendServiceParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['BackendServiceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="portName")
     def port_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -945,6 +963,7 @@ class _BackendServiceState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_pass_through_lb_traffic_policy: Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']] = None,
                  outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
+                 params: Optional[pulumi.Input['BackendServiceParamsArgs']] = None,
                  port_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1116,6 +1135,8 @@ class _BackendServiceState:
                Applicable backend service types can be a global backend service with the
                loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
                Structure is documented below.
+        :param pulumi.Input['BackendServiceParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -1208,6 +1229,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "network_pass_through_lb_traffic_policy", network_pass_through_lb_traffic_policy)
         if outlier_detection is not None:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if port_name is not None:
             pulumi.set(__self__, "port_name", port_name)
         if project is not None:
@@ -1720,6 +1743,19 @@ class _BackendServiceState:
         pulumi.set(self, "outlier_detection", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['BackendServiceParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['BackendServiceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="portName")
     def port_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1905,6 +1941,7 @@ class BackendService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_pass_through_lb_traffic_policy: Optional[pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
                  outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
+                 params: Optional[pulumi.Input[Union['BackendServiceParamsArgs', 'BackendServiceParamsArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2505,6 +2542,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
                loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+               Structure is documented below.
+        :param pulumi.Input[Union['BackendServiceParamsArgs', 'BackendServiceParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
@@ -3019,6 +3058,7 @@ class BackendService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_pass_through_lb_traffic_policy: Optional[pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
                  outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
+                 params: Optional[pulumi.Input[Union['BackendServiceParamsArgs', 'BackendServiceParamsArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3065,6 +3105,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_pass_through_lb_traffic_policy"] = network_pass_through_lb_traffic_policy
             __props__.__dict__["outlier_detection"] = outlier_detection
+            __props__.__dict__["params"] = params
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
@@ -3119,6 +3160,7 @@ class BackendService(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network_pass_through_lb_traffic_policy: Optional[pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']]] = None,
             outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
+            params: Optional[pulumi.Input[Union['BackendServiceParamsArgs', 'BackendServiceParamsArgsDict']]] = None,
             port_name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3295,6 +3337,8 @@ class BackendService(pulumi.CustomResource):
                Applicable backend service types can be a global backend service with the
                loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[Union['BackendServiceParamsArgs', 'BackendServiceParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -3361,6 +3405,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network_pass_through_lb_traffic_policy"] = network_pass_through_lb_traffic_policy
         __props__.__dict__["outlier_detection"] = outlier_detection
+        __props__.__dict__["params"] = params
         __props__.__dict__["port_name"] = port_name
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
@@ -3741,6 +3786,15 @@ class BackendService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "outlier_detection")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.BackendServiceParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter(name="portName")

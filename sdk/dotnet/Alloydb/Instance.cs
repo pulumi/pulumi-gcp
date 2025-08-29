@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Password = "alloydb-cluster",
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -104,6 +105,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = @default.Id,
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -160,6 +162,7 @@ namespace Pulumi.Gcp.Alloydb
     ///             PrimaryClusterName = primary.Name,
     ///         },
     ///         DeletionPolicy = "FORCE",
+    ///         DeletionProtection = false,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

@@ -333,6 +333,8 @@ runtimeConfigCustomEndpoint: Optional[str]
 
 runtimeconfigCustomEndpoint: Optional[str]
 
+saasRuntimeCustomEndpoint: Optional[str]
+
 scopes: Optional[str]
 
 secretManagerCustomEndpoint: Optional[str]
@@ -382,8 +384,6 @@ storageTransferCustomEndpoint: Optional[str]
 tagsCustomEndpoint: Optional[str]
 
 tagsLocationCustomEndpoint: Optional[str]
-
-tpuCustomEndpoint: Optional[str]
 
 tpuV2CustomEndpoint: Optional[str]
 

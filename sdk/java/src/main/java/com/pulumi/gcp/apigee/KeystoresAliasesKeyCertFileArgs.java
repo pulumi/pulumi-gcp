@@ -6,7 +6,7 @@ package com.pulumi.gcp.apigee;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.gcp.apigee.inputs.KeystoresAliasesKeyCertFileCertsInfoArgs;
+import com.pulumi.gcp.apigee.inputs.KeystoresAliasesKeyCertFileTimeoutsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,23 +49,6 @@ public final class KeystoresAliasesKeyCertFileArgs extends com.pulumi.resources.
      */
     public Output<String> cert() {
         return this.cert;
-    }
-
-    /**
-     * Chain of certificates under this alias.
-     * Structure is documented below.
-     * 
-     */
-    @Import(name="certsInfo")
-    private @Nullable Output<KeystoresAliasesKeyCertFileCertsInfoArgs> certsInfo;
-
-    /**
-     * @return Chain of certificates under this alias.
-     * Structure is documented below.
-     * 
-     */
-    public Optional<Output<KeystoresAliasesKeyCertFileCertsInfoArgs>> certsInfo() {
-        return Optional.ofNullable(this.certsInfo);
     }
 
     /**
@@ -143,17 +126,24 @@ public final class KeystoresAliasesKeyCertFileArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.password);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<KeystoresAliasesKeyCertFileTimeoutsArgs> timeouts;
+
+    public Optional<Output<KeystoresAliasesKeyCertFileTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private KeystoresAliasesKeyCertFileArgs() {}
 
     private KeystoresAliasesKeyCertFileArgs(KeystoresAliasesKeyCertFileArgs $) {
         this.alias = $.alias;
         this.cert = $.cert;
-        this.certsInfo = $.certsInfo;
         this.environment = $.environment;
         this.key = $.key;
         this.keystore = $.keystore;
         this.orgId = $.orgId;
         this.password = $.password;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -218,29 +208,6 @@ public final class KeystoresAliasesKeyCertFileArgs extends com.pulumi.resources.
          */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
-        }
-
-        /**
-         * @param certsInfo Chain of certificates under this alias.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certsInfo(@Nullable Output<KeystoresAliasesKeyCertFileCertsInfoArgs> certsInfo) {
-            $.certsInfo = certsInfo;
-            return this;
-        }
-
-        /**
-         * @param certsInfo Chain of certificates under this alias.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certsInfo(KeystoresAliasesKeyCertFileCertsInfoArgs certsInfo) {
-            return certsInfo(Output.of(certsInfo));
         }
 
         /**
@@ -346,6 +313,15 @@ public final class KeystoresAliasesKeyCertFileArgs extends com.pulumi.resources.
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        public Builder timeouts(@Nullable Output<KeystoresAliasesKeyCertFileTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(KeystoresAliasesKeyCertFileTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public KeystoresAliasesKeyCertFileArgs build() {

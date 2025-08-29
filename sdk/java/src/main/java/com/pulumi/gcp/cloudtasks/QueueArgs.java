@@ -41,6 +41,27 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The desired state of the queue. Use this to pause and resume the queue.
+     * 
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     * 
+     */
+    @Import(name="desiredState")
+    private @Nullable Output<String> desiredState;
+
+    /**
+     * @return The desired state of the queue. Use this to pause and resume the queue.
+     * 
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     * 
+     */
+    public Optional<Output<String>> desiredState() {
+        return Optional.ofNullable(this.desiredState);
+    }
+
+    /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
      * 
@@ -171,6 +192,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
     private QueueArgs(QueueArgs $) {
         this.appEngineRoutingOverride = $.appEngineRoutingOverride;
+        this.desiredState = $.desiredState;
         this.httpTarget = $.httpTarget;
         this.location = $.location;
         this.name = $.name;
@@ -221,6 +243,33 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appEngineRoutingOverride(QueueAppEngineRoutingOverrideArgs appEngineRoutingOverride) {
             return appEngineRoutingOverride(Output.of(appEngineRoutingOverride));
+        }
+
+        /**
+         * @param desiredState The desired state of the queue. Use this to pause and resume the queue.
+         * 
+         * * RUNNING: The queue is running. Tasks can be dispatched.
+         * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(@Nullable Output<String> desiredState) {
+            $.desiredState = desiredState;
+            return this;
+        }
+
+        /**
+         * @param desiredState The desired state of the queue. Use this to pause and resume the queue.
+         * 
+         * * RUNNING: The queue is running. Tasks can be dispatched.
+         * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(String desiredState) {
+            return desiredState(Output.of(desiredState));
         }
 
         /**

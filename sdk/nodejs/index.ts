@@ -121,6 +121,7 @@ import * as recaptcha from "./recaptcha";
 import * as redis from "./redis";
 import * as resourcemanager from "./resourcemanager";
 import * as runtimeconfig from "./runtimeconfig";
+import * as saasruntime from "./saasruntime";
 import * as secretmanager from "./secretmanager";
 import * as securesourcemanager from "./securesourcemanager";
 import * as securitycenter from "./securitycenter";
@@ -256,6 +257,7 @@ export {
     redis,
     resourcemanager,
     runtimeconfig,
+    saasruntime,
     secretmanager,
     securesourcemanager,
     securitycenter,

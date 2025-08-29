@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("alloydb-cluster")
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
@@ -164,6 +165,7 @@ import javax.annotation.Nullable;
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
@@ -205,6 +207,7 @@ import javax.annotation.Nullable;
  *                 .primaryClusterName(primary.name())
  *                 .build())
  *             .deletionPolicy("FORCE")
+ *             .deletionProtection(false)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(primaryInstance)
  *                 .build());

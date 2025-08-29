@@ -27,7 +27,7 @@ class GetBackendBucketResult:
     """
     A collection of values returned by getBackendBucket.
     """
-    def __init__(__self__, bucket_name=None, cdn_policies=None, compression_mode=None, creation_timestamp=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, id=None, load_balancing_scheme=None, name=None, project=None, self_link=None):
+    def __init__(__self__, bucket_name=None, cdn_policies=None, compression_mode=None, creation_timestamp=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, id=None, load_balancing_scheme=None, name=None, params=None, project=None, self_link=None):
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -61,6 +61,9 @@ class GetBackendBucketResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if params and not isinstance(params, list):
+            raise TypeError("Expected argument 'params' to be a list")
+        pulumi.set(__self__, "params", params)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -128,6 +131,11 @@ class GetBackendBucketResult:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Sequence['outputs.GetBackendBucketParamResult']:
+        return pulumi.get(self, "params")
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
 
@@ -154,6 +162,7 @@ class AwaitableGetBackendBucketResult(GetBackendBucketResult):
             id=self.id,
             load_balancing_scheme=self.load_balancing_scheme,
             name=self.name,
+            params=self.params,
             project=self.project,
             self_link=self.self_link)
 
@@ -198,6 +207,7 @@ def get_backend_bucket(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         load_balancing_scheme=pulumi.get(__ret__, 'load_balancing_scheme'),
         name=pulumi.get(__ret__, 'name'),
+        params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
 def get_backend_bucket_output(name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -239,5 +249,6 @@ def get_backend_bucket_output(name: Optional[pulumi.Input[_builtins.str]] = None
         id=pulumi.get(__response__, 'id'),
         load_balancing_scheme=pulumi.get(__response__, 'load_balancing_scheme'),
         name=pulumi.get(__response__, 'name'),
+        params=pulumi.get(__response__, 'params'),
         project=pulumi.get(__response__, 'project'),
         self_link=pulumi.get(__response__, 'self_link')))

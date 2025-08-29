@@ -25,7 +25,6 @@ export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceaccount/getAccountKey:getAccountKey", {
         "name": args.name,
-        "project": args.project,
         "publicKeyType": args.publicKeyType,
     }, opts);
 }
@@ -40,13 +39,6 @@ export interface GetAccountKeyArgs {
      * is the email address or unique id of the service account.
      */
     name: string;
-    /**
-     * The ID of the project that the service account is present in.
-     * Defaults to the provider project configuration.
-     *
-     * @deprecated `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-     */
-    project?: string;
     /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
@@ -63,10 +55,6 @@ export interface GetAccountKeyResult {
     readonly id: string;
     readonly keyAlgorithm: string;
     readonly name: string;
-    /**
-     * @deprecated `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-     */
-    readonly project?: string;
     /**
      * The public key, base64 encoded
      */
@@ -94,7 +82,6 @@ export function getAccountKeyOutput(args: GetAccountKeyOutputArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountKey:getAccountKey", {
         "name": args.name,
-        "project": args.project,
         "publicKeyType": args.publicKeyType,
     }, opts);
 }
@@ -109,13 +96,6 @@ export interface GetAccountKeyOutputArgs {
      * is the email address or unique id of the service account.
      */
     name: pulumi.Input<string>;
-    /**
-     * The ID of the project that the service account is present in.
-     * Defaults to the provider project configuration.
-     *
-     * @deprecated `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-     */
-    project?: pulumi.Input<string>;
     /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */

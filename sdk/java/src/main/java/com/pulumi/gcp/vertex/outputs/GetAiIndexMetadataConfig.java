@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAiIndexMetadataConfig {
     /**
-     * @return The configuration with regard to the algorithms used for efficient search.
+     * @return The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
      * 
      */
     private List<GetAiIndexMetadataConfigAlgorithmConfig> algorithmConfigs;
@@ -59,7 +59,7 @@ public final class GetAiIndexMetadataConfig {
 
     private GetAiIndexMetadataConfig() {}
     /**
-     * @return The configuration with regard to the algorithms used for efficient search.
+     * @return The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
      * 
      */
     public List<GetAiIndexMetadataConfigAlgorithmConfig> algorithmConfigs() {

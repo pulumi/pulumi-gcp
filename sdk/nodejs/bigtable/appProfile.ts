@@ -305,7 +305,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "gcp:bigquery/appProfile:AppProfile" }] };
+        const aliasOpts = { aliases: [{ type: "gcp:bigquery/appProfile:AppProfile" }, { type: "gcp:bigquery/appProfile:AppProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AppProfile.__pulumiType, name, resourceInputs, opts);
     }

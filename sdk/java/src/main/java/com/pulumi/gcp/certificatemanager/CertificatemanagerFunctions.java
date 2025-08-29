@@ -13,8 +13,11 @@ import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapArgs;
 import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapPlainArgs;
 import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
 import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesPlainArgs;
+import com.pulumi.gcp.certificatemanager.inputs.GetDnsAuthorizationArgs;
+import com.pulumi.gcp.certificatemanager.inputs.GetDnsAuthorizationPlainArgs;
 import com.pulumi.gcp.certificatemanager.outputs.GetCertificateMapResult;
 import com.pulumi.gcp.certificatemanager.outputs.GetCertificatesResult;
+import com.pulumi.gcp.certificatemanager.outputs.GetDnsAuthorizationResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class CertificatemanagerFunctions {
@@ -381,5 +384,220 @@ public final class CertificatemanagerFunctions {
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:certificatemanager/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Certificate Manager DNS Authorization. For more details, see the [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.dnsAuthorizations).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetDnsAuthorizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getDnsAuthorization(GetDnsAuthorizationArgs.builder()
+     *             .name("my-dns-auth")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDnsAuthorizationResult> getDnsAuthorization(GetDnsAuthorizationArgs args) {
+        return getDnsAuthorization(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Certificate Manager DNS Authorization. For more details, see the [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.dnsAuthorizations).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetDnsAuthorizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getDnsAuthorization(GetDnsAuthorizationArgs.builder()
+     *             .name("my-dns-auth")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDnsAuthorizationResult> getDnsAuthorizationPlain(GetDnsAuthorizationPlainArgs args) {
+        return getDnsAuthorizationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Certificate Manager DNS Authorization. For more details, see the [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.dnsAuthorizations).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetDnsAuthorizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getDnsAuthorization(GetDnsAuthorizationArgs.builder()
+     *             .name("my-dns-auth")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDnsAuthorizationResult> getDnsAuthorization(GetDnsAuthorizationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:certificatemanager/getDnsAuthorization:getDnsAuthorization", TypeShape.of(GetDnsAuthorizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Certificate Manager DNS Authorization. For more details, see the [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.dnsAuthorizations).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetDnsAuthorizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getDnsAuthorization(GetDnsAuthorizationArgs.builder()
+     *             .name("my-dns-auth")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDnsAuthorizationResult> getDnsAuthorization(GetDnsAuthorizationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:certificatemanager/getDnsAuthorization:getDnsAuthorization", TypeShape.of(GetDnsAuthorizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Certificate Manager DNS Authorization. For more details, see the [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.dnsAuthorizations).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetDnsAuthorizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getDnsAuthorization(GetDnsAuthorizationArgs.builder()
+     *             .name("my-dns-auth")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDnsAuthorizationResult> getDnsAuthorizationPlain(GetDnsAuthorizationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:certificatemanager/getDnsAuthorization:getDnsAuthorization", TypeShape.of(GetDnsAuthorizationResult.class), args, Utilities.withVersion(options));
     }
 }

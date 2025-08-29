@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,7 +48,7 @@ type KeystoresAliasesKeyCertFile struct {
 	Cert pulumi.StringOutput `pulumi:"cert"`
 	// Chain of certificates under this alias.
 	// Structure is documented below.
-	CertsInfo KeystoresAliasesKeyCertFileCertsInfoOutput `pulumi:"certsInfo"`
+	CertsInfos KeystoresAliasesKeyCertFileCertsInfoArrayOutput `pulumi:"certsInfos"`
 	// Environment associated with the alias
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Private Key content, omit if uploading to truststore
@@ -58,7 +58,8 @@ type KeystoresAliasesKeyCertFile struct {
 	// Organization ID associated with the alias, without organization/ prefix
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Password for the Private Key if it's encrypted
-	Password pulumi.StringPtrOutput `pulumi:"password"`
+	Password pulumi.StringPtrOutput                       `pulumi:"password"`
+	Timeouts KeystoresAliasesKeyCertFileTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Optional.Type of Alias
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -127,7 +128,7 @@ type keystoresAliasesKeyCertFileState struct {
 	Cert *string `pulumi:"cert"`
 	// Chain of certificates under this alias.
 	// Structure is documented below.
-	CertsInfo *KeystoresAliasesKeyCertFileCertsInfo `pulumi:"certsInfo"`
+	CertsInfos []KeystoresAliasesKeyCertFileCertsInfo `pulumi:"certsInfos"`
 	// Environment associated with the alias
 	Environment *string `pulumi:"environment"`
 	// Private Key content, omit if uploading to truststore
@@ -137,7 +138,8 @@ type keystoresAliasesKeyCertFileState struct {
 	// Organization ID associated with the alias, without organization/ prefix
 	OrgId *string `pulumi:"orgId"`
 	// Password for the Private Key if it's encrypted
-	Password *string `pulumi:"password"`
+	Password *string                              `pulumi:"password"`
+	Timeouts *KeystoresAliasesKeyCertFileTimeouts `pulumi:"timeouts"`
 	// Optional.Type of Alias
 	Type *string `pulumi:"type"`
 }
@@ -151,7 +153,7 @@ type KeystoresAliasesKeyCertFileState struct {
 	Cert pulumi.StringPtrInput
 	// Chain of certificates under this alias.
 	// Structure is documented below.
-	CertsInfo KeystoresAliasesKeyCertFileCertsInfoPtrInput
+	CertsInfos KeystoresAliasesKeyCertFileCertsInfoArrayInput
 	// Environment associated with the alias
 	Environment pulumi.StringPtrInput
 	// Private Key content, omit if uploading to truststore
@@ -162,6 +164,7 @@ type KeystoresAliasesKeyCertFileState struct {
 	OrgId pulumi.StringPtrInput
 	// Password for the Private Key if it's encrypted
 	Password pulumi.StringPtrInput
+	Timeouts KeystoresAliasesKeyCertFileTimeoutsPtrInput
 	// Optional.Type of Alias
 	Type pulumi.StringPtrInput
 }
@@ -177,9 +180,6 @@ type keystoresAliasesKeyCertFileArgs struct {
 	//
 	// ***
 	Cert string `pulumi:"cert"`
-	// Chain of certificates under this alias.
-	// Structure is documented below.
-	CertsInfo *KeystoresAliasesKeyCertFileCertsInfo `pulumi:"certsInfo"`
 	// Environment associated with the alias
 	Environment string `pulumi:"environment"`
 	// Private Key content, omit if uploading to truststore
@@ -189,7 +189,8 @@ type keystoresAliasesKeyCertFileArgs struct {
 	// Organization ID associated with the alias, without organization/ prefix
 	OrgId string `pulumi:"orgId"`
 	// Password for the Private Key if it's encrypted
-	Password *string `pulumi:"password"`
+	Password *string                              `pulumi:"password"`
+	Timeouts *KeystoresAliasesKeyCertFileTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a KeystoresAliasesKeyCertFile resource.
@@ -200,9 +201,6 @@ type KeystoresAliasesKeyCertFileArgs struct {
 	//
 	// ***
 	Cert pulumi.StringInput
-	// Chain of certificates under this alias.
-	// Structure is documented below.
-	CertsInfo KeystoresAliasesKeyCertFileCertsInfoPtrInput
 	// Environment associated with the alias
 	Environment pulumi.StringInput
 	// Private Key content, omit if uploading to truststore
@@ -213,6 +211,7 @@ type KeystoresAliasesKeyCertFileArgs struct {
 	OrgId pulumi.StringInput
 	// Password for the Private Key if it's encrypted
 	Password pulumi.StringPtrInput
+	Timeouts KeystoresAliasesKeyCertFileTimeoutsPtrInput
 }
 
 func (KeystoresAliasesKeyCertFileArgs) ElementType() reflect.Type {
@@ -316,8 +315,10 @@ func (o KeystoresAliasesKeyCertFileOutput) Cert() pulumi.StringOutput {
 
 // Chain of certificates under this alias.
 // Structure is documented below.
-func (o KeystoresAliasesKeyCertFileOutput) CertsInfo() KeystoresAliasesKeyCertFileCertsInfoOutput {
-	return o.ApplyT(func(v *KeystoresAliasesKeyCertFile) KeystoresAliasesKeyCertFileCertsInfoOutput { return v.CertsInfo }).(KeystoresAliasesKeyCertFileCertsInfoOutput)
+func (o KeystoresAliasesKeyCertFileOutput) CertsInfos() KeystoresAliasesKeyCertFileCertsInfoArrayOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFile) KeystoresAliasesKeyCertFileCertsInfoArrayOutput {
+		return v.CertsInfos
+	}).(KeystoresAliasesKeyCertFileCertsInfoArrayOutput)
 }
 
 // Environment associated with the alias
@@ -343,6 +344,10 @@ func (o KeystoresAliasesKeyCertFileOutput) OrgId() pulumi.StringOutput {
 // Password for the Private Key if it's encrypted
 func (o KeystoresAliasesKeyCertFileOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeystoresAliasesKeyCertFile) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileOutput) Timeouts() KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFile) KeystoresAliasesKeyCertFileTimeoutsPtrOutput { return v.Timeouts }).(KeystoresAliasesKeyCertFileTimeoutsPtrOutput)
 }
 
 // Optional.Type of Alias

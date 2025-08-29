@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string AutoscalingProfile;
         /// <summary>
+        /// Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+        /// </summary>
+        public readonly bool DefaultComputeClassEnabled;
+        /// <summary>
         /// Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
         /// </summary>
         public readonly bool Enabled;
@@ -42,6 +46,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string autoscalingProfile,
 
+            bool defaultComputeClassEnabled,
+
             bool enabled,
 
             ImmutableArray<Outputs.GetClusterClusterAutoscalingResourceLimitResult> resourceLimits)
@@ -49,6 +55,7 @@ namespace Pulumi.Gcp.Container.Outputs
             AutoProvisioningDefaults = autoProvisioningDefaults;
             AutoProvisioningLocations = autoProvisioningLocations;
             AutoscalingProfile = autoscalingProfile;
+            DefaultComputeClassEnabled = defaultComputeClassEnabled;
             Enabled = enabled;
             ResourceLimits = resourceLimits;
         }

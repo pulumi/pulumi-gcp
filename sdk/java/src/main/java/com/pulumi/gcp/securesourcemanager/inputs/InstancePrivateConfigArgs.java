@@ -21,15 +21,15 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
      * CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
      * 
      */
-    @Import(name="caPool", required=true)
-    private Output<String> caPool;
+    @Import(name="caPool")
+    private @Nullable Output<String> caPool;
 
     /**
      * @return CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
      * 
      */
-    public Output<String> caPool() {
-        return this.caPool;
+    public Optional<Output<String>> caPool() {
+        return Optional.ofNullable(this.caPool);
     }
 
     /**
@@ -114,7 +114,7 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder caPool(Output<String> caPool) {
+        public Builder caPool(@Nullable Output<String> caPool) {
             $.caPool = caPool;
             return this;
         }
@@ -197,9 +197,6 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
         }
 
         public InstancePrivateConfigArgs build() {
-            if ($.caPool == null) {
-                throw new MissingRequiredPropertyException("InstancePrivateConfigArgs", "caPool");
-            }
             if ($.isPrivate == null) {
                 throw new MissingRequiredPropertyException("InstancePrivateConfigArgs", "isPrivate");
             }

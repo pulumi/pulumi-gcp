@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     initialUser: {
  *         password: "alloydb-cluster",
  *     },
+ *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",
@@ -63,6 +64,7 @@ import * as utilities from "../utilities";
  *     networkConfig: {
  *         network: _default.id,
  *     },
+ *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-secondary-instance",
@@ -100,6 +102,7 @@ import * as utilities from "../utilities";
  *         primaryClusterName: primary.name,
  *     },
  *     deletionPolicy: "FORCE",
+ *     deletionProtection: false,
  * }, {
  *     dependsOn: [primaryInstance],
  * });

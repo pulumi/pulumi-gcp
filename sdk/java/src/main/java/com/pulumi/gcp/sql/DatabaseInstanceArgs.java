@@ -25,6 +25,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     public static final DatabaseInstanceArgs Empty = new DatabaseInstanceArgs();
 
     /**
+     * The name of the BackupDR backup to restore from.
+     * 
+     */
+    @Import(name="backupdrBackup")
+    private @Nullable Output<String> backupdrBackup;
+
+    /**
+     * @return The name of the BackupDR backup to restore from.
+     * 
+     */
+    public Optional<Output<String>> backupdrBackup() {
+        return Optional.ofNullable(this.backupdrBackup);
+    }
+
+    /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
@@ -348,6 +363,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     private DatabaseInstanceArgs() {}
 
     private DatabaseInstanceArgs(DatabaseInstanceArgs $) {
+        this.backupdrBackup = $.backupdrBackup;
         this.clone = $.clone;
         this.databaseVersion = $.databaseVersion;
         this.deletionProtection = $.deletionProtection;
@@ -383,6 +399,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(DatabaseInstanceArgs defaults) {
             $ = new DatabaseInstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupdrBackup The name of the BackupDR backup to restore from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupdrBackup(@Nullable Output<String> backupdrBackup) {
+            $.backupdrBackup = backupdrBackup;
+            return this;
+        }
+
+        /**
+         * @param backupdrBackup The name of the BackupDR backup to restore from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupdrBackup(String backupdrBackup) {
+            return backupdrBackup(Output.of(backupdrBackup));
         }
 
         /**

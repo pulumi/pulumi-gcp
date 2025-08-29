@@ -130,6 +130,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class GetDatabaseInstanceResult
     {
         public readonly ImmutableArray<string> AvailableMaintenanceVersions;
+        public readonly string BackupdrBackup;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> Clones;
         public readonly string ConnectionName;
         public readonly string DatabaseVersion;
@@ -166,6 +167,8 @@ namespace Pulumi.Gcp.Sql
         [OutputConstructor]
         private GetDatabaseInstanceResult(
             ImmutableArray<string> availableMaintenanceVersions,
+
+            string backupdrBackup,
 
             ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> clones,
 
@@ -226,6 +229,7 @@ namespace Pulumi.Gcp.Sql
             ImmutableArray<Outputs.GetDatabaseInstanceSettingResult> settings)
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
+            BackupdrBackup = backupdrBackup;
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;

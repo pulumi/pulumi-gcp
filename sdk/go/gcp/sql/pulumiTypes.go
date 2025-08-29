@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -9192,6 +9192,8 @@ func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) Index(i pulum
 type GetDatabaseInstancesInstance struct {
 	// Available Maintenance versions.
 	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup string `pulumi:"backupdrBackup"`
 	// Configuration for creating a new instance as a clone of another instance.
 	Clones []GetDatabaseInstancesInstanceClone `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
@@ -9255,6 +9257,8 @@ type GetDatabaseInstancesInstanceInput interface {
 type GetDatabaseInstancesInstanceArgs struct {
 	// Available Maintenance versions.
 	AvailableMaintenanceVersions pulumi.StringArrayInput `pulumi:"availableMaintenanceVersions"`
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup pulumi.StringInput `pulumi:"backupdrBackup"`
 	// Configuration for creating a new instance as a clone of another instance.
 	Clones GetDatabaseInstancesInstanceCloneArrayInput `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
@@ -9358,6 +9362,11 @@ func (o GetDatabaseInstancesInstanceOutput) ToGetDatabaseInstancesInstanceOutput
 // Available Maintenance versions.
 func (o GetDatabaseInstancesInstanceOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the BackupDR backup to restore from.
+func (o GetDatabaseInstancesInstanceOutput) BackupdrBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.BackupdrBackup }).(pulumi.StringOutput)
 }
 
 // Configuration for creating a new instance as a clone of another instance.

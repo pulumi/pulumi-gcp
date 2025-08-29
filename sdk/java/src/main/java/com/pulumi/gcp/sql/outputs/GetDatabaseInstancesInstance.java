@@ -27,6 +27,11 @@ public final class GetDatabaseInstancesInstance {
      */
     private List<String> availableMaintenanceVersions;
     /**
+     * @return The name of the BackupDR backup to restore from.
+     * 
+     */
+    private String backupdrBackup;
+    /**
      * @return Configuration for creating a new instance as a clone of another instance.
      * 
      */
@@ -138,6 +143,13 @@ public final class GetDatabaseInstancesInstance {
      */
     public List<String> availableMaintenanceVersions() {
         return this.availableMaintenanceVersions;
+    }
+    /**
+     * @return The name of the BackupDR backup to restore from.
+     * 
+     */
+    public String backupdrBackup() {
+        return this.backupdrBackup;
     }
     /**
      * @return Configuration for creating a new instance as a clone of another instance.
@@ -310,6 +322,7 @@ public final class GetDatabaseInstancesInstance {
     @CustomType.Builder
     public static final class Builder {
         private List<String> availableMaintenanceVersions;
+        private String backupdrBackup;
         private List<GetDatabaseInstancesInstanceClone> clones;
         private String connectionName;
         private String databaseVersion;
@@ -342,6 +355,7 @@ public final class GetDatabaseInstancesInstance {
         public Builder(GetDatabaseInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableMaintenanceVersions = defaults.availableMaintenanceVersions;
+    	      this.backupdrBackup = defaults.backupdrBackup;
     	      this.clones = defaults.clones;
     	      this.connectionName = defaults.connectionName;
     	      this.databaseVersion = defaults.databaseVersion;
@@ -382,6 +396,14 @@ public final class GetDatabaseInstancesInstance {
         }
         public Builder availableMaintenanceVersions(String... availableMaintenanceVersions) {
             return availableMaintenanceVersions(List.of(availableMaintenanceVersions));
+        }
+        @CustomType.Setter
+        public Builder backupdrBackup(String backupdrBackup) {
+            if (backupdrBackup == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "backupdrBackup");
+            }
+            this.backupdrBackup = backupdrBackup;
+            return this;
         }
         @CustomType.Setter
         public Builder clones(List<GetDatabaseInstancesInstanceClone> clones) {
@@ -637,6 +659,7 @@ public final class GetDatabaseInstancesInstance {
         public GetDatabaseInstancesInstance build() {
             final var _resultValue = new GetDatabaseInstancesInstance();
             _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
+            _resultValue.backupdrBackup = backupdrBackup;
             _resultValue.clones = clones;
             _resultValue.connectionName = connectionName;
             _resultValue.databaseVersion = databaseVersion;

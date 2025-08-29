@@ -184,8 +184,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         appcheck = gcp.projects.Service("appcheck",
             project="my-project-name",
-            service="firebaseappcheck.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseappcheck.googleapis.com")
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="firestore.googleapis.com",
@@ -199,8 +198,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         appcheck = gcp.projects.Service("appcheck",
             project="my-project-name",
-            service="firebaseappcheck.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseappcheck.googleapis.com")
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="firebasestorage.googleapis.com",
@@ -215,8 +213,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         appcheck = gcp.projects.Service("appcheck",
             project="my-project-name",
-            service="firebaseappcheck.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseappcheck.googleapis.com")
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="identitytoolkit.googleapis.com",
@@ -283,8 +280,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         appcheck = gcp.projects.Service("appcheck",
             project="my-project-name",
-            service="firebaseappcheck.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseappcheck.googleapis.com")
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="firestore.googleapis.com",
@@ -298,8 +294,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         appcheck = gcp.projects.Service("appcheck",
             project="my-project-name",
-            service="firebaseappcheck.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseappcheck.googleapis.com")
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="firebasestorage.googleapis.com",
@@ -314,8 +309,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         appcheck = gcp.projects.Service("appcheck",
             project="my-project-name",
-            service="firebaseappcheck.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseappcheck.googleapis.com")
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
             service_id="identitytoolkit.googleapis.com",

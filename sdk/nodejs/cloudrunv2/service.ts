@@ -28,6 +28,9 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     scaling: {
+ *         maxInstanceCount: 100,
+ *     },
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
@@ -89,10 +92,10 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     scaling: {
+ *         maxInstanceCount: 2,
+ *     },
  *     template: {
- *         scaling: {
- *             maxInstanceCount: 2,
- *         },
  *         volumes: [{
  *             name: "cloudsql",
  *             cloudSqlInstance: {
@@ -219,6 +222,9 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     scaling: {
+ *         maxInstanceCount: 1,
+ *     },
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
@@ -235,9 +241,6 @@ import * as utilities from "../utilities";
  *             accelerator: "nvidia-l4",
  *         },
  *         gpuZonalRedundancyDisabled: true,
- *         scaling: {
- *             maxInstanceCount: 1,
- *         },
  *     },
  * });
  * ```

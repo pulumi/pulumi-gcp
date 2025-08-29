@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,8 +78,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -127,8 +127,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -202,12 +202,6 @@ type Membership struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrOutput `pulumi:"authority"`
-	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-	//
-	// > **Warning:** `description` is deprecated and will be removed in a future major release.
-	//
-	// Deprecated: `description` is deprecated and will be removed in a future major release.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -276,12 +270,6 @@ type membershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
-	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-	//
-	// > **Warning:** `description` is deprecated and will be removed in a future major release.
-	//
-	// Deprecated: `description` is deprecated and will be removed in a future major release.
-	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -313,12 +301,6 @@ type MembershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
-	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-	//
-	// > **Warning:** `description` is deprecated and will be removed in a future major release.
-	//
-	// Deprecated: `description` is deprecated and will be removed in a future major release.
-	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -354,12 +336,6 @@ type membershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
-	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-	//
-	// > **Warning:** `description` is deprecated and will be removed in a future major release.
-	//
-	// Deprecated: `description` is deprecated and will be removed in a future major release.
-	Description *string `pulumi:"description"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
 	Endpoint *MembershipEndpoint `pulumi:"endpoint"`
@@ -385,12 +361,6 @@ type MembershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
-	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-	//
-	// > **Warning:** `description` is deprecated and will be removed in a future major release.
-	//
-	// Deprecated: `description` is deprecated and will be removed in a future major release.
-	Description pulumi.StringPtrInput
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
 	Endpoint MembershipEndpointPtrInput
@@ -502,15 +472,6 @@ func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) Mem
 // Structure is documented below.
 func (o MembershipOutput) Authority() MembershipAuthorityPtrOutput {
 	return o.ApplyT(func(v *Membership) MembershipAuthorityPtrOutput { return v.Authority }).(MembershipAuthorityPtrOutput)
-}
-
-// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-//
-// > **Warning:** `description` is deprecated and will be removed in a future major release.
-//
-// Deprecated: `description` is deprecated and will be removed in a future major release.
-func (o MembershipOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Membership) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -62,7 +62,6 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	AllowFewerZonesDeployment      bool                                      `pulumi:"allowFewerZonesDeployment"`
 	AuthorizationMode              string                                    `pulumi:"authorizationMode"`
 	AutomatedBackupConfigs         []GetClusterAutomatedBackupConfig         `pulumi:"automatedBackupConfigs"`
 	BackupCollection               string                                    `pulumi:"backupCollection"`
@@ -135,10 +134,6 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterRe
 
 func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
 	return o
-}
-
-func (o LookupClusterResultOutput) AllowFewerZonesDeployment() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupClusterResult) bool { return v.AllowFewerZonesDeployment }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) AuthorizationMode() pulumi.StringOutput {

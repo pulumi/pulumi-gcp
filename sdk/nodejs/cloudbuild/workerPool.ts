@@ -32,10 +32,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicenetworking = new gcp.projects.Service("servicenetworking", {
- *     service: "servicenetworking.googleapis.com",
- *     disableOnDestroy: false,
- * });
+ * const servicenetworking = new gcp.projects.Service("servicenetworking", {service: "servicenetworking.googleapis.com"});
  * const network = new gcp.compute.Network("network", {
  *     name: "my-network",
  *     autoCreateSubnetworks: false,

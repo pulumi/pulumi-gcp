@@ -44,7 +44,6 @@ import javax.annotation.Nullable;
  *         var project = new Service("project", ServiceArgs.builder()
  *             .project("your-project-id")
  *             .service("iam.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *     }

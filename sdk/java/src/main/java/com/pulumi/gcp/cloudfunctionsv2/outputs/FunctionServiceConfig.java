@@ -87,7 +87,8 @@ public final class FunctionServiceConfig {
      */
     private @Nullable List<FunctionServiceConfigSecretVolume> secretVolumes;
     /**
-     * @return Name of the service associated with a Function.
+     * @return (Output)
+     * Name of the service associated with a Function.
      * 
      */
     private @Nullable String service;
@@ -216,7 +217,8 @@ public final class FunctionServiceConfig {
         return this.secretVolumes == null ? List.of() : this.secretVolumes;
     }
     /**
-     * @return Name of the service associated with a Function.
+     * @return (Output)
+     * Name of the service associated with a Function.
      * 
      */
     public Optional<String> service() {

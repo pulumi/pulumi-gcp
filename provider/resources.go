@@ -32,7 +32,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
-	"github.com/pulumi/pulumi-gcp/provider/v8/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v9/pkg/version"
 )
 
 // all of the Google Cloud Platform token components used below.

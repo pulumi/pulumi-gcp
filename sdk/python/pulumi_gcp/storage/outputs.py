@@ -1549,10 +1549,10 @@ class BucketRetentionPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 retention_period: _builtins.int,
+                 retention_period: _builtins.str,
                  is_locked: Optional[_builtins.bool] = None):
         """
-        :param _builtins.int retention_period: The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+        :param _builtins.str retention_period: The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
         :param _builtins.bool is_locked: If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
         """
         pulumi.set(__self__, "retention_period", retention_period)
@@ -1561,9 +1561,9 @@ class BucketRetentionPolicy(dict):
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> _builtins.int:
+    def retention_period(self) -> _builtins.str:
         """
-        The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+        The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
         """
         return pulumi.get(self, "retention_period")
 
@@ -6141,10 +6141,10 @@ class GetBucketObjectsBucketObjectResult(dict):
 class GetBucketRetentionPolicyResult(dict):
     def __init__(__self__, *,
                  is_locked: _builtins.bool,
-                 retention_period: _builtins.int):
+                 retention_period: _builtins.str):
         """
         :param _builtins.bool is_locked: If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
-        :param _builtins.int retention_period: The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+        :param _builtins.str retention_period: The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
         """
         pulumi.set(__self__, "is_locked", is_locked)
         pulumi.set(__self__, "retention_period", retention_period)
@@ -6159,7 +6159,7 @@ class GetBucketRetentionPolicyResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> _builtins.int:
+    def retention_period(self) -> _builtins.str:
         """
         The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
         """

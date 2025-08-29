@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * const project = new gcp.projects.Service("project", {
  *     project: "your-project-id",
  *     service: "iam.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * ```
  *

@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp/provider/v8
+module github.com/pulumi/pulumi-gcp/provider/v9
 
 go 1.23.0
 

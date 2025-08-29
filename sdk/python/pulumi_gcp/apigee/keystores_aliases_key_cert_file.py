@@ -26,9 +26,9 @@ class KeystoresAliasesKeyCertFileArgs:
                  environment: pulumi.Input[_builtins.str],
                  keystore: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['KeystoresAliasesKeyCertFileTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a KeystoresAliasesKeyCertFile resource.
         :param pulumi.Input[_builtins.str] alias: Alias Name
@@ -39,8 +39,6 @@ class KeystoresAliasesKeyCertFileArgs:
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] keystore: Keystore Name
         :param pulumi.Input[_builtins.str] org_id: Organization ID associated with the alias, without organization/ prefix
-        :param pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs'] certs_info: Chain of certificates under this alias.
-               Structure is documented below.
         :param pulumi.Input[_builtins.str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[_builtins.str] password: Password for the Private Key if it's encrypted
         """
@@ -49,12 +47,12 @@ class KeystoresAliasesKeyCertFileArgs:
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "keystore", keystore)
         pulumi.set(__self__, "org_id", org_id)
-        if certs_info is not None:
-            pulumi.set(__self__, "certs_info", certs_info)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
@@ -120,19 +118,6 @@ class KeystoresAliasesKeyCertFileArgs:
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="certsInfo")
-    def certs_info(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]:
-        """
-        Chain of certificates under this alias.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "certs_info")
-
-    @certs_info.setter
-    def certs_info(self, value: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]):
-        pulumi.set(self, "certs_info", value)
-
-    @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -156,18 +141,28 @@ class KeystoresAliasesKeyCertFileArgs:
     def password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "password", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['KeystoresAliasesKeyCertFileTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _KeystoresAliasesKeyCertFileState:
     def __init__(__self__, *,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
+                 certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]]] = None,
                  environment: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  keystore: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['KeystoresAliasesKeyCertFileTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeystoresAliasesKeyCertFile resources.
@@ -176,7 +171,7 @@ class _KeystoresAliasesKeyCertFileState:
                
                
                - - -
-        :param pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs'] certs_info: Chain of certificates under this alias.
+        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] key: Private Key content, omit if uploading to truststore
@@ -189,8 +184,8 @@ class _KeystoresAliasesKeyCertFileState:
             pulumi.set(__self__, "alias", alias)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
-        if certs_info is not None:
-            pulumi.set(__self__, "certs_info", certs_info)
+        if certs_infos is not None:
+            pulumi.set(__self__, "certs_infos", certs_infos)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if key is not None:
@@ -201,6 +196,8 @@ class _KeystoresAliasesKeyCertFileState:
             pulumi.set(__self__, "org_id", org_id)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -232,17 +229,17 @@ class _KeystoresAliasesKeyCertFileState:
         pulumi.set(self, "cert", value)
 
     @_builtins.property
-    @pulumi.getter(name="certsInfo")
-    def certs_info(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]:
+    @pulumi.getter(name="certsInfos")
+    def certs_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]]]:
         """
         Chain of certificates under this alias.
         Structure is documented below.
         """
-        return pulumi.get(self, "certs_info")
+        return pulumi.get(self, "certs_infos")
 
-    @certs_info.setter
-    def certs_info(self, value: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]):
-        pulumi.set(self, "certs_info", value)
+    @certs_infos.setter
+    def certs_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]]]):
+        pulumi.set(self, "certs_infos", value)
 
     @_builtins.property
     @pulumi.getter
@@ -306,6 +303,15 @@ class _KeystoresAliasesKeyCertFileState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['KeystoresAliasesKeyCertFileTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional.Type of Alias
@@ -325,12 +331,12 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 certs_info: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]] = None,
                  environment: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  keystore: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         An alias from a key/certificate pair.
@@ -366,8 +372,6 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']] certs_info: Chain of certificates under this alias.
-               Structure is documented below.
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[_builtins.str] keystore: Keystore Name
@@ -424,12 +428,12 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 certs_info: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]] = None,
                  environment: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  keystore: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -445,7 +449,6 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
             if cert is None and not opts.urn:
                 raise TypeError("Missing required property 'cert'")
             __props__.__dict__["cert"] = cert
-            __props__.__dict__["certs_info"] = certs_info
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
             __props__.__dict__["environment"] = environment
@@ -457,6 +460,8 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["timeouts"] = timeouts
+            __props__.__dict__["certs_infos"] = None
             __props__.__dict__["type"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["key", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -472,12 +477,13 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: Optional[pulumi.Input[_builtins.str]] = None,
             cert: Optional[pulumi.Input[_builtins.str]] = None,
-            certs_info: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]] = None,
+            certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]]]] = None,
             environment: Optional[pulumi.Input[_builtins.str]] = None,
             key: Optional[pulumi.Input[_builtins.str]] = None,
             keystore: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileTimeoutsArgs', 'KeystoresAliasesKeyCertFileTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None) -> 'KeystoresAliasesKeyCertFile':
         """
         Get an existing KeystoresAliasesKeyCertFile resource's state with the given name, id, and optional extra
@@ -491,7 +497,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']] certs_info: Chain of certificates under this alias.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] key: Private Key content, omit if uploading to truststore
@@ -506,12 +512,13 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
 
         __props__.__dict__["alias"] = alias
         __props__.__dict__["cert"] = cert
-        __props__.__dict__["certs_info"] = certs_info
+        __props__.__dict__["certs_infos"] = certs_infos
         __props__.__dict__["environment"] = environment
         __props__.__dict__["key"] = key
         __props__.__dict__["keystore"] = keystore
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["password"] = password
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
         return KeystoresAliasesKeyCertFile(resource_name, opts=opts, __props__=__props__)
 
@@ -535,13 +542,13 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         return pulumi.get(self, "cert")
 
     @_builtins.property
-    @pulumi.getter(name="certsInfo")
-    def certs_info(self) -> pulumi.Output['outputs.KeystoresAliasesKeyCertFileCertsInfo']:
+    @pulumi.getter(name="certsInfos")
+    def certs_infos(self) -> pulumi.Output[Sequence['outputs.KeystoresAliasesKeyCertFileCertsInfo']]:
         """
         Chain of certificates under this alias.
         Structure is documented below.
         """
-        return pulumi.get(self, "certs_info")
+        return pulumi.get(self, "certs_infos")
 
     @_builtins.property
     @pulumi.getter
@@ -582,6 +589,11 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         Password for the Private Key if it's encrypted
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.KeystoresAliasesKeyCertFileTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter

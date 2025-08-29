@@ -280,7 +280,6 @@ namespace Pulumi.Gcp.Vertex
     ///     {
     ///         ServiceName = "aiplatform.googleapis.com",
     ///         Project = project.ProjectId,
-    ///         DisableOnDestroy = false,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

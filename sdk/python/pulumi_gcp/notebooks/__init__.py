@@ -13,7 +13,6 @@ from .instance import *
 from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *
-from .location import *
 from .runtime import *
 from .runtime_iam_binding import *
 from .runtime_iam_member import *

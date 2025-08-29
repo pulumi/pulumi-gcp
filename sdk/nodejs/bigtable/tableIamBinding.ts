@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * });
  * const editor = new gcp.bigtable.TableIamPolicy("editor", {
  *     project: "your-project",
- *     instance: "your-bigtable-instance",
+ *     instanceName: "your-bigtable-instance",
  *     table: "your-bigtable-table",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.bigtable.TableIamBinding("editor", {
  *     table: "your-bigtable-table",
- *     instance: "your-bigtable-instance",
+ *     instanceName: "your-bigtable-instance",
  *     role: "roles/bigtable.user",
  *     members: ["user:jane@example.com"],
  * });
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.bigtable.TableIamMember("editor", {
  *     table: "your-bigtable-table",
- *     instance: "your-bigtable-instance",
+ *     instanceName: "your-bigtable-instance",
  *     role: "roles/bigtable.user",
  *     member: "user:jane@example.com",
  * });
@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  * });
  * const editor = new gcp.bigtable.TableIamPolicy("editor", {
  *     project: "your-project",
- *     instance: "your-bigtable-instance",
+ *     instanceName: "your-bigtable-instance",
  *     table: "your-bigtable-table",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.bigtable.TableIamBinding("editor", {
  *     table: "your-bigtable-table",
- *     instance: "your-bigtable-instance",
+ *     instanceName: "your-bigtable-instance",
  *     role: "roles/bigtable.user",
  *     members: ["user:jane@example.com"],
  * });
@@ -107,7 +107,7 @@ import * as utilities from "../utilities";
  *
  * const editor = new gcp.bigtable.TableIamMember("editor", {
  *     table: "your-bigtable-table",
- *     instance: "your-bigtable-instance",
+ *     instanceName: "your-bigtable-instance",
  *     role: "roles/bigtable.user",
  *     member: "user:jane@example.com",
  * });
@@ -175,7 +175,7 @@ export class TableIamBinding extends pulumi.CustomResource {
     /**
      * The name or relative resource id of the instance that owns the table.
      */
-    public readonly instance!: pulumi.Output<string>;
+    public readonly instanceName!: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -222,15 +222,15 @@ export class TableIamBinding extends pulumi.CustomResource {
             const state = argsOrState as TableIamBindingState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["members"] = state ? state.members : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as TableIamBindingArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instance'");
+            if ((!args || args.instanceName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceName'");
             }
             if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
@@ -242,7 +242,7 @@ export class TableIamBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'table'");
             }
             resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["members"] = args ? args.members : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
@@ -266,7 +266,7 @@ export interface TableIamBindingState {
     /**
      * The name or relative resource id of the instance that owns the table.
      */
-    instance?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -307,7 +307,7 @@ export interface TableIamBindingArgs {
     /**
      * The name or relative resource id of the instance that owns the table.
      */
-    instance: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:

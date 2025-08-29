@@ -635,6 +635,60 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudbuild Trigger Developer Connect Pull
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const developer_connect_trigger_pull = new gcp.cloudbuild.Trigger("developer-connect-trigger-pull", {
+ *     location: "us-central1",
+ *     developerConnectEventConfig: {
+ *         gitRepositoryLink: "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+ *         pullRequest: {
+ *             branch: "^master$",
+ *             invertRegex: false,
+ *             commentControl: "COMMENTS_ENABLED",
+ *         },
+ *     },
+ *     filename: "cloudbuild.yaml",
+ * });
+ * ```
+ * ### Cloudbuild Trigger Developer Connect Push
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const developer_connect_trigger_push = new gcp.cloudbuild.Trigger("developer-connect-trigger-push", {
+ *     location: "us-central1",
+ *     developerConnectEventConfig: {
+ *         gitRepositoryLink: "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+ *         push: {
+ *             tag: "^0.1.*",
+ *             invertRegex: true,
+ *         },
+ *     },
+ *     filename: "cloudbuild.yaml",
+ * });
+ * ```
+ * ### Cloudbuild Trigger Developer Connect Push Branch
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dc_trigger_regular_push_branch = new gcp.cloudbuild.Trigger("dc-trigger-regular-push-branch", {
+ *     location: "us-central1",
+ *     developerConnectEventConfig: {
+ *         gitRepositoryLink: "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+ *         push: {
+ *             branch: "main",
+ *         },
+ *     },
+ *     filename: "cloudbuild.yaml",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -719,6 +773,11 @@ export class Trigger extends pulumi.CustomResource {
      * Human-readable description of the trigger.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Configuration for triggers that respond to Developer Connect events.
+     * Structure is documented below.
+     */
+    public readonly developerConnectEventConfig!: pulumi.Output<outputs.cloudbuild.TriggerDeveloperConnectEventConfig | undefined>;
     /**
      * Whether the trigger is disabled or not. If true, the trigger will never result in a build.
      */
@@ -863,6 +922,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["build"] = state ? state.build : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["developerConnectEventConfig"] = state ? state.developerConnectEventConfig : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["filename"] = state ? state.filename : undefined;
             resourceInputs["filter"] = state ? state.filter : undefined;
@@ -889,6 +949,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["bitbucketServerTriggerConfig"] = args ? args.bitbucketServerTriggerConfig : undefined;
             resourceInputs["build"] = args ? args.build : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["developerConnectEventConfig"] = args ? args.developerConnectEventConfig : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["filename"] = args ? args.filename : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
@@ -945,6 +1006,11 @@ export interface TriggerState {
      * Human-readable description of the trigger.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Configuration for triggers that respond to Developer Connect events.
+     * Structure is documented below.
+     */
+    developerConnectEventConfig?: pulumi.Input<inputs.cloudbuild.TriggerDeveloperConnectEventConfig>;
     /**
      * Whether the trigger is disabled or not. If true, the trigger will never result in a build.
      */
@@ -1097,6 +1163,11 @@ export interface TriggerArgs {
      * Human-readable description of the trigger.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Configuration for triggers that respond to Developer Connect events.
+     * Structure is documented below.
+     */
+    developerConnectEventConfig?: pulumi.Input<inputs.cloudbuild.TriggerDeveloperConnectEventConfig>;
     /**
      * Whether the trigger is disabled or not. If true, the trigger will never result in a build.
      */

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiIndexMetadataConfig {
     /**
-     * @return The configuration with regard to the algorithms used for efficient search.
+     * @return The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
      * Structure is documented below.
      * 
      */
@@ -61,7 +61,7 @@ public final class AiIndexMetadataConfig {
 
     private AiIndexMetadataConfig() {}
     /**
-     * @return The configuration with regard to the algorithms used for efficient search.
+     * @return The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
      * Structure is documented below.
      * 
      */

@@ -22,6 +22,7 @@ __all__ = ['DatabaseInstanceArgs', 'DatabaseInstance']
 class DatabaseInstanceArgs:
     def __init__(__self__, *,
                  database_version: pulumi.Input[_builtins.str],
+                 backupdr_backup: Optional[pulumi.Input[_builtins.str]] = None,
                  clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -49,6 +50,7 @@ class DatabaseInstanceArgs:
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
+        :param pulumi.Input[_builtins.str] backupdr_backup: The name of the BackupDR backup to restore from.
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -92,6 +94,8 @@ class DatabaseInstanceArgs:
                configuration is detailed below. Required if `clone` is not set.
         """
         pulumi.set(__self__, "database_version", database_version)
+        if backupdr_backup is not None:
+            pulumi.set(__self__, "backupdr_backup", backupdr_backup)
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
         if deletion_protection is not None:
@@ -144,6 +148,18 @@ class DatabaseInstanceArgs:
     @database_version.setter
     def database_version(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "database_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupdrBackup")
+    def backupdr_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the BackupDR backup to restore from.
+        """
+        return pulumi.get(self, "backupdr_backup")
+
+    @backupdr_backup.setter
+    def backupdr_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "backupdr_backup", value)
 
     @_builtins.property
     @pulumi.getter
@@ -367,6 +383,7 @@ class DatabaseInstanceArgs:
 class _DatabaseInstanceState:
     def __init__(__self__, *,
                  available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backupdr_backup: Optional[pulumi.Input[_builtins.str]] = None,
                  clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
                  connection_name: Optional[pulumi.Input[_builtins.str]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -398,6 +415,7 @@ class _DatabaseInstanceState:
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
+        :param pulumi.Input[_builtins.str] backupdr_backup: The name of the BackupDR backup to restore from.
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -462,6 +480,8 @@ class _DatabaseInstanceState:
         """
         if available_maintenance_versions is not None:
             pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
+        if backupdr_backup is not None:
+            pulumi.set(__self__, "backupdr_backup", backupdr_backup)
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
         if connection_name is not None:
@@ -530,6 +550,18 @@ class _DatabaseInstanceState:
     @available_maintenance_versions.setter
     def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "available_maintenance_versions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupdrBackup")
+    def backupdr_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the BackupDR backup to restore from.
+        """
+        return pulumi.get(self, "backupdr_backup")
+
+    @backupdr_backup.setter
+    def backupdr_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "backupdr_backup", value)
 
     @_builtins.property
     @pulumi.getter
@@ -903,6 +935,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backupdr_backup: Optional[pulumi.Input[_builtins.str]] = None,
                  clone: Optional[pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1156,6 +1189,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] backupdr_backup: The name of the BackupDR backup to restore from.
         :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -1461,6 +1495,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backupdr_backup: Optional[pulumi.Input[_builtins.str]] = None,
                  clone: Optional[pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1487,6 +1522,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseInstanceArgs.__new__(DatabaseInstanceArgs)
 
+            __props__.__dict__["backupdr_backup"] = backupdr_backup
             __props__.__dict__["clone"] = clone
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
@@ -1531,6 +1567,7 @@ class DatabaseInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backupdr_backup: Optional[pulumi.Input[_builtins.str]] = None,
             clone: Optional[pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
             connection_name: Optional[pulumi.Input[_builtins.str]] = None,
             database_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1567,6 +1604,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
+        :param pulumi.Input[_builtins.str] backupdr_backup: The name of the BackupDR backup to restore from.
         :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -1634,6 +1672,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__ = _DatabaseInstanceState.__new__(_DatabaseInstanceState)
 
         __props__.__dict__["available_maintenance_versions"] = available_maintenance_versions
+        __props__.__dict__["backupdr_backup"] = backupdr_backup
         __props__.__dict__["clone"] = clone
         __props__.__dict__["connection_name"] = connection_name
         __props__.__dict__["database_version"] = database_version
@@ -1671,6 +1710,14 @@ class DatabaseInstance(pulumi.CustomResource):
         The list of all maintenance versions applicable on the instance.
         """
         return pulumi.get(self, "available_maintenance_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="backupdrBackup")
+    def backupdr_backup(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the BackupDR backup to restore from.
+        """
+        return pulumi.get(self, "backupdr_backup")
 
     @_builtins.property
     @pulumi.getter

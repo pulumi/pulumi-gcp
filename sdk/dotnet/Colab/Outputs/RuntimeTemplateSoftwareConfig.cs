@@ -18,23 +18,11 @@ namespace Pulumi.Gcp.Colab.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RuntimeTemplateSoftwareConfigEnv> Envs;
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// Post startup script config.
-        /// Structure is documented below.
-        /// 
-        /// &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-        /// </summary>
-        public readonly Outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig? PostStartupScriptConfig;
 
         [OutputConstructor]
-        private RuntimeTemplateSoftwareConfig(
-            ImmutableArray<Outputs.RuntimeTemplateSoftwareConfigEnv> envs,
-
-            Outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig? postStartupScriptConfig)
+        private RuntimeTemplateSoftwareConfig(ImmutableArray<Outputs.RuntimeTemplateSoftwareConfigEnv> envs)
         {
             Envs = envs;
-            PostStartupScriptConfig = postStartupScriptConfig;
         }
     }
 }

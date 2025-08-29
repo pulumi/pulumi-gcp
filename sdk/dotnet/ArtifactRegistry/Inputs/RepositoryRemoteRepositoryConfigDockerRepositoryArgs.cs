@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
 
         /// <summary>
         /// Address of the remote repository.
-        /// Default value is `DOCKER_HUB`.
         /// Possible values are: `DOCKER_HUB`.
         /// </summary>
         [Input("publicRepository")]

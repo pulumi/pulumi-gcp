@@ -458,6 +458,9 @@ class PacketMirroring(pulumi.CustomResource):
                 "instances": [{
                     "url": mirror.id,
                 }],
+                "subnetworks": [{
+                    "url": default_subnetwork.id,
+                }],
             },
             filter={
                 "ip_protocols": ["tcp"],
@@ -597,6 +600,9 @@ class PacketMirroring(pulumi.CustomResource):
                 "tags": ["foo"],
                 "instances": [{
                     "url": mirror.id,
+                }],
+                "subnetworks": [{
+                    "url": default_subnetwork.id,
                 }],
             },
             filter={

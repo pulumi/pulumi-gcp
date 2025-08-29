@@ -533,6 +533,7 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
+                Output.of(Alias.builder().type("gcp:bigquery/appProfile:AppProfile").build()),
                 Output.of(Alias.builder().type("gcp:bigquery/appProfile:AppProfile").build())
             ))
             .build();

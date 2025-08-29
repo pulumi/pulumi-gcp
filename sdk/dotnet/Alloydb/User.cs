@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Password = "cluster_secret",
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
@@ -130,6 +131,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Password = "cluster_secret",
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()

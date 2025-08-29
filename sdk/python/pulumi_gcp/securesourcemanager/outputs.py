@@ -167,10 +167,10 @@ class InstancePrivateConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "caPool":
-            suggest = "ca_pool"
-        elif key == "isPrivate":
+        if key == "isPrivate":
             suggest = "is_private"
+        elif key == "caPool":
+            suggest = "ca_pool"
         elif key == "httpServiceAttachment":
             suggest = "http_service_attachment"
         elif key == "sshServiceAttachment":
@@ -188,32 +188,25 @@ class InstancePrivateConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 ca_pool: _builtins.str,
                  is_private: _builtins.bool,
+                 ca_pool: Optional[_builtins.str] = None,
                  http_service_attachment: Optional[_builtins.str] = None,
                  ssh_service_attachment: Optional[_builtins.str] = None):
         """
-        :param _builtins.str ca_pool: CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
         :param _builtins.bool is_private: 'Indicate if it's private instance.'
+        :param _builtins.str ca_pool: CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
         :param _builtins.str http_service_attachment: (Output)
                Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         :param _builtins.str ssh_service_attachment: (Output)
                Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         """
-        pulumi.set(__self__, "ca_pool", ca_pool)
         pulumi.set(__self__, "is_private", is_private)
+        if ca_pool is not None:
+            pulumi.set(__self__, "ca_pool", ca_pool)
         if http_service_attachment is not None:
             pulumi.set(__self__, "http_service_attachment", http_service_attachment)
         if ssh_service_attachment is not None:
             pulumi.set(__self__, "ssh_service_attachment", ssh_service_attachment)
-
-    @_builtins.property
-    @pulumi.getter(name="caPool")
-    def ca_pool(self) -> _builtins.str:
-        """
-        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-        """
-        return pulumi.get(self, "ca_pool")
 
     @_builtins.property
     @pulumi.getter(name="isPrivate")
@@ -222,6 +215,14 @@ class InstancePrivateConfig(dict):
         'Indicate if it's private instance.'
         """
         return pulumi.get(self, "is_private")
+
+    @_builtins.property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> Optional[_builtins.str]:
+        """
+        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+        """
+        return pulumi.get(self, "ca_pool")
 
     @_builtins.property
     @pulumi.getter(name="httpServiceAttachment")

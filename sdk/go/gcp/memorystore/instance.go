@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,10 +29,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -116,10 +116,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -179,7 +179,6 @@ import (
 //				EngineConfigs: pulumi.StringMap{
 //					"maxmemory-policy": pulumi.String("volatile-ttl"),
 //				},
-//				AllowFewerZonesDeployment: pulumi.Bool(true),
 //				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
 //					Zone: pulumi.String("us-central1-b"),
@@ -228,10 +227,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -308,10 +307,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -500,11 +499,6 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment pulumi.BoolPtrOutput `pulumi:"allowFewerZonesDeployment"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -684,11 +678,6 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment *bool `pulumi:"allowFewerZonesDeployment"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -825,11 +814,6 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment pulumi.BoolPtrInput
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -970,11 +954,6 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment *bool `pulumi:"allowFewerZonesDeployment"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -1058,11 +1037,6 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment pulumi.BoolPtrInput
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -1229,14 +1203,6 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
-}
-
-// Allows customers to specify if they are okay with deploying a multi-zone
-// instance in less than 3 zones. Once set, if there is a zonal outage during
-// the instance creation, the instance will only be deployed in 2 zones, and
-// stay within the 2 zones for its lifecycle.
-func (o InstanceOutput) AllowFewerZonesDeployment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AllowFewerZonesDeployment }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Immutable. Authorization mode of the instance. Possible values:

@@ -20,7 +20,6 @@ public final class RepositoryRemoteRepositoryConfigNpmRepository {
     private @Nullable RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository customRepository;
     /**
      * @return Address of the remote repository.
-     * Default value is `NPMJS`.
      * Possible values are: `NPMJS`.
      * 
      */
@@ -37,7 +36,6 @@ public final class RepositoryRemoteRepositoryConfigNpmRepository {
     }
     /**
      * @return Address of the remote repository.
-     * Default value is `NPMJS`.
      * Possible values are: `NPMJS`.
      * 
      */

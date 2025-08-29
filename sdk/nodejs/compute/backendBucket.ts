@@ -212,6 +212,11 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.BackendBucketParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -244,6 +249,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
             resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
@@ -260,6 +266,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
             resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -325,6 +332,11 @@ export interface BackendBucketState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.BackendBucketParams>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -386,6 +398,11 @@ export interface BackendBucketArgs {
      * last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.BackendBucketParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

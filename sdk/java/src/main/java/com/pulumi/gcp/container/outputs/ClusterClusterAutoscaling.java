@@ -38,6 +38,11 @@ public final class ClusterClusterAutoscaling {
      */
     private @Nullable String autoscalingProfile;
     /**
+     * @return Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+     * 
+     */
+    private @Nullable Boolean defaultComputeClassEnabled;
+    /**
      * @return Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
      * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * 
@@ -82,6 +87,13 @@ public final class ClusterClusterAutoscaling {
         return Optional.ofNullable(this.autoscalingProfile);
     }
     /**
+     * @return Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+     * 
+     */
+    public Optional<Boolean> defaultComputeClassEnabled() {
+        return Optional.ofNullable(this.defaultComputeClassEnabled);
+    }
+    /**
      * @return Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
      * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * 
@@ -112,6 +124,7 @@ public final class ClusterClusterAutoscaling {
         private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults;
         private @Nullable List<String> autoProvisioningLocations;
         private @Nullable String autoscalingProfile;
+        private @Nullable Boolean defaultComputeClassEnabled;
         private @Nullable Boolean enabled;
         private @Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits;
         public Builder() {}
@@ -120,6 +133,7 @@ public final class ClusterClusterAutoscaling {
     	      this.autoProvisioningDefaults = defaults.autoProvisioningDefaults;
     	      this.autoProvisioningLocations = defaults.autoProvisioningLocations;
     	      this.autoscalingProfile = defaults.autoscalingProfile;
+    	      this.defaultComputeClassEnabled = defaults.defaultComputeClassEnabled;
     	      this.enabled = defaults.enabled;
     	      this.resourceLimits = defaults.resourceLimits;
         }
@@ -146,6 +160,12 @@ public final class ClusterClusterAutoscaling {
             return this;
         }
         @CustomType.Setter
+        public Builder defaultComputeClassEnabled(@Nullable Boolean defaultComputeClassEnabled) {
+
+            this.defaultComputeClassEnabled = defaultComputeClassEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
             this.enabled = enabled;
@@ -165,6 +185,7 @@ public final class ClusterClusterAutoscaling {
             _resultValue.autoProvisioningDefaults = autoProvisioningDefaults;
             _resultValue.autoProvisioningLocations = autoProvisioningLocations;
             _resultValue.autoscalingProfile = autoscalingProfile;
+            _resultValue.defaultComputeClassEnabled = defaultComputeClassEnabled;
             _resultValue.enabled = enabled;
             _resultValue.resourceLimits = resourceLimits;
             return _resultValue;

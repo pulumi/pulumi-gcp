@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,6 +73,7 @@ type LookupTriggerResult struct {
 	Builds                        []GetTriggerBuild                        `pulumi:"builds"`
 	CreateTime                    string                                   `pulumi:"createTime"`
 	Description                   string                                   `pulumi:"description"`
+	DeveloperConnectEventConfigs  []GetTriggerDeveloperConnectEventConfig  `pulumi:"developerConnectEventConfigs"`
 	Disabled                      bool                                     `pulumi:"disabled"`
 	Filename                      string                                   `pulumi:"filename"`
 	Filter                        string                                   `pulumi:"filter"`
@@ -157,6 +158,12 @@ func (o LookupTriggerResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupTriggerResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupTriggerResultOutput) DeveloperConnectEventConfigs() GetTriggerDeveloperConnectEventConfigArrayOutput {
+	return o.ApplyT(func(v LookupTriggerResult) []GetTriggerDeveloperConnectEventConfig {
+		return v.DeveloperConnectEventConfigs
+	}).(GetTriggerDeveloperConnectEventConfigArrayOutput)
 }
 
 func (o LookupTriggerResultOutput) Disabled() pulumi.BoolOutput {

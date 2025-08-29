@@ -138,7 +138,6 @@ namespace Pulumi.Gcp.MemoryStore
     [OutputType]
     public sealed class GetInstanceResult
     {
-        public readonly bool AllowFewerZonesDeployment;
         public readonly string AuthorizationMode;
         public readonly ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> AutomatedBackupConfigs;
         public readonly string BackupCollection;
@@ -185,8 +184,6 @@ namespace Pulumi.Gcp.MemoryStore
 
         [OutputConstructor]
         private GetInstanceResult(
-            bool allowFewerZonesDeployment,
-
             string authorizationMode,
 
             ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> automatedBackupConfigs,
@@ -267,7 +264,6 @@ namespace Pulumi.Gcp.MemoryStore
 
             ImmutableArray<Outputs.GetInstanceZoneDistributionConfigResult> zoneDistributionConfigs)
         {
-            AllowFewerZonesDeployment = allowFewerZonesDeployment;
             AuthorizationMode = authorizationMode;
             AutomatedBackupConfigs = automatedBackupConfigs;
             BackupCollection = backupCollection;

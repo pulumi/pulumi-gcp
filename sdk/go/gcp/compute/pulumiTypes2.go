@@ -7,11 +7,612 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.  Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+}
+
+// GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs and GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput` via:
+//
+//	GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{...}
+type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput
+	ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput
+}
+
+type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.  Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+}
+
+func (GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return i.ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+// GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput is an input type that accepts GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArray and GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput` via:
+//
+//	GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArray{ GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{...} }
+type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput
+	ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput
+}
+
+type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArray []GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput
+
+func (GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArray) ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return i.ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArray) ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption
+// request for the given KMS key. If absent, the Compute
+// Engine default service account is used.
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.  Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
+		return vs[0].([]GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+type GetRegionInstanceTemplateGuestAccelerator struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count int `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetRegionInstanceTemplateGuestAcceleratorInput is an input type that accepts GetRegionInstanceTemplateGuestAcceleratorArgs and GetRegionInstanceTemplateGuestAcceleratorOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateGuestAcceleratorInput` via:
+//
+//	GetRegionInstanceTemplateGuestAcceleratorArgs{...}
+type GetRegionInstanceTemplateGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateGuestAcceleratorOutput() GetRegionInstanceTemplateGuestAcceleratorOutput
+	ToGetRegionInstanceTemplateGuestAcceleratorOutputWithContext(context.Context) GetRegionInstanceTemplateGuestAcceleratorOutput
+}
+
+type GetRegionInstanceTemplateGuestAcceleratorArgs struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRegionInstanceTemplateGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateGuestAcceleratorArgs) ToGetRegionInstanceTemplateGuestAcceleratorOutput() GetRegionInstanceTemplateGuestAcceleratorOutput {
+	return i.ToGetRegionInstanceTemplateGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateGuestAcceleratorArgs) ToGetRegionInstanceTemplateGuestAcceleratorOutputWithContext(ctx context.Context) GetRegionInstanceTemplateGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateGuestAcceleratorOutput)
+}
+
+// GetRegionInstanceTemplateGuestAcceleratorArrayInput is an input type that accepts GetRegionInstanceTemplateGuestAcceleratorArray and GetRegionInstanceTemplateGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateGuestAcceleratorArrayInput` via:
+//
+//	GetRegionInstanceTemplateGuestAcceleratorArray{ GetRegionInstanceTemplateGuestAcceleratorArgs{...} }
+type GetRegionInstanceTemplateGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateGuestAcceleratorArrayOutput() GetRegionInstanceTemplateGuestAcceleratorArrayOutput
+	ToGetRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(context.Context) GetRegionInstanceTemplateGuestAcceleratorArrayOutput
+}
+
+type GetRegionInstanceTemplateGuestAcceleratorArray []GetRegionInstanceTemplateGuestAcceleratorInput
+
+func (GetRegionInstanceTemplateGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateGuestAcceleratorArray) ToGetRegionInstanceTemplateGuestAcceleratorArrayOutput() GetRegionInstanceTemplateGuestAcceleratorArrayOutput {
+	return i.ToGetRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateGuestAcceleratorArray) ToGetRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateGuestAcceleratorArrayOutput)
+}
+
+type GetRegionInstanceTemplateGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateGuestAcceleratorOutput) ToGetRegionInstanceTemplateGuestAcceleratorOutput() GetRegionInstanceTemplateGuestAcceleratorOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateGuestAcceleratorOutput) ToGetRegionInstanceTemplateGuestAcceleratorOutputWithContext(ctx context.Context) GetRegionInstanceTemplateGuestAcceleratorOutput {
+	return o
+}
+
+// The number of the guest accelerator cards exposed to this instance.
+func (o GetRegionInstanceTemplateGuestAcceleratorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetRegionInstanceTemplateGuestAcceleratorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateGuestAcceleratorArrayOutput) ToGetRegionInstanceTemplateGuestAcceleratorArrayOutput() GetRegionInstanceTemplateGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateGuestAcceleratorArrayOutput) ToGetRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateGuestAccelerator {
+		return vs[0].([]GetRegionInstanceTemplateGuestAccelerator)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateGuestAcceleratorOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterface struct {
+	AccessConfigs []GetRegionInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
+	// An
+	// array of alias IP ranges for this network interface. Can only be specified for network
+	// interfaces on subnet-mode networks. Structure documented below.
+	AliasIpRanges []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength int `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType string `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// The name of the instance template. One of `name` or `filter` must be provided.
+	Name string `pulumi:"name"`
+	// The name or selfLink of the network to attach this interface to.
+	// Use `network` attribute for Legacy or Auto subnetted networks and
+	// `subnetwork` for custom subnetted networks.
+	Network string `pulumi:"network"`
+	// The private IP address to assign to the instance. If
+	// empty, the address will be automatically assigned.
+	NetworkIp string `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+	NicType string `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount int `pulumi:"queueCount"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType string `pulumi:"stackType"`
+	// the name of the subnetwork to attach this interface
+	// to. The subnetwork must exist in the same `region` this instance will be
+	// created in. Either `network` or `subnetwork` must be provided.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The ID of the project in which the subnetwork belongs.
+	// If it is not provided, the provider project is used.
+	SubnetworkProject string `pulumi:"subnetworkProject"`
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceArgs and GetRegionInstanceTemplateNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceArgs{...}
+type GetRegionInstanceTemplateNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceOutput() GetRegionInstanceTemplateNetworkInterfaceOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
+	AccessConfigs GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
+	// An
+	// array of alias IP ranges for this network interface. Can only be specified for network
+	// interfaces on subnet-mode networks. Structure documented below.
+	AliasIpRanges GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength pulumi.IntInput `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType pulumi.StringInput `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// The name of the instance template. One of `name` or `filter` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name or selfLink of the network to attach this interface to.
+	// Use `network` attribute for Legacy or Auto subnetted networks and
+	// `subnetwork` for custom subnetted networks.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The private IP address to assign to the instance. If
+	// empty, the address will be automatically assigned.
+	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+	NicType pulumi.StringInput `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount pulumi.IntInput `pulumi:"queueCount"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType pulumi.StringInput `pulumi:"stackType"`
+	// the name of the subnetwork to attach this interface
+	// to. The subnetwork must exist in the same `region` this instance will be
+	// created in. Either `network` or `subnetwork` must be provided.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// The ID of the project in which the subnetwork belongs.
+	// If it is not provided, the provider project is used.
+	SubnetworkProject pulumi.StringInput `pulumi:"subnetworkProject"`
+}
+
+func (GetRegionInstanceTemplateNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceArgs) ToGetRegionInstanceTemplateNetworkInterfaceOutput() GetRegionInstanceTemplateNetworkInterfaceOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceArgs) ToGetRegionInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceOutput)
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceArrayInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceArray and GetRegionInstanceTemplateNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceArrayInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceArray{ GetRegionInstanceTemplateNetworkInterfaceArgs{...} }
+type GetRegionInstanceTemplateNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceArrayOutput() GetRegionInstanceTemplateNetworkInterfaceArrayOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceArrayOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceArray []GetRegionInstanceTemplateNetworkInterfaceInput
+
+func (GetRegionInstanceTemplateNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceArray) ToGetRegionInstanceTemplateNetworkInterfaceArrayOutput() GetRegionInstanceTemplateNetworkInterfaceArrayOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceArray) ToGetRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceArrayOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) ToGetRegionInstanceTemplateNetworkInterfaceOutput() GetRegionInstanceTemplateNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) ToGetRegionInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AccessConfigs() GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceAccessConfig {
+		return v.AccessConfigs
+	}).(GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput)
+}
+
+// An
+// array of alias IP ranges for this network interface. Can only be specified for network
+// interfaces on subnet-mode networks. Structure documented below.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange {
+		return v.AliasIpRanges
+	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// The prefix length of the primary internal IPv6 range.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) int { return v.InternalIpv6PrefixLength }).(pulumi.IntOutput)
+}
+
+// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+		return v.Ipv6AccessConfigs
+	}).(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
+// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+// The name of the instance template. One of `name` or `filter` must be provided.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name or selfLink of the network to attach this interface to.
+// Use `network` attribute for Legacy or Auto subnetted networks and
+// `subnetwork` for custom subnetted networks.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The private IP address to assign to the instance. If
+// empty, the address will be automatically assigned.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
+}
+
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
+}
+
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
+}
+
+// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.StackType }).(pulumi.StringOutput)
+}
+
+// the name of the subnetwork to attach this interface
+// to. The subnetwork must exist in the same `region` this instance will be
+// created in. Either `network` or `subnetwork` must be provided.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the subnetwork belongs.
+// If it is not provided, the provider project is used.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) SubnetworkProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.SubnetworkProject }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceArrayOutput() GetRegionInstanceTemplateNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateNetworkInterface {
+		return vs[0].([]GetRegionInstanceTemplateNetworkInterface)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateNetworkInterfaceOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAccessConfig struct {
+	// The IP address that will be 1:1 mapped to the instance's
+	// network ip. If not given, one will be generated.
+	NatIp string `pulumi:"natIp"`
+	// The [networking tier][network-tier] used for configuring
+	// this instance template. This field can take the following values: PREMIUM or
+	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+	NetworkTier string `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceAccessConfigInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs and GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceAccessConfigInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs{...}
+type GetRegionInstanceTemplateNetworkInterfaceAccessConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs struct {
+	// The IP address that will be 1:1 mapped to the instance's
+	// network ip. If not given, one will be generated.
+	NatIp pulumi.StringInput `pulumi:"natIp"`
+	// The [networking tier][network-tier] used for configuring
+	// this instance template. This field can take the following values: PREMIUM or
+	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
+}
+
+func (GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput)
+}
+
+// GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput is an input type that accepts GetRegionInstanceTemplateNetworkInterfaceAccessConfigArray and GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput` via:
+//
+//	GetRegionInstanceTemplateNetworkInterfaceAccessConfigArray{ GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs{...} }
+type GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput
+	ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAccessConfigArray []GetRegionInstanceTemplateNetworkInterfaceAccessConfigInput
+
+func (GetRegionInstanceTemplateNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAccessConfigArray) ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return i.ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateNetworkInterfaceAccessConfigArray) ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+// The IP address that will be 1:1 mapped to the instance's
+// network ip. If not given, one will be generated.
+func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput) NatIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAccessConfig) string { return v.NatIp }).(pulumi.StringOutput)
+}
+
+// The [networking tier][network-tier] used for configuring
+// this instance template. This field can take the following values: PREMIUM or
+// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ToGetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateNetworkInterfaceAccessConfig {
+		return vs[0].([]GetRegionInstanceTemplateNetworkInterfaceAccessConfig)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput)
+}
 
 type GetRegionInstanceTemplateNetworkInterfaceAliasIpRange struct {
 	// The IP CIDR range represented by this alias IP range. This IP CIDR range
@@ -11978,6 +12579,14 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateGuestAcceleratorInput)(nil)).Elem(), GetRegionInstanceTemplateGuestAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateGuestAcceleratorArrayInput)(nil)).Elem(), GetRegionInstanceTemplateGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAccessConfigInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
@@ -12164,6 +12773,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})

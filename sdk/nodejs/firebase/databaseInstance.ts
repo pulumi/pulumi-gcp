@@ -52,7 +52,6 @@ import * as utilities from "../utilities";
  * const firebase = new gcp.projects.Service("firebase", {
  *     project: _default.projectId,
  *     service: "firebase.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const defaultProject = new gcp.firebase.Project("default", {project: _default.projectId}, {
  *     dependsOn: [firebase],
@@ -60,7 +59,6 @@ import * as utilities from "../utilities";
  * const firebaseDatabase = new gcp.projects.Service("firebase_database", {
  *     project: defaultProject.project,
  *     service: "firebasedatabase.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
  *     dependsOn: [firebaseDatabase],

@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerApprovalConfig;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBitbucketServerTriggerConfig;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuild;
+import com.pulumi.gcp.cloudbuild.outputs.GetTriggerDeveloperConnectEventConfig;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerGitFileSource;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerGithub;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerPubsubConfig;
@@ -30,6 +31,7 @@ public final class GetTriggerResult {
     private List<GetTriggerBuild> builds;
     private String createTime;
     private String description;
+    private List<GetTriggerDeveloperConnectEventConfig> developerConnectEventConfigs;
     private Boolean disabled;
     private String filename;
     private String filter;
@@ -71,6 +73,9 @@ public final class GetTriggerResult {
     }
     public String description() {
         return this.description;
+    }
+    public List<GetTriggerDeveloperConnectEventConfig> developerConnectEventConfigs() {
+        return this.developerConnectEventConfigs;
     }
     public Boolean disabled() {
         return this.disabled;
@@ -154,6 +159,7 @@ public final class GetTriggerResult {
         private List<GetTriggerBuild> builds;
         private String createTime;
         private String description;
+        private List<GetTriggerDeveloperConnectEventConfig> developerConnectEventConfigs;
         private Boolean disabled;
         private String filename;
         private String filter;
@@ -183,6 +189,7 @@ public final class GetTriggerResult {
     	      this.builds = defaults.builds;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.developerConnectEventConfigs = defaults.developerConnectEventConfigs;
     	      this.disabled = defaults.disabled;
     	      this.filename = defaults.filename;
     	      this.filter = defaults.filter;
@@ -254,6 +261,17 @@ public final class GetTriggerResult {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder developerConnectEventConfigs(List<GetTriggerDeveloperConnectEventConfig> developerConnectEventConfigs) {
+            if (developerConnectEventConfigs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "developerConnectEventConfigs");
+            }
+            this.developerConnectEventConfigs = developerConnectEventConfigs;
+            return this;
+        }
+        public Builder developerConnectEventConfigs(GetTriggerDeveloperConnectEventConfig... developerConnectEventConfigs) {
+            return developerConnectEventConfigs(List.of(developerConnectEventConfigs));
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
@@ -458,6 +476,7 @@ public final class GetTriggerResult {
             _resultValue.builds = builds;
             _resultValue.createTime = createTime;
             _resultValue.description = description;
+            _resultValue.developerConnectEventConfigs = developerConnectEventConfigs;
             _resultValue.disabled = disabled;
             _resultValue.filename = filename;
             _resultValue.filter = filter;

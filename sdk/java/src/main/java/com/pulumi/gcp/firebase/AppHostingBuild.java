@@ -73,7 +73,6 @@ import javax.annotation.Nullable;
  *         var fah = new Service("fah", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebaseapphosting.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var exampleAppHostingBackend = new AppHostingBackend("exampleAppHostingBackend", AppHostingBackendArgs.builder()
@@ -157,7 +156,6 @@ import javax.annotation.Nullable;
  *         var fah = new Service("fah", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebaseapphosting.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var exampleAppHostingBackend = new AppHostingBackend("exampleAppHostingBackend", AppHostingBackendArgs.builder()

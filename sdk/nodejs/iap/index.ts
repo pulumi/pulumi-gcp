@@ -95,6 +95,11 @@ export const getWebRegionBackendServiceIamPolicy: typeof import("./getWebRegionB
 export const getWebRegionBackendServiceIamPolicyOutput: typeof import("./getWebRegionBackendServiceIamPolicy").getWebRegionBackendServiceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getWebRegionBackendServiceIamPolicy","getWebRegionBackendServiceIamPolicyOutput"], () => require("./getWebRegionBackendServiceIamPolicy"));
 
+export { GetWebRegionForwardingRuleServiceIamPolicyArgs, GetWebRegionForwardingRuleServiceIamPolicyResult, GetWebRegionForwardingRuleServiceIamPolicyOutputArgs } from "./getWebRegionForwardingRuleServiceIamPolicy";
+export const getWebRegionForwardingRuleServiceIamPolicy: typeof import("./getWebRegionForwardingRuleServiceIamPolicy").getWebRegionForwardingRuleServiceIamPolicy = null as any;
+export const getWebRegionForwardingRuleServiceIamPolicyOutput: typeof import("./getWebRegionForwardingRuleServiceIamPolicy").getWebRegionForwardingRuleServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWebRegionForwardingRuleServiceIamPolicy","getWebRegionForwardingRuleServiceIamPolicyOutput"], () => require("./getWebRegionForwardingRuleServiceIamPolicy"));
+
 export { GetWebTypeAppEngineIamPolicyArgs, GetWebTypeAppEngineIamPolicyResult, GetWebTypeAppEngineIamPolicyOutputArgs } from "./getWebTypeAppEngineIamPolicy";
 export const getWebTypeAppEngineIamPolicy: typeof import("./getWebTypeAppEngineIamPolicy").getWebTypeAppEngineIamPolicy = null as any;
 export const getWebTypeAppEngineIamPolicyOutput: typeof import("./getWebTypeAppEngineIamPolicy").getWebTypeAppEngineIamPolicyOutput = null as any;
@@ -220,6 +225,21 @@ export type WebRegionBackendServiceIamPolicy = import("./webRegionBackendService
 export const WebRegionBackendServiceIamPolicy: typeof import("./webRegionBackendServiceIamPolicy").WebRegionBackendServiceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["WebRegionBackendServiceIamPolicy"], () => require("./webRegionBackendServiceIamPolicy"));
 
+export { WebRegionForwardingRuleServiceIamBindingArgs, WebRegionForwardingRuleServiceIamBindingState } from "./webRegionForwardingRuleServiceIamBinding";
+export type WebRegionForwardingRuleServiceIamBinding = import("./webRegionForwardingRuleServiceIamBinding").WebRegionForwardingRuleServiceIamBinding;
+export const WebRegionForwardingRuleServiceIamBinding: typeof import("./webRegionForwardingRuleServiceIamBinding").WebRegionForwardingRuleServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["WebRegionForwardingRuleServiceIamBinding"], () => require("./webRegionForwardingRuleServiceIamBinding"));
+
+export { WebRegionForwardingRuleServiceIamMemberArgs, WebRegionForwardingRuleServiceIamMemberState } from "./webRegionForwardingRuleServiceIamMember";
+export type WebRegionForwardingRuleServiceIamMember = import("./webRegionForwardingRuleServiceIamMember").WebRegionForwardingRuleServiceIamMember;
+export const WebRegionForwardingRuleServiceIamMember: typeof import("./webRegionForwardingRuleServiceIamMember").WebRegionForwardingRuleServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["WebRegionForwardingRuleServiceIamMember"], () => require("./webRegionForwardingRuleServiceIamMember"));
+
+export { WebRegionForwardingRuleServiceIamPolicyArgs, WebRegionForwardingRuleServiceIamPolicyState } from "./webRegionForwardingRuleServiceIamPolicy";
+export type WebRegionForwardingRuleServiceIamPolicy = import("./webRegionForwardingRuleServiceIamPolicy").WebRegionForwardingRuleServiceIamPolicy;
+export const WebRegionForwardingRuleServiceIamPolicy: typeof import("./webRegionForwardingRuleServiceIamPolicy").WebRegionForwardingRuleServiceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WebRegionForwardingRuleServiceIamPolicy"], () => require("./webRegionForwardingRuleServiceIamPolicy"));
+
 export { WebTypeAppEngingIamBindingArgs, WebTypeAppEngingIamBindingState } from "./webTypeAppEngingIamBinding";
 export type WebTypeAppEngingIamBinding = import("./webTypeAppEngingIamBinding").WebTypeAppEngingIamBinding;
 export const WebTypeAppEngingIamBinding: typeof import("./webTypeAppEngingIamBinding").WebTypeAppEngingIamBinding = null as any;
@@ -317,6 +337,12 @@ const _module = {
                 return new WebRegionBackendServiceIamMember(name, <any>undefined, { urn })
             case "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy":
                 return new WebRegionBackendServiceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding":
+                return new WebRegionForwardingRuleServiceIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/webRegionForwardingRuleServiceIamMember:WebRegionForwardingRuleServiceIamMember":
+                return new WebRegionForwardingRuleServiceIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/webRegionForwardingRuleServiceIamPolicy:WebRegionForwardingRuleServiceIamPolicy":
+                return new WebRegionForwardingRuleServiceIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding":
                 return new WebTypeAppEngingIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember":
@@ -365,6 +391,9 @@ pulumi.runtime.registerResourceModule("gcp", "iap/webIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webRegionBackendServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webRegionBackendServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webRegionBackendServiceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webRegionForwardingRuleServiceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webRegionForwardingRuleServiceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webRegionForwardingRuleServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webTypeAppEngingIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webTypeAppEngingIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webTypeAppEngingIamPolicy", _module)

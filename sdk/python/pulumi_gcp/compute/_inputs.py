@@ -45,6 +45,8 @@ __all__ = [
     'BackendBucketIamBindingConditionArgsDict',
     'BackendBucketIamMemberConditionArgs',
     'BackendBucketIamMemberConditionArgsDict',
+    'BackendBucketParamsArgs',
+    'BackendBucketParamsArgsDict',
     'BackendServiceBackendArgs',
     'BackendServiceBackendArgsDict',
     'BackendServiceBackendCustomMetricArgs',
@@ -99,6 +101,8 @@ __all__ = [
     'BackendServiceOutlierDetectionBaseEjectionTimeArgsDict',
     'BackendServiceOutlierDetectionIntervalArgs',
     'BackendServiceOutlierDetectionIntervalArgsDict',
+    'BackendServiceParamsArgs',
+    'BackendServiceParamsArgsDict',
     'BackendServiceSecuritySettingsArgs',
     'BackendServiceSecuritySettingsArgsDict',
     'BackendServiceSecuritySettingsAwsV4AuthenticationArgs',
@@ -3189,6 +3193,44 @@ class BackendBucketIamMemberConditionArgs:
 
 
 if not MYPY:
+    class BackendBucketParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+elif False:
+    BackendBucketParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendBucketParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+
+if not MYPY:
     class BackendServiceBackendArgsDict(TypedDict):
         group: pulumi.Input[_builtins.str]
         """
@@ -6076,6 +6118,44 @@ class BackendServiceOutlierDetectionIntervalArgs:
     @nanos.setter
     def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class BackendServiceParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Resource manager tags to be bound to the backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+elif False:
+    BackendServiceParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the backend service. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 if not MYPY:

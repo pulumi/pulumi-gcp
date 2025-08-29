@@ -12,19 +12,89 @@ namespace Pulumi.Gcp.Apigee.Inputs
 
     public sealed class KeystoresAliasesKeyCertFileCertsInfoGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("certInfos")]
-        private InputList<Inputs.KeystoresAliasesKeyCertFileCertsInfoCertInfoGetArgs>? _certInfos;
+        /// <summary>
+        /// (Output)
+        /// X.509 basic constraints extension.
+        /// </summary>
+        [Input("basicConstraints", required: true)]
+        public Input<string> BasicConstraints { get; set; } = null!;
 
         /// <summary>
         /// (Output)
-        /// List of all properties in the object.
-        /// Structure is documented below.
+        /// X.509 notAfter validity period in milliseconds since epoch.
         /// </summary>
-        public InputList<Inputs.KeystoresAliasesKeyCertFileCertsInfoCertInfoGetArgs> CertInfos
+        [Input("expiryDate", required: true)]
+        public Input<string> ExpiryDate { get; set; } = null!;
+
+        /// <summary>
+        /// (Output)
+        /// Flag that specifies whether the certificate is valid.
+        /// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        /// </summary>
+        [Input("isValid", required: true)]
+        public Input<string> IsValid { get; set; } = null!;
+
+        /// <summary>
+        /// (Output)
+        /// X.509 issuer.
+        /// </summary>
+        [Input("issuer", required: true)]
+        public Input<string> Issuer { get; set; } = null!;
+
+        /// <summary>
+        /// (Output)
+        /// Public key component of the X.509 subject public key info.
+        /// </summary>
+        [Input("publicKey", required: true)]
+        public Input<string> PublicKey { get; set; } = null!;
+
+        /// <summary>
+        /// (Output)
+        /// X.509 serial number.
+        /// </summary>
+        [Input("serialNumber", required: true)]
+        public Input<string> SerialNumber { get; set; } = null!;
+
+        /// <summary>
+        /// (Output)
+        /// X.509 signatureAlgorithm.
+        /// </summary>
+        [Input("sigAlgName", required: true)]
+        public Input<string> SigAlgName { get; set; } = null!;
+
+        /// <summary>
+        /// (Output)
+        /// X.509 subject.
+        /// </summary>
+        [Input("subject", required: true)]
+        public Input<string> Subject { get; set; } = null!;
+
+        [Input("subjectAlternativeNames", required: true)]
+        private InputList<string>? _subjectAlternativeNames;
+
+        /// <summary>
+        /// (Output)
+        /// X.509 subject alternative names (SANs) extension.
+        /// </summary>
+        public InputList<string> SubjectAlternativeNames
         {
-            get => _certInfos ?? (_certInfos = new InputList<Inputs.KeystoresAliasesKeyCertFileCertsInfoCertInfoGetArgs>());
-            set => _certInfos = value;
+            get => _subjectAlternativeNames ?? (_subjectAlternativeNames = new InputList<string>());
+            set => _subjectAlternativeNames = value;
         }
+
+        /// <summary>
+        /// (Output)
+        /// X.509 notBefore validity period in milliseconds since epoch.
+        /// </summary>
+        [Input("validFrom", required: true)]
+        public Input<string> ValidFrom { get; set; } = null!;
+
+        /// <summary>
+        /// (Output)
+        /// X.509 version.
+        /// </summary>
+        [Input("version", required: true)]
+        public Input<int> Version { get; set; } = null!;
 
         public KeystoresAliasesKeyCertFileCertsInfoGetArgs()
         {

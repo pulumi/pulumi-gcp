@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
         /// <summary>
         /// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
         /// </summary>
-        public readonly string CaPool;
+        public readonly string? CaPool;
         /// <summary>
         /// (Output)
         /// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
 
         [OutputConstructor]
         private InstancePrivateConfig(
-            string caPool,
+            string? caPool,
 
             string? httpServiceAttachment,
 

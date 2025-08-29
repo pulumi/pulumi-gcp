@@ -24,6 +24,7 @@ from .get_web_backend_service_iam_policy import *
 from .get_web_cloud_run_service_iam_policy import *
 from .get_web_iam_policy import *
 from .get_web_region_backend_service_iam_policy import *
+from .get_web_region_forwarding_rule_service_iam_policy import *
 from .get_web_type_app_engine_iam_policy import *
 from .get_web_type_compute_iam_policy import *
 from .settings import *
@@ -49,6 +50,9 @@ from .web_iam_policy import *
 from .web_region_backend_service_iam_binding import *
 from .web_region_backend_service_iam_member import *
 from .web_region_backend_service_iam_policy import *
+from .web_region_forwarding_rule_service_iam_binding import *
+from .web_region_forwarding_rule_service_iam_member import *
+from .web_region_forwarding_rule_service_iam_policy import *
 from .web_type_app_enging_iam_binding import *
 from .web_type_app_enging_iam_member import *
 from .web_type_app_enging_iam_policy import *

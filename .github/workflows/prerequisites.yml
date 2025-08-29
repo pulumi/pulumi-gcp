@@ -50,7 +50,7 @@ jobs:
     - uses: pulumi/provider-version-action@f96d032a2758fdda7939e5728eff6c0d980ae894 # v1.6.0
       id: provider-version
       with:
-        major-version: 8
+        major-version: 9
         set-env: 'PROVIDER_VERSION'
     - name: Cache examples generation
       uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
@@ -71,7 +71,7 @@ jobs:
     - name: Unit-test provider code
       run: make test_provider
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
+      uses: codecov/codecov-action@fdcc8476540edceab3de004e990f80d881c6cc00 # v5.5.0
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     - if: inputs.is_pr

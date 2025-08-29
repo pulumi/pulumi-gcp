@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,6 +83,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebRegionBackendServiceIamMember{}
 	case "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy":
 		r = &WebRegionBackendServiceIamPolicy{}
+	case "gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding":
+		r = &WebRegionForwardingRuleServiceIamBinding{}
+	case "gcp:iap/webRegionForwardingRuleServiceIamMember:WebRegionForwardingRuleServiceIamMember":
+		r = &WebRegionForwardingRuleServiceIamMember{}
+	case "gcp:iap/webRegionForwardingRuleServiceIamPolicy:WebRegionForwardingRuleServiceIamPolicy":
+		r = &WebRegionForwardingRuleServiceIamPolicy{}
 	case "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding":
 		r = &WebTypeAppEngingIamBinding{}
 	case "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember":
@@ -261,6 +267,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iap/webRegionBackendServiceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionForwardingRuleServiceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionForwardingRuleServiceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionForwardingRuleServiceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

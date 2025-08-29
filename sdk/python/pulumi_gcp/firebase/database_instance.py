@@ -334,14 +334,12 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         firebase = gcp.projects.Service("firebase",
             project=default.project_id,
-            service="firebase.googleapis.com",
-            disable_on_destroy=False)
+            service="firebase.googleapis.com")
         default_project = gcp.firebase.Project("default", project=default.project_id,
         opts = pulumi.ResourceOptions(depends_on=[firebase]))
         firebase_database = gcp.projects.Service("firebase_database",
             project=default_project.project,
-            service="firebasedatabase.googleapis.com",
-            disable_on_destroy=False)
+            service="firebasedatabase.googleapis.com")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[firebase_database]))
         default_database_instance = gcp.firebase.DatabaseInstance("default",
@@ -448,14 +446,12 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         firebase = gcp.projects.Service("firebase",
             project=default.project_id,
-            service="firebase.googleapis.com",
-            disable_on_destroy=False)
+            service="firebase.googleapis.com")
         default_project = gcp.firebase.Project("default", project=default.project_id,
         opts = pulumi.ResourceOptions(depends_on=[firebase]))
         firebase_database = gcp.projects.Service("firebase_database",
             project=default_project.project,
-            service="firebasedatabase.googleapis.com",
-            disable_on_destroy=False)
+            service="firebasedatabase.googleapis.com")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
         opts = pulumi.ResourceOptions(depends_on=[firebase_database]))
         default_database_instance = gcp.firebase.DatabaseInstance("default",

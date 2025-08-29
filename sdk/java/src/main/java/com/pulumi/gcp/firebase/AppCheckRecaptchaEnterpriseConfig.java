@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  *         var recaptchaEnterprise = new Service("recaptchaEnterprise", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("recaptchaenterprise.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var default_ = new WebApp("default", WebAppArgs.builder()

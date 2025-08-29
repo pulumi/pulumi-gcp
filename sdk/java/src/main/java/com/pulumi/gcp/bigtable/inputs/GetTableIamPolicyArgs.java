@@ -16,19 +16,11 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetTableIamPolicyArgs Empty = new GetTableIamPolicyArgs();
 
-    /**
-     * The name or relative resource id of the instance that owns the table.
-     * 
-     */
-    @Import(name="instance", required=true)
-    private Output<String> instance;
+    @Import(name="instanceName", required=true)
+    private Output<String> instanceName;
 
-    /**
-     * @return The name or relative resource id of the instance that owns the table.
-     * 
-     */
-    public Output<String> instance() {
-        return this.instance;
+    public Output<String> instanceName() {
+        return this.instanceName;
     }
 
     @Import(name="project")
@@ -56,7 +48,7 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
     private GetTableIamPolicyArgs() {}
 
     private GetTableIamPolicyArgs(GetTableIamPolicyArgs $) {
-        this.instance = $.instance;
+        this.instanceName = $.instanceName;
         this.project = $.project;
         this.table = $.table;
     }
@@ -79,25 +71,13 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetTableIamPolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param instance The name or relative resource id of the instance that owns the table.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder instance(Output<String> instance) {
-            $.instance = instance;
+        public Builder instanceName(Output<String> instanceName) {
+            $.instanceName = instanceName;
             return this;
         }
 
-        /**
-         * @param instance The name or relative resource id of the instance that owns the table.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder instance(String instance) {
-            return instance(Output.of(instance));
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
         }
 
         public Builder project(@Nullable Output<String> project) {
@@ -131,8 +111,8 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetTableIamPolicyArgs build() {
-            if ($.instance == null) {
-                throw new MissingRequiredPropertyException("GetTableIamPolicyArgs", "instance");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GetTableIamPolicyArgs", "instanceName");
             }
             if ($.table == null) {
                 throw new MissingRequiredPropertyException("GetTableIamPolicyArgs", "table");

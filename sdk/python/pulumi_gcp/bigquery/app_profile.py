@@ -445,12 +445,12 @@ class _AppProfileState:
         pulumi.set(self, "standard_isolation", value)
 
 
-warnings.warn("""gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile""", DeprecationWarning)
+warnings.warn("""gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile""", DeprecationWarning)
 
 
 @pulumi.type_token("gcp:bigquery/appProfile:AppProfile")
 class AppProfile(pulumi.CustomResource):
-    warnings.warn("""gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile""", DeprecationWarning)
+    warnings.warn("""gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile""", DeprecationWarning)
 
     @overload
     def __init__(__self__,
@@ -844,7 +844,7 @@ class AppProfile(pulumi.CustomResource):
                  single_cluster_routing: Optional[pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
                  standard_isolation: Optional[pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
                  __props__=None):
-        pulumi.log.warn("""AppProfile is deprecated: gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile""")
+        pulumi.log.warn("""AppProfile is deprecated: gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -867,8 +867,6 @@ class AppProfile(pulumi.CustomResource):
             __props__.__dict__["single_cluster_routing"] = single_cluster_routing
             __props__.__dict__["standard_isolation"] = standard_isolation
             __props__.__dict__["name"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="gcp:bigquery/appProfile:AppProfile")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AppProfile, __self__).__init__(
             'gcp:bigquery/appProfile:AppProfile',
             resource_name,

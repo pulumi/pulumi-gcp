@@ -254,7 +254,8 @@ class User(pulumi.CustomResource):
             },
             initial_user={
                 "password": "cluster_secret",
-            })
+            },
+            deletion_protection=False)
         default_network = gcp.compute.Network("default", name="alloydb-network")
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
@@ -295,7 +296,8 @@ class User(pulumi.CustomResource):
             },
             initial_user={
                 "password": "cluster_secret",
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -386,7 +388,8 @@ class User(pulumi.CustomResource):
             },
             initial_user={
                 "password": "cluster_secret",
-            })
+            },
+            deletion_protection=False)
         default_network = gcp.compute.Network("default", name="alloydb-network")
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
@@ -427,7 +430,8 @@ class User(pulumi.CustomResource):
             },
             initial_user={
                 "password": "cluster_secret",
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",

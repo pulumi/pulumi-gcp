@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,6 +41,9 @@ import (
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Scaling: &cloudrunv2.ServiceScalingArgs{
+//					MaxInstanceCount: pulumi.Int(100),
+//				},
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -64,7 +67,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -107,10 +110,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -150,10 +153,10 @@ import (
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Scaling: &cloudrunv2.ServiceScalingArgs{
+//					MaxInstanceCount: pulumi.Int(2),
+//				},
 //				Template: &cloudrunv2.ServiceTemplateArgs{
-//					Scaling: &cloudrunv2.ServiceTemplateScalingArgs{
-//						MaxInstanceCount: pulumi.Int(2),
-//					},
 //					Volumes: cloudrunv2.ServiceTemplateVolumeArray{
 //						&cloudrunv2.ServiceTemplateVolumeArgs{
 //							Name: pulumi.String("cloudsql"),
@@ -229,9 +232,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vpcaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -298,7 +301,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -346,7 +349,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -358,6 +361,9 @@ import (
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Scaling: &cloudrunv2.ServiceScalingArgs{
+//					MaxInstanceCount: pulumi.Int(1),
+//				},
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -376,9 +382,6 @@ import (
 //						Accelerator: pulumi.String("nvidia-l4"),
 //					},
 //					GpuZonalRedundancyDisabled: pulumi.Bool(true),
-//					Scaling: &cloudrunv2.ServiceTemplateScalingArgs{
-//						MaxInstanceCount: pulumi.Int(1),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -396,7 +399,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -446,9 +449,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -536,7 +539,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -608,8 +611,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -666,8 +669,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/filestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -749,8 +752,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -805,7 +808,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -844,11 +847,11 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -949,7 +952,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

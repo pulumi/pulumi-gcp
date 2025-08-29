@@ -17,6 +17,7 @@ import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceMaxStreamDuration;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceNetworkPassThroughLbTrafficPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceOutlierDetection;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceParam;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceSecuritySetting;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceStrongSessionAffinityCooky;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceTlsSetting;
@@ -94,6 +95,7 @@ public final class GetBackendServiceResult {
     private String name;
     private List<GetBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies;
     private List<GetBackendServiceOutlierDetection> outlierDetections;
+    private List<GetBackendServiceParam> params;
     /**
      * @return The name of a service that has been added to an instance group in this backend.
      * 
@@ -252,6 +254,9 @@ public final class GetBackendServiceResult {
     public List<GetBackendServiceOutlierDetection> outlierDetections() {
         return this.outlierDetections;
     }
+    public List<GetBackendServiceParam> params() {
+        return this.params;
+    }
     /**
      * @return The name of a service that has been added to an instance group in this backend.
      * 
@@ -346,6 +351,7 @@ public final class GetBackendServiceResult {
         private String name;
         private List<GetBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies;
         private List<GetBackendServiceOutlierDetection> outlierDetections;
+        private List<GetBackendServiceParam> params;
         private String portName;
         private @Nullable String project;
         private String protocol;
@@ -391,6 +397,7 @@ public final class GetBackendServiceResult {
     	      this.name = defaults.name;
     	      this.networkPassThroughLbTrafficPolicies = defaults.networkPassThroughLbTrafficPolicies;
     	      this.outlierDetections = defaults.outlierDetections;
+    	      this.params = defaults.params;
     	      this.portName = defaults.portName;
     	      this.project = defaults.project;
     	      this.protocol = defaults.protocol;
@@ -698,6 +705,17 @@ public final class GetBackendServiceResult {
             return outlierDetections(List.of(outlierDetections));
         }
         @CustomType.Setter
+        public Builder params(List<GetBackendServiceParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetBackendServiceParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder portName(String portName) {
             if (portName == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceResult", "portName");
@@ -825,6 +843,7 @@ public final class GetBackendServiceResult {
             _resultValue.name = name;
             _resultValue.networkPassThroughLbTrafficPolicies = networkPassThroughLbTrafficPolicies;
             _resultValue.outlierDetections = outlierDetections;
+            _resultValue.params = params;
             _resultValue.portName = portName;
             _resultValue.project = project;
             _resultValue.protocol = protocol;

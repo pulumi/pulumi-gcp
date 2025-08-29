@@ -18,7 +18,7 @@ public final class GetRepositoryRemoteRepositoryConfigNpmRepository {
      */
     private List<GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository> customRepositories;
     /**
-     * @return Address of the remote repository. Default value: &#34;NPMJS&#34; Possible values: [&#34;NPMJS&#34;]
+     * @return Address of the remote repository. Possible values: [&#34;NPMJS&#34;]
      * 
      */
     private String publicRepository;
@@ -32,7 +32,7 @@ public final class GetRepositoryRemoteRepositoryConfigNpmRepository {
         return this.customRepositories;
     }
     /**
-     * @return Address of the remote repository. Default value: &#34;NPMJS&#34; Possible values: [&#34;NPMJS&#34;]
+     * @return Address of the remote repository. Possible values: [&#34;NPMJS&#34;]
      * 
      */
     public String publicRepository() {

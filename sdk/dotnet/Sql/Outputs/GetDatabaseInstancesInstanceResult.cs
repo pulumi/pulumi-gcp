@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AvailableMaintenanceVersions;
         /// <summary>
+        /// The name of the BackupDR backup to restore from.
+        /// </summary>
+        public readonly string BackupdrBackup;
+        /// <summary>
         /// Configuration for creating a new instance as a clone of another instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceCloneResult> Clones;
@@ -107,6 +111,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         private GetDatabaseInstancesInstanceResult(
             ImmutableArray<string> availableMaintenanceVersions,
 
+            string backupdrBackup,
+
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceCloneResult> clones,
 
             string connectionName,
@@ -164,6 +170,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingResult> settings)
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
+            BackupdrBackup = backupdrBackup;
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;

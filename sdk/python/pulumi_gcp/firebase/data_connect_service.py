@@ -492,8 +492,7 @@ class DataConnectService(pulumi.CustomResource):
         # Enable Firebase Data Connect API
         fdc = gcp.projects.Service("fdc",
             project="my-project-name",
-            service="firebasedataconnect.googleapis.com",
-            disable_on_destroy=False)
+            service="firebasedataconnect.googleapis.com")
         # Create a Firebase Data Connect service
         default = gcp.firebase.DataConnectService("default",
             project="my-project-name",
@@ -518,8 +517,7 @@ class DataConnectService(pulumi.CustomResource):
         # Enable Firebase Data Connect API
         fdc = gcp.projects.Service("fdc",
             project="my-project-name",
-            service="firebasedataconnect.googleapis.com",
-            disable_on_destroy=False)
+            service="firebasedataconnect.googleapis.com")
         # Create a Firebase Data Connect service
         default = gcp.firebase.DataConnectService("default",
             project="my-project-name",
@@ -599,8 +597,7 @@ class DataConnectService(pulumi.CustomResource):
         # Enable Firebase Data Connect API
         fdc = gcp.projects.Service("fdc",
             project="my-project-name",
-            service="firebasedataconnect.googleapis.com",
-            disable_on_destroy=False)
+            service="firebasedataconnect.googleapis.com")
         # Create a Firebase Data Connect service
         default = gcp.firebase.DataConnectService("default",
             project="my-project-name",
@@ -625,8 +622,7 @@ class DataConnectService(pulumi.CustomResource):
         # Enable Firebase Data Connect API
         fdc = gcp.projects.Service("fdc",
             project="my-project-name",
-            service="firebasedataconnect.googleapis.com",
-            disable_on_destroy=False)
+            service="firebasedataconnect.googleapis.com")
         # Create a Firebase Data Connect service
         default = gcp.firebase.DataConnectService("default",
             project="my-project-name",

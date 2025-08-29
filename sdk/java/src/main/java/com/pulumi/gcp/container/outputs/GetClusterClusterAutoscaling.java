@@ -30,6 +30,11 @@ public final class GetClusterClusterAutoscaling {
      */
     private String autoscalingProfile;
     /**
+     * @return Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+     * 
+     */
+    private Boolean defaultComputeClassEnabled;
+    /**
      * @return Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
      * 
      */
@@ -63,6 +68,13 @@ public final class GetClusterClusterAutoscaling {
         return this.autoscalingProfile;
     }
     /**
+     * @return Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+     * 
+     */
+    public Boolean defaultComputeClassEnabled() {
+        return this.defaultComputeClassEnabled;
+    }
+    /**
      * @return Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
      * 
      */
@@ -89,6 +101,7 @@ public final class GetClusterClusterAutoscaling {
         private List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults;
         private List<String> autoProvisioningLocations;
         private String autoscalingProfile;
+        private Boolean defaultComputeClassEnabled;
         private Boolean enabled;
         private List<GetClusterClusterAutoscalingResourceLimit> resourceLimits;
         public Builder() {}
@@ -97,6 +110,7 @@ public final class GetClusterClusterAutoscaling {
     	      this.autoProvisioningDefaults = defaults.autoProvisioningDefaults;
     	      this.autoProvisioningLocations = defaults.autoProvisioningLocations;
     	      this.autoscalingProfile = defaults.autoscalingProfile;
+    	      this.defaultComputeClassEnabled = defaults.defaultComputeClassEnabled;
     	      this.enabled = defaults.enabled;
     	      this.resourceLimits = defaults.resourceLimits;
         }
@@ -132,6 +146,14 @@ public final class GetClusterClusterAutoscaling {
             return this;
         }
         @CustomType.Setter
+        public Builder defaultComputeClassEnabled(Boolean defaultComputeClassEnabled) {
+            if (defaultComputeClassEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscaling", "defaultComputeClassEnabled");
+            }
+            this.defaultComputeClassEnabled = defaultComputeClassEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
               throw new MissingRequiredPropertyException("GetClusterClusterAutoscaling", "enabled");
@@ -155,6 +177,7 @@ public final class GetClusterClusterAutoscaling {
             _resultValue.autoProvisioningDefaults = autoProvisioningDefaults;
             _resultValue.autoProvisioningLocations = autoProvisioningLocations;
             _resultValue.autoscalingProfile = autoscalingProfile;
+            _resultValue.defaultComputeClassEnabled = defaultComputeClassEnabled;
             _resultValue.enabled = enabled;
             _resultValue.resourceLimits = resourceLimits;
             return _resultValue;

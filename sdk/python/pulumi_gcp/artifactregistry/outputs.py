@@ -775,7 +775,6 @@ class RepositoryRemoteRepositoryConfigDockerRepository(dict):
         :param 'RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs' custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param _builtins.str public_repository: Address of the remote repository.
-               Default value is `DOCKER_HUB`.
                Possible values are: `DOCKER_HUB`.
         """
         if custom_repository is not None:
@@ -797,7 +796,6 @@ class RepositoryRemoteRepositoryConfigDockerRepository(dict):
     def public_repository(self) -> Optional[_builtins.str]:
         """
         Address of the remote repository.
-        Default value is `DOCKER_HUB`.
         Possible values are: `DOCKER_HUB`.
         """
         return pulumi.get(self, "public_repository")
@@ -850,7 +848,6 @@ class RepositoryRemoteRepositoryConfigMavenRepository(dict):
         :param 'RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs' custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param _builtins.str public_repository: Address of the remote repository.
-               Default value is `MAVEN_CENTRAL`.
                Possible values are: `MAVEN_CENTRAL`.
         """
         if custom_repository is not None:
@@ -872,7 +869,6 @@ class RepositoryRemoteRepositoryConfigMavenRepository(dict):
     def public_repository(self) -> Optional[_builtins.str]:
         """
         Address of the remote repository.
-        Default value is `MAVEN_CENTRAL`.
         Possible values are: `MAVEN_CENTRAL`.
         """
         return pulumi.get(self, "public_repository")
@@ -925,7 +921,6 @@ class RepositoryRemoteRepositoryConfigNpmRepository(dict):
         :param 'RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs' custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param _builtins.str public_repository: Address of the remote repository.
-               Default value is `NPMJS`.
                Possible values are: `NPMJS`.
         """
         if custom_repository is not None:
@@ -947,7 +942,6 @@ class RepositoryRemoteRepositoryConfigNpmRepository(dict):
     def public_repository(self) -> Optional[_builtins.str]:
         """
         Address of the remote repository.
-        Default value is `NPMJS`.
         Possible values are: `NPMJS`.
         """
         return pulumi.get(self, "public_repository")
@@ -1000,7 +994,6 @@ class RepositoryRemoteRepositoryConfigPythonRepository(dict):
         :param 'RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs' custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param _builtins.str public_repository: Address of the remote repository.
-               Default value is `PYPI`.
                Possible values are: `PYPI`.
         """
         if custom_repository is not None:
@@ -1022,7 +1015,6 @@ class RepositoryRemoteRepositoryConfigPythonRepository(dict):
     def public_repository(self) -> Optional[_builtins.str]:
         """
         Address of the remote repository.
-        Default value is `PYPI`.
         Possible values are: `PYPI`.
         """
         return pulumi.get(self, "public_repository")
@@ -1956,7 +1948,7 @@ class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
                  public_repository: _builtins.str):
         """
         :param Sequence['GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs'] custom_repositories: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
-        :param _builtins.str public_repository: Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+        :param _builtins.str public_repository: Address of the remote repository. Possible values: ["DOCKER_HUB"]
         """
         pulumi.set(__self__, "custom_repositories", custom_repositories)
         pulumi.set(__self__, "public_repository", public_repository)
@@ -1973,7 +1965,7 @@ class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> _builtins.str:
         """
-        Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+        Address of the remote repository. Possible values: ["DOCKER_HUB"]
         """
         return pulumi.get(self, "public_repository")
 
@@ -2003,7 +1995,7 @@ class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
                  public_repository: _builtins.str):
         """
         :param Sequence['GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs'] custom_repositories: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
-        :param _builtins.str public_repository: Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+        :param _builtins.str public_repository: Address of the remote repository. Possible values: ["MAVEN_CENTRAL"]
         """
         pulumi.set(__self__, "custom_repositories", custom_repositories)
         pulumi.set(__self__, "public_repository", public_repository)
@@ -2020,7 +2012,7 @@ class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> _builtins.str:
         """
-        Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+        Address of the remote repository. Possible values: ["MAVEN_CENTRAL"]
         """
         return pulumi.get(self, "public_repository")
 
@@ -2050,7 +2042,7 @@ class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
                  public_repository: _builtins.str):
         """
         :param Sequence['GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs'] custom_repositories: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
-        :param _builtins.str public_repository: Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+        :param _builtins.str public_repository: Address of the remote repository. Possible values: ["NPMJS"]
         """
         pulumi.set(__self__, "custom_repositories", custom_repositories)
         pulumi.set(__self__, "public_repository", public_repository)
@@ -2067,7 +2059,7 @@ class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> _builtins.str:
         """
-        Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+        Address of the remote repository. Possible values: ["NPMJS"]
         """
         return pulumi.get(self, "public_repository")
 
@@ -2097,7 +2089,7 @@ class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
                  public_repository: _builtins.str):
         """
         :param Sequence['GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs'] custom_repositories: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
-        :param _builtins.str public_repository: Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+        :param _builtins.str public_repository: Address of the remote repository. Possible values: ["PYPI"]
         """
         pulumi.set(__self__, "custom_repositories", custom_repositories)
         pulumi.set(__self__, "public_repository", public_repository)
@@ -2114,7 +2106,7 @@ class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> _builtins.str:
         """
-        Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+        Address of the remote repository. Possible values: ["PYPI"]
         """
         return pulumi.get(self, "public_repository")
 

@@ -40,6 +40,27 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The desired state of the queue. Use this to pause and resume the queue.
+     * 
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     * 
+     */
+    @Import(name="desiredState")
+    private @Nullable Output<String> desiredState;
+
+    /**
+     * @return The desired state of the queue. Use this to pause and resume the queue.
+     * 
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     * 
+     */
+    public Optional<Output<String>> desiredState() {
+        return Optional.ofNullable(this.desiredState);
+    }
+
+    /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
      * 
@@ -166,10 +187,26 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.stackdriverLoggingConfig);
     }
 
+    /**
+     * The current state of the queue.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return The current state of the queue.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
     private QueueState() {}
 
     private QueueState(QueueState $) {
         this.appEngineRoutingOverride = $.appEngineRoutingOverride;
+        this.desiredState = $.desiredState;
         this.httpTarget = $.httpTarget;
         this.location = $.location;
         this.name = $.name;
@@ -177,6 +214,7 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
         this.rateLimits = $.rateLimits;
         this.retryConfig = $.retryConfig;
         this.stackdriverLoggingConfig = $.stackdriverLoggingConfig;
+        this.state = $.state;
     }
 
     public static Builder builder() {
@@ -220,6 +258,33 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appEngineRoutingOverride(QueueAppEngineRoutingOverrideArgs appEngineRoutingOverride) {
             return appEngineRoutingOverride(Output.of(appEngineRoutingOverride));
+        }
+
+        /**
+         * @param desiredState The desired state of the queue. Use this to pause and resume the queue.
+         * 
+         * * RUNNING: The queue is running. Tasks can be dispatched.
+         * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(@Nullable Output<String> desiredState) {
+            $.desiredState = desiredState;
+            return this;
+        }
+
+        /**
+         * @param desiredState The desired state of the queue. Use this to pause and resume the queue.
+         * 
+         * * RUNNING: The queue is running. Tasks can be dispatched.
+         * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(String desiredState) {
+            return desiredState(Output.of(desiredState));
         }
 
         /**
@@ -389,6 +454,27 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stackdriverLoggingConfig(QueueStackdriverLoggingConfigArgs stackdriverLoggingConfig) {
             return stackdriverLoggingConfig(Output.of(stackdriverLoggingConfig));
+        }
+
+        /**
+         * @param state The current state of the queue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state The current state of the queue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         public QueueState build() {

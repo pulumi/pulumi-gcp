@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
-        public Output<string?> LoadBalancingScheme { get; private set; } = null!;
+        public Output<string> LoadBalancingScheme { get; private set; } = null!;
 
         /// <summary>
         /// The location of the traffic extension
@@ -227,8 +227,8 @@ namespace Pulumi.Gcp.NetworkServices
         /// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
         /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         /// </summary>
-        [Input("loadBalancingScheme")]
-        public Input<string>? LoadBalancingScheme { get; set; }
+        [Input("loadBalancingScheme", required: true)]
+        public Input<string> LoadBalancingScheme { get; set; } = null!;
 
         /// <summary>
         /// The location of the traffic extension
