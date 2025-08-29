@@ -27,7 +27,7 @@ class GetTriggerResult:
     """
     A collection of values returned by getTrigger.
     """
-    def __init__(__self__, approval_configs=None, bitbucket_server_trigger_configs=None, builds=None, create_time=None, description=None, disabled=None, filename=None, filter=None, git_file_sources=None, githubs=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, location=None, name=None, project=None, pubsub_configs=None, repository_event_configs=None, service_account=None, source_to_builds=None, substitutions=None, tags=None, trigger_id=None, trigger_templates=None, webhook_configs=None):
+    def __init__(__self__, approval_configs=None, bitbucket_server_trigger_configs=None, builds=None, create_time=None, description=None, developer_connect_event_configs=None, disabled=None, filename=None, filter=None, git_file_sources=None, githubs=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, location=None, name=None, project=None, pubsub_configs=None, repository_event_configs=None, service_account=None, source_to_builds=None, substitutions=None, tags=None, trigger_id=None, trigger_templates=None, webhook_configs=None):
         if approval_configs and not isinstance(approval_configs, list):
             raise TypeError("Expected argument 'approval_configs' to be a list")
         pulumi.set(__self__, "approval_configs", approval_configs)
@@ -43,6 +43,9 @@ class GetTriggerResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if developer_connect_event_configs and not isinstance(developer_connect_event_configs, list):
+            raise TypeError("Expected argument 'developer_connect_event_configs' to be a list")
+        pulumi.set(__self__, "developer_connect_event_configs", developer_connect_event_configs)
         if disabled and not isinstance(disabled, bool):
             raise TypeError("Expected argument 'disabled' to be a bool")
         pulumi.set(__self__, "disabled", disabled)
@@ -131,6 +134,11 @@ class GetTriggerResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="developerConnectEventConfigs")
+    def developer_connect_event_configs(self) -> Sequence['outputs.GetTriggerDeveloperConnectEventConfigResult']:
+        return pulumi.get(self, "developer_connect_event_configs")
 
     @_builtins.property
     @pulumi.getter
@@ -252,6 +260,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             builds=self.builds,
             create_time=self.create_time,
             description=self.description,
+            developer_connect_event_configs=self.developer_connect_event_configs,
             disabled=self.disabled,
             filename=self.filename,
             filter=self.filter,
@@ -317,6 +326,7 @@ def get_trigger(location: Optional[_builtins.str] = None,
         builds=pulumi.get(__ret__, 'builds'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        developer_connect_event_configs=pulumi.get(__ret__, 'developer_connect_event_configs'),
         disabled=pulumi.get(__ret__, 'disabled'),
         filename=pulumi.get(__ret__, 'filename'),
         filter=pulumi.get(__ret__, 'filter'),
@@ -379,6 +389,7 @@ def get_trigger_output(location: Optional[pulumi.Input[_builtins.str]] = None,
         builds=pulumi.get(__response__, 'builds'),
         create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
+        developer_connect_event_configs=pulumi.get(__response__, 'developer_connect_event_configs'),
         disabled=pulumi.get(__response__, 'disabled'),
         filename=pulumi.get(__response__, 'filename'),
         filter=pulumi.get(__response__, 'filter'),

@@ -231,6 +231,8 @@ if typing.TYPE_CHECKING:
     resourcemanager = __resourcemanager
     import pulumi_gcp.runtimeconfig as __runtimeconfig
     runtimeconfig = __runtimeconfig
+    import pulumi_gcp.saasruntime as __saasruntime
+    saasruntime = __saasruntime
     import pulumi_gcp.secretmanager as __secretmanager
     secretmanager = __secretmanager
     import pulumi_gcp.securesourcemanager as __securesourcemanager
@@ -386,6 +388,7 @@ else:
     redis = _utilities.lazy_import('pulumi_gcp.redis')
     resourcemanager = _utilities.lazy_import('pulumi_gcp.resourcemanager')
     runtimeconfig = _utilities.lazy_import('pulumi_gcp.runtimeconfig')
+    saasruntime = _utilities.lazy_import('pulumi_gcp.saasruntime')
     secretmanager = _utilities.lazy_import('pulumi_gcp.secretmanager')
     securesourcemanager = _utilities.lazy_import('pulumi_gcp.securesourcemanager')
     securitycenter = _utilities.lazy_import('pulumi_gcp.securitycenter')
@@ -1250,38 +1253,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.beyondcorp",
   "classes": {
    "gcp:beyondcorp/appGateway:AppGateway": "AppGateway"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "beyondcorp/application",
-  "fqn": "pulumi_gcp.beyondcorp",
-  "classes": {
-   "gcp:beyondcorp/application:Application": "Application"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "beyondcorp/applicationIamBinding",
-  "fqn": "pulumi_gcp.beyondcorp",
-  "classes": {
-   "gcp:beyondcorp/applicationIamBinding:ApplicationIamBinding": "ApplicationIamBinding"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "beyondcorp/applicationIamMember",
-  "fqn": "pulumi_gcp.beyondcorp",
-  "classes": {
-   "gcp:beyondcorp/applicationIamMember:ApplicationIamMember": "ApplicationIamMember"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "beyondcorp/applicationIamPolicy",
-  "fqn": "pulumi_gcp.beyondcorp",
-  "classes": {
-   "gcp:beyondcorp/applicationIamPolicy:ApplicationIamPolicy": "ApplicationIamPolicy"
   }
  },
  {
@@ -6838,6 +6809,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iap/webRegionForwardingRuleServiceIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding": "WebRegionForwardingRuleServiceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webRegionForwardingRuleServiceIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webRegionForwardingRuleServiceIamMember:WebRegionForwardingRuleServiceIamMember": "WebRegionForwardingRuleServiceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webRegionForwardingRuleServiceIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webRegionForwardingRuleServiceIamPolicy:WebRegionForwardingRuleServiceIamPolicy": "WebRegionForwardingRuleServiceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iap/webTypeAppEngingIamBinding",
   "fqn": "pulumi_gcp.iap",
   "classes": {
@@ -7990,14 +7985,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "notebooks/location",
-  "fqn": "pulumi_gcp.notebooks",
-  "classes": {
-   "gcp:notebooks/location:Location": "Location"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "notebooks/runtime",
   "fqn": "pulumi_gcp.notebooks",
   "classes": {
@@ -8570,6 +8557,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.runtimeconfig",
   "classes": {
    "gcp:runtimeconfig/variable:Variable": "Variable"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "saasruntime/saaS",
+  "fqn": "pulumi_gcp.saasruntime",
+  "classes": {
+   "gcp:saasruntime/saaS:SaaS": "SaaS"
   }
  },
  {
@@ -9642,14 +9637,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.tags",
   "classes": {
    "gcp:tags/tagValueIamPolicy:TagValueIamPolicy": "TagValueIamPolicy"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "tpu/node",
-  "fqn": "pulumi_gcp.tpu",
-  "classes": {
-   "gcp:tpu/node:Node": "Node"
   }
  },
  {

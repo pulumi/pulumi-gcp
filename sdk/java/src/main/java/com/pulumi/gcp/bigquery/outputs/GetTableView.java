@@ -17,7 +17,7 @@ public final class GetTableView {
      */
     private String query;
     /**
-     * @return Specifies whether to use BigQuery&#39;s legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery&#39;s standard SQL
+     * @return Specifies whether to use BigQuery&#39;s legacy SQL for this view. If set to false, the view will use BigQuery&#39;s standard SQL
      * 
      */
     private Boolean useLegacySql;
@@ -31,7 +31,7 @@ public final class GetTableView {
         return this.query;
     }
     /**
-     * @return Specifies whether to use BigQuery&#39;s legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery&#39;s standard SQL
+     * @return Specifies whether to use BigQuery&#39;s legacy SQL for this view. If set to false, the view will use BigQuery&#39;s standard SQL
      * 
      */
     public Boolean useLegacySql() {

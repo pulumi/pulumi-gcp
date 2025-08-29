@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "recaptchaenterprise.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var @default = new Gcp.Firebase.WebApp("default", new()

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,7 +61,6 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	AllowFewerZonesDeployment       bool                                        `pulumi:"allowFewerZonesDeployment"`
 	AuthorizationMode               string                                      `pulumi:"authorizationMode"`
 	AutomatedBackupConfigs          []GetInstanceAutomatedBackupConfig          `pulumi:"automatedBackupConfigs"`
 	BackupCollection                string                                      `pulumi:"backupCollection"`
@@ -144,10 +143,6 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanc
 
 func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
 	return o
-}
-
-func (o LookupInstanceResultOutput) AllowFewerZonesDeployment() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupInstanceResult) bool { return v.AllowFewerZonesDeployment }).(pulumi.BoolOutput)
 }
 
 func (o LookupInstanceResultOutput) AuthorizationMode() pulumi.StringOutput {

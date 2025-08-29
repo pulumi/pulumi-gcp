@@ -20,26 +20,6 @@ export type AppGateway = import("./appGateway").AppGateway;
 export const AppGateway: typeof import("./appGateway").AppGateway = null as any;
 utilities.lazyLoad(exports, ["AppGateway"], () => require("./appGateway"));
 
-export { ApplicationArgs, ApplicationState } from "./application";
-export type Application = import("./application").Application;
-export const Application: typeof import("./application").Application = null as any;
-utilities.lazyLoad(exports, ["Application"], () => require("./application"));
-
-export { ApplicationIamBindingArgs, ApplicationIamBindingState } from "./applicationIamBinding";
-export type ApplicationIamBinding = import("./applicationIamBinding").ApplicationIamBinding;
-export const ApplicationIamBinding: typeof import("./applicationIamBinding").ApplicationIamBinding = null as any;
-utilities.lazyLoad(exports, ["ApplicationIamBinding"], () => require("./applicationIamBinding"));
-
-export { ApplicationIamMemberArgs, ApplicationIamMemberState } from "./applicationIamMember";
-export type ApplicationIamMember = import("./applicationIamMember").ApplicationIamMember;
-export const ApplicationIamMember: typeof import("./applicationIamMember").ApplicationIamMember = null as any;
-utilities.lazyLoad(exports, ["ApplicationIamMember"], () => require("./applicationIamMember"));
-
-export { ApplicationIamPolicyArgs, ApplicationIamPolicyState } from "./applicationIamPolicy";
-export type ApplicationIamPolicy = import("./applicationIamPolicy").ApplicationIamPolicy;
-export const ApplicationIamPolicy: typeof import("./applicationIamPolicy").ApplicationIamPolicy = null as any;
-utilities.lazyLoad(exports, ["ApplicationIamPolicy"], () => require("./applicationIamPolicy"));
-
 export { GetAppConnectionArgs, GetAppConnectionResult, GetAppConnectionOutputArgs } from "./getAppConnection";
 export const getAppConnection: typeof import("./getAppConnection").getAppConnection = null as any;
 export const getAppConnectionOutput: typeof import("./getAppConnection").getAppConnectionOutput = null as any;
@@ -54,11 +34,6 @@ export { GetAppGatewayArgs, GetAppGatewayResult, GetAppGatewayOutputArgs } from 
 export const getAppGateway: typeof import("./getAppGateway").getAppGateway = null as any;
 export const getAppGatewayOutput: typeof import("./getAppGateway").getAppGatewayOutput = null as any;
 utilities.lazyLoad(exports, ["getAppGateway","getAppGatewayOutput"], () => require("./getAppGateway"));
-
-export { GetApplicationIamPolicyArgs, GetApplicationIamPolicyResult, GetApplicationIamPolicyOutputArgs } from "./getApplicationIamPolicy";
-export const getApplicationIamPolicy: typeof import("./getApplicationIamPolicy").getApplicationIamPolicy = null as any;
-export const getApplicationIamPolicyOutput: typeof import("./getApplicationIamPolicy").getApplicationIamPolicyOutput = null as any;
-utilities.lazyLoad(exports, ["getApplicationIamPolicy","getApplicationIamPolicyOutput"], () => require("./getApplicationIamPolicy"));
 
 export { GetSecurityGatewayArgs, GetSecurityGatewayResult, GetSecurityGatewayOutputArgs } from "./getSecurityGateway";
 export const getSecurityGateway: typeof import("./getSecurityGateway").getSecurityGateway = null as any;
@@ -126,14 +101,6 @@ const _module = {
                 return new AppConnector(name, <any>undefined, { urn })
             case "gcp:beyondcorp/appGateway:AppGateway":
                 return new AppGateway(name, <any>undefined, { urn })
-            case "gcp:beyondcorp/application:Application":
-                return new Application(name, <any>undefined, { urn })
-            case "gcp:beyondcorp/applicationIamBinding:ApplicationIamBinding":
-                return new ApplicationIamBinding(name, <any>undefined, { urn })
-            case "gcp:beyondcorp/applicationIamMember:ApplicationIamMember":
-                return new ApplicationIamMember(name, <any>undefined, { urn })
-            case "gcp:beyondcorp/applicationIamPolicy:ApplicationIamPolicy":
-                return new ApplicationIamPolicy(name, <any>undefined, { urn })
             case "gcp:beyondcorp/securityGateway:SecurityGateway":
                 return new SecurityGateway(name, <any>undefined, { urn })
             case "gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication":
@@ -158,10 +125,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appConnection", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appGateway", _module)
-pulumi.runtime.registerResourceModule("gcp", "beyondcorp/application", _module)
-pulumi.runtime.registerResourceModule("gcp", "beyondcorp/applicationIamBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "beyondcorp/applicationIamMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "beyondcorp/applicationIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGatewayApplication", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGatewayApplicationIamBinding", _module)

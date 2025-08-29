@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -39,9 +39,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Enable Firebase Data Connect API
 //			fdc, err := projects.NewService(ctx, "fdc", &projects.ServiceArgs{
-//				Project:          pulumi.String("my-project-name"),
-//				Service:          pulumi.String("firebasedataconnect.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
+//				Project: pulumi.String("my-project-name"),
+//				Service: pulumi.String("firebasedataconnect.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -77,8 +76,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,9 +86,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Enable Firebase Data Connect API
 //			fdc, err := projects.NewService(ctx, "fdc", &projects.ServiceArgs{
-//				Project:          pulumi.String("my-project-name"),
-//				Service:          pulumi.String("firebasedataconnect.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
+//				Project: pulumi.String("my-project-name"),
+//				Service: pulumi.String("firebasedataconnect.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err

@@ -1281,6 +1281,14 @@ Object.defineProperty(exports, "runtimeconfigCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const saasRuntimeCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "saasRuntimeCustomEndpoint", {
+    get() {
+        return __config.get("saasRuntimeCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const scopes: string[] | undefined;
 Object.defineProperty(exports, "scopes", {
     get() {
@@ -1477,14 +1485,6 @@ export declare const tagsLocationCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "tagsLocationCustomEndpoint", {
     get() {
         return __config.get("tagsLocationCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const tpuCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "tpuCustomEndpoint", {
-    get() {
-        return __config.get("tpuCustomEndpoint");
     },
     enumerable: true,
 });

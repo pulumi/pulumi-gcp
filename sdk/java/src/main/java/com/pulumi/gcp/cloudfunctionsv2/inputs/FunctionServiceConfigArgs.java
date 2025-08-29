@@ -220,6 +220,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Output)
      * Name of the service associated with a Function.
      * 
      */
@@ -227,7 +228,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> service;
 
     /**
-     * @return Name of the service associated with a Function.
+     * @return (Output)
+     * Name of the service associated with a Function.
      * 
      */
     public Optional<Output<String>> service() {
@@ -651,7 +653,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param service Name of the service associated with a Function.
+         * @param service (Output)
+         * Name of the service associated with a Function.
          * 
          * @return builder
          * 
@@ -662,7 +665,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param service Name of the service associated with a Function.
+         * @param service (Output)
+         * Name of the service associated with a Function.
          * 
          * @return builder
          * 

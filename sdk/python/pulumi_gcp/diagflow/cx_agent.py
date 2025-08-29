@@ -26,16 +26,22 @@ class CxAgentArgs:
                  location: pulumi.Input[_builtins.str],
                  time_zone: pulumi.Input[_builtins.str],
                  advanced_settings: Optional[pulumi.Input['CxAgentAdvancedSettingsArgs']] = None,
+                 answer_feedback_settings: Optional[pulumi.Input['CxAgentAnswerFeedbackSettingsArgs']] = None,
                  avatar_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_certificate_settings: Optional[pulumi.Input['CxAgentClientCertificateSettingsArgs']] = None,
                  delete_chat_engine_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_multi_language_training: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_spell_correction: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
                  gen_app_builder_settings: Optional[pulumi.Input['CxAgentGenAppBuilderSettingsArgs']] = None,
                  git_integration_settings: Optional[pulumi.Input['CxAgentGitIntegrationSettingsArgs']] = None,
+                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
+                 personalization_settings: Optional[pulumi.Input['CxAgentPersonalizationSettingsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']] = None,
+                 start_playbook: Optional[pulumi.Input[_builtins.str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  text_to_speech_settings: Optional[pulumi.Input['CxAgentTextToSpeechSettingsArgs']] = None):
         """
@@ -52,8 +58,13 @@ class CxAgentArgs:
         :param pulumi.Input['CxAgentAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input['CxAgentAnswerFeedbackSettingsArgs'] answer_feedback_settings: Answer feedback collection settings.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
+        :param pulumi.Input['CxAgentClientCertificateSettingsArgs'] client_certificate_settings: Settings for custom client certificates.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
+        :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: (Optional, Deprecated)
                Determines whether this agent should log conversation queries.
@@ -63,11 +74,15 @@ class CxAgentArgs:
                Structure is documented below.
         :param pulumi.Input['CxAgentGitIntegrationSettingsArgs'] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+        :param pulumi.Input['CxAgentPersonalizationSettingsArgs'] personalization_settings: Settings for end user personalization.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input['CxAgentSpeechToTextSettingsArgs'] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] start_playbook: Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input['CxAgentTextToSpeechSettingsArgs'] text_to_speech_settings: Settings related to speech synthesizing.
                Structure is documented below.
@@ -78,12 +93,18 @@ class CxAgentArgs:
         pulumi.set(__self__, "time_zone", time_zone)
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if answer_feedback_settings is not None:
+            pulumi.set(__self__, "answer_feedback_settings", answer_feedback_settings)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
+        if client_certificate_settings is not None:
+            pulumi.set(__self__, "client_certificate_settings", client_certificate_settings)
         if delete_chat_engine_on_destroy is not None:
             pulumi.set(__self__, "delete_chat_engine_on_destroy", delete_chat_engine_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_multi_language_training is not None:
+            pulumi.set(__self__, "enable_multi_language_training", enable_multi_language_training)
         if enable_spell_correction is not None:
             pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
         if enable_stackdriver_logging is not None:
@@ -95,12 +116,18 @@ class CxAgentArgs:
             pulumi.set(__self__, "gen_app_builder_settings", gen_app_builder_settings)
         if git_integration_settings is not None:
             pulumi.set(__self__, "git_integration_settings", git_integration_settings)
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
+        if personalization_settings is not None:
+            pulumi.set(__self__, "personalization_settings", personalization_settings)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if security_settings is not None:
             pulumi.set(__self__, "security_settings", security_settings)
         if speech_to_text_settings is not None:
             pulumi.set(__self__, "speech_to_text_settings", speech_to_text_settings)
+        if start_playbook is not None:
+            pulumi.set(__self__, "start_playbook", start_playbook)
         if supported_language_codes is not None:
             pulumi.set(__self__, "supported_language_codes", supported_language_codes)
         if text_to_speech_settings is not None:
@@ -174,6 +201,19 @@ class CxAgentArgs:
         pulumi.set(self, "advanced_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="answerFeedbackSettings")
+    def answer_feedback_settings(self) -> Optional[pulumi.Input['CxAgentAnswerFeedbackSettingsArgs']]:
+        """
+        Answer feedback collection settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "answer_feedback_settings")
+
+    @answer_feedback_settings.setter
+    def answer_feedback_settings(self, value: Optional[pulumi.Input['CxAgentAnswerFeedbackSettingsArgs']]):
+        pulumi.set(self, "answer_feedback_settings", value)
+
+    @_builtins.property
     @pulumi.getter(name="avatarUri")
     def avatar_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -184,6 +224,19 @@ class CxAgentArgs:
     @avatar_uri.setter
     def avatar_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "avatar_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificateSettings")
+    def client_certificate_settings(self) -> Optional[pulumi.Input['CxAgentClientCertificateSettingsArgs']]:
+        """
+        Settings for custom client certificates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_certificate_settings")
+
+    @client_certificate_settings.setter
+    def client_certificate_settings(self, value: Optional[pulumi.Input['CxAgentClientCertificateSettingsArgs']]):
+        pulumi.set(self, "client_certificate_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteChatEngineOnDestroy")
@@ -205,6 +258,18 @@ class CxAgentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableMultiLanguageTraining")
+    def enable_multi_language_training(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+        """
+        return pulumi.get(self, "enable_multi_language_training")
+
+    @enable_multi_language_training.setter
+    def enable_multi_language_training(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_multi_language_training", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSpellCorrection")
@@ -262,6 +327,31 @@ class CxAgentArgs:
 
     @_builtins.property
     @pulumi.getter
+    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+        """
+        return pulumi.get(self, "locked")
+
+    @locked.setter
+    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "locked", value)
+
+    @_builtins.property
+    @pulumi.getter(name="personalizationSettings")
+    def personalization_settings(self) -> Optional[pulumi.Input['CxAgentPersonalizationSettingsArgs']]:
+        """
+        Settings for end user personalization.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "personalization_settings")
+
+    @personalization_settings.setter
+    def personalization_settings(self, value: Optional[pulumi.Input['CxAgentPersonalizationSettingsArgs']]):
+        pulumi.set(self, "personalization_settings", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -299,6 +389,18 @@ class CxAgentArgs:
         pulumi.set(self, "speech_to_text_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="startPlaybook")
+    def start_playbook(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+        """
+        return pulumi.get(self, "start_playbook")
+
+    @start_playbook.setter
+    def start_playbook(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "start_playbook", value)
+
+    @_builtins.property
     @pulumi.getter(name="supportedLanguageCodes")
     def supported_language_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -328,21 +430,29 @@ class CxAgentArgs:
 class _CxAgentState:
     def __init__(__self__, *,
                  advanced_settings: Optional[pulumi.Input['CxAgentAdvancedSettingsArgs']] = None,
+                 answer_feedback_settings: Optional[pulumi.Input['CxAgentAnswerFeedbackSettingsArgs']] = None,
                  avatar_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_certificate_settings: Optional[pulumi.Input['CxAgentClientCertificateSettingsArgs']] = None,
                  default_language_code: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_chat_engine_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_multi_language_training: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_spell_correction: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
                  gen_app_builder_settings: Optional[pulumi.Input['CxAgentGenAppBuilderSettingsArgs']] = None,
                  git_integration_settings: Optional[pulumi.Input['CxAgentGitIntegrationSettingsArgs']] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 personalization_settings: Optional[pulumi.Input['CxAgentPersonalizationSettingsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 satisfies_pzi: Optional[pulumi.Input[_builtins.bool]] = None,
+                 satisfies_pzs: Optional[pulumi.Input[_builtins.bool]] = None,
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']] = None,
                  start_flow: Optional[pulumi.Input[_builtins.str]] = None,
+                 start_playbook: Optional[pulumi.Input[_builtins.str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  text_to_speech_settings: Optional[pulumi.Input['CxAgentTextToSpeechSettingsArgs']] = None,
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
@@ -351,11 +461,16 @@ class _CxAgentState:
         :param pulumi.Input['CxAgentAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input['CxAgentAnswerFeedbackSettingsArgs'] answer_feedback_settings: Answer feedback collection settings.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
+        :param pulumi.Input['CxAgentClientCertificateSettingsArgs'] client_certificate_settings: Settings for custom client certificates.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
+        :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: (Optional, Deprecated)
                Determines whether this agent should log conversation queries.
@@ -369,13 +484,19 @@ class _CxAgentState:
                > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
                This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
                Another options is to use global location so you don't need to manually configure location settings.
+        :param pulumi.Input[_builtins.bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
         :param pulumi.Input[_builtins.str] name: The unique identifier of the agent.
+        :param pulumi.Input['CxAgentPersonalizationSettingsArgs'] personalization_settings: Settings for end user personalization.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] satisfies_pzi: A read only boolean field reflecting Zone Isolation status of the agent.
+        :param pulumi.Input[_builtins.bool] satisfies_pzs: A read only boolean field reflecting Zone Separation status of the agent.
         :param pulumi.Input[_builtins.str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input['CxAgentSpeechToTextSettingsArgs'] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param pulumi.Input[_builtins.str] start_playbook: Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input['CxAgentTextToSpeechSettingsArgs'] text_to_speech_settings: Settings related to speech synthesizing.
                Structure is documented below.
@@ -384,8 +505,12 @@ class _CxAgentState:
         """
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if answer_feedback_settings is not None:
+            pulumi.set(__self__, "answer_feedback_settings", answer_feedback_settings)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
+        if client_certificate_settings is not None:
+            pulumi.set(__self__, "client_certificate_settings", client_certificate_settings)
         if default_language_code is not None:
             pulumi.set(__self__, "default_language_code", default_language_code)
         if delete_chat_engine_on_destroy is not None:
@@ -394,6 +519,8 @@ class _CxAgentState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if enable_multi_language_training is not None:
+            pulumi.set(__self__, "enable_multi_language_training", enable_multi_language_training)
         if enable_spell_correction is not None:
             pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
         if enable_stackdriver_logging is not None:
@@ -407,16 +534,26 @@ class _CxAgentState:
             pulumi.set(__self__, "git_integration_settings", git_integration_settings)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if personalization_settings is not None:
+            pulumi.set(__self__, "personalization_settings", personalization_settings)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if satisfies_pzi is not None:
+            pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
+        if satisfies_pzs is not None:
+            pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if security_settings is not None:
             pulumi.set(__self__, "security_settings", security_settings)
         if speech_to_text_settings is not None:
             pulumi.set(__self__, "speech_to_text_settings", speech_to_text_settings)
         if start_flow is not None:
             pulumi.set(__self__, "start_flow", start_flow)
+        if start_playbook is not None:
+            pulumi.set(__self__, "start_playbook", start_playbook)
         if supported_language_codes is not None:
             pulumi.set(__self__, "supported_language_codes", supported_language_codes)
         if text_to_speech_settings is not None:
@@ -439,6 +576,19 @@ class _CxAgentState:
         pulumi.set(self, "advanced_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="answerFeedbackSettings")
+    def answer_feedback_settings(self) -> Optional[pulumi.Input['CxAgentAnswerFeedbackSettingsArgs']]:
+        """
+        Answer feedback collection settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "answer_feedback_settings")
+
+    @answer_feedback_settings.setter
+    def answer_feedback_settings(self, value: Optional[pulumi.Input['CxAgentAnswerFeedbackSettingsArgs']]):
+        pulumi.set(self, "answer_feedback_settings", value)
+
+    @_builtins.property
     @pulumi.getter(name="avatarUri")
     def avatar_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -449,6 +599,19 @@ class _CxAgentState:
     @avatar_uri.setter
     def avatar_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "avatar_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificateSettings")
+    def client_certificate_settings(self) -> Optional[pulumi.Input['CxAgentClientCertificateSettingsArgs']]:
+        """
+        Settings for custom client certificates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_certificate_settings")
+
+    @client_certificate_settings.setter
+    def client_certificate_settings(self, value: Optional[pulumi.Input['CxAgentClientCertificateSettingsArgs']]):
+        pulumi.set(self, "client_certificate_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultLanguageCode")
@@ -495,6 +658,18 @@ class _CxAgentState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableMultiLanguageTraining")
+    def enable_multi_language_training(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+        """
+        return pulumi.get(self, "enable_multi_language_training")
+
+    @enable_multi_language_training.setter
+    def enable_multi_language_training(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_multi_language_training", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSpellCorrection")
@@ -567,6 +742,18 @@ class _CxAgentState:
 
     @_builtins.property
     @pulumi.getter
+    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+        """
+        return pulumi.get(self, "locked")
+
+    @locked.setter
+    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "locked", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The unique identifier of the agent.
@@ -576,6 +763,19 @@ class _CxAgentState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="personalizationSettings")
+    def personalization_settings(self) -> Optional[pulumi.Input['CxAgentPersonalizationSettingsArgs']]:
+        """
+        Settings for end user personalization.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "personalization_settings")
+
+    @personalization_settings.setter
+    def personalization_settings(self, value: Optional[pulumi.Input['CxAgentPersonalizationSettingsArgs']]):
+        pulumi.set(self, "personalization_settings", value)
 
     @_builtins.property
     @pulumi.getter
@@ -589,6 +789,30 @@ class _CxAgentState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        A read only boolean field reflecting Zone Isolation status of the agent.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @satisfies_pzi.setter
+    def satisfies_pzi(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "satisfies_pzi", value)
+
+    @_builtins.property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        A read only boolean field reflecting Zone Separation status of the agent.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @satisfies_pzs.setter
+    def satisfies_pzs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "satisfies_pzs", value)
 
     @_builtins.property
     @pulumi.getter(name="securitySettings")
@@ -626,6 +850,18 @@ class _CxAgentState:
     @start_flow.setter
     def start_flow(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "start_flow", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startPlaybook")
+    def start_playbook(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+        """
+        return pulumi.get(self, "start_playbook")
+
+    @start_playbook.setter
+    def start_playbook(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "start_playbook", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedLanguageCodes")
@@ -673,19 +909,25 @@ class CxAgent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
+                 answer_feedback_settings: Optional[pulumi.Input[Union['CxAgentAnswerFeedbackSettingsArgs', 'CxAgentAnswerFeedbackSettingsArgsDict']]] = None,
                  avatar_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_certificate_settings: Optional[pulumi.Input[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict']]] = None,
                  default_language_code: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_chat_engine_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_multi_language_training: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_spell_correction: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
                  gen_app_builder_settings: Optional[pulumi.Input[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict']]] = None,
                  git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
+                 personalization_settings: Optional[pulumi.Input[Union['CxAgentPersonalizationSettingsArgs', 'CxAgentPersonalizationSettingsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']]] = None,
+                 start_playbook: Optional[pulumi.Input[_builtins.str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  text_to_speech_settings: Optional[pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
@@ -779,6 +1021,39 @@ class CxAgent(pulumi.CustomResource):
             },
             gen_app_builder_settings={
                 "engine": "projects/-/locations/-/collections/-/engines/-",
+            },
+            start_playbook="projects/-/locations/-/agents/-/playbooks/00000000-0000-0000-0000-000000000000",
+            enable_multi_language_training=False,
+            locked=False,
+            answer_feedback_settings={
+                "enable_answer_feedback": False,
+            },
+            client_certificate_settings={
+                "passphrase": "projects/example-proj/secrets/example-secret/versions/example-version",
+                "private_key": "projects/example-proj/secrets/example-secret/versions/example-version",
+                "ssl_certificate": \"\"\"-----BEGIN CERTIFICATE-----
+        MIIDdDCCAlygAwIBAgIJANg0gKeB5LKmMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYD
+        VQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j
+        aXNjbzEZMBcGA1UECgwQR2l0SHViLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50
+        IFRlYW0xGTAXBgNVBAMMEGdvdnN0YWNrLmdpdGh1Yi5pbzAeFw0yMDA1MDUxNzM2
+        MzVaFw0zMDA1MDMxNzM2MzVaMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs
+        aWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEZMBcGA1UECgwQR2l0SHVi
+        LCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50IFRlYW0xGTAXBgNVBAMMEGdvdnN0
+        YWNrLmdpdGh1Yi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK5P
+        4d9qWZPjZ2eA4eYV2Q8Z3Zp4g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6AgMBAAGjggEaMIIBFjAdBgNVHQ4EFgQUCneA9H8fC+tC
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        -----END CERTIFICATE-----
+        \"\"\",
+            },
+            personalization_settings={
+                "default_end_user_metadata": "{\\"example-key\\": \\"example-value\\"}",
             })
         ```
 
@@ -811,11 +1086,16 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[Union['CxAgentAnswerFeedbackSettingsArgs', 'CxAgentAnswerFeedbackSettingsArgsDict']] answer_feedback_settings: Answer feedback collection settings.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
+        :param pulumi.Input[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict']] client_certificate_settings: Settings for custom client certificates.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
+        :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: (Optional, Deprecated)
                Determines whether this agent should log conversation queries.
@@ -829,11 +1109,15 @@ class CxAgent(pulumi.CustomResource):
                > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
                This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
                Another options is to use global location so you don't need to manually configure location settings.
+        :param pulumi.Input[_builtins.bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+        :param pulumi.Input[Union['CxAgentPersonalizationSettingsArgs', 'CxAgentPersonalizationSettingsArgsDict']] personalization_settings: Settings for end user personalization.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] start_playbook: Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']] text_to_speech_settings: Settings related to speech synthesizing.
                Structure is documented below.
@@ -935,6 +1219,39 @@ class CxAgent(pulumi.CustomResource):
             },
             gen_app_builder_settings={
                 "engine": "projects/-/locations/-/collections/-/engines/-",
+            },
+            start_playbook="projects/-/locations/-/agents/-/playbooks/00000000-0000-0000-0000-000000000000",
+            enable_multi_language_training=False,
+            locked=False,
+            answer_feedback_settings={
+                "enable_answer_feedback": False,
+            },
+            client_certificate_settings={
+                "passphrase": "projects/example-proj/secrets/example-secret/versions/example-version",
+                "private_key": "projects/example-proj/secrets/example-secret/versions/example-version",
+                "ssl_certificate": \"\"\"-----BEGIN CERTIFICATE-----
+        MIIDdDCCAlygAwIBAgIJANg0gKeB5LKmMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYD
+        VQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j
+        aXNjbzEZMBcGA1UECgwQR2l0SHViLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50
+        IFRlYW0xGTAXBgNVBAMMEGdvdnN0YWNrLmdpdGh1Yi5pbzAeFw0yMDA1MDUxNzM2
+        MzVaFw0zMDA1MDMxNzM2MzVaMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs
+        aWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEZMBcGA1UECgwQR2l0SHVi
+        LCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50IFRlYW0xGTAXBgNVBAMMEGdvdnN0
+        YWNrLmdpdGh1Yi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK5P
+        4d9qWZPjZ2eA4eYV2Q8Z3Zp4g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6AgMBAAGjggEaMIIBFjAdBgNVHQ4EFgQUCneA9H8fC+tC
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+        -----END CERTIFICATE-----
+        \"\"\",
+            },
+            personalization_settings={
+                "default_end_user_metadata": "{\\"example-key\\": \\"example-value\\"}",
             })
         ```
 
@@ -978,19 +1295,25 @@ class CxAgent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
+                 answer_feedback_settings: Optional[pulumi.Input[Union['CxAgentAnswerFeedbackSettingsArgs', 'CxAgentAnswerFeedbackSettingsArgsDict']]] = None,
                  avatar_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_certificate_settings: Optional[pulumi.Input[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict']]] = None,
                  default_language_code: Optional[pulumi.Input[_builtins.str]] = None,
                  delete_chat_engine_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_multi_language_training: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_spell_correction: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
                  gen_app_builder_settings: Optional[pulumi.Input[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict']]] = None,
                  git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
+                 personalization_settings: Optional[pulumi.Input[Union['CxAgentPersonalizationSettingsArgs', 'CxAgentPersonalizationSettingsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']]] = None,
+                 start_playbook: Optional[pulumi.Input[_builtins.str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  text_to_speech_settings: Optional[pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1004,7 +1327,9 @@ class CxAgent(pulumi.CustomResource):
             __props__ = CxAgentArgs.__new__(CxAgentArgs)
 
             __props__.__dict__["advanced_settings"] = advanced_settings
+            __props__.__dict__["answer_feedback_settings"] = answer_feedback_settings
             __props__.__dict__["avatar_uri"] = avatar_uri
+            __props__.__dict__["client_certificate_settings"] = client_certificate_settings
             if default_language_code is None and not opts.urn:
                 raise TypeError("Missing required property 'default_language_code'")
             __props__.__dict__["default_language_code"] = default_language_code
@@ -1013,6 +1338,7 @@ class CxAgent(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enable_multi_language_training"] = enable_multi_language_training
             __props__.__dict__["enable_spell_correction"] = enable_spell_correction
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
             __props__.__dict__["gen_app_builder_settings"] = gen_app_builder_settings
@@ -1020,15 +1346,20 @@ class CxAgent(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["locked"] = locked
+            __props__.__dict__["personalization_settings"] = personalization_settings
             __props__.__dict__["project"] = project
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["speech_to_text_settings"] = speech_to_text_settings
+            __props__.__dict__["start_playbook"] = start_playbook
             __props__.__dict__["supported_language_codes"] = supported_language_codes
             __props__.__dict__["text_to_speech_settings"] = text_to_speech_settings
             if time_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'time_zone'")
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["name"] = None
+            __props__.__dict__["satisfies_pzi"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["start_flow"] = None
         super(CxAgent, __self__).__init__(
             'gcp:diagflow/cxAgent:CxAgent',
@@ -1041,21 +1372,29 @@ class CxAgent(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
+            answer_feedback_settings: Optional[pulumi.Input[Union['CxAgentAnswerFeedbackSettingsArgs', 'CxAgentAnswerFeedbackSettingsArgsDict']]] = None,
             avatar_uri: Optional[pulumi.Input[_builtins.str]] = None,
+            client_certificate_settings: Optional[pulumi.Input[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict']]] = None,
             default_language_code: Optional[pulumi.Input[_builtins.str]] = None,
             delete_chat_engine_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            enable_multi_language_training: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_spell_correction: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
             gen_app_builder_settings: Optional[pulumi.Input[Union['CxAgentGenAppBuilderSettingsArgs', 'CxAgentGenAppBuilderSettingsArgsDict']]] = None,
             git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            locked: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            personalization_settings: Optional[pulumi.Input[Union['CxAgentPersonalizationSettingsArgs', 'CxAgentPersonalizationSettingsArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            satisfies_pzi: Optional[pulumi.Input[_builtins.bool]] = None,
+            satisfies_pzs: Optional[pulumi.Input[_builtins.bool]] = None,
             security_settings: Optional[pulumi.Input[_builtins.str]] = None,
             speech_to_text_settings: Optional[pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']]] = None,
             start_flow: Optional[pulumi.Input[_builtins.str]] = None,
+            start_playbook: Optional[pulumi.Input[_builtins.str]] = None,
             supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             text_to_speech_settings: Optional[pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']]] = None,
             time_zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'CxAgent':
@@ -1069,11 +1408,16 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
+        :param pulumi.Input[Union['CxAgentAnswerFeedbackSettingsArgs', 'CxAgentAnswerFeedbackSettingsArgsDict']] answer_feedback_settings: Answer feedback collection settings.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
+        :param pulumi.Input[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict']] client_certificate_settings: Settings for custom client certificates.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] default_language_code: The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
                for a list of the currently supported language codes. This field cannot be updated after creation.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
+        :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: (Optional, Deprecated)
                Determines whether this agent should log conversation queries.
@@ -1087,13 +1431,19 @@ class CxAgent(pulumi.CustomResource):
                > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
                This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
                Another options is to use global location so you don't need to manually configure location settings.
+        :param pulumi.Input[_builtins.bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
         :param pulumi.Input[_builtins.str] name: The unique identifier of the agent.
+        :param pulumi.Input[Union['CxAgentPersonalizationSettingsArgs', 'CxAgentPersonalizationSettingsArgsDict']] personalization_settings: Settings for end user personalization.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] satisfies_pzi: A read only boolean field reflecting Zone Isolation status of the agent.
+        :param pulumi.Input[_builtins.bool] satisfies_pzs: A read only boolean field reflecting Zone Separation status of the agent.
         :param pulumi.Input[_builtins.str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param pulumi.Input[_builtins.str] start_playbook: Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']] text_to_speech_settings: Settings related to speech synthesizing.
                Structure is documented below.
@@ -1105,21 +1455,29 @@ class CxAgent(pulumi.CustomResource):
         __props__ = _CxAgentState.__new__(_CxAgentState)
 
         __props__.__dict__["advanced_settings"] = advanced_settings
+        __props__.__dict__["answer_feedback_settings"] = answer_feedback_settings
         __props__.__dict__["avatar_uri"] = avatar_uri
+        __props__.__dict__["client_certificate_settings"] = client_certificate_settings
         __props__.__dict__["default_language_code"] = default_language_code
         __props__.__dict__["delete_chat_engine_on_destroy"] = delete_chat_engine_on_destroy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["enable_multi_language_training"] = enable_multi_language_training
         __props__.__dict__["enable_spell_correction"] = enable_spell_correction
         __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
         __props__.__dict__["gen_app_builder_settings"] = gen_app_builder_settings
         __props__.__dict__["git_integration_settings"] = git_integration_settings
         __props__.__dict__["location"] = location
+        __props__.__dict__["locked"] = locked
         __props__.__dict__["name"] = name
+        __props__.__dict__["personalization_settings"] = personalization_settings
         __props__.__dict__["project"] = project
+        __props__.__dict__["satisfies_pzi"] = satisfies_pzi
+        __props__.__dict__["satisfies_pzs"] = satisfies_pzs
         __props__.__dict__["security_settings"] = security_settings
         __props__.__dict__["speech_to_text_settings"] = speech_to_text_settings
         __props__.__dict__["start_flow"] = start_flow
+        __props__.__dict__["start_playbook"] = start_playbook
         __props__.__dict__["supported_language_codes"] = supported_language_codes
         __props__.__dict__["text_to_speech_settings"] = text_to_speech_settings
         __props__.__dict__["time_zone"] = time_zone
@@ -1136,12 +1494,30 @@ class CxAgent(pulumi.CustomResource):
         return pulumi.get(self, "advanced_settings")
 
     @_builtins.property
+    @pulumi.getter(name="answerFeedbackSettings")
+    def answer_feedback_settings(self) -> pulumi.Output[Optional['outputs.CxAgentAnswerFeedbackSettings']]:
+        """
+        Answer feedback collection settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "answer_feedback_settings")
+
+    @_builtins.property
     @pulumi.getter(name="avatarUri")
     def avatar_uri(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         """
         return pulumi.get(self, "avatar_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificateSettings")
+    def client_certificate_settings(self) -> pulumi.Output[Optional['outputs.CxAgentClientCertificateSettings']]:
+        """
+        Settings for custom client certificates.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_certificate_settings")
 
     @_builtins.property
     @pulumi.getter(name="defaultLanguageCode")
@@ -1172,6 +1548,14 @@ class CxAgent(pulumi.CustomResource):
         The human-readable name of the agent, unique within the location.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="enableMultiLanguageTraining")
+    def enable_multi_language_training(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+        """
+        return pulumi.get(self, "enable_multi_language_training")
 
     @_builtins.property
     @pulumi.getter(name="enableSpellCorrection")
@@ -1224,11 +1608,28 @@ class CxAgent(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def locked(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+        """
+        return pulumi.get(self, "locked")
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The unique identifier of the agent.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="personalizationSettings")
+    def personalization_settings(self) -> pulumi.Output[Optional['outputs.CxAgentPersonalizationSettings']]:
+        """
+        Settings for end user personalization.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "personalization_settings")
 
     @_builtins.property
     @pulumi.getter
@@ -1238,6 +1639,22 @@ class CxAgent(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[_builtins.bool]:
+        """
+        A read only boolean field reflecting Zone Isolation status of the agent.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @_builtins.property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[_builtins.bool]:
+        """
+        A read only boolean field reflecting Zone Separation status of the agent.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @_builtins.property
     @pulumi.getter(name="securitySettings")
@@ -1263,6 +1680,14 @@ class CxAgent(pulumi.CustomResource):
         Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "start_flow")
+
+    @_builtins.property
+    @pulumi.getter(name="startPlaybook")
+    def start_playbook(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+        """
+        return pulumi.get(self, "start_playbook")
 
     @_builtins.property
     @pulumi.getter(name="supportedLanguageCodes")

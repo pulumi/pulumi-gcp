@@ -404,18 +404,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-        /// it will not appear in get listings. If not set the default behavior is determined by the
-        /// org policy, if there is no org policy specified, then it will default to disabled.
-        /// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-        /// 
-        /// &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
-        /// </summary>
-        [Output("enableFlowLogs")]
-        public Output<bool> EnableFlowLogs { get; private set; } = null!;
-
-        /// <summary>
         /// The range of external IPv6 addresses that are owned by this subnetwork.
         /// </summary>
         [Output("externalIpv6Prefix")]
@@ -696,18 +684,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-        /// it will not appear in get listings. If not set the default behavior is determined by the
-        /// org policy, if there is no org policy specified, then it will default to disabled.
-        /// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-        /// 
-        /// &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
-        /// </summary>
-        [Input("enableFlowLogs")]
-        public Input<bool>? EnableFlowLogs { get; set; }
-
-        /// <summary>
         /// The range of external IPv6 addresses that are owned by this subnetwork.
         /// </summary>
         [Input("externalIpv6Prefix")]
@@ -904,18 +880,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-        /// it will not appear in get listings. If not set the default behavior is determined by the
-        /// org policy, if there is no org policy specified, then it will default to disabled.
-        /// This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-        /// 
-        /// &gt; **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
-        /// </summary>
-        [Input("enableFlowLogs")]
-        public Input<bool>? EnableFlowLogs { get; set; }
 
         /// <summary>
         /// The range of external IPv6 addresses that are owned by this subnetwork.

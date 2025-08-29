@@ -29,6 +29,7 @@ class ClusterArgs:
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
@@ -109,6 +110,8 @@ class ClusterArgs:
             pulumi.set(__self__, "database_version", database_version)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if encryption_config is not None:
@@ -246,6 +249,15 @@ class ClusterArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -442,6 +454,7 @@ class _ClusterState:
                  continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -557,6 +570,8 @@ class _ClusterState:
             pulumi.set(__self__, "database_version", database_version)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_annotations is not None:
@@ -730,6 +745,15 @@ class _ClusterState:
     @deletion_policy.setter
     def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -1063,6 +1087,7 @@ class Cluster(pulumi.CustomResource):
                  continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_config: Optional[pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1094,7 +1119,8 @@ class Cluster(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default_network.id,
-            })
+            },
+            deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Cluster Before Upgrade
@@ -1113,7 +1139,8 @@ class Cluster(pulumi.CustomResource):
             database_version="POSTGRES_14",
             initial_user={
                 "password": "alloydb-cluster",
-            })
+            },
+            deletion_protection=False)
         default_instance = gcp.alloydb.Instance("default",
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
@@ -1138,7 +1165,8 @@ class Cluster(pulumi.CustomResource):
             database_version="POSTGRES_15",
             initial_user={
                 "password": "alloydb-cluster",
-            })
+            },
+            deletion_protection=False)
         default_instance = gcp.alloydb.Instance("default",
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
@@ -1191,7 +1219,8 @@ class Cluster(pulumi.CustomResource):
             },
             labels={
                 "test": "alloydb-cluster-full",
-            })
+            },
+            deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Secondary Cluster Basic
@@ -1206,7 +1235,8 @@ class Cluster(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-cluster",
             address_type="INTERNAL",
@@ -1238,6 +1268,7 @@ class Cluster(pulumi.CustomResource):
             secondary_config={
                 "primary_cluster_name": primary.name,
             },
+            deletion_protection=False,
             opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         project = gcp.organizations.get_project()
         ```
@@ -1345,7 +1376,8 @@ class Cluster(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default_network.id,
-            })
+            },
+            deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Cluster Before Upgrade
@@ -1364,7 +1396,8 @@ class Cluster(pulumi.CustomResource):
             database_version="POSTGRES_14",
             initial_user={
                 "password": "alloydb-cluster",
-            })
+            },
+            deletion_protection=False)
         default_instance = gcp.alloydb.Instance("default",
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
@@ -1389,7 +1422,8 @@ class Cluster(pulumi.CustomResource):
             database_version="POSTGRES_15",
             initial_user={
                 "password": "alloydb-cluster",
-            })
+            },
+            deletion_protection=False)
         default_instance = gcp.alloydb.Instance("default",
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
@@ -1442,7 +1476,8 @@ class Cluster(pulumi.CustomResource):
             },
             labels={
                 "test": "alloydb-cluster-full",
-            })
+            },
+            deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Secondary Cluster Basic
@@ -1457,7 +1492,8 @@ class Cluster(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
-            })
+            },
+            deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-secondary-cluster",
             address_type="INTERNAL",
@@ -1489,6 +1525,7 @@ class Cluster(pulumi.CustomResource):
             secondary_config={
                 "primary_cluster_name": primary.name,
             },
+            deletion_protection=False,
             opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         project = gcp.organizations.get_project()
         ```
@@ -1545,6 +1582,7 @@ class Cluster(pulumi.CustomResource):
                  continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_config: Optional[pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1578,6 +1616,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["continuous_backup_config"] = continuous_backup_config
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["etag"] = etag
@@ -1628,6 +1667,7 @@ class Cluster(pulumi.CustomResource):
             continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict']]]]] = None,
             database_version: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1743,6 +1783,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["continuous_backup_infos"] = continuous_backup_infos
         __props__.__dict__["database_version"] = database_version
         __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1856,6 +1897,11 @@ class Cluster(pulumi.CustomResource):
         Possible values: DEFAULT, FORCE
         """
         return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

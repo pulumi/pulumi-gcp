@@ -32,18 +32,18 @@ public final class OrganizationSecurityPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * A textual name of the security policy.
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
      * 
      */
-    @Import(name="displayName", required=true)
-    private Output<String> displayName;
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
 
     /**
-     * @return A textual name of the security policy.
+     * @return User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
      * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
     }
 
     /**
@@ -64,22 +64,33 @@ public final class OrganizationSecurityPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The type indicates the intended use of the security policy.
-     * For organization security policies, the only supported type
-     * is &#34;FIREWALL&#34;.
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+     * 
+     */
+    @Import(name="shortName")
+    private @Nullable Output<String> shortName;
+
+    /**
+     * @return User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+     * 
+     */
+    public Optional<Output<String>> shortName() {
+        return Optional.ofNullable(this.shortName);
+    }
+
+    /**
+     * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type indicates the intended use of the security policy.
-     * For organization security policies, the only supported type
-     * is &#34;FIREWALL&#34;.
+     * @return The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -92,6 +103,7 @@ public final class OrganizationSecurityPolicyArgs extends com.pulumi.resources.R
         this.description = $.description;
         this.displayName = $.displayName;
         this.parent = $.parent;
+        this.shortName = $.shortName;
         this.type = $.type;
     }
 
@@ -135,18 +147,18 @@ public final class OrganizationSecurityPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param displayName A textual name of the security policy.
+         * @param displayName User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
          * 
          * @return builder
          * 
          */
-        public Builder displayName(Output<String> displayName) {
+        public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
         /**
-         * @param displayName A textual name of the security policy.
+         * @param displayName User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
          * 
          * @return builder
          * 
@@ -179,11 +191,30 @@ public final class OrganizationSecurityPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type The type indicates the intended use of the security policy.
-         * For organization security policies, the only supported type
-         * is &#34;FIREWALL&#34;.
+         * @param shortName User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shortName(@Nullable Output<String> shortName) {
+            $.shortName = shortName;
+            return this;
+        }
+
+        /**
+         * @param shortName User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shortName(String shortName) {
+            return shortName(Output.of(shortName));
+        }
+
+        /**
+         * @param type The type indicates the intended use of the security policy. This field can be set only at resource creation time.
          * Default value is `FIREWALL`.
-         * Possible values are: `FIREWALL`.
+         * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
          * 
          * @return builder
          * 
@@ -194,11 +225,9 @@ public final class OrganizationSecurityPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type The type indicates the intended use of the security policy.
-         * For organization security policies, the only supported type
-         * is &#34;FIREWALL&#34;.
+         * @param type The type indicates the intended use of the security policy. This field can be set only at resource creation time.
          * Default value is `FIREWALL`.
-         * Possible values are: `FIREWALL`.
+         * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
          * 
          * @return builder
          * 
@@ -208,9 +237,6 @@ public final class OrganizationSecurityPolicyArgs extends com.pulumi.resources.R
         }
 
         public OrganizationSecurityPolicyArgs build() {
-            if ($.displayName == null) {
-                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyArgs", "displayName");
-            }
             if ($.parent == null) {
                 throw new MissingRequiredPropertyException("OrganizationSecurityPolicyArgs", "parent");
             }

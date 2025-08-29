@@ -1127,6 +1127,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.runtimeconfigCustomEndpoint);
     }
 
+    @Import(name="saasRuntimeCustomEndpoint")
+    private @Nullable Output<String> saasRuntimeCustomEndpoint;
+
+    public Optional<Output<String>> saasRuntimeCustomEndpoint() {
+        return Optional.ofNullable(this.saasRuntimeCustomEndpoint);
+    }
+
     @Import(name="scopes", json=true)
     private @Nullable Output<List<String>> scopes;
 
@@ -1293,13 +1300,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> tagsLocationCustomEndpoint() {
         return Optional.ofNullable(this.tagsLocationCustomEndpoint);
-    }
-
-    @Import(name="tpuCustomEndpoint")
-    private @Nullable Output<String> tpuCustomEndpoint;
-
-    public Optional<Output<String>> tpuCustomEndpoint() {
-        return Optional.ofNullable(this.tpuCustomEndpoint);
     }
 
     @Import(name="tpuV2CustomEndpoint")
@@ -1540,6 +1540,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.resourceManagerV3CustomEndpoint = $.resourceManagerV3CustomEndpoint;
         this.runtimeConfigCustomEndpoint = $.runtimeConfigCustomEndpoint;
         this.runtimeconfigCustomEndpoint = $.runtimeconfigCustomEndpoint;
+        this.saasRuntimeCustomEndpoint = $.saasRuntimeCustomEndpoint;
         this.scopes = $.scopes;
         this.secretManagerCustomEndpoint = $.secretManagerCustomEndpoint;
         this.secretManagerRegionalCustomEndpoint = $.secretManagerRegionalCustomEndpoint;
@@ -1564,7 +1565,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.storageTransferCustomEndpoint = $.storageTransferCustomEndpoint;
         this.tagsCustomEndpoint = $.tagsCustomEndpoint;
         this.tagsLocationCustomEndpoint = $.tagsLocationCustomEndpoint;
-        this.tpuCustomEndpoint = $.tpuCustomEndpoint;
         this.tpuV2CustomEndpoint = $.tpuV2CustomEndpoint;
         this.transcoderCustomEndpoint = $.transcoderCustomEndpoint;
         this.universeDomain = $.universeDomain;
@@ -3022,6 +3022,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return runtimeconfigCustomEndpoint(Output.of(runtimeconfigCustomEndpoint));
         }
 
+        public Builder saasRuntimeCustomEndpoint(@Nullable Output<String> saasRuntimeCustomEndpoint) {
+            $.saasRuntimeCustomEndpoint = saasRuntimeCustomEndpoint;
+            return this;
+        }
+
+        public Builder saasRuntimeCustomEndpoint(String saasRuntimeCustomEndpoint) {
+            return saasRuntimeCustomEndpoint(Output.of(saasRuntimeCustomEndpoint));
+        }
+
         public Builder scopes(@Nullable Output<List<String>> scopes) {
             $.scopes = scopes;
             return this;
@@ -3240,15 +3249,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder tagsLocationCustomEndpoint(String tagsLocationCustomEndpoint) {
             return tagsLocationCustomEndpoint(Output.of(tagsLocationCustomEndpoint));
-        }
-
-        public Builder tpuCustomEndpoint(@Nullable Output<String> tpuCustomEndpoint) {
-            $.tpuCustomEndpoint = tpuCustomEndpoint;
-            return this;
-        }
-
-        public Builder tpuCustomEndpoint(String tpuCustomEndpoint) {
-            return tpuCustomEndpoint(Output.of(tpuCustomEndpoint));
         }
 
         public Builder tpuV2CustomEndpoint(@Nullable Output<String> tpuV2CustomEndpoint) {

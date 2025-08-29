@@ -170,7 +170,6 @@ import javax.annotation.Nullable;
  * 
  *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()
  *             .service("servicenetworking.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()

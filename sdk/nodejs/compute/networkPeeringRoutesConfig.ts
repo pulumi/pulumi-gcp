@@ -55,60 +55,6 @@ import * as utilities from "../utilities";
  *     peerNetwork: networkPrimary.id,
  * });
  * ```
- * ### Network Peering Routes Config Gke
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const containerNetwork = new gcp.compute.Network("container_network", {
- *     name: "container-network",
- *     autoCreateSubnetworks: false,
- * });
- * const containerSubnetwork = new gcp.compute.Subnetwork("container_subnetwork", {
- *     name: "container-subnetwork",
- *     region: "us-central1",
- *     network: containerNetwork.name,
- *     ipCidrRange: "10.0.36.0/24",
- *     privateIpGoogleAccess: true,
- *     secondaryIpRanges: [
- *         {
- *             rangeName: "pod",
- *             ipCidrRange: "10.0.0.0/19",
- *         },
- *         {
- *             rangeName: "svc",
- *             ipCidrRange: "10.0.32.0/22",
- *         },
- *     ],
- * });
- * const privateCluster = new gcp.container.Cluster("private_cluster", {
- *     name: "private-cluster",
- *     location: "us-central1-a",
- *     initialNodeCount: 1,
- *     network: containerNetwork.name,
- *     subnetwork: containerSubnetwork.name,
- *     privateClusterConfig: {
- *         enablePrivateEndpoint: true,
- *         enablePrivateNodes: true,
- *         masterIpv4CidrBlock: "10.42.0.0/28",
- *     },
- *     masterAuthorizedNetworksConfig: {},
- *     ipAllocationPolicy: {
- *         clusterSecondaryRangeName: containerSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
- *         servicesSecondaryRangeName: containerSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
- *     },
- *     deletionProtection: true,
- * });
- * const peeringGkeRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peering_gke_routes", {
- *     peering: privateCluster.privateClusterConfig.apply(privateClusterConfig => privateClusterConfig.peeringName),
- *     network: containerNetwork.name,
- *     importCustomRoutes: true,
- *     exportCustomRoutes: true,
- *     importSubnetRoutesWithPublicIp: true,
- *     exportSubnetRoutesWithPublicIp: true,
- * });
- * ```
  *
  * ## Import
  *

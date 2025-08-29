@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -6005,6 +6005,8 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type ServiceScaling struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount *int `pulumi:"manualInstanceCount"`
+	// Combined maximum number of instances for all revisions receiving traffic.
+	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
@@ -6026,6 +6028,8 @@ type ServiceScalingInput interface {
 type ServiceScalingArgs struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount pulumi.IntPtrInput `pulumi:"manualInstanceCount"`
+	// Combined maximum number of instances for all revisions receiving traffic.
+	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
@@ -6115,6 +6119,11 @@ func (o ServiceScalingOutput) ManualInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceScaling) *int { return v.ManualInstanceCount }).(pulumi.IntPtrOutput)
 }
 
+// Combined maximum number of instances for all revisions receiving traffic.
+func (o ServiceScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
+}
+
 // Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 func (o ServiceScalingOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceScaling) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
@@ -6157,6 +6166,16 @@ func (o ServiceScalingPtrOutput) ManualInstanceCount() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.ManualInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Combined maximum number of instances for all revisions receiving traffic.
+func (o ServiceScalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstanceCount
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -9758,8 +9777,7 @@ func (o ServiceTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutp
 }
 
 type ServiceTemplateScaling struct {
-	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-	// a default value based on the project's available container instances quota in the region and specified instance size.
+	// Combined maximum number of instances for all revisions receiving traffic.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
@@ -9777,8 +9795,7 @@ type ServiceTemplateScalingInput interface {
 }
 
 type ServiceTemplateScalingArgs struct {
-	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-	// a default value based on the project's available container instances quota in the region and specified instance size.
+	// Combined maximum number of instances for all revisions receiving traffic.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
@@ -9861,8 +9878,7 @@ func (o ServiceTemplateScalingOutput) ToServiceTemplateScalingPtrOutputWithConte
 	}).(ServiceTemplateScalingPtrOutput)
 }
 
-// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-// a default value based on the project's available container instances quota in the region and specified instance size.
+// Combined maximum number of instances for all revisions receiving traffic.
 func (o ServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
 }
@@ -9896,8 +9912,7 @@ func (o ServiceTemplateScalingPtrOutput) Elem() ServiceTemplateScalingOutput {
 	}).(ServiceTemplateScalingOutput)
 }
 
-// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-// a default value based on the project's available container instances quota in the region and specified instance size.
+// Combined maximum number of instances for all revisions receiving traffic.
 func (o ServiceTemplateScalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateScaling) *int {
 		if v == nil {
@@ -13461,8 +13476,6 @@ type WorkerPoolTemplateContainer struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
-	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs []WorkerPoolTemplateContainerEnv `pulumi:"envs"`
@@ -13496,8 +13509,6 @@ type WorkerPoolTemplateContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs WorkerPoolTemplateContainerEnvArrayInput `pulumi:"envs"`
@@ -13574,11 +13585,6 @@ func (o WorkerPoolTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o WorkerPoolTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-func (o WorkerPoolTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.
@@ -19994,6 +20000,8 @@ func (o GetServiceConditionArrayOutput) Index(i pulumi.IntInput) GetServiceCondi
 type GetServiceScaling struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount int `pulumi:"manualInstanceCount"`
+	// Combined maximum number of instances for all revisions receiving traffic.
+	MaxInstanceCount int `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
@@ -20014,6 +20022,8 @@ type GetServiceScalingInput interface {
 type GetServiceScalingArgs struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount pulumi.IntInput `pulumi:"manualInstanceCount"`
+	// Combined maximum number of instances for all revisions receiving traffic.
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
 	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
@@ -20074,6 +20084,11 @@ func (o GetServiceScalingOutput) ToGetServiceScalingOutputWithContext(ctx contex
 // Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 func (o GetServiceScalingOutput) ManualInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceScaling) int { return v.ManualInstanceCount }).(pulumi.IntOutput)
+}
+
+// Combined maximum number of instances for all revisions receiving traffic.
+func (o GetServiceScalingOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceScaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
 }
 
 // Minimum number of instances for the service, to be divided among all revisions receiving traffic.
@@ -25196,8 +25211,6 @@ type GetWorkerPoolTemplateContainer struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
-	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	Envs []GetWorkerPoolTemplateContainerEnv `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -25228,8 +25241,6 @@ type GetWorkerPoolTemplateContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	Envs GetWorkerPoolTemplateContainerEnvArrayInput `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -25303,11 +25314,6 @@ func (o GetWorkerPoolTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o GetWorkerPoolTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-func (o GetWorkerPoolTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.

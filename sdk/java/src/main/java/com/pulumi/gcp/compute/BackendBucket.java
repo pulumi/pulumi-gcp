@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.BackendBucketArgs;
 import com.pulumi.gcp.compute.inputs.BackendBucketState;
 import com.pulumi.gcp.compute.outputs.BackendBucketCdnPolicy;
+import com.pulumi.gcp.compute.outputs.BackendBucketParams;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -422,6 +423,22 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={BackendBucketParams.class}, tree="[0]")
+    private Output</* @Nullable */ BackendBucketParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackendBucketParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

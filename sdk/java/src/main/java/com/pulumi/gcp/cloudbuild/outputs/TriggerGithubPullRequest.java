@@ -15,12 +15,11 @@ import javax.annotation.Nullable;
 public final class TriggerGithubPullRequest {
     /**
      * @return Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
      * 
      */
     private String branch;
     /**
-     * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+     * @return Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
      * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
@@ -34,14 +33,13 @@ public final class TriggerGithubPullRequest {
     private TriggerGithubPullRequest() {}
     /**
      * @return Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
      * 
      */
     public String branch() {
         return this.branch;
     }
     /**
-     * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+     * @return Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
      * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */

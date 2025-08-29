@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  *         var fdc = new Service("fdc", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebasedataconnect.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         // Create a Firebase Data Connect service
@@ -115,7 +114,6 @@ import javax.annotation.Nullable;
  *         var fdc = new Service("fdc", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebasedataconnect.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         // Create a Firebase Data Connect service

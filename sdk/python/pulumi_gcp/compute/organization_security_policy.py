@@ -19,40 +19,31 @@ __all__ = ['OrganizationSecurityPolicyArgs', 'OrganizationSecurityPolicy']
 @pulumi.input_type
 class OrganizationSecurityPolicyArgs:
     def __init__(__self__, *,
-                 display_name: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 short_name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationSecurityPolicy resource.
-        :param pulumi.Input[_builtins.str] display_name: A textual name of the security policy.
         :param pulumi.Input[_builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
-        :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy.
-               For organization security policies, the only supported type
-               is "FIREWALL".
+        :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
+        :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                Default value is `FIREWALL`.
-               Possible values are: `FIREWALL`.
+               Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
-        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "parent", parent)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if short_name is not None:
+            pulumi.set(__self__, "short_name", short_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        A textual name of the security policy.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -80,14 +71,36 @@ class OrganizationSecurityPolicyArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shortName")
+    def short_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        """
+        return pulumi.get(self, "short_name")
+
+    @short_name.setter
+    def short_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "short_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type indicates the intended use of the security policy.
-        For organization security policies, the only supported type
-        is "FIREWALL".
+        The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         Default value is `FIREWALL`.
-        Possible values are: `FIREWALL`.
+        Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
 
@@ -104,21 +117,21 @@ class _OrganizationSecurityPolicyState:
                  fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 short_name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationSecurityPolicy resources.
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
-        :param pulumi.Input[_builtins.str] display_name: A textual name of the security policy.
+        :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
         :param pulumi.Input[_builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[_builtins.str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy.
-               For organization security policies, the only supported type
-               is "FIREWALL".
+        :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                Default value is `FIREWALL`.
-               Possible values are: `FIREWALL`.
+               Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -130,6 +143,8 @@ class _OrganizationSecurityPolicyState:
             pulumi.set(__self__, "parent", parent)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if short_name is not None:
+            pulumi.set(__self__, "short_name", short_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -149,7 +164,7 @@ class _OrganizationSecurityPolicyState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A textual name of the security policy.
+        User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         """
         return pulumi.get(self, "display_name")
 
@@ -196,14 +211,24 @@ class _OrganizationSecurityPolicyState:
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="shortName")
+    def short_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        """
+        return pulumi.get(self, "short_name")
+
+    @short_name.setter
+    def short_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "short_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type indicates the intended use of the security policy.
-        For organization security policies, the only supported type
-        is "FIREWALL".
+        The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         Default value is `FIREWALL`.
-        Possible values are: `FIREWALL`.
+        Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
 
@@ -221,6 +246,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 short_name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -266,14 +292,13 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
-        :param pulumi.Input[_builtins.str] display_name: A textual name of the security policy.
+        :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
-        :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy.
-               For organization security policies, the only supported type
-               is "FIREWALL".
+        :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                Default value is `FIREWALL`.
-               Possible values are: `FIREWALL`.
+               Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         ...
     @overload
@@ -339,6 +364,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 short_name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -350,12 +376,11 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             __props__ = OrganizationSecurityPolicyArgs.__new__(OrganizationSecurityPolicyArgs)
 
             __props__.__dict__["description"] = description
-            if display_name is None and not opts.urn:
-                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["short_name"] = short_name
             __props__.__dict__["type"] = type
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["policy_id"] = None
@@ -374,6 +399,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
             policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+            short_name: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationSecurityPolicy':
         """
         Get an existing OrganizationSecurityPolicy resource's state with the given name, id, and optional extra
@@ -383,17 +409,16 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A textual description for the organization security policy.
-        :param pulumi.Input[_builtins.str] display_name: A textual name of the security policy.
+        :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
         :param pulumi.Input[_builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[_builtins.str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy.
-               For organization security policies, the only supported type
-               is "FIREWALL".
+        :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                Default value is `FIREWALL`.
-               Possible values are: `FIREWALL`.
+               Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -404,6 +429,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["parent"] = parent
         __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["short_name"] = short_name
         __props__.__dict__["type"] = type
         return OrganizationSecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -417,9 +443,9 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Output[_builtins.str]:
+    def display_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A textual name of the security policy.
+        User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         """
         return pulumi.get(self, "display_name")
 
@@ -450,14 +476,20 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         return pulumi.get(self, "policy_id")
 
     @_builtins.property
+    @pulumi.getter(name="shortName")
+    def short_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        """
+        return pulumi.get(self, "short_name")
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The type indicates the intended use of the security policy.
-        For organization security policies, the only supported type
-        is "FIREWALL".
+        The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         Default value is `FIREWALL`.
-        Possible values are: `FIREWALL`.
+        Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
 

@@ -127,6 +127,42 @@ namespace Pulumi.Gcp.Diagflow
     ///         {
     ///             Engine = "projects/-/locations/-/collections/-/engines/-",
     ///         },
+    ///         StartPlaybook = "projects/-/locations/-/agents/-/playbooks/00000000-0000-0000-0000-000000000000",
+    ///         EnableMultiLanguageTraining = false,
+    ///         Locked = false,
+    ///         AnswerFeedbackSettings = new Gcp.Diagflow.Inputs.CxAgentAnswerFeedbackSettingsArgs
+    ///         {
+    ///             EnableAnswerFeedback = false,
+    ///         },
+    ///         ClientCertificateSettings = new Gcp.Diagflow.Inputs.CxAgentClientCertificateSettingsArgs
+    ///         {
+    ///             Passphrase = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///             PrivateKey = "projects/example-proj/secrets/example-secret/versions/example-version",
+    ///             SslCertificate = @"-----BEGIN CERTIFICATE-----
+    /// MIIDdDCCAlygAwIBAgIJANg0gKeB5LKmMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYD
+    /// VQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j
+    /// aXNjbzEZMBcGA1UECgwQR2l0SHViLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50
+    /// IFRlYW0xGTAXBgNVBAMMEGdvdnN0YWNrLmdpdGh1Yi5pbzAeFw0yMDA1MDUxNzM2
+    /// MzVaFw0zMDA1MDMxNzM2MzVaMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs
+    /// aWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEZMBcGA1UECgwQR2l0SHVi
+    /// LCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50IFRlYW0xGTAXBgNVBAMMEGdvdnN0
+    /// YWNrLmdpdGh1Yi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK5P
+    /// 4d9qWZPjZ2eA4eYV2Q8Z3Zp4g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+    /// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+    /// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+    /// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+    /// g8e6g8e6g8e6g8e6g8e6AgMBAAGjggEaMIIBFjAdBgNVHQ4EFgQUCneA9H8fC+tC
+    /// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+    /// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+    /// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+    /// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+    /// -----END CERTIFICATE-----
+    /// ",
+    ///         },
+    ///         PersonalizationSettings = new Gcp.Diagflow.Inputs.CxAgentPersonalizationSettingsArgs
+    ///         {
+    ///             DefaultEndUserMetadata = "{\"example-key\": \"example-value\"}",
+    ///         },
     ///     });
     /// 
     /// });
@@ -168,10 +204,24 @@ namespace Pulumi.Gcp.Diagflow
         public Output<Outputs.CxAgentAdvancedSettings> AdvancedSettings { get; private set; } = null!;
 
         /// <summary>
+        /// Answer feedback collection settings.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("answerFeedbackSettings")]
+        public Output<Outputs.CxAgentAnswerFeedbackSettings?> AnswerFeedbackSettings { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         /// </summary>
         [Output("avatarUri")]
         public Output<string?> AvatarUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for custom client certificates.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("clientCertificateSettings")]
+        public Output<Outputs.CxAgentClientCertificateSettings?> ClientCertificateSettings { get; private set; } = null!;
 
         /// <summary>
         /// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -194,6 +244,12 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+        /// </summary>
+        [Output("enableMultiLanguageTraining")]
+        public Output<bool?> EnableMultiLanguageTraining { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if automatic spell correction is enabled in detect intent requests.
@@ -234,10 +290,23 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+        /// </summary>
+        [Output("locked")]
+        public Output<bool?> Locked { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier of the agent.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for end user personalization.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("personalizationSettings")]
+        public Output<Outputs.CxAgentPersonalizationSettings?> PersonalizationSettings { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -245,6 +314,18 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A read only boolean field reflecting Zone Isolation status of the agent.
+        /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
+
+        /// <summary>
+        /// A read only boolean field reflecting Zone Separation status of the agent.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
         /// Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
@@ -264,6 +345,12 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("startFlow")]
         public Output<string> StartFlow { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+        /// </summary>
+        [Output("startPlaybook")]
+        public Output<string?> StartPlaybook { get; private set; } = null!;
 
         /// <summary>
         /// The list of all languages supported by this agent (except for the default_language_code).
@@ -340,10 +427,24 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.CxAgentAdvancedSettingsArgs>? AdvancedSettings { get; set; }
 
         /// <summary>
+        /// Answer feedback collection settings.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("answerFeedbackSettings")]
+        public Input<Inputs.CxAgentAnswerFeedbackSettingsArgs>? AnswerFeedbackSettings { get; set; }
+
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         /// </summary>
         [Input("avatarUri")]
         public Input<string>? AvatarUri { get; set; }
+
+        /// <summary>
+        /// Settings for custom client certificates.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clientCertificateSettings")]
+        public Input<Inputs.CxAgentClientCertificateSettingsArgs>? ClientCertificateSettings { get; set; }
 
         /// <summary>
         /// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -366,6 +467,12 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
+
+        /// <summary>
+        /// Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+        /// </summary>
+        [Input("enableMultiLanguageTraining")]
+        public Input<bool>? EnableMultiLanguageTraining { get; set; }
 
         /// <summary>
         /// Indicates if automatic spell correction is enabled in detect intent requests.
@@ -406,6 +513,19 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+        /// </summary>
+        [Input("locked")]
+        public Input<bool>? Locked { get; set; }
+
+        /// <summary>
+        /// Settings for end user personalization.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("personalizationSettings")]
+        public Input<Inputs.CxAgentPersonalizationSettingsArgs>? PersonalizationSettings { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -424,6 +544,12 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("speechToTextSettings")]
         public Input<Inputs.CxAgentSpeechToTextSettingsArgs>? SpeechToTextSettings { get; set; }
+
+        /// <summary>
+        /// Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+        /// </summary>
+        [Input("startPlaybook")]
+        public Input<string>? StartPlaybook { get; set; }
 
         [Input("supportedLanguageCodes")]
         private InputList<string>? _supportedLanguageCodes;
@@ -468,10 +594,24 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.CxAgentAdvancedSettingsGetArgs>? AdvancedSettings { get; set; }
 
         /// <summary>
+        /// Answer feedback collection settings.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("answerFeedbackSettings")]
+        public Input<Inputs.CxAgentAnswerFeedbackSettingsGetArgs>? AnswerFeedbackSettings { get; set; }
+
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         /// </summary>
         [Input("avatarUri")]
         public Input<string>? AvatarUri { get; set; }
+
+        /// <summary>
+        /// Settings for custom client certificates.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clientCertificateSettings")]
+        public Input<Inputs.CxAgentClientCertificateSettingsGetArgs>? ClientCertificateSettings { get; set; }
 
         /// <summary>
         /// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -494,6 +634,12 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+        /// </summary>
+        [Input("enableMultiLanguageTraining")]
+        public Input<bool>? EnableMultiLanguageTraining { get; set; }
 
         /// <summary>
         /// Indicates if automatic spell correction is enabled in detect intent requests.
@@ -534,10 +680,23 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+        /// </summary>
+        [Input("locked")]
+        public Input<bool>? Locked { get; set; }
+
+        /// <summary>
         /// The unique identifier of the agent.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Settings for end user personalization.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("personalizationSettings")]
+        public Input<Inputs.CxAgentPersonalizationSettingsGetArgs>? PersonalizationSettings { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -545,6 +704,18 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// A read only boolean field reflecting Zone Isolation status of the agent.
+        /// </summary>
+        [Input("satisfiesPzi")]
+        public Input<bool>? SatisfiesPzi { get; set; }
+
+        /// <summary>
+        /// A read only boolean field reflecting Zone Separation status of the agent.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
 
         /// <summary>
         /// Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
@@ -564,6 +735,12 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("startFlow")]
         public Input<string>? StartFlow { get; set; }
+
+        /// <summary>
+        /// Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+        /// </summary>
+        [Input("startPlaybook")]
+        public Input<string>? StartPlaybook { get; set; }
 
         [Input("supportedLanguageCodes")]
         private InputList<string>? _supportedLanguageCodes;

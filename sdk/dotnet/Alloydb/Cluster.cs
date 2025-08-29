@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = defaultNetwork.Id,
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
@@ -69,6 +70,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Password = "alloydb-cluster",
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var defaultInstance = new Gcp.Alloydb.Instance("default", new()
@@ -112,6 +114,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Password = "alloydb-cluster",
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var defaultInstance = new Gcp.Alloydb.Instance("default", new()
@@ -196,6 +199,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             { "test", "alloydb-cluster-full" },
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
@@ -225,6 +229,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = @default.Id,
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -280,6 +285,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             PrimaryClusterName = primary.Name,
     ///         },
+    ///         DeletionProtection = false,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -394,6 +400,9 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// User-settable and human-readable display name for the Cluster.
@@ -675,6 +684,9 @@ namespace Pulumi.Gcp.Alloydb
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// User-settable and human-readable display name for the Cluster.
         /// </summary>
@@ -879,6 +891,9 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// User-settable and human-readable display name for the Cluster.

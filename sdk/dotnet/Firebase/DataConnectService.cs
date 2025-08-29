@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "firebasedataconnect.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     // Create a Firebase Data Connect service
@@ -79,7 +78,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "firebasedataconnect.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     // Create a Firebase Data Connect service

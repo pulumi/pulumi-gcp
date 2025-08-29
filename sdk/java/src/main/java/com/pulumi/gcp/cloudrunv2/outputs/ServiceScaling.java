@@ -18,6 +18,11 @@ public final class ServiceScaling {
      */
     private @Nullable Integer manualInstanceCount;
     /**
+     * @return Combined maximum number of instances for all revisions receiving traffic.
+     * 
+     */
+    private @Nullable Integer maxInstanceCount;
+    /**
      * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
@@ -36,6 +41,13 @@ public final class ServiceScaling {
      */
     public Optional<Integer> manualInstanceCount() {
         return Optional.ofNullable(this.manualInstanceCount);
+    }
+    /**
+     * @return Combined maximum number of instances for all revisions receiving traffic.
+     * 
+     */
+    public Optional<Integer> maxInstanceCount() {
+        return Optional.ofNullable(this.maxInstanceCount);
     }
     /**
      * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
@@ -63,12 +75,14 @@ public final class ServiceScaling {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer manualInstanceCount;
+        private @Nullable Integer maxInstanceCount;
         private @Nullable Integer minInstanceCount;
         private @Nullable String scalingMode;
         public Builder() {}
         public Builder(ServiceScaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.manualInstanceCount = defaults.manualInstanceCount;
+    	      this.maxInstanceCount = defaults.maxInstanceCount;
     	      this.minInstanceCount = defaults.minInstanceCount;
     	      this.scalingMode = defaults.scalingMode;
         }
@@ -77,6 +91,12 @@ public final class ServiceScaling {
         public Builder manualInstanceCount(@Nullable Integer manualInstanceCount) {
 
             this.manualInstanceCount = manualInstanceCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxInstanceCount(@Nullable Integer maxInstanceCount) {
+
+            this.maxInstanceCount = maxInstanceCount;
             return this;
         }
         @CustomType.Setter
@@ -94,6 +114,7 @@ public final class ServiceScaling {
         public ServiceScaling build() {
             final var _resultValue = new ServiceScaling();
             _resultValue.manualInstanceCount = manualInstanceCount;
+            _resultValue.maxInstanceCount = maxInstanceCount;
             _resultValue.minInstanceCount = minInstanceCount;
             _resultValue.scalingMode = scalingMode;
             return _resultValue;

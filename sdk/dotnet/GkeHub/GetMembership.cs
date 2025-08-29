@@ -152,7 +152,6 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class GetMembershipResult
     {
         public readonly ImmutableArray<Outputs.GetMembershipAuthorityResult> Authorities;
-        public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetMembershipEndpointResult> Endpoints;
         /// <summary>
@@ -169,8 +168,6 @@ namespace Pulumi.Gcp.GkeHub
         [OutputConstructor]
         private GetMembershipResult(
             ImmutableArray<Outputs.GetMembershipAuthorityResult> authorities,
-
-            string description,
 
             ImmutableDictionary<string, string> effectiveLabels,
 
@@ -191,7 +188,6 @@ namespace Pulumi.Gcp.GkeHub
             ImmutableDictionary<string, string> pulumiLabels)
         {
             Authorities = authorities;
-            Description = description;
             EffectiveLabels = effectiveLabels;
             Endpoints = endpoints;
             Id = id;

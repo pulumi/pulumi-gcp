@@ -212,6 +212,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetBackendServiceNetworkPassThroughLbTrafficPolicyResult> NetworkPassThroughLbTrafficPolicies;
         public readonly ImmutableArray<Outputs.GetBackendServiceOutlierDetectionResult> OutlierDetections;
+        public readonly ImmutableArray<Outputs.GetBackendServiceParamResult> Params;
         /// <summary>
         /// The name of a service that has been added to an instance group in this backend.
         /// </summary>
@@ -303,6 +304,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetBackendServiceOutlierDetectionResult> outlierDetections,
 
+            ImmutableArray<Outputs.GetBackendServiceParamResult> @params,
+
             string portName,
 
             string? project,
@@ -356,6 +359,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             NetworkPassThroughLbTrafficPolicies = networkPassThroughLbTrafficPolicies;
             OutlierDetections = outlierDetections;
+            Params = @params;
             PortName = portName;
             Project = project;
             Protocol = protocol;

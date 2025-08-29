@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2749,6 +2749,121 @@ func (o GetCertificatesCertificateManagedProvisioningIssueArrayOutput) Index(i p
 	}).(GetCertificatesCertificateManagedProvisioningIssueOutput)
 }
 
+type GetDnsAuthorizationDnsResourceRecord struct {
+	// Data of the DNS Resource Record.
+	Data string `pulumi:"data"`
+	// The name of the DNS Authorization.
+	Name string `pulumi:"name"`
+	// Type of the DNS Resource Record.
+	Type string `pulumi:"type"`
+}
+
+// GetDnsAuthorizationDnsResourceRecordInput is an input type that accepts GetDnsAuthorizationDnsResourceRecordArgs and GetDnsAuthorizationDnsResourceRecordOutput values.
+// You can construct a concrete instance of `GetDnsAuthorizationDnsResourceRecordInput` via:
+//
+//	GetDnsAuthorizationDnsResourceRecordArgs{...}
+type GetDnsAuthorizationDnsResourceRecordInput interface {
+	pulumi.Input
+
+	ToGetDnsAuthorizationDnsResourceRecordOutput() GetDnsAuthorizationDnsResourceRecordOutput
+	ToGetDnsAuthorizationDnsResourceRecordOutputWithContext(context.Context) GetDnsAuthorizationDnsResourceRecordOutput
+}
+
+type GetDnsAuthorizationDnsResourceRecordArgs struct {
+	// Data of the DNS Resource Record.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The name of the DNS Authorization.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type of the DNS Resource Record.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDnsAuthorizationDnsResourceRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsAuthorizationDnsResourceRecord)(nil)).Elem()
+}
+
+func (i GetDnsAuthorizationDnsResourceRecordArgs) ToGetDnsAuthorizationDnsResourceRecordOutput() GetDnsAuthorizationDnsResourceRecordOutput {
+	return i.ToGetDnsAuthorizationDnsResourceRecordOutputWithContext(context.Background())
+}
+
+func (i GetDnsAuthorizationDnsResourceRecordArgs) ToGetDnsAuthorizationDnsResourceRecordOutputWithContext(ctx context.Context) GetDnsAuthorizationDnsResourceRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsAuthorizationDnsResourceRecordOutput)
+}
+
+// GetDnsAuthorizationDnsResourceRecordArrayInput is an input type that accepts GetDnsAuthorizationDnsResourceRecordArray and GetDnsAuthorizationDnsResourceRecordArrayOutput values.
+// You can construct a concrete instance of `GetDnsAuthorizationDnsResourceRecordArrayInput` via:
+//
+//	GetDnsAuthorizationDnsResourceRecordArray{ GetDnsAuthorizationDnsResourceRecordArgs{...} }
+type GetDnsAuthorizationDnsResourceRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetDnsAuthorizationDnsResourceRecordArrayOutput() GetDnsAuthorizationDnsResourceRecordArrayOutput
+	ToGetDnsAuthorizationDnsResourceRecordArrayOutputWithContext(context.Context) GetDnsAuthorizationDnsResourceRecordArrayOutput
+}
+
+type GetDnsAuthorizationDnsResourceRecordArray []GetDnsAuthorizationDnsResourceRecordInput
+
+func (GetDnsAuthorizationDnsResourceRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDnsAuthorizationDnsResourceRecord)(nil)).Elem()
+}
+
+func (i GetDnsAuthorizationDnsResourceRecordArray) ToGetDnsAuthorizationDnsResourceRecordArrayOutput() GetDnsAuthorizationDnsResourceRecordArrayOutput {
+	return i.ToGetDnsAuthorizationDnsResourceRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetDnsAuthorizationDnsResourceRecordArray) ToGetDnsAuthorizationDnsResourceRecordArrayOutputWithContext(ctx context.Context) GetDnsAuthorizationDnsResourceRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsAuthorizationDnsResourceRecordArrayOutput)
+}
+
+type GetDnsAuthorizationDnsResourceRecordOutput struct{ *pulumi.OutputState }
+
+func (GetDnsAuthorizationDnsResourceRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsAuthorizationDnsResourceRecord)(nil)).Elem()
+}
+
+func (o GetDnsAuthorizationDnsResourceRecordOutput) ToGetDnsAuthorizationDnsResourceRecordOutput() GetDnsAuthorizationDnsResourceRecordOutput {
+	return o
+}
+
+func (o GetDnsAuthorizationDnsResourceRecordOutput) ToGetDnsAuthorizationDnsResourceRecordOutputWithContext(ctx context.Context) GetDnsAuthorizationDnsResourceRecordOutput {
+	return o
+}
+
+// Data of the DNS Resource Record.
+func (o GetDnsAuthorizationDnsResourceRecordOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsAuthorizationDnsResourceRecord) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The name of the DNS Authorization.
+func (o GetDnsAuthorizationDnsResourceRecordOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsAuthorizationDnsResourceRecord) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type of the DNS Resource Record.
+func (o GetDnsAuthorizationDnsResourceRecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsAuthorizationDnsResourceRecord) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDnsAuthorizationDnsResourceRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDnsAuthorizationDnsResourceRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDnsAuthorizationDnsResourceRecord)(nil)).Elem()
+}
+
+func (o GetDnsAuthorizationDnsResourceRecordArrayOutput) ToGetDnsAuthorizationDnsResourceRecordArrayOutput() GetDnsAuthorizationDnsResourceRecordArrayOutput {
+	return o
+}
+
+func (o GetDnsAuthorizationDnsResourceRecordArrayOutput) ToGetDnsAuthorizationDnsResourceRecordArrayOutputWithContext(ctx context.Context) GetDnsAuthorizationDnsResourceRecordArrayOutput {
+	return o
+}
+
+func (o GetDnsAuthorizationDnsResourceRecordArrayOutput) Index(i pulumi.IntInput) GetDnsAuthorizationDnsResourceRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDnsAuthorizationDnsResourceRecord {
+		return vs[0].([]GetDnsAuthorizationDnsResourceRecord)[vs[1].(int)]
+	}).(GetDnsAuthorizationDnsResourceRecordOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigPtrInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigArgs{})
@@ -2788,6 +2903,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayInput)(nil)).Elem(), GetCertificatesCertificateManagedAuthorizationAttemptInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedProvisioningIssueInput)(nil)).Elem(), GetCertificatesCertificateManagedProvisioningIssueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedProvisioningIssueArrayInput)(nil)).Elem(), GetCertificatesCertificateManagedProvisioningIssueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsAuthorizationDnsResourceRecordInput)(nil)).Elem(), GetDnsAuthorizationDnsResourceRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsAuthorizationDnsResourceRecordArrayInput)(nil)).Elem(), GetDnsAuthorizationDnsResourceRecordArray{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigOutput{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput{})
@@ -2826,4 +2943,6 @@ func init() {
 	pulumi.RegisterOutputType(GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetCertificatesCertificateManagedProvisioningIssueOutput{})
 	pulumi.RegisterOutputType(GetCertificatesCertificateManagedProvisioningIssueArrayOutput{})
+	pulumi.RegisterOutputType(GetDnsAuthorizationDnsResourceRecordOutput{})
+	pulumi.RegisterOutputType(GetDnsAuthorizationDnsResourceRecordArrayOutput{})
 }

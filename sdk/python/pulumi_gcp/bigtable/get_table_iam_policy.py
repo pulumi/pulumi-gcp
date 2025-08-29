@@ -26,16 +26,16 @@ class GetTableIamPolicyResult:
     """
     A collection of values returned by getTableIamPolicy.
     """
-    def __init__(__self__, etag=None, id=None, instance=None, policy_data=None, project=None, table=None):
+    def __init__(__self__, etag=None, id=None, instance_name=None, policy_data=None, project=None, table=None):
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if instance and not isinstance(instance, str):
-            raise TypeError("Expected argument 'instance' to be a str")
-        pulumi.set(__self__, "instance", instance)
+        if instance_name and not isinstance(instance_name, str):
+            raise TypeError("Expected argument 'instance_name' to be a str")
+        pulumi.set(__self__, "instance_name", instance_name)
         if policy_data and not isinstance(policy_data, str):
             raise TypeError("Expected argument 'policy_data' to be a str")
         pulumi.set(__self__, "policy_data", policy_data)
@@ -63,9 +63,9 @@ class GetTableIamPolicyResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter
-    def instance(self) -> _builtins.str:
-        return pulumi.get(self, "instance")
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> _builtins.str:
+        return pulumi.get(self, "instance_name")
 
     @_builtins.property
     @pulumi.getter(name="policyData")
@@ -94,13 +94,13 @@ class AwaitableGetTableIamPolicyResult(GetTableIamPolicyResult):
         return GetTableIamPolicyResult(
             etag=self.etag,
             id=self.id,
-            instance=self.instance,
+            instance_name=self.instance_name,
             policy_data=self.policy_data,
             project=self.project,
             table=self.table)
 
 
-def get_table_iam_policy(instance: Optional[_builtins.str] = None,
+def get_table_iam_policy(instance_name: Optional[_builtins.str] = None,
                          project: Optional[_builtins.str] = None,
                          table: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTableIamPolicyResult:
@@ -113,16 +113,15 @@ def get_table_iam_policy(instance: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigtable.get_table_iam_policy(instance=instance["name"],
+    policy = gcp.bigtable.get_table_iam_policy(instance_name=instance["name"],
         table=table["name"])
     ```
 
 
-    :param _builtins.str instance: The name or relative resource id of the instance that owns the table.
     :param _builtins.str table: The name or relative resource id of the table to manage IAM policies for.
     """
     __args__ = dict()
-    __args__['instance'] = instance
+    __args__['instanceName'] = instance_name
     __args__['project'] = project
     __args__['table'] = table
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -131,11 +130,11 @@ def get_table_iam_policy(instance: Optional[_builtins.str] = None,
     return AwaitableGetTableIamPolicyResult(
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
-        instance=pulumi.get(__ret__, 'instance'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         table=pulumi.get(__ret__, 'table'))
-def get_table_iam_policy_output(instance: Optional[pulumi.Input[_builtins.str]] = None,
+def get_table_iam_policy_output(instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 table: Optional[pulumi.Input[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableIamPolicyResult]:
@@ -148,16 +147,15 @@ def get_table_iam_policy_output(instance: Optional[pulumi.Input[_builtins.str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigtable.get_table_iam_policy(instance=instance["name"],
+    policy = gcp.bigtable.get_table_iam_policy(instance_name=instance["name"],
         table=table["name"])
     ```
 
 
-    :param _builtins.str instance: The name or relative resource id of the instance that owns the table.
     :param _builtins.str table: The name or relative resource id of the table to manage IAM policies for.
     """
     __args__ = dict()
-    __args__['instance'] = instance
+    __args__['instanceName'] = instance_name
     __args__['project'] = project
     __args__['table'] = table
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -165,7 +163,7 @@ def get_table_iam_policy_output(instance: Optional[pulumi.Input[_builtins.str]] 
     return __ret__.apply(lambda __response__: GetTableIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),
         id=pulumi.get(__response__, 'id'),
-        instance=pulumi.get(__response__, 'instance'),
+        instance_name=pulumi.get(__response__, 'instance_name'),
         policy_data=pulumi.get(__response__, 'policy_data'),
         project=pulumi.get(__response__, 'project'),
         table=pulumi.get(__response__, 'table')))

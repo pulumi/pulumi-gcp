@@ -490,10 +490,10 @@ class FunctionEventTrigger(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "eventFilters":
-            suggest = "event_filters"
-        elif key == "eventType":
+        if key == "eventType":
             suggest = "event_type"
+        elif key == "eventFilters":
+            suggest = "event_filters"
         elif key == "pubsubTopic":
             suggest = "pubsub_topic"
         elif key == "retryPolicy":
@@ -515,17 +515,17 @@ class FunctionEventTrigger(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 event_type: _builtins.str,
                  event_filters: Optional[Sequence['outputs.FunctionEventTriggerEventFilter']] = None,
-                 event_type: Optional[_builtins.str] = None,
                  pubsub_topic: Optional[_builtins.str] = None,
                  retry_policy: Optional[_builtins.str] = None,
                  service_account_email: Optional[_builtins.str] = None,
                  trigger: Optional[_builtins.str] = None,
                  trigger_region: Optional[_builtins.str] = None):
         """
+        :param _builtins.str event_type: Required. The type of event to observe.
         :param Sequence['FunctionEventTriggerEventFilterArgs'] event_filters: Criteria used to filter events.
                Structure is documented below.
-        :param _builtins.str event_type: Required. The type of event to observe.
         :param _builtins.str pubsub_topic: The name of a Pub/Sub topic in the same project that will be used
                as the transport topic for the event delivery.
         :param _builtins.str retry_policy: Describes the retry policy in case of function's execution failure.
@@ -541,10 +541,9 @@ class FunctionEventTrigger(dict):
                region as the function, a different region or multi-region, or the global
                region. If not provided, defaults to the same region as the function.
         """
+        pulumi.set(__self__, "event_type", event_type)
         if event_filters is not None:
             pulumi.set(__self__, "event_filters", event_filters)
-        if event_type is not None:
-            pulumi.set(__self__, "event_type", event_type)
         if pubsub_topic is not None:
             pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         if retry_policy is not None:
@@ -557,6 +556,14 @@ class FunctionEventTrigger(dict):
             pulumi.set(__self__, "trigger_region", trigger_region)
 
     @_builtins.property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> _builtins.str:
+        """
+        Required. The type of event to observe.
+        """
+        return pulumi.get(self, "event_type")
+
+    @_builtins.property
     @pulumi.getter(name="eventFilters")
     def event_filters(self) -> Optional[Sequence['outputs.FunctionEventTriggerEventFilter']]:
         """
@@ -564,14 +571,6 @@ class FunctionEventTrigger(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "event_filters")
-
-    @_builtins.property
-    @pulumi.getter(name="eventType")
-    def event_type(self) -> Optional[_builtins.str]:
-        """
-        Required. The type of event to observe.
-        """
-        return pulumi.get(self, "event_type")
 
     @_builtins.property
     @pulumi.getter(name="pubsubTopic")
@@ -822,7 +821,8 @@ class FunctionServiceConfig(dict):
                Structure is documented below.
         :param Sequence['FunctionServiceConfigSecretVolumeArgs'] secret_volumes: Secret volumes configuration.
                Structure is documented below.
-        :param _builtins.str service: Name of the service associated with a Function.
+        :param _builtins.str service: (Output)
+               Name of the service associated with a Function.
         :param _builtins.str service_account_email: The email of the service account for this function.
         :param _builtins.int timeout_seconds: The function execution timeout. Execution is considered failed and
                can be terminated if the function is not completed at the end of the
@@ -979,6 +979,7 @@ class FunctionServiceConfig(dict):
     @pulumi.getter
     def service(self) -> Optional[_builtins.str]:
         """
+        (Output)
         Name of the service associated with a Function.
         """
         return pulumi.get(self, "service")

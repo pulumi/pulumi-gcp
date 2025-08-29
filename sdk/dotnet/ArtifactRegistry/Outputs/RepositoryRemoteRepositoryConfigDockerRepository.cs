@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         public readonly Outputs.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository? CustomRepository;
         /// <summary>
         /// Address of the remote repository.
-        /// Default value is `DOCKER_HUB`.
         /// Possible values are: `DOCKER_HUB`.
         /// </summary>
         public readonly string? PublicRepository;

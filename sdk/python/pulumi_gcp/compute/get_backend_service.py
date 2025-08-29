@@ -27,7 +27,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, dynamic_forwardings=None, edge_security_policy=None, enable_cdn=None, external_managed_migration_state=None, external_managed_migration_testing_percentage=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, dynamic_forwardings=None, edge_security_policy=None, enable_cdn=None, external_managed_migration_state=None, external_managed_migration_testing_percentage=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -121,6 +121,9 @@ class GetBackendServiceResult:
         if outlier_detections and not isinstance(outlier_detections, list):
             raise TypeError("Expected argument 'outlier_detections' to be a list")
         pulumi.set(__self__, "outlier_detections", outlier_detections)
+        if params and not isinstance(params, list):
+            raise TypeError("Expected argument 'params' to be a list")
+        pulumi.set(__self__, "params", params)
         if port_name and not isinstance(port_name, str):
             raise TypeError("Expected argument 'port_name' to be a str")
         pulumi.set(__self__, "port_name", port_name)
@@ -335,6 +338,11 @@ class GetBackendServiceResult:
         return pulumi.get(self, "outlier_detections")
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Sequence['outputs.GetBackendServiceParamResult']:
+        return pulumi.get(self, "params")
+
+    @_builtins.property
     @pulumi.getter(name="portName")
     def port_name(self) -> _builtins.str:
         """
@@ -442,6 +450,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             name=self.name,
             network_pass_through_lb_traffic_policies=self.network_pass_through_lb_traffic_policies,
             outlier_detections=self.outlier_detections,
+            params=self.params,
             port_name=self.port_name,
             project=self.project,
             protocol=self.protocol,
@@ -519,6 +528,7 @@ def get_backend_service(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         network_pass_through_lb_traffic_policies=pulumi.get(__ret__, 'network_pass_through_lb_traffic_policies'),
         outlier_detections=pulumi.get(__ret__, 'outlier_detections'),
+        params=pulumi.get(__ret__, 'params'),
         port_name=pulumi.get(__ret__, 'port_name'),
         project=pulumi.get(__ret__, 'project'),
         protocol=pulumi.get(__ret__, 'protocol'),
@@ -593,6 +603,7 @@ def get_backend_service_output(name: Optional[pulumi.Input[_builtins.str]] = Non
         name=pulumi.get(__response__, 'name'),
         network_pass_through_lb_traffic_policies=pulumi.get(__response__, 'network_pass_through_lb_traffic_policies'),
         outlier_detections=pulumi.get(__response__, 'outlier_detections'),
+        params=pulumi.get(__response__, 'params'),
         port_name=pulumi.get(__response__, 'port_name'),
         project=pulumi.get(__response__, 'project'),
         protocol=pulumi.get(__response__, 'protocol'),

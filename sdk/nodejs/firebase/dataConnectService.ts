@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * const fdc = new gcp.projects.Service("fdc", {
  *     project: "my-project-name",
  *     service: "firebasedataconnect.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * // Create a Firebase Data Connect service
  * const _default = new gcp.firebase.DataConnectService("default", {
@@ -54,7 +53,6 @@ import * as utilities from "../utilities";
  * const fdc = new gcp.projects.Service("fdc", {
  *     project: "my-project-name",
  *     service: "firebasedataconnect.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * // Create a Firebase Data Connect service
  * const _default = new gcp.firebase.DataConnectService("default", {

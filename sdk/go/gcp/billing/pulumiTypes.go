@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1001,7 +1001,6 @@ type BudgetBudgetFilter struct {
 	// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
 	// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
 	// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-	// **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
 	CreditTypes []string `pulumi:"creditTypes"`
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
@@ -1040,7 +1039,6 @@ type BudgetBudgetFilter struct {
 	// the parent account, usage from the parent account will be included.
 	// If the field is omitted, the report will include usage from the parent
 	// account and all subaccounts, if they exist.
-	// **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
 	Subaccounts []string `pulumi:"subaccounts"`
 }
 
@@ -1065,7 +1063,6 @@ type BudgetBudgetFilterArgs struct {
 	// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
 	// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
 	// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-	// **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
 	CreditTypes pulumi.StringArrayInput `pulumi:"creditTypes"`
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
@@ -1104,7 +1101,6 @@ type BudgetBudgetFilterArgs struct {
 	// the parent account, usage from the parent account will be included.
 	// If the field is omitted, the report will include usage from the parent
 	// account and all subaccounts, if they exist.
-	// **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
 	Subaccounts pulumi.StringArrayInput `pulumi:"subaccounts"`
 }
 
@@ -1197,7 +1193,6 @@ func (o BudgetBudgetFilterOutput) CalendarPeriod() pulumi.StringPtrOutput {
 // Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
 // this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
 // If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-// **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
 func (o BudgetBudgetFilterOutput) CreditTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.CreditTypes }).(pulumi.StringArrayOutput)
 }
@@ -1257,7 +1252,6 @@ func (o BudgetBudgetFilterOutput) Services() pulumi.StringArrayOutput {
 // the parent account, usage from the parent account will be included.
 // If the field is omitted, the report will include usage from the parent
 // account and all subaccounts, if they exist.
-// **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
 func (o BudgetBudgetFilterOutput) Subaccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Subaccounts }).(pulumi.StringArrayOutput)
 }
@@ -1303,7 +1297,6 @@ func (o BudgetBudgetFilterPtrOutput) CalendarPeriod() pulumi.StringPtrOutput {
 // Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
 // this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
 // If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-// **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
 func (o BudgetBudgetFilterPtrOutput) CreditTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
 		if v == nil {
@@ -1398,7 +1391,6 @@ func (o BudgetBudgetFilterPtrOutput) Services() pulumi.StringArrayOutput {
 // the parent account, usage from the parent account will be included.
 // If the field is omitted, the report will include usage from the parent
 // account and all subaccounts, if they exist.
-// **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
 func (o BudgetBudgetFilterPtrOutput) Subaccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
 		if v == nil {

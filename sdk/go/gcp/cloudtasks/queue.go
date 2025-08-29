@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudtasks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -49,7 +49,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudtasks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -94,8 +94,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudtasks"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -161,8 +161,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudtasks"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -252,6 +252,11 @@ type Queue struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrOutput `pulumi:"appEngineRoutingOverride"`
+	// The desired state of the queue. Use this to pause and resume the queue.
+	//
+	// * RUNNING: The queue is running. Tasks can be dispatched.
+	// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// Modifies HTTP target for HTTP tasks.
 	// Structure is documented below.
 	HttpTarget QueueHttpTargetPtrOutput `pulumi:"httpTarget"`
@@ -277,6 +282,8 @@ type Queue struct {
 	// Configuration options for writing logs to Stackdriver Logging.
 	// Structure is documented below.
 	StackdriverLoggingConfig QueueStackdriverLoggingConfigPtrOutput `pulumi:"stackdriverLoggingConfig"`
+	// The current state of the queue.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewQueue registers a new resource with the given unique name, arguments, and options.
@@ -316,6 +323,11 @@ type queueState struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
+	// The desired state of the queue. Use this to pause and resume the queue.
+	//
+	// * RUNNING: The queue is running. Tasks can be dispatched.
+	// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+	DesiredState *string `pulumi:"desiredState"`
 	// Modifies HTTP target for HTTP tasks.
 	// Structure is documented below.
 	HttpTarget *QueueHttpTarget `pulumi:"httpTarget"`
@@ -341,6 +353,8 @@ type queueState struct {
 	// Configuration options for writing logs to Stackdriver Logging.
 	// Structure is documented below.
 	StackdriverLoggingConfig *QueueStackdriverLoggingConfig `pulumi:"stackdriverLoggingConfig"`
+	// The current state of the queue.
+	State *string `pulumi:"state"`
 }
 
 type QueueState struct {
@@ -348,6 +362,11 @@ type QueueState struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
+	// The desired state of the queue. Use this to pause and resume the queue.
+	//
+	// * RUNNING: The queue is running. Tasks can be dispatched.
+	// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+	DesiredState pulumi.StringPtrInput
 	// Modifies HTTP target for HTTP tasks.
 	// Structure is documented below.
 	HttpTarget QueueHttpTargetPtrInput
@@ -373,6 +392,8 @@ type QueueState struct {
 	// Configuration options for writing logs to Stackdriver Logging.
 	// Structure is documented below.
 	StackdriverLoggingConfig QueueStackdriverLoggingConfigPtrInput
+	// The current state of the queue.
+	State pulumi.StringPtrInput
 }
 
 func (QueueState) ElementType() reflect.Type {
@@ -384,6 +405,11 @@ type queueArgs struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
+	// The desired state of the queue. Use this to pause and resume the queue.
+	//
+	// * RUNNING: The queue is running. Tasks can be dispatched.
+	// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+	DesiredState *string `pulumi:"desiredState"`
 	// Modifies HTTP target for HTTP tasks.
 	// Structure is documented below.
 	HttpTarget *QueueHttpTarget `pulumi:"httpTarget"`
@@ -417,6 +443,11 @@ type QueueArgs struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
+	// The desired state of the queue. Use this to pause and resume the queue.
+	//
+	// * RUNNING: The queue is running. Tasks can be dispatched.
+	// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+	DesiredState pulumi.StringPtrInput
 	// Modifies HTTP target for HTTP tasks.
 	// Structure is documented below.
 	HttpTarget QueueHttpTargetPtrInput
@@ -538,6 +569,14 @@ func (o QueueOutput) AppEngineRoutingOverride() QueueAppEngineRoutingOverridePtr
 	return o.ApplyT(func(v *Queue) QueueAppEngineRoutingOverridePtrOutput { return v.AppEngineRoutingOverride }).(QueueAppEngineRoutingOverridePtrOutput)
 }
 
+// The desired state of the queue. Use this to pause and resume the queue.
+//
+// * RUNNING: The queue is running. Tasks can be dispatched.
+// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+func (o QueueOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
+}
+
 // Modifies HTTP target for HTTP tasks.
 // Structure is documented below.
 func (o QueueOutput) HttpTarget() QueueHttpTargetPtrOutput {
@@ -582,6 +621,11 @@ func (o QueueOutput) RetryConfig() QueueRetryConfigOutput {
 // Structure is documented below.
 func (o QueueOutput) StackdriverLoggingConfig() QueueStackdriverLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *Queue) QueueStackdriverLoggingConfigPtrOutput { return v.StackdriverLoggingConfig }).(QueueStackdriverLoggingConfigPtrOutput)
+}
+
+// The current state of the queue.
+func (o QueueOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 type QueueArrayOutput struct{ *pulumi.OutputState }

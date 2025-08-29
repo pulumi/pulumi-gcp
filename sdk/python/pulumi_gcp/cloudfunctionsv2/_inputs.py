@@ -629,14 +629,14 @@ class FunctionBuildConfigSourceStorageSourceArgs:
 
 if not MYPY:
     class FunctionEventTriggerArgsDict(TypedDict):
+        event_type: pulumi.Input[_builtins.str]
+        """
+        Required. The type of event to observe.
+        """
         event_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgsDict']]]]
         """
         Criteria used to filter events.
         Structure is documented below.
-        """
-        event_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Required. The type of event to observe.
         """
         pubsub_topic: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -673,17 +673,17 @@ elif False:
 @pulumi.input_type
 class FunctionEventTriggerArgs:
     def __init__(__self__, *,
+                 event_type: pulumi.Input[_builtins.str],
                  event_filters: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]] = None,
-                 event_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
                  retry_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
                  trigger: Optional[pulumi.Input[_builtins.str]] = None,
                  trigger_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] event_type: Required. The type of event to observe.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]] event_filters: Criteria used to filter events.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] event_type: Required. The type of event to observe.
         :param pulumi.Input[_builtins.str] pubsub_topic: The name of a Pub/Sub topic in the same project that will be used
                as the transport topic for the event delivery.
         :param pulumi.Input[_builtins.str] retry_policy: Describes the retry policy in case of function's execution failure.
@@ -699,10 +699,9 @@ class FunctionEventTriggerArgs:
                region as the function, a different region or multi-region, or the global
                region. If not provided, defaults to the same region as the function.
         """
+        pulumi.set(__self__, "event_type", event_type)
         if event_filters is not None:
             pulumi.set(__self__, "event_filters", event_filters)
-        if event_type is not None:
-            pulumi.set(__self__, "event_type", event_type)
         if pubsub_topic is not None:
             pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         if retry_policy is not None:
@@ -713,6 +712,18 @@ class FunctionEventTriggerArgs:
             pulumi.set(__self__, "trigger", trigger)
         if trigger_region is not None:
             pulumi.set(__self__, "trigger_region", trigger_region)
+
+    @_builtins.property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The type of event to observe.
+        """
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "event_type", value)
 
     @_builtins.property
     @pulumi.getter(name="eventFilters")
@@ -726,18 +737,6 @@ class FunctionEventTriggerArgs:
     @event_filters.setter
     def event_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]):
         pulumi.set(self, "event_filters", value)
-
-    @_builtins.property
-    @pulumi.getter(name="eventType")
-    def event_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Required. The type of event to observe.
-        """
-        return pulumi.get(self, "event_type")
-
-    @event_type.setter
-    def event_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "event_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubTopic")
@@ -1055,6 +1054,7 @@ if not MYPY:
         """
         service: NotRequired[pulumi.Input[_builtins.str]]
         """
+        (Output)
         Name of the service associated with a Function.
         """
         service_account_email: NotRequired[pulumi.Input[_builtins.str]]
@@ -1127,7 +1127,8 @@ class FunctionServiceConfigArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] service: Name of the service associated with a Function.
+        :param pulumi.Input[_builtins.str] service: (Output)
+               Name of the service associated with a Function.
         :param pulumi.Input[_builtins.str] service_account_email: The email of the service account for this function.
         :param pulumi.Input[_builtins.int] timeout_seconds: The function execution timeout. Execution is considered failed and
                can be terminated if the function is not completed at the end of the
@@ -1332,6 +1333,7 @@ class FunctionServiceConfigArgs:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Output)
         Name of the service associated with a Function.
         """
         return pulumi.get(self, "service")

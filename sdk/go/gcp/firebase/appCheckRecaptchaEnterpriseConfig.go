@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -40,9 +40,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Enables the reCAPTCHA Enterprise API
 //			_, err := projects.NewService(ctx, "recaptcha_enterprise", &projects.ServiceArgs{
-//				Project:          pulumi.String("my-project-name"),
-//				Service:          pulumi.String("recaptchaenterprise.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
+//				Project: pulumi.String("my-project-name"),
+//				Service: pulumi.String("recaptchaenterprise.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err

@@ -93,8 +93,8 @@ public final class AiIndexArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="metadata")
-    private @Nullable Output<AiIndexMetadataArgs> metadata;
+    @Import(name="metadata", required=true)
+    private Output<AiIndexMetadataArgs> metadata;
 
     /**
      * @return Additional information about the Index.
@@ -103,8 +103,8 @@ public final class AiIndexArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    public Optional<Output<AiIndexMetadataArgs>> metadata() {
-        return Optional.ofNullable(this.metadata);
+    public Output<AiIndexMetadataArgs> metadata() {
+        return this.metadata;
     }
 
     /**
@@ -270,7 +270,7 @@ public final class AiIndexArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Output<AiIndexMetadataArgs> metadata) {
+        public Builder metadata(Output<AiIndexMetadataArgs> metadata) {
             $.metadata = metadata;
             return this;
         }
@@ -335,6 +335,9 @@ public final class AiIndexArgs extends com.pulumi.resources.ResourceArgs {
         public AiIndexArgs build() {
             if ($.displayName == null) {
                 throw new MissingRequiredPropertyException("AiIndexArgs", "displayName");
+            }
+            if ($.metadata == null) {
+                throw new MissingRequiredPropertyException("AiIndexArgs", "metadata");
             }
             return $;
         }

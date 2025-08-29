@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -170,6 +170,7 @@ type Provider struct {
 	ResourceManagerV3CustomEndpoint        pulumi.StringPtrOutput `pulumi:"resourceManagerV3CustomEndpoint"`
 	RuntimeConfigCustomEndpoint            pulumi.StringPtrOutput `pulumi:"runtimeConfigCustomEndpoint"`
 	RuntimeconfigCustomEndpoint            pulumi.StringPtrOutput `pulumi:"runtimeconfigCustomEndpoint"`
+	SaasRuntimeCustomEndpoint              pulumi.StringPtrOutput `pulumi:"saasRuntimeCustomEndpoint"`
 	SecretManagerCustomEndpoint            pulumi.StringPtrOutput `pulumi:"secretManagerCustomEndpoint"`
 	SecretManagerRegionalCustomEndpoint    pulumi.StringPtrOutput `pulumi:"secretManagerRegionalCustomEndpoint"`
 	SecureSourceManagerCustomEndpoint      pulumi.StringPtrOutput `pulumi:"secureSourceManagerCustomEndpoint"`
@@ -193,7 +194,6 @@ type Provider struct {
 	StorageTransferCustomEndpoint          pulumi.StringPtrOutput `pulumi:"storageTransferCustomEndpoint"`
 	TagsCustomEndpoint                     pulumi.StringPtrOutput `pulumi:"tagsCustomEndpoint"`
 	TagsLocationCustomEndpoint             pulumi.StringPtrOutput `pulumi:"tagsLocationCustomEndpoint"`
-	TpuCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"tpuCustomEndpoint"`
 	TpuV2CustomEndpoint                    pulumi.StringPtrOutput `pulumi:"tpuV2CustomEndpoint"`
 	TranscoderCustomEndpoint               pulumi.StringPtrOutput `pulumi:"transcoderCustomEndpoint"`
 	UniverseDomain                         pulumi.StringPtrOutput `pulumi:"universeDomain"`
@@ -403,6 +403,7 @@ type providerArgs struct {
 	ResourceManagerV3CustomEndpoint        *string                      `pulumi:"resourceManagerV3CustomEndpoint"`
 	RuntimeConfigCustomEndpoint            *string                      `pulumi:"runtimeConfigCustomEndpoint"`
 	RuntimeconfigCustomEndpoint            *string                      `pulumi:"runtimeconfigCustomEndpoint"`
+	SaasRuntimeCustomEndpoint              *string                      `pulumi:"saasRuntimeCustomEndpoint"`
 	Scopes                                 []string                     `pulumi:"scopes"`
 	SecretManagerCustomEndpoint            *string                      `pulumi:"secretManagerCustomEndpoint"`
 	SecretManagerRegionalCustomEndpoint    *string                      `pulumi:"secretManagerRegionalCustomEndpoint"`
@@ -427,7 +428,6 @@ type providerArgs struct {
 	StorageTransferCustomEndpoint          *string                      `pulumi:"storageTransferCustomEndpoint"`
 	TagsCustomEndpoint                     *string                      `pulumi:"tagsCustomEndpoint"`
 	TagsLocationCustomEndpoint             *string                      `pulumi:"tagsLocationCustomEndpoint"`
-	TpuCustomEndpoint                      *string                      `pulumi:"tpuCustomEndpoint"`
 	TpuV2CustomEndpoint                    *string                      `pulumi:"tpuV2CustomEndpoint"`
 	TranscoderCustomEndpoint               *string                      `pulumi:"transcoderCustomEndpoint"`
 	UniverseDomain                         *string                      `pulumi:"universeDomain"`
@@ -601,6 +601,7 @@ type ProviderArgs struct {
 	ResourceManagerV3CustomEndpoint        pulumi.StringPtrInput
 	RuntimeConfigCustomEndpoint            pulumi.StringPtrInput
 	RuntimeconfigCustomEndpoint            pulumi.StringPtrInput
+	SaasRuntimeCustomEndpoint              pulumi.StringPtrInput
 	Scopes                                 pulumi.StringArrayInput
 	SecretManagerCustomEndpoint            pulumi.StringPtrInput
 	SecretManagerRegionalCustomEndpoint    pulumi.StringPtrInput
@@ -625,7 +626,6 @@ type ProviderArgs struct {
 	StorageTransferCustomEndpoint          pulumi.StringPtrInput
 	TagsCustomEndpoint                     pulumi.StringPtrInput
 	TagsLocationCustomEndpoint             pulumi.StringPtrInput
-	TpuCustomEndpoint                      pulumi.StringPtrInput
 	TpuV2CustomEndpoint                    pulumi.StringPtrInput
 	TranscoderCustomEndpoint               pulumi.StringPtrInput
 	UniverseDomain                         pulumi.StringPtrInput
@@ -1307,6 +1307,10 @@ func (o ProviderOutput) RuntimeconfigCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.RuntimeconfigCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) SaasRuntimeCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaasRuntimeCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) SecretManagerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecretManagerCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1397,10 +1401,6 @@ func (o ProviderOutput) TagsCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) TagsLocationCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TagsLocationCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderOutput) TpuCustomEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TpuCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) TpuV2CustomEndpoint() pulumi.StringPtrOutput {

@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.SecureSourceManager.Inputs
         /// <summary>
         /// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
         /// </summary>
-        [Input("caPool", required: true)]
-        public Input<string> CaPool { get; set; } = null!;
+        [Input("caPool")]
+        public Input<string>? CaPool { get; set; }
 
         /// <summary>
         /// (Output)

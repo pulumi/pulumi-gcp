@@ -18,7 +18,7 @@ public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
      */
     private List<GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository> customRepositories;
     /**
-     * @return Address of the remote repository. Default value: &#34;DOCKER_HUB&#34; Possible values: [&#34;DOCKER_HUB&#34;]
+     * @return Address of the remote repository. Possible values: [&#34;DOCKER_HUB&#34;]
      * 
      */
     private String publicRepository;
@@ -32,7 +32,7 @@ public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
         return this.customRepositories;
     }
     /**
-     * @return Address of the remote repository. Default value: &#34;DOCKER_HUB&#34; Possible values: [&#34;DOCKER_HUB&#34;]
+     * @return Address of the remote repository. Possible values: [&#34;DOCKER_HUB&#34;]
      * 
      */
     public String publicRepository() {

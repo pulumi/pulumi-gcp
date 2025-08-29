@@ -40,6 +40,11 @@ export const getCertificates: typeof import("./getCertificates").getCertificates
 export const getCertificatesOutput: typeof import("./getCertificates").getCertificatesOutput = null as any;
 utilities.lazyLoad(exports, ["getCertificates","getCertificatesOutput"], () => require("./getCertificates"));
 
+export { GetDnsAuthorizationArgs, GetDnsAuthorizationResult, GetDnsAuthorizationOutputArgs } from "./getDnsAuthorization";
+export const getDnsAuthorization: typeof import("./getDnsAuthorization").getDnsAuthorization = null as any;
+export const getDnsAuthorizationOutput: typeof import("./getDnsAuthorization").getDnsAuthorizationOutput = null as any;
+utilities.lazyLoad(exports, ["getDnsAuthorization","getDnsAuthorizationOutput"], () => require("./getDnsAuthorization"));
+
 export { TrustConfigArgs, TrustConfigState } from "./trustConfig";
 export type TrustConfig = import("./trustConfig").TrustConfig;
 export const TrustConfig: typeof import("./trustConfig").TrustConfig = null as any;

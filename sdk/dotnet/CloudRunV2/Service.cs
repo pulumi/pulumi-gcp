@@ -36,6 +36,10 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Scaling = new Gcp.CloudRunV2.Inputs.ServiceScalingArgs
+    ///         {
+    ///             MaxInstanceCount = 100,
+    ///         },
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -131,12 +135,12 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Scaling = new Gcp.CloudRunV2.Inputs.ServiceScalingArgs
+    ///         {
+    ///             MaxInstanceCount = 2,
+    ///         },
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
-    ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
-    ///             {
-    ///                 MaxInstanceCount = 2,
-    ///             },
     ///             Volumes = new[]
     ///             {
     ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
@@ -344,6 +348,10 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Scaling = new Gcp.CloudRunV2.Inputs.ServiceScalingArgs
+    ///         {
+    ///             MaxInstanceCount = 1,
+    ///         },
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -368,10 +376,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 Accelerator = "nvidia-l4",
     ///             },
     ///             GpuZonalRedundancyDisabled = true,
-    ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
-    ///             {
-    ///                 MaxInstanceCount = 1,
-    ///             },
     ///         },
     ///     });
     /// 

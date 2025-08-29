@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.Projects
     ///     {
     ///         Project = "your-project-id",
     ///         ServiceName = "iam.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     /// });

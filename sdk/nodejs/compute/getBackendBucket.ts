@@ -63,6 +63,7 @@ export interface GetBackendBucketResult {
     readonly id: string;
     readonly loadBalancingScheme: string;
     readonly name: string;
+    readonly params: outputs.compute.GetBackendBucketParam[];
     readonly project?: string;
     readonly selfLink: string;
 }

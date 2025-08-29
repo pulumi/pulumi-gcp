@@ -78,9 +78,9 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A textual name of the security policy.
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource. This field is used internally during
      * updates of this resource.
@@ -96,11 +96,13 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly policyId!: pulumi.Output<string>;
     /**
-     * The type indicates the intended use of the security policy.
-     * For organization security policies, the only supported type
-     * is "FIREWALL".
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+     */
+    public readonly shortName!: pulumi.Output<string | undefined>;
+    /**
+     * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -122,18 +124,17 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["shortName"] = state ? state.shortName : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'displayName'");
-            }
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["shortName"] = args ? args.shortName : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["policyId"] = undefined /*out*/;
@@ -152,7 +153,7 @@ export interface OrganizationSecurityPolicyState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A textual name of the security policy.
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -170,11 +171,13 @@ export interface OrganizationSecurityPolicyState {
      */
     policyId?: pulumi.Input<string>;
     /**
-     * The type indicates the intended use of the security policy.
-     * For organization security policies, the only supported type
-     * is "FIREWALL".
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+     */
+    shortName?: pulumi.Input<string>;
+    /**
+     * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      */
     type?: pulumi.Input<string>;
 }
@@ -188,20 +191,22 @@ export interface OrganizationSecurityPolicyArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A textual name of the security policy.
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
      */
-    displayName: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
      */
     parent: pulumi.Input<string>;
     /**
-     * The type indicates the intended use of the security policy.
-     * For organization security policies, the only supported type
-     * is "FIREWALL".
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+     */
+    shortName?: pulumi.Input<string>;
+    /**
+     * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      */
     type?: pulumi.Input<string>;
 }

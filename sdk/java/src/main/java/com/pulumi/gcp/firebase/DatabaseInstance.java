@@ -132,7 +132,6 @@ import javax.annotation.Nullable;
  *         var firebase = new Service("firebase", ServiceArgs.builder()
  *             .project(default_.projectId())
  *             .service("firebase.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var defaultProject = new com.pulumi.gcp.firebase.Project("defaultProject", com.pulumi.gcp.firebase.ProjectArgs.builder()
@@ -144,7 +143,6 @@ import javax.annotation.Nullable;
  *         var firebaseDatabase = new Service("firebaseDatabase", ServiceArgs.builder()
  *             .project(defaultProject.project())
  *             .service("firebasedatabase.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()

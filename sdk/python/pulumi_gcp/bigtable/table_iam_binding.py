@@ -21,7 +21,7 @@ __all__ = ['TableIamBindingArgs', 'TableIamBinding']
 @pulumi.input_type
 class TableIamBindingArgs:
     def __init__(__self__, *,
-                 instance: pulumi.Input[_builtins.str],
+                 instance_name: pulumi.Input[_builtins.str],
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
                  table: pulumi.Input[_builtins.str],
@@ -29,7 +29,7 @@ class TableIamBindingArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TableIamBinding resource.
-        :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance that owns the table.
+        :param pulumi.Input[_builtins.str] instance_name: The name or relative resource id of the instance that owns the table.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -49,7 +49,7 @@ class TableIamBindingArgs:
         :param pulumi.Input[_builtins.str] project: The project in which the table belongs. If it
                is not provided, this provider will use the provider default.
         """
-        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "table", table)
@@ -59,16 +59,16 @@ class TableIamBindingArgs:
             pulumi.set(__self__, "project", project)
 
     @_builtins.property
-    @pulumi.getter
-    def instance(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[_builtins.str]:
         """
         The name or relative resource id of the instance that owns the table.
         """
-        return pulumi.get(self, "instance")
+        return pulumi.get(self, "instance_name")
 
-    @instance.setter
-    def instance(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "instance", value)
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -147,7 +147,7 @@ class _TableIamBindingState:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input['TableIamBindingConditionArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
@@ -155,7 +155,7 @@ class _TableIamBindingState:
         """
         Input properties used for looking up and filtering TableIamBinding resources.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the tables's IAM policy.
-        :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance that owns the table.
+        :param pulumi.Input[_builtins.str] instance_name: The name or relative resource id of the instance that owns the table.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -179,8 +179,8 @@ class _TableIamBindingState:
             pulumi.set(__self__, "condition", condition)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
-        if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
         if members is not None:
             pulumi.set(__self__, "members", members)
         if project is not None:
@@ -212,16 +212,16 @@ class _TableIamBindingState:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
-    @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name or relative resource id of the instance that owns the table.
         """
-        return pulumi.get(self, "instance")
+        return pulumi.get(self, "instance_name")
 
-    @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "instance", value)
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -293,7 +293,7 @@ class TableIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[Union['TableIamBindingConditionArgs', 'TableIamBindingConditionArgsDict']]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
@@ -322,7 +322,7 @@ class TableIamBinding(pulumi.CustomResource):
         }])
         editor = gcp.bigtable.TableIamPolicy("editor",
             project="your-project",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             table="your-bigtable-table",
             policy_data=admin.policy_data)
         ```
@@ -335,7 +335,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         editor = gcp.bigtable.TableIamBinding("editor",
             table="your-bigtable-table",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             role="roles/bigtable.user",
             members=["user:jane@example.com"])
         ```
@@ -348,7 +348,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         editor = gcp.bigtable.TableIamMember("editor",
             table="your-bigtable-table",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             role="roles/bigtable.user",
             member="user:jane@example.com")
         ```
@@ -365,7 +365,7 @@ class TableIamBinding(pulumi.CustomResource):
         }])
         editor = gcp.bigtable.TableIamPolicy("editor",
             project="your-project",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             table="your-bigtable-table",
             policy_data=admin.policy_data)
         ```
@@ -378,7 +378,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         editor = gcp.bigtable.TableIamBinding("editor",
             table="your-bigtable-table",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             role="roles/bigtable.user",
             members=["user:jane@example.com"])
         ```
@@ -391,7 +391,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         editor = gcp.bigtable.TableIamMember("editor",
             table="your-bigtable-table",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             role="roles/bigtable.user",
             member="user:jane@example.com")
         ```
@@ -424,7 +424,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance that owns the table.
+        :param pulumi.Input[_builtins.str] instance_name: The name or relative resource id of the instance that owns the table.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -473,7 +473,7 @@ class TableIamBinding(pulumi.CustomResource):
         }])
         editor = gcp.bigtable.TableIamPolicy("editor",
             project="your-project",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             table="your-bigtable-table",
             policy_data=admin.policy_data)
         ```
@@ -486,7 +486,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         editor = gcp.bigtable.TableIamBinding("editor",
             table="your-bigtable-table",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             role="roles/bigtable.user",
             members=["user:jane@example.com"])
         ```
@@ -499,7 +499,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         editor = gcp.bigtable.TableIamMember("editor",
             table="your-bigtable-table",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             role="roles/bigtable.user",
             member="user:jane@example.com")
         ```
@@ -516,7 +516,7 @@ class TableIamBinding(pulumi.CustomResource):
         }])
         editor = gcp.bigtable.TableIamPolicy("editor",
             project="your-project",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             table="your-bigtable-table",
             policy_data=admin.policy_data)
         ```
@@ -529,7 +529,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         editor = gcp.bigtable.TableIamBinding("editor",
             table="your-bigtable-table",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             role="roles/bigtable.user",
             members=["user:jane@example.com"])
         ```
@@ -542,7 +542,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         editor = gcp.bigtable.TableIamMember("editor",
             table="your-bigtable-table",
-            instance="your-bigtable-instance",
+            instance_name="your-bigtable-instance",
             role="roles/bigtable.user",
             member="user:jane@example.com")
         ```
@@ -589,7 +589,7 @@ class TableIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[Union['TableIamBindingConditionArgs', 'TableIamBindingConditionArgsDict']]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
@@ -604,9 +604,9 @@ class TableIamBinding(pulumi.CustomResource):
             __props__ = TableIamBindingArgs.__new__(TableIamBindingArgs)
 
             __props__.__dict__["condition"] = condition
-            if instance is None and not opts.urn:
-                raise TypeError("Missing required property 'instance'")
-            __props__.__dict__["instance"] = instance
+            if instance_name is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_name'")
+            __props__.__dict__["instance_name"] = instance_name
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__.__dict__["members"] = members
@@ -630,7 +630,7 @@ class TableIamBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             condition: Optional[pulumi.Input[Union['TableIamBindingConditionArgs', 'TableIamBindingConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
+            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             role: Optional[pulumi.Input[_builtins.str]] = None,
@@ -643,7 +643,7 @@ class TableIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the tables's IAM policy.
-        :param pulumi.Input[_builtins.str] instance: The name or relative resource id of the instance that owns the table.
+        :param pulumi.Input[_builtins.str] instance_name: The name or relative resource id of the instance that owns the table.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -669,7 +669,7 @@ class TableIamBinding(pulumi.CustomResource):
 
         __props__.__dict__["condition"] = condition
         __props__.__dict__["etag"] = etag
-        __props__.__dict__["instance"] = instance
+        __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["members"] = members
         __props__.__dict__["project"] = project
         __props__.__dict__["role"] = role
@@ -690,12 +690,12 @@ class TableIamBinding(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @_builtins.property
-    @pulumi.getter
-    def instance(self) -> pulumi.Output[_builtins.str]:
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name or relative resource id of the instance that owns the table.
         """
-        return pulumi.get(self, "instance")
+        return pulumi.get(self, "instance_name")
 
     @_builtins.property
     @pulumi.getter

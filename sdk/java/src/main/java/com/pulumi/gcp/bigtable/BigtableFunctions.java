@@ -257,7 +257,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(instance.name())
+     *             .instanceName(instance.name())
      *             .table(table.name())
      *             .build());
      * 
@@ -300,7 +300,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(instance.name())
+     *             .instanceName(instance.name())
      *             .table(table.name())
      *             .build());
      * 
@@ -343,7 +343,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(instance.name())
+     *             .instanceName(instance.name())
      *             .table(table.name())
      *             .build());
      * 
@@ -386,7 +386,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(instance.name())
+     *             .instanceName(instance.name())
      *             .table(table.name())
      *             .build());
      * 
@@ -429,7 +429,7 @@ public final class BigtableFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .instance(instance.name())
+     *             .instanceName(instance.name())
      *             .table(table.name())
      *             .build());
      * 
